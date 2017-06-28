@@ -5,7 +5,6 @@ var express = require('express')
 var session = require('express-session')
 var nunjucks = require('nunjucks')
 var routes = require('./app/routes.js')
-var documentationRoutes = require('./docs/documentation_routes.js')
 var favicon = require('serve-favicon')
 var app = express()
 var documentationApp = express()
@@ -228,17 +227,6 @@ app.get('/prototype-admin/download-latest', function (req, res) {
   var url = utils.getLatestRelease()
   res.redirect(url)
 })
-
-if (useDocumentation) {
-  // Copy app locals to documentation app locals
-  documentationApp.locals = app.locals
-
-  // Create separate router for docs
-  app.use('/docs', documentationApp)
-
-  // Docs under the /docs namespace
-  documentationApp.use('/', documentationRoutes)
-}
 
 // Strip .html and .htm if provided
 app.get(/\.html?$/i, function (req, res) {

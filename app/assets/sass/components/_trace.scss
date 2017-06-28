@@ -1,0 +1,54 @@
+#trace {
+
+  .sl-primary-card {
+    padding-top: 0;
+  }
+
+  .sl-account-canvas {
+    background: $canvas-colour;
+    padding: 30px 0 300px 0;
+  }
+
+  .sl-account-canvas-width {
+    max-width: $max-content-width;
+    margin: auto;
+    position: relative;
+  }
+
+  .sl-trace-header {
+    border-bottom: 1px $grey-3 solid;
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
+  h2 {
+    padding-left: 30px;
+  }
+
+  .sl-trace-button {
+    padding: 10px;
+  }
+
+  .sl-trace-drop-down-link {
+    display: inline;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sl-trace-input-error-padding {
+    .sl-dob-input {
+      padding-top: 37px;
+      @media (max-width: $screen-md-max) {
+        padding-top: 63px
+      }
+      @media (max-width: $screen-sm-max) {
+        padding-top: 10px
+      }
+    }
+  }
+
+  input {
+    height: 44px;
+  }
+
+}

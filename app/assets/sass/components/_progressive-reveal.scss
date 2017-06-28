@@ -1,0 +1,21 @@
+#sl-progressive-reveal {
+
+  .sl-progressive-reveal-container {
+    display: inline;
+    color: $govuk-blue;
+
+    .sl-progressive-reveal-icon {
+      padding: 0 5px 3px 0;
+      height: 15px;
+      width: 17px;
+    }
+  }
+
+  .sl-progressive-reveal-container:hover {
+    color: $link-hover-color;
+  }
+
+  .sl-progressive-reveal-container:focus {
+    outline: solid 3px $yellow;
+  }
+};

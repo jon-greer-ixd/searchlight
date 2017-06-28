@@ -1,0 +1,55 @@
+<div ui-view="content" class="ng-scope"><div class="container-fluid ng-scope">
+    <div id="search" class="row">
+        <div class="col-xs-12 sl-search-full-height" ng-class="{'sl-search-full-height': !showTrace.personTrace}">
+            <div id="sl-home">
+                <div class="row">
+                    <div class="sl-account-canvas-width">
+                        <div class="col-xs-12">
+                            <h1 id="sl-title" ng-class="{'sl-search-centre-align': !showTrace.personTrace}" class="sl-search-centre-align">
+                                <span class="sl-title-nowrap">Look up a&nbsp;</span><span class="sl-title-nowrap">customer</span>
+                            </h1>
+                            <div class="spacing-top-single sl-home-search-input-container input-group sl-search-input-align" ng-class="{'sl-home-search-input-reduced-padding': nino.length>7, 'sl-search-input-align': !showTrace.personTrace}">
+                                <sl-search><div id="sl-search" ng-keydown="toggleHover($event.keyCode, $event)" ng-class="{'sl-account-search-container': state.current.name !=='search', 'spacing-top-sixth': state.current.name !== 'search'}">
+  <form action="/search-results" ng-submit="slSearchFormSubmit(nino, errors)" autocomplete="off" class="ng-pristine ng-valid">
+    <div popover-placement="top" uib-popover-template="'components/popovers/slValidationError/slValidationError.html'" popover-is-open="!ninoValid" popover-enable="!ninoValid" popover-trigger="outsideClick">
+
+      <div>
+        <!--Despite being red, this will always find the id that it is looking for as the label will only be on the
+        account page, in which the id will be sl-search-input-->
+        <!-- ngIf: !nino.length && state.current.name !== 'search' -->
+        <div>
+
+          <input ng-attr-id="" ng-change="searchInputChange(nino)" ng-class="{'sl-home-search': state.current.name === 'search', 'sl-account-search': state.current.name !=='search', 'sl-input-invalid': !ninoValid}" ng-model="nino" maxlength="13" ng-focus="inputFocus = true" ng-blur="inputFocus = false" autofocus="" sl-nino-autocomplete="highlightLastChar" aria-label="National Insurance number input box" class="ng-pristine ng-untouched ng-valid ng-isolate-scope sl-home-search" id="maincontent" aria-invalid="false">
+
+          <!-- ngIf: nino -->
+
+          <div class="sl-header-btn">
+
+
+            <button class="sl-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
+              <!-- ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) --><span ng-class="{'search' : state.current.name === 'search','account' : state.current.name !== 'search' }" ng-if="!nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid)" class="search-icon ng-scope search"></span><!-- end ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) -->
+
+              <!-- ngIf: nino.length > 7 && !accountSummary && errors.length === 0 && ninoValid -->
+
+
+            </button>
+
+          </div>
+          <!-- ngIf: nino -->
+        </div>
+        </div>
+      </div>
+  </form>
+</div></sl-search>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></div>
+
+
+
+</div></div>

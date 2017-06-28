@@ -1,0 +1,353 @@
+.sl-account-search-container {
+  .popover {
+    width: 600px;
+  }
+}
+
+#sl-search {
+
+  .sl-header-btn {
+    display: inline;
+  }
+
+
+  .sl-search-placeholder {
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    z-index: 5;
+
+
+    @media (max-width: $screen-sm-min) {
+      top: 18px;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      top: 14px;
+    }
+
+    .remove-placeholder {
+      display: none
+    }
+  }
+
+  #sl-search-input, #maincontent {
+    height: 50px;
+    padding-left: 10px;
+    border: 3px solid transparent;
+    margin-bottom: 1px;
+  }
+
+  #sl-search-input:focus {
+    border-color: $yellow;
+    outline: 0 none;
+  }
+
+  #maincontent:focus {
+    border-color: $yellow;
+    outline: 0 none;
+  }
+
+  .sl-home-search {
+    width: calc(100% - 50px);
+  }
+
+  .sl-account-search {
+    width: calc(100% - 44px);
+  }
+
+  #sl-search-input.sl-input-invalid {
+    border-color: $red;
+  }
+
+  #maincontent.sl-input-invalid {
+    border-color: $red;
+  }
+
+  .clear-icon {
+    position: absolute;
+    opacity: .5;
+    outline: 0;
+    border: 3px solid transparent;
+
+    .inner-clear-icon {
+      background: url(/public/images/clear-icon.svg);
+      position: absolute;
+      height: 22px;
+      width: 22px;
+      pointer-events: none;
+    }
+
+
+  }
+
+  .clear-icon.search {
+    top: 30px;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    right: 50px;
+
+  }
+
+  .clear-icon.account {
+    top: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 9px;
+
+    @media (max-width: $custom-sm-max-breakpoint) {
+      right: 79px;
+    }
+    @media (min-width: $custom-sm-max-breakpoint) {
+      right: 44px;
+    }
+
+    }
+
+  .clear-icon:hover {
+    opacity: 1;
+  }
+
+  .clear-icon:focus {
+    opacity: 1;
+    border-color: $yellow;
+
+  }
+
+
+
+
+
+  .search-icon {
+    background-size: 22px auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background: url(/public/images/search-icon.svg);
+
+    position: absolute;
+    pointer-events: none;
+    height: 22px;
+    width: 25px;
+  }
+
+  .search-icon.search {
+    top: 11px;
+    left: 11px;
+  }
+
+  .search-icon.account {
+    top: 9px;
+    left: 9px;
+  }
+
+
+
+  .sl-search-btn {
+    font-size:0;
+    background-color: $black;
+    color: $white;
+    border-radius: 0;
+    position: absolute;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    .circular {
+      animation: rotate 2s linear infinite;
+      height: 60%;
+      transform-origin: center center;
+      width: 60%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+      stroke-linecap: round;
+    }
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes dash {
+      0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+      }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+      }
+    }
+    @keyframes color {
+      0%,
+      100% {
+        stroke: white;
+      }
+    }
+    .ng-hide {
+      /* This is required to be placed here as ng-hide class is not properly applied to the element */
+      /* This will only work at this level of the code and not in a global file */
+      /* Angular recommended solution */
+      display: block !important;
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+  }
+  .sl-search-btn:focus {
+    //opacity: 0;
+    border-color: $yellow;
+    outline: none;
+
+  }
+  .sl-account-search-btn {
+    background-color: $govuk-blue;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .sl-user-search-container {
+    min-height: 120px;
+    padding-right: 20px;
+    background-color: $white;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.39);
+    border: 3px solid $white;
+  }
+
+  .sl-user-search-container:focus {
+    outline: 0;
+    border-color: $yellow;
+
+  }
+  .sl-user-search-container:hover {
+    border-color: $grey-3;
+    background-color: $grey-3;
+    cursor: hand;
+
+  }
+  .sl-user-search-container:hover:focus {
+    border-color: $yellow;
+
+  }
+
+  .sl-user-search-container-no-results {
+    line-height: 114px;
+    text-align: center;
+  }
+
+  .sl-custom-hover {
+    border-color: $grey-3;
+
+    background-color: $grey-3;
+    cursor: hand;
+  }
+
+  .sl-user-search-container.hover:hover {
+    background-color: $grey-3;
+    cursor: hand;
+  }
+
+  .sl-preview-nino {
+    font-size: 1em;
+    color: $sl-warning-secondary-text-color;
+    float: left;
+  }
+
+  .sl-user-search-message {
+    color: $feedback-form-text;
+    display: inline-block;
+  }
+
+  .sl-preview-primary-name {
+    color: $govuk-blue;
+    padding: 6px 0 0 0;
+  }
+
+  .sl-user-search-details-container {
+    padding-left: 20px;
+  }
+
+  .sl-search-drop-down-name {
+    color: $govuk-blue;
+    font-size: 1.69em;
+    font-weight: bold;
+  }
+
+}
+
+#search {
+  margin-top: -2px;
+  background-color: $govuk-blue;
+  margin-right:-15px;
+  margin-left:-15px;
+
+  .sl-home-search-input-container {
+    padding-bottom: 13.2vh;
+    margin:0;
+  }
+
+  .sl-home-search-input-reduced-padding {
+    padding-bottom: 1vh;
+  }
+
+  #sl-title {
+
+    color: $white;
+    margin-top: 10vh;
+
+    .sl-title-nowrap {
+      font-weight: bold;
+      display: inline-block;
+    }
+
+  }
+
+  .sl-account-canvas-width {
+    max-width: $max-content-width;
+    margin: auto;
+    position: relative;
+  }
+
+  $max-content-width: 1310px;
+
+
+  .sl-search-full-height {
+    height: 100vh;
+  }
+
+  .sl-search-centre-align {
+    padding-top: 200px;
+    text-align: center;
+  }
+
+  .sl-search-input-align {
+    margin-left: 27%;
+    @media (max-width: $screen-sm-max) {
+      margin-left: 10%;
+    }
+    @media (max-width: $screen-xs-max) {
+      margin-left: 0;
+    }
+  }
+
+}
+
+
+
+
+
+

@@ -2,30 +2,52 @@
 // in the govuk frontend toolkit's url-helpers partial
 $path: "/public/images/";
 
+// boo strap
+@import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+
 // Import GOV.UK elements from /govuk-modules/, this will import the frontend toolkit and some base styles.
 // Take a look in /govuk-modules/_govuk-elements.scss to see which files are imported.
-@import 'govuk-elements';
+// @import 'govuk-elements';
 
 // Take a look at in app/assets/sass/patterns/ to see which files are imported.
-@import 'patterns/check-your-answers';
-@import 'patterns/task-list';
+// @import 'patterns/check-your-answers';
+// @import 'patterns/task-list';
 
-// Related items
-// (These styles will be moved to GOV.UK elements, duplicating here for now.)
-.govuk-related-items {
-  margin-top: $gutter;
-  border-top: 10px solid $govuk-blue;
-  padding-top: 5px;
+// base
+@import 'base/fonts';
+@import 'base/colours';
+@import 'base/slColours';
+@import 'base/bootstrap';
+@import 'base/globals';
+@import 'base/forms';
 
-  .heading-medium {
-    margin-top: 0.3em;
-    margin-bottom: 0.5em;
-  }
+// components
 
-  li {
-    margin-bottom: 10px;
-    list-style-type: none;
-  }
-}
+@import 'components/menu';
+@import 'components/footer';
+@import 'components/trace';
+@import 'components/search';
+@import 'components/local-nav';
+@import 'components/account';
+
+// things
+@import 'components/trace-input-sex';
+@import 'components/progressive-reveal';
+
+
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+label {
+  font-weight: normal;
+}
+
+* {
+    font-family: $sl-font;
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: transparent;
+}

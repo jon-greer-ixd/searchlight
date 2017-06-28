@@ -1,1 +1,6 @@
 node_modules
+public
+govuk_modules
+.env
+*.log
+lib/govuk_template.html
