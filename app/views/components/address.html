@@ -3,8 +3,13 @@
   <div id="sl-address-primary-card" class="sl-primary-card">
     <div>
       {% if step === 0 %}
-      {% include "./data/address-details.html" %}
+        {% include "./address-details.html" %}
       {% elif step === 1 %}
+        {% include "./address-search.html" %}
+      {% elif step === 2 %}
+        {% include "./address-search-results.html" %}
+      {% elif step === 3 %}
+        {% include "./address-check.html" %}
       {% endif %}
     </div>
   </div>

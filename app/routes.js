@@ -21,10 +21,40 @@ router.get('/kitchen-sink', function (req, res) {
 
 
 var editStep = 0;
+var updated = "26 Oct 1960 - present";
 
 router.get('/account', function (req, res) {
   res.render('account', {
-    step : editStep
+    updated : updated,
+    step : 0
+  })
+})
+
+router.get('/update-handler', function (req, res) {
+  res.render('account', {
+    updated : updated,
+    step : 1
+  })
+})
+
+router.get('/search-handler', function (req, res) {
+  res.render('account', {
+    updated : updated,
+    step : 2
+  })
+})
+
+router.get('/check-handler', function (req, res) {
+  res.render('account', {
+    updated : updated,
+    step : 3
+  })
+})
+
+router.get('/submit-handler', function (req, res) {
+  res.render('account', {
+    updated : "11 December 2017",
+    step : 0
   })
 })
 
