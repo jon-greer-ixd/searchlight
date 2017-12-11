@@ -2,7 +2,10 @@
   <h2>Address</h2>
   <div id="sl-address-primary-card" class="sl-primary-card">
     <div>
+      {% if step === 0 %}
       {% include "./data/address-details.html" %}
+      {% elif step === 1 %}
+      {% endif %}
     </div>
   </div>
 </div>

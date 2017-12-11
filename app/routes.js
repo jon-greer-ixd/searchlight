@@ -23,7 +23,9 @@ router.get('/kitchen-sink', function (req, res) {
 var editStep = 0;
 
 router.get('/account', function (req, res) {
-  res.render('account')
+  res.render('account', {
+    step : editStep
+  })
 })
 
 module.exports = router
