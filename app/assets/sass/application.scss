@@ -62,10 +62,27 @@ html {
   }
 }
 
+//address
 #address-pane {
   @include clearfix;
-  div {
+  .col {
     float: left;
     width: 33%;
+  }
+  h2 {
+    margin-top :0;
+    padding-top: 0;
+  }
+}
+
+#postcode {
+  width: 30%;
+}
+
+.secondary-button {
+  @include button;
+  box-shadow: 0 2px 0 #464646;
+  &:visited {
+    background-color: grey;
   }
 }
