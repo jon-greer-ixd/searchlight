@@ -53,6 +53,9 @@ html {
 }
 
 //searchlight
+.strong {
+  font-weight: bold;
+}
 
 @mixin clearfix {
   &:after {
@@ -79,10 +82,30 @@ html {
   width: 30%;
 }
 
+.postcode-searched {
+  .p1 {
+    margin-bottom: 0;
+    padding-bottom: 5px;
+  }
+
+  .p2 {
+    font-weight: bold;
+    margin-top: 0;
+    padding-top: 0;
+  }
+  margin-bottom: 10px;
+}
+
 .secondary-button {
   @include button;
-  box-shadow: 0 2px 0 #464646;
+  box-shadow: 0 2px 0 rgba(0,0,0,.25);
+  color: black;
   &:visited {
-    background-color: grey;
+    color: black;
+    background-color: #dee0e2;
   }
+}
+
+.form-date .form-group {
+  width: 53px;
 }

@@ -44,10 +44,17 @@ router.get('/search-handler', function (req, res) {
   })
 })
 
-router.get('/check-handler', function (req, res) {
+router.get('/dates-handler', function (req, res) {
   res.render('account', {
     updated : updated,
     step : 3
+  })
+})
+
+router.get('/check-handler', function (req, res) {
+  res.render('account', {
+    updated : updated,
+    step : 4
   })
 })
 
