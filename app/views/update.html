@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block content %}
+  
+  {% include "components/details-nav.html" %}
 
-  {% include "components/details-nav.njk" %}
-
-  {% include "components/details.html" %}
+  {% include "components/update-details.html" %}
 
 {% endblock %}
+
+

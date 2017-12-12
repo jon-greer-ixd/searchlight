@@ -1,0 +1,33 @@
+ <!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+        {% include "./address.html" %}
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Code template for primary and embedded cards. Ensure styling is defined as child of width elements and embedded cards are defined under a row.
+
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="sl-primary-card">
+    </div>
+  </div>
+
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="sl-primary-card">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="sl-embedded-card">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="sl-embedded-card">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>-->

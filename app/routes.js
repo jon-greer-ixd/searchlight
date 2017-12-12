@@ -30,29 +30,36 @@ router.get('/account', function (req, res) {
   })
 })
 
+router.get('/update', function (req, res) {
+  res.render('update', {
+    updated : updated,
+    step : 0
+  })
+})
+
 router.get('/update-handler', function (req, res) {
-  res.render('account', {
+  res.render('update', {
     updated : updated,
     step : 1
   })
 })
 
 router.get('/search-handler', function (req, res) {
-  res.render('account', {
+  res.render('update', {
     updated : updated,
     step : 2
   })
 })
 
 router.get('/dates-handler', function (req, res) {
-  res.render('account', {
+  res.render('update', {
     updated : updated,
     step : 3
   })
 })
 
 router.get('/check-handler', function (req, res) {
-  res.render('account', {
+  res.render('update', {
     updated : updated,
     step : 4
   })
@@ -63,6 +70,11 @@ router.get('/submit-handler', function (req, res) {
     updated : "11 December 2017",
     step : 0
   })
+})
+
+//update
+router.get('/choice-handler', function (req, res) {
+  res.render('address-search')
 })
 
 module.exports = router

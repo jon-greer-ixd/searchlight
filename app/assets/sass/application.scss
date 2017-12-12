@@ -76,6 +76,9 @@ html {
     margin-top :0;
     padding-top: 0;
   }
+  .column-one-third:last-child {
+    text-align: right;
+  }
 }
 
 #postcode {
@@ -98,9 +101,11 @@ html {
 
 .secondary-button {
   @include button;
+  background-color: #dee0e2;
+  color: black;
   box-shadow: 0 2px 0 rgba(0,0,0,.25);
   color: black;
-  &:visited {
+  &:visited, &:hover, &:focus, &:link {
     color: black;
     background-color: #dee0e2;
   }
@@ -108,4 +113,14 @@ html {
 
 .form-date .form-group {
   width: 53px;
+}
+
+.update-header {
+  margin-top :0;
+  padding-top :0;
+}
+
+.multiple-choice [type=radio] + label::after {
+  top: 7px!important;
+  left: 7px!important;
 }
