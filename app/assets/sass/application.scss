@@ -108,6 +108,10 @@ html {
   &:visited, &:hover, &:focus, &:link {
     color: black;
     background-color: #dee0e2;
+    text-decoration: none;
+  }
+  &:hover {
+    background-color: #bfbfbf;
   }
 }
 
@@ -123,4 +127,10 @@ html {
 .multiple-choice [type=radio] + label::after {
   top: 7px!important;
   left: 7px!important;
+}
+
+.search-group {
+  a {
+    margin-left: 10px;
+  }
 }

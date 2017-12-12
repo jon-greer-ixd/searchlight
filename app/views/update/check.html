@@ -65,65 +65,47 @@
   <div id="sl-address-primary-card" class="sl-primary-card">
     <div>
 <div id="address-pane">
-  
-    <h2 class="heading-medium">What do you need to update?</h2>
-  
+    
     <div class="grid-row">
 
       <div class="column-one-half">
         
-        
-        <form method="get" action="address-search">
-
-          <div class="form-group">
-    <fieldset>
-
-      <legend>
-        <h1 class="visually-hidden">Where do you live?</h1>
-      </legend>
-
-      <div class="multiple-choice">
-        <input id="update" type="radio" name="radio-group" value="update">
-        <label for="update">Update to a new address</label>
-      </div>
-      <div class="multiple-choice">
-        <input id="status" type="radio" name="radio-group" value="status">
-        <label for="status">Update the status</label>
-      </div>
-      <div class="multiple-choice">
-        <input id="end" type="radio" name="radio-group" value="end">
-        <label for="end">End this address</label>
-      </div>
-      <div class="multiple-choice">
-        <input id="Cherish" type="radio" name="radio-group" value="Cherish">
-        <label for="Cherish">Cherish this address</label>
+      <h3 class="heading-small">Check your answers</h3>
+      
+      <div>
+        <table>
+          <tr>
+            <td><span class="strong">Address</span></td>
+            <td>7 Church Street, Gateshead, NE1 1HH</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Start date</span></td>
+            <td>9 December 2017</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Notify date</span></td>
+            <td>11 December 2017</td>
+            <td><a>Change</a></td>
+          </tr>
+        </table>
       </div>
       
-    </fieldset>
-  </div>
-
+      <br>
+      
+      <div>
+        <form method="get" action="account">
           <div class="form-group">
-            <input class="button" type="submit" value="Next">
+            <input class="button" type="submit" value="Submit">
           </div>
-
-          <p><a href="account">Cancel</a></p>
-
         </form>
+      </div>
 
   </div>
-</div><!--
-      {% if step === 0 %}
-        {% include "./address-details.html" %}
-      {% elif step === 1 %}
-        {% include "./address-search.html" %}
-      {% elif step === 2 %}
-        {% include "./address-search-results.html" %}
-      {% elif step === 3 %}
-        {% include "./address-dates.html" %}
-      {% elif step === 4 %}
-        {% include "./address-check.html" %}
-      {% endif %}
--->
+</div>
+          <a href="account">Cancel</a>
+
     </div>
   </div>
 </div>
