@@ -134,3 +134,10 @@ html {
     margin-left: 10px;
   }
 }
+
+#sl-account .sl-account-canvas {
+  &.updater {
+    min-height: 0;
+    margin-bottom: 60px
+  }
+}
