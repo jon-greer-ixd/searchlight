@@ -9,9 +9,9 @@ router.use('/', main);
 
 // Route index page
 router.get('/', function (req, res) {
+  updated = false;
   res.render('index')
 })
-
 
 router.get('/kitchen-sink', function (req, res) {
   res.render('kitchen-sink.njk')
@@ -21,73 +21,49 @@ router.get('/kitchen-sink', function (req, res) {
 
 
 var editStep = 0;
-var updated = "26 Oct 1960 - present";
-var update = false;
-
-router.get('/account', function (req, res) {
-  res.render('account', {
-    updated : updated,
-    step : 0
-  })
-})
-
-router.get('/update', function (req, res) {
-  res.render('update', {
-    updated : updated,
-    step : 0
-  })
-})
-
-router.get('/update-handler', function (req, res) {
-  res.render('update', {
-    updated : updated,
-    step : 1
-  })
-})
-
-router.get('/search-handler', function (req, res) {
-  res.render('update', {
-    updated : updated,
-    step : 2
-  })
-})
-
-router.get('/dates-handler', function (req, res) {
-  res.render('update', {
-    updated : updated,
-    step : 3
-  })
-})
-
-router.get('/check-handler', function (req, res) {
-  res.render('update', {
-    updated : updated,
-    step : 4
-  })
-})
-
-router.get('/submit-handler', function (req, res) {
-  res.render('account', {
-    updated : "11 December 2017",
-    step : 0
-  })
-})
+var updated = false;
+var editDate = "14 Dec 2017";
+var updateType = "update";
 
 //update
 router.get('/choice-handler', function (req, res) {
   res.render('address-search')
 })
 
-router.get(/check-answers-handler/, function (req, res) {
+router.get('/update/account', function (req, res) {
   res.render('account', {
-    update : true
+    updated : updated,
+    editDate : editDate
   })
 })
 
+router.get('/update/dates', function (req, res) {
+  res.render('update/dates', {
+    updatetype : updateType
+  })
+})
+
+router.get('/update/check', function (req, res) {
+  res.render('update/check', {
+    updatetype : updateType
+  })
+})
+
+router.get(/check-answers-handler/, function (req, res) {
+  updated = true;
+  res.redirect('account')
+})
+
 router.get(/update-type-handler/, function (req, res) {
+  console.log(req.query);
   if(req.query.data === 'status') {
+    updateType = "status";
     res.render('update/status')
+  } else if (req.query.data === 'cherish') {
+    updateType = "cherish";
+    res.render('update/cherish-line')
   } else {
+    updateType = "address";
     res.render('update/address-search')
   }
 })

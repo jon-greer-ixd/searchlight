@@ -1,0 +1,30 @@
+<h2 class="heading-medium question">Do you need to cherish this address?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="dates">
+      <legend class="visually-hidden">
+        <p>Do you need to cherish this address?</p>
+      </legend>
+      <div class="form-group">
+        <fieldset class="inline">
+          <div class="multiple-choice" data-target="cherish">
+            <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
+            <label for="example-contact-by-email">Yes</label>
+          </div>
+          <div class="multiple-choice" data-target="contact-by-phone">
+            <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+            <label for="example-contact-by-phone">No</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden reveal-panel" id="cherish">
+            <label class="form-label" for="contact-email">Cherished line</label>
+            <input class="form-control" name="contact-email" type="text" id="contact-email">
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    <a href="account">Cancel</a>
+  </div>
+</div>

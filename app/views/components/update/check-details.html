@@ -3,6 +3,7 @@
   <div class="column-one-half">
     <div>
     <table class="table">
+    {% if updatetype === "address" %}
       <tr>
         <td><span class="strong">Address</span></td>
         <td>7 Church Street, Gateshead, NE1 1HH</td>
@@ -14,20 +15,34 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
+    {% endif %}
+    {% if updatetype === "address" or updatetype === "cherish" %}
         <td><span class="strong">Cherished line</span></td>
         <td>Rose Cottage</td>
         <td><a>Change</a></td>
       </tr>
+    {% endif %}
+    {% if updatetype === "address" %}
       <tr>
         <td><span class="strong">Start date</span></td>
         <td>9 December 2017</td>
         <td><a>Change</a></td>
       </tr>
+    {% endif %}
+    {% if updatetype === "status" %}
+      <tr>
+        <td><span class="strong">Address status</span></td>
+        <td>Dead letter office</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+    {% if updatetype === "address" or updatetype === "status" %}
       <tr>
         <td><span class="strong">Notify date</span></td>
         <td>11 December 2017</td>
         <td><a>Change</a></td>
       </tr>
+    {% endif %}
     </table>
   </div>
   <br>

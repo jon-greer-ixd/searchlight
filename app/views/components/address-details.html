@@ -3,19 +3,37 @@
   <div class="grid-row">
 
   <div class="column-one-third">
-    <p>Residential address</p>
-    <p>{{updated}}</p>
+    <ul>
+      <li>Residential address</li>
+      <li class="sl-secondary-text-color sl-metadata">
+        {% if updated === true %}
+          {{editDate}} – present
+        {% else %}
+          26 Oct 1990 – present
+      </li>
+      {% endif %}
+    </ul>
   </div>
   
   <div class="column-one-third">
+    {% if updated != true %}
     <p>
-      Woodstock Care Home<br>
-      80 Woodstock Road<br>
-      Sittingbourne<br>
-      Kent<br>
-      ME10 4HN<br>
+      4 Old Street<br>
+      Gateshead<br>
+      Tyne and Wear<br>
+      NE11 4HN<br>
       England
     </p>
+    {% else %}
+    <p>
+      Rose Cottage<br>
+      6 Church Street<br>
+      Gateshead<br>
+      Tyne and Wear<br>
+      NE11 4HN<br>
+      England
+    </p>
+    {% endif %}
   </div>
   
   <div class="column-one-third">
@@ -32,7 +50,7 @@
       </div>
     </form>
 -->
-    <p><a class="secondary-button" href="update">Update</a></p>
+    <p><a class="secondary-button" href="change">Update</a></p>
 <!--<p><a class="secondary-button" href="update">Correct</a></p>-->
   </div>
 
