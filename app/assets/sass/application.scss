@@ -183,3 +183,31 @@ form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-d
   left: 900px;
   z-index: 5000;
 }
+
+#sl-account-primary-name {
+  h1 {
+    margin: 0;
+    padding: 20px 0 0 0;
+  }
+}
+
+.sl-account-age-metadata {
+  color: $white;
+  opacity: 0.67;
+}
+
+.nino-separator {
+  margin-right: .1em;
+}
+
+.personal-details {
+  .grid-row {
+    margin-bottom: 20px;
+    img {
+      margin: -4px 4px 0 0;
+    }
+//    .sl-metadata {
+//      font-size: .84em;
+//    }
+  }
+}
