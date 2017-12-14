@@ -22,6 +22,7 @@ router.get('/kitchen-sink', function (req, res) {
 
 var editStep = 0;
 var updated = "26 Oct 1960 - present";
+var update = false;
 
 router.get('/account', function (req, res) {
   res.render('account', {
@@ -75,6 +76,20 @@ router.get('/submit-handler', function (req, res) {
 //update
 router.get('/choice-handler', function (req, res) {
   res.render('address-search')
+})
+
+router.get(/check-answers-handler/, function (req, res) {
+  res.render('account', {
+    update : true
+  })
+})
+
+router.get(/update-type-handler/, function (req, res) {
+  if(req.query.data === 'status') {
+    res.render('update/status')
+  } else {
+    res.render('update/address-search')
+  }
 })
 
 module.exports = router

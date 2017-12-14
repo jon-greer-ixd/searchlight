@@ -2,7 +2,7 @@
 // in the govuk frontend toolkit's url-helpers partial
 $path: "/public/images/";
 
-// boo strap
+// boot strap
 @import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 
@@ -116,7 +116,7 @@ html {
 }
 
 .form-date .form-group {
-  width: 53px;
+  width: 54px;
 }
 
 .update-header {
@@ -143,8 +143,43 @@ html {
 }
 
 .form-control#edit-menu {
-  width: 40%;
+  width: 20%;
   float: right;
   font-family: "sl-font", Arial, sans-serif;
   font-size: 18px;
+}
+
+.js-enabled .js-hidden {
+  display: none;
+  visibility: hidden; 
+}
+
+.reveal-panel {
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: unset;
+}
+
+
+.inline .multiple-choice label {
+  margin-left: -5px;
+  width: 34px;
+}
+
+.heading-medium.question {
+  margin-bottom: 30px;
+  padding-bottom: 0;
+}
+
+form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label {
+  font-family: "sl-font", "Arial", sans-serif;
+}
+
+
+#updated-toaster {
+  position: absolute;
+  top: 100px;
+  left: 900px;
+  z-index: 5000;
 }
