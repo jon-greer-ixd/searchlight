@@ -54,11 +54,13 @@
                                 <sl-progressive-reveal section-open="slMoreSearchOptionsOpen" section-details="personTraceSearchOptions" class="ng-isolate-scope"><div id="sl-progressive-reveal" class="spacing-top-half" ng-show="sectionDetails" aria-hidden="false">
 
   <div class="sl-progressive-reveal-container" analytics-on="click" analytics-category="Account page, search for a customer" analytics-if="sectionOpen" analytics-label="User has clicked the progressive reveal to display more search details" analytics-event="More search details" ng-click="sectionOpen = !sectionOpen" ng-class="{'sl-previous-data-open':sectionOpen}" role="button" tabindex="0" id="">
-    <!-- ngIf: !sectionOpen --><img class="sl-progressive-reveal-icon ng-scope" src="../../assets/images/blue-triangle-right.svg" alt="click to reveal more info right arrow" ng-if="!sectionOpen"><!-- end ngIf: !sectionOpen -->
+    <!-- ngIf: !sectionOpen --><img class="sl-progressive-reveal-icon ng-scope" src="../../public/images/blue-triangle-right.svg" alt="click to reveal more info right arrow" ng-if="!sectionOpen"><!-- end ngIf: !sectionOpen -->
     <!-- ngIf: sectionOpen -->
     <span class="ng-binding">More search details</span>
   </div>
 </div></sl-progressive-reveal>
+                              
+                              
                                 <div ng-show="slMoreSearchOptionsOpen" class="sl-account-historic-details row ng-hide" aria-hidden="true">
 
                                     <div class="col-xs-11 col-sm-12 no-padding">

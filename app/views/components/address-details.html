@@ -13,6 +13,7 @@
       </li>
       {% endif %}
     </ul>
+    
   </div>
   
   <div class="column-one-third">
@@ -54,4 +55,8 @@
 <!--<p><a class="secondary-button" href="update">Correct</a></p>-->
   </div>
 
-</div>  
+</div> 
+  
+  {% if previous_addresses === true %}
+    {% include "components/previous-address.html" %}
+  {% endif %}

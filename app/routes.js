@@ -24,6 +24,7 @@ var editStep = 0;
 var updated = false;
 var editDate = "14 Dec 2017";
 var updateType = "update";
+var previousAddresses =  false;
 
 //update
 router.get('/choice-handler', function (req, res) {
@@ -33,7 +34,8 @@ router.get('/choice-handler', function (req, res) {
 router.get('/update/account', function (req, res) {
   res.render('account', {
     updated : updated,
-    editDate : editDate
+    editDate : editDate,
+    previous_addresses : previousAddresses
   })
 })
 
@@ -51,6 +53,9 @@ router.get('/update/check', function (req, res) {
 
 router.get(/check-answers-handler/, function (req, res) {
   updated = true;
+  if (updateType == "address") {
+    previousAddresses = true;    
+  }
   res.redirect('account')
 })
 
