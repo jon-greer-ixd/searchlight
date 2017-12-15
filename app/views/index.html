@@ -6,26 +6,26 @@
 
 {% block content %}
 
-  <div class="sl-account-canvas row">
+  <div class="sl-account-canvas row" id="prototype-navigation">
     <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
       <div class="sl-account-canvas-width">
-<br /> <div id="sl-address-primary-card" class="sl-primary-card">
-        
-<br />
-        <p><a href="search">Update an address</a></p>
-<!--
-  <p><a href="/search-full">Full search</a></p>
+        <div id="sl-address-primary-card" class="sl-primary-card">
+          <h1 class="heading-large">Prototypes</h1>
+          <h2 class="heading-small">December 2017</h2>
+          <ul class="list list-bullet">
+            <li><a href="search">Update an address</a></li>
+          </ul>
+          <!--
+            <p><a href="/search-full">Full search</a></p>
 
-  <p><a href="/search">Short Serach</a></p>
+            <p><a href="/search">Short Serach</a></p>
 
-  <p><a href="/kitchen-sink">Kitchen Sink</a></p>
--->
+            <p><a href="/kitchen-sink">Kitchen Sink</a></p>
+          -->
+      </div>
     </div>
-    </div>
-        <div>
   </div>
-
-
+</div>
 {% endblock %}
 
 
