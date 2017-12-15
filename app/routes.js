@@ -60,6 +60,12 @@ router.get('/update/check', function (req, res) {
   })
 })
 
+router.get('/update/search-results', function (req, res) {
+  res.render('update/search-results', {
+    updatetype : updateType
+  })
+})
+
 router.get(/check-answers-handler/, function (req, res) {
   if(updateType === "new") {
     correspondence = true;

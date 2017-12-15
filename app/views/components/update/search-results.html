@@ -4,6 +4,21 @@
     <form method="get" action="cherish">
       <div class="form-group">
 <!--        <label class="form-label" for="select-box">Select an address</label>-->
+        {% if updatetype == "new" %}
+        <select class="form-control" id="select-box" name="select-box">
+          <option>10 addressess found</option>
+          <option>1 Post Street, Gateshead</option>
+          <option>2 Post Street, Gateshead</option>
+          <option>3 Post Street, Gateshead</option>
+          <option>4 Post Street, Gateshead</option>
+          <option>5 Post Street, Gateshead</option>
+          <option>6 Post Street, Gateshead</option>
+          <option>7 Post Street, Gateshead</option>
+          <option>8 Post Street, Gateshead</option>
+          <option>9 Post Street, Gateshead</option>
+          <option>10 Post Street, Gateshead</option>
+        </select>
+        {% else %}
         <select class="form-control" id="select-box" name="select-box">
           <option>6 addressess found</option>
           <option>2 Church Street, Gateshead</option>
@@ -13,6 +28,7 @@
           <option>10 Church Street, Gateshead</option>
           <option>12 Church Street, Gateshead</option>
         </select>
+        {% endif %}
       </div>
       <div class="form-group">
         <a>Address is not shown</a>
