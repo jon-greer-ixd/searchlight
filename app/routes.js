@@ -25,6 +25,7 @@ var updated = false;
 var editDate = "14 Dec 2017";
 var updateType = "update";
 var previousAddresses =  false;
+var pageTitle = "Update residential address";
 
 //update
 router.get('/choice-handler', function (req, res) {
@@ -70,6 +71,18 @@ router.get(/update-type-handler/, function (req, res) {
   } else {
     updateType = "address";
     res.render('update/address-search')
+  }
+})
+
+//add new address
+router.get('/update/change-handler', function (req, res) {
+  console.log(req.query);
+  if (req.query.data == "new") {
+    res.render('update/address-search')
+  } else if (req.query.data == "correct"){
+    res.render('update/correct')
+  } else {
+    res.render('update/update')
   }
 })
 

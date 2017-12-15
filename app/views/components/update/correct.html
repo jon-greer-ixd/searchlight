@@ -1,0 +1,40 @@
+<h2 class="heading-medium question">What do you need to correct?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="update-type-handler">
+      <div class="form-group">
+        <fieldset>
+          <legend>
+            <p class="visually-hidden">What do you need to correct</p>
+          </legend>
+          <div class="multiple-choice">
+            <input id="address" type="radio" name="data" value="address">
+            <label for="address">Correct to a new address</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="status" type="radio" name="data" value="status">
+            <label for="status">Correct the status</label>
+          </div>
+<!--
+          <div class="multiple-choice">
+            <input id="end" type="radio" name="data" value="end">
+            <label for="end">End this address</label>
+          </div>
+-->
+          <div class="multiple-choice">
+            <input id="cherish" type="radio" name="data" value="cherish">
+            <label for="cherish">Correct the start date</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="cherish" type="radio" name="data" value="cherish">
+            <label for="cherish">Cherish this address</label>
+          </div>
+        </fieldset>
+      </div>  
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      <p><a href="account">Cancel</a></p>
+    </form>
+  </div>
+</div>
