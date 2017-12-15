@@ -66,7 +66,7 @@ router.get(/check-answers-handler/, function (req, res) {
   if(updateType === "new") {
     correspondence = true;
   }
-  if (updateType == "address") {
+  if (updateType === "address") {
     previousAddresses = true;    
   }
   res.redirect('account')
