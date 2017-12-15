@@ -3,13 +3,20 @@ var router = express.Router()
 
 // new routes
 
+var isUpdated = false;
+var editDate = "14 Dec 2017";
+var updateType = "update";
+var previousAddresses =  false;
+var pageTitle = "Update residential address";
+var correspondence = false;
+
 var main = require('./main/routes');
 
 router.use('/', main);
 
 // Route index page
 router.get('/', function (req, res) {
-  updated = false;
+  isUpdated = false;
   previousAddresses = false;
   correspondence = false;
   res.render('index')
@@ -21,14 +28,6 @@ router.get('/kitchen-sink', function (req, res) {
 
 // add your routes here
 
-var editStep = 0;
-var updated = false;
-var editDate = "14 Dec 2017";
-var updateType = "update";
-var previousAddresses =  false;
-var pageTitle = "Update residential address";
-var correspondence = false;
-
 //update
 router.get('/choice-handler', function (req, res) {
   res.render('address-search')
@@ -36,7 +35,7 @@ router.get('/choice-handler', function (req, res) {
 
 router.get('/update/account', function (req, res) {
   res.render('account', {
-    updated : updated,
+    updated : isUpdated,
     editDate : editDate,
     previous_addresses : previousAddresses,
     correspondence : correspondence
@@ -62,12 +61,12 @@ router.get('/update/check', function (req, res) {
 })
 
 router.get(/check-answers-handler/, function (req, res) {
-  updated = true;
   if(updateType === "new") {
     correspondence = true;
   }
   if (updateType === "address") {
     previousAddresses = true;    
+    isUpdated = true;
   }
   res.redirect('account')
 })
