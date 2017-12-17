@@ -21,3 +21,11 @@ $(document).ready(function () {
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
 })
+
+if ( document.getElementById('hidden') ){
+  var myFunc = function () {
+    document.getElementById('hidden').className="show";
+  }
+}
+
+

@@ -1,0 +1,66 @@
+<h2 class="heading-medium question">Check your answers</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <div>
+    <table class="table">
+      
+    {% if updatetype === "address" or updatetype === "cherish" %}
+      <tr>
+        <td><span class="strong">Cherished line</span></td>
+        <td>Rose Cottage</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+
+    {% if updatetype === "address" %}
+      <tr>
+        <td><span class="strong">Address</span></td>
+        <td>6 Church Street, Gateshead, NE1 1HH</td>
+        <td><a>Change</a></td>
+      </tr>
+<!--
+      <tr>
+        <td><span class="strong">Cherish this address</span></td>
+        <td>Yes</td>
+        <td><a>Change</a></td>
+      </tr>
+-->
+    {% endif %}
+      
+    {% if updatetype === "status" %}
+      <tr>
+        <td><span class="strong">Address status</span></td>
+        <td>Dead letter office</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
+    {% if updatetype === "address" or updatetype === "cherish"  %}
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
+    {% if updatetype === "address" or updatetype === "status" or updatetype === "cherish" %}
+      <tr>
+        <td><span class="strong">Notify date</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
+    </table>
+  </div>
+  <br>
+  <div>
+    <form method="get" action="check-answers-handler">
+      <div class="form-group">
+        <input class="button" type="submit" value="Submit">
+      </div>
+    </form>
+    <a href="account">Cancel</a>
+  </div>
+  </div>
+</div>

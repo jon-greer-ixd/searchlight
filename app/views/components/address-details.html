@@ -38,23 +38,23 @@
   </div>
   
   <div class="column-one-third">
-<!--
-    <form method="get" action="update">
+
+    <form method="get" action="update-type-handler">
       <div class="form-group">
-        <label class="form-label" for="select-box">This is the label text</label>
-        <select id="edit-menu" class="form-control" id="select-box" name="select-box" onchange="this.form.submit()">
+        <select class="form-control" id="tochange" name="tochange" onchange="this.form.submit()">
           <option selected>Edit</option>
-          <option>Update residential address</option>
-          <option>Correct residential address</option>
-          <option>Add correspondence address</option>
+          <option value="update">Update</option>
+          <option value="correct">Correct</option>
+          <option value="add">Add</option>
         </select>
       </div>
     </form>
--->
+<!--
     <p><a class="secondary-button" href="change">Update</a></p>
-<!--<p><a class="secondary-button" href="update">Correct</a></p>-->
+    <p><a class="secondary-button" href="update">Correct</a></p>
   </div>
-
+-->
+</div> 
 </div> 
   
   {% if previous_addresses === true %}

@@ -142,7 +142,7 @@ html {
   }
 }
 
-.form-control#edit-menu {
+.form-control#tochange {
   width: 20%;
   float: right;
   font-family: "sl-font", Arial, sans-serif;
@@ -228,4 +228,13 @@ summary {
 .previous-addresses {
   margin-top: 10px;
 }
+
+
+#hidden {
+  display: none;
+  .show {
+    display: block;
+  }
+}
+
 

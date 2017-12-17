@@ -52,6 +52,12 @@ router.get('/update/check', function (req, res) {
   })
 })
 
+router.get('/update/update', function (req, res) {
+  res.render('update/update', {
+    pagetitle : pageTitle
+  })
+})
+
 router.get(/check-answers-handler/, function (req, res) {
   updated = true;
   if (updateType == "address") {
@@ -61,13 +67,23 @@ router.get(/check-answers-handler/, function (req, res) {
 })
 
 router.get(/update-type-handler/, function (req, res) {
-  console.log(req.query);
   if(req.query.data === 'status') {
     updateType = "status";
     res.render('update/status')
   } else if (req.query.data === 'cherish') {
     updateType = "cherish";
     res.render('update/cherish-line')
+    //jump menu
+  } else if (req.query.tochange === 'update') {
+    //updateType = "";
+    res.redirect('update')
+  } else if (req.query.tochange === 'correct') {
+    //updateType = "";
+    res.render('update/correct')
+  } else if (req.query.tochange === 'address-search') {
+    // UPDATE THIS UPDATE TYPE ON MERGE
+    //updateType = "";
+    res.render('update/add')
   } else {
     updateType = "address";
     res.render('update/address-search')
@@ -82,7 +98,7 @@ router.get('/update/change-handler', function (req, res) {
   } else if (req.query.data == "correct"){
     res.render('update/correct')
   } else {
-    res.render('update/update')
+    res.redirect('update')
   }
 })
 
