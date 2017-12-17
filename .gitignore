@@ -4,3 +4,4 @@ govuk_modules
 .env
 *.log
 lib/govuk_template.html
+.DS_Store
