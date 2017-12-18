@@ -19,7 +19,15 @@
       </p>
     </div>
     <div class="column-one-third">
-      <p><a class="secondary-button">Update</a></p>
+      <form method="get" action="update-type-handler">
+        <div class="form-group">
+          <select class="form-control" id="tochange" name="tochange"><!--onchange="this.form.submit()"-->
+            <option selected>Edit</option>
+            <option value="update">Update</option>
+            <option value="correct">Correct</option>
+          </select>
+        </div>
+      </form>    
     </div>
   </div>
 </div>

@@ -3,7 +3,22 @@
   <div class="column-one-half">
     <form method="get" action="dates">
       <div class="form-group">
-<!--        <label class="form-label" for="select-box">Select an address</label>-->
+        <!--<label class="form-label" for="select-box">Select an address</label>-->
+        {% if updatetype === "add" %}
+        <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
+          <option>10 addressess found</option>
+          <option>1 Post Street, Gateshead</option>
+          <option>2 Post Street, Gateshead</option>
+          <option>3 Post Street, Gateshead</option>
+          <option>4 Post Street, Gateshead</option>
+          <option>5 Post Street, Gateshead</option>
+          <option>6 Post Street, Gateshead</option>
+          <option>7 Post Street, Gateshead</option>
+          <option>8 Post Street, Gateshead</option>
+          <option>9 Post Street, Gateshead</option>
+          <option>10 Post Street, Gateshead</option>
+        </select>
+        {% else %}
         <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
           <option>6 addressess found</option>
           <option>2 Church Street, Gateshead</option>
@@ -13,6 +28,7 @@
           <option>10 Church Street, Gateshead</option>
           <option>12 Church Street, Gateshead</option>
         </select>
+        {% endif %}
       </div>
       <div class="form-group">
         <a>Address is not shown</a>
@@ -24,12 +40,21 @@
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
         </div>
         <div class="form-group">
+          {% if updatetype === "add" %}
           <ul>
-            <li>6 Church Street</li>
+            <li>7 Post Street</li>
             <li>Gateshead</li>
             <li>Tyne &amp; Wear</li>
             <li>NE1 1HH</li>
           </ul>
+          {% else %}
+          <ul>
+            <li>6 Church Street</li>
+            <li>Gateshead</li>
+            <li>Tyne &amp; Wear</li>
+            <li>NE11 4HN</li>
+          </ul>
+          {% endif %}
         </div>
         
         <div class="form-group search-group">

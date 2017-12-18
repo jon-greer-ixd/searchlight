@@ -16,7 +16,7 @@
       </tr>
       <tr>
     {% endif %}
-    {% if updatetype === "new" %}
+    {% if updatetype === "add" %}
       <tr>
         <td><span class="strong">Address</span></td>
         <td>7 Post Street, Gateshead, NE1 111</td>
@@ -42,14 +42,14 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-    {% if updatetype === "address" or updatetype === "new" or updatetype === "cherish" or updatetype === "dlo"  %}
+    {% if updatetype === "address" or updatetype === "add" or updatetype === "cherish" or updatetype === "dlo"  %}
       <tr>
         <td><span class="strong">Start date</span></td>
         <td>9 December 2017</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-    {% if updatetype === "address" or updatetype === "status" or updatetype === "new" or updatetype === "cherish"  or updatetype === "dlo" %}
+    {% if updatetype === "address" or updatetype === "status" or updatetype === "add" or updatetype === "cherish"  or updatetype === "dlo" %}
       <tr>
         <td><span class="strong">Notify date</span></td>
         <td>11 December 2017</td>

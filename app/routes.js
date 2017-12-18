@@ -62,13 +62,14 @@ router.get('/update/check', function (req, res) {
 })
 
 router.get('/update/search-results', function (req, res) {
+  console.log(updateType);
   res.render('update/search-results', {
     updatetype : updateType
   })
 })
 
 router.get(/check-answers-handler/, function (req, res) {
-  if(updateType === "new") {
+  if(updateType === "add") {
     correspondence = true;
   }
   if (updateType === "address") {
@@ -95,10 +96,9 @@ router.get(/update-type-handler/, function (req, res) {
   } else if (req.query.tochange === 'correct') {
     //updateType = "";
     res.render('update/correct')
-  } else if (req.query.tochange === 'address-search') {
-    // UPDATE THIS UPDATE TYPE ON MERGE
-    //updateType = "";
-    res.render('update/add')
+  } else if (req.query.tochange === 'add') {
+    updateType = "add";
+    res.render('update/address-search')
   } else if (req.query.data === 'dlo') {
     updateType = "dlo";
     res.render('update/dates')
