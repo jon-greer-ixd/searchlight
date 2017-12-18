@@ -76,6 +76,9 @@ router.get(/check-answers-handler/, function (req, res) {
     previousAddresses = true;    
     isUpdated = true;
   }
+//  if (updateType === "dlo") {
+//    isUpdated = true;
+//  }
   res.redirect('account')
 })
 
@@ -88,6 +91,7 @@ router.get(/update-type-handler/, function (req, res) {
     res.render('update/cherish-line')
   } else if (req.query.data === 'dlo') {
     updateType = "dlo";
+    console.log(updateType);
     res.render('update/dates')
   //jump menu
   } else if (req.query.tochange === 'update') {
@@ -99,9 +103,6 @@ router.get(/update-type-handler/, function (req, res) {
   } else if (req.query.tochange === 'add') {
     updateType = "add";
     res.render('update/address-search')
-  } else if (req.query.data === 'dlo') {
-    updateType = "dlo";
-    res.render('update/dates')
   } else {
     updateType = "address";
     res.render('update/address-search')
