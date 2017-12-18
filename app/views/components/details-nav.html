@@ -1,8 +1,12 @@
 <div id="sl-account" class="container-fluid ng-scope">
   <div class="sl-account-header row">
     
-    {% if updated === true %}
-      {% include "components/updated-toaster.html" %}
+    {% if correspondence == true %}
+      {% include "components/update/toasters/address-added.html" %}
+    {% endif %}
+    
+    {% if updated == true %}
+      {% include "components/update/toasters/address-updated.html" %}
     {% endif %}
 
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->

@@ -35,9 +35,14 @@ $path: "/public/images/";
 @import 'components/trace-input-sex';
 @import 'components/progressive-reveal';
 
-
-
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+#prototype-navigation {
+  h2 {
+    margin: 0;
+    padding: 0!important;
+  }
+}
 
 label {
   font-weight: normal;
@@ -176,10 +181,14 @@ form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-d
   font-family: "sl-font", "Arial", sans-serif;
 }
 
-
 #updated-toaster {
+  &.added {
+    top: 40px;
+  }
+  &.updated {
+    top: 120px;
+  }
   position: absolute;
-  top: 100px;
   left: 900px;
   z-index: 5000;
 }
@@ -212,7 +221,6 @@ form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-d
   }
 }
 
-
 #trace { 
   input {
     border: 2px solid black;
@@ -229,12 +237,9 @@ summary {
   margin-top: 10px;
 }
 
-
 #hidden {
   display: none;
   .show {
     display: block;
   }
 }
-
-

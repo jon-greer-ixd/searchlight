@@ -11,10 +11,18 @@
             <input id="address" type="radio" name="data" value="address">
             <label for="address">Update to a new address</label>
           </div>
+          
+          {% if correspondence === false %}
+          <div class="multiple-choice">
+            <input id="dlo" type="radio" name="data" value="dlo">
+            <label for="dlo">Update the status to dead letter office</label>
+          </div>
+          {% else %}
           <div class="multiple-choice">
             <input id="status" type="radio" name="data" value="status">
             <label for="status">Update the status</label>
           </div>
+          {% endif %}
 <!--
           <div class="multiple-choice">
             <input id="end" type="radio" name="data" value="end">
