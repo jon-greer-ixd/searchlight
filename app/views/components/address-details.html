@@ -17,32 +17,34 @@
   </div>
   
   <div class="column-one-third">
-    {% if updated != true %}
     <p>
+    {% if cherished == true %}
+      Rose Cottage<br>
+    {% endif %}
+      
+    {% if updated != true %}
       4 Old Street<br>
       Gateshead<br>
       Tyne and Wear<br>
       NE11 4HN<br>
       England
-    </p>
+
     {% elseif correspondence == true  %}
-    <p>
       7 Post Street<br>
       Gateshead<br>
       Tyne and Wear<br>
       NE11 4HN<br>
       England
-    </p>
+      
     {% else %}
-    <p>
       Rose Cottage<br>
       6 Church Street<br>
       Gateshead<br>
       Tyne and Wear<br>
       NE11 4HN<br>
       England
-    </p>
     {% endif %}
+    </p>
   </div>
   
   <div class="column-one-third">

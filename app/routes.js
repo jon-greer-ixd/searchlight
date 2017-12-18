@@ -4,6 +4,7 @@ var router = express.Router()
 // new routes
 
 var isUpdated = false;
+var isCherished = false;
 var editDate = "18 Dec 2017";
 var updateType = "update";
 var previousAddresses =  false;
@@ -17,6 +18,7 @@ router.use('/', main);
 // Route index page
 router.get('/', function (req, res) {
   isUpdated = false;
+  isCherished = false;
   previousAddresses = false;
   correspondence = false;
   res.render('index')
@@ -36,6 +38,7 @@ router.get('/choice-handler', function (req, res) {
 router.get('/update/account', function (req, res) {
   res.render('account', {
     updated : isUpdated,
+    cherished : isCherished,
     editDate : editDate,
     previous_addresses : previousAddresses,
     correspondence : correspondence
@@ -88,6 +91,7 @@ router.get(/update-type-handler/, function (req, res) {
     res.render('update/status')
   } else if (req.query.data === 'cherish') {
     updateType = "cherish";
+    isCherished = true;
     res.render('update/cherish-line')
   } else if (req.query.data === 'dlo') {
     updateType = "dlo";
