@@ -4,7 +4,7 @@ var router = express.Router()
 // new routes
 
 var isUpdated = false;
-var editDate = "14 Dec 2017";
+var editDate = "18 Dec 2017";
 var updateType = "update";
 var previousAddresses =  false;
 var pageTitle = "Update residential address";
