@@ -49,31 +49,46 @@
   
   <div class="column-one-third">
 
+<!--
     <form method="get" action="update-type-handler">
       <div class="form-group">
         <select class="form-control" id="tochange" name="tochange" onchange="this.form.submit()">
-          <option selected>Edit</option>
+          <option class="hidden">Update</option>
           <option value="update">Update</option>
           <option value="correct">Correct</option>
           <option value="add">Add</option>
         </select>
       </div>
     </form>
-<!--
-    <p><a class="secondary-button" href="change">Update</a></p>
-    <p><a class="secondary-button" href="update">Correct</a></p>
 -->
-
-
-  
+    <p><a class="secondary-button" href="update">Update</a></p>
+<!--
+    <p><a class="secondary-button" href="correct">Correct</a></p>
+-->
+    
   </div>
 </div> 
 </div> 
+<hr>   
+<div class="previous-addresses">
+  <div class="grid-row">
+    <div class="column-one-third">
+      <ul>
+        <li>Correspondence address</li>
+      </ul>
+    </div>
+    <div class="column-two-thirds column-last">
+      <p>
+        <a class="secondary-button" href="">Add</a>
+      </p>
+    </div>
+  </div>
+</div>
   
-  {% if previous_addresses === true %}
-    {% include "components/previous-address.html" %}
-  {% endif %}
-  
-  {% if correspondence === true %}
-    {% include "components/correspondence.html" %}
-  {% endif %}
+{% if previous_addresses === true %}
+  {% include "components/previous-address.html" %}
+{% endif %}
+
+{% if correspondence == true %}
+  {% include "components/correspondence.html" %}
+{% endif %}

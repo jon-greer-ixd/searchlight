@@ -28,4 +28,11 @@ if ( document.getElementById('hidden') ){
   }
 }
 
+if (document.getElementById('tochange')){
+  var toChange = document.getElementById('tochange');
+  var menuSelected = function () {
+    console.log( toChange.options[toChange.selectedIndex].text );
+  }
+}
+
 

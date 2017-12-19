@@ -1,7 +1,18 @@
 var express = require('express')
 var router = express.Router()
 
-// new routes
+var dataState = {
+  isUpdated : false,
+  isCherished : false,
+  updateType : "update",
+  previousAddresses :  false,
+  correspondence : false
+};
+
+var content = {
+  editDate : "19 Dec 2017",
+  pageTitle : "Update residential address"
+};
 
 var isUpdated = false;
 var isCherished = false;
@@ -16,7 +27,7 @@ var main = require('./main/routes');
 router.use('/', main);
 
 // Route index page
-router.get('/', function (req, res) {
+  router.get('/', function (req, res) {
   isUpdated = false;
   isCherished = false;
   previousAddresses = false;

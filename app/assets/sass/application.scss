@@ -237,9 +237,13 @@ summary {
   margin-top: 10px;
 }
 
-#hidden {
+#hidden, .hidden {
   display: none;
   .show {
     display: block;
   }
+}
+
+.column-last {
+  text-align: right;
 }
