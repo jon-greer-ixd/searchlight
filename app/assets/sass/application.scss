@@ -148,7 +148,7 @@ html {
 }
 
 .form-control#tochange {
-  width: 20%;
+  width: 23%;
   float: right;
   font-family: "sl-font", Arial, sans-serif;
   font-size: 18px;
@@ -246,4 +246,18 @@ summary {
 
 .column-last {
   text-align: right;
+}
+
+.panel-border-narrow {
+  &.panel {
+    box-shadow: none;
+  }
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.update-button {
+  margin-top :10px;
 }
