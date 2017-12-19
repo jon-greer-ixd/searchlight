@@ -3,6 +3,10 @@ var router = express.Router()
 
 var dataState = {
   updateType : null,
+  //ADD
+  //CHERISH
+  //STATUS
+  //DLO
   cherished : false,
   status : "live",
   previousAddresses : false,
@@ -12,7 +16,19 @@ var dataState = {
 
 var content = {
   editDate : "19 Dec 2017",
-  pageTitle : "Update residential address"
+  pageTitle : "Update residential address",
+  setPageTitle : function() {
+    if (dataState.updateType == "status" || dataState.updateType == "dlo") {
+      this.pageTitle = "Update address status"
+    } else if (dataState.updateType == "cherish") {
+      this.pageTitle = "Add a cherished line"
+    } else if (dataState.updateType == "add") {
+      this.pageTitle = "Add a correspondence address"
+    } else {
+      this.pageTitle = "Update residential address"
+    }
+    console.log(this.pageTitle);
+  }
 };
 
 var main = require('./main/routes');
@@ -64,19 +80,36 @@ router.get('/update/update-v2', function (req, res) {
 
 router.get('/update/dates', function (req, res) {
   res.render('update/dates', {
-    updatetype : dataState.updateType
+    updatetype : dataState.updateType,
+    pagetitle : content.pageTitle
   })
 })
 
 router.get('/update/check', function (req, res) {
   res.render('update/check', {
-    updatetype : dataState.updateType
+    updatetype : dataState.updateType,
+    pagetitle : content.pageTitle
+  })
+})
+
+router.get('/update/cherish-line', function (req, res) {
+  res.render('update/cherish-line', {
+    updatetype : dataState.updateType,
+    pagetitle : content.pageTitle
+  })
+})
+
+router.get('/update/address-search', function (req, res) {
+  res.render('update/address-search', {
+    updatetype : dataState.updateType,
+    pagetitle : content.pageTitle
   })
 })
 
 router.get('/update/search-results', function (req, res) {
   res.render('update/search-results', {
-    updatetype : dataState.updateType
+    updatetype : dataState.updateType,
+    pagetitle : content.pageTitle
   })
 })
 
@@ -95,29 +128,41 @@ router.get(/check-answers-handler/, function (req, res) {
 })
 
 router.get(/update-type-handler/, function (req, res) {
+  console.log("here " + req.query.data);
   if(req.query.data === 'status') {
     dataState.updateType = "status";
-    res.render('update/status')
+    content.setPageTitle();
+    res.render('update/status');
   } else if (req.query.data === 'cherish') {
     dataState.updateType = "cherish";
     dataState.cherished = true;
-    res.render('update/cherish-line')
+    content.setPageTitle();
+    res.redirect('cherish-line');
+  } else if (req.query.data == 'add') {
+    dataState.updateType = "add";
+    content.setPageTitle();
+    res.redirect('address-search');
   } else if (req.query.data === 'dlo') {
     dataState.updateType = "dlo";
-    res.render('update/dates')
+    content.setPageTitle();
+    res.redirect('dates');
   //jump menu
   } else if (req.query.tochange === 'update') {
     //updateType = "";
-    res.redirect('update')
+    content.setPageTitle();
+    res.redirect('update');
   } else if (req.query.tochange === 'correct') {
     //updateType = "";
+    content.setPageTitle();
     res.render('update/correct')
   } else if (req.query.tochange === 'add') {
     dataState.updateType = "add";
-    res.render('update/address-search')
+    content.setPageTitle();
+    res.redirect('address-search')
   } else {
     dataState.updateType = "address";
-    res.render('update/address-search')
+    content.setPageTitle();
+    res.redirect('address-search')
   }
 })
 

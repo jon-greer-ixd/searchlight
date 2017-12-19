@@ -72,6 +72,12 @@
   </div>
 </div> 
 </div> 
+
+{% if previous_addresses === true %}
+<hr>
+  {% include "components/previous-address.html" %}
+{% endif %}
+
 <hr>   
 <div class="previous-addresses">
   <div class="grid-row">
@@ -80,18 +86,19 @@
         <li>Correspondence address</li>
       </ul>
     </div>
-    <div class="column-two-thirds column-last">
-      <p>
-        <a href="address-search">Add</a>
-      </p>
-    </div>
+    {% if correspondence == true %}
+      {% include "components/correspondence.html" %}
+    {% else %}
+        <div class="column-one-third">
+        </div>
+       <div class="column-two-thirds column-last">
+        <p>
+          <a href="update-type-handler?data=add">Add</a>
+        </p>
+      </div>
+    {% endif %}
+
   </div>
 </div>
   
-{% if previous_addresses === true %}
-  {% include "components/previous-address.html" %}
-{% endif %}
 
-{% if correspondence == true %}
-  {% include "components/correspondence.html" %}
-{% endif %}
