@@ -261,3 +261,10 @@ summary {
 .update-button {
   margin-top :10px;
 }
+
+.secondary-link {
+    text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
