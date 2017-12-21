@@ -177,7 +177,7 @@ html {
   padding-bottom: 0;
 }
 
-form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label {
+form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label, .form-hint {
   font-family: "sl-font", "Arial", sans-serif;
 }
 
@@ -279,4 +279,23 @@ summary {
 
 p.address {
   margin-bottom :0;
+  font-weight: bold;
+}
+
+.link-back:hover {
+  text-decoration: none;
+}
+
+.link-back {
+  padding-bottom: 2px;
+}
+
+.date-updated {
+  &.recent {
+    color: #299555;
+  }
+  &.old {
+    color: #666666;
+  }
+  font-size: 17px;
 }
