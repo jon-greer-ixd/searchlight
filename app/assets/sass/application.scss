@@ -233,9 +233,9 @@ summary {
   }
 }
 
-.previous-addresses {
-  margin-top: 10px;
-}
+//.previous-addresses {
+//  margin-top: 10px;
+//}
 
 #hidden, .hidden {
   display: none;
@@ -267,4 +267,16 @@ summary {
   &:hover {
     text-decoration: none;
   }
+}
+
+#correspondence {
+  min-height :22px;
+}
+
+.address-list {
+  margin-top: 10px;
+}
+
+p.address {
+  margin-bottom :0;
 }
