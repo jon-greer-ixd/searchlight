@@ -6,21 +6,25 @@
           <li>Correspondence address</li>
         </ul>
       </div>
-      <div class="column-one-third">
-        <p class="address">
-          7 Post Street<br>
-          Gateshead<br>
-          Tyne and Wear<br>
-          NE11 4HN<br>
-          England
-        </p>
-      </div>
+        <div class="column-one-third">
+        {% if correspondence == true %}
+          <p class="address">
+            7 Post Street<br>
+            Gateshead<br>
+            Tyne and Wear<br>
+            NE11 4HN<br>
+            England
+          </p>
+          {% else %}
+          <p></p>
+        {% endif %}
+        </div>
       <div class="column-one-third">
         <a class="secondary-link" href="update-type-handler?data=add">
-          {% if correspondence == true %}
+          {% if correspondence != true %}
             Add
           {% else %}
-            Update
+            Change
           {% endif %}
         </a>
       </div>
@@ -53,14 +57,8 @@
             NE11 4HN<br>
             England
 
-          {% elseif correspondence == true  %}
-            7 Post Street<br>
-            Gateshead<br>
-            Tyne and Wear<br>
-            NE11 4HN<br>
-            England
-
           {% else %}
+            Rose Cottage<br>
             6 Church Street<br>
             Gateshead<br>
             Tyne and Wear<br>
@@ -87,10 +85,13 @@
         <p><a class="secondary-button" href="correct">Correct</a></p>-->
       </div>
     </div>
+  
     <hr>
   
     <details>
     <summary><span class="summary">Previous addresses</span></summary>
+    
+    {% if previous_addresses == true  %}
 
     <div class="grid-row address-list">
       <div class="column-one-third">
@@ -111,5 +112,27 @@
         </p>
       </div>
     </div>
+      
+    {% endif %}
+    <br>
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              26 Oct 1990 – {{editDate}}
+          </li>
+        </ul>
+      </div>
+      <div class="column-two-thirds">
+        <p class="address">
+          1 Past Street<br>
+          Newcastle upon Tyne<br>
+          NE1 111<br>
+          England
+        </p>
+      </div>
+    </div>
   </details>
+
 </div>
