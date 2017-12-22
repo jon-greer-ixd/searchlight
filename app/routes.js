@@ -1,7 +1,36 @@
 var express = require('express')
 var router = express.Router()
 
-// new routes
+// add temUpdate object
+// add new update routes
+// add new routes
+
+var tempUpdate = {
+  updating : false,
+  correcting : true,
+  correctionType: 'toNew', //status, startDate, cherish
+  status : 'pwa', //dlo, live, nfa
+  flip : function(type) {
+    if(type === 'change') {
+        this.correcting = true;
+        this.updating = false;
+      } else if(type === 'update') {
+        this.updating = true;
+        this.correcting = false;
+      }
+    console.log("updating = " + this.updating + " correcting = " + this.correcting);
+    }
+  /*
+  Steps -
+  view the account
+  select correct - set correcting to true, updating to false
+  select correction type 
+  correct : add - add journey
+  correct status - view the status
+  correct : start date - view the dates
+  correct : cherish - view the cherrish
+  */
+};
 
 var isUpdated = false;
 var editDate = "14 Dec 2017";
@@ -102,10 +131,18 @@ router.get(/update-type-handler/, function (req, res) {
   } else if (req.query.data === 'dlo') {
     updateType = "dlo";
     res.render('update/dates')
+    
+    //new
+  } else if (req.query.data === 'dlo') {
+    updateType = "dlo";
+    res.render('update/dates')
+    //
+    
   } else {
     updateType = "address";
     res.render('update/address-search')
   }
+  
 })
 
 //add new address
@@ -120,5 +157,13 @@ router.get('/update/change-handler', function (req, res) {
     res.redirect('update')
   }
 })
+
+//new
+router.get('/update/correct-handler', function (req, res) {
+  tempUpdate.flip('correct');
+  res.render('update/correct')
+})
+
+
 
 module.exports = router

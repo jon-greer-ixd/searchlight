@@ -8,12 +8,33 @@
             <p class="visually-hidden">What do you need to correct</p>
           </legend>
           <div class="multiple-choice">
-            <input id="address" type="radio" name="data" value="address">
-            <label for="address">Correct to a new address</label>
+            <input id="new" type="radio" name="data" value="new">
+            <label for="new">Correct to a new address</label>
           </div>
-          <div class="multiple-choice">
+          <div class="multiple-choice" data-target="set-status">
             <input id="status" type="radio" name="data" value="status">
             <label for="status">Correct the status</label>
+          </div>
+          
+          <div class="panel panel-border-narrow js-hidden" id="set-status">
+            <div class="multiple-choice">
+              <input id="dlo" type="radio" name="status-type" value="dlo">
+              <label for="dlo">Dead letter office</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="pwa" type="radio" name="status-type" value="pwo">
+              <label for="pwa">Person without address</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="nfa" type="radio" name="status-type" value="nfa">
+              <label for="nfa">No fixed abode</label>
+            </div>
+            {% if "status" == "status" %}
+            <div class="multiple-choice">
+              <input id="live" type="radio" name="status-type" value="live">
+              <label for="live">Live</label>
+            </div>
+            {% endif %}
           </div>
 <!--
           <div class="multiple-choice">
@@ -22,12 +43,16 @@
           </div>
 -->
           <div class="multiple-choice">
-            <input id="cherish" type="radio" name="data" value="cherish">
-            <label for="cherish">Correct the start date</label>
+            <input id="date" type="radio" name="data" value="date">
+            <label for="date">Correct the start date</label>
           </div>
-          <div class="multiple-choice">
+          <div class="multiple-choice" data-target="correct-cherished-line">
             <input id="cherish" type="radio" name="data" value="cherish">
-            <label for="cherish">Cherish this address</label>
+            <label for="cherish">Correct the cherished line of this address</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="correct-cherished-line">
+            <label class="form-label" for="contact-phone">Cherished line</label>
+            <input class="form-control" name="cherished-line" type="text" id="cherished-line" value="Rose Cottage">
           </div>
         </fieldset>
       </div>  
@@ -38,3 +63,45 @@
     </form>
   </div>
 </div>
+
+<!--
+<form>
+  <div class="form-group">
+    <fieldset>
+
+      <legend>
+        <h1 class="heading-medium">
+          How do you want to be contacted?
+        </h1>
+      </legend>
+
+      <div class="multiple-choice" data-target="contact-by-email">
+        <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
+        <label for="example-contact-by-email">Email</label>
+      </div>
+      <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
+        <label class="form-label" for="contact-email">Email address</label>
+        <input class="form-control" name="contact-email" type="text" id="contact-email">
+      </div>
+
+      <div class="multiple-choice" data-target="contact-by-phone">
+        <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+        <label for="example-contact-by-phone">Phone</label>
+      </div>
+      <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
+        <label class="form-label" for="contact-phone">Phone number</label>
+        <input class="form-control" name="contact-phone" type="text" id="contact-phone">
+      </div>
+
+      <div class="multiple-choice" data-target="contact-by-text">
+        <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
+        <label for="example-contact-by-text">Text message</label>
+      </div>
+      <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+        <label class="form-label" for="contact-text-message">Mobile phone number</label>
+        <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+      </div>
+
+    </fieldset>
+  </div>
+</form>-->
