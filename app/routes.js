@@ -26,6 +26,11 @@ router.get('/kitchen-sink', function (req, res) {
   res.render('kitchen-sink.njk')
 })
 
+router.get('/search-v1', function (req, res) {
+  res.render('pages/search-v1.njk')
+})
+
+
 // add your routes here
 
 //update
@@ -77,6 +82,25 @@ router.get(/check-answers-handler/, function (req, res) {
     isUpdated = true;
   }
   res.redirect('account')
+})
+
+router.get(/update-handler-v1/, function (req, res) {
+  if(req.query.data === 'status') {
+    updateType = "status";
+    res.render('update/status')
+  } else if (req.query.data === 'cherish') {
+    updateType = "cherish";
+    res.render('update/cherish-line')
+  } else if (req.query.data === 'dlo') {
+    updateType = "dlo";
+    res.render('update/dates')
+  } else if (req.query.data === 'dlo') {
+    updateType = "dlo";
+    res.render('update/dates')
+  } else {
+    updateType = "address";
+    res.render('update/address-search')
+  }
 })
 
 router.get(/update-type-handler/, function (req, res) {
