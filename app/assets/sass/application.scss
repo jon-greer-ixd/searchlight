@@ -148,7 +148,7 @@ html {
 }
 
 .form-control#tochange {
-  width: 20%;
+  width: 23%;
   float: right;
   font-family: "sl-font", Arial, sans-serif;
   font-size: 18px;
@@ -177,7 +177,7 @@ html {
   padding-bottom: 0;
 }
 
-form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label {
+form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label, .form-hint {
   font-family: "sl-font", "Arial", sans-serif;
 }
 
@@ -233,13 +233,69 @@ summary {
   }
 }
 
-.previous-addresses {
-  margin-top: 10px;
-}
+//.previous-addresses {
+//  margin-top: 10px;
+//}
 
-#hidden {
+#hidden, .hidden {
   display: none;
   .show {
     display: block;
   }
+}
+
+.column-last {
+  text-align: right;
+}
+
+.panel-border-narrow {
+  &.panel {
+    box-shadow: none;
+  }
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 0;
+}
+
+.update-button {
+  margin-top :10px;
+}
+
+.secondary-link {
+    text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+#correspondence {
+  min-height :22px;
+}
+
+.address-list {
+  margin-top: 10px;
+}
+
+p.address {
+  margin-bottom :0;
+  font-weight: bold;
+}
+
+.link-back:hover {
+  text-decoration: none;
+}
+
+.link-back {
+  padding-bottom: 2px;
+}
+
+.date-updated {
+  &.recent {
+    color: #299555;
+  }
+  &.old {
+    color: #666666;
+  }
+  font-size: 17px;
 }

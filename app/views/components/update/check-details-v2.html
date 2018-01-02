@@ -3,7 +3,13 @@
   <div class="column-one-half">
     <div>
     <table class="table">
-    
+    {% if updatetype === "status" or updatetype === "dlo" %}
+      <tr>
+        <td><span class="strong">Address status</span></td>
+        <td>Dead letter office</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
     {% if updatetype === "address" or updatetype === "cherish" %}
       <tr>
         <td><span class="strong">Cherished line</span></td>
@@ -11,7 +17,7 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-    {% if updatetype === "address" %}
+    {% if updatetype === "address" or updatetype === "dlo" or updatetype === "cherish" or updatetype === "status" %}
       <tr>
         <td><span class="strong">Address</span></td>
         <td>7 Church Street, Gateshead, NE1 1HH</td>
@@ -23,13 +29,6 @@
       <tr>
         <td><span class="strong">Address</span></td>
         <td>7 Post Street, Gateshead, NE1 111</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    {% if updatetype === "status" or updatetype === "dlo" %}
-      <tr>
-        <td><span class="strong">Address status</span></td>
-        <td>Dead letter office</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}

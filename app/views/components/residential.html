@@ -1,0 +1,61 @@
+<div class="grid-row">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+            {% if updated === true %}
+              {{editDate}} – present
+            {% else %}
+              1 Dec 1990 – present
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="column-one-third">
+        <p class="address">
+          {% if cherished == true %}
+            Rose Cottage<br>
+          {% endif %}
+
+          {% if updated != true %}
+            4 Main Street<br>
+            Gateshead<br>
+            Tyne and Wear<br>
+            NE11 4HN<br>
+            England
+
+          {% else %}
+            Rose Cottage<br>
+            6 Church Street<br>
+            Gateshead<br>
+            Tyne and Wear<br>
+            NE10 1FF<br>
+            England
+          {% endif %}
+        </p>
+        
+        {% if cherished == true or updated === true %}
+          <p class="date-updated recent">Updated just now</p>
+        {% else %}
+          <p class="date-updated old">Updated Dec 1990</p>
+        {% endif %}
+
+      </div>
+      <div class="column-one-third">
+        <p><a class="secondary-link" href="update-V2">Change</a></p>
+        
+        <!-- menu
+        <form method="get" action="update-type-handler">
+          <div class="form-group">
+            <select class="form-control" id="tochange" name="tochange" onchange="this.form.submit()">
+              <option value="update">Update</option>
+              <option value="correct">Correct</option>
+            </select>
+          </div>
+        </form>-->
+        
+        <!-- buttons
+        <p><a class="secondary-button" href="update">Update</a></p>
+        <p><a class="secondary-button" href="correct">Correct</a></p>-->
+      </div>
+    </div>
