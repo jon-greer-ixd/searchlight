@@ -1,6 +1,36 @@
 var express = require('express')
 var router = express.Router()
 
+//add this
+var tempUpdate = {
+  updating : false,
+  correcting : true,
+  correctionType: 'toNew', //status, date, cherish
+  status : 'pwa', //dlo, live, nfa
+  flip : function(type) {
+    if(type === 'correct') {
+        this.correcting = true;
+        this.updating = false;
+      } else if(type === 'update') {
+        this.updating = true;
+        this.correcting = false;
+      }
+    console.log("updating = " + this.updating + " correcting = " + this.correcting);
+    }
+  /*
+  Steps -
+  view the account
+  select correct - set correcting to true, updating to false
+  select correction type 
+  correct : add - add journey
+  correct status - view the status
+  correct : start date - view the dates
+  correct : cherish - view the cherrish
+  */
+};
+
+
+
 var dataState = {
   updateType : null,
   //ADD
