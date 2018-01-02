@@ -99,10 +99,10 @@ router.get('/update/account', function (req, res) {
 //v1
 router.get('/update/v1/account', function (req, res) {
   res.render('update/v1/account', {
-    updated : isUpdated,
-    editDate : editDate,
-    previous_addresses : previousAddresses,
-    correspondence : correspondence
+    updated : dataState.wasUpdated,
+    editDate : content.editDate,
+    previous_addresses : dataState.previousAddresses,
+    correspondence : dataState.correspondence
   })
 })
 
@@ -122,8 +122,8 @@ router.get('/update/update-v2', function (req, res) {
 //v1
 router.get('/update/v1/update', function (req, res) {
   res.render('update/v1/update', {
-    correspondence : correspondence,
-    pagetitle : pageTitle
+    correspondence : dataState.correspondence,
+    pagetitle : content.pageTitle
   })
 })
 
@@ -137,7 +137,7 @@ router.get('/update/dates', function (req, res) {
 //v1
 router.get('/update/v1/dates', function (req, res) {
   res.render('update/v1/dates', {
-    updatetype : updateType
+    updatetype :  dataState.updateType
   })
 })
 
@@ -180,7 +180,7 @@ router.get('/update/search-results', function (req, res) {
 router.get('/update/v1/search-results', function (req, res) {
   console.log(updateType);
   res.render('update/v1/search-results', {
-    updatetype : updateType
+    updatetype : dataState.updateType
   })
 })
 
