@@ -1,16 +1,6 @@
 var express = require('express')
 var router = express.Router()
 
-// new routes
-
-var isUpdated = false;
-var isCherished = false;
-var editDate = "19 Dec 2017";
-var updateType = "update";
-var previousAddresses =  false;
-var pageTitle = "Update residential address";
-var correspondence = false;
-
 //add this
 var tempUpdate = {
   updating : false,
@@ -38,6 +28,8 @@ var tempUpdate = {
   correct : cherish - view the cherrish
   */
 };
+
+
 
 var dataState = {
   updateType : null,
