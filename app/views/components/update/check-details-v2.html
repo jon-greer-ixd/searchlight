@@ -4,6 +4,46 @@
     <div>
     <table class="table">
       
+    <!-- corrections -->
+    {% if correctiontype === "add" or correctiontype === "status" or correctiontype === "date"%}
+      <tr>
+        <td><span class="strong">Address</span></td>
+        <td>6 Church Street, Gateshead, NE1 1HH</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+    {% if correctiontype === "status" %}
+      <tr>
+        <td><span class="strong">Current status</span></td>
+        <td>Live</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">New status</span></td>
+        <td>Dead letter office</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notify date</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+    {% if correctiontype === "date" %}
+      <tr>
+        <td><span class="strong">Current start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">New start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+
+    
+    <!-- updates -->
     {% if updatetype === "address" or updatetype === "cherish" %}
       <tr>
         <td><span class="strong">Cherished line</span></td>

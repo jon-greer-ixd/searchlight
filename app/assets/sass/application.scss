@@ -243,3 +243,11 @@ summary {
     display: block;
   }
 }
+
+.panel {
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  box-shadow: none;
+}

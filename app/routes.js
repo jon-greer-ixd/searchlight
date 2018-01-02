@@ -8,10 +8,10 @@ var router = express.Router()
 var tempUpdate = {
   updating : false,
   correcting : true,
-  correctionType: 'toNew', //status, startDate, cherish
+  correctionType: 'toNew', //status, date, cherish
   status : 'pwa', //dlo, live, nfa
   flip : function(type) {
-    if(type === 'change') {
+    if(type === 'correct') {
         this.correcting = true;
         this.updating = false;
       } else if(type === 'update') {
@@ -86,7 +86,8 @@ router.get('/update/dates', function (req, res) {
 
 router.get('/update/check', function (req, res) {
   res.render('update/check', {
-    updatetype : updateType
+    updatetype : updateType,
+    correctiontype : tempUpdate.correctionType
   })
 })
 
@@ -145,6 +146,25 @@ router.get(/update-type-handler/, function (req, res) {
   
 })
 
+router.get(/correction-type-handler/, function (req, res) {
+  console.log(req.query);
+  var next = "update/dates";
+  if(req.query.data === 'new') {
+   tempUpdate.correctionType = "toNew";
+    next = "update/address-search"
+  } else if(req.query.data === 'status') {
+    tempUpdate.correctionType = "status";
+    next = "update/status"
+  } else if(req.query.data === 'date') {
+    tempUpdate.correctionType = "date";
+  } else if(req.query.data === 'cherish') {
+    next = "update/cherish"
+    tempUpdate.correctionType = "cherish";
+  }
+  console.log(tempUpdate.correctionType);
+  res.render(next);
+})
+
 //add new address
 router.get('/update/change-handler', function (req, res) {
   console.log(req.query);
@@ -152,8 +172,10 @@ router.get('/update/change-handler', function (req, res) {
     updateType = "new";
     res.render('update/address-search')
   } else if (req.query.data == "correct"){
+    tempUpdate.flip('correct');
     res.render('update/correct')
   } else {
+    tempUpdate.flip('update')
     res.redirect('update')
   }
 })
@@ -163,7 +185,5 @@ router.get('/update/correct-handler', function (req, res) {
   tempUpdate.flip('correct');
   res.render('update/correct')
 })
-
-
 
 module.exports = router
