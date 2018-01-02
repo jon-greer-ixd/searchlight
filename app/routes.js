@@ -30,9 +30,6 @@ router.get('/search-v1', function (req, res) {
   res.render('pages/search-v1.njk')
 })
 
-
-// add your routes here
-
 //update
 router.get('/choice-handler', function (req, res) {
   res.render('address-search')
@@ -47,8 +44,26 @@ router.get('/update/account', function (req, res) {
   })
 })
 
+//v1
+router.get('/update/v1/account', function (req, res) {
+  res.render('update/v1/account', {
+    updated : isUpdated,
+    editDate : editDate,
+    previous_addresses : previousAddresses,
+    correspondence : correspondence
+  })
+})
+
 router.get('/update/update', function (req, res) {
   res.render('update/update', {
+    correspondence : correspondence,
+    pagetitle : pageTitle
+  })
+})
+
+//v1
+router.get('/update/v1/update', function (req, res) {
+  res.render('update/v1/update', {
     correspondence : correspondence,
     pagetitle : pageTitle
   })
@@ -60,6 +75,20 @@ router.get('/update/dates', function (req, res) {
   })
 })
 
+//v1
+router.get('/update/v1/dates', function (req, res) {
+  res.render('update/v1/dates', {
+    updatetype : updateType
+  })
+})
+
+router.get('/update/check', function (req, res) {
+  res.render('update/check', {
+    updatetype : updateType
+  })
+})
+
+//v1
 router.get('/update/check', function (req, res) {
   res.render('update/check', {
     updatetype : updateType
@@ -69,6 +98,14 @@ router.get('/update/check', function (req, res) {
 router.get('/update/search-results', function (req, res) {
   console.log(updateType);
   res.render('update/search-results', {
+    updatetype : updateType
+  })
+})
+
+//v1
+router.get('/update/v1/search-results', function (req, res) {
+  console.log(updateType);
+  res.render('update/v1/search-results', {
     updatetype : updateType
   })
 })
@@ -84,23 +121,15 @@ router.get(/check-answers-handler/, function (req, res) {
   res.redirect('account')
 })
 
-router.get(/update-handler-v1/, function (req, res) {
-  if(req.query.data === 'status') {
-    updateType = "status";
-    res.render('update/status')
-  } else if (req.query.data === 'cherish') {
-    updateType = "cherish";
-    res.render('update/cherish-line')
-  } else if (req.query.data === 'dlo') {
-    updateType = "dlo";
-    res.render('update/dates')
-  } else if (req.query.data === 'dlo') {
-    updateType = "dlo";
-    res.render('update/dates')
-  } else {
-    updateType = "address";
-    res.render('update/address-search')
+router.get(/check-handler-v1/, function (req, res) {
+  if(updateType === "add") {
+    correspondence = true;
   }
+  if (updateType === "address") {
+    previousAddresses = true;    
+    isUpdated = true;
+  }
+  res.redirect('account')
 })
 
 router.get(/update-type-handler/, function (req, res) {
@@ -113,16 +142,6 @@ router.get(/update-type-handler/, function (req, res) {
   } else if (req.query.data === 'dlo') {
     updateType = "dlo";
     res.render('update/dates')
-  //jump menu
-  } else if (req.query.tochange === 'update') {
-    //updateType = "";
-    res.redirect('update')
-  } else if (req.query.tochange === 'correct') {
-    //updateType = "";
-    res.render('update/correct')
-  } else if (req.query.tochange === 'add') {
-    updateType = "add";
-    res.render('update/address-search')
   } else if (req.query.data === 'dlo') {
     updateType = "dlo";
     res.render('update/dates')
@@ -132,14 +151,34 @@ router.get(/update-type-handler/, function (req, res) {
   }
 })
 
-//add new address
-router.get('/update/change-handler', function (req, res) {
+//v1
+router.get(/update-handler-v1/, function (req, res) {
+  if(req.query.data === 'status') {
+    updateType = "status";
+    res.render('update/v1/status')
+  } else if (req.query.data === 'cherish') {
+    updateType = "cherish";
+    res.render('update/v1/cherish-line')
+  } else if (req.query.data === 'dlo') {
+    updateType = "dlo";
+    res.render('update/v1/dates')
+  } else if (req.query.data === 'dlo') {
+    updateType = "dlo";
+    res.render('update/v1/dates')
+  } else {
+    updateType = "address";
+    res.render('update/v1/address-search')
+  }
+})
+
+//v1
+router.get(/change-handler-v1/, function (req, res) {
   console.log(req.query);
-  if (req.query.data == "new") {
+  if (req.query.tochange == "add") {
     updateType = "new";
-    res.render('update/address-search')
-  } else if (req.query.data == "correct"){
-    res.render('update/correct')
+    res.redirect('address-search')
+  } else if (req.query.tochange == "correct"){
+    res.redirect('correct')
   } else {
     res.redirect('update')
   }

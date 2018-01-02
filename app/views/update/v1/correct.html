@@ -66,70 +66,49 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          <h2>Update residential address</h2>
+          <h2>Correct residential address</h2>
           <div id="sl-address-primary-card" class="sl-primary-card">
             <div id="address-pane">
               
-<h2 class="heading-medium question">Check your answers</h2>
+<h2 class="heading-medium question">What do you need to correct?</h2>
 <div class="grid-row">
   <div class="column-one-half">
-    <div>
-    <table class="table">
-    {% if updatetype === "status" or updatetype === "dlo" %}
-      <tr>
-        <td><span class="strong">Address status</span></td>
-        <td>Dead letter office</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    {% if updatetype === "address" or updatetype === "cherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Rose Cottage</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-    {% if updatetype === "address" or updatetype === "dlo" or updatetype === "cherish" or updatetype === "status" %}
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>7 Church Street, Gateshead, NE1 1HH</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-    {% endif %}
-    {% if updatetype === "add" %}
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>7 Post Street, Gateshead, NE1 111</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    {% if updatetype === "address" or updatetype === "status" or updatetype === "add" or updatetype === "cherish" or updatetype === "dlo"  %}
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>9 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notify date</span></td>
-        <td>11 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    </table>
-  </div>
-  <br>
-  <div>
-    <form method="get" action="check-handler-v1">
+    <form method="" action="">
       <div class="form-group">
-        <input class="button" type="submit" value="Submit">
+        <fieldset>
+          <legend>
+            <p class="visually-hidden">What do you need to correct</p>
+          </legend>
+          <div class="multiple-choice">
+            <input id="address" type="radio" name="data" value="address">
+            <label for="address">Correct to a new address</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="status" type="radio" name="data" value="status">
+            <label for="status">Correct the status</label>
+          </div>
+<!--
+          <div class="multiple-choice">
+            <input id="end" type="radio" name="data" value="end">
+            <label for="end">End this address</label>
+          </div>
+-->
+          <div class="multiple-choice">
+            <input id="cherish" type="radio" name="data" value="cherish">
+            <label for="cherish">Correct the start date</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="cherish" type="radio" name="data" value="cherish">
+            <label for="cherish">Cherish this address</label>
+          </div>
+        </fieldset>
+      </div>  
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
       </div>
+      <p><a href="account">Cancel</a></p>
     </form>
-    <a href="account">Cancel</a>
   </div>
-  </div>
-</div>
 </div>              
             </div>
           </div>
