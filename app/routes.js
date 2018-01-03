@@ -266,11 +266,11 @@ router.get(/correction-type-handler/, function (req, res) {
     next = "update/cherish"
    dataState.correctionType = "cherish";
   } else if (req.query.data == "correct"){
-    tempUpdate.flip('correct');
+    dataState.flip('correct');
     res.render('update/correct')
     res.redirect('address-search')
   } 
-  console.log(tempUpdate.correctionType);
+  console.log(dataState.correctionType);
   res.render(next);
 })
 
@@ -282,7 +282,7 @@ router.get(/change-handler-v1/, function (req, res) {
   } else if (req.query.tochange == "correct"){
     res.redirect('correct')
   } else {
-    tempUpdate.flip('update')
+    dataState.flip('update')
     res.redirect('update')
   }
 })
