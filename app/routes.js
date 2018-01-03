@@ -287,7 +287,6 @@ router.get(/change-handler-v1/, function (req, res) {
   }
 })
 
-//new
 router.get('/update/correct-handler', function (req, res) {
   tempUpdate.flip('correct');
   res.render('update/correct')
