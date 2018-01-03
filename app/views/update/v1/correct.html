@@ -1,3 +1,11 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+  
 <div id="sl-account" class="container-fluid ng-scope">
   <div class="sl-account-header row">
 
@@ -32,8 +40,7 @@
       <div class="sl-account-canvas-width">
         <sl-account-local-nav><div id="sl-account-local-nav">
             <ul class="sl-local-nav-menu sl-metadata">
-              <li>
-                <a href="account" class="link-back"> Back to customer view</a></li>
+              <li class="sl-local-nav-item Personal"><a href="account" class="sl-local-nav-anchor sl-local-nav-anchor-first Personal" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Personal" analytics-label="Personal anchor tag" aria-label="personal details menu selection"><span class="personal-scrollspy active" du-scrollspy="" du-smooth-scroll="Personal" offset="245">Back to customer view</span></a></li>
           </ul>
 <!--
   <ul class="sl-local-nav-menu sl-metadata">
@@ -51,4 +58,64 @@
 
     <!-- ngIf: notifications.length > 0 -->
   </div>
+
+
+<!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row updater">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+        <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Correct residential address</h2>
+          <div id="sl-address-primary-card" class="sl-primary-card">
+            <div id="address-pane">
+              
+<h2 class="heading-medium question">What do you need to correct?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="" action="">
+      <div class="form-group">
+        <fieldset>
+          <legend>
+            <p class="visually-hidden">What do you need to correct</p>
+          </legend>
+          <div class="multiple-choice">
+            <input id="address" type="radio" name="data" value="address">
+            <label for="address">Correct to a new address</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="status" type="radio" name="data" value="status">
+            <label for="status">Correct the status</label>
+          </div>
+<!--
+          <div class="multiple-choice">
+            <input id="end" type="radio" name="data" value="end">
+            <label for="end">End this address</label>
+          </div>
+-->
+          <div class="multiple-choice">
+            <input id="cherish" type="radio" name="data" value="cherish">
+            <label for="cherish">Correct the start date</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="cherish" type="radio" name="data" value="cherish">
+            <label for="cherish">Cherish this address</label>
+          </div>
+        </fieldset>
+      </div>  
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      <p><a href="account">Cancel</a></p>
+    </form>
+  </div>
+</div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
 

@@ -42,32 +42,8 @@
       </tr>
     {% endif %}
 
-    
     <!-- updates -->
-    {% if updatetype === "address" or updatetype === "cherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Rose Cottage</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-    {% if updatetype === "address" %}
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>6 Church Street, Gateshead, NE1 1HH</td>
-        <td><a>Change</a></td>
-      </tr>
-<!--
-      <tr>
-        <td><span class="strong">Cherish this address</span></td>
-        <td>Yes</td>
-        <td><a>Change</a></td>
-      </tr>
--->
-    {% endif %}
-      
-    {% if updatetype === "status" %}
+    {% if updatetype === "status" or updatetype === "dlo" %}
       <tr>
         <td><span class="strong">Address status</span></td>
         <td>Dead letter office</td>
@@ -75,22 +51,40 @@
       </tr>
     {% endif %}
       
-    {% if updatetype === "address" or updatetype === "cherish"  %}
+    {% if updatetype === "address" or updatetype === "cherish" %}
+      <tr>
+        <td><span class="strong">Cherished line</span></td>
+        <td>Rose Cottage</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+    {% if updatetype === "address" or updatetype === "dlo" or updatetype === "cherish" or updatetype === "status" %}
+      <tr>
+        <td><span class="strong">Address</span></td>
+        <td>7 Church Street, Gateshead, NE1 1HH</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+    {% endif %}
+    {% if updatetype === "add" %}
+      <tr>
+        <td><span class="strong">Address</span></td>
+        <td>7 Post Street, Gateshead, NE1 111</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+    {% if updatetype === "address" or updatetype === "status" or updatetype === "add" or updatetype === "cherish" or updatetype === "dlo"  %}
       <tr>
         <td><span class="strong">Start date</span></td>
-        <td>9 December 2017</td>
+        <td>1 December 2017</td>
         <td><a>Change</a></td>
       </tr>
-    {% endif %}
-      
-    {% if updatetype === "address" or updatetype === "status" or updatetype === "cherish" %}
       <tr>
         <td><span class="strong">Notify date</span></td>
-        <td>11 December 2017</td>
+        <td>19 December 2017</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-      
     </table>
   </div>
   <br>

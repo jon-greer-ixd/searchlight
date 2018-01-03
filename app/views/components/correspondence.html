@@ -1,33 +1,29 @@
-<hr>   
-<div class="previous-addresses">
-  <div class="grid-row">
-    <div class="column-one-third">
-      <ul>
-        <li>Correspondence address</li>
-        <li class="sl-secondary-text-color sl-metadata">
-            {{editDate}} – present
-        </li>
-      </ul>
-    </div>
-    <div class="column-one-third">
-      <p>
-        7 Post Street<br>
-        Gateshead<br>
-        Tyne and Wear<br>
-        NE1 111<br>
-        England
-      </p>
-    </div>
-    <div class="column-one-third">
-      <form method="get" action="update-type-handler">
-        <div class="form-group">
-          <select class="form-control" id="tochange" name="tochange"><!--onchange="this.form.submit()"-->
-            <option selected>Edit</option>
-            <option value="update">Update</option>
-            <option value="correct">Correct</option>
-          </select>
-        </div>
-      </form>    
-    </div>
-  </div>
+<div class="column-one-third">
+  <ul>
+    <li>Correspondence address</li>
+    {% if correspondence == true %}
+      <li class="sl-secondary-text-color sl-metadata">{{editDate}} - present</li>
+    {% endif %}
+  </ul>
 </div>
+<div class="column-one-third">
+{% if correspondence == true %}
+  <p class="address">
+    7 Post Street<br>
+    Gateshead<br>
+    Tyne and Wear<br>
+    NE11 4HN<br>
+    England
+  </p>
+  <p class="date-updated recent">Updated just now</p>
+  {% else %}
+  <p></p>
+{% endif %}
+</div>
+  <div class="column-one-third">
+    {% if correspondence != true %}
+      <a class="secondary-link" href="update-type-handler?data=add">Add</a>
+    {% else %}
+      <a class="secondary-link" >Change</a>
+    {% endif %}
+  </div>
