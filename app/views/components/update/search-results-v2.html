@@ -1,10 +1,24 @@
 <h2 class="heading-medium question">Select an address</h2>
 <div class="grid-row">
   <div class="column-one-half">
-    <form method="get" action="dates">
+    <form method="get" action="search-results-handler">
       <div class="form-group">
+         
+        <!--
+          correspondence
+          updateNew 
+          updateStatus
+          updateStatusDLO
+          updateCherished
+          correctNew 
+          correctStatus 
+          correctStatusDLO
+          correctStart 
+          correctCherished
+        -->
+
         <!--<label class="form-label" for="select-box">Select an address</label>-->
-        {% if updatetype === "add" %}
+        {% if updatetype === "correspondence" %}
         <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
           <option>10 addressess found</option>
           <option>1 Post Street, Gateshead</option>
@@ -17,6 +31,15 @@
           <option>8 Post Street, Gateshead</option>
           <option>9 Post Street, Gateshead</option>
           <option>10 Post Street, Gateshead</option>
+        </select>
+        {% elif updatetype === "correctNew" %}
+        <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
+          <option>5 addressess found</option>          
+          <option>2 Other Street, Gateshead</option>
+          <option>4 Other Street, Gateshead</option>
+          <option>6 Other Street, Gateshead</option>
+          <option>8 Other Street, Gateshead</option>
+          <option>10 Other Street, Gateshead</option>
         </select>
         {% else %}
         <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
@@ -46,6 +69,13 @@
             <li>Gateshead</li>
             <li>Tyne &amp; Wear</li>
             <li>NE11 4HN</li>
+          </ul>
+          {% elif incorrectaddress %}
+          <ul>
+            <li>4 Other Street</li>
+            <li>Gateshead</li>
+            <li>Tyne and Wear</li>
+            <li>NE41 1HN</li>
           </ul>
           {% else %}
           <ul>

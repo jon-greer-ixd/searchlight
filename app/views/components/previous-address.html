@@ -1,6 +1,30 @@
     <details>
     <summary><span class="summary">Previous addresses</span></summary>
 
+    {% if incorrectaddress == true  %}
+    
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              1 Dec 1990 – {{editDate}}
+          </li>
+        </ul>
+      </div>
+      <div class="column-two-thirds">
+        <p class="address incorrect">
+          4 Main Street<br>
+          Gateshead<br>
+          Tyne and Wear<br>
+          NE14 1HN<br>
+          England
+        </p>
+      </div>
+    </div>
+      
+    {% endif %}
+      
     {% if previous_addresses == true  %}
     
     <div class="grid-row address-list">
@@ -17,7 +41,7 @@
           4 Main Street<br>
           Gateshead<br>
           Tyne and Wear<br>
-          NE11 4HN<br>
+          NE14 1HN<br>
           England
         </p>
       </div>

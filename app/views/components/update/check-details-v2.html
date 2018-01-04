@@ -4,15 +4,84 @@
     <div>
     <table class="table">
       
-    <!-- corrections -->
-    {% if correctiontype === "add" or correctiontype === "status" or correctiontype === "date"%}
+      <!--
+        correspondence
+        updateNew 
+        updateStatus
+        updateStatusDLO
+        updateCherished
+        correctNew 
+        correctStatus 
+        correctStatusDLO
+        correctStart 
+        correctCherished
+      -->
+    
+    {% if updatetype === "updateNew" %}
+      
+      <tr>
+        <td><span class="strong">Current address</span></td>
+        <td>4 Old Street, Gateshead, Tyne and Wear NE11 4HN</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><span class="strong">New address</span></td>
+        <td>6 Church Street, Gateshead, NE1 1HH</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Cherished line</span></td>
+        <td>Rose Cottage</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notify date</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
+      
+      
+      
+      
+    {% if updatetype === "updateCherished" %}
+      <tr>
+        <td><span class="strong">Cherished line</span></td>
+        <td>Rose Cottage</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+
+    {% if correctiontype === "updateNew" or correctiontype === "updateStatus" or correctiontype === "correctStart" %}
       <tr>
         <td><span class="strong">Address</span></td>
         <td>6 Church Street, Gateshead, NE1 1HH</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-    {% if correctiontype === "status" %}
+
+      
+    {% if correctiontype === "correctNew" %}
+      <tr>
+        <td><span class="strong">Current address</span></td>
+        <td>4 Main Street, Gateshead, Tyne and Wear, NE14 1HN</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Corrected address</span></td>
+        <td>4 Other Street, Gateshead, Tyne and Wear, NE41 1HN England</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
+
+    {% if correctiontype === "updateStatus" %}
       <tr>
         <td><span class="strong">Current status</span></td>
         <td>Live</td>
@@ -29,7 +98,8 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-    {% if correctiontype === "date" %}
+
+    {% if correctiontype === "correctStart" %}
       <tr>
         <td><span class="strong">Current start date</span></td>
         <td>9 December 2017</td>
@@ -42,23 +112,16 @@
       </tr>
     {% endif %}
 
-    <!-- updates -->
-    {% if updatetype === "status" or updatetype === "dlo" %}
+    {% if updatetype === "updateStatus" or updatetype === "updateStatusDLO" %}
       <tr>
         <td><span class="strong">Address status</span></td>
         <td>Dead letter office</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
+
       
-    {% if updatetype === "address" or updatetype === "cherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Rose Cottage</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    {% if updatetype === "address" or updatetype === "dlo" or updatetype === "cherish" or updatetype === "status" %}
+    {% if updatetype === "updateStatusDLO" or updatetype === "updateCherished" or updatetype === "updateStatus" %}
       <tr>
         <td><span class="strong">Address</span></td>
         <td>7 Church Street, Gateshead, NE1 1HH</td>
@@ -66,14 +129,8 @@
       </tr>
       <tr>
     {% endif %}
-    {% if updatetype === "add" %}
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>7 Post Street, Gateshead, NE1 111</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    {% if updatetype === "address" or updatetype === "status" or updatetype === "add" or updatetype === "cherish" or updatetype === "dlo"  %}
+
+    {% if updatetype === "updateStatus" or updatetype === "updateCherished" or updatetype === "updateStatusDLO"  %}
       <tr>
         <td><span class="strong">Start date</span></td>
         <td>1 December 2017</td>
@@ -85,6 +142,7 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
+
     </table>
   </div>
   <br>

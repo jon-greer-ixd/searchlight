@@ -3,6 +3,7 @@
   <div class="column-one-half">
     <div>
     <table class="table">
+      
     {% if updatetype === "address" %}
       <tr>
         <td><span class="strong">Address</span></td>
@@ -16,6 +17,7 @@
       </tr>
       <tr>
     {% endif %}
+        
     {% if updatetype === "add" %}
       <tr>
         <td><span class="strong">Address</span></td>
@@ -29,12 +31,14 @@
       </tr>
       <tr>
     {% endif %}
+        
     {% if updatetype === "address" or updatetype === "cherish" %}
         <td><span class="strong">Cherished line</span></td>
         <td>Rose Cottage</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
+      
     {% if updatetype === "status" or updatetype === "dlo" %}
       <tr>
         <td><span class="strong">Address status</span></td>
@@ -42,20 +46,24 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-    {% if updatetype === "address" or updatetype === "add" or updatetype === "cherish" or updatetype === "dlo"  %}
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>9 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
+      
+    {% if correcting === false %}
+      {% if updatetype === "address" or updatetype === "add" or updatetype === "cherish" or updatetype === "dlo"  %}
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>9 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% endif %}
+      {% if updatetype === "address" or updatetype === "status" or updatetype === "add" or updatetype === "cherish"  or updatetype === "dlo" %}
+        <tr>
+          <td><span class="strong">Notify date</span></td>
+          <td>11 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% endif %}
     {% endif %}
-    {% if updatetype === "address" or updatetype === "status" or updatetype === "add" or updatetype === "cherish"  or updatetype === "dlo" %}
-      <tr>
-        <td><span class="strong">Notify date</span></td>
-        <td>11 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
+      
     </table>
   </div>
   <br>

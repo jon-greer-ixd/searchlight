@@ -53,25 +53,25 @@
     {% endif %}
       
     {% if updated != true %}
-      4 Old Street<br>
+      4 Main Street<br>
       Gateshead<br>
       Tyne and Wear<br>
-      NE11 4HN<br>
+      NE14 1HN<br>
       England
-
+        
     {% elseif correspondence == true  %}
       7 Post Street<br>
       Gateshead<br>
       Tyne and Wear<br>
       NE11 4HN<br>
       England
-      
+            
     {% else %}
       Rose Cottage<br>
       6 Church Street<br>
       Gateshead<br>
       Tyne and Wear<br>
-      NE11 4HN<br>
+      NE10 1FF<br>
       England
     {% endif %}
     </p>
@@ -90,7 +90,5 @@
 
 </div> 
 
-{% if previous_addresses === true %}
 <hr>
   {% include "components/previous-address.html" %}
-{% endif %}
