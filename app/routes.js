@@ -89,16 +89,6 @@ router.get('/update/account', function (req, res) {
   })
 })
 
-//v1
-router.get('/update/v1/account', function (req, res) {
-  res.render('update/v1/account', {
-    updated : dataState.wasUpdated,
-    editDate : content.editDate,
-    previous_addresses : dataState.previousAddresses,
-    correspondence : dataState.correspondence
-  })
-})
-
 router.get('/update/update', function (req, res) {
   res.render('update/update', {
     correspondence : dataState.correspondence,
@@ -112,14 +102,6 @@ router.get('/update/update-v2', function (req, res) {
   })
 })
 
-//v1
-router.get('/update/v1/update', function (req, res) {
-  res.render('update/v1/update', {
-    correspondence : dataState.correspondence,
-    pagetitle : content.pageTitle
-  })
-})
-
 router.get('/update/dates', function (req, res) {
   res.render('update/dates', {
     updatetype : dataState.updateType,
@@ -127,25 +109,10 @@ router.get('/update/dates', function (req, res) {
   })
 })
 
-//v1
-router.get('/update/v1/dates', function (req, res) {
-  res.render('update/v1/dates', {
-    updatetype :  dataState.updateType
-  })
-})
-
 router.get('/update/check', function (req, res) {
   res.render('update/check', {
     correctiontype :dataState.correctionType,
     updatetype : dataState.updateType
-  })
-})
-
-//v1
-router.get('/update/v1/check', function (req, res) {
-  res.render('update/v1/check', {
-    updatetype : dataState.updateType,
-    pagetitle : content.pageTitle
   })
 })
 
@@ -168,28 +135,6 @@ router.get('/update/search-results', function (req, res) {
     updatetype : dataState.updateType,
     pagetitle : content.pageTitle
   })
-})
-
-//v1
-router.get('/update/v1/search-results', function (req, res) {
-  console.log(updateType);
-  res.render('update/v1/search-results', {
-    updatetype : dataState.updateType
-  })
-})
-
-router.get(/check-answers-handler/, function (req, res) {
-  if(dataState.updateType === "add") {
-    dataState.correspondence = true;
-  }
-  if (dataState.updateType === "address") {
-    dataState.previousAddresses = true;    
-    dataState.wasUpdated = true;
-  }
-//  if (updateType === "dlo") {
-//    dataState.wasUpdated = true;
-//  }
-  res.redirect('account')
 })
 
 router.get(/check-handler-v1/, function (req, res) {
@@ -229,28 +174,6 @@ router.get(/update-type-handler/, function (req, res) {
   }
 })
 
-//v1
-router.get(/update-handler-v1/, function (req, res) {
-  if(req.query.data === 'status') {
-    updateType = "status";
-    res.render('update/v1/status')
-  } else if (req.query.data === 'cherish') {
-    updateType = "cherish";
-    res.render('update/v1/cherish-line')
-  } else if (req.query.data === 'dlo') {
-    updateType = "dlo";
-    res.render('update/v1/dates')
-  } else if (req.query.data === 'dlo') {
-    updateType = "dlo";
-    res.render('update/dates')
-    res.render('update/v1/dates')
-  } else {
-    updateType = "address";
-    res.render('update/v1/address-search')
-  }
-  
-})
-
 router.get(/correction-type-handler/, function (req, res) {
   console.log(req.query);
   var next = "update/dates";
@@ -274,6 +197,123 @@ router.get(/correction-type-handler/, function (req, res) {
   res.render(next);
 })
 
+router.get('/update/correct-handler', function (req, res) {
+  tempUpdate.flip('correct');
+  res.render('update/correct')
+})
+
+
+//*********
+//Version 1
+//*********
+
+//v1
+router.get('/update/v1/account', function (req, res) {
+  res.render('update/v1/account', {
+    updated : dataState.wasUpdated,
+    editDate : content.editDate,
+    previous_addresses : dataState.previousAddresses,
+    correspondence : dataState.correspondence
+  })
+})
+
+//v1
+router.get('/update/v1/update', function (req, res) {
+  res.render('update/v1/update', {
+    correspondence : dataState.correspondence,
+    pagetitle : content.pageTitle
+  })
+})
+
+//v1
+router.get('/update/v1/dates', function (req, res) {
+  res.render('update/v1/dates', {
+    updatetype :  dataState.updateType
+  })
+})
+
+//v1
+router.get('/update/v1/check', function (req, res) {
+  res.render('update/v1/check', {
+    updatetype : dataState.updateType,
+    pagetitle : content.pageTitle
+  })
+})
+
+//v1
+router.get('/update/v1/check', function (req, res) {
+  res.render('update/v1/check', {
+    updatetype : dataState.updateType,
+    pagetitle : content.pageTitle
+  })
+})
+
+//v1
+router.get('/update/v1/search-results', function (req, res) {
+  console.log(updateType);
+  res.render('update/v1/search-results', {
+    updatetype : dataState.updateType
+  })
+})
+
+router.get(/check-answers-handler/, function (req, res) {
+  if(dataState.updateType === "add") {
+    dataState.correspondence = true;
+  }
+  if (dataState.updateType === "address") {
+    dataState.previousAddresses = true;    
+    dataState.wasUpdated = true;
+  }
+//  if (updateType === "dlo") {
+//    dataState.wasUpdated = true;
+//  }
+  res.redirect('account')
+})
+
+//v1
+router.get('/update/v1/search-results', function (req, res) {
+  console.log(updateType);
+  res.render('update/v1/search-results', {
+    updatetype : dataState.updateType
+  })
+})
+
+router.get(/check-answers-handler/, function (req, res) {
+  if(dataState.updateType === "add") {
+    dataState.correspondence = true;
+  }
+  if (dataState.updateType === "address") {
+    dataState.previousAddresses = true;    
+    dataState.wasUpdated = true;
+  }
+//  if (updateType === "dlo") {
+//    dataState.wasUpdated = true;
+//  }
+  res.redirect('account')
+})
+
+//v1
+router.get(/update-handler-v1/, function (req, res) {
+  if(req.query.data === 'status') {
+    updateType = "status";
+    res.render('update/v1/status')
+  } else if (req.query.data === 'cherish') {
+    updateType = "cherish";
+    res.render('update/v1/cherish-line')
+  } else if (req.query.data === 'dlo') {
+    updateType = "dlo";
+    res.render('update/v1/dates')
+  } else if (req.query.data === 'dlo') {
+    updateType = "dlo";
+    res.render('update/dates')
+    res.render('update/v1/dates')
+  } else {
+    updateType = "address";
+    res.render('update/v1/address-search')
+  }
+  
+})
+
 //v1
 router.get(/change-handler-v1/, function (req, res) {
   if (req.query.tochange == "add") {
@@ -285,11 +325,6 @@ router.get(/change-handler-v1/, function (req, res) {
     dataState.flip('update')
     res.redirect('update')
   }
-})
-
-router.get('/update/correct-handler', function (req, res) {
-  tempUpdate.flip('correct');
-  res.render('update/correct')
 })
 
 module.exports = router
