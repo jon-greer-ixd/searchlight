@@ -37,6 +37,43 @@ $path: "/public/images/";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
+//slim header 
+
+.sl-primary-card-name {
+  font-size: 2.53em;
+  padding-top: 20px;
+}
+
+#sl-account-person-age {
+  font-size: 1.26em; 
+  top: 0px; left: 0px;
+}
+
+.slim-header {
+  padding-top: 108px!important;
+}
+
+.slim {
+  height: 65px!important;
+  .sl-account-primary-name {
+    h1 {
+      font-size: 19px;
+      float: left;
+    }
+  }
+  #sl-account-person-age {
+    padding-top: 22px;
+    float: left;
+    padding-left: 15px;
+    font-size: 17px;
+  }
+  #sl-account {
+    .sl-primary-name-container-placeholder {
+      height: 65px!important;
+    }
+  }
+}
+
 #prototype-navigation {
   h2 {
     margin: 0;

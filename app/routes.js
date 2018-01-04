@@ -137,17 +137,6 @@ router.get('/update/search-results', function (req, res) {
   })
 })
 
-router.get(/check-handler-v1/, function (req, res) {
-  if(updateType === "add") {
-    correspondence = true;
-  }
-  if (updateType === "address") {
-    previousAddresses = true;    
-    isUpdated = true;
-  }
-  res.redirect('account')
-})
-
 router.get(/update-type-handler/, function (req, res) {
   console.log("here " + req.query.data);
   if(req.query.data === 'status') {
@@ -207,7 +196,17 @@ router.get('/update/correct-handler', function (req, res) {
 //Version 1
 //*********
 
-//v1
+router.get(/check-handler-v1/, function (req, res) {
+  if(dataState.updateType === "add") {
+    correspondence = true;
+  }
+  if (dataState.updateType === "address") {
+    previousAddresses = true;    
+    isUpdated = true;
+  }
+  res.redirect('account')
+})
+
 router.get('/update/v1/account', function (req, res) {
   res.render('update/v1/account', {
     updated : dataState.wasUpdated,
@@ -217,7 +216,6 @@ router.get('/update/v1/account', function (req, res) {
   })
 })
 
-//v1
 router.get('/update/v1/update', function (req, res) {
   res.render('update/v1/update', {
     correspondence : dataState.correspondence,
@@ -225,14 +223,12 @@ router.get('/update/v1/update', function (req, res) {
   })
 })
 
-//v1
 router.get('/update/v1/dates', function (req, res) {
   res.render('update/v1/dates', {
     updatetype :  dataState.updateType
   })
 })
 
-//v1
 router.get('/update/v1/check', function (req, res) {
   res.render('update/v1/check', {
     updatetype : dataState.updateType,
@@ -240,17 +236,7 @@ router.get('/update/v1/check', function (req, res) {
   })
 })
 
-//v1
-router.get('/update/v1/check', function (req, res) {
-  res.render('update/v1/check', {
-    updatetype : dataState.updateType,
-    pagetitle : content.pageTitle
-  })
-})
-
-//v1
 router.get('/update/v1/search-results', function (req, res) {
-  console.log(updateType);
   res.render('update/v1/search-results', {
     updatetype : dataState.updateType
   })
@@ -270,14 +256,6 @@ router.get(/check-answers-handler/, function (req, res) {
   res.redirect('account')
 })
 
-//v1
-router.get('/update/v1/search-results', function (req, res) {
-  console.log(updateType);
-  res.render('update/v1/search-results', {
-    updatetype : dataState.updateType
-  })
-})
-
 router.get(/check-answers-handler/, function (req, res) {
   if(dataState.updateType === "add") {
     dataState.correspondence = true;
@@ -292,32 +270,35 @@ router.get(/check-answers-handler/, function (req, res) {
   res.redirect('account')
 })
 
-//v1
 router.get(/update-handler-v1/, function (req, res) {
   if(req.query.data === 'status') {
-    updateType = "status";
+    dataState.updateType = "status";
+    console.log(dataState.updateType);
     res.render('update/v1/status')
   } else if (req.query.data === 'cherish') {
-    updateType = "cherish";
+    dataState.updateType = "cherish";
+    console.log(dataState.updateType);
     res.render('update/v1/cherish-line')
   } else if (req.query.data === 'dlo') {
-    updateType = "dlo";
+    dataState.updateType = "dlo";
+    console.log(dataState.updateType);
     res.render('update/v1/dates')
   } else if (req.query.data === 'dlo') {
-    updateType = "dlo";
+    dataState.updateType = "dlo";
+    console.log(dataState.updateType);
     res.render('update/dates')
     res.render('update/v1/dates')
   } else {
-    updateType = "address";
-    res.render('update/v1/address-search')
+    dataState.updateType = "address";
+    console.log(dataState.updateType);
+    res.redirect('address-search')
   }
   
 })
 
-//v1
 router.get(/change-handler-v1/, function (req, res) {
   if (req.query.tochange == "add") {
-    updateType = "new";
+    dataState.updateType = "new";
     res.render('update/address-search')
   } else if (req.query.tochange == "correct"){
     res.redirect('correct')
