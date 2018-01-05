@@ -1,14 +1,26 @@
 <h2 class="heading-medium question">
-  What are the start and notified dates?
+  What are the 
+  {% if updatetype === "end" %}
+    end
+  {% else %}
+    start 
+  {% endif %}
+  and notified dates?
 </h2>
+
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="dates-handler">
-      
-    <div class="form-group">
+    
+      <div class="form-group">
         <fieldset>
           <label class="form-label" for="full-name-f1">
-            Start date
+          {% if updatetype === "end" %}
+            End 
+          {% else %}
+            Start
+          {% endif %}
+            date
             <span class="form-hint">
               For example 31 8 1979
             </span>
@@ -16,7 +28,7 @@
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
         </fieldset>
       </div>
-      
+            
       <div class="form-group">
         <fieldset>
           <label class="form-label" for="full-name-f1">

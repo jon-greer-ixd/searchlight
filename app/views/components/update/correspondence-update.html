@@ -1,0 +1,97 @@
+<h2 class="heading-medium question">What kind of change do you need to make?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="update-type-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+      
+      <div class="form-group">
+
+        <div class="multiple-choice" data-target="contact-by-email">
+          <input id="update" type="radio" name="updateorcorrect" value="update">
+          <label for="update">Update</label>
+        </div>
+      
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="correct" type="radio" name="updateorcorrect" value="correct">
+          <label for="correct">Correct a mistake</label>
+        </div>
+        
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="end" type="radio" name="data" value="end">
+          <label for="end">End the correspondence address</label>
+        </div>
+        
+        <div class="panel panel-border-narrow js-hidden" id="">
+          <fieldset>
+            <div class="multiple-choice">
+              <input id="address" type="radio" name="data" value="update_new">
+              <label for="address">Update to a new address</label>
+            </div>
+            <div class="multiple-choice">
+              {% if correspondence === false %}
+                {% if status != "dlo" %}
+                  <input id="dlo" type="radio" name="data" value="update_status_dlo">
+                  <label for="dlo">Update the status to dead letter office</label>
+                {% else %}
+                  <input id="update_live" type="radio" name="data" value="update_live">
+                  <label for="update_live">Update the status to live</label>
+                {% endif %}
+              {% else %}
+                <input id="update_status" type="radio" name="data" value="update_status">
+                <label for="update_status">Correct the status</label>
+              {% endif %}
+            </div>
+            <div class="multiple-choice">
+              <input id="cherish" type="radio" name="data" value="update_cherished">
+              <label for="cherish">Add a cherished line</label>
+            </div>
+          </fieldset>
+        </div>
+        
+        <div class="panel panel-border-narrow js-hidden" id="">
+          <fieldset>
+              <div class="multiple-choice">
+                <input id="correct-address" type="radio" name="data" value="correct_new">
+                <label for="correct-address">Correct to a new address</label>
+              </div>
+              <div class="multiple-choice">
+              {% if correspondence === false %}
+                {% if status != "dlo" %}
+                  <input id="correct_dlo" type="radio" name="data" value="correct_dlo">
+                  <label for="correct_dlo">Correct the status to dead letter office</label>
+                {% else %}
+                  <input id="correct_live" type="radio" name="data" value="correct_live">
+                  <label for="correct_live">Correct the status to live</label>
+                {% endif %}
+              {% else %}
+                <input id="correct_status" type="radio" name="data" value="correct_status">
+                <label for="correct_status">Correct the status</label>
+              {% endif %}                
+              </div>
+              <div class="multiple-choice">
+                <input id="correct-date" type="radio" name="data" value="correct_date">
+                <label for="correct-date">Correct the start date</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="correct-cherish" type="radio" name="data" value="correct_cherish">
+                <label for="correct-cherish">Correct the cherished line</label>
+              </div>
+          </fieldset>
+        </div>  
+        
+      </div> 
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>

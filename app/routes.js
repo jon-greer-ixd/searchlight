@@ -21,6 +21,7 @@ var dataState = {
   */
   status : "live",//dlo, pwa, nfa
   correspondenceAdded: false,
+  correspondenceRemoved: false,
   updatedToNewAddress : false,
   cherished : false,
   statusUpdated : false,
@@ -46,6 +47,8 @@ var content = {
       this.pageTitle = "Correct a cherished line"
     } else if (dataState.updateType == "correctNew") {
       this.pageTitle = "Correct residential address"
+    } else if (dataState.updateType == "end") {
+      this.pageTitle = "End a correspondence address"
     } else {
       this.pageTitle = "Update residential address"
     }
@@ -64,6 +67,7 @@ router.use('/', main);
   dataState.updatedToNewAddress = false;
   dataState.cherished = false;
   dataState.correspondenceAdded = false;
+  dataState.correspondenceRemoved = false,
   dataState.statusUpdated = false;
   dataState.addressCorrected = false;
   dataState.status = "live";
@@ -93,6 +97,7 @@ router.get('/update/account', function (req, res) {
     correspondence : dataState.correspondenceAdded,
     statusupdated : dataState.statusUpdated,
     addresscorrected : dataState.addressCorrected,
+    correspondenceremoved : dataState.correspondenceRemoved,
     status : dataState.status
   })
 })
@@ -115,6 +120,7 @@ router.get('/update/update-v2', function (req, res) {
 router.get('/update/dates', function (req, res) {
   res.render('update/dates', {
     pagetitle : content.pageTitle,
+    updatetype : dataState.updateType
   })
 })
 
@@ -221,6 +227,11 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle();
     dataState.status = "live";
     res.redirect('check')
+    //end
+  } else if (req.query.data === 'end') {
+    dataState.updateType = "end";
+    content.setPageTitle();
+    res.redirect('dates')
   }
 })
 
@@ -249,6 +260,10 @@ router.get(/check-answers-handler/, function (req, res) {
   }
   if (dataState.updateType === "correctNew") {
     dataState.addressCorrected = true;   
+  }
+  if (dataState.updateType === "end") {
+    dataState.correspondenceAdded = false;   
+    dataState.correspondenceRemoved = true;   
   }
   res.redirect('account')
 })
