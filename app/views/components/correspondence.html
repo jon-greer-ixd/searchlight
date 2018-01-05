@@ -1,5 +1,5 @@
 <div class="column-one-third">
-{% if correspondence == true %}
+{% if correspondence === true %}
   <p class="address">
     7 Post Street<br>
     Gateshead<br>
@@ -14,7 +14,7 @@
 </div>
   <div class="column-one-third">
     {% if correspondence != true %}
-      <a class="secondary-link" href="update-type-handler?data=add">Add</a>
+      <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add</a>
     {% else %}
       <a class="secondary-link" >Change</a>
     {% endif %}

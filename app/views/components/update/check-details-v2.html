@@ -17,6 +17,25 @@
         correctCherished
       -->
     
+    {% if updatetype === "correspondence" %}
+      
+      <tr>
+        <td><span class="strong">Correspondence address</span></td>
+        <td>7 Post Street, Gateshead, Tyne and Wear NE11 4HN</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notify date</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
     {% if updatetype === "updateNew" %}
       
       <tr>
@@ -46,19 +65,77 @@
       </tr>
     {% endif %}
       
+    {% if correctiontype === "updateStatus" %}
+      <tr>
+        <td><span class="strong">Current status</span></td>
+        <td>Live</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">New status</span></td>
+        <td>Dead letter office</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notify date</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
       
-      
-      
+    {% if updatetype === "updateStatusDLO" %}
+      <tr>
+        <td><span class="strong">Address</span></td>
+        <td>6 Church Street, Gateshead, NE1 1HH</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Address status</span></td>
+        <td>Dead letter office</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>1 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notify date</span></td>
+        <td>19 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
       
     {% if updatetype === "updateCherished" %}
+      <tr>
+        <td><span class="strong">Address</span></td>
+        <td>6 Church Street, Gateshead, Tyne &amp; Wear, NE10 1FF</td>
+        <td></td>
+      </tr>
       <tr>
         <td><span class="strong">Cherished line</span></td>
         <td>Rose Cottage</td>
         <td><a>Change</a></td>
       </tr>
-    {% endif %}
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>1 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notify date</span></td>
+        <td>19 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
 
-    {% if correctiontype === "updateNew" or correctiontype === "updateStatus" or correctiontype === "correctStart" %}
+    {% endif %}
+      
+      
+      
+      
+      
+
+    {% if correctiontype === "updateNew" or correctiontype === "correctStart" %}
       <tr>
         <td><span class="strong">Address</span></td>
         <td>6 Church Street, Gateshead, NE1 1HH</td>
@@ -81,23 +158,7 @@
     {% endif %}
       
 
-    {% if correctiontype === "updateStatus" %}
-      <tr>
-        <td><span class="strong">Current status</span></td>
-        <td>Live</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">New status</span></td>
-        <td>Dead letter office</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notify date</span></td>
-        <td>11 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
+    
 
     {% if correctiontype === "correctStart" %}
       <tr>
@@ -108,37 +169,6 @@
       <tr>
         <td><span class="strong">New start date</span></td>
         <td>9 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-    {% if updatetype === "updateStatus" or updatetype === "updateStatusDLO" %}
-      <tr>
-        <td><span class="strong">Address status</span></td>
-        <td>Dead letter office</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-      
-    {% if updatetype === "updateStatusDLO" or updatetype === "updateCherished" or updatetype === "updateStatus" %}
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>7 Church Street, Gateshead, NE1 1HH</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-    {% endif %}
-
-    {% if updatetype === "updateStatus" or updatetype === "updateCherished" or updatetype === "updateStatusDLO"  %}
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>1 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notify date</span></td>
-        <td>19 December 2017</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}

@@ -18,12 +18,14 @@ var dataState = {
   */
   incorrectAddress : false,
   correctionType: 'toNew', //status, date, cherish
-  status : 'pwa', //dlo, live, nfa
-  cherished : false,
-  status : "live",
+  status : "live",//dlo, pwa, nfa
+  
   previousAddresses : false,
-  correspondence : false,
-  wasUpdated : false
+  //now
+  correspondenceAdded: false,
+  wasUpdated : false,
+  cherished : false,
+
 };
 
 var content = {
@@ -59,7 +61,7 @@ router.use('/', main);
   dataState.wasUpdated = false;
   dataState.cherished = false;
   dataState.previousAddresses = false;
-  dataState.correspondence = false;
+  dataState.correspondenceAdded = false;
   pageTitle = "Update residential address";
   res.render('index')
 })
@@ -83,20 +85,20 @@ router.get('/update/account', function (req, res) {
     cherished : dataState.cherished,
     editDate : content.editDate,
     previous_addresses : dataState.previousAddresses,
-    correspondence : dataState.correspondence,
+    correspondence : dataState.correspondenceAdded,
     incorrectaddress : dataState.incorrectAddress
   })
 })
 
 router.get('/update/update', function (req, res) {
   res.render('update/update', {
-    correspondence : dataState.correspondence,
+    correspondence : dataState.correspondenceAdded,
     pagetitle : content.pageTitle
   })
 })
 router.get('/update/update-v2', function (req, res) {
   res.render('update/update-v2', {
-    correspondence : dataState.correspondence,
+    correspondence : dataState.correspondenceAdded,
     pagetitle : content.pageTitle
   })
 })
@@ -200,6 +202,20 @@ router.get('/update/search-results-handler', function (req, res) {
   }
 })
 
+router.get(/check-answers-handler/, function (req, res) {
+  if(dataState.updateType === "correspondence") {
+    dataState.correspondenceAdded = true;
+  }
+  if (dataState.updateType === "address") {
+    dataState.previousAddresses = true;    
+    dataState.wasUpdated = true;
+  }
+//  if (updateType === "dlo") {
+//    dataState.wasUpdated = true;
+//  }
+  res.redirect('account')
+})
+
 
 //*********
 //Version 1
@@ -221,13 +237,13 @@ router.get('/update/v1/account', function (req, res) {
     updated : dataState.wasUpdated,
     editDate : content.editDate,
     previous_addresses : dataState.previousAddresses,
-    correspondence : dataState.correspondence
+    correspondence : dataState.correspondenceAdded
   })
 })
 
 router.get('/update/v1/update', function (req, res) {
   res.render('update/v1/update', {
-    correspondence : dataState.correspondence,
+    correspondence : dataState.correspondenceAdded,
     pagetitle : content.pageTitle
   })
 })
@@ -250,34 +266,6 @@ router.get('/update/v1/search-results', function (req, res) {
     updatetype : dataState.updateType,
     incorrectaddress : dataState.incorrectAddress
   })
-})
-
-router.get(/check-answers-handler/, function (req, res) {
-  if(dataState.updateType === "add") {
-    dataState.correspondence = true;
-  }
-  if (dataState.updateType === "address") {
-    dataState.previousAddresses = true;    
-    dataState.wasUpdated = true;
-  }
-//  if (updateType === "dlo") {
-//    dataState.wasUpdated = true;
-//  }
-  res.redirect('account')
-})
-
-router.get(/check-answers-handler/, function (req, res) {
-  if(dataState.updateType === "add") {
-    dataState.correspondence = true;
-  }
-  if (dataState.updateType === "address") {
-    dataState.previousAddresses = true;    
-    dataState.wasUpdated = true;
-  }
-//  if (updateType === "dlo") {
-//    dataState.wasUpdated = true;
-//  }
-  res.redirect('account')
 })
 
 router.get(/update-handler-v1/, function (req, res) {
