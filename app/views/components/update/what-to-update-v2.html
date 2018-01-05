@@ -42,11 +42,11 @@
               <label for="address">Update to a new address</label>
             </div>
             <div class="multiple-choice">
-              {% if correspondence === false %}
+              {% if correspondence === false and statusupdated === false %}
                 <input id="dlo" type="radio" name="data" value="update_status_dlo">
                 <label for="dlo">Update the status to dead letter office</label>
               {% else %}
-                <input id="status" type="radio" name="data" value="status">
+                <input id="status" type="radio" name="data" value="update_status">
                 <label for="status">Update the status</label>
               {% endif %}
             </div>

@@ -1,11 +1,11 @@
 <div id="sl-account" class="container-fluid ng-scope">
   <div class="sl-account-header row">
     
-    {% if correspondence == true %}
+    {% if correspondence === true %}
       {% include "components/update/toasters/address-added.html" %}
     {% endif %}
     
-    {% if updated == true %}
+    {% if updated === true or cherished === true or statusupdated === true or addresscorrected === true %}
       {% include "components/update/toasters/address-updated.html" %}
     {% endif %}
 
