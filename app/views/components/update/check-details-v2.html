@@ -4,20 +4,7 @@
     <div>
     <table class="table">
       
-      <!--
-        correspondence
-        updateNew 
-        updateStatus
-        updateStatusDLO
-        updateCherished
-        correctNew 
-        correctStatus 
-        correctStatusDLO
-        correctStart 
-        correctCherished
-      -->
-    
-    {% if updatetype === "correspondence" %}
+    {% if updatetype === "addCorrespondence" %}
       
       <tr>
         <td><span class="strong">Correspondence address</span></td>
@@ -148,7 +135,34 @@
       </tr>
 
     {% endif %}
+    
+    {% if updatetype === "correctStatus" or updatetype === "correctStatusDlo" %}
+      <tr>
+        <td><span class="strong">Current status</span></td>
+        <td>Live</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="strong">New status</span></td>
+        <td>Dead letter office</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
       
+   {% if updatetype === "updateStatusLive" or updatetype === "correctStatusLive" %}
+      <tr>
+        <td><span class="strong">Current status</span></td>
+        <td>Dead letter office</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="strong">New status</span></td>
+        <td>Live</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
+   
       
       
       

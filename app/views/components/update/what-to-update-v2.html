@@ -42,12 +42,17 @@
               <label for="address">Update to a new address</label>
             </div>
             <div class="multiple-choice">
-              {% if correspondence === false and statusupdated === false %}
-                <input id="dlo" type="radio" name="data" value="update_status_dlo">
-                <label for="dlo">Update the status to dead letter office</label>
+              {% if correspondence === false %}
+                {% if status != "dlo" %}
+                  <input id="dlo" type="radio" name="data" value="update_status_dlo">
+                  <label for="dlo">Update the status to dead letter office</label>
+                {% else %}
+                  <input id="update_live" type="radio" name="data" value="update_live">
+                  <label for="update_live">Update the status to live</label>
+                {% endif %}
               {% else %}
-                <input id="status" type="radio" name="data" value="update_status">
-                <label for="status">Update the status</label>
+                <input id="update_status" type="radio" name="data" value="update_status">
+                <label for="update_status">Correct the status</label>
               {% endif %}
             </div>
             <div class="multiple-choice">
@@ -64,8 +69,18 @@
                 <label for="correct-address">Correct to a new address</label>
               </div>
               <div class="multiple-choice">
-                <input id="correct-status" type="radio" name="data" value="correct_status">
-                <label for="correct-status">Correct the status</label>
+              {% if correspondence === false %}
+                {% if status != "dlo" %}
+                  <input id="correct_dlo" type="radio" name="data" value="correct_dlo">
+                  <label for="correct_dlo">Correct the status to dead letter office</label>
+                {% else %}
+                  <input id="correct_live" type="radio" name="data" value="correct_live">
+                  <label for="correct_live">Correct the status to live</label>
+                {% endif %}
+              {% else %}
+                <input id="correct_status" type="radio" name="data" value="correct_status">
+                <label for="correct_status">Correct the status</label>
+              {% endif %}                
               </div>
               <div class="multiple-choice">
                 <input id="correct-date" type="radio" name="data" value="correct_date">

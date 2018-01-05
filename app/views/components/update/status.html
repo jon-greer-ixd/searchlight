@@ -7,24 +7,35 @@
           <legend>
             <p class="visually-hidden">What is the address status</p>
           </legend>
-<!--
+          
+          {% if status != "live"  %}
           <div class="multiple-choice">
-            <input id="update" type="radio" name="radio-group" value="update">
-            <label for="update">Live</label>
+            <input id="live" type="radio" name="data" value="live">
+            <label for="live">Live</label>
           </div>
--->
+          {% endif %}
+          
+          {% if status != "dlo" %}
           <div class="multiple-choice">
-            <input id="Cherish" type="radio" name="radio-group" value="Cherish">
-            <label for="Cherish">Dead letter office</label>
+            <input id="dlo" type="radio" name="data" value="dlo">
+            <label for="dlo">Dead letter office</label>
           </div>
+          {% endif %}
+          
+          {% if status != "nfa" %}
           <div class="multiple-choice">
-            <input id="end" type="radio" name="radio-group" value="end">
-            <label for="end">No fixed abode</label>
+            <input id="nfa" type="radio" name="data" value="nfa">
+            <label for="nfa">No fixed abode</label>
           </div>
+          {% endif %}
+          
+          {% if status != "pwa" %}
           <div class="multiple-choice">
-            <input id="status" type="radio" name="radio-group" value="status">
-            <label for="status">Person without address</label>
+            <input id="pwa" type="radio" name="data" value="pwa">
+            <label for="pwa">Person without address</label>
           </div>
+          {% endif %}
+
         </fieldset>
       </div>  
       <div class="form-group">

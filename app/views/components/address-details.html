@@ -47,18 +47,22 @@
       </li>
       {% endif %}
       
-      {% if statusupdated === true %}
       <li>
-        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
-        <span class="sl-secondary-text-color sl-metadata">Dead letter office</span>
-      </li>
-      {% else %}
-      <li>
+      {% if status === "live" %}
         <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">Live</span>
-      </li>
+      {% elif status === "dlo" %}
+        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+        <span class="sl-secondary-text-color sl-metadata">Dead letter office</span>
+      {% elif status === "pwa" %}
+        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+        <span class="sl-secondary-text-color sl-metadata">Person without address</span>
+      {% elif status === "nfa" %}
+        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+        <span class="sl-secondary-text-color sl-metadata">No fixed abode</span>
       {% endif %}
-      
+      </li>
+
     </ul>
     
   </div>

@@ -35,9 +35,12 @@ var content = {
       this.pageTitle = "Update residential address status"
     } else if (dataState.updateType == "updateCherished") {
       this.pageTitle = "Add a cherished line"
-    } else if (dataState.updateType == "correspondence") {
+    } else if (dataState.updateType == "addCorrespondence") {
       this.pageTitle = "Add a correspondence address"
-    } else if (dataState.updateType == "correctStatus" || dataState.updateType == "correctStatusDLO") {
+    } else if (dataState.updateType == "correctStatus" || 
+               dataState.updateType == "correctStatusDLO" ||
+               dataState.updateType == "correctStatusLive" ||
+               dataState.updateType == "updateStatusLive" ) {
       this.pageTitle = "Correct residential address status"
     } else if (dataState.updateType == "correctCherished") {
       this.pageTitle = "Correct a cherished line"
@@ -63,6 +66,7 @@ router.use('/', main);
   dataState.correspondenceAdded = false;
   dataState.statusUpdated = false;
   dataState.addressCorrected = false;
+  dataState.status = "live";
   pageTitle = "Update residential address";
   res.render('index')
 })
@@ -88,7 +92,8 @@ router.get('/update/account', function (req, res) {
     editDate : content.editDate,
     correspondence : dataState.correspondenceAdded,
     statusupdated : dataState.statusUpdated,
-    addresscorrected : dataState.addressCorrected
+    addresscorrected : dataState.addressCorrected,
+    status : dataState.status
   })
 })
 
@@ -102,14 +107,14 @@ router.get('/update/update-v2', function (req, res) {
   res.render('update/update-v2', {
     correspondence : dataState.correspondenceAdded,
     pagetitle : content.pageTitle,
-    statusupdated : dataState.statusUpdated
+    statusupdated : dataState.statusUpdated,
+    status : dataState.status
   })
 })
 
 router.get('/update/dates', function (req, res) {
   res.render('update/dates', {
-    updatetype : dataState.updateType,
-    pagetitle : content.pageTitle
+    pagetitle : content.pageTitle,
   })
 })
 
@@ -120,6 +125,23 @@ router.get('/update/check', function (req, res) {
     correcting : dataState.correcting,
     pagetitle : content.pageTitle
   })
+})
+
+router.get('/update/status', function (req, res) {
+  res.render('update/status', {
+    pagetitle : content.pageTitle,
+    status : dataState.status
+  })
+})
+
+router.get(/status-handler/, function (req, res) {
+  dataState.status = req.query.data;
+  dataState.statusUpdated = true;
+  if (dataState.updateType != "correctStatus") {
+    res.redirect('dates')
+  } else {
+    res.redirect('check')
+  }
 })
 
 router.get('/update/cherish-line', function (req, res) {
@@ -143,33 +165,36 @@ router.get('/update/search-results', function (req, res) {
   })
 })
 
-router.get(/status-handler/, function (req, res) {
-  res.redirect('dates')
-})
-
 router.get(/dates-handler/, function (req, res) {
   res.redirect('/update/check')
 })
 
 router.get(/update-type-handler/, function (req, res) {
   console.log("data " + req.query.data);  
-  if (req.query.data === 'update_status') {
-    dataState.updateType = "updateStatus";
+  if (req.query.data == 'add_correspondence') {
+    dataState.updateType = "addCorrespondence";
     content.setPageTitle();
-    console.log('here ' + dataState.updateType);
-    res.redirect('status')
+    res.redirect('address-search')
   } else if (req.query.data === 'update_cherished') {
     dataState.updateType = "updateCherished";
     dataState.cherished = true;
     content.setPageTitle();
     res.redirect('cherish-line')
-  } else if (req.query.data == 'add_correspondence') {
-    dataState.updateType = "correspondence";
+    //status
+  } else if (req.query.data === 'update_status') {
+    dataState.updateType = "updateStatus";
     content.setPageTitle();
-    res.redirect('address-search')
+    console.log('here ' + dataState.updateType);
+    res.redirect('status')
   } else if (req.query.data === 'update_status_dlo') {
     dataState.updateType = "updateStatusDLO";
     content.setPageTitle();
+    dataState.status = "dlo";
+    res.redirect('dates')
+  } else if (req.query.data === 'update_live') {
+    dataState.updateType = "updateStatusLive";
+    content.setPageTitle();
+    dataState.status = "live";
     res.redirect('dates')
   } else if (req.query.data === 'update_new') {
     dataState.updateType = "updateNew";
@@ -180,6 +205,22 @@ router.get(/update-type-handler/, function (req, res) {
     dataState.updateType = "correctNew";
     content.setPageTitle();
     res.redirect('address-search')
+    //status
+  } else if (req.query.data === 'correct_status') {
+    dataState.updateType = "correctStatus";
+    content.setPageTitle();
+    dataState.status = "dlo";
+    res.redirect('status')
+  } else if (req.query.data === 'correct_dlo') {
+    dataState.updateType = "correctStatusDlo";
+    content.setPageTitle();
+    dataState.status = "dlo";
+    res.redirect('check')
+  } else if (req.query.data === 'correct_live') {
+    dataState.updateType = "correctStatusLive";
+    content.setPageTitle();
+    dataState.status = "live";
+    res.redirect('check')
   }
 })
 
@@ -192,14 +233,19 @@ router.get('/update/search-results-handler', function (req, res) {
 })
 
 router.get(/check-answers-handler/, function (req, res) {
-  if(dataState.updateType === "correspondence") {
+  if(dataState.updateType === "addCorrespondence") {
     dataState.correspondenceAdded = true;
   }
   if (dataState.updateType === "updateNew") {
     dataState.updatedToNewAddress = true;
   }
-  if (dataState.updateType === "updateStatus" || dataState.updateType === "updateStatusDLO") {
-    dataState.statusUpdated = true;   
+  if (dataState.updateType === "updateStatus" || 
+      dataState.updateType === "updateStatusDLO" || 
+      dataState.updateType === "updateStatusLive" || 
+      dataState.updateType === "correctStatus" || 
+      dataState.updateType === "correctStatusDlo" || 
+      dataState.updateType === "correctStatusLive") {
+      dataState.statusUpdated = true;   
   }
   if (dataState.updateType === "correctNew") {
     dataState.addressCorrected = true;   
@@ -283,7 +329,6 @@ router.get(/update-handler-v1/, function (req, res) {
     console.log(dataState.updateType);
     res.redirect('address-search')
   }
-  
 })
 
 router.get(/change-handler-v1/, function (req, res) {
