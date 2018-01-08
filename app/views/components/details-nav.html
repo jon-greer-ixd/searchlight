@@ -5,12 +5,16 @@
       {% include "components/update/toasters/address-added.html" %}
     {% endif %}
     
-    {% if updated === true or cherished === true or statusupdated === true or addresscorrected === true %}
+    {% if updated === true or cherished === true or statusupdated === true or addresscorrected === true or cherishedlinecorrected === true %}
       {% include "components/update/toasters/address-updated.html" %}
     {% endif %}
 
     {% if correspondenceremoved === true %}
       {% include "components/update/toasters/address-removed.html" %}
+    {% endif %}
+    
+    {% if dateisupdated === true %}
+      {% include "components/update/toasters/address-updated.html" %}
     {% endif %}
 
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->

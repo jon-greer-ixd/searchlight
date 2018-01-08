@@ -24,7 +24,9 @@ var dataState = {
   correspondenceRemoved: false,
   updatedToNewAddress : false,
   cherished : false,
+  cherishedLineCorrected : false,
   statusUpdated : false,
+  dateIsUpdated : false,
   addressCorrected : false
 };
 
@@ -33,26 +35,25 @@ var content = {
   pageTitle : "Update residential address",
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
-      this.pageTitle = "Update residential address status"
+      this.pageTitle = "Update residential address status";
     } else if (dataState.updateType == "updateCherished") {
-      this.pageTitle = "Add a cherished line"
+      this.pageTitle = "Add a cherished line";
     } else if (dataState.updateType == "addCorrespondence") {
-      this.pageTitle = "Add a correspondence address"
-    } else if (dataState.updateType == "correctStatus" || 
-               dataState.updateType == "correctStatusDLO" ||
-               dataState.updateType == "correctStatusLive" ||
-               dataState.updateType == "updateStatusLive" ) {
-      this.pageTitle = "Correct residential address status"
+      this.pageTitle = "Add a correspondence address";
+    } else if (dataState.updateType == "correctStatus" || dataState.updateType == "correctStatusDlo" || dataState.updateType == "correctStatusLive" || dataState.updateType == "updateStatusLive" ) {
+      this.pageTitle = "Correct residential address status";
     } else if (dataState.updateType == "correctCherished") {
-      this.pageTitle = "Correct a cherished line"
+      this.pageTitle = "Correct a cherished line";
     } else if (dataState.updateType == "correctNew") {
       this.pageTitle = "Correct residential address"
+    } else if (dataState.updateType == "correctDate") {
+      this.pageTitle = "Correct the start date";
     } else if (dataState.updateType == "end") {
       this.pageTitle = "End a correspondence address"
     } else {
       this.pageTitle = "Update residential address"
     }
-  console.log(this.pageTitle);
+//  console.log(this.pageTitle);
   }
 };
 
@@ -70,7 +71,10 @@ router.use('/', main);
   dataState.correspondenceRemoved = false,
   dataState.statusUpdated = false;
   dataState.addressCorrected = false;
+  dataState.dateIsUpdated = false;
   dataState.status = "live";
+  //corrections
+  dataState.cherishedLineCorrected = false;
   pageTitle = "Update residential address";
   res.render('index')
 })
@@ -98,6 +102,8 @@ router.get('/update/account', function (req, res) {
     statusupdated : dataState.statusUpdated,
     addresscorrected : dataState.addressCorrected,
     correspondenceremoved : dataState.correspondenceRemoved,
+    dateisupdated : dataState.dateIsUpdated,
+    cherishedlinecorrected : dataState.cherishedLineCorrected,
     status : dataState.status
   })
 })
@@ -176,67 +182,96 @@ router.get(/dates-handler/, function (req, res) {
 })
 
 router.get(/update-type-handler/, function (req, res) {
-  console.log("data " + req.query.data);  
   if (req.query.data == 'add_correspondence') {
     dataState.updateType = "addCorrespondence";
     content.setPageTitle();
+    console.log(dataState.updateType);
     res.redirect('address-search')
   } else if (req.query.data === 'update_cherished') {
     dataState.updateType = "updateCherished";
     dataState.cherished = true;
     content.setPageTitle();
+    console.log(dataState.updateType);
     res.redirect('cherish-line')
     //status
   } else if (req.query.data === 'update_status') {
     dataState.updateType = "updateStatus";
     content.setPageTitle();
-    console.log('here ' + dataState.updateType);
+    console.log(dataState.updateType);
     res.redirect('status')
   } else if (req.query.data === 'update_status_dlo') {
     dataState.updateType = "updateStatusDLO";
     content.setPageTitle();
     dataState.status = "dlo";
+    console.log(dataState.updateType);
     res.redirect('dates')
   } else if (req.query.data === 'update_live') {
     dataState.updateType = "updateStatusLive";
     content.setPageTitle();
     dataState.status = "live";
+    console.log(dataState.updateType);
     res.redirect('dates')
   } else if (req.query.data === 'update_new') {
     dataState.updateType = "updateNew";
     content.setPageTitle();
+    console.log(dataState.updateType);
     res.redirect('address-search')
     //corrections
   } else if (req.query.data === 'correct_new') {
     dataState.updateType = "correctNew";
     content.setPageTitle();
+    console.log(dataState.updateType);
     res.redirect('address-search')
     //status
   } else if (req.query.data === 'correct_status') {
     dataState.updateType = "correctStatus";
     content.setPageTitle();
+    console.log(dataState.updateType);
     dataState.status = "dlo";
     res.redirect('status')
   } else if (req.query.data === 'correct_dlo') {
     dataState.updateType = "correctStatusDlo";
     content.setPageTitle();
+    console.log(dataState.updateType);
     dataState.status = "dlo";
     res.redirect('check')
   } else if (req.query.data === 'correct_live') {
     dataState.updateType = "correctStatusLive";
     content.setPageTitle();
     dataState.status = "live";
+    console.log(dataState.updateType);
     res.redirect('check')
+    //date
+  } else if (req.query.data === 'correct_date') {
+    dataState.updateType = "correctDate";
+    content.setPageTitle();
+    console.log(dataState.updateType);
+    res.redirect('dates')
+    //correct cherish
+  } else if (req.query.data === 'correct_cherish') {
+    dataState.updateType = "correctCherish";
+    content.setPageTitle();
+    console.log(dataState.updateType);
+    res.redirect('cherish-line')
     //end
   } else if (req.query.data === 'end') {
     dataState.updateType = "end";
     content.setPageTitle();
+    console.log(dataState.updateType);
     res.redirect('dates')
   }
 })
 
 router.get('/update/search-results-handler', function (req, res) {
   if (dataState.updateType === "correctNew") {
+    res.redirect('check')
+  } else {
+    res.redirect('dates')
+  }
+})
+
+router.get('/update/cherish-handler', function (req, res) {
+  if (dataState.updateType === "correctCherish") {
     res.redirect('check')
   } else {
     res.redirect('dates')
@@ -260,6 +295,12 @@ router.get(/check-answers-handler/, function (req, res) {
   }
   if (dataState.updateType === "correctNew") {
     dataState.addressCorrected = true;   
+  }
+  if (dataState.updateType === "correctDate") {
+    dataState.dateIsUpdated = true;   
+  } 
+  if (dataState.updateType === "correctCherish") {
+    dataState.cherishedLineCorrected = true;   
   }
   if (dataState.updateType === "end") {
     dataState.correspondenceAdded = false;   

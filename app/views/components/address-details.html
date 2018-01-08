@@ -42,10 +42,12 @@
       <li class="sl-secondary-text-color sl-metadata">
         {% if updated === true %}
           {{editDate}} – present
+        {% elif dateisupdated === true %}
+          30 Nov 1990 – present
         {% else %}
-          26 Oct 1990 – present
+          1 Dec 1990 – present
+        {% endif %}
       </li>
-      {% endif %}
       
       <li>
       {% if status === "live" %}
@@ -78,6 +80,14 @@
       NE10 1FF<br>
       England
       
+    {% elif cherishedlinecorrected === true %}
+      Flat B<br>
+      4 Main Street<br>
+      Gateshead<br>
+      Tyne and Wear<br>
+      NE14 1HN<br>
+      England
+      
     {% elif cherished === true %}
       Flat A<br>
       4 Main Street<br>
@@ -85,7 +95,7 @@
       Tyne and Wear<br>
       NE14 1HN<br>
       England
-              
+                    
     {% elif addresscorrected === true  %}
       4 Other Street<br>
       Gateshead<br>
@@ -102,7 +112,7 @@
     {% endif %}
     </p>
     
-    {% if cherished === true or updated === true or statusupdated === true or addresscorrected === true %}
+    {% if cherished === true or updated === true or statusupdated === true or addresscorrected === true or dateisupdated === true or cherishedlinecorrected === true %}
     <p class="date-updated recent">Updated just now</p>
     {% else %}
     <p class="date-updated old">Updated about 5 years ago</p>

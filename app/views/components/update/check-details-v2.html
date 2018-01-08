@@ -174,9 +174,43 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-      
    
-      
+    {% if updatetype === "correctDate" %}
+      <tr>
+        <td><span class="strong">Current start date</span></td>
+        <td>26 October 1990</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><span class="strong">Current notified date</span></td>
+        <td>26 October 1990</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><span class="strong">New start date</span></td>
+        <td>30 November 1990</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">New notified date</span></td>
+        <td>26 October 1990</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+
+    {% if updatetype === "correctCherish" %}
+      <tr>
+        <td><span class="strong">Current cherished line</span></td>
+        <td>Flat A</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td><span class="strong">New cherished line</span></td>
+        <td>Flat B</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+
       
       
       
@@ -202,6 +236,7 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
+      
       
 
     

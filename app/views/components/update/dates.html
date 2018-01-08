@@ -8,10 +8,24 @@
   and notified dates?
 </h2>
 
+{% if updatetype === "correctDate" %} 
+  <div class="panel panel-border-wide">
+    <ul>
+      <li>
+        Current start date: <span class="">26 October 1990</span>
+      </li>
+      <li>
+        Current notified date: <span class="">26 October 1990</span>
+      </li>
+    </ul>
+  </div>
+<br>
+{% endif %}
+
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="dates-handler">
-    
+      
       <div class="form-group">
         <fieldset>
           <label class="form-label" for="full-name-f1">
@@ -33,19 +47,15 @@
         <fieldset>
           <label class="form-label" for="full-name-f1">
             Notified date
-<!--
-            <span class="form-hint">
-              For example 31 8 1979
-            </span>
--->
           </label>
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
         </fieldset>
       </div>
-      
+            
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
+      
     </form>
     <a href="account">Cancel</a>
   </div>
