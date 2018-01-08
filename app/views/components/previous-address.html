@@ -1,6 +1,31 @@
     <details>
     <summary><span class="summary">Previous addresses</span></summary>
 
+    {% if correspondenceremoved == true  %}
+    
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Correspondence address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              19 Dec 2017 - 1 Jan 2018
+          </li>
+        </ul>
+      </div>
+      <div class="column-two-thirds">
+        <p class="address">
+          7 Post Street<br>
+          Gateshead<br>
+          Tyne and Wear<br>
+          NE11 4HN<br>
+          England
+        </p>
+      </div>
+    </div>
+      
+    {% endif %}
+      
+      
     {% if addresscorrected == true  %}
     
     <div class="grid-row address-list">

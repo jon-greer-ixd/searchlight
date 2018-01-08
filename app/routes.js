@@ -9,7 +9,7 @@ var dataState = {
   correctStatus 
   correctStatusDLO
   correctStart 
-  correctCherished
+  correctCherish
   */
 
   /*
@@ -35,23 +35,26 @@ var content = {
   pageTitle : "Update residential address",
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
-      this.pageTitle = "Update residential address status";
+      this.pageTitle = "Update a residential address status";
     } else if (dataState.updateType == "updateCherished") {
-      this.pageTitle = "Add a cherished line";
+      this.pageTitle = "Add a cherished line to an address";
     } else if (dataState.updateType == "addCorrespondence") {
       this.pageTitle = "Add a correspondence address";
-    } else if (dataState.updateType == "correctStatus" || dataState.updateType == "correctStatusDlo" || dataState.updateType == "correctStatusLive" || dataState.updateType == "updateStatusLive" ) {
-      this.pageTitle = "Correct residential address status";
-    } else if (dataState.updateType == "correctCherished") {
+    } else if (dataState.updateType == "correctStatus" || 
+               dataState.updateType == "correctStatusDlo" || 
+               dataState.updateType == "correctStatusLive" || 
+               dataState.updateType == "updateStatusLive" ) {
+      this.pageTitle = "Correct a residential address status";
+    } else if (dataState.updateType == "correctCherish") {
       this.pageTitle = "Correct a cherished line";
     } else if (dataState.updateType == "correctNew") {
-      this.pageTitle = "Correct residential address"
+      this.pageTitle = "Correct a residential address";
     } else if (dataState.updateType == "correctDate") {
-      this.pageTitle = "Correct the start date";
+      this.pageTitle = "Correct a residential address start date";
     } else if (dataState.updateType == "end") {
-      this.pageTitle = "End a correspondence address"
+      this.pageTitle = "End a correspondence address";
     } else {
-      this.pageTitle = "Update residential address"
+      this.pageTitle = "Update a residential address";
     }
 //  console.log(this.pageTitle);
   }
