@@ -28,7 +28,8 @@ var dataState = {
   cherishedLineCorrected : false,
   statusUpdated : false,
   dateIsUpdated : false,
-  addressCorrected : false
+  addressCorrected : false,
+  statusCorrected : false
 };
 
 var content = {
@@ -90,6 +91,8 @@ router.use('/', main);
   dataState.newStatus = "live";
   //corrections
   dataState.cherishedLineCorrected = false;
+  dataState.statusCorrected = false;
+
   pageTitle = "Update residential address";
   res.render('index')
 })
@@ -119,7 +122,8 @@ router.get('/update/account', function (req, res) {
     correspondenceremoved : dataState.correspondenceRemoved,
     dateisupdated : dataState.dateIsUpdated,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
-    currentstatus : dataState.currentStatus
+    currentstatus : dataState.currentStatus,
+    statuscorrected : dataState.statusCorrected
   })
 })
 
@@ -306,11 +310,14 @@ router.get(/check-answers-handler/, function (req, res) {
   }
   if (dataState.updateType === "updateStatus" || 
       dataState.updateType === "updateStatusDLO" || 
-      dataState.updateType === "updateStatusLive" || 
-      dataState.updateType === "correctStatus" || 
+      dataState.updateType === "updateStatusLive") {
+      dataState.statusUpdated = true; 
+      dataState.currentStatus = dataState.newStatus;
+  }
+  if (dataState.updateType === "correctStatus" || 
       dataState.updateType === "correctStatusDlo" || 
       dataState.updateType === "correctStatusLive") {
-      dataState.statusUpdated = true; 
+      dataState.statusCorrected = true; 
       dataState.currentStatus = dataState.newStatus;
   }
   if (dataState.updateType === "correctNew") {

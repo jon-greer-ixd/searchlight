@@ -26,7 +26,7 @@
     {% endif %}
       
       
-    {% if addresscorrected == true  %}
+    {% if addresscorrected == true %}
     
     <div class="grid-row address-list">
       <div class="column-one-third">
@@ -50,7 +50,31 @@
       
     {% endif %}
       
-    {% if updated == true  %}
+    {% if statuscorrected == true %}
+      {% if currentstatus == "nfa" or currentstatus == "pwa" %}
+        <div class="grid-row address-list">
+          <div class="column-one-third">
+            <ul>
+              <li>Residential address</li>
+              <li class="sl-secondary-text-color sl-metadata">
+                  1 Dec 1990 – present
+              </li>
+            </ul>
+          </div>
+          <div class="column-two-thirds">
+            <p class="address incorrect">
+              4 Main Street<br>
+              Gateshead<br>
+              Tyne and Wear<br>
+              NE14 1HN<br>
+              England
+            </p>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+      
+    {% if updated == true %}
     
     <div class="grid-row address-list">
       <div class="column-one-third">
@@ -73,6 +97,7 @@
     </div>
       
     {% endif %}
+      
     <br>
     <div class="grid-row address-list">
       <div class="column-one-third">
