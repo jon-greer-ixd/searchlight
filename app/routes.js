@@ -19,7 +19,8 @@ var dataState = {
   updateStatusDLO
   updateCherished
   */
-  status : "live",//dlo, pwa, nfa
+  currentStatus : "live",//dlo, pwa, nfa
+  newStatus : "live",//dlo, pwa, nfa
   correspondenceAdded: false,
   correspondenceRemoved: false,
   updatedToNewAddress : false,
@@ -57,6 +58,17 @@ var content = {
       this.pageTitle = "Update a residential address";
     }
 //  console.log(this.pageTitle);
+  }, 
+  statusToText : function(status) {
+    if (status === "dlo") {
+      return "Dead letter office";
+    } else if (status === "pwa") {
+      return "Person without address";
+    } else if (status === "nfa") {
+      return "No fixed abode";
+    } else {
+      return "Live";
+    }
   }
 };
 
@@ -75,7 +87,8 @@ router.use('/', main);
   dataState.statusUpdated = false;
   dataState.addressCorrected = false;
   dataState.dateIsUpdated = false;
-  dataState.status = "live";
+  dataState.currentStatus = "live";
+  dataState.newStatus = "live";
   //corrections
   dataState.cherishedLineCorrected = false;
   pageTitle = "Update residential address";
@@ -107,7 +120,7 @@ router.get('/update/account', function (req, res) {
     correspondenceremoved : dataState.correspondenceRemoved,
     dateisupdated : dataState.dateIsUpdated,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
-    status : dataState.status
+    currentstatus : dataState.currentStatus
   })
 })
 
@@ -123,7 +136,7 @@ router.get('/update/update-v2', function (req, res) {
     correspondence : dataState.correspondenceAdded,
     pagetitle : content.pageTitle,
     statusupdated : dataState.statusUpdated,
-    status : dataState.status
+    status : dataState.currentStatus
   })
 })
 
@@ -134,25 +147,17 @@ router.get('/update/dates', function (req, res) {
   })
 })
 
-router.get('/update/check', function (req, res) {
-  res.render('update/check', {
-    correctiontype :dataState.correctionType,
-    updatetype : dataState.updateType,
-    correcting : dataState.correcting,
-    pagetitle : content.pageTitle,
-    status : dataState.status
-  })
-})
-
 router.get('/update/status', function (req, res) {
   res.render('update/status', {
     pagetitle : content.pageTitle,
-    status : dataState.status
+    status : dataState.currentStatus
   })
 })
 
 router.get(/status-handler/, function (req, res) {
-  dataState.status = req.query.data;
+  dataState.newStatus = req.query.data;
+  console.log("The new status is: " + dataState.newStatus );
+  console.log("The update type is: " + dataState.updateType );
   dataState.statusUpdated = true;
   if (dataState.updateType != "correctStatus") {
     res.redirect('dates')
@@ -207,13 +212,13 @@ router.get(/update-type-handler/, function (req, res) {
   } else if (req.query.data === 'update_status_dlo') {
     dataState.updateType = "updateStatusDLO";
     content.setPageTitle();
-    dataState.status = "dlo";
+    dataState.newStatus = "dlo";
     console.log(dataState.updateType);
     res.redirect('dates')
   } else if (req.query.data === 'update_live') {
     dataState.updateType = "updateStatusLive";
     content.setPageTitle();
-    dataState.status = "live";
+    dataState.newStatus = "live";
     console.log(dataState.updateType);
     res.redirect('dates')
   } else if (req.query.data === 'update_new') {
@@ -232,18 +237,17 @@ router.get(/update-type-handler/, function (req, res) {
     dataState.updateType = "correctStatus";
     content.setPageTitle();
     console.log(dataState.updateType);
-    dataState.status = "dlo";
     res.redirect('status')
   } else if (req.query.data === 'correct_dlo') {
     dataState.updateType = "correctStatusDlo";
     content.setPageTitle();
     console.log(dataState.updateType);
-    dataState.status = "dlo";
+    dataState.newStatus = "dlo";
     res.redirect('check')
   } else if (req.query.data === 'correct_live') {
     dataState.updateType = "correctStatusLive";
     content.setPageTitle();
-    dataState.status = "live";
+    dataState.newStatus = "live";
     console.log(dataState.updateType);
     res.redirect('check')
     //date
@@ -283,6 +287,17 @@ router.get('/update/cherish-handler', function (req, res) {
   }
 })
 
+router.get('/update/check', function (req, res) {
+  res.render('update/check', {
+    correctiontype :dataState.correctionType,
+    updatetype : dataState.updateType,
+    correcting : dataState.correcting,
+    pagetitle : content.pageTitle,
+    currentstatus : content.statusToText(dataState.currentStatus),
+    newstatus : content.statusToText(dataState.newStatus)
+  })
+})
+
 router.get(/check-answers-handler/, function (req, res) {
   if(dataState.updateType === "addCorrespondence") {
     dataState.correspondenceAdded = true;
@@ -296,7 +311,8 @@ router.get(/check-answers-handler/, function (req, res) {
       dataState.updateType === "correctStatus" || 
       dataState.updateType === "correctStatusDlo" || 
       dataState.updateType === "correctStatusLive") {
-      dataState.statusUpdated = true;   
+      dataState.statusUpdated = true; 
+      dataState.currentStatus = dataState.newStatus;
   }
   if (dataState.updateType === "correctNew") {
     dataState.addressCorrected = true;   

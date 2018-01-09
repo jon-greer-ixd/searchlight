@@ -5,7 +5,6 @@
     <table class="table">
       
     {% if updatetype === "addCorrespondence" %}
-      
       <tr>
         <td><span class="strong">Correspondence address</span></td>
         <td>7 Post Street, Gateshead, Tyne and Wear NE11 4HN</td>
@@ -24,7 +23,6 @@
     {% endif %}
       
     {% if updatetype === "updateNew" %}
-      
       <tr>
         <td><span class="strong">Current address</span></td>
         <td>4 Old Street, Gateshead, Tyne and Wear NE11 4HN</td>
@@ -53,7 +51,6 @@
     {% endif %}
       
     {% if updatetype === "correctNew" %}
-      
       <tr>
         <td><span class="strong">Current address</span></td>
         <td>4 Main Street, Gateshead, Tyne and Wear, NE14 1HN</td>
@@ -66,23 +63,15 @@
       </tr>
     {% endif %}
       
-    {% if updatetype === "updateStatus" %}
+    {% if updatetype === "updateStatus" or updatetype === "updateStatusDLO" or updatetype === "updateStatusLive" %}
       <tr>
         <td><span class="strong">Current status</span></td>
-        <td>Live</td>
+        <td>{{currentstatus}}</td>
         <td></td>
       </tr>
       <tr>
         <td><span class="strong">New status</span></td>
-        {% if status === "dlo" %}
-        <td>Dead letter office</td>
-        {% elif status === "nfa" %}
-        <td>No fixed abode</td>
-        {% elif status === "pwa" %}
-        <td>Person without address</td>
-        {% else %}
-        <td>Live</td>
-        {% endif %}
+        <td>{{newstatus}}</td>
         <td><a>Change</a></td>
       </tr>
       <tr>
@@ -96,30 +85,7 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-      
-    {% if updatetype === "updateStatusDLO" %}
-      <tr>
-        <td><span class="strong">Current status</span></td>
-        <td>Live</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="strong">New status</span></td>
-        <td>Dead letter office</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>1 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Date notified</span></td>
-        <td>19 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    
+          
     {% if updatetype === "end" %}
       <tr>
         <td><span class="strong">End date</span></td>
@@ -157,40 +123,19 @@
 
     {% endif %}
     
-    {% if updatetype === "correctStatus" or updatetype === "correctStatusDlo" %}
+    {% if updatetype === "correctStatus" or updatetype === "correctStatusDlo" or updatetype === "correctStatusLive" %}
       <tr>
         <td><span class="strong">Current status</span></td>
-        <td>Live</td>
+        <td>{{currentstatus}}</td>
         <td></td>
       </tr>
       <tr>
         <td><span class="strong">New status</span></td>
-        {% if status === "dlo" %}
-        <td>Dead letter office</td>
-        {% elif status === "nfa" %}
-        <td>No fixed abode</td>
-        {% elif status === "pwa" %}
-        <td>Person without address</td>
-        {% else %}
-        <td>Live</td>
-        {% endif %}
+        <td>{{newstatus}}</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-      
-   {% if updatetype === "updateStatusLive" or updatetype === "correctStatusLive" %}
-      <tr>
-        <td><span class="strong">Current status</span></td>
-        <td>Dead letter office</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="strong">New status</span></td>
-        <td>Live</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-   
+         
     {% if updatetype === "correctDate" %}
       <tr>
         <td><span class="strong">Current start date</span></td>

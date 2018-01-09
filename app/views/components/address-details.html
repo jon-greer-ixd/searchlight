@@ -50,16 +50,16 @@
       </li>
       
       <li>
-      {% if status === "live" %}
+      {% if currentstatus === "live" %}
         <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">Live</span>
-      {% elif status === "dlo" %}
+      {% elif currentstatus === "dlo" %}
         <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">Dead letter office</span>
-      {% elif status === "pwa" %}
+      {% elif currentstatus === "pwa" %}
         <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">Person without address</span>
-      {% elif status === "nfa" %}
+      {% elif currentstatus === "nfa" %}
         <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">No fixed abode</span>
       {% endif %}
