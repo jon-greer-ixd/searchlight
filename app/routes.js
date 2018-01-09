@@ -117,6 +117,7 @@ router.get('/update/update', function (req, res) {
     pagetitle : content.pageTitle
   })
 })
+
 router.get('/update/update-v2', function (req, res) {
   res.render('update/update-v2', {
     correspondence : dataState.correspondenceAdded,
@@ -138,7 +139,8 @@ router.get('/update/check', function (req, res) {
     correctiontype :dataState.correctionType,
     updatetype : dataState.updateType,
     correcting : dataState.correcting,
-    pagetitle : content.pageTitle
+    pagetitle : content.pageTitle,
+    status : dataState.status
   })
 })
 

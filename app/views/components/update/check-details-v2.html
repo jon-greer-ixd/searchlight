@@ -74,7 +74,15 @@
       </tr>
       <tr>
         <td><span class="strong">New status</span></td>
+        {% if status === "dlo" %}
         <td>Dead letter office</td>
+        {% elif status === "nfa" %}
+        <td>No fixed abode</td>
+        {% elif status === "pwa" %}
+        <td>Person without address</td>
+        {% else %}
+        <td>Live</td>
+        {% endif %}
         <td><a>Change</a></td>
       </tr>
       <tr>
@@ -157,7 +165,15 @@
       </tr>
       <tr>
         <td><span class="strong">New status</span></td>
+        {% if status === "dlo" %}
         <td>Dead letter office</td>
+        {% elif status === "nfa" %}
+        <td>No fixed abode</td>
+        {% elif status === "pwa" %}
+        <td>Person without address</td>
+        {% else %}
+        <td>Live</td>
+        {% endif %}
         <td><a>Change</a></td>
       </tr>
     {% endif %}
