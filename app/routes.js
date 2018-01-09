@@ -32,7 +32,7 @@ var dataState = {
 };
 
 var content = {
-  editDate : "19 Dec 2017",
+  editDate : "9 Jan 2017",
   pageTitle : "Update residential address",
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
