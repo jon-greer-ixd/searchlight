@@ -57,7 +57,6 @@ var content = {
     } else {
       this.pageTitle = "Update a residential address";
     }
-//  console.log(this.pageTitle);
   }, 
   statusToText : function(status) {
     if (status === "dlo") {
