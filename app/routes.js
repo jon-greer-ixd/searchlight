@@ -33,7 +33,7 @@ var dataState = {
 };
 
 var content = {
-  editDate : "9 Jan 2017",
+  editDate : "9 Jan 2018",
   pageTitle : "Update residential address",
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
@@ -161,11 +161,19 @@ router.get(/status-handler/, function (req, res) {
   dataState.newStatus = req.query.data;
   console.log("The new status is: " + dataState.newStatus );
   console.log("The update type is: " + dataState.updateType );
-  dataState.statusUpdated = true;
-  if (dataState.updateType != "correctStatus") {
-    res.redirect('dates')
+//  dataState.statusUpdated = true;
+  if (dataState.newStatus === "live") {
+    if (dataState.currentStatus == "nfa" || dataState.currentStatus == "pwa") {
+      res.redirect('address-search')
+    } else {
+      res.redirect('dates')
+    }
   } else {
-    res.redirect('check')
+    if (dataState.updateType != "correctStatus") {
+      res.redirect('dates')
+    } else {
+      res.redirect('check')
+    }
   }
 })
 
@@ -223,12 +231,17 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle();
     dataState.newStatus = "live";
     console.log(dataState.updateType);
-    res.redirect('dates')
+    if (dataState.currentStatus == "nfa" || dataState.currentStatus == "pwa") {
+      res.redirect('address-search')
+    } else {
+      res.redirect('dates')
+    }
   } else if (req.query.data === 'update_new') {
     dataState.updateType = "updateNew";
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('address-search')
+    
     //corrections
   } else if (req.query.data === 'correct_new') {
     dataState.updateType = "correctNew";
@@ -307,6 +320,7 @@ router.get(/check-answers-handler/, function (req, res) {
   }
   if (dataState.updateType === "updateNew") {
     dataState.updatedToNewAddress = true;
+    dataState.currentStatus = "live";
   }
   if (dataState.updateType === "updateStatus" || 
       dataState.updateType === "updateStatusDLO" || 
