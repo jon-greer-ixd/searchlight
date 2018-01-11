@@ -51,8 +51,42 @@
   </div>
   
   <div class="column-one-third">
-    
     <p class="address">
+      {% if residentialaddress.cherish != false %}
+      {{residentialaddress.cherish}}<br>
+      {% endif %}
+      
+      {{residentialaddress.line}}<br>
+      Gateshead<br>
+      Tyne and wear<br>
+      NE1 1HH<br>
+      England
+    <p>
+    <ul>
+      <li class="status-item">
+      {% if residentialaddress.status === "live" %}
+        <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+        <span class="sl-secondary-text-color sl-metadata">Live</span>
+      {% elif residentialaddress.status === "dlo" %}
+        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+        <span class="sl-secondary-text-color sl-metadata">Dead letter office</span>
+      {% elif residentialaddress.status === "pwa" %}
+        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+        <span class="sl-secondary-text-color sl-metadata">Person without address</span>
+      {% elif residentialaddress.status === "nfa" %}
+        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+        <span class="sl-secondary-text-color sl-metadata">No fixed abode</span>
+      {% endif %}
+      </li>
+    </ul>
+    {% if residentialaddress.updated %}
+    <p class="date-updated recent">Updated just now</p>
+    {% else %}
+    <p class="date-updated old">Updated about 5 years ago</p>
+    {% endif %}
+
+
+<!--
     {% if updated === true %}
       Rose Cottage<br>
       6 Church Street<br>
@@ -93,31 +127,9 @@
       NE14 1HN<br>
       England
     {% endif %}
-    </p>
+-->
     
-    <ul>
-      <li class="status-item">
-      {% if currentstatus === "live" %}
-        <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-        <span class="sl-secondary-text-color sl-metadata">Live</span>
-      {% elif currentstatus === "dlo" %}
-        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
-        <span class="sl-secondary-text-color sl-metadata">Dead letter office</span>
-      {% elif currentstatus === "pwa" %}
-        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
-        <span class="sl-secondary-text-color sl-metadata">Person without address</span>
-      {% elif currentstatus === "nfa" %}
-        <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
-        <span class="sl-secondary-text-color sl-metadata">No fixed abode</span>
-      {% endif %}
-      </li>
-    </ul>
     
-    {% if cherished === true or updated === true or statusupdated === true or addresscorrected === true or dateisupdated === true or cherishedlinecorrected === true %}
-    <p class="date-updated recent">Updated just now</p>
-    {% else %}
-    <p class="date-updated old">Updated about 5 years ago</p>
-    {% endif %}
   </div>
   
   <div class="column-one-third">

@@ -1,5 +1,54 @@
 var express = require('express')
 var router = express.Router()
+
+var addressOne = "1 Current Crescent";
+var addressTwo = "2 New Street";
+var addressThree = "3 Old Town";
+
+var residentialAddress = {
+  status : "live",
+  line : addressOne,
+  startDate : null,
+  endDate : null,
+  cherish : false,
+  show : true,
+  updated : false
+};
+
+var correspondenceAddress = {
+  line : "4 Post Street",
+  startDate : null,
+  endDate : null,
+  cherish : false,
+  show : false
+};
+
+var previousAddress = {
+  status : "live",
+  line : addressOne,
+  startDate : null,
+  endDate : null,
+  cherish : false,
+  show : false
+};
+
+var updateOmatic = function() {
+  if(dataState.updateType === "addCorrespondence") {
+    correspondenceAddress.show = true;
+  }
+  if (dataState.updateType === "updateNew") {
+    residentialAddress.line = addressTwo;
+    residentialAddress.updated = true;
+  }
+  if (dataState.updateType === "updateStatus" || 
+    dataState.updateType === "updateStatusDLO" || 
+    dataState.updateType === "updateStatusLive") {
+    residentialAddress.status = dataState.newStatus;
+  }
+  if (dataState.updateType == "updateCherished") {
+    residentialAddress.cherish = "Flat A";
+  }
+}
   
 var dataState = {
   updateType : null,
@@ -106,13 +155,14 @@ router.get('/search-v1', function (req, res) {
 })
 
 //update
-router.get('/choice-handler', function (req, res) {
-  res.render('address-search')
-})
 
 //account
 router.get('/update/account', function (req, res) {
   res.render('account', {
+    residentialaddress : residentialAddress,
+    correspondenceaddress : correspondenceAddress,
+    previousaddress : previousAddress,
+    
     updated : dataState.updatedToNewAddress,
     cherished : dataState.cherished,
     editDate : content.editDate,
@@ -125,6 +175,10 @@ router.get('/update/account', function (req, res) {
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected
   })
+})
+
+router.get('/choice-handler', function (req, res) {
+  res.render('address-search')
 })
 
 router.get('/update/update', function (req, res) {
@@ -315,6 +369,7 @@ router.get('/update/check', function (req, res) {
 })
 
 router.get(/check-answers-handler/, function (req, res) {
+  updateOmatic();
   if(dataState.updateType === "addCorrespondence") {
     dataState.correspondenceAdded = true;
   }
