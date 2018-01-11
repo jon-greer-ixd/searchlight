@@ -3,7 +3,6 @@ var router = express.Router()
 
 var addressOne = "1 Current Crescent";
 var addressTwo = "2 New Street";
-var addressThree = "3 Old Town";
 
 var residentialAddress = {
   status : "live",
@@ -29,7 +28,8 @@ var previousAddress = {
   startDate : null,
   endDate : null,
   cherish : false,
-  show : false
+  show : false,
+  correct : true
 };
 
 var updateOmatic = function() {
@@ -39,6 +39,9 @@ var updateOmatic = function() {
   if (dataState.updateType === "updateNew") {
     residentialAddress.line = addressTwo;
     residentialAddress.updated = true;
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = true;
   }
   if (dataState.updateType === "updateStatus" || 
     dataState.updateType === "updateStatusDLO" || 

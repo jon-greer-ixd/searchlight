@@ -1,30 +1,42 @@
     <details>
     <summary><span class="summary">Previous addresses</span></summary>
-
-    {% if correspondenceremoved == true  %}
     
     <div class="grid-row address-list">
-      <div class="column-one-third">
-        <ul>
-          <li>Correspondence address</li>
-          <li class="sl-secondary-text-color sl-metadata">
-              19 Dec 2017 - 1 Jan 2018
-          </li>
-        </ul>
-      </div>
-      <div class="column-two-thirds">
-        <p class="address">
-          7 Post Street<br>
-          Gateshead<br>
-          Tyne and Wear<br>
-          NE11 4HN<br>
-          England
-        </p>
-      </div>
-    </div>
-      
-    {% endif %}
-      
+
+    
+      {% if previousaddress.show === true %}
+
+        <div class="column-one-third">
+          <ul>
+            <li>Residential address</li>
+            <li class="sl-secondary-text-color sl-metadata">
+                1 Dec 1990 – {{editDate}}
+            </li>
+          </ul>
+        </div>
+
+        <div class="grid-row address-list">
+          <div class="column-one-third">
+              {% if previousaddress.correct === false %}
+              <p class="address">
+              {% else %}
+              <p class="address incorrect">
+              {% endif %}
+                {% if previousaddress.cherish != false %}
+                  {{previousaddress.cherish}}<br>
+                {% endif %}
+
+                {{previousaddress.line}}<br>
+                Gateshead<br>
+                Tyne and wear<br>
+                NE1 1HH<br>
+                England
+              <p>
+
+          </div>
+        </div>
+        
+      {% endif %}
       
       <!--
       4 main streert should show if
@@ -90,7 +102,6 @@
       {% endif %}
       
     <br>
-    <div class="grid-row address-list">
       <div class="column-one-third">
         <ul>
           <li>Residential address</li>
@@ -109,4 +120,7 @@
         </p>
       </div>
     </div>
+      
+    </div>
+      
   </details>
