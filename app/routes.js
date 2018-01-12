@@ -3,6 +3,39 @@ var router = express.Router()
 
 var addressOne = "1 Current Crescent";
 var addressTwo = "2 New Street";
+var addressThree = "7 Post Street";
+
+/*
+update
+  add new
+  remove
+  update to new
+  update to dlo
+  update to live
+  update to nfa/pwa
+  
+  update add a cherished line
+  if no cherrished line > add a cherrished line
+  if a cherrished line > update the cherrished line
+    > update / remove 
+      if update > show current and field
+      
+  Correct the cherished line
+    
+correct
+  Correct the start date 
+
+  Correct to new address 
+  Correct to dead letter office 
+  correct to nfa/pwa
+  
+update addressess
+update check your answers
+Show correct dates
+view maintenance data
+make notifications work correctly
+Reset function :)
+*/
 
 var residentialAddress = {
   status : "live",
@@ -37,40 +70,77 @@ var updateOmatic = function() {
     correspondenceAddress.show = true;
   }
   if (dataState.updateType === "updateNew") {
+    previousAddress.cherish = residentialAddress.cherish;
+    previousAddress.line = addressOne;
+    previousAddress.correct = true;
+    previousAddress.show = true;
+    residentialAddress.cherish = false;
     residentialAddress.line = addressTwo;
     residentialAddress.updated = true;
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = true;
   }
   if (dataState.updateType === "updateStatus" || 
     dataState.updateType === "updateStatusDLO" || 
     dataState.updateType === "updateStatusLive") {
     residentialAddress.status = dataState.newStatus;
+    residentialAddress.updated = true;
+    if (residentialAddress.status === "nfa" || residentialAddress.status === "pwa") {
+      previousAddress.line = addressOne;
+      previousAddress.show = true;
+      previousAddress.correct = true;
+    }
   }
   if (dataState.updateType == "updateCherished") {
     residentialAddress.cherish = "Flat A";
   }
+  if(dataState.updateType === "addCorrespondence") {
+    dataState.correspondenceAdded = true;
+  }
+  if (dataState.updateType === "end") {
+    dataState.correspondenceAdded = false;   
+    dataState.correspondenceRemoved = true;
+    previousAddress.line = addressThree;
+    previousAddress.show = true;
+  }
+  //correct
+  if (dataState.updateType === "correctNew") {
+    previousAddress.cherish = residentialAddress.cherish;
+    previousAddress.line = addressOne;
+    previousAddress.correct = false;
+    previousAddress.show = true;
+    residentialAddress.cherish = false;
+    residentialAddress.line = addressTwo;
+    residentialAddress.updated = true;
+  }
+  if (dataState.updateType === "correctStatus" || 
+    dataState.updateType === "correctStatusDlo" || 
+    dataState.updateType === "correctStatusLive") {
+    residentialAddress.status = dataState.newStatus;
+    residentialAddress.updated = true;
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = false;
+  }
+  if (dataState.updateType === "correctDate") {
+    residentialAddress.updated = true;
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = false;
+    // update the dates
+  } 
+  if (dataState.updateType === "correctCherish") {
+    residentialAddress.updated = true;
+    residentialAddress.cherish = "Flat A";
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = false;
+  }
+
+
 }
   
 var dataState = {
   updateType : null,
   correctionType: 'toNew',
-  /*
-  correctNew 
-  correctStatus 
-  correctStatusDLO
-  correctStart 
-  correctCherish
-  */
-
-  /*
-  correspondence
-  updateNew 
-  updateStatus
-  updateStatusDLO
-  updateCherished
-  */
   currentStatus : "live",//dlo, pwa, nfa
   newStatus : "live",//dlo, pwa, nfa
   correspondenceAdded: false,
@@ -85,7 +155,7 @@ var dataState = {
 };
 
 var content = {
-  editDate : "9 Jan 2018",
+  editDate : "12 Jan 2018",
   pageTitle : "Update residential address",
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {

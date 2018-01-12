@@ -50,18 +50,20 @@
     
   </div>
   
+    <!-- new -->
   <div class="column-one-third">
     <p class="address">
       {% if residentialaddress.cherish != false %}
-      {{residentialaddress.cherish}}<br>
+        {{residentialaddress.cherish}}<br>
       {% endif %}
-      
-      {{residentialaddress.line}}<br>
-      Gateshead<br>
-      Tyne and wear<br>
-      NE1 1HH<br>
-      England
-    <p>
+      {% if residentialaddress.status === "live" or residentialaddress.status === "dlo" %}
+        {{residentialaddress.line}}<br>
+        Gateshead<br>
+        Tyne and wear<br>
+        NE1 1HH<br>
+        England
+      <p>
+      {% endif %}
     <ul>
       <li class="status-item">
       {% if residentialaddress.status === "live" %}
