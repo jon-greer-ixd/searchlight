@@ -4,19 +4,6 @@
     <form method="get" action="search-results-handler">
       <div class="form-group">
          
-        <!--
-          correspondence
-          updateNew 
-          updateStatus
-          updateStatusDLO
-          updateCherished
-          correctNew 
-          correctStatus 
-          correctStatusDLO
-          correctStart 
-          correctCherished
-        -->
-
         <!--<label class="form-label" for="select-box">Select an address</label>-->
         {% if updatetype === "addCorrespondence" %}
         <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
@@ -32,24 +19,15 @@
           <option>9 Post Street, Gateshead</option>
           <option>10 Post Street, Gateshead</option>
         </select>
-        {% elif updatetype === "correctNew" %}
-        <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
-          <option>5 addressess found</option>          
-          <option>2 Other Street, Gateshead</option>
-          <option>4 Other Street, Gateshead</option>
-          <option>6 Other Street, Gateshead</option>
-          <option>8 Other Street, Gateshead</option>
-          <option>10 Other Street, Gateshead</option>
-        </select>
         {% else %}
         <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
           <option>6 addressess found</option>
-          <option>2 Church Street, Gateshead</option>
-          <option>4 Church Street, Gateshead</option>
-          <option>6 Church Street, Gateshead</option>
-          <option>8 Church Street, Gateshead</option>
-          <option>10 Church Street, Gateshead</option>
-          <option>12 Church Street, Gateshead</option>
+          <option>2 New Street, Gateshead</option>
+          <option>4 New Street, Gateshead</option>
+          <option>6 New Street, Gateshead</option>
+          <option>8 New Street, Gateshead</option>
+          <option>10 New Street, Gateshead</option>
+          <option>12 New Street, Gateshead</option>
         </select>
         {% endif %}
       </div>
@@ -68,21 +46,14 @@
             <li>7 Post Street</li>
             <li>Gateshead</li>
             <li>Tyne &amp; Wear</li>
-            <li>NE11 4HN</li>
-          </ul>
-          {% elif updatetype === "correctNew" %}
-          <ul>
-            <li>4 Other Street</li>
-            <li>Gateshead</li>
-            <li>Tyne &amp; Wear</li>
-            <li>NE41 1HN</li>
+            <li>NE11 1HH</li>
           </ul>
           {% else %}
           <ul>
-            <li>6 Church Street</li>
+            <li>2 New Street</li>
             <li>Gateshead</li>
             <li>Tyne &amp; Wear</li>
-            <li>NE11 4HN</li>
+            <li>NE11 1HH</li>
           </ul>
           {% endif %}
         </div>

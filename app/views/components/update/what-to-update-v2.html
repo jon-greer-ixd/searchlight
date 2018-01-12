@@ -22,7 +22,6 @@
   correctCherished
 -->
 
-      
       <div class="form-group">
 
         <div class="multiple-choice" data-target="contact-by-email">
@@ -55,10 +54,17 @@
                 <label for="update_status">Update the status</label>
               {% endif %}
             </div>
+            {% if cherish === false %}
             <div class="multiple-choice">
-              <input id="cherish" type="radio" name="data" value="update_cherished">
+              <input id="cherish" type="radio" name="data" value="update_cheris">
               <label for="cherish">Add a cherished line</label>
             </div>
+            {% else %}
+            <div class="multiple-choice">
+              <input id="cherish" type="radio" name="data" value="update_cherish">
+              <label for="cherish">Update the cherished line</label>
+            </div>
+            {% endif %}
           </fieldset>
         </div>
         

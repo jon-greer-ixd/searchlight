@@ -4,11 +4,29 @@
     <div>
     <table class="table">
       
+    {% if updatetype === "updateRemoveCherish" %}
+      <tr>
+        <td><span class="strong">Cherished line</span></td>
+        <td>Flat A</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Date notified</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
     {% if updatetype === "addCorrespondence" %}
       <tr>
-        <td><span class="strong">Correspondence address</span></td>
-        <td>7 Post Street, Gateshead, Tyne and Wear NE11 4HN</td>
-        <td><a>Change</a></td>
+        <td><span class="strong">Current address</span></td>
+        <td>{{addressone}} {{addressfour}}</td>
+        <td> </td>
       </tr>
       <tr>
         <td><span class="strong">Start date</span></td>
@@ -25,19 +43,21 @@
     {% if updatetype === "updateNew" %}
       <tr>
         <td><span class="strong">Current address</span></td>
-        <td>4 Old Street, Gateshead, Tyne and Wear NE11 4HN</td>
+        <td>{{addressone}} {{addressfour}}</td>
         <td> </td>
       </tr>
       <tr>
         <td><span class="strong">New address</span></td>
-        <td>6 Church Street, Gateshead, NE1 1HH</td>
+        <td>{{addresstwo}} {{addressfour}}</td>
         <td><a>Change</a></td>
       </tr>
+<!--
       <tr>
         <td><span class="strong">Cherished line</span></td>
-        <td>Rose Cottage</td>
+        <td>Flat A</td>
         <td><a>Change</a></td>
       </tr>
+-->
       <tr>
         <td><span class="strong">Start date</span></td>
         <td>9 December 2017</td>
@@ -45,7 +65,7 @@
       </tr>
       <tr>
         <td><span class="strong">Date notified</span></td>
-        <td>11 December 2017</td>
+        <td>{{editdate}}</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
@@ -53,12 +73,12 @@
     {% if updatetype === "correctNew" %}
       <tr>
         <td><span class="strong">Current address</span></td>
-        <td>4 Main Street, Gateshead, Tyne and Wear, NE14 1HN</td>
+        <td>{{addressone}} {{addressfour}}</td>
         <td> </td>
       </tr>
       <tr>
         <td><span class="strong">New address</span></td>
-        <td>4 Other Street, Gateshead, Tyne and Wear, NE41 1HN</td>
+        <td>{{addresstwo}} {{addressfour}}</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}
@@ -99,10 +119,10 @@
       </tr>
     {% endif %}
       
-    {% if updatetype === "updateCherished" %}
+    {% if updatetype === "updateCherish" %}
       <tr>
         <td><span class="strong">Address</span></td>
-        <td>4 Main Street, Gateshead, Tyne and Wear NE14 1HN</td>
+        <td>{{addressone}} {{addressfour}}</td>
         <td></td>
       </tr>
       <tr>
@@ -168,49 +188,6 @@
       <tr>
         <td><span class="strong">New cherished line</span></td>
         <td>Flat B</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-      
-      
-      
-
-    {% if correctiontype === "updateNew" or correctiontype === "correctStart" %}
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>6 Church Street, Gateshead, NE1 1HH</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-      
-    {% if correctiontype === "correctNew" %}
-      <tr>
-        <td><span class="strong">Current address</span></td>
-        <td>4 Main Street, Gateshead, Tyne and Wear, NE14 1HN</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Corrected address</span></td>
-        <td>4 Other Street, Gateshead, Tyne and Wear, NE41 1HN England</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-      
-      
-
-    
-
-    {% if correctiontype === "correctStart" %}
-      <tr>
-        <td><span class="strong">Current start date</span></td>
-        <td>9 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">New start date</span></td>
-        <td>9 December 2017</td>
         <td><a>Change</a></td>
       </tr>
     {% endif %}

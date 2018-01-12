@@ -11,28 +11,28 @@
             <ul>
               <li>Residential address</li>
               <li class="sl-secondary-text-color sl-metadata">
-                  1 Dec 1990 – {{editDate}}
+                01 Jan 1990 – {{editDate}}
               </li>
             </ul>
           </div>
 
           <div class="grid-row address-list">
             <div class="column-one-third">
-                {% if previousaddress.correct === true %}
+              {% if previousaddress.correct === true %}
                 <p class="address">
-                {% else %}
+              {% else %}
                 <p class="address incorrect">
-                {% endif %}
-                  {% if previousaddress.cherish != false %}
-                    {{previousaddress.cherish}}<br>
-                  {% endif %}
+              {% endif %}
+              {% if previousaddress.cherish != false %}
+                {{previousaddress.cherish}}<br>
+              {% endif %}
 
-                  {{previousaddress.line}}<br>
-                  Gateshead<br>
-                  Tyne and wear<br>
-                  NE1 1HH<br>
-                  England
-                <p>
+              {{previousaddress.line}}<br>
+              Gateshead<br>
+              Tyne and wear<br>
+              NE1 1HH<br>
+              England
+            <p>
 
             </div>
           </div>
@@ -51,7 +51,7 @@
           <ul>
             <li>Residential address</li>
             <li class="sl-secondary-text-color sl-metadata">
-                1 Jan 1960 - 1 Dec 1990
+                1 Jan 1960 - 01 Jan 1990
             </li>
           </ul>
         </div>
