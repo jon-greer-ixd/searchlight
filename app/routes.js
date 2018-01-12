@@ -4,7 +4,7 @@ var router = express.Router()
 var addressOne = "1 Current Crescent";
 var addressTwo = "2 New Street";
 var addressThree = "7 Post Street";
-var addressFour = ", Gateshead, Tyne and Wear NE1 1HH";
+var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
 /*var defaults = {
 
@@ -39,13 +39,20 @@ correct
   correct to nfa/pwa
   Show correct dates
   Correct the start date 
+  
+cherish
+  Add a line
 
 */
 
 
 /*
 //in progress
-finish update add remove cherish
+Remove a line
+
+Update a line
+Correct a line (update)
+Correct a line (remove)
 
 //to do
 none to live not working
@@ -105,6 +112,30 @@ var updateOmatic = function() {
   if(dataState.updateType === "addCorrespondence") {
     correspondenceAddress.show = true;
   }
+  //cherish
+  if (dataState.updateType == "updateAddCherish") {
+    residentialAddress.cherish = "Flat A";
+    residentialAddress.startDate = content.editDate;
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = true;
+    residentialAddress.updated = true;
+  }
+  if (dataState.updateType === "updateCherish") {
+    residentialAddress.updated = true;
+    residentialAddress.cherish = "Flat B";
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = true;
+    previousAddress.cherish = "Flat A";
+  } 
+  if (dataState.updateType === "correctCherish") {
+    residentialAddress.updated = true;
+    residentialAddress.cherish = "Flat A";
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = false;
+  }
   if(dataState.updateType === "updateRemoveCherish") {
     previousAddress.cherish = "Flat A";
     previousAddress.line = addressOne;
@@ -134,14 +165,6 @@ var updateOmatic = function() {
       previousAddress.correct = true;
     }
   }
-  if (dataState.updateType == "updateCherish") {
-    residentialAddress.cherish = "Flat A";
-    residentialAddress.startDate = content.editDate;
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = true;
-    residentialAddress.updated = true;
-  }
   if(dataState.updateType === "addCorrespondence") {
     dataState.correspondenceAdded = true;
   }
@@ -151,7 +174,6 @@ var updateOmatic = function() {
     previousAddress.line = addressThree;
     previousAddress.show = true;
   }
-  //correct
   if (dataState.updateType === "correctNew") {
     previousAddress.cherish = residentialAddress.cherish;
     previousAddress.line = addressOne;
@@ -178,13 +200,6 @@ var updateOmatic = function() {
     previousAddress.correct = false;
     // update the dates
   } 
-  if (dataState.updateType === "correctCherish") {
-    residentialAddress.updated = true;
-    residentialAddress.cherish = "Flat A";
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = false;
-  }
 
 
 }
@@ -211,7 +226,7 @@ var content = {
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
       this.pageTitle = "Update a residential address status";
-    } else if (dataState.updateType == "updateCherish") {
+    } else if (dataState.updateType == "updateAddCherish") {
       this.pageTitle = "Add a cherished line to an address";
     } else if (dataState.updateType == "addCorrespondence") {
       this.pageTitle = "Add a correspondence address";
@@ -393,8 +408,8 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('address-search')
-  } else if (req.query.data === 'update_cherish') {
-    dataState.updateType = "updateCherish";
+  } else if (req.query.data === 'update_add_cherish') {
+    dataState.updateType = "updateAddCherish";
     dataState.cherished = true;
     content.setPageTitle();
     console.log(dataState.updateType);
@@ -426,7 +441,6 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('address-search')
-    
     //corrections
   } else if (req.query.data === 'correct_new') {
     dataState.updateType = "correctNew";
@@ -457,7 +471,12 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('dates')
-    //correct cherish
+    //cherish
+  } else if (req.query.data === 'update_cherish') {
+    dataState.updateType = "updateCherish";
+    content.setPageTitle();
+    console.log(dataState.updateType);
+    res.redirect('cherish-line')
   } else if (req.query.data === 'correct_cherish') {
     dataState.updateType = "correctCherish";
     content.setPageTitle();
