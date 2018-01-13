@@ -92,10 +92,17 @@
                 <input id="correct-date" type="radio" name="data" value="correct_date">
                 <label for="correct-date">Correct the start date</label>
               </div>
+              {% if cherish === false %}
+              <div class="multiple-choice">
+                <input id="correct-cherish" type="radio" name="data" value="correct_add_cherish">
+                <label for="correct-cherish">Add a cherished line</label>
+              </div>
+              {% else %}
               <div class="multiple-choice">
                 <input id="correct-cherish" type="radio" name="data" value="correct_cherish">
                 <label for="correct-cherish">Correct the cherished line</label>
               </div>
+              {% endif %}                
           </fieldset>
         </div>  
         

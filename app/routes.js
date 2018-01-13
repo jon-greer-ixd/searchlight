@@ -43,18 +43,24 @@ correct
 cherish
   Add a line
   Remove a line
+  Change a line (update)
+  Correct a line (update)
+  Correct a line (remove)
 
 */
 
 
 /*
 //in progress
-Change a line (update)
+correct update cherish
 
-Correct a line (update)
-Correct a line (remove)
 
 //to do
+control the dates from the javascript not the html
+check cherish page titles
+correct remove cherish
+design cherish page
+
 none to live not working
 Reset function
 
@@ -112,7 +118,7 @@ var updateOmatic = function() {
   if(dataState.updateType === "addCorrespondence") {
     correspondenceAddress.show = true;
   }
-  //cherish
+  //cherish - add
   if (dataState.updateType === "updateAddCherish") {
     residentialAddress.cherish = "Flat A";
     residentialAddress.startDate = content.editDate;
@@ -122,18 +128,18 @@ var updateOmatic = function() {
     previousAddress.show = true;
     previousAddress.correct = true;
   }
-
-  if (dataState.updateType === "updateCherish") {
-    residentialAddress.updated = true;
-    residentialAddress.cherish = "Flat B";
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = true;
-    previousAddress.cherish = "Flat A";
-  } 
-  if (dataState.updateType === "correctCherish") {
+  //cherish - correct
+  if (dataState.updateType === "correctCherish") { //remove
     residentialAddress.updated = true;
     residentialAddress.cherish = "Flat A";
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = false;
+  }
+  if (dataState.updateType === "correctAddCherish") {
+    residentialAddress.updated = true;
+    residentialAddress.cherish = "Flat A";
+    residentialAddress.startDate = "01 Jan 1990";
     previousAddress.line = addressOne;
     previousAddress.show = true;
     previousAddress.correct = false;
@@ -162,6 +168,7 @@ var updateOmatic = function() {
     previousAddress.correct = false;
     previousAddress.show = true;
     residentialAddress.cherish = false;
+    previousAddress.startDate = content.editDate;
     residentialAddress.line = addressOne;
     residentialAddress.updated = true;
   }
@@ -419,6 +426,9 @@ router.get('/update/cherish-handler', function (req, res) {
   if (dataState.updateType === "updateAddCherish") {
     res.redirect('dates')
   }
+  if (dataState.updateType === "correctAddCherish") {
+    res.redirect('check')
+  }
   if (req.query.data === "remove_cherish") {
     if (dataState.updateType === "correctCherish") {
       dataState.updateType = "correctRemoveCherish";
@@ -470,11 +480,6 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('address-search')
-  } else if (req.query.data === 'update_add_cherish') {
-    dataState.updateType = "updateAddCherish";
-    dataState.cherished = true;
-    content.setPageTitle();
-    res.redirect('cherish-line')
     //status
   } else if (req.query.data === 'update_status') {
     dataState.updateType = "updateStatus";
@@ -533,6 +538,11 @@ router.get(/update-type-handler/, function (req, res) {
     console.log(dataState.updateType);
     res.redirect('dates')
     //cherish
+  } else if (req.query.data === 'update_add_cherish') {
+    dataState.updateType = "updateAddCherish";
+    dataState.cherished = true;
+    content.setPageTitle();
+    res.redirect('cherish-line')
   } else if (req.query.data === 'update_cherish') {
     dataState.updateType = "updateCherish";
     content.setPageTitle();
@@ -540,6 +550,11 @@ router.get(/update-type-handler/, function (req, res) {
     res.redirect('cherish-line')
   } else if (req.query.data === 'correct_cherish') {
     dataState.updateType = "correctCherish";
+    content.setPageTitle();
+    console.log(dataState.updateType);
+    res.redirect('cherish-line')
+  } else if (req.query.data === 'correct_add_cherish') {
+    dataState.updateType = "correctAddCherish";
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('cherish-line')

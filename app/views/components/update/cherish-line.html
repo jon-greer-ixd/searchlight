@@ -1,4 +1,4 @@
-{% if updatetype === "updateAddCherish" %}
+{% if updatetype === "updateAddCherish" or updatetype === "correctAddCherish" %}
   <h2 class="heading-medium question">What is the cherished line of this address?</h2>
 {% else %}
   <h2 class="heading-medium question">Head 2</h2>
@@ -22,7 +22,7 @@
         <p>What is the cherished line of this address</p>
       </legend>
 
-      {% if updatetype === "updateAddCherish" %}
+      {% if updatetype === "updateAddCherish" or updatetype === "correctAddCherish" %}
 
           <div class="form-group">
             <fieldset>
