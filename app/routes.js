@@ -42,15 +42,15 @@ correct
   
 cherish
   Add a line
+  Remove a line
 
 */
 
 
 /*
 //in progress
-Remove a line
+Change a line (update)
 
-Update a line
 Correct a line (update)
 Correct a line (remove)
 
@@ -113,14 +113,16 @@ var updateOmatic = function() {
     correspondenceAddress.show = true;
   }
   //cherish
-  if (dataState.updateType == "updateAddCherish") {
+  if (dataState.updateType === "updateAddCherish") {
     residentialAddress.cherish = "Flat A";
     residentialAddress.startDate = content.editDate;
+    residentialAddress.updated = true;
     previousAddress.line = addressOne;
+    previousAddress.cherish = false;
     previousAddress.show = true;
     previousAddress.correct = true;
-    residentialAddress.updated = true;
   }
+
   if (dataState.updateType === "updateCherish") {
     residentialAddress.updated = true;
     residentialAddress.cherish = "Flat B";
@@ -145,6 +147,34 @@ var updateOmatic = function() {
     residentialAddress.line = addressOne;
     residentialAddress.updated = true;
   }
+  if(dataState.updateType === "correctChangeCherish") {
+    previousAddress.cherish = "Flat A";
+    previousAddress.line = addressOne;
+    previousAddress.correct = false;
+    previousAddress.show = true;
+    residentialAddress.cherish = "Flat B";
+    residentialAddress.line = addressOne;
+    residentialAddress.updated = true;
+  }
+  if(dataState.updateType === "correctRemoveCherish") {
+    previousAddress.cherish = "Flat A";
+    previousAddress.line = addressOne;
+    previousAddress.correct = false;
+    previousAddress.show = true;
+    residentialAddress.cherish = false;
+    residentialAddress.line = addressOne;
+    residentialAddress.updated = true;
+  }
+  if(dataState.updateType === "updateChangeCherish") {
+    previousAddress.cherish = "Flat A";
+    previousAddress.line = addressOne;
+    previousAddress.correct = true;
+    previousAddress.show = true;
+    residentialAddress.cherish = "Flat B";
+    residentialAddress.line = addressOne;
+    residentialAddress.updated = true;
+  }
+  // add new
   if (dataState.updateType === "updateNew") {
     previousAddress.cherish = residentialAddress.cherish;
     previousAddress.line = addressOne;
@@ -384,6 +414,38 @@ router.get('/update/cherish-line', function (req, res) {
   })
 })
 
+router.get('/update/cherish-handler', function (req, res) {
+  console.log("here " + req.query.data);
+  if (dataState.updateType === "updateAddCherish") {
+    res.redirect('dates')
+  }
+  if (req.query.data === "remove_cherish") {
+    if (dataState.updateType === "correctCherish") {
+      dataState.updateType = "correctRemoveCherish";
+      console.log(dataState.updateType);
+      res.redirect('check')
+    } 
+    if (dataState.updateType === "updateCherish") {
+      dataState.updateType = "updateRemoveCherish";
+      console.log(dataState.updateType);
+      res.redirect('dates')
+    }
+  }
+  if (req.query.data === "change_cherish") {
+    if (dataState.updateType === "correctCherish") {
+      //here
+      dataState.updateType = "correctChangeCherish";
+      console.log(dataState.updateType);
+      res.redirect('check')
+    } 
+    if (dataState.updateType === "updateCherish") {
+      dataState.updateType = "updateChangeCherish";
+      console.log(dataState.updateType);
+      res.redirect('dates')
+    }
+  }
+})
+
 router.get('/update/address-search', function (req, res) {
   res.render('update/address-search', {
     updatetype : dataState.updateType,
@@ -412,7 +474,6 @@ router.get(/update-type-handler/, function (req, res) {
     dataState.updateType = "updateAddCherish";
     dataState.cherished = true;
     content.setPageTitle();
-    console.log(dataState.updateType);
     res.redirect('cherish-line')
     //status
   } else if (req.query.data === 'update_status') {
@@ -504,13 +565,6 @@ router.get('/update/search-results-handler', function (req, res) {
   }
 })
 
-router.get('/update/cherish-handler', function (req, res) {
-  if (dataState.updateType === "correctCherish") {
-    res.redirect('check')
-  } else {
-    res.redirect('dates')
-  }
-})
 
 router.get('/update/check', function (req, res) {
   res.render('update/check', {
