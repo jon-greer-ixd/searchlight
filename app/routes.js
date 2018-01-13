@@ -6,22 +6,6 @@ var addressTwo = "2 New Street";
 var addressThree = "7 Post Street";
 var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
-/*var defaults = {
-
-
-// if resaddress.cherrished === true > "Update the cherished line"
-
-var user = {
-  resetUser : function () {
-    for (var key in defaults) {
-      if (defaults.hasOwnProperty(key)) {
-        user[key] = defaults[key];
-      }
-    }
-  },...
-  user.resetUser();
-*/
-
 /*
 
 update
@@ -46,20 +30,22 @@ cherish
   Change a line (update)
   Correct a line (update)
   Correct a line (remove)
+  correct update cherish
+
 
 */
 
 
 /*
 //in progress
-correct update cherish
 
 
 //to do
-control the dates from the javascript not the html
-check cherish page titles
-correct remove cherish
 design cherish page
+check your answers for new correction types
+check cherish page titles
+control the dates from the javascript not the html
+correct remove cherish
 
 none to live not working
 Reset function
@@ -129,13 +115,6 @@ var updateOmatic = function() {
     previousAddress.correct = true;
   }
   //cherish - correct
-  if (dataState.updateType === "correctCherish") { //remove
-    residentialAddress.updated = true;
-    residentialAddress.cherish = "Flat A";
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = false;
-  }
   if (dataState.updateType === "correctAddCherish") {
     residentialAddress.updated = true;
     residentialAddress.cherish = "Flat A";
