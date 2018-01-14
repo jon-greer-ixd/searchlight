@@ -42,17 +42,16 @@ cherish
 
 //to do
 design cherish page
+tidy up check your answers
+control the dates from the javascript not the html
 check your answers for new correction types
 check cherish page titles
-control the dates from the javascript not the html
-correct remove cherish
 
 none to live not working
 Reset function
 
 view maintenance data
 make notifications work correctly
-tidy up check your answers
 */
 
 var resetAll = function() {
