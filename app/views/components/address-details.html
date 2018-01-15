@@ -36,10 +36,14 @@
       <ul>
         <li>Residential address</li>
         <li class="sl-secondary-text-color sl-metadata">
-          {% if residentialaddress.updated === true and updatetype != "correctDate" and updatetype != "correcttonew" %}
-            {{editDate}}
+          {% if residentialaddress.updated === true %} 
+            {% if updatetype === "correctDate" or updatetype === "correctToNew" or updatetype === "correctNew" or updatetype === "correctStatusDlo" or updatetype === "correctChangeCherish" or updatetype === "correctAddCherish" or updatetype === "correctRemoveCherish" %}
+              {{startdate}} 
+            {% else %}
+              {{editDate}}
+            {% endif %}
           {% else %}
-            {{startdate}} 
+            {{startdate}}
           {% endif %}
           – present
         </li>
@@ -76,21 +80,55 @@
         {% endif %}
         </li>
       </ul>
-<!--
+      
       <details>
-        <summary>
-          <span class="summary update-summary">Updated just now</span>
-        </summary>
-        <div class="maintenance">
-          This is the maintenance data
+        
+          {% if residentialaddress.updated %}
+            <summary class="update-summary recent">
+              <span class="summary">
+                Updated just now - view
+              </span>
+            </summary>
+          {% else %}
+            <summary class="update-summary old">
+              <span class="summary">
+                Updated about 5 years ago - view
+              </span>
+            </summary>
+          {% endif %}
+        
+        <div class="panel panel-border-wide maintenance">
+          <p>Maintenance information</p>
+
+          <ul>
+            <li>Business system</li>
+            <li>PSCS</li>
+          </ul>
+          <ul>
+            <li>Office name</li>
+            <li>Glasgow South DO</li>
+          </ul>
+          <ul>
+            <li>Office code</li>
+            <li>1234</li>
+          </ul>
+          <ul>
+            <li>Telephone number</li>
+            <li>0191 123 456</li>
+          </ul>
+          <ul>
+            <li>Date</li>
+            <li>15 Jan 2018</li>
+          </ul>
         </div>
       </details>
--->
+<!--
       {% if residentialaddress.updated %}
       <p class="date-updated recent">Updated just now</p>
       {% else %}
       <p class="date-updated old">Updated about 5 years ago</p>
       {% endif %}
+-->
 
     </div>
   

@@ -37,20 +37,21 @@ cherish
 
 /*
 //in progress
-view maintenance data
+view maintenance data - should show on all entries except the first one!
 
 
 //to do
+add neils new address pattern in
+update to dead letter office should show previous address in the prevoius addressess 
+remove inline styles
 check and list out updateTypes !
-
-what should check your answers say? - content tidy up
-
+what should check your answers say? - content tidy up - add a correspondence is wrong - end should show the address being ended
 control the dates from the javascript not the html
-
 none to live not working
 Reset function
-
 make notifications work correctly
+
+nino allocation
 */
 
 var resetAll = function() {
@@ -176,6 +177,10 @@ var updateOmatic = function() {
     residentialAddress.status = dataState.newStatus;
     residentialAddress.updated = true;
     if (residentialAddress.status === "nfa" || residentialAddress.status === "pwa") {
+      previousAddress.line = addressOne;
+      previousAddress.show = true;
+      previousAddress.correct = true;
+    } else {
       previousAddress.line = addressOne;
       previousAddress.show = true;
       previousAddress.correct = true;
