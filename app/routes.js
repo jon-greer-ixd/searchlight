@@ -37,19 +37,14 @@ cherish
 
 /*
 //in progress
-check your answers for new correction types
-
-design cherish page
-notifications
-check cherish page titles
-
+view maintenance data
 
 
 //to do
-view maintenance data
-what should check your answers say?
+check and list out updateTypes !
 
-tidy up check your answers
+what should check your answers say? - content tidy up
+
 control the dates from the javascript not the html
 
 none to live not working
@@ -248,7 +243,7 @@ var content = {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
       this.pageTitle = "Update a residential address status";
     } else if (dataState.updateType == "updateAddCherish") {
-      this.pageTitle = "Add a cherished line to an address";
+      this.pageTitle = "Add a cherished line";
     } else if (dataState.updateType == "addCorrespondence") {
       this.pageTitle = "Add a correspondence address";
     } else if (dataState.updateType == "correctStatus" || 
@@ -266,6 +261,8 @@ var content = {
       this.pageTitle = "End a correspondence address";
     } else if (dataState.updateType == "updateRemoveCherish") {
       this.pageTitle = "Remove a cherished line";
+    } else if (dataState.updateType == "correctAddCherish") {
+      this.pageTitle = "Add a cherished line";
     } else {
       this.pageTitle = "Update a residential address";
     }

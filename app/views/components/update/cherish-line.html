@@ -1,7 +1,13 @@
 {% if updatetype === "updateAddCherish" or updatetype === "correctAddCherish" %}
   <h2 class="heading-medium question">What is the cherished line of this address?</h2>
 {% else %}
-  <h2 class="heading-medium question">Head 2</h2>
+  <h2 class="heading-medium question">
+  {% if updatetype === "updateCherish" %}
+    What kind of update do you need to make?
+  {% else %}
+    What kind of change do you need to make?
+  {% endif %}
+   </h2>
 {% endif %}
 
 {% if updatetype === "correctCherish" %} 
@@ -36,17 +42,23 @@
         <div class="form-group">
           <div class="multiple-choice" data-target="contact-by-text">
             <input id="correct" type="radio" name="data" value="remove_cherish">
-            <label for="correct">Remove it</label>
+            <label for="correct">Remove the cherished line</label>
           </div>
           <div class="multiple-choice" data-target="contact-by-email">
             <input id="update" type="radio" name="data" value="change_cherish">
-            <label for="update">Change it</label>
+            <label for="update">
+            {% if updatetype === "updateCherish" %}
+              Update the cherished line
+            {% else %}
+              Correct the cherished line
+            {% endif %}
+            </label>
           </div>
         </div>
         <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
           <div class="form-group">
             <fieldset>
-            <label class="form-label" for="full-name-f1">Enter the cherished line</label>
+            <label class="form-label" for="full-name-f1">Enter the correct cherished line</label>
             <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
             </fieldset>
           </div>
