@@ -124,7 +124,10 @@ html {
 
 table.table {
   td {
-    width: 33%;
+    width: 40%;
+    &:last-child {
+      width: 20%;
+    }
   }
 }
 

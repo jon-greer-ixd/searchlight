@@ -246,7 +246,7 @@ var content = {
   pageTitle : "Update residential address",
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
-      this.pageTitle = "Update a residential address status";
+      this.pageTitle = "Update an address status";
     } else if (dataState.updateType == "updateAddCherish") {
       this.pageTitle = "Add a cherished line";
     } else if (dataState.updateType == "addCorrespondence") {
@@ -255,21 +255,21 @@ var content = {
                dataState.updateType == "correctStatusDlo" || 
                dataState.updateType == "correctStatusLive" || 
                dataState.updateType == "updateStatusLive" ) {
-      this.pageTitle = "Correct a residential address status";
+      this.pageTitle = "Correct an address status";
     } else if (dataState.updateType == "correctCherish") {
       this.pageTitle = "Correct a cherished line";
     } else if (dataState.updateType == "correctNew") {
-      this.pageTitle = "Correct a residential address";
+      this.pageTitle = "Correct an address";
     } else if (dataState.updateType == "correctDate") {
-      this.pageTitle = "Correct a residential address start date";
+      this.pageTitle = "Correct an address start date";
     } else if (dataState.updateType == "end") {
-      this.pageTitle = "End a correspondence address";
+      this.pageTitle = "End an address";
     } else if (dataState.updateType == "updateRemoveCherish") {
       this.pageTitle = "Remove a cherished line";
     } else if (dataState.updateType == "correctAddCherish") {
       this.pageTitle = "Add a cherished line";
     } else {
-      this.pageTitle = "Update a residential address";
+      this.pageTitle = "Update an address";
     }
   }, 
   statusToText : function(status) {
@@ -418,24 +418,27 @@ router.get('/update/cherish-handler', function (req, res) {
   if (req.query.data === "remove_cherish") {
     if (dataState.updateType === "correctCherish") {
       dataState.updateType = "correctRemoveCherish";
+      content.setPageTitle();
       console.log(dataState.updateType);
       res.redirect('check')
     } 
     if (dataState.updateType === "updateCherish") {
       dataState.updateType = "updateRemoveCherish";
+      content.setPageTitle();
       console.log(dataState.updateType);
       res.redirect('dates')
     }
   }
   if (req.query.data === "change_cherish") {
     if (dataState.updateType === "correctCherish") {
-      //here
       dataState.updateType = "correctChangeCherish";
+      content.setPageTitle();
       console.log(dataState.updateType);
       res.redirect('check')
     } 
     if (dataState.updateType === "updateCherish") {
       dataState.updateType = "updateChangeCherish";
+      content.setPageTitle();
       console.log(dataState.updateType);
       res.redirect('dates')
     }
