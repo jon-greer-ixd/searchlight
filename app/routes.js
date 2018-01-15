@@ -41,11 +41,10 @@ view maintenance data - should show on all entries except the first one!
 
 
 //to do
+check updateTypes
 add neils new address pattern in
 update to dead letter office should show previous address in the prevoius addressess 
 remove inline styles
-check and list out updateTypes !
-what should check your answers say? - content tidy up - add a correspondence is wrong - end should show the address being ended
 control the dates from the javascript not the html
 none to live not working
 Reset function
