@@ -32,25 +32,29 @@ cherish
   Correct a line (remove)
   correct update cherish
 
-
 */
 
 
 /*
 //in progress
+check your answers for new correction types
+
+design cherish page
+notifications
+check cherish page titles
+
 
 
 //to do
-design cherish page
+view maintenance data
+what should check your answers say?
+
 tidy up check your answers
 control the dates from the javascript not the html
-check your answers for new correction types
-check cherish page titles
 
 none to live not working
 Reset function
 
-view maintenance data
 make notifications work correctly
 */
 
@@ -121,6 +125,7 @@ var updateOmatic = function() {
     previousAddress.line = addressOne;
     previousAddress.show = true;
     previousAddress.correct = false;
+    dataState.cherishedLineCorrected = true;
   }
   if(dataState.updateType === "updateRemoveCherish") {
     previousAddress.cherish = "Flat A";
@@ -149,6 +154,7 @@ var updateOmatic = function() {
     previousAddress.startDate = content.editDate;
     residentialAddress.line = addressOne;
     residentialAddress.updated = true;
+    dataState.cherishedLineCorrected = true;
   }
   if(dataState.updateType === "updateChangeCherish") {
     previousAddress.cherish = "Flat A";

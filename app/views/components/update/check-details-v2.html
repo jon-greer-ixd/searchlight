@@ -135,6 +135,35 @@
       </tr>
     {% endif %}
       
+    {% if updatetype === "correctAddCherish" %}
+      <tr>
+        <td><span class="strong">Cherished line</span></td>
+        <td>Flat A</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
+    {% if updatetype === "correctRemoveCherish" %}
+      <tr>
+        <td><span class="strong">Line to be removed</span></td>
+        <td>Flat A</td>
+        <td></td>
+      </tr>
+    {% endif %}
+      
+    {% if updatetype === "correctChangeCherish" %}
+      <tr>
+        <td><span class="strong">Current cherished line</span></td>
+        <td>Flat A</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="strong">New cherished line</span></td>
+        <td>Flat B</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+      
     {% if updatetype === "updateCherish" %}
       <tr>
         <td><span class="strong">Address</span></td>
