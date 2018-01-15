@@ -268,6 +268,8 @@ var content = {
       this.pageTitle = "Remove a cherished line";
     } else if (dataState.updateType == "correctAddCherish") {
       this.pageTitle = "Add a cherished line";
+    } else if (dataState.updateType == "updateChangeCherish") {
+      this.pageTitle = "Update a cherished line";
     } else {
       this.pageTitle = "Update an address";
     }
