@@ -37,13 +37,10 @@ cherish
 
 /*
 //in progress
-view maintenance data - should show on all entries except the first one!
-
 
 //to do
-check updateTypes
 add neils new address pattern in
-update to dead letter office should show previous address in the prevoius addressess 
+check updateTypes
 remove inline styles
 control the dates from the javascript not the html
 none to live not working
@@ -214,7 +211,7 @@ var updateOmatic = function() {
   }
   if (dataState.updateType === "correctDate") {
     residentialAddress.updated = true;
-    residentialAddress.startDate = "30 Dec 2000";
+    residentialAddress.startDate = "30 Nov 1990";
     previousAddress.line = addressOne;
     previousAddress.show = true;
     previousAddress.correct = false;
