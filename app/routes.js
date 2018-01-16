@@ -34,9 +34,10 @@ cherish
 
 */
 
-
 /*
 //in progress
+nino allocation
+
 
 //to do
 add neils new address pattern in
@@ -47,7 +48,6 @@ none to live not working
 Reset function
 make notifications work correctly
 
-nino allocation
 */
 
 var resetAll = function() {
