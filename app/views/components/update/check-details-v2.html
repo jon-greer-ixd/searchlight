@@ -17,7 +17,7 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Date notified</span></td>
+        <td><span class="strong">Notified start date</span></td>
         <td>11 December 2017</td>
         <td><a>Change</a></td>
       </tr>
@@ -31,7 +31,7 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Date notified</span></td>
+        <td><span class="strong">Notified end date</span></td>
         <td>19 December 2017</td>
         <td><a>Change</a></td>
       </tr>
@@ -50,7 +50,7 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Date notified</span></td>
+        <td><span class="strong">Notified start date</span></td>
         <td>{{editdate}}</td>
         <td><a>Change</a></td>
       </tr>
@@ -69,7 +69,7 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Date notified</span></td>
+        <td><span class="strong">Notified start date</span></td>
         <td>19 December 2017</td>
         <td><a>Change</a></td>
       </tr>
@@ -88,7 +88,7 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Date notified</span></td>
+        <td><span class="strong">Notified start date</span></td>
         <td>19 December 2017</td>
         <td><a>Change</a></td>
       </tr>
@@ -102,7 +102,7 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Date notified</span></td>
+        <td><span class="strong">Notified start date</span></td>
         <td>11 December 2017</td>
         <td><a>Change</a></td>
       </tr>
@@ -121,7 +121,7 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Date notified</span></td>
+        <td><span class="strong">Notified start date</span></td>
         <td>19 December 2017</td>
         <td><a>Change</a></td>
       </tr>
@@ -165,7 +165,16 @@
         <td><a>Change</a></td>
       </tr>
       <tr>
-        <td><span class="strong">Notified date</span></td>
+        <td><span class="strong">Notified start date</span></td>
+        <td>01 Jan 1990</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}
+
+    <!-- Correct the notified start date -->
+    {% if updatetype === "correctDateNotified" %}
+      <tr>
+        <td><span class="strong">Notified start date</span></td>
         <td>01 Jan 1990</td>
         <td><a>Change</a></td>
       </tr>

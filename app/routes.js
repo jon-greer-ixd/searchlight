@@ -36,6 +36,7 @@ cherish
 
 /*
 //in progress
+content - notified start date
 nino allocation
 
 
@@ -217,6 +218,13 @@ var updateOmatic = function() {
     previousAddress.correct = false;
     // update the dates
   } 
+  if (dataState.updateType === "correctDateNotified") {
+    residentialAddress.updated = true;
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = false;
+    // update the dates
+  } 
 
 
 }
@@ -266,6 +274,8 @@ var content = {
       this.pageTitle = "Add a cherished line";
     } else if (dataState.updateType == "updateChangeCherish") {
       this.pageTitle = "Update a cherished line";
+    } else if (dataState.updateType == "correctDateNotified") {
+      this.pageTitle = "Correct the notified start date";
     } else {
       this.pageTitle = "Update an address";
     }
@@ -521,6 +531,11 @@ router.get(/update-type-handler/, function (req, res) {
     //date
   } else if (req.query.data === 'correct_date') {
     dataState.updateType = "correctDate";
+    content.setPageTitle();
+    console.log(dataState.updateType);
+    res.redirect('dates')
+  } else if (req.query.data === 'correct_date_notified') {
+    dataState.updateType = "correctDateNotified";
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('dates')
