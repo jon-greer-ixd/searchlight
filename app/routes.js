@@ -241,7 +241,7 @@ var dataState = {
 };
 
 var content = {
-  editDate : "12 Jan 2018",
+  editDate : "16 Jan 2018",
   pageTitle : "Update residential address",
   setPageTitle : function() {
     if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {

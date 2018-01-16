@@ -7,13 +7,42 @@
     NE11 4HN<br>
     England
   </p>
-    <ul>
+  <ul>
     <li class="status-item">
       <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
       <span class="sl-secondary-text-color sl-metadata">Live</span>
     </li>
   </ul>
-  <p class="date-updated recent">Updated just now</p>
+  <details>
+    <summary class="update-summary recent">
+      <span class="summary date-updated recent">
+        Updated just now - view details
+      </span>
+    </summary>
+    <div class="panel panel-border-wide maintenance">
+      <p>Maintenance information</p>
+      <ul>
+        <li>Business system</li>
+        <li>PSCS</li>
+      </ul>
+      <ul>
+        <li>Office name</li>
+        <li>Glasgow South DO</li>
+      </ul>
+      <ul>
+        <li>Office code</li>
+        <li>1234</li>
+      </ul>
+      <ul>
+        <li>Telephone number</li>
+        <li>0191 123 456</li>
+      </ul>
+      <ul>
+        <li>Date</li>
+        <li>{{editDate}}</li>
+      </ul>
+    </div>
+  </details>
   {% else %}
   <p></p>
 {% endif %}
