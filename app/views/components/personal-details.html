@@ -3,12 +3,45 @@
     <div class="column-one-third">
       <p>Name</p>
     </div>
+    
     <div class="column-one-third">
       <ul>
         <li class="strong">MR TOM SMITH</li>
-        <li class="sl-secondary-text-color sl-metadata">Since 14 Dec 2016</li>
-<!--        <li>Previous name</li>-->
+        <li class="sl-secondary-text-color sl-metadata">Since 14 Dec 2016 - <a href="previous-names" style="text-decoration:underline;">show previous names</a></li>
       </ul>
+      
+<!--
+        <details>
+          <summary class="update-summary old">
+            <span class="summary">
+              Since 14 Dec 2016 - view details
+            </span>
+          </summary>
+          <div class="panel panel-border-wide maintenance">
+            <p>Maintenance information</p>
+            <ul>
+              <li>Business system</li>
+              <li>PSCS</li>
+            </ul>
+            <ul>
+              <li>Office name</li>
+              <li>Glasgow South DO</li>
+            </ul>
+            <ul>
+              <li>Office code</li>
+              <li>1234</li>
+            </ul>
+            <ul>
+              <li>Telephone number</li>
+              <li>0191 123 456</li>
+            </ul>
+            <ul>
+              <li>Date changed</li>
+              <li>14 Dec 2016</li>
+            </ul>
+          </div>
+        </details>
+-->
     </div>
   </div>
 
@@ -54,3 +87,10 @@
     </div>
   </div>
 </div>
+
+<hr>
+  {% include "components/other-personal-details.html" %}
+
+<!--
+<hr>
+  {% include "components/personal-details-history.html" %}-->
