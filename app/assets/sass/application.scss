@@ -380,17 +380,51 @@ p.address {
   }
 }
 
-.maintenance ul {
-  @include clearfix;
-  border-bottom: 1px solid lightgrey;
-  font-size: 17px;
-  li {
-    padding : 10px 0;
-    &:first-child {
-    width : 50%;
+.maintenance {
+  ul {
+    @include clearfix;
+    border-bottom: 1px solid lightgrey;
+    font-size: 17px;
+    li {
+      padding : 10px 0;
+      &:first-child {
+      width : 50%;
+      }
+      width : 50%;
+      float : left;
     }
-    width : 50%;
-    float : left;
+  }
+}
+.history {
+  @include clearfix;
+  margin-bottom: 40px;
+  font-size: 17px;
+  line-height: 3;
+  .heading-small {
+    font-family: $sl-font;
+    font-size: 19px;
+    color: #333333;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+    font-weight: 600;
+  }
+  ul {
+    &.change {
+      width :35%;
+    }
+    &.office-code, &.system {
+      width :10%;
+    }
+    float: left;
+    width : 15%;
+    li {
+      border-bottom: 1px solid lightgrey;
+      &:first-child {
+        color: #005ea5;
+      }
+      padding : 0;
+      float: none;
+    }
   }
 }
 
@@ -404,7 +438,10 @@ p.address {
   font-size: 17px;
 }
 
-
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 //#maint {
 //  background-color: lightgray;
