@@ -52,6 +52,10 @@ $path: "/public/images/";
   padding-top: 108px!important;
 }
 
+.super-slim-header {
+  padding-top: 0!important;
+}
+
 .slim {
   height: 65px!important;
   .sl-account-primary-name {
@@ -483,4 +487,68 @@ hr {
   zoom: 1;
   filter: alpha(opacity=0);
   opacity: 0;
+}
+
+
+// task-list
+.task-list {
+  h2 {
+    font-family : "sl-font", Arial, sans-serif;
+  }
+  margin-top: 0!important;
+  @include media(tablet) {
+    margin-top: ($gutter * 2);
+  }
+}
+
+.task-list-section {
+  display: table;
+
+  @include bold-24;
+  padding-bottom: ($gutter / 6);
+}
+
+.task-list-section-number {
+  display: table-cell;
+  padding-right: ($gutter / 6);
+
+  @include media(tablet) {
+    min-width: 25px;
+    padding-right: 0;
+  }
+}
+
+.task-list-items {
+  margin-bottom: $gutter;
+  @include media(tablet) {
+    margin-bottom: ($gutter * 2);
+  }
+
+  @include media(tablet) {
+    padding-left: 25px;
+  }
+}
+
+.task-list-item {
+  border-bottom: 1px solid $border-colour;
+  padding-top: $gutter-one-third;
+  padding-bottom: $gutter-one-third;
+  @extend %contain-floats;
+}
+
+.task-list-item:first-child {
+  border-top: 1px solid $border-colour;
+}
+
+.task-name {
+  width: $two-thirds;
+  float: left;
+}
+
+.task-completed {
+  @include phase-tag;
+  font-family : "sl-font", Arial, sans-serif;
+  float: right;
+  margin-right: 0;
+  padding-top: 3px;
 }

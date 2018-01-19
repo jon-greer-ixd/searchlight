@@ -6,6 +6,9 @@ var addressTwo = "2 New Street";
 var addressThree = "7 Post Street";
 var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
+const NINO = require('./nino.js');
+
+
 /*
 
 update
@@ -635,6 +638,22 @@ router.get(/check-answers-handler/, function (req, res) {
   }
   res.redirect('account')
 })
+
+
+//*****************
+// ACCOUNT CREATION 
+//*****************
+
+
+//non-mandatory-handler
+router.get(/v2-non-mandatory-handler/, function (req, res) {
+  if (req.query.data === "yes") {
+    res.redirect('task-list')
+  } else {
+    res.redirect('check')
+  }
+})
+
 
 
 //*********
