@@ -265,7 +265,7 @@ var content = {
     } else if (dataState.updateType == "correctNew") {
       this.pageTitle = "Correct an address";
     } else if (dataState.updateType == "correctDate") {
-      this.pageTitle = "Correct an address start date";
+      this.pageTitle = "Correct a start date or notified start date";
     } else if (dataState.updateType == "end") {
       this.pageTitle = "End an address";
     } else if (dataState.updateType == "updateRemoveCherish") {

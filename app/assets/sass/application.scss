@@ -227,7 +227,7 @@ table.table {
   padding-bottom: 0;
 }
 
-form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label, .form-hint {
+form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label, .form-hint {
   font-family: "sl-font", "Arial", sans-serif;
 }
 
@@ -463,3 +463,24 @@ hr {
 //  padding: 5px;
 //  font-size: 17px;
 //}
+
+.multiple-choice [type=checkbox] + label::after {
+  content: "";
+  border: solid;
+  border-width: 0 0 5px 5px;
+  background: transparent;
+  border-top-color: transparent;
+  width: 17px;
+  height: 8px;
+  position: absolute;
+  top: 11px;
+  left: 8px;
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  zoom: 1;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}

@@ -4,28 +4,28 @@
   {% elif updatetype === "correctDateNotified" %}
       What is the notified start date?
   {% elif updatetype === "correctDate" %}
-      What is the start date?
+      Which date do you need to correct?
   {% else %}
       What is the start date and the notified start date?
   {% endif %}
-  
 </h2>
 
-<!--
-{% if updatetype === "correctDate" %} 
-  <div class="panel panel-border-wide">
-    <ul>
-      <li>
-        Current start date: <span class="">01 Jan 1990</span>
-      </li>
-      <li>
-        Current date notified: <span class="">01 Jan 1990</span>
-      </li>
-    </ul>
-  </div>
-<br>
+<div class="panel panel-border-wide">
+  <ul>
+    <li>
+      Current start date: <span class="">01 Jan 1990</span>
+    </li>
+    <li>
+      Current notified start date: <span class="">01 Jan 1990</span>
+    </li>
+  </ul>
+</div>
+
+
+  <p>Select all that apply</p>
+
+  {% if updatetype === "correctDate" %}
 {% endif %}
--->
 
 <div class="grid-row">
   <div class="column-one-half">
@@ -44,18 +44,41 @@
       </div>
       
       {% elif updatetype === "correctDate" %}
-            
-      <div class="form-group">
-        <fieldset>
-            <label class="form-label" for="full-name-f1">
+        <div class="form-group">
+          <fieldset>
+
+            <div class="multiple-choice" data-target="start-date">
+              <input id="nationalities-other" name="nationalities" type="checkbox" value="start">
+              <label for="nationalities-other">Start date</label>
+            </div>
+
+            <div class="panel panel-border-narrow js-hidden" id="start-date">
+              <label class="form-label" for="start-date">
+                What is the start date?
+                <span class="form-hint">
+                  For example 31 8 1979
+                </span>
+              </label>
+              <input class="form-control" type="text" id="start-date" name="start-date">
+            </div>
+
+            <div class="multiple-choice" data-target="notified-date">
+              <input id="notified" name="notified" type="checkbox" value="notified">
+              <label for="notified">Notified start date</label>
+            </div>
+
+            <div class="panel panel-border-narrow js-hidden" id="notified-date">
+            <label class="form-label" for="start-date">
+              What is the notified start date?
               <span class="form-hint">
                 For example 31 8 1979
               </span>
             </label>
-          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
-        </fieldset>
-      </div>
-      
+              <input class="form-control" type="text" id="start-date" name="start-date">
+            </div>
+
+          </fieldset>
+        </div>
       {% else %}
       
       <div class="form-group">
