@@ -6,6 +6,11 @@ var addressTwo = "2 New Street";
 var addressThree = "7 Post Street";
 var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
+var NINO = require('./nino.js');
+
+var dates = require('./dates.js');
+
+
 /*
 
 update
@@ -34,9 +39,11 @@ cherish
 
 */
 
-
 /*
 //in progress
+content - notified start date
+nino allocation
+
 
 //to do
 add neils new address pattern in
@@ -47,7 +54,6 @@ none to live not working
 Reset function
 make notifications work correctly
 
-nino allocation
 */
 
 var resetAll = function() {
@@ -217,6 +223,13 @@ var updateOmatic = function() {
     previousAddress.correct = false;
     // update the dates
   } 
+  if (dataState.updateType === "correctDateNotified") {
+    residentialAddress.updated = true;
+    previousAddress.line = addressOne;
+    previousAddress.show = true;
+    previousAddress.correct = false;
+    // update the dates
+  } 
 
 
 }
@@ -257,7 +270,7 @@ var content = {
     } else if (dataState.updateType == "correctNew") {
       this.pageTitle = "Correct an address";
     } else if (dataState.updateType == "correctDate") {
-      this.pageTitle = "Correct an address start date";
+      this.pageTitle = "Correct a start date or notified start date";
     } else if (dataState.updateType == "end") {
       this.pageTitle = "End an address";
     } else if (dataState.updateType == "updateRemoveCherish") {
@@ -266,6 +279,8 @@ var content = {
       this.pageTitle = "Add a cherished line";
     } else if (dataState.updateType == "updateChangeCherish") {
       this.pageTitle = "Update a cherished line";
+    } else if (dataState.updateType == "correctDateNotified") {
+      this.pageTitle = "Correct the notified start date";
     } else {
       this.pageTitle = "Update an address";
     }
@@ -524,6 +539,11 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle();
     console.log(dataState.updateType);
     res.redirect('dates')
+  } else if (req.query.data === 'correct_date_notified') {
+    dataState.updateType = "correctDateNotified";
+    content.setPageTitle();
+    console.log(dataState.updateType);
+    res.redirect('dates')
     //cherish
   } else if (req.query.data === 'update_add_cherish') {
     dataState.updateType = "updateAddCherish";
@@ -620,6 +640,22 @@ router.get(/check-answers-handler/, function (req, res) {
   }
   res.redirect('account')
 })
+
+
+//*****************
+// ACCOUNT CREATION 
+//*****************
+
+
+//non-mandatory-handler
+router.get(/v2-non-mandatory-handler/, function (req, res) {
+  if (req.query.data === "yes") {
+    res.redirect('task-list')
+  } else {
+    res.redirect('check')
+  }
+})
+
 
 
 //*********

@@ -52,6 +52,10 @@ $path: "/public/images/";
   padding-top: 108px!important;
 }
 
+.super-slim-header {
+  padding-top: 0!important;
+}
+
 .slim {
   height: 65px!important;
   .sl-account-primary-name {
@@ -105,6 +109,11 @@ html {
     clear: both;
   }
 }
+
+.last-col {
+  text-align: right;
+}
+
 
 //address
 #address-pane {
@@ -222,7 +231,7 @@ table.table {
   padding-bottom: 0;
 }
 
-form, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label, .form-hint {
+form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-label-bold, .form-date .form-group label, .form-hint {
   font-family: "sl-font", "Arial", sans-serif;
 }
 
@@ -375,17 +384,51 @@ p.address {
   }
 }
 
-.maintenance ul {
-  @include clearfix;
-  border-bottom: 1px solid lightgrey;
-  font-size: 17px;
-  li {
-    padding : 10px 0;
-    &:first-child {
-    width : 50%;
+.maintenance {
+  ul {
+    @include clearfix;
+    border-bottom: 1px solid lightgrey;
+    font-size: 17px;
+    li {
+      padding : 10px 0;
+      &:first-child {
+      width : 50%;
+      }
+      width : 50%;
+      float : left;
     }
-    width : 50%;
-    float : left;
+  }
+}
+.history {
+  @include clearfix;
+  margin-bottom: 40px;
+  font-size: 17px;
+  line-height: 3;
+  .heading-small {
+    font-family: $sl-font;
+    font-size: 19px;
+    color: #333333;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+    font-weight: 600;
+  }
+  ul {
+    &.change {
+      width :35%;
+    }
+    &.office-code, &.system {
+      width :10%;
+    }
+    float: left;
+    width : 15%;
+    li {
+      border-bottom: 1px solid lightgrey;
+      &:first-child {
+        color: #005ea5;
+      }
+      padding : 0;
+      float: none;
+    }
   }
 }
 
@@ -399,7 +442,10 @@ p.address {
   font-size: 17px;
 }
 
-
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 //#maint {
 //  background-color: lightgray;
@@ -421,3 +467,88 @@ p.address {
 //  padding: 5px;
 //  font-size: 17px;
 //}
+
+.multiple-choice [type=checkbox] + label::after {
+  content: "";
+  border: solid;
+  border-width: 0 0 5px 5px;
+  background: transparent;
+  border-top-color: transparent;
+  width: 17px;
+  height: 8px;
+  position: absolute;
+  top: 11px;
+  left: 8px;
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  zoom: 1;
+  filter: alpha(opacity=0);
+  opacity: 0;
+}
+
+
+// task-list
+.task-list {
+  h2 {
+    font-family : "sl-font", Arial, sans-serif;
+  }
+  margin-top: 0!important;
+  @include media(tablet) {
+    margin-top: ($gutter * 2);
+  }
+}
+
+.task-list-section {
+  display: table;
+
+  @include bold-24;
+  padding-bottom: ($gutter / 6);
+}
+
+.task-list-section-number {
+  display: table-cell;
+  padding-right: ($gutter / 6);
+
+  @include media(tablet) {
+    min-width: 25px;
+    padding-right: 0;
+  }
+}
+
+.task-list-items {
+  margin-bottom: $gutter;
+  @include media(tablet) {
+    margin-bottom: ($gutter * 2);
+  }
+
+  @include media(tablet) {
+    padding-left: 25px;
+  }
+}
+
+.task-list-item {
+  border-bottom: 1px solid $border-colour;
+  padding-top: $gutter-one-third;
+  padding-bottom: $gutter-one-third;
+  @extend %contain-floats;
+}
+
+.task-list-item:first-child {
+  border-top: 1px solid $border-colour;
+}
+
+.task-name {
+  width: $two-thirds;
+  float: left;
+}
+
+.task-completed {
+  @include phase-tag;
+  font-family : "sl-font", Arial, sans-serif;
+  float: right;
+  margin-right: 0;
+  padding-top: 3px;
+}
