@@ -5,5 +5,4 @@ govuk_modules
 *.log
 lib/govuk_template.html
 .DS_Store
-/test
 /test*
