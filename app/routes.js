@@ -646,7 +646,6 @@ router.get(/check-answers-handler/, function (req, res) {
 // ACCOUNT CREATION 
 //*****************
 
-
 //non-mandatory-handler
 router.get(/v2-non-mandatory-handler/, function (req, res) {
   if (req.query.data === "yes") {
