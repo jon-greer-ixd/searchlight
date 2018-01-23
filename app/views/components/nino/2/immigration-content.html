@@ -5,48 +5,39 @@
       <form class="form" method="get" action="task-list">
 
         <fieldset class="form-group">
+          <legend class="">Immigration status</legend>
+          <div class="multiple-choice">
+            <input id="asylum-seeker" type="radio" name="data" value="asylum-seeker">
+            <label for="asylum-seeker">Asylum seeker</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="exceptional-leave" type="radio" name="data" value="exceptional-leave">
+            <label for="exceptional-leave">Exceptional leave to remain</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="indefinite" type="radio" name="data" value="indefinite">
+            <label for="indefinite">Indefinite leave to remain</label>
+          </div>
+       </fieldset>
+        
+        <fieldset class="form-group">
           <legend class="visuallyhidden">Immigration number</legend>
           <label class="form-label" for="full-name-f1">Immigration reference number</label>
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
         </fieldset>
         
-<!--
-        <fieldset class="form-group">
-          <legend class="">Immigration status</legend>
-          <div class="multiple-choice">
-            <input id="mr" type="radio" name="data" value="mr">
-            <label for="mr">Mr</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="mrs" type="radio" name="data" value="mrs">
-            <label for="mrs">Mrs</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="ms" type="radio" name="data" value="ms">
-            <label for="ms">Ms</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="dr" type="radio" name="data" value="dr">
-            <label for="dr">Dr</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="hrh" type="radio" name="data" value="hrh">
-            <label for="hrh">HRH</label>
-          </div>
-        </fieldset>
--->
-
-        <fieldset class="form-group">
-          <legend class="visuallyhidden">Immigration start date</legend>
-          <label class="form-label" for="full-name-f1">
-            Immigration start date
-            <span class="form-hint">
-              For example 31 8 1979
-            </span>
-          </label>
-          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="10 01 2018">
-        </fieldset>
-
+        {% if createjourney === false %}
+          <fieldset class="form-group">
+            <legend class="visuallyhidden">Immigration start date</legend>
+            <label class="form-label" for="full-name-f1">
+              Immigration start date
+              <span class="form-hint">
+                For example 31 8 1979
+              </span>
+            </label>
+            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="10 01 2018">
+          </fieldset>
+        {% endif %}
 <!--
         <fieldset class="form-group">
           <legend class="visuallyhidden">Name notified start date</legend>

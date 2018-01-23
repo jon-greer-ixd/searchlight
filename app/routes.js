@@ -60,6 +60,8 @@ var resetAll = function() {
   residentialAddress.reset();
   correspondenceAddress.reset();
   previousAddress.reset();
+  
+  createJourney = true;
 };
 
 var residentialAddress = {
@@ -646,6 +648,35 @@ router.get(/check-answers-handler/, function (req, res) {
 // ACCOUNT CREATION 
 //*****************
 
+var createJourney = true;
+
+/*
+Create
+Cant see:
+Name Start Date
+Name Notified Start Date
+are pre populated with the current system date. 
+
+
+Update/insert
+Can edit:
+Name Start Date
+Name Notified Start Date
+are pre populated with the current system date. 
+dont see trace
+*/
+
+
+//type-handler
+router.get(/type-handler/, function (req, res) {
+  if(req.query.data === "create") {
+    createJourney = true;
+  } else {
+    createJourney = false;
+  }
+  console.log(createJourney);
+  res.redirect('name')
+})
 
 //non-mandatory-handler
 router.get(/v2-non-mandatory-handler/, function (req, res) {
@@ -656,6 +687,36 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
   }
 })
 
+//name
+router.get('/nino/2/name/', function (req, res) {
+  res.render('nino/2/name', {
+    createjourney : createJourney
+  })
+})
+
+//address search results
+router.get('/nino/2/results-handler/', function (req, res) {
+  if (createJourney === false) {
+    res.render('nino/2/address-date')
+  } else {
+    res.render('nino/2/address-question')
+  }
+})
+
+//check
+router.get('/nino/2/check/', function (req, res) {
+  console.log('here')
+  res.render('nino/2/check', {
+    createjourney : createJourney
+  })
+})
+
+//done
+router.get('/nino/2/done/', function (req, res) {
+  res.render('nino/2/done', {
+    createjourney : createJourney
+  })
+})
 
 
 //*********

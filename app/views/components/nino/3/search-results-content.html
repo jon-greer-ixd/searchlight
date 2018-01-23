@@ -1,0 +1,50 @@
+<h2 class="heading-medium question">Select an address</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="address-date">
+      <div class="form-group">
+         
+        <!--<label class="form-label" for="select-box">Select an address</label>-->
+        <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
+          <option>10 addressess found</option>
+          <option>1 Post Street, Gateshead</option>
+          <option>2 Post Street, Gateshead</option>
+          <option>3 Post Street, Gateshead</option>
+          <option>4 Post Street, Gateshead</option>
+          <option>5 Post Street, Gateshead</option>
+          <option>6 Post Street, Gateshead</option>
+          <option>7 Post Street, Gateshead</option>
+          <option>8 Post Street, Gateshead</option>
+          <option>9 Post Street, Gateshead</option>
+          <option>10 Post Street, Gateshead</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <a>Address is not shown</a>
+      </div>
+      
+      <div id="hidden">
+        <div class="form-group">
+          <label class="form-label" for="full-name-f1">Add a cherished line (optional)</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
+        </div>
+        <div class="form-group">
+          <ul>
+            <li>7 Post Street</li>
+            <li>Gateshead</li>
+            <li>Tyne &amp; Wear</li>
+            <li>NE11 1HH</li>
+          </ul>
+        </div>
+        
+        <div class="form-group search-group">
+          <input class="button" type="submit" value="Next">
+          <a href="address-search" class="secondary-button">New search</a>
+        </div>
+
+      </div>
+      
+    </form>
+    <a href="account">Cancel</a>
+  </div>
+</div>
