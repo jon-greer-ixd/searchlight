@@ -678,6 +678,15 @@ router.get(/type-handler/, function (req, res) {
   res.redirect('name')
 })
 
+//contact-handler
+router.get(/contact-handler/, function (req, res) {
+  if(req.query.data === "yes") {
+    res.redirect('add-contact')
+  } else {
+    res.redirect('nationality')
+  }
+})
+
 //non-mandatory-handler
 router.get(/v2-non-mandatory-handler/, function (req, res) {
   if (req.query.data === "yes") {
