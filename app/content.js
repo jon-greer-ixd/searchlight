@@ -3,37 +3,41 @@ var dataState = require('./dataState').dataState;
 var content = {
   editDate : "16 Jan 2018",
   pageTitle : "Update residential address",
-  setPageTitle : function() {
-    if (dataState.updateType == "updateStatus" || dataState.updateType == "updateStatusDLO") {
-      this.pageTitle = "Update an address status";
-    } else if (dataState.updateType == "updateAddCherish") {
-      this.pageTitle = "Add a cherished line";
-    } else if (dataState.updateType == "addCorrespondence") {
-      this.pageTitle = "Add a correspondence address";
-    } else if (dataState.updateType == "correctStatus" || 
-               dataState.updateType == "correctStatusDlo" || 
-               dataState.updateType == "correctStatusLive" || 
-               dataState.updateType == "updateStatusLive" ) {
-      this.pageTitle = "Correct an address status";
-    } else if (dataState.updateType == "correctCherish") {
-      this.pageTitle = "Correct a cherished line";
-    } else if (dataState.updateType == "correctNew") {
-      this.pageTitle = "Correct an address";
-    } else if (dataState.updateType == "correctDate") {
-      this.pageTitle = "Correct a start date or notified start date";
-    } else if (dataState.updateType == "end") {
-      this.pageTitle = "End an address";
-    } else if (dataState.updateType == "updateRemoveCherish") {
-      this.pageTitle = "Remove a cherished line";
-    } else if (dataState.updateType == "correctAddCherish") {
-      this.pageTitle = "Add a cherished line";
-    } else if (dataState.updateType == "updateChangeCherish") {
-      this.pageTitle = "Update a cherished line";
-    } else if (dataState.updateType == "correctDateNotified") {
-      this.pageTitle = "Correct the notified start date";
+  setPageTitle : function(updateType) {
+    var title;
+    if (updateType == "updateStatus" || 
+        updateType == "updateStatusDLO") {
+      title = "Update an address status";
+    } else if (updateType == "updateAddCherish") {
+      title = "Add a cherished line";
+    } else if (updateType == "addCorrespondence") {
+      title = "Add a correspondence address";
+    } else if (updateType == "correctStatus" || 
+               updateType == "correctStatusDlo" || 
+               updateType == "correctStatusLive" || 
+               updateType == "updateStatusLive" ) {
+      title = "Correct an address status";
+    } else if (updateType == "correctCherish") {
+      title = "Correct a cherished line";
+    } else if (updateType == "correctNew") {
+      title = "Correct an address";
+    } else if (updateType == "correctDate") {
+      title = "Correct a start date or notified start date";
+    } else if (updateType == "end") {
+      title = "End an address";
+    } else if (updateType == "updateRemoveCherish") {
+      title = "Remove a cherished line";
+    } else if (updateType == "correctAddCherish") {
+      title = "Add a cherished line";
+    } else if (updateType == "updateChangeCherish") {
+      title = "Update a cherished line";
+    } else if (updateType == "correctDateNotified") {
+      title = "Correct the notified start date";
     } else {
-      this.pageTitle = "Update an address";
+      title = "Update an address";
     }
+    this.pageTitle = title;
+    return title;
   }, 
   statusToText : function(status) {
     if (status === "dlo") {

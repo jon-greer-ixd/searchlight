@@ -423,39 +423,42 @@ router.get('/update/cherish-line', function (req, res) {
 
 router.get('/update/cherish-handler', function (req, res) {
   console.log("here " + req.query.data);
+  var next;
   if (dataState.updateType === "updateAddCherish") {
-    res.redirect('dates')
+   next = 'dates';
   }
   if (dataState.updateType === "correctAddCherish") {
-    res.redirect('check')
+    next = 'check';
   }
   if (req.query.data === "remove_cherish") {
     if (dataState.updateType === "correctCherish") {
       dataState.updateType = "correctRemoveCherish";
-      content.setPageTitle();
+      content.setPageTitle(dataState.updateType);
       console.log(dataState.updateType);
-      res.redirect('check')
+      next = 'check';
     } 
     if (dataState.updateType === "updateCherish") {
       dataState.updateType = "updateRemoveCherish";
-      content.setPageTitle();
+      content.setPageTitle(dataState.updateType);
       console.log(dataState.updateType);
-      res.redirect('dates')
+      next = 'dates';
     }
   }
   if (req.query.data === "change_cherish") {
     if (dataState.updateType === "correctCherish") {
       dataState.updateType = "correctChangeCherish";
-      content.setPageTitle();
+      content.setPageTitle(dataState.updateType);
       console.log(dataState.updateType);
-      res.redirect('check')
+      next = 'check';
     } 
     if (dataState.updateType === "updateCherish") {
       dataState.updateType = "updateChangeCherish";
-      content.setPageTitle();
+      content.setPageTitle(dataState.updateType);
       console.log(dataState.updateType);
-      res.redirect('dates')
+      next = 'dates';
     }
+    content.setPageTitle(dataState.updateType);
+    res.redirect(next)
   }
 })
 
@@ -480,24 +483,24 @@ router.get(/dates-handler/, function (req, res) {
 router.get(/update-type-handler/, function (req, res) {
   if (req.query.data == 'add_correspondence') {
     dataState.updateType = "addCorrespondence";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('address-search')
     //status
   } else if (req.query.data === 'update_status') {
     dataState.updateType = "updateStatus";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('status')
   } else if (req.query.data === 'update_status_dlo') {
     dataState.updateType = "updateStatusDLO";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);    
     dataState.newStatus = "dlo";
     console.log(dataState.updateType);
     res.redirect('dates')
   } else if (req.query.data === 'update_live') {
     dataState.updateType = "updateStatusLive";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);    
     dataState.newStatus = "live";
     console.log(dataState.updateType);
     if (dataState.currentStatus == "nfa" || dataState.currentStatus == "pwa") {
@@ -507,74 +510,74 @@ router.get(/update-type-handler/, function (req, res) {
     }
   } else if (req.query.data === 'update_new') {
     dataState.updateType = "updateNew";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('address-search')
     //corrections
   } else if (req.query.data === 'correct_new') {
     dataState.updateType = "correctNew";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('address-search')
     //status
   } else if (req.query.data === 'correct_status') {
     dataState.updateType = "correctStatus";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('status')
   } else if (req.query.data === 'correct_dlo') {
     dataState.updateType = "correctStatusDlo";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     dataState.newStatus = "dlo";
     res.redirect('check')
   } else if (req.query.data === 'correct_live') {
     dataState.updateType = "correctStatusLive";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     dataState.newStatus = "live";
     console.log(dataState.updateType);
     res.redirect('check')
     //date
   } else if (req.query.data === 'correct_date') {
     dataState.updateType = "correctDate";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('dates')
   } else if (req.query.data === 'correct_date_notified') {
     dataState.updateType = "correctDateNotified";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('dates')
     //cherish
   } else if (req.query.data === 'update_add_cherish') {
     dataState.updateType = "updateAddCherish";
     dataState.cherished = true;
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     res.redirect('cherish-line')
   } else if (req.query.data === 'update_cherish') {
     dataState.updateType = "updateCherish";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('cherish-line')
   } else if (req.query.data === 'correct_cherish') {
     dataState.updateType = "correctCherish";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('cherish-line')
   } else if (req.query.data === 'correct_add_cherish') {
     dataState.updateType = "correctAddCherish";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('cherish-line')
   } else if (req.query.data === 'update_remove_cherish') {
     dataState.updateType = "updateRemoveCherish";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('dates')
     //end
   } else if (req.query.data === 'end') {
     dataState.updateType = "end";
-    content.setPageTitle();
+    content.setPageTitle(dataState.updateType);
     console.log(dataState.updateType);
     res.redirect('dates')
   }
