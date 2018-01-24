@@ -671,11 +671,11 @@ dont see trace
 router.get(/type-handler/, function (req, res) {
   if(req.query.data === "create") {
     createJourney = true;
+    res.redirect('name')
   } else {
     createJourney = false;
+    res.redirect('nino')
   }
-  console.log(createJourney);
-  res.redirect('name')
 })
 
 //contact-handler
@@ -699,6 +699,13 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
 //name
 router.get('/nino/2/name/', function (req, res) {
   res.render('nino/2/name', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/2/check/', function (req, res) {
+  res.render('nino/2/check', {
     createjourney : createJourney
   })
 })

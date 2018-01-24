@@ -18,14 +18,22 @@
             <input id="ms" type="radio" name="data" value="ms">
             <label for="ms">Ms</label>
           </div>
-          <div class="multiple-choice">
-            <input id="dr" type="radio" name="data" value="dr">
-            <label for="dr">Dr</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="hrh" type="radio" name="data" value="hrh">
-            <label for="hrh">HRH</label>
-          </div>
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
+            <label for="example-contact-by-text">Other</label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+              <div class="multiple-choice">
+                <input id="dr" type="radio" name="data" value="dr">
+                <label for="dr">Dr</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="hrh" type="radio" name="data" value="hrh">
+                <label for="hrh">HRH</label>
+              </div>
+        </div>
+
+
         </fieldset>
         
         <fieldset class="form-group">
@@ -49,13 +57,13 @@
                 For example 31 8 1979
               </span>
             </label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="10 01 2018">
+            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="24 01 2018"><span class="today"></span>
           </fieldset>
 
           <fieldset class="form-group">
             <legend class="visuallyhidden">Name notified start date</legend>
             <label class="form-label" for="full-name-f1">Name notified start date</label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="10 01 2018">
+            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="24 01 2018">
           </fieldset>
         {% endif %}
 

@@ -9,23 +9,34 @@
             <td>Mr</td>
             <td><a>Change</a></td>
           </tr>
-          <tr>
-            <td><span class="strong">Name</span></td>
-            <td>Tom Smith</td>
-            <td><a>Change</a></td>
-          </tr>
+          
+          {% if createjourney === false %}
+            <tr>
+              <td><span class="strong">Name</span></td>
+              <td>Tom Smith</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% else %}
+            <tr>
+              <td><span class="strong">Name</span></td>
+              <td>Mathéo Bangalter</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+
           {% if createjourney === false %}
             <tr>
               <td><span class="strong">Name start date</span></td>
-              <td>1 December 2000</td>
+              <td><span class="today">24 January 2018</span></td>
               <td><a>Change</a></td>
             </tr>
             <tr>
               <td><span class="strong">Name notified start date</span></td>
-              <td>1 December 2000</td>
+              <td><span class="today">24 January 2018</span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
+          
           <tr>
             <td><span class="strong">Sex</span></td>
             <td>Male</td>
@@ -33,11 +44,10 @@
           </tr>
           <tr>
             <td><span class="strong">Date of birth</span></td>
-            <td>01 January 1980</td>
+            <td><span class="today">8 February 1960</span></td>
             <td><a>Change</a></td>
           </tr>
         </table>
-      
       
         <br>
         <h2 class="heading-medium">Address details</h2>
@@ -51,12 +61,12 @@
           {% if createjourney === false %}
             <tr>
               <td><span class="strong">Address start date</span></td>
-              <td>1 December 2000</td>
+              <td><span class="today">24 January 2018</span></td>
               <td><a>Change</a></td>
             </tr>
             <tr>
               <td><span class="strong">Address notified start date</span></td>
-              <td>1 December 2000</td>
+              <td><span class="today">24 January 2018</span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
@@ -71,6 +81,8 @@
             <td>07123 456 789</td>
             <td><a>Change</a></td>
           </tr>
+          
+          {% if createjourney === true %}
           <tr>
             <td><span class="strong">Nationality</span></td>
             <td>French</td>
@@ -78,10 +90,12 @@
           </tr>
           <tr>
             <td><span class="strong">Marital status</span></td>
-            <td>Married</td>
+            <td>Separated</td>
             <td><a>Change</a></td>
           </tr>
-        </table>
+          {% endif %}
+
+      </table>
         
         <br>
       <form class="form" method="get" action="done">
