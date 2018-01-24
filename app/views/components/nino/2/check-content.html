@@ -1,8 +1,29 @@
   <div class="grid-row">
 
     <div class="column-two-thirds">
-      <h2 class="heading-medium">Personal details</h2>
-      
+          {% if createjourney === false %}
+            <h2 class="heading-medium">National insurance number details</h2>
+            <table class="table">
+              <tr>
+                <td><span class="strong">National insurance number</span></td>
+                <td>NA000001D</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Creation date</span></td>
+                <td>01 January 2018</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Creation office</span></td>
+                <td>1234</td>
+                <td><a>Change</a></td>
+              </tr>
+            </table>
+            <br>
+          {% endif %}
+        
+        <h2 class="heading-medium">Personal details</h2>
         <table class="table">
           <tr>
             <td><span class="strong">Title</span></td>
