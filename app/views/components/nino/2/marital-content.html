@@ -2,10 +2,14 @@
 
     <div class="column-two-thirds">
       
-      <form class="form" method="get" action="task-list">
+      <form class="form" method="get" action="non-mandatory-question">
 
         <fieldset class="form-group">
-          <legend class="visuallyhidden">Title</legend>
+          <legend class="visuallyhidden">marital status</legend>
+          <div class="multiple-choice">
+            <input id="single" type="radio" name="data" value="single">
+            <label for="single">Single</label>
+          </div>
           <div class="multiple-choice">
             <input id="married" type="radio" name="data" value="married">
             <label for="married">Married</label>
@@ -33,10 +37,6 @@
           <div class="multiple-choice">
             <input id="void" type="radio" name="data" value="void">
             <label for="void">Annulled - void marriage or civil partnership</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="single" type="radio" name="data" value="single">
-            <label for="single">Single</label>
           </div>
         </fieldset>
 

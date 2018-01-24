@@ -3,7 +3,6 @@
     <div class="column-two-thirds">
       <h2 class="heading-medium">Personal details</h2>
       
-      {% if createjourney === true %}
         <table class="table">
           <tr>
             <td><span class="strong">Title</span></td>
@@ -15,6 +14,18 @@
             <td>Tom Smith</td>
             <td><a>Change</a></td>
           </tr>
+          {% if createjourney === false %}
+            <tr>
+              <td><span class="strong">Name start date</span></td>
+              <td>1 December 2000</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Name notified start date</span></td>
+              <td>1 December 2000</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
           <tr>
             <td><span class="strong">Sex</span></td>
             <td>Male</td>
@@ -27,56 +38,6 @@
           </tr>
         </table>
       
-        <br>
-        <h2 class="heading-medium">Address details</h2>
-      
-        <table class="table">
-          <tr>
-            <td><span class="strong">Residential address</span></td>
-            <td>1 Current Crescent, Gateshead, Tyne &amp; Wear NE1 1HH</td>
-            <td><a>Change</a></td>
-          </tr>
-          <tr>
-            <td><span class="strong">Residential address status</span></td>
-            <td>Live</td>
-            <td><a>Change</a></td>
-          </tr>
-        </table>
-
-      
-      {% else %}
-        <table class="table">
-          <tr>
-            <td><span class="strong">Title</span></td>
-            <td>Mr</td>
-            <td><a>Change</a></td>
-          </tr>
-          <tr>
-            <td><span class="strong">Name</span></td>
-            <td>Tom Smith</td>
-            <td><a>Change</a></td>
-          </tr>
-          <tr>
-            <td><span class="strong">Name start date</span></td>
-            <td>1 December 2000</td>
-            <td><a>Change</a></td>
-          </tr>
-          <tr>
-            <td><span class="strong">Name notified start date</span></td>
-            <td>1 December 2000</td>
-            <td><a>Change</a></td>
-          </tr>
-          <tr>
-            <td><span class="strong">Sex</span></td>
-            <td>Male</td>
-            <td><a>Change</a></td>
-          </tr>
-          <tr>
-            <td><span class="strong">Date of birth</span></td>
-            <td>01 January 1980</td>
-            <td><a>Change</a></td>
-          </tr>
-        </table>
       
         <br>
         <h2 class="heading-medium">Address details</h2>
@@ -87,26 +48,42 @@
             <td>1 Current Crescent, Gateshead, Tyne &amp; Wear NE1 1HH</td>
             <td><a>Change</a></td>
           </tr>
+          {% if createjourney === false %}
+            <tr>
+              <td><span class="strong">Address start date</span></td>
+              <td>1 December 2000</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Address notified start date</span></td>
+              <td>1 December 2000</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+        </table>
+      
+        <br>
+        <h2 class="heading-medium">Other personal details</h2>
+      
+        <table class="table">
           <tr>
-            <td><span class="strong">Residential address status</span></td>
-            <td>Live</td>
+            <td><span class="strong">Mobile telephone number</span></td>
+            <td>07123 456 789</td>
             <td><a>Change</a></td>
           </tr>
           <tr>
-            <td><span class="strong">Address start date</span></td>
-            <td>1 December 2000</td>
+            <td><span class="strong">Nationality</span></td>
+            <td>French</td>
             <td><a>Change</a></td>
           </tr>
           <tr>
-            <td><span class="strong">Address notified start date</span></td>
-            <td>1 December 2000</td>
+            <td><span class="strong">Marital status</span></td>
+            <td>Married</td>
             <td><a>Change</a></td>
           </tr>
         </table>
-
-      {% endif %}
         
-      <br>
+        <br>
       <form class="form" method="get" action="done">
 
         <div class="form-group">
@@ -114,7 +91,7 @@
         </div>
 
       </form>
-      
+        <p><a href="../../search">Cancel</a></p>
     </div>
 
   </div>
