@@ -1,59 +1,59 @@
-  <div class="grid-row">
+<div class="grid-row">
 
     <div class="column-two-thirds">
       
       <h2 class="heading-medium">What kind of contact type is it?</h2>
       
-<form class="form" method="get" action="telephone">
-  <div class="form-group">
-    <fieldset>
+      <form class="form" method="get" action="contact-handler">
+        <div class="form-group">
+          <fieldset>
 
-      <legend>
-        <p class="visually-hidden">
-          How do you want to be contacted?
-        </p>
-      </legend>
+            <legend>
+              <p class="visually-hidden">
+                How do you want to be contacted?
+              </p>
+            </legend>
 
-      <div class="multiple-choice" data-target="contact-by-email">
-        <input id="example-contact-by-email" type="radio" name="radio-contact-group" value="Yes">
-        <label for="example-contact-by-email">Telephone</label>
-      </div>
+            <div class="multiple-choice" data-target="">
+              <input id="telephone" type="radio" name="data" value="telephone">
+              <label for="telephone">Telephone</label>
+            </div>
 
-      <div class="multiple-choice" data-target="contact-by-phone">
-        <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
-        <label for="example-contact-by-phone">Mobile</label>
-      </div>
+            <div class="multiple-choice" data-target="">
+              <input id="mobile" type="radio" name="data" value="mobile">
+              <label for="mobile">Mobile</label>
+            </div>
 
-      <div class="multiple-choice" data-target="contact-by-poo">
-        <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
-        <label for="example-contact-by-text">Email</label>
-      </div>
-      
-      <div class="multiple-choice" data-target="contact-by-text">
-        <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
-        <label for="example-contact-by-text">Other</label>
-      </div>
-      <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
-        <div class="multiple-choice" data-target="contact-by-text">
-          <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
-          <label for="example-contact-by-phone">Fax</label>
+            <div class="multiple-choice" data-target="">
+              <input id="email" type="radio" name="data" value="email">
+              <label for="email">Email</label>
+            </div>
+
+            <div class="multiple-choice" data-target="contact-by-text">
+              <input id="other" type="radio" name="data" value="other">
+              <label for="other">Other</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+              <div class="multiple-choice" data-target="contact-by-text">
+                <input id="example-contact-by-phone" type="radio" name="data" value="fax">
+                <label for="example-contact-by-phone">Fax</label>
+              </div>
+              <div class="multiple-choice" data-target="contact-by-text">
+                <input id="example-contact-by-phone" type="radio" name="data" value="textphone">
+                <label for="example-contact-by-phone">Textphone</label>
+              </div>
+            </div>
+
+          </fieldset>
         </div>
-        <div class="multiple-choice" data-target="contact-by-text">
-          <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
-          <label for="example-contact-by-phone">Textphone</label>
-        </div>
-      </div>
-
-    </fieldset>
-  </div>
         <div class="form-group">
           <input class="button" type="submit" value="Next">
         </div>
 
-      </form>
-        <p><a href="../../search">Cancel</a></p>
-    </div>
-
+     </form>
+    <p><a href="../../search">Cancel</a></p>
   </div>
+
+</div>
      
 

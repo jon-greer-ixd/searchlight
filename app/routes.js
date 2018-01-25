@@ -679,7 +679,7 @@ router.get(/type-handler/, function (req, res) {
 })
 
 //contact-handler
-router.get(/contact-handler/, function (req, res) {
+router.get(/contact-question-handler/, function (req, res) {
   if(req.query.data === "yes") {
     res.redirect('add-contact')
   } else {
@@ -710,18 +710,24 @@ router.get('/nino/2/check/', function (req, res) {
   })
 })
 
-//address search results
-router.get('/nino/2/results-handler/', function (req, res) {
-  if (createJourney === false) {
-    res.render('nino/2/address-date')
-  } else {
-    res.render('nino/2/address-question')
-  }
+////address search results
+//router.get('/nino/2/results-handler/', function (req, res) {
+//  if (createJourney === false) {
+//    res.render('nino/2/address-date')
+//  } else {
+//    res.render('nino/2/address-question')
+//  }
+//})
+
+//check
+router.get('/nino/2/address-date/', function (req, res) {
+  res.render('nino/2/address-date', {
+    createjourney : createJourney
+  })
 })
 
 //check
 router.get('/nino/2/check/', function (req, res) {
-  console.log('here')
   res.render('nino/2/check', {
     createjourney : createJourney
   })
@@ -733,6 +739,17 @@ router.get('/nino/2/done/', function (req, res) {
     createjourney : createJourney
   })
 })
+
+//contact-handler
+router.get('/nino/2/contact-handler/', function (req, res) {
+  if (req.query.data === "telephone") {
+    res.render('nino/2/telephone')
+  } else {
+    res.render('nino/2/mobile')
+  }
+})
+
+
 
 
 //*********
