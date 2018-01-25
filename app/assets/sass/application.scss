@@ -133,6 +133,7 @@ html {
 
 table.table {
   td {
+    font-family : "sl-font", Arial, sans-serif;
     width: 40%;
     &:last-child {
       width: 20%;
@@ -551,4 +552,23 @@ hr {
   float: right;
   margin-right: 0;
   padding-top: 3px;
+}
+
+.done {
+  h1 {
+    color: white;
+    font-size: 48px;
+    font-family : "sl-font", Arial, sans-serif;
+    font-weight : 700;
+    margin-bottom: 1.25em;
+    padding-bottom: 0;
+  }
+}
+
+.font-large {
+  font-family : "sl-font", Arial, sans-serif;
+}
+
+.first-item {
+  border-top: none!important;
 }
