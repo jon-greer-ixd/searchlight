@@ -54,6 +54,15 @@ $path: "/public/images/";
 
 .super-slim-header {
   padding-top: 0!important;
+  .col-xs-12 {
+    background: white;
+  }
+  .sl-address-primary-card, .sl-primary-card {
+    box-shadow: none;
+  }
+  #sl-address-primary-card.sl-primary-card {
+    padding: 0!important;
+  }
 }
 
 .slim {
@@ -571,4 +580,24 @@ hr {
 
 .first-item {
   border-top: none!important;
+}
+
+#sl-account {
+  background: white;
+}
+
+h2.question-title {
+  display: block;
+  margin: 20px 0;
+  font-size: 36px;
+  line-height: 1.11111;
+}
+
+#prototype-navigation {
+  h2.question-title {
+    display: block;
+    margin: 20px 0;
+    font-size: 36px;
+  line-height: 1.11111;
+  }
 }
