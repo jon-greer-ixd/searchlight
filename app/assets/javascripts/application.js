@@ -35,4 +35,14 @@ if (document.getElementById('tochange')){
   }
 }
 
+if (document.getElementById('internationalID')) {
+  var showInternationalAddress = function () {
+    document.getElementById('international').className="show";
+    document.getElementById('uk').className="visually-hidden";
+  }
+  var hideInternationalAddress = function () {
+    document.getElementById('international').className="visually-hidden";
+    document.getElementById('uk').className="show";
+  }
+}
 
