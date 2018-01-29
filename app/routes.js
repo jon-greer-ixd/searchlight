@@ -10,6 +10,9 @@ var NINO = require('./nino.js');
 
 var dates = require('./dates.js');
 
+var createJourney = null;
+
+
 
 /*
 
@@ -61,7 +64,7 @@ var resetAll = function() {
   correspondenceAddress.reset();
   previousAddress.reset();
   
-  createJourney = true;
+  createJourney = null;
 };
 
 var residentialAddress = {
@@ -301,6 +304,14 @@ var content = {
 };
 
 var main = require('./main/routes');
+
+// search page
+router.get('/search', function (req, res) {
+  res.render('pages/search.njk', {
+    createJourney : createJourney
+  })
+})
+
 
 router.use('/', main);
 // Route index page
@@ -648,7 +659,6 @@ router.get(/check-answers-handler/, function (req, res) {
 // ACCOUNT CREATION 
 //*****************
 
-var createJourney = true;
 
 /*
 Create
@@ -668,14 +678,13 @@ dont see trace
 
 
 //type-handler
-router.get(/type-handler/, function (req, res) {
+router.get(/v2-type-handler/, function (req, res) {
   if(req.query.data === "create") {
     createJourney = true;
-    res.redirect('name')
   } else {
     createJourney = false;
-    res.redirect('nino')
   }
+  res.redirect('../../search')
 })
 
 //contact-handler
