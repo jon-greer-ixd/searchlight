@@ -31,15 +31,13 @@
         </select>
         {% endif %}
       </div>
-      <div class="form-group">
-        <a>Address is not shown</a>
-      </div>
-      
+
       <div id="hidden">
         <div class="form-group">
           <label class="form-label" for="full-name-f1">Add a cherished line (optional)</label>
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
         </div>
+        
         <div class="form-group">
           {% if updatetype === "addCorrespondence" %}
           <ul>
@@ -57,12 +55,15 @@
           </ul>
           {% endif %}
         </div>
+      </div>
         
-        <div class="form-group search-group">
-          <input class="button" type="submit" value="Next">
-          <a href="address-search" class="secondary-button">New search</a>
-        </div>
+      <div class="form-group">
+        <a href="">The address is not in the list</a>
+      </div>
 
+      <div class="form-group search-group">
+        <input class="button" type="submit" value="Next">
+        <a href="address-search" class="secondary-button">New search</a>
       </div>
       
     </form>
