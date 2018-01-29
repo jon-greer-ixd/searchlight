@@ -24,8 +24,11 @@
               </a>
             </td>
             <td class="first-item">
-              <a class="task-name" href="ethnic-origin">
-              </a>
+              {% if person.ethnic_origin === true %}
+                <p class="task-completed"> 
+                    Completed
+                </p>
+              {% endif %}
             </td>
         </tr>
         <tr>
@@ -35,19 +38,25 @@
               </a>
             </td>
             <td >
-              <a class="task-name" href="immigration">
-              </a>
+              {% if person.immigration === true %}
+                <p class="task-completed"> 
+                    Completed
+                </p>
+              {% endif %}
             </td>
         </tr>
         <tr>
             <td >
               <a class="task-name" href="language">
-                Add a prefered language	
+                Add a preferred language	
               </a>
             </td>
             <td >
-              <a class="task-name" href="language">
-              </a>
+              {% if person.preferred_language === true %}
+                <p class="task-completed"> 
+                    Completed
+                </p>
+              {% endif %}
             </td>
         </tr>
         <tr>
@@ -57,8 +66,11 @@
               </a>
             </td>
             <td >
-              <a class="task-name" href="spoken-language">
-              </a>
+              {% if person.spoken_language	 === true %}
+                <p class="task-completed"> 
+                    Completed
+                </p>
+              {% endif %}
             </td>
         </tr>
         <tr>
@@ -68,8 +80,11 @@
               </a>
             </td>
             <td >
-              <a class="task-name" href="disabilities">
-              </a>
+              {% if person.disability === true %}
+                <p class="task-completed"> 
+                    Completed
+                </p>
+              {% endif %}
             </td>
         </tr>
         <tr>
@@ -79,8 +94,11 @@
               </a>
             </td>
             <td >
-              <a class="task-name" href="special-needs">
-              </a>
+              {% if person.special_needs === true %}
+                <p class="task-completed"> 
+                    Completed
+                </p>
+              {% endif %}
             </td>
         </tr>
 <!--
@@ -131,5 +149,6 @@
         </div>
 
       </form>
+      <p><a href="">Cancel</a></p>
     </div>
     </div>

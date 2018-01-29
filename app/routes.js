@@ -12,6 +12,17 @@ var dates = require('./dates.js');
 
 var createJourney = null;
 
+var person = {
+  reset : function() {
+    this.ethnic_origin = null;
+    this.immigration = null;
+    this.preferred_language = null;
+    this.spoken_language = null;
+    this.disability = null;
+    this.special_needs = null;
+  }
+};
+person.reset();
 
 
 /*
@@ -63,7 +74,7 @@ var resetAll = function() {
   residentialAddress.reset();
   correspondenceAddress.reset();
   previousAddress.reset();
-  
+  person.reset();
   createJourney = null;
 };
 
@@ -308,7 +319,7 @@ var main = require('./main/routes');
 // search page
 router.get('/search', function (req, res) {
   res.render('pages/search.njk', {
-    createJourney : createJourney
+    createjourney : createJourney
   })
 })
 
@@ -356,7 +367,6 @@ router.get('/update/account', function (req, res) {
     previousaddress : previousAddress,
     startdate : residentialAddress.startDate,
     updatetype : dataState.updateType,
-    
     updated : dataState.updatedToNewAddress,
     cherished : dataState.cherished,
     editDate : content.editDate,
@@ -367,7 +377,8 @@ router.get('/update/account', function (req, res) {
     dateisupdated : dataState.dateIsUpdated,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
-    statuscorrected : dataState.statusCorrected
+    statuscorrected : dataState.statusCorrected,
+    createjourney : createJourney
   })
 })
 
@@ -600,7 +611,6 @@ router.get('/update/search-results-handler', function (req, res) {
   }
 })
 
-
 router.get('/update/check', function (req, res) {
   res.render('update/check', {
     addressone : addressOne,
@@ -677,6 +687,7 @@ dont see trace
 */
 
 
+
 //type-handler
 router.get(/v2-type-handler/, function (req, res) {
   if(req.query.data === "create") {
@@ -712,25 +723,107 @@ router.get('/nino/2/name/', function (req, res) {
   })
 })
 
-//name
-router.get('/nino/2/check/', function (req, res) {
-  res.render('nino/2/check', {
+//nino
+router.get('/nino/2/nino/', function (req, res) {
+  res.render('nino/2/nino', {
     createjourney : createJourney
   })
 })
 
-////address search results
-//router.get('/nino/2/results-handler/', function (req, res) {
-//  if (createJourney === false) {
-//    res.render('nino/2/address-date')
-//  } else {
-//    res.render('nino/2/address-question')
-//  }
-//})
+//another name
+router.get('/nino/2/name-question/', function (req, res) {
+  res.render('nino/2/name-question', {
+    createjourney : createJourney
+  })
+})
 
-//check
+//dob
+router.get('/nino/2/dob/', function (req, res) {
+  res.render('nino/2/dob', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/2/sex/', function (req, res) {
+  res.render('nino/2/sex', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/2/sex/', function (req, res) {
+  res.render('nino/2/sex', {
+    createjourney : createJourney
+  })
+})
+
+//verification
+router.get('/nino/2/verification/', function (req, res) {
+  res.render('nino/2/verification', {
+    createjourney : createJourney
+  })
+})
+
+//address-search
+router.get('/nino/2/address-search/', function (req, res) {
+  res.render('nino/2/address-search', {
+    createjourney : createJourney
+  })
+})
+
+//search-results
+router.get('/nino/2/search-results/', function (req, res) {
+  res.render('nino/2/search-results', {
+    createjourney : createJourney
+  })
+})
+
+//manual-address
+router.get('/nino/2/manual-address/', function (req, res) {
+  res.render('nino/2/manual-address', {
+    createjourney : createJourney
+  })
+})
+
+//address-date
 router.get('/nino/2/address-date/', function (req, res) {
   res.render('nino/2/address-date', {
+    createjourney : createJourney
+  })
+})
+
+//address-question
+router.get('/nino/2/address-question/', function (req, res) {
+  res.render('nino/2/address-question', {
+    createjourney : createJourney
+  })
+})
+
+//contact-question
+router.get('/nino/2/contact-question/', function (req, res) {
+  res.render('nino/2/contact-question', {
+    createjourney : createJourney
+  })
+})
+
+//nationality
+router.get('/nino/2/nationality/', function (req, res) {
+  res.render('nino/2/nationality', {
+    createjourney : createJourney
+  })
+})
+
+//marital
+router.get('/nino/2/marital/', function (req, res) {
+  res.render('nino/2/marital', {
+    createjourney : createJourney
+  })
+})
+
+//non-mandatory-question
+router.get('/nino/2/non-mandatory-question/', function (req, res) {
+  res.render('nino/2/non-mandatory-question', {
     createjourney : createJourney
   })
 })
@@ -749,6 +842,56 @@ router.get('/nino/2/done/', function (req, res) {
   })
 })
 
+//task-list
+router.get('/nino/2/task-list/', function (req, res) {
+  res.render('nino/2/task-list', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//ethnic-origin
+router.get('/nino/2/ethnic-origin/', function (req, res) {
+  res.render('nino/2/ethnic-origin', {
+    createjourney : createJourney
+  })
+})
+
+//immigration
+router.get('/nino/2/immigration/', function (req, res) {
+  res.render('nino/2/immigration', {
+    createjourney : createJourney
+  })
+})
+
+//language
+router.get('/nino/2/language/', function (req, res) {
+  res.render('nino/2/language', {
+    createjourney : createJourney
+  })
+})
+
+//spoken-language
+router.get('/nino/2/spoken-language/', function (req, res) {
+  res.render('nino/2/spoken-language', {
+    createjourney : createJourney
+  })
+})
+
+//disabilities
+router.get('/nino/2/disabilities/', function (req, res) {
+  res.render('nino/2/disabilities', {
+    createjourney : createJourney
+  })
+})
+
+//special-needs
+router.get('/nino/2/special-needs/', function (req, res) {
+  res.render('nino/2/special-needs', {
+    createjourney : createJourney
+  })
+})
+
 //contact-handler
 router.get('/nino/2/contact-handler/', function (req, res) {
   if (req.query.data === "telephone") {
@@ -758,6 +901,41 @@ router.get('/nino/2/contact-handler/', function (req, res) {
   }
 })
 
+//ethnic-handler
+router.get('/nino/2/ethnic-origin-handler/', function (req, res) {
+  person.ethnic_origin = true;
+  res.redirect('task-list')
+})
+
+//immigration-handler
+router.get('/nino/2/immigration-handler/', function (req, res) {
+  person.immigration = true;
+  res.redirect('task-list')
+})
+
+//prefered-language-handler
+router.get('/nino/2/prefered-language-handler/', function (req, res) {
+  person.preferred_language = true;
+  res.redirect('task-list')
+})
+
+//spoken-language-handler
+router.get('/nino/2/spoken-language-handler/', function (req, res) {
+  person.spoken_language = true;
+  res.redirect('task-list')
+})
+
+//disability-handler
+router.get('/nino/2/disability-handler/', function (req, res) {
+  person.disability = true;
+  res.redirect('task-list')
+})
+
+//special-needs-handler
+router.get('/nino/2/special-needs-handler/', function (req, res) {
+  person.special_needs = true;
+  res.redirect('task-list')
+})
 
 
 
