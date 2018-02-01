@@ -25,6 +25,7 @@ $(document).ready(function () {
 if ( document.getElementById('hidden') ){
   var myFunc = function () {
     document.getElementById('hidden').className="show";
+    document.getElementById('to_hide').className="hide";
   }
 }
 

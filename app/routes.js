@@ -16,11 +16,16 @@ var ninoVersion = null;
 
 var person = {
   reset : function() {
-    this.liveAddress = null;
+    //address
     this.previous_address = null;
-    this.previous_name_count = 0;
-    this.requested_name = null;
+    this.previous_address_count = 0;
+    this.correspondence_address = null;
+    //names
     this.previous_name = null;
+    this.previous_name_count = 0;
+    this.alternative_name = null;
+    this.rfa_name = true;
+    //other
     this.ethnic_origin = null;
     this.immigration = null;
     this.preferred_language = null;
@@ -254,8 +259,6 @@ var updateOmatic = function() {
     previousAddress.correct = false;
     // update the dates
   } 
-
-
 }
   
 var dataState = {
@@ -811,40 +814,158 @@ dont see trace
 //All versions
 //************
 
-//search-results-handler
-router.get(/stat-handler/, function (req, res) {
-  if (req.query.data === 'live') {
-    person.liveAddress = true;
+
+
+//other-name-handler
+router.get(/other-name-handler/, function (req, res) {
+  var next = "dob";
+  if (req.query.requested[0] === "true") {
+    person.rfa_name = true;
+    next = "name-requested";
+  }
+  if (req.query.previous[0] === "true") {
+    person.previous_name = true;
+    next = "name-previous";
+  }
+  if (req.query.alternative[0] === "true") {
+    person.alternative_name = true;
+    next = "name-alternative";
+  }
+  res.redirect(next)
+})
+
+//alternative-name-handler
+router.get(/alternative-name-handler/, function (req, res) {
+  var next = "dob";
+  if (person.rfa_name === true) {
+    next = "name-requested";
+  }
+  if (person.previous_name === true) {
+    next = "name-previous";
+  }
+  res.redirect(next)
+})
+
+//previous-question-handler
+router.get(/previous-question-handler/, function (req, res) {
+  if (req.query.data === "yes") {
+    person.previous_name_count++;
+    res.redirect('name-previous')
+  } else if (person.rfa_name === true) {
+    res.redirect('name-requested')
   } else {
-    person.liveAddress = false;
-  }  
-  console.log(person.liveAddress);
-  res.redirect('address-search')
+    res.redirect('dob')
+  }
+})
+
+//correspondence-address-handler
+router.get(/correspondence-address-handler/, function (req, res) {
+  if (req.query.data === 'yes') {
+    console.log(person.correspondence_address);
+    res.redirect('search-correspondence')
+  } else {
+    person.correspondence_address = false;
+    console.log(person.correspondence_address);
+    res.redirect('contact-question')
+  }
+})
+
+//manual-address-handler
+router.get(/manual-handler/, function (req, res) {
+  if (person.previous_address != null) {
+    res.redirect('contact-question')
+  } else {
+    res.redirect('address-question')
+  }
+})
+
+
+//correspondence-address-handler
+router.get(/correspondence-results-handler/, function (req, res) {
+  if(person.previous_address === null) {
+    res.redirect('address-question')
+  } else {
+    res.redirect('contact-question')
+  }
 })
 
 //search-results-handler
-router.get(/nino-search-results-handler/, function (req, res) {
-  res.redirect('address-question')
+router.get(/address-stat-handler/, function (req, res) {
+  if (req.query.data === 'live') {
+    res.redirect('address-search')
+  } else {
+    res.redirect('search-correspondence')
+  }  
 })
 
 //search-handler
 router.get(/search-handler/, function (req, res) {
   if (req.query.uk === "no") {
-    res.redirect('address-date')
+    res.redirect('address-question')
   } else {
     res.redirect('search-results')
   }
 })
 
-//previous-address-handler
-router.get(/previous-address-handler/, function (req, res) {
-  if (req.query.data === 'yes') {
-    person.previous_address = true;
-    res.redirect('address-search')
+//search-previous-handler
+router.get(/s-previous-handler/, function (req, res) {
+  if (req.query.uk === "no") {
+    res.redirect('address-question')
   } else {
-    res.redirect('contact-question')
+    res.redirect('previous-results')
   }
 })
+
+//search-previous-handler
+router.get(/s-correspondence-handler/, function (req, res) {
+  person.correspondence_address = true;
+  if (req.query.uk === "no") {
+    res.redirect('contact-question')
+  } else {
+    res.redirect('correspondence-results')
+  }
+})
+
+//previous-address-handler
+router.get(/previous-address-handler/, function (req, res) {
+  console.log(person.correspondence_address);
+  var next;
+  if (person.previous_address_count === 0) {
+    if (req.query.data === 'yes') {
+      person.previous_address = true;
+    } else {
+      person.previous_address = false;
+    }
+    person.previous_address_count++;
+  }
+  if (req.query.data === 'yes') {
+    next = 'search-previous';
+  } else if (person.correspondence_address === null) {
+    next = 'correspondence-question';
+  } else {
+    next = 'contact-question';
+  }
+  res.redirect(next)
+})
+////previous-address-handler
+//router.get(/previous-address-handler/, function (req, res) {
+//  if (person.previous_address_count === 0) {
+//    if (req.query.data === 'yes') {
+//      person.previous_address = true;
+//      res.redirect('search-previous')
+//    } else {
+//      person.previous_address = false;
+//    }
+//    person.previous_address_count++;
+//  }
+//  if (req.query.data === 'yes') {
+//    res.redirect('search-previous')
+//  } else if (person.correspondence_address === null) {
+//    res.redirect('correspondence-question')
+//  } else {
+//    res.redirect('contact-question')
+//  }
+//})
 
 //contact-handler
 router.get(/contact-handler/, function (req, res) {
@@ -872,18 +993,18 @@ router.get(/contact-handler/, function (req, res) {
   // another previous name - no
   // dob
   
-//first-name-handler
-router.get(/main-name-handler/, function (req, res) {
-  if (person.requested_name === null) {
-    res.redirect('requested-name')
-  } else {
-    if (person.previous_name_count < 2) {
-      res.redirect('previous-name')
-    } else {
-      res.redirect('dob')
-    }
-  }
-})
+////first-name-handler
+//router.get(/main-name-handler/, function (req, res) {
+//  if (person.requested_name === null) {
+//    res.redirect('requested-name')
+//  } else {
+//    if (person.previous_name_count < 2) {
+//      res.redirect('previous-name')
+//    } else {
+//      res.redirect('dob')
+//    }
+//  }
+//})
 
 //requested-name-handler
 router.get(/requested-name-handler/, function (req, res) {
@@ -893,17 +1014,6 @@ router.get(/requested-name-handler/, function (req, res) {
   } else {
     person.requested_name = false;
     res.redirect('previous-name')
-  }
-})
-
-//previous-name-handler
-router.get(/previous-name-handler/, function (req, res) {
-  if (req.query.data === "yes") {
-    person.previous_name = true;
-    person.previous_name_count++;
-    res.redirect('name-previous')
-  } else {
-    res.redirect('dob')
   }
 })
 
@@ -1007,6 +1117,14 @@ router.get('/nino/4/name-current/', function (req, res) {
   })
 })
 
+//current-name
+router.get('/nino/4/search-previous/', function (req, res) {
+  res.render('nino/4/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+  })
+})
+
 //requested-name
 router.get('/nino/4/name-requested/', function (req, res) {
   res.render('nino/4/name-requested', {
@@ -1037,6 +1155,22 @@ router.get('/nino/4/requested-name/', function (req, res) {
 //previous-name
 router.get('/nino/4/previous-name/', function (req, res) {
   res.render('nino/4/previous-name', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/4/manual-correspondence/', function (req, res) {
+  res.render('nino/4/manual-correspondence', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/4/manual-previous/', function (req, res) {
+  res.render('nino/4/manual-previous', {
     createjourney : createJourney,
     person : person
   })
@@ -1087,6 +1221,46 @@ router.get('/nino/4/verification/', function (req, res) {
 //address-search
 router.get('/nino/4/address-search/', function (req, res) {
   res.render('nino/4/address-search', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//address-search
+router.get('/nino/4/previous-names/', function (req, res) {
+  res.render('nino/4/previous-names', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//address-search
+router.get('/nino/4/name-alternative/', function (req, res) {
+  res.render('nino/4/name-alternative', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//address-search
+router.get('/nino/4/previous-results/', function (req, res) {
+  res.render('nino/4/previous-results', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//address-search
+router.get('/nino/4/correspondence-results/', function (req, res) {
+  res.render('nino/4/correspondence-results', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//address-search
+router.get('/nino/4/search-correspondence/', function (req, res) {
+  res.render('nino/4/search-correspondence', {
     createjourney : createJourney,
     person : person
   })

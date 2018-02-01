@@ -2,7 +2,7 @@
 
 <div class="grid-row">
   <div class="column-one-half">
-    <form method="get" action="nino-search-results-handler">
+    <form method="get" action="correspondence-results-handler">
       <div class="form-group">
          
         <!--<label class="form-label" for="select-box">Select an address</label>-->
@@ -36,10 +36,27 @@
             <li>NE11 1HH</li>
           </ul>
         </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="full-name-f1">
+            Address start date
+            <span class="form-hint">
+              For example 31/8/1979
+            </span>
+            </label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
+        </div>
+        {% if createjourney === false %}
+        <div class="form-group">
+          <label class="form-label" for="full-name-f1">
+            Address notified start date</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
+        </div>
+      {% endif %}
       </div>
-
-      <div class="form-group">
-        <a class="under-link" href="manual-address">I can't find the address in the list</a>
+      
+      <div id="to_hide"class="form-group">
+        <a class="under-link" href="manual-correspondence">I can't find the address in the list</a>
       </div>
       
       <div class="form-group search-group">

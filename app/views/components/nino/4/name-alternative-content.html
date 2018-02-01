@@ -2,7 +2,7 @@
 
     <div class="column-two-thirds">
       
-      <form class="form" method="get" action="previous-names">
+      <form class="form" method="get" action="alternative-name-handler">
         
         <fieldset class="form-group">
           <legend>
@@ -49,25 +49,24 @@
         </fieldset>
         
         <fieldset class="form-group">
-          <legend class="visuallyhidden">Name start date</legend>
+          <legend class="visuallyhidden">Start date</legend>
           <label class="form-label" for="full-name-f1">
-            Name start date
+            Start date
             <span class="form-hint">
               For example 31/8/1979
             </span>
           </label>
-          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1"><span class="today"></span>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" ><span class="today"></span>
         </fieldset>
 
         {% if createjourney === false %}
-
           <fieldset class="form-group">
-            <legend class="visuallyhidden">Name notified start date</legend>
-            <label class="form-label" for="full-name-f1">Name notified start date</label>
+            <legend class="visuallyhidden">Notified start date</legend>
+            <label class="form-label" for="full-name-f1">Notified start date</label>
             <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="24 01 2018">
           </fieldset>
         {% endif %}
-
+        
         <div class="form-group">
           <input class="button" type="submit" value="Next">
         </div>
