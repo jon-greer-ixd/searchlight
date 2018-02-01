@@ -639,3 +639,10 @@ h1.question-title {
 input.short-field {
   width :30%;
 }
+
+.under-link {
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}

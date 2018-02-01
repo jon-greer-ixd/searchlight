@@ -1,0 +1,57 @@
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="contact-handler">
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <p class="visually-hidden">
+                What kind of contact type is it?
+              </p>
+            </legend>
+
+            <div class="multiple-choice" data-target="">
+              <input id="telephone" type="radio" name="data" value="telephone">
+              <label for="telephone">Landline telephone</label>
+            </div>
+
+            <div class="multiple-choice" data-target="">
+              <input id="mobile" type="radio" name="data" value="mobile">
+              <label for="mobile">Mobile telephone</label>
+            </div>
+
+            <div class="multiple-choice" data-target="">
+              <input id="email" type="radio" name="data" value="email">
+              <label for="email">Email</label>
+            </div>
+
+            <div class="multiple-choice" data-target="contact-by-text">
+              <input id="other" type="radio" name="data" value="other">
+              <label for="other">Other</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+              <div class="multiple-choice" data-target="contact-by-text">
+                <input id="example-contact-by-phone" type="radio" name="data" value="fax">
+                <label for="example-contact-by-phone">Fax</label>
+              </div>
+              <div class="multiple-choice" data-target="contact-by-text">
+                <input id="example-contact-by-phone" type="radio" name="data" value="textphone">
+                <label for="example-contact-by-phone">Textphone</label>
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+     </form>
+    <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>
+     
+

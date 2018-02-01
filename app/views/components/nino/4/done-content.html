@@ -1,0 +1,47 @@
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      
+      {% if createjourney === false %} 
+        <div class="govuk-box-highlight done">
+          <h1 class="heading-xlarge">
+            Account created for Tom Smith
+          </h1>
+        </div>
+      {% else %}
+      
+        <div class="govuk-box-highlight done">
+          <h1 class="heading-xlarge">
+            Account created
+          </h1>
+          <p class="font-large">
+            The National Insurance Number is <br>
+            <span class="bold">SP0000099</span>
+          </p>
+        </div>
+      
+      {% endif %}
+      
+      <h2 class="heading-medium">Next steps</h2>
+      <p>
+        <a href="../../../update/account">
+          View the account
+        </a>
+      </p>
+      <p>
+        <a href="./name">
+          Create another account
+        </a>
+      </p>
+      
+      
+<!--
+
+      <h2 class="heading-medium">What happens next</h2>
+      <p>We've sent your application to Hackney Electoral Register Office.</p>
+      <p>They will contact you either to confirm your registration, or to ask for more information.</p>
+      <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
+-->
+
+
+    </div>
+  </div>
