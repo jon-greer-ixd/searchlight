@@ -640,9 +640,9 @@ input.short-field {
   width :30%;
 }
 
-.under-link {
-  text-decoration: underline;
+.under-link, .sl-link .under-link {
+  text-decoration: underline!important;
   &:hover {
-    text-decoration: none;
+    text-decoration: none!important;
   }
 }
