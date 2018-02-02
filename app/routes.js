@@ -920,7 +920,11 @@ router.get(/s-previous-handler/, function (req, res) {
 router.get(/s-correspondence-handler/, function (req, res) {
   person.correspondence_address = true;
   if (req.query.uk === "no") {
-    res.redirect('contact-question')
+    if (person.previous_address === null) {
+      res.redirect('address-question')
+    } else {
+      res.redirect('contact-question')
+    }
   } else {
     res.redirect('correspondence-results')
   }
@@ -1105,6 +1109,34 @@ router.get('/nino/4/name-previous/', function (req, res) {
     createjourney : createJourney,
     previous_name : person.previous_name,
     requested_name : person.requested_name
+  })
+})
+
+//name
+router.get('/nino/4/add-contact/', function (req, res) {
+  res.render('nino/4/add-contact', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/telephone/', function (req, res) {
+  res.render('nino/4/telephone', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/mobile/', function (req, res) {
+  res.render('nino/4/mobile', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/another-contact/', function (req, res) {
+  res.render('nino/4/another-contact', {
+    createjourney : createJourney
   })
 })
 
