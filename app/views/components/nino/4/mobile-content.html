@@ -5,7 +5,9 @@
     <form class="form" method="get" action="another-contact">
       
       <fieldset class="form-group">
-        <legend class="">Is this a personal or business number?</legend>
+        <legend>
+          <p>What kind of number is it?</p>
+        </legend>
         <div class="multiple-choice">
           <input id="home" type="radio" name="sub-data" value="home">
           <label for="home">Personal</label>
@@ -13,6 +15,10 @@
         <div class="multiple-choice">
           <input id="work" type="radio" name="sub-data" value="work">
           <label for="work">Business</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="third" type="radio" name="sub-data" value="third">
+          <label for="third">Third party</label>
         </div>
       </fieldset>
 

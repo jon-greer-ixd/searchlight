@@ -24,7 +24,7 @@ var person = {
     this.previous_name = null;
     this.previous_name_count = 0;
     this.alternative_name = null;
-    this.rfa_name = true;
+    this.rfa_name = null;
     //other
     this.ethnic_origin = null;
     this.immigration = null;
@@ -848,6 +848,7 @@ router.get(/alternative-name-handler/, function (req, res) {
 
 //previous-question-handler
 router.get(/previous-question-handler/, function (req, res) {
+  console.log(person);
   if (req.query.data === "yes") {
     person.previous_name_count++;
     res.redirect('name-previous')
@@ -1115,6 +1116,13 @@ router.get('/nino/4/name-previous/', function (req, res) {
 //name
 router.get('/nino/4/add-contact/', function (req, res) {
   res.render('nino/4/add-contact', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/correspondence-question/', function (req, res) {
+  res.render('nino/4/correspondence-question', {
     createjourney : createJourney
   })
 })

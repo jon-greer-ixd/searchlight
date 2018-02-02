@@ -11,7 +11,7 @@
               </tr>
               <tr>
                 <td><span class="strong">Creation date</span></td>
-                <td>01 January 2018</td>
+                <td>02 February 2018</td>
                 <td><a>Change</a></td>
               </tr>
               <tr>
@@ -27,14 +27,14 @@
         <table class="table">
           <tr>
             <td><span class="strong">Title</span></td>
-            <td>Mr</td>
+            <td>Ms</td>
             <td><a>Change</a></td>
           </tr>
           
           {% if createjourney === false %}
             <tr>
               <td><span class="strong">Name</span></td>
-              <td>Tom Smith</td>
+              <td>Adele Bangalter</td>
               <td><a>Change</a></td>
             </tr>
           {% else %}
@@ -48,24 +48,33 @@
           {% if createjourney === false %}
             <tr>
               <td><span class="strong">Name start date</span></td>
-              <td><span class="today">24 January 2018</span></td>
+              <td><span class="today">2 February 2018</span></td>
               <td><a>Change</a></td>
             </tr>
             <tr>
               <td><span class="strong">Name notified start date</span></td>
-              <td><span class="today">24 January 2018</span></td>
+              <td><span class="today">2 February 2018</span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
           
           <tr>
             <td><span class="strong">Sex</span></td>
-            <td>Male</td>
+            {% if createjourney === false %}
+              <td>Female</td>
+            {% else %}
+              <td>Male</td>
+            {% endif %}
             <td><a>Change</a></td>
           </tr>
+          
           <tr>
             <td><span class="strong">Date of birth</span></td>
-            <td><span class="today">8 February 1960</span></td>
+            {% if createjourney === false %}
+              <td><span class="today">8 February 1980</span></td>
+            {% else %}
+              <td><span class="today">8 February 1960</span></td>
+            {% endif %}
             <td><a>Change</a></td>
           </tr>
         </table>
@@ -76,22 +85,73 @@
         <table class="table">
           <tr>
             <td><span class="strong">Residential address</span></td>
-            <td>1 Current Crescent, Gateshead, Tyne &amp; Wear NE1 1HH</td>
+            <td>1 Current Crescent, Gateshead, Tyne and Wear NE1 1HH</td>
             <td><a>Change</a></td>
           </tr>
           {% if createjourney === false %}
             <tr>
               <td><span class="strong">Address start date</span></td>
-              <td><span class="today">24 January 2018</span></td>
+              <td><span class="today">2 February 2018</span></td>
               <td><a>Change</a></td>
             </tr>
             <tr>
               <td><span class="strong">Address notified start date</span></td>
-              <td><span class="today">24 January 2018</span></td>
+              <td><span class="today">2 February 2018</span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
         </table>
+      
+        {% if createjourney === false %}
+          <br>
+          <h2 class="table-header">Previous address 1</h2>
+          <table class="table">
+            <tr>
+              <td><span class="strong">Address</span></td>
+              <td>Boulevard de Parc, Serris, 777,<br>France</td>
+              <td><a>Change</a></td>
+            </tr>
+              <tr>
+                <td><span class="strong">Address start date</span></td>
+                <td><span class="today">1 June 1985</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address end date</span></td>
+                <td><span class="today">1 September 2000</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address notified start date</span></td>
+                <td><span class="today">2 February 2018</span></td>
+                <td><a>Change</a></td>
+              </tr>
+          </table>
+          <br>
+          <h2 class="table-header">Previous address 2</h2>
+          <table class="table">
+            <tr>
+              <td><span class="strong">Address</span></td>
+              <td>1 Old Street, Newcastle upon Tyne, Tyne and Wear, NE1 111</td>
+              <td><a>Change</a></td>
+            </tr>
+              <tr>
+                <td><span class="strong">Address start date</span></td>
+                <td><span class="today">8 Feb 1980</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address end date</span></td>
+                <td><span class="today">21 June 1985</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address notified start date</span></td>
+                <td><span class="today">2 February 2018</span></td>
+                <td><a>Change</a></td>
+              </tr>
+          </table>
+        {% endif %}
       
         <br>
         <h2 class="table-header">Other personal details</h2>
