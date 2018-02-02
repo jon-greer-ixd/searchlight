@@ -21,27 +21,27 @@
             {% if createjourney === true %}
               <li>
                 {% if ninoversion === 1 %}
-                  <a href="/nino/2/name" tabindex="" class="sl-link sl-link-modal">Create an account</a>
+                  <a href="/nino/2/name" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% else %}
-                  <a href="/nino/4/name-current" tabindex="" class="sl-link sl-link-modal">Create an account</a>
+                  <a href="/nino/4/name-current" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% endif %}
               </li>
             {% elif createjourney === false %}
               <li>
                 {% if ninoversion === 1 %}
-                  <a href="/nino/2/nino" tabindex="" class="sl-link sl-link-modal">Create an account</a>
+                  <a href="/nino/2/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% else %}
-                  <a href="/nino/4/nino" tabindex="" class="sl-link sl-link-modal">Create an account</a>
+                  <a href="/nino/4/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% endif %}
               </li>
             {% endif %}
 
               <li>
-                <a href="/" tabindex="" ng-click="openFeedbackModal('lg'); feedbackJumpToTop()" class="sl-link sl-link-modal">Feedback</a>
+                <a href="/" tabindex="" ng-click="openFeedbackModal('lg'); feedbackJumpToTop()" class="sl-link sl-link-modal under-link">Feedback</a>
               </li>
 
            <li> 
-             <a href="/" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal">What’s
+             <a href="/" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal under-link">What’s
               new</a>
             </li>
 

@@ -27,7 +27,11 @@
         <table class="table">
           <tr>
             <td><span class="strong">Title</span></td>
-            <td>Ms</td>
+            {% if createjourney === false %}
+              <td>Ms</td>
+            {% else %}
+              <td>Mr</td>
+            {% endif %}
             <td><a>Change</a></td>
           </tr>
           
