@@ -1,14 +1,23 @@
   <div class="grid-row">
     <div class="column-two-thirds">
       
-      {% if createjourney === false %} 
         <div class="govuk-box-highlight done">
           <h1 class="heading-xlarge">
-            Account created for <br>Adele Bangalter
+            Account created for<br>
+            {% if createjourney === false %} 
+              Adele Bangalter
+            {% else %}
+              Matheo Bangalter
+            {% endif %}
           </h1>
+          <p class="font-large">
+            National Insurance Number <br>
+            <span class="bold">SP0000099</span>
+          </p>
         </div>
-      {% else %}
       
+      
+<!--
         <div class="govuk-box-highlight done">
           <h1 class="heading-xlarge">
             Account created
@@ -18,8 +27,8 @@
             <span class="bold">SP0000099</span>
           </p>
         </div>
+-->
       
-      {% endif %}
       
       <h2 class="heading-medium">Next steps</h2>
       <p>
