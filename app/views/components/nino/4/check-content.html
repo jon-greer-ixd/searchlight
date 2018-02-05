@@ -44,7 +44,7 @@
           {% else %}
             <tr>
               <td><span class="strong">Name</span></td>
-              <td>Mathéo Bangalter</td>
+              <td>Matheo Bangalter</td>
               <td><a href="name-current">Change</a></td>
             </tr>
           {% endif %}
@@ -137,10 +137,18 @@
           {% endif %}
           
           <tr>
-            <td><span class="strong">Add a correspondence address?</span></td>
+            <td><span class="strong">Correspondence address</span></td>
             <td><span class="today">No</span></td>
             <td><a>Change</a></td>
           </tr>
+          
+          {% if createjourney === true %}
+            <tr>
+              <td><span class="strong">Previous addresses</span></td>
+              <td><span class="today">No</span></td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
           
         </table>
       
