@@ -343,7 +343,7 @@ router.use('/', main);
   router.get('/', function (req, res) {
   resetAll();
   dataState.updateType = null;
-    
+  trace = false;
   dataState.updating = false;
   dataState.correcting = false;
   dataState.updatedToNewAddress = false;
@@ -1063,7 +1063,6 @@ router.get(/special-needs-handler/, function (req, res) {
 //type-handler
 router.get(/v1-type-handler/, function (req, res) {
   ninoVersion = 1;
-  console.log(ninoVersion);
   if(req.query.data === "create") {
     createJourney = true;
   } else {
@@ -1074,7 +1073,10 @@ router.get(/v1-type-handler/, function (req, res) {
 
 router.get(/v2-type-handler/, function (req, res) {
   ninoVersion = 2;
-  console.log(ninoVersion);
+  if(req.query.trace[0] === "true") {
+    trace = true;
+    console.log("Trace = " + trace);
+  }
   if(req.query.data === "create") {
     createJourney = true;
   } else {
@@ -1464,6 +1466,15 @@ router.get('/nino/4/special-needs/', function (req, res) {
     today : dates.todayAsFigure("/")
 
   })
+})
+
+//special-needs
+router.get(/check-handler/, function (req, res) {
+  if(trace === true) {
+    res.render('nino/4/trace')
+  } else {
+    res.render('nino/4/done')
+  }
 })
 
 

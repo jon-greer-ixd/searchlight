@@ -660,3 +660,15 @@ input.short-field {
     padding-left: 0;
   }
 }
+
+#trace-results {
+  line-height: 212%;
+  a.clickable-row {
+    display: block;
+    width :100%!important;
+    color: black;
+    &:hover {
+      text-decoration: none!important;
+    }
+  }
+}
