@@ -8,11 +8,12 @@ var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
 var NINO = require('./nino.js');
 
-var dates = require('./dates.js');
+var Dates = require('./dates.js');
+var dates = Dates.dates;
+dates.logToday();
 
 var createJourney = null;
 var ninoVersion = null;
-
 
 var person = {
   reset : function() {
@@ -36,6 +37,7 @@ var person = {
 };
 person.reset();
 
+var trace = false;
 
 /*
 
@@ -1104,12 +1106,93 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
 //Version 2
 //*********
  
-//name
+//nino
+router.get('/nino/4/nino/', function (req, res) {
+  res.render('nino/4/nino', {
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//current-name
+router.get('/nino/4/name-current/', function (req, res) {
+  res.render('nino/4/name-current', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-alternative
+router.get('/nino/4/name-alternative/', function (req, res) {
+  res.render('nino/4/name-alternative', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name-previous
 router.get('/nino/4/name-previous/', function (req, res) {
   res.render('nino/4/name-previous', {
     createjourney : createJourney,
     previous_name : person.previous_name,
-    requested_name : person.requested_name
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-search
+router.get('/nino/4/address-search/', function (req, res) {
+  res.render('nino/4/address-search', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-results
+router.get('/nino/4/search-results/', function (req, res) {
+  res.render('nino/4/search-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-previous
+router.get('/nino/4/search-previous/', function (req, res) {
+  res.render('nino/4/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//previous-results
+router.get('/nino/4/previous-results/', function (req, res) {
+  res.render('nino/4/previous-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-correspondence
+router.get('/nino/4/search-correspondence/', function (req, res) {
+  res.render('nino/4/search-correspondence', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//correspondence-results
+router.get('/nino/4/correspondence-results/', function (req, res) {
+  res.render('nino/4/correspondence-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
   })
 })
 
@@ -1145,15 +1228,6 @@ router.get('/nino/4/mobile/', function (req, res) {
 router.get('/nino/4/another-contact/', function (req, res) {
   res.render('nino/4/another-contact', {
     createjourney : createJourney
-  })
-})
-
-//current-name
-router.get('/nino/4/name-current/', function (req, res) {
-  res.render('nino/4/name-current', {
-    createjourney : createJourney,
-    previous_name : person.previous_name,
-    requested_name : person.requested_name
   })
 })
 
@@ -1259,56 +1333,8 @@ router.get('/nino/4/verification/', function (req, res) {
 })
 
 //address-search
-router.get('/nino/4/address-search/', function (req, res) {
-  res.render('nino/4/address-search', {
-    createjourney : createJourney,
-    person : person
-  })
-})
-
-//address-search
 router.get('/nino/4/previous-names/', function (req, res) {
   res.render('nino/4/previous-names', {
-    createjourney : createJourney,
-    person : person
-  })
-})
-
-//address-search
-router.get('/nino/4/name-alternative/', function (req, res) {
-  res.render('nino/4/name-alternative', {
-    createjourney : createJourney,
-    person : person
-  })
-})
-
-//address-search
-router.get('/nino/4/previous-results/', function (req, res) {
-  res.render('nino/4/previous-results', {
-    createjourney : createJourney,
-    person : person
-  })
-})
-
-//address-search
-router.get('/nino/4/correspondence-results/', function (req, res) {
-  res.render('nino/4/correspondence-results', {
-    createjourney : createJourney,
-    person : person
-  })
-})
-
-//address-search
-router.get('/nino/4/search-correspondence/', function (req, res) {
-  res.render('nino/4/search-correspondence', {
-    createjourney : createJourney,
-    person : person
-  })
-})
-
-//search-results
-router.get('/nino/4/search-results/', function (req, res) {
-  res.render('nino/4/search-results', {
     createjourney : createJourney,
     person : person
   })
@@ -1367,7 +1393,8 @@ router.get('/nino/4/non-mandatory-question/', function (req, res) {
 //check
 router.get('/nino/4/check/', function (req, res) {
   res.render('nino/4/check', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsString()
   })
 })
 
@@ -1389,42 +1416,53 @@ router.get('/nino/4/task-list/', function (req, res) {
 //ethnic-origin
 router.get('/nino/4/ethnic-origin/', function (req, res) {
   res.render('nino/4/ethnic-origin', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
   })
 })
 
 //immigration
 router.get('/nino/4/immigration/', function (req, res) {
   res.render('nino/4/immigration', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
   })
 })
 
 //language
 router.get('/nino/4/language/', function (req, res) {
   res.render('nino/4/language', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
   })
 })
 
 //spoken-language
 router.get('/nino/4/spoken-language/', function (req, res) {
   res.render('nino/4/spoken-language', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
   })
 })
 
 //disabilities
 router.get('/nino/4/disabilities/', function (req, res) {
   res.render('nino/4/disabilities', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
   })
 })
 
 //special-needs
 router.get('/nino/4/special-needs/', function (req, res) {
   res.render('nino/4/special-needs', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
   })
 })
 

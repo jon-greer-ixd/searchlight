@@ -646,3 +646,17 @@ input.short-field {
     text-decoration: none!important;
   }
 }
+
+.main-table {
+  td, tr {
+    width: auto!important;
+  }
+  th, td {
+    border-top: 0!important;
+    padding-left: 0!important;
+  }
+  td, th {
+    border-top: 0!important;
+    padding-left: 0;
+  }
+}
