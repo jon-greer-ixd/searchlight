@@ -894,7 +894,7 @@ router.get(/correspondence-results-handler/, function (req, res) {
 
 //search-results-handler
 router.get(/address-stat-handler/, function (req, res) {
-  if (req.query.data === 'live') {
+  if (req.query.data === 'live' || req.query.data === 'dlo') {
     res.redirect('address-search')
   } else {
     res.redirect('search-correspondence')
