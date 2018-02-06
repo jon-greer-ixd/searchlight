@@ -1478,9 +1478,9 @@ router.get('/nino/4/special-needs/', function (req, res) {
 //special-needs
 router.get(/check-handler/, function (req, res) {
   if(trace === true) {
-    res.render('nino/4/trace')
+    res.redirect('trace')
   } else {
-    res.render('nino/4/done')
+    res.redirect('done')
   }
 })
 
