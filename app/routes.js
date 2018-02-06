@@ -1115,6 +1115,13 @@ router.get('/nino/4/nino/', function (req, res) {
   })
 })
 
+//TRACE
+router.get('/nino/4/TRACE/', function (req, res) {
+  res.render('nino/4/TRACE', {
+    createjourney : createJourney
+  })
+})
+
 //current-name
 router.get('/nino/4/name-current/', function (req, res) {
   res.render('nino/4/name-current', {
