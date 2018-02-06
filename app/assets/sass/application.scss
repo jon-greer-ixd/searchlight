@@ -673,7 +673,6 @@ input.short-field {
   }
 }
 
-
 //autocomplete
   .ui-autocomplete {
     padding: 0;
@@ -697,5 +696,62 @@ input.short-field {
   .ui-autocomplete .ui-menu-item.ui-state-focus {
     background-color: #005ea5;
     color: white;
+}
+
+//trace-results
+#trace-results {
+  margin: 20px 0 40px 0;
+  div {
+    @include clearfix;
+    padding: 25px 0 20px 0;
+    border-top : 1px solid #dee0e2;
+    &:last-child {
+      border-bottom : 1px solid #dee0e2;
+    }
+    p {
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+      a {
+        color: #005ea5;
+        font-weight :700;
+        font-size: 19px;
+      }
+    }
+    ul {
+      color: #6f777b;
+      li {
+        float: left;
+        margin-right :.2em;
+        font-size: .84em;
+        &:last-child {
+          float: right
+        }
+      }
+    }
+  }
+}
+
+#trace-menu {
+  height :15px;
+  span {
+    color: black;
+  }
+  font-size: .84em;
+  color: #6f777b;
+  ul {
+    li {
+      float: left;
+      margin-left : 1.5em;
+    }
+    &:last-child {
+      float: right;
+    } 
+    &:first-child {
+      li {
+        margin-left : 0;
+      }
+    }
+  }
 }
 

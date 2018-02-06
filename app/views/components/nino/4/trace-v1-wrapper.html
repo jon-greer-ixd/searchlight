@@ -4,14 +4,18 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-    <div class="column-two-thirds">
+                    
           <a class="link-back" onCLick="history.back()">Back</a>
-              <h1 class="question-title">Some of the details entered match the following accounts</h1>
-          </div>
+
+<!--          <h1 class="question-title">These accounts match the details<br> you are about to submit.</h1>-->
+<!--          <h1 class="question-title">These accounts contain details that match what <br> you have entered</h1>-->
+<!--          <h1 class="question-title">Some of the details entered match these people</h1>-->
+              <h1 class="question-title">Some of the details entered match existing accounts</h1>
+
           <div id="sl-address-primary-card" class="sl-primary-card">
             <div id="address-pane">
               
-                {% include "components/nino/4/trace-content.html" %}
+                {% include "components/nino/4/trace-v1-content.html" %}
               
             </div>
           </div>
