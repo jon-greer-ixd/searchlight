@@ -150,8 +150,8 @@ table.table {
   }
 }
 
-#postcode {
-  width: 30%;
+#postcode, .form-label .short {
+  width: 30%!important;
 }
 
 .postcode-searched {
@@ -753,5 +753,9 @@ input.short-field {
       }
     }
   }
+}
+
+.link-back:hover {
+  cursor: pointer;
 }
 

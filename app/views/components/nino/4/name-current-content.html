@@ -49,22 +49,28 @@
         </fieldset>
         
         <fieldset class="form-group">
+          <legend class="visuallyhidden">Suffix</legend>
+          <label class="form-label short" for="code">Suffix</label>
+          <input class="form-control" id="postcode" type="text" name="postcode">
+        </fieldset>
+        
+        <fieldset class="form-group">
           <legend class="visuallyhidden">Name start date</legend>
-          <label class="form-label" for="full-name-f1">
+          <label class="form-label" for="postcode">
             Name start date
             <span class="form-hint">
               For example 31/8/1979
             </span>
           </label>
-          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1"><span class="today"></span>
+          <input class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
         </fieldset>
 
         {% if createjourney === false %}
 
           <fieldset class="form-group">
             <legend class="visuallyhidden">Name notified start date</legend>
-            <label class="form-label" for="full-name-f1">Name notified start date</label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="{{today}}">
+            <label class="form-label short" for="postcode">Name notified start date</label>
+            <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">
           </fieldset>
         {% endif %}
 

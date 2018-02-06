@@ -46,32 +46,38 @@
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
         </fieldset>
         
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Suffix</legend>
+          <label class="form-label short" for="code">Suffix</label>
+          <input class="form-control" id="postcode" type="text" name="postcode">
+        </fieldset>
+        
         {% if createjourney === false %}
           <fieldset class="form-group">
-            <label class="form-label" for="full-name-f1">
+            <label class="form-label" for="postcode">
               Start date
               <span class="form-hint">
                 For example 31/8/1979
               </span>
             </label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1"><span class="today"></span>
+            <input class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
           </fieldset>
         
           <fieldset class="form-group">
-            <label class="form-label" for="full-name-f1">Notified start date</label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="{{today}}">
+            <label class="form-label" for="postcode">Notified start date</label>
+            <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">
           </fieldset>
         
           <fieldset class="form-group">
-            <label class="form-label" for="full-name-f1">
+            <label class="form-label" for="postcode">
               End date
             </label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1"><span class="today"></span>
+            <input class="form-control" id="postcode" type="text" name="fpostcode"><span class="today"></span>
           </fieldset>
 
           <fieldset class="form-group">
-            <label class="form-label" for="full-name-f1">Notified end date</label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="{{today}}">
+            <label class="form-label" for="postcode">Notified end date</label>
+            <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">
           </fieldset>
         
         {% else %}
