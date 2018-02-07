@@ -1109,6 +1109,15 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
 //*********
  
 //nino
+router.get(/another-handler/, function (req, res) {
+  if (req.query.data == "yes"){
+    res.redirect('add-contact')
+  } else {
+    res.redirect('nationality')
+  }
+})
+
+//nino
 router.get('/nino/4/nino/', function (req, res) {
   res.render('nino/4/nino', {
     today : dates.todayAsFigure("/")
