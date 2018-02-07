@@ -1407,6 +1407,14 @@ router.get('/nino/4/check/', function (req, res) {
   })
 })
 
+//check
+router.get('/nino/4/check-v2/', function (req, res) {
+  res.render('nino/4/check-v2', {
+    createjourney : createJourney,
+    today : dates.todayAsString()
+  })
+})
+
 //done
 router.get('/nino/4/done/', function (req, res) {
   res.render('nino/4/done', {

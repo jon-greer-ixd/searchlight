@@ -48,4 +48,26 @@ if (document.getElementById('internationalID')) {
   }
 }
 
+//checkbox contact
+if (document.getElementById("contact-boxes")) {
+  var alternative = document.getElementById("alternative");
+  var previous = document.getElementById("previous");
+  var requested = document.getElementById("requested");
+  var none = document.getElementById("none");
+  none.addEventListener('change', cancelPrefs);
+  function cancelPrefs() {
+    console.log("canceled");
+     alternative.checked = false;
+     previous.checked = false;
+     requested.checked = false;
+  }
+  alternative.addEventListener('change', changePrefs);
+  previous.addEventListener('change', changePrefs);
+  requested.addEventListener('change', changePrefs);
+  function changePrefs() {
+    console.log("changed");
+     none.checked = false;
+  }
+}
+
 

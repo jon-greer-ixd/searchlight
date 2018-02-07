@@ -16,7 +16,7 @@
               </tr>
               <tr>
                 <td><span class="strong">Creation office</span></td>
-                <td>12345</td>
+                <td>1234</td>
                 <td><a href="nino">Change</a></td>
               </tr>
             </table>
@@ -28,7 +28,7 @@
           <tr>
             <td><span class="strong">Title</span></td>
             {% if createjourney === false %}
-              <td>Mrs</td>
+              <td>Ms</td>
             {% else %}
               <td>Mr</td>
             {% endif %}
@@ -142,21 +142,74 @@
             <td><a>Change</a></td>
           </tr>
           
+          {% if createjourney === true %}
             <tr>
               <td><span class="strong">Previous addresses</span></td>
               <td><span class="today">No</span></td>
               <td><a>Change</a></td>
             </tr>
+          {% endif %}
           
         </table>
+      
+        {% if createjourney === false %}
+          <br>
+          <h2 class="table-header">Previous address 1</h2>
+          <table class="table">
+            <tr>
+              <td><span class="strong">Address</span></td>
+              <td>Boulevard de Parc, Serris, 777,<br>France</td>
+              <td><a>Change</a></td>
+            </tr>
+              <tr>
+                <td><span class="strong">Address start date</span></td>
+                <td><span class="today">1 June 1985</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address end date</span></td>
+                <td><span class="today">1 September 2000</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address notified start date</span></td>
+                <td><span class="today">{{today}}</span></td>
+                <td><a>Change</a></td>
+              </tr>
+          </table>
+          <br>
+          <h2 class="table-header">Previous address 2</h2>
+          <table class="table">
+            <tr>
+              <td><span class="strong">Address</span></td>
+              <td>1 Old Street, Newcastle upon Tyne, Tyne and Wear, NE1 111</td>
+              <td><a>Change</a></td>
+            </tr>
+              <tr>
+                <td><span class="strong">Address start date</span></td>
+                <td><span class="today">8 Feb 1980</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address end date</span></td>
+                <td><span class="today">21 June 1985</span></td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Address notified start date</span></td>
+                <td><span class="today">{{today}}</span></td>
+                <td><a>Change</a></td>
+              </tr>
+          </table>
+        {% endif %}
       
         <br>
         <h2 class="table-header">Other personal details</h2>
       
         <table class="table">
           <tr>
-            <td><span class="strong">Add a contact method</span></td>
-            <td>No</td>
+            <td><span class="strong">Mobile telephone number</span></td>
+            <td>07123 456 789</td>
             <td><a>Change</a></td>
           </tr>
           
@@ -171,23 +224,7 @@
             <td>Separated</td>
             <td><a>Change</a></td>
           </tr>
-          {% else %}
-          <tr>
-            <td><span class="strong">Nationlaity</span></td>
-            <td>No answer given</td>
-            <td><a>Change</a></td>
-          </tr>
-          <tr>
-            <td><span class="strong">Marital status</span></td>
-            <td>No answer given</td>
-            <td><a>Change</a></td>
-          </tr>
           {% endif %}
-          <tr>
-            <td><span class="strong">Add other details for this person</span></td>
-            <td>No</td>
-            <td><a>Change</a></td>
-          </tr>
 
       </table>
         
