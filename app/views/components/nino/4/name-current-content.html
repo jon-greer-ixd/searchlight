@@ -21,15 +21,15 @@
               <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
               <label for="example-contact-by-phone">Ms</label>
             </div>
-            <div class="multiple-choice" data-target="contact-by-phone">
-              <input id="dr" type="radio" name="radio-contact-group" value="dr">
-              <label for="dr">Dr</label>
-            </div>
             <div class="multiple-choice" data-target="contact-by-text">
               <input id="other" type="radio" name="radio-contact-group" value="other">
               <label for="other">Other</label>
             </div>
             <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+              <div class="multiple-choice" data-target="contact-by-phone">
+                <input id="dr" type="radio" name="radio-contact-group" value="dr">
+                <label for="dr">Dr</label>
+              </div>
               <div class="multiple-choice">
                 <input id="rev" type="radio" name="data" value="rev">
                 <label for="rev">Rev</label>
@@ -103,8 +103,8 @@
 
           <fieldset class="form-group">
             <legend class="visuallyhidden">Name notified start date</legend>
-            <label class="form-label short" for="postcode">Name notified start date</label>
-            <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">
+            <label class="form-label short" for="date">Name notified start date</label>
+            <input class="form-control" id="date" type="text" name="date" value="{{today}}">
           </fieldset>
         {% endif %}
 

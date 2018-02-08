@@ -150,7 +150,7 @@ table.table {
   }
 }
 
-#postcode, .form-label .short {
+#postcode, .form-label .short, #date {
   width: 30%!important;
 }
 
@@ -757,5 +757,9 @@ input.short-field {
 
 .link-back:hover {
   cursor: pointer;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
 }
 

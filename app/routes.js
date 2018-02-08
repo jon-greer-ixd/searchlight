@@ -1120,13 +1120,14 @@ router.get(/another-handler/, function (req, res) {
 //nino
 router.get('/nino/4/nino/', function (req, res) {
   res.render('nino/4/nino', {
+    createjourney : createJourney,
     today : dates.todayAsFigure("/")
   })
 })
 
 //TRACE
-router.get('/nino/4/TRACE/', function (req, res) {
-  res.render('nino/4/TRACE', {
+router.get('/nino/4/trace/', function (req, res) {
+  res.render('nino/4/trace', {
     createjourney : createJourney
   })
 })
