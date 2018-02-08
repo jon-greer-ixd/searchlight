@@ -52,6 +52,20 @@
           <input class="form-control" id="postcode" type="text" name="postcode">
         </fieldset>
         
+        <fieldset class="form-group">
+          <legend>
+            <p class="">What type of name was it?</p>
+          </legend>
+          <div class="multiple-choice">
+            <input id="one" type="radio" name="data" value="one">
+            <label for="one">Type 1</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="two" type="radio" name="data" value="two">
+            <label for="two">Type 2</label>
+          </div>
+        </fieldset>
+
         {% if createjourney === false %}
           <fieldset class="form-group">
             <label class="form-label" for="postcode">
