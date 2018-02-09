@@ -763,3 +763,113 @@ input.short-field {
   display: none;
 }
 
+.historic-name {
+  li {
+    padding-left: 40px;
+  }
+  .oval {
+    padding-top: 2px;
+    span {
+      font-weight: bold;
+      color: #666;
+    }
+    background: url(../../../public/images/timeline-oval.svg);
+    height :30px;
+    background-repeat: no-repeat;
+  }
+}
+
+//modal info
+.modal-body {
+  padding: 15px 30px 22px;
+}
+.modal-header {
+  font-size: 19px;
+  padding: 15px 30px 10px;
+  border-bottom: 2px solid #cccccc;
+  background-color: #f8f8f8;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+.closes {
+  float: right;
+  font-size: 19px;
+  line-height: 1;
+  color: #005ea5;
+  font-weight: normal;
+  padding-top: 4px;
+  &:visited {
+    color: #005ea5;
+    font-weight: normal;
+  }
+  &:hover {
+    text-decoration: underline;
+    color: #005ea5;
+    cursor: pointer;
+  }
+}
+
+.change-data {
+  @include clearfix;
+  div {
+    float: left;
+    &:last-child {
+      float: right;
+      text-align: right;
+    }
+  }
+  .office {
+    font-weight: bold;
+    font-size: 24px;
+  }
+  .office-code {
+    font-weight: bold;
+  }
+  .date, .system, .contact-type {
+    color: #666666;
+  }
+}
+
+.modal_link {
+  font-size: 17px;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: normal;
+  &.link_grey {
+    color: #666666;
+  }
+}
+
+.spacer {
+  width: 5px;
+  display: inline-block;
+}
+
+.contact-item {
+  margin-bottom: 30px;
+}
+
+.interest-type {
+  background-color: #005ea5;
+  font-weight: normal;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: .84em;
+  vertical-align: 10%;
+  margin-right: 10px;
+  text-align: center;
+  margin-left: 10p;
+  &.crl {
+    background-color: black;
+    margin-left: 25px;
+    padding: 2px 8px 0;
+  }
+}
+
+.nav {
+  color: #005ea5;
+}

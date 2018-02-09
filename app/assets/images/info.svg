@@ -1,0 +1,29 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #005ea5;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 0.2px;
+      }
+    </style>
+  </defs>
+  <title>Artboard 1</title>
+  <g id="SDEL-1684-_-View-a-customer_s-personal-details-_including-spacing_-Copy-3" data-name="SDEL-1684-—-View-a-customer&apos;s-personal-details-(including-spacing)-Copy-3">
+    <g id="personal-details">
+      <g id="data-group">
+        <g id="data-item">
+          <g id="metadata-icon">
+            <path id="Shape" class="cls-1" d="M8,0a8,8,0,1,0,8,8A8,8,0,0,0,8,0Z"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <path class="cls-2" d="M8.92,3.22a.92.92,0,1,1-1.84,0A.91.91,0,0,1,8,2.29.88.88,0,0,1,8.92,3.22ZM7.26,13.71V5.52H8.75v8.19Z"/>
+</svg>

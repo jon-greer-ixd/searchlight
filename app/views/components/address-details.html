@@ -8,7 +8,9 @@
         <ul>
           <li>Correspondence address</li>
           {% if correspondence == true %}
-          <li class="sl-secondary-text-color sl-metadata">{{editDate}} - present</li>
+            <li class="sl-secondary-text-color sl-metadata">
+              <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">{{editDate}} - present</a>
+            </li>
           {% endif %}
         </ul>
       </div>
@@ -36,16 +38,18 @@
       <ul>
         <li>Residential address</li>
         <li class="sl-secondary-text-color sl-metadata">
-          {% if residentialaddress.updated === true %} 
-            {% if updatetype === "correctDate" or updatetype === "correctToNew" or updatetype === "correctNew" or updatetype === "correctStatusDlo" or updatetype === "correctChangeCherish" or updatetype === "correctAddCherish" or updatetype === "correctRemoveCherish" %}
-              {{startdate}} 
+          <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">
+            {% if residentialaddress.updated === true %} 
+              {% if updatetype === "correctDate" or updatetype === "correctToNew" or updatetype === "correctNew" or updatetype === "correctStatusDlo" or updatetype === "correctChangeCherish" or updatetype === "correctAddCherish" or updatetype === "correctRemoveCherish" %}
+                {{startdate}} 
+              {% else %}
+                {{editDate}}
+              {% endif %}
             {% else %}
-              {{editDate}}
+              {{startdate}}
             {% endif %}
-          {% else %}
-            {{startdate}}
-          {% endif %}
           – present
+          </a>
         </li>
       </ul>
     </div>
