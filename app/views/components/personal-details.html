@@ -4,20 +4,37 @@
   <div class="grid-row">
     
     <div class="column-one-third">
-      <p>Name</p>
+      <ul>
+        <li>Name</li>
+<!--        <li><a href="previous-names" style="font-size:17px;" class="under-link">History</a></li>-->
+      </ul>
     </div>
     
     <div class="column-one-third">
       <ul>
         <li class="strong">MR TOM SMITH</li>
-      </ul>
-      
-      <ul>
         <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
+          <span class=""><a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">Since 14 Dec 2016</a></span>
         </li>
-      </ul>
+      </ul>      
       
+      <details>
+        <summary class="update-summary">
+          <span class="summary">
+           Previous names
+          </span>
+        </summary>
+        <div>
+          <ul class="historic-name">
+            <li class="sl-secondary-text-color oval">
+              <span>MR TOM JONES</span>
+            </li>
+            <li class="sl-metadata sl-secondary-text-color spacing-top-sixth ng-binding">
+              <span class=""><a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">9 Mar 1999 – 13 Dec 2016</a></span>
+            </li>
+          </ul>
+        </div>
+      </details>
 <!--
       <ul>
         <li class="sl-secondary-text-color sl-metadata">
@@ -114,10 +131,16 @@
     <div class="column-one-third">
       <ul>
         <li class="strong">8 Feb 1960</li>
+<!--
+          <li>
+          <span class="">
+            <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">Since 14 Dec 2016</a>
+          </span>
+        </li>
+-->
         <li>
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-secondary-text-color sl-metadata">Verified to level 2</span>
-        </li>
       </ul>
     </div>
 
@@ -162,3 +185,8 @@
 <hr>
   {% include "components/personal-details-history.html" %}
 -->
+
+
+  {% include "components/modals.html" %}
+
+

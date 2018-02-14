@@ -5,37 +5,11 @@
 
         {% include "./personal.html" %}
         {% include "./address.html" %}
+        
+        {% include "./contact.html" %}
+        
+        {% include "./interests.html" %}
 
-        <div name="Contact" id="Contact" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          <h2>Contact</h2>
-
-          <div class="sl-primary-card" id="sl-account-contact-details">
-            <!-- ngIf: !data.contact && contactTimeout -->
-
-            <!-- ngIf: !data.contact && !contactTimeout -->
-            <!-- ngIf: data.contact.empty --><div class="row ng-scope" ng-if="data.contact.empty">
-
-              <div class="col-xs-12">No contact details held for this customer.</div>
-            </div><!-- end ngIf: data.contact.empty -->
-            <!-- ngIf: data.contact && !data.contact.empty -->
-          </div>
-        </div>
-
-
-        <div name="Interests" id="Interests" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          <h2>Interests</h2>
-          <!-- ngIf: !data.interests || data.interests.empty --><div class="sl-primary-card ng-scope" id="sl-account-interest-details" ng-if="!data.interests || data.interests.empty">
-            <!-- ngIf: !data.interests && interestsTimeout -->
-
-            <!-- ngIf: !data.interests && !interestsTimeout -->
-            <!-- ngIf: data.interests.empty --><div class="row ng-scope" ng-if="data.interests.empty">
-
-              <div class="col-xs-12">No interests held for this customer.
-              </div>
-            </div><!-- end ngIf: data.interests.empty -->
-          </div><!-- end ngIf: !data.interests || data.interests.empty -->
-          <!-- ngIf: data.interests && !data.interests.empty -->
-        </div>
 
         <div name="Benefits" id="Benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           <h2>Benefits</h2>

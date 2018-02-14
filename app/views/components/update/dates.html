@@ -10,6 +10,7 @@
   {% endif %}
 </h2>
 
+<!--
 <div class="panel panel-border-wide">
   <ul>
     <li>
@@ -20,12 +21,11 @@
     </li>
   </ul>
 </div>
-
-
-  <p>Select all that apply</p>
+-->
 
   {% if updatetype === "correctDate" %}
-{% endif %}
+    <p>Select all that apply</p>
+  {% endif %}
 
 <div class="grid-row">
   <div class="column-one-half">
@@ -36,7 +36,7 @@
         <fieldset>
           <label class="form-label" for="full-name-f1">
             <span class="form-hint">
-              For example 31 8 1979
+              For example 31/8/1979
             </span>
           </label>
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
@@ -56,7 +56,7 @@
               <label class="form-label" for="start-date">
                 What is the start date?
                 <span class="form-hint">
-                  For example 31 8 1979
+                  For example 31/8/1979
                 </span>
               </label>
               <input class="form-control" type="text" id="start-date" name="start-date">
@@ -71,7 +71,7 @@
             <label class="form-label" for="start-date">
               What is the notified start date?
               <span class="form-hint">
-                For example 31 8 1979
+                For example 31/8/1979
               </span>
             </label>
               <input class="form-control" type="text" id="start-date" name="start-date">
@@ -91,7 +91,7 @@
           {% endif %}
             date
             <span class="form-hint">
-              For example 31 8 1979
+              For example 31/8/1979
             </span>
           </label>
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">

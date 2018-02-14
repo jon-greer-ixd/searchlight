@@ -1,0 +1,82 @@
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <form class="form" method="get" action="another-contact">
+      
+      <fieldset class="form-group">
+        <label class="form-label" for="contact-text-message">Email address</label>
+        <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label class="form-label" for="postcode">
+          Start date
+          <span class="form-hint">
+            For example 31/8/1979
+          </span>
+        </label>
+        <input class="form-control" name="postcode" type="text" id="postcode">
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <legend>
+          <p>Do any of the following apply to this email address? (optional)</p>
+        </legend>
+        <div class="multiple-choice">
+          <input id="work" name="who" type="checkbox" value="true">
+          <label for="work">It's a work email address</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="third" name="who" type="checkbox" value="true">
+          <label for="third">It's a third party email address</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+          <label for="checkbox-telephone-number">It's their prefered method of contact</label>
+        </div>
+      </fieldset>
+
+<!--
+      <fieldset class="form-group">
+        <legend>
+          <p>Do any of the following apply to this number? (optional)</p>
+        </legend>
+        <div class="multiple-choice">
+          <input id="work-number" name="who" type="checkbox" value="true">
+          <label for="work-number">Work number</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="third" name="who" type="checkbox" value="true">
+          <label for="third">Third party number</label>
+        </div>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <div class="multiple-choice">
+          <input id="day-number" name="contact-by-text-phone" type="checkbox" value="true">
+          <label for="day-number">Daytime only</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="night" name="contact-by-text-phone" type="checkbox" value="true">
+          <label for="night">Evening only</label>
+        </div>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <div class="multiple-choice">
+          <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+          <label for="checkbox-telephone-number">Prefered method of contact</label>
+        </div>
+      </fieldset>
+-->
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+
+    </form>
+      <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>

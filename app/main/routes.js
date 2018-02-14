@@ -1,11 +1,6 @@
 var express = require('express')
 var router = express.Router()
 
-// search page
-router.get('/search', function (req, res) {
-  res.render('pages/search.njk')
-})
-
 // search full page
 router.get('/search-full', function (req, res) {
   res.render('pages/search-full.njk')

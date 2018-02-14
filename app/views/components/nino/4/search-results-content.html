@@ -1,0 +1,70 @@
+<p>Select an address</p>
+
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="address-question">
+      <div class="form-group">
+         
+        <!--<label class="form-label" for="select-box">Select an address</label>-->
+        <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
+          <option>12 addresses found</option>
+          <option>1 Current Crescent, Gateshead</option>
+          <option>2 Current Crescent, Gateshead</option>
+          <option>3 Current Crescent, Gateshead</option>
+          <option>4 Current Crescent, Gateshead</option>
+          <option>5 Current Crescent, Gateshead</option>
+          <option>6 Current Crescent, Gateshead</option>
+          <option>7 Current Crescent, Gateshead</option>
+          <option>8 Current Crescent, Gateshead</option>
+          <option>9 Current Crescent, Gateshead</option>
+          <option>10 Current Crescent, Gateshead</option>
+          <option>11 Current Crescent, Gateshead</option>
+          <option>12 Current Crescent, Gateshead</option>
+        </select>
+      </div>
+            
+      <div id="hidden">
+        <div class="form-group">
+          <label class="form-label" for="full-name-f1">Add a cherished line (optional)</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
+        </div>
+        <div class="form-group">
+          <ul>
+            <li>1 Current Crescent</li>
+            <li>Gateshead</li>
+            <li>Tyne &amp; Wear</li>
+            <li>NE11 1HH</li>
+          </ul>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="postcode">
+            Address start date
+            <span class="form-hint">
+              For example 31/8/1979
+            </span>
+            </label>
+          <input class="form-control" id="postcode" type="text" name="postcode">      
+        </div>
+        {% if createjourney === false %}
+        <div class="form-group">
+          <label class="form-label" for="postcode">
+            Address notified start date</label>
+          <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">      
+        </div>
+      {% endif %}
+      </div>
+      
+      <div id="to_hide"class="form-group">
+        <a class="under-link" href="manual-address">I can't find the address in the list</a>
+      </div>
+      
+      <div class="form-group search-group">
+        <input class="button" type="submit" value="Next">
+        <a href="address-search" class="secondary-button">New search</a>
+      </div>
+      
+    </form>
+    <a href="account">Cancel</a>
+  </div>
+</div>

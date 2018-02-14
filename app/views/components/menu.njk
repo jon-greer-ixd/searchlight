@@ -15,13 +15,39 @@
             <!-- ngIf: state.current.name !== 'search' -->
           </div>
           <!-- ngIf: state.current.name !== 'search' -->
+          
           <div class="sl-header-col-right pull-right">
-            <li>
-            <a href="/" tabindex="" ng-click="openFeedbackModal('lg'); feedbackJumpToTop()" class="sl-link sl-link-modal">Feedback</a></li>
+            
+            {% if createjourney === true %}
+              <li>
+                {% if ninoversion === 1 %}
+                  <a href="/nino/2/name" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% elif ninoversion === 2  %}
+                  <a href="/nino/4/name-current" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% else %}
+                  <a href="/nino/5/name-current" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% endif %}
+              </li>
+            {% elif createjourney === false %}
+              <li>
+                {% if ninoversion === 1 %}
+                  <a href="/nino/2/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% elif ninoversion === 2  %}
+                  <a href="/nino/4/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% else %}
+                  <a href="/nino/5/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% endif %}
+              </li>
+            {% endif %}
 
+              <li>
+                <a href="/" tabindex="" ng-click="openFeedbackModal('lg'); feedbackJumpToTop()" class="sl-link sl-link-modal under-link">Feedback</a>
+              </li>
 
-           <li> <a href="/" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal">What’s
-              new</a></li>
+           <li> 
+             <a href="/" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal under-link">What’s
+              new</a>
+            </li>
 
 
           <span tabindex="-1" class="sl-hamburger-icon-container pull-right sl-hamburger-icon-container-search" ng-class="{'sl-hamburger-icon-container-search': state.current.name === 'search'}" ng-click="navMenuOpen = !navMenuOpen" href="#" role="button">

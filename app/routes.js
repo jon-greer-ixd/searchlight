@@ -8,8 +8,36 @@ var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
 var NINO = require('./nino.js');
 
-var dates = require('./dates.js');
+var Dates = require('./dates.js');
+var dates = Dates.dates;
+dates.logToday();
 
+var createJourney = null;
+var ninoVersion = null;
+
+var person = {
+  reset : function() {
+    //address
+    this.previous_address = null;
+    this.previous_address_count = 0;
+    this.correspondence_address = null;
+    //names
+    this.previous_name = null;
+    this.previous_name_count = 0;
+    this.alternative_name = null;
+    this.rfa_name = null;
+    //other
+    this.ethnic_origin = null;
+    this.immigration = null;
+    this.preferred_language = null;
+    this.spoken_language = null;
+    this.disability = null;
+    this.special_needs = null;
+  }
+};
+person.reset();
+
+var trace = false;
 
 /*
 
@@ -60,8 +88,9 @@ var resetAll = function() {
   residentialAddress.reset();
   correspondenceAddress.reset();
   previousAddress.reset();
-  
-  createJourney = true;
+  person.reset();
+  createJourney = null;
+  ninoVersion = null;
 };
 
 var residentialAddress = {
@@ -232,8 +261,6 @@ var updateOmatic = function() {
     previousAddress.correct = false;
     // update the dates
   } 
-
-
 }
   
 //var dataState = {
@@ -305,12 +332,21 @@ var content = require('./content').content;
 
 var main = require('./main/routes');
 
+// search page
+router.get('/search', function (req, res) {
+  res.render('pages/search.njk', {
+    createjourney : createJourney,
+    ninoversion : ninoVersion
+  })
+})
+
+
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {
   resetAll();
   dataState.updateType = null;
-    
+  trace = false;
   dataState.updating = false;
   dataState.correcting = false;
   dataState.updatedToNewAddress = false;
@@ -341,14 +377,13 @@ router.get('/search-v1', function (req, res) {
 //update
 
 //account
-router.get('/update/account', function (req, res) {
+router.get(/account/, function (req, res) {
   res.render('account', {
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
     previousaddress : previousAddress,
     startdate : residentialAddress.startDate,
     updatetype : dataState.updateType,
-    
     updated : dataState.updatedToNewAddress,
     cherished : dataState.cherished,
     editDate : content.editDate,
@@ -359,7 +394,8 @@ router.get('/update/account', function (req, res) {
     dateisupdated : dataState.dateIsUpdated,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
-    statuscorrected : dataState.statusCorrected
+    statuscorrected : dataState.statusCorrected,
+    createjourney : createJourney
   })
 })
 
@@ -595,7 +631,6 @@ router.get('/update/search-results-handler', function (req, res) {
   }
 })
 
-
 router.get('/update/check', function (req, res) {
   res.render('update/check', {
     addressone : addressOne,
@@ -649,96 +684,6 @@ router.get(/check-answers-handler/, function (req, res) {
   res.redirect('account')
 })
 
-
-//*****************
-// ACCOUNT CREATION 
-//*****************
-
-var createJourney = true;
-
-/*
-Create
-Cant see:
-Name Start Date
-Name Notified Start Date
-are pre populated with the current system date. 
-
-
-Update/insert
-Can edit:
-Name Start Date
-Name Notified Start Date
-are pre populated with the current system date. 
-dont see trace
-*/
-
-
-//type-handler
-router.get(/type-handler/, function (req, res) {
-  if(req.query.data === "create") {
-    createJourney = true;
-    res.redirect('name')
-  } else {
-    createJourney = false;
-    res.redirect('nino')
-  }
-})
-
-//contact-handler
-router.get(/contact-handler/, function (req, res) {
-  if(req.query.data === "yes") {
-    res.redirect('add-contact')
-  } else {
-    res.redirect('nationality')
-  }
-})
-
-//non-mandatory-handler
-router.get(/v2-non-mandatory-handler/, function (req, res) {
-  if (req.query.data === "yes") {
-    res.redirect('task-list')
-  } else {
-    res.redirect('check')
-  }
-})
-
-//name
-router.get('/nino/2/name/', function (req, res) {
-  res.render('nino/2/name', {
-    createjourney : createJourney
-  })
-})
-
-//name
-router.get('/nino/2/check/', function (req, res) {
-  res.render('nino/2/check', {
-    createjourney : createJourney
-  })
-})
-
-//address search results
-router.get('/nino/2/results-handler/', function (req, res) {
-  if (createJourney === false) {
-    res.render('nino/2/address-date')
-  } else {
-    res.render('nino/2/address-question')
-  }
-})
-
-//check
-router.get('/nino/2/check/', function (req, res) {
-  console.log('here')
-  res.render('nino/2/check', {
-    createjourney : createJourney
-  })
-})
-
-//done
-router.get('/nino/2/done/', function (req, res) {
-  res.render('nino/2/done', {
-    createjourney : createJourney
-  })
-})
 
 
 //*********
@@ -849,6 +794,1313 @@ router.get(/correction-type-handler/, function (req, res) {
   } 
   console.log(dataState.correctionType);
   res.render(next);
+})
+
+
+
+//*****************
+// ACCOUNT CREATION 
+//*****************
+
+/*
+Create
+Cant see:
+Name Start Date
+Name Notified Start Date
+are pre populated with the current system date. 
+
+
+Update/insert
+Can edit:
+Name Start Date
+Name Notified Start Date
+are pre populated with the current system date. 
+dont see trace
+*/
+
+//************
+//All versions
+//************
+
+
+//special-needs
+router.get(/check-handler/, function (req, res) {
+  if(trace === true) {
+    res.redirect('trace')
+  } else {
+    res.redirect('done')
+  }
+})
+
+//other-name-handler
+router.get(/other-name-handler/, function (req, res) {
+  var next = "dob";
+  if (req.query.requested[0] === "true") {
+    person.rfa_name = true;
+    next = "name-requested";
+  }
+  if (req.query.previous[0] === "true") {
+    person.previous_name = true;
+    next = "name-previous";
+  }
+  if (req.query.alternative[0] === "true") {
+    person.alternative_name = true;
+    next = "name-alternative";
+  }
+  res.redirect(next)
+})
+
+//alternative-name-handler
+router.get(/alternative-name-handler/, function (req, res) {
+  var next = "dob";
+  if (person.rfa_name === true) {
+    next = "name-requested";
+  }
+  if (person.previous_name === true) {
+    next = "name-previous";
+  }
+  res.redirect(next)
+})
+
+//previous-question-handler
+router.get(/previous-question-handler/, function (req, res) {
+  console.log(person);
+  if (req.query.data === "yes") {
+    person.previous_name_count++;
+    res.redirect('name-previous')
+  } else if (person.rfa_name === true) {
+    res.redirect('name-requested')
+  } else {
+    res.redirect('dob')
+  }
+})
+
+//correspondence-address-handler
+router.get(/correspondence-address-handler/, function (req, res) {
+  if (req.query.data === 'yes') {
+    console.log(person.correspondence_address);
+    res.redirect('search-correspondence')
+  } else {
+    person.correspondence_address = false;
+    console.log(person.correspondence_address);
+    res.redirect('contact-question')
+  }
+})
+
+//manual-address-handler
+router.get(/manual-handler/, function (req, res) {
+  if (person.previous_address != null) {
+    res.redirect('contact-question')
+  } else {
+    res.redirect('address-question')
+  }
+})
+
+
+//correspondence-address-handler
+router.get(/correspondence-results-handler/, function (req, res) {
+  if(person.previous_address === null) {
+    res.redirect('address-question')
+  } else {
+    res.redirect('contact-question')
+  }
+})
+
+//search-results-handler
+router.get(/address-stat-handler/, function (req, res) {
+  if (req.query.data === 'live' || req.query.data === 'dlo') {
+    res.redirect('address-search')
+  } else {
+    res.redirect('search-correspondence')
+  }  
+})
+
+//search-handler
+router.get(/search-handler/, function (req, res) {
+  if (req.query.uk === "no") {
+    res.redirect('address-question')
+  } else {
+    res.redirect('search-results')
+  }
+})
+
+//search-previous-handler
+router.get(/s-previous-handler/, function (req, res) {
+  if (req.query.uk === "no") {
+    res.redirect('address-question')
+  } else {
+    res.redirect('previous-results')
+  }
+})
+
+//search-previous-handler
+router.get(/s-correspondence-handler/, function (req, res) {
+  person.correspondence_address = true;
+  if (req.query.uk === "no") {
+    if (person.previous_address === null) {
+      res.redirect('address-question')
+    } else {
+      res.redirect('contact-question')
+    }
+  } else {
+    res.redirect('correspondence-results')
+  }
+})
+
+//previous-address-handler
+router.get(/previous-address-handler/, function (req, res) {
+  console.log(person.correspondence_address);
+  var next;
+  if (person.previous_address_count === 0) {
+    if (req.query.data === 'yes') {
+      person.previous_address = true;
+    } else {
+      person.previous_address = false;
+    }
+    person.previous_address_count++;
+  }
+  if (req.query.data === 'yes') {
+    next = 'search-previous';
+  } else if (person.correspondence_address === null) {
+    next = 'correspondence-question';
+  } else {
+    next = 'contact-question';
+  }
+  res.redirect(next)
+})
+////previous-address-handler
+//router.get(/previous-address-handler/, function (req, res) {
+//  if (person.previous_address_count === 0) {
+//    if (req.query.data === 'yes') {
+//      person.previous_address = true;
+//      res.redirect('search-previous')
+//    } else {
+//      person.previous_address = false;
+//    }
+//    person.previous_address_count++;
+//  }
+//  if (req.query.data === 'yes') {
+//    res.redirect('search-previous')
+//  } else if (person.correspondence_address === null) {
+//    res.redirect('correspondence-question')
+//  } else {
+//    res.redirect('contact-question')
+//  }
+//})
+
+//contact-handler
+router.get(/contact-handler/, function (req, res) {
+  if (req.query.data === "telephone") {
+    res.redirect('telephone')
+  } else if (req.query.data === "email") {
+    res.redirect('email')
+  } else {
+    res.redirect('mobile')
+  }
+})
+  // enter name
+  // other name - no
+  // previous name - no
+  // dob
+  
+  // enter name
+  // other name - yes
+  // enter other name
+  // no previous name
+  // dob
+  
+  // enter name
+  // other name - no
+  // previous name - yes
+  // previous name
+  // another previous name - no
+  // dob
+  
+////first-name-handler
+//router.get(/main-name-handler/, function (req, res) {
+//  if (person.requested_name === null) {
+//    res.redirect('requested-name')
+//  } else {
+//    if (person.previous_name_count < 2) {
+//      res.redirect('previous-name')
+//    } else {
+//      res.redirect('dob')
+//    }
+//  }
+//})
+
+//requested-name-handler
+router.get(/requested-name-handler/, function (req, res) {
+  if (req.query.data === "yes") {
+    person.requested_name = true;
+    res.redirect('name-requested')
+  } else {
+    person.requested_name = false;
+    res.redirect('previous-name')
+  }
+})
+
+//ethnic-handler
+router.get(/ethnic-origin-handler/, function (req, res) {
+  person.ethnic_origin = true;
+  res.redirect('task-list')
+})
+
+//immigration-handler
+router.get(/immigration-handler/, function (req, res) {
+  person.immigration = true;
+  res.redirect('task-list')
+})
+
+//prefered-language-handler
+router.get(/prefered-language-handler/, function (req, res) {
+  person.preferred_language = true;
+  res.redirect('task-list')
+})
+
+//spoken-language-handler
+router.get(/spoken-language-handler/, function (req, res) {
+  person.spoken_language = true;
+  res.redirect('task-list')
+})
+
+//disability-handler
+router.get(/disability-handler/, function (req, res) {
+  person.disability = true;
+  res.redirect('task-list')
+})
+
+//special-needs-handler
+router.get(/special-needs-handler/, function (req, res) {
+  person.special_needs = true;
+  res.redirect('task-list')
+})
+
+//type-handler
+router.get(/v1-type-handler/, function (req, res) {
+  ninoVersion = 1;
+  if(req.query.data === "create") {
+    createJourney = true;
+  } else {
+    createJourney = false;
+  }
+  res.redirect('../../search')
+})
+
+router.get(/v2-type-handler/, function (req, res) {
+  ninoVersion = 2;
+  if(req.query.trace[0] === "true") {
+    trace = true;
+    console.log("Trace = " + trace);
+  }
+  if(req.query.data === "create") {
+    createJourney = true;
+  } else {
+    createJourney = false;
+  }
+  res.redirect('../../search')
+})
+
+router.get(/v3-type-handler/, function (req, res) {
+  ninoVersion = 3;
+  if(req.query.trace[0] === "true") {
+    trace = true;
+    console.log("Trace = " + trace);
+  }
+  if(req.query.data === "create") {
+    createJourney = true;
+  } else {
+    createJourney = false;
+  }
+  res.redirect('../../search')
+})
+
+//contact-handler
+router.get(/contact-question-handler/, function (req, res) {
+  if(req.query.data === "yes") {
+    res.redirect('add-contact')
+  } else {
+    res.redirect('nationality')
+  }
+})
+
+//non-mandatory-handler
+router.get(/v2-non-mandatory-handler/, function (req, res) {
+  if (req.query.data === "yes") {
+    res.redirect('task-list')
+  } else {
+    res.redirect('check')
+  }
+})
+
+
+//*********
+//Version 3
+//*********
+ 
+//nino
+router.get(/another-handler/, function (req, res) {
+  if (req.query.data == "yes"){
+    res.redirect('add-contact')
+  } else {
+    res.redirect('nationality')
+  }
+})
+
+//nino
+router.get('/nino/5/nino/', function (req, res) {
+  res.render('nino/5/nino', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//TRACE
+router.get('/nino/5/trace/', function (req, res) {
+  res.render('nino/5/trace', {
+    createjourney : createJourney
+  })
+})
+
+//current-name
+router.get('/nino/5/name-current/', function (req, res) {
+  res.render('nino/5/name-current', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-alternative
+router.get('/nino/5/name-alternative/', function (req, res) {
+  res.render('nino/5/name-alternative', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name-previous
+router.get('/nino/5/name-previous/', function (req, res) {
+  res.render('nino/5/name-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-search
+router.get('/nino/5/address-search/', function (req, res) {
+  res.render('nino/5/address-search', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-results
+router.get('/nino/5/search-results/', function (req, res) {
+  res.render('nino/5/search-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-previous
+router.get('/nino/5/search-previous/', function (req, res) {
+  res.render('nino/5/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//previous-results
+router.get('/nino/5/previous-results/', function (req, res) {
+  res.render('nino/5/previous-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-correspondence
+router.get('/nino/5/search-correspondence/', function (req, res) {
+  res.render('nino/5/search-correspondence', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//correspondence-results
+router.get('/nino/5/correspondence-results/', function (req, res) {
+  res.render('nino/5/correspondence-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name
+router.get('/nino/5/add-contact/', function (req, res) {
+  res.render('nino/5/add-contact', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/correspondence-question/', function (req, res) {
+  res.render('nino/5/correspondence-question', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/telephone/', function (req, res) {
+  res.render('nino/5/telephone', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/mobile/', function (req, res) {
+  res.render('nino/5/mobile', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/another-contact/', function (req, res) {
+  res.render('nino/5/another-contact', {
+    createjourney : createJourney
+  })
+})
+
+//current-name
+router.get('/nino/5/search-previous/', function (req, res) {
+  res.render('nino/5/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+  })
+})
+
+//requested-name
+router.get('/nino/5/name-requested/', function (req, res) {
+  res.render('nino/5/name-requested', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/5/requested-name/', function (req, res) {
+  res.render('nino/5/requested-name', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//requested-name
+router.get('/nino/5/requested-name/', function (req, res) {
+  res.render('nino/5/requested-name', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/5/previous-name/', function (req, res) {
+  res.render('nino/5/previous-name', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/5/manual-correspondence/', function (req, res) {
+  res.render('nino/5/manual-correspondence', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/5/manual-previous/', function (req, res) {
+  res.render('nino/5/manual-previous', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//nino
+router.get('/nino/5/nino/', function (req, res) {
+  res.render('nino/5/nino', {
+    createjourney : createJourney
+  })
+})
+
+//another name
+router.get('/nino/5/name-question/', function (req, res) {
+  res.render('nino/5/name-question', {
+    createjourney : createJourney
+  })
+})
+
+//dob
+router.get('/nino/5/dob/', function (req, res) {
+  res.render('nino/5/dob', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/5/sex/', function (req, res) {
+  res.render('nino/5/sex', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/5/sex/', function (req, res) {
+  res.render('nino/5/sex', {
+    createjourney : createJourney
+  })
+})
+
+//verification
+router.get('/nino/5/verification/', function (req, res) {
+  res.render('nino/5/verification', {
+    createjourney : createJourney
+  })
+})
+
+//address-search
+router.get('/nino/5/previous-names/', function (req, res) {
+  res.render('nino/5/previous-names', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-address
+router.get('/nino/5/manual-address/', function (req, res) {
+  res.render('nino/5/manual-address', {
+    createjourney : createJourney
+  })
+})
+
+//address-date
+router.get('/nino/5/address-date/', function (req, res) {
+  res.render('nino/5/address-date', {
+    createjourney : createJourney
+  })
+})
+
+//address-question
+router.get('/nino/5/address-question/', function (req, res) {
+  res.render('nino/5/address-question', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//contact-question
+router.get('/nino/5/contact-question/', function (req, res) {
+  res.render('nino/5/contact-question', {
+    createjourney : createJourney
+  })
+})
+
+//nationality
+router.get('/nino/5/nationality/', function (req, res) {
+  res.render('nino/5/nationality', {
+    createjourney : createJourney
+  })
+})
+
+//marital
+router.get('/nino/5/marital/', function (req, res) {
+  res.render('nino/5/marital', {
+    createjourney : createJourney
+  })
+})
+
+//non-mandatory-question
+router.get('/nino/5/non-mandatory-question/', function (req, res) {
+  res.render('nino/5/non-mandatory-question', {
+    createjourney : createJourney
+  })
+})
+
+//check
+router.get('/nino/5/check/', function (req, res) {
+  res.render('nino/5/check', {
+    createjourney : createJourney,
+    today : dates.todayAsString()
+  })
+})
+
+//check
+router.get('/nino/5/check-v2/', function (req, res) {
+  res.render('nino/5/check-v2', {
+    createjourney : createJourney,
+    today : dates.todayAsString()
+  })
+})
+
+//done
+router.get('/nino/5/done/', function (req, res) {
+  res.render('nino/5/done', {
+    createjourney : createJourney
+  })
+})
+
+//task-list
+router.get('/nino/5/task-list/', function (req, res) {
+  res.render('nino/5/task-list', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//ethnic-origin
+router.get('/nino/5/ethnic-origin/', function (req, res) {
+  res.render('nino/5/ethnic-origin', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//immigration
+router.get('/nino/5/immigration/', function (req, res) {
+  res.render('nino/5/immigration', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//language
+router.get('/nino/5/language/', function (req, res) {
+  res.render('nino/5/language', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//spoken-language
+router.get('/nino/5/spoken-language/', function (req, res) {
+  res.render('nino/5/spoken-language', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//disabilities
+router.get('/nino/5/disabilities/', function (req, res) {
+  res.render('nino/5/disabilities', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//special-needs
+router.get('/nino/5/special-needs/', function (req, res) {
+  res.render('nino/5/special-needs', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+
+//*********
+//Version 2
+//*********
+ 
+//nino
+router.get(/another-handler/, function (req, res) {
+  if (req.query.data == "yes"){
+    res.redirect('add-contact')
+  } else {
+    res.redirect('nationality')
+  }
+})
+
+//nino
+router.get('/nino/4/nino/', function (req, res) {
+  res.render('nino/4/nino', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//TRACE
+router.get('/nino/4/trace/', function (req, res) {
+  res.render('nino/4/trace', {
+    createjourney : createJourney
+  })
+})
+
+//current-name
+router.get('/nino/4/name-current/', function (req, res) {
+  res.render('nino/4/name-current', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-alternative
+router.get('/nino/4/name-alternative/', function (req, res) {
+  res.render('nino/4/name-alternative', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name-previous
+router.get('/nino/4/name-previous/', function (req, res) {
+  res.render('nino/4/name-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-search
+router.get('/nino/4/address-search/', function (req, res) {
+  res.render('nino/4/address-search', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-results
+router.get('/nino/4/search-results/', function (req, res) {
+  res.render('nino/4/search-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-previous
+router.get('/nino/4/search-previous/', function (req, res) {
+  res.render('nino/4/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//previous-results
+router.get('/nino/4/previous-results/', function (req, res) {
+  res.render('nino/4/previous-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-correspondence
+router.get('/nino/4/search-correspondence/', function (req, res) {
+  res.render('nino/4/search-correspondence', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//correspondence-results
+router.get('/nino/4/correspondence-results/', function (req, res) {
+  res.render('nino/4/correspondence-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name
+router.get('/nino/4/add-contact/', function (req, res) {
+  res.render('nino/4/add-contact', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/correspondence-question/', function (req, res) {
+  res.render('nino/4/correspondence-question', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/telephone/', function (req, res) {
+  res.render('nino/4/telephone', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/mobile/', function (req, res) {
+  res.render('nino/4/mobile', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/4/another-contact/', function (req, res) {
+  res.render('nino/4/another-contact', {
+    createjourney : createJourney
+  })
+})
+
+//current-name
+router.get('/nino/4/search-previous/', function (req, res) {
+  res.render('nino/4/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+  })
+})
+
+//requested-name
+router.get('/nino/4/name-requested/', function (req, res) {
+  res.render('nino/4/name-requested', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/4/requested-name/', function (req, res) {
+  res.render('nino/4/requested-name', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//requested-name
+router.get('/nino/4/requested-name/', function (req, res) {
+  res.render('nino/4/requested-name', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/4/previous-name/', function (req, res) {
+  res.render('nino/4/previous-name', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/4/manual-correspondence/', function (req, res) {
+  res.render('nino/4/manual-correspondence', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/4/manual-previous/', function (req, res) {
+  res.render('nino/4/manual-previous', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//nino
+router.get('/nino/4/nino/', function (req, res) {
+  res.render('nino/4/nino', {
+    createjourney : createJourney
+  })
+})
+
+//another name
+router.get('/nino/4/name-question/', function (req, res) {
+  res.render('nino/4/name-question', {
+    createjourney : createJourney
+  })
+})
+
+//dob
+router.get('/nino/4/dob/', function (req, res) {
+  res.render('nino/4/dob', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/4/sex/', function (req, res) {
+  res.render('nino/4/sex', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/4/sex/', function (req, res) {
+  res.render('nino/4/sex', {
+    createjourney : createJourney
+  })
+})
+
+//verification
+router.get('/nino/4/verification/', function (req, res) {
+  res.render('nino/4/verification', {
+    createjourney : createJourney
+  })
+})
+
+//address-search
+router.get('/nino/4/previous-names/', function (req, res) {
+  res.render('nino/4/previous-names', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-address
+router.get('/nino/4/manual-address/', function (req, res) {
+  res.render('nino/4/manual-address', {
+    createjourney : createJourney
+  })
+})
+
+//address-date
+router.get('/nino/4/address-date/', function (req, res) {
+  res.render('nino/4/address-date', {
+    createjourney : createJourney
+  })
+})
+
+//address-question
+router.get('/nino/4/address-question/', function (req, res) {
+  res.render('nino/4/address-question', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//contact-question
+router.get('/nino/4/contact-question/', function (req, res) {
+  res.render('nino/4/contact-question', {
+    createjourney : createJourney
+  })
+})
+
+//nationality
+router.get('/nino/4/nationality/', function (req, res) {
+  res.render('nino/4/nationality', {
+    createjourney : createJourney
+  })
+})
+
+//marital
+router.get('/nino/4/marital/', function (req, res) {
+  res.render('nino/4/marital', {
+    createjourney : createJourney
+  })
+})
+
+//non-mandatory-question
+router.get('/nino/4/non-mandatory-question/', function (req, res) {
+  res.render('nino/4/non-mandatory-question', {
+    createjourney : createJourney
+  })
+})
+
+//check
+router.get('/nino/4/check/', function (req, res) {
+  res.render('nino/4/check', {
+    createjourney : createJourney,
+    today : dates.todayAsString()
+  })
+})
+
+//check
+router.get('/nino/4/check-v2/', function (req, res) {
+  res.render('nino/4/check-v2', {
+    createjourney : createJourney,
+    today : dates.todayAsString()
+  })
+})
+
+//done
+router.get('/nino/4/done/', function (req, res) {
+  res.render('nino/4/done', {
+    createjourney : createJourney
+  })
+})
+
+//task-list
+router.get('/nino/4/task-list/', function (req, res) {
+  res.render('nino/4/task-list', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//ethnic-origin
+router.get('/nino/4/ethnic-origin/', function (req, res) {
+  res.render('nino/4/ethnic-origin', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//immigration
+router.get('/nino/4/immigration/', function (req, res) {
+  res.render('nino/4/immigration', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//language
+router.get('/nino/4/language/', function (req, res) {
+  res.render('nino/4/language', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//spoken-language
+router.get('/nino/4/spoken-language/', function (req, res) {
+  res.render('nino/4/spoken-language', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//disabilities
+router.get('/nino/4/disabilities/', function (req, res) {
+  res.render('nino/4/disabilities', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//special-needs
+router.get('/nino/4/special-needs/', function (req, res) {
+  res.render('nino/4/special-needs', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//special-needs
+router.get(/check-handler/, function (req, res) {
+  if(trace === true) {
+    res.redirect('trace')
+  } else {
+    res.redirect('done')
+  }
+})
+
+
+//*********
+//Version 1
+//*********
+
+//name
+router.get('/nino/2/name/', function (req, res) {
+  res.render('nino/2/name', {
+    createjourney : createJourney
+  })
+})
+
+//nino
+router.get('/nino/2/nino/', function (req, res) {
+  res.render('nino/2/nino', {
+    createjourney : createJourney
+  })
+})
+
+//another name
+router.get('/nino/2/name-question/', function (req, res) {
+  res.render('nino/2/name-question', {
+    createjourney : createJourney
+  })
+})
+
+//dob
+router.get('/nino/2/dob/', function (req, res) {
+  res.render('nino/2/dob', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/2/sex/', function (req, res) {
+  res.render('nino/2/sex', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/2/sex/', function (req, res) {
+  res.render('nino/2/sex', {
+    createjourney : createJourney
+  })
+})
+
+//verification
+router.get('/nino/2/verification/', function (req, res) {
+  res.render('nino/2/verification', {
+    createjourney : createJourney
+  })
+})
+
+//address-search
+router.get('/nino/2/address-search/', function (req, res) {
+  res.render('nino/2/address-search', {
+    createjourney : createJourney
+  })
+})
+
+//search-results
+router.get('/nino/2/search-results/', function (req, res) {
+  res.render('nino/2/search-results', {
+    createjourney : createJourney
+  })
+})
+
+//manual-address
+router.get('/nino/2/manual-address/', function (req, res) {
+  res.render('nino/2/manual-address', {
+    createjourney : createJourney
+  })
+})
+
+//address-date
+router.get('/nino/2/address-date/', function (req, res) {
+  res.render('nino/2/address-date', {
+    createjourney : createJourney
+  })
+})
+
+//address-question
+router.get('/nino/2/address-question/', function (req, res) {
+  res.render('nino/2/address-question', {
+    createjourney : createJourney
+  })
+})
+
+//contact-question
+router.get('/nino/2/contact-question/', function (req, res) {
+  res.render('nino/2/contact-question', {
+    createjourney : createJourney
+  })
+})
+
+//nationality
+router.get('/nino/2/nationality/', function (req, res) {
+  res.render('nino/2/nationality', {
+    createjourney : createJourney
+  })
+})
+
+//marital
+router.get('/nino/2/marital/', function (req, res) {
+  res.render('nino/2/marital', {
+    createjourney : createJourney
+  })
+})
+
+//non-mandatory-question
+router.get('/nino/2/non-mandatory-question/', function (req, res) {
+  res.render('nino/2/non-mandatory-question', {
+    createjourney : createJourney
+  })
+})
+
+//check
+router.get('/nino/2/check/', function (req, res) {
+  res.render('nino/2/check', {
+    createjourney : createJourney
+  })
+})
+
+//done
+router.get('/nino/2/done/', function (req, res) {
+  res.render('nino/2/done', {
+    createjourney : createJourney
+  })
+})
+
+//task-list
+router.get('/nino/2/task-list/', function (req, res) {
+  res.render('nino/2/task-list', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//ethnic-origin
+router.get('/nino/2/ethnic-origin/', function (req, res) {
+  res.render('nino/2/ethnic-origin', {
+    createjourney : createJourney
+  })
+})
+
+//immigration
+router.get('/nino/2/immigration/', function (req, res) {
+  res.render('nino/2/immigration', {
+    createjourney : createJourney
+  })
+})
+
+//language
+router.get('/nino/2/language/', function (req, res) {
+  res.render('nino/2/language', {
+    createjourney : createJourney
+  })
+})
+
+//spoken-language
+router.get('/nino/2/spoken-language/', function (req, res) {
+  res.render('nino/2/spoken-language', {
+    createjourney : createJourney
+  })
+})
+
+//disabilities
+router.get('/nino/2/disabilities/', function (req, res) {
+  res.render('nino/2/disabilities', {
+    createjourney : createJourney
+  })
+})
+
+//special-needs
+router.get('/nino/2/special-needs/', function (req, res) {
+  res.render('nino/2/special-needs', {
+    createjourney : createJourney
+  })
 })
 
 module.exports = router
