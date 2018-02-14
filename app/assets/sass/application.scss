@@ -873,3 +873,13 @@ input.short-field {
 .nav {
   color: #005ea5;
 }
+
+#main-cont {
+  font-family: $sl-font!important;
+  .heading-large, h1, h2, p, a {
+    font-family: $sl-font!important;
+  }
+  p {
+    font-size: 19px;
+  }
+}
