@@ -817,6 +817,14 @@ dont see trace
 //************
 
 
+//special-needs
+router.get(/check-handler/, function (req, res) {
+  if(trace === true) {
+    res.redirect('trace')
+  } else {
+    res.redirect('done')
+  }
+})
 
 //other-name-handler
 router.get(/other-name-handler/, function (req, res) {
@@ -1085,6 +1093,20 @@ router.get(/v2-type-handler/, function (req, res) {
   res.redirect('../../search')
 })
 
+router.get(/v3-type-handler/, function (req, res) {
+  ninoVersion = 3;
+  if(req.query.trace[0] === "true") {
+    trace = true;
+    console.log("Trace = " + trace);
+  }
+  if(req.query.data === "create") {
+    createJourney = true;
+  } else {
+    createJourney = false;
+  }
+  res.redirect('../../search')
+})
+
 //contact-handler
 router.get(/contact-question-handler/, function (req, res) {
   if(req.query.data === "yes") {
@@ -1101,6 +1123,396 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
   } else {
     res.redirect('check')
   }
+})
+
+
+//*********
+//Version 3
+//*********
+ 
+//nino
+router.get(/another-handler/, function (req, res) {
+  if (req.query.data == "yes"){
+    res.redirect('add-contact')
+  } else {
+    res.redirect('nationality')
+  }
+})
+
+//nino
+router.get('/nino/5/nino/', function (req, res) {
+  res.render('nino/5/nino', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//TRACE
+router.get('/nino/5/trace/', function (req, res) {
+  res.render('nino/5/trace', {
+    createjourney : createJourney
+  })
+})
+
+//current-name
+router.get('/nino/5/name-current/', function (req, res) {
+  res.render('nino/5/name-current', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-alternative
+router.get('/nino/5/name-alternative/', function (req, res) {
+  res.render('nino/5/name-alternative', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name-previous
+router.get('/nino/5/name-previous/', function (req, res) {
+  res.render('nino/5/name-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//address-search
+router.get('/nino/5/address-search/', function (req, res) {
+  res.render('nino/5/address-search', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-results
+router.get('/nino/5/search-results/', function (req, res) {
+  res.render('nino/5/search-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-previous
+router.get('/nino/5/search-previous/', function (req, res) {
+  res.render('nino/5/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//previous-results
+router.get('/nino/5/previous-results/', function (req, res) {
+  res.render('nino/5/previous-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//search-correspondence
+router.get('/nino/5/search-correspondence/', function (req, res) {
+  res.render('nino/5/search-correspondence', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//correspondence-results
+router.get('/nino/5/correspondence-results/', function (req, res) {
+  res.render('nino/5/correspondence-results', {
+    createjourney : createJourney,
+    person : person,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name
+router.get('/nino/5/add-contact/', function (req, res) {
+  res.render('nino/5/add-contact', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/correspondence-question/', function (req, res) {
+  res.render('nino/5/correspondence-question', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/telephone/', function (req, res) {
+  res.render('nino/5/telephone', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/mobile/', function (req, res) {
+  res.render('nino/5/mobile', {
+    createjourney : createJourney
+  })
+})
+
+//name
+router.get('/nino/5/another-contact/', function (req, res) {
+  res.render('nino/5/another-contact', {
+    createjourney : createJourney
+  })
+})
+
+//current-name
+router.get('/nino/5/search-previous/', function (req, res) {
+  res.render('nino/5/search-previous', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+  })
+})
+
+//requested-name
+router.get('/nino/5/name-requested/', function (req, res) {
+  res.render('nino/5/name-requested', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/5/requested-name/', function (req, res) {
+  res.render('nino/5/requested-name', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//requested-name
+router.get('/nino/5/requested-name/', function (req, res) {
+  res.render('nino/5/requested-name', {
+    createjourney : createJourney,
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/5/previous-name/', function (req, res) {
+  res.render('nino/5/previous-name', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/5/manual-correspondence/', function (req, res) {
+  res.render('nino/5/manual-correspondence', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/5/manual-previous/', function (req, res) {
+  res.render('nino/5/manual-previous', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//nino
+router.get('/nino/5/nino/', function (req, res) {
+  res.render('nino/5/nino', {
+    createjourney : createJourney
+  })
+})
+
+//another name
+router.get('/nino/5/name-question/', function (req, res) {
+  res.render('nino/5/name-question', {
+    createjourney : createJourney
+  })
+})
+
+//dob
+router.get('/nino/5/dob/', function (req, res) {
+  res.render('nino/5/dob', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/5/sex/', function (req, res) {
+  res.render('nino/5/sex', {
+    createjourney : createJourney
+  })
+})
+
+//sex
+router.get('/nino/5/sex/', function (req, res) {
+  res.render('nino/5/sex', {
+    createjourney : createJourney
+  })
+})
+
+//verification
+router.get('/nino/5/verification/', function (req, res) {
+  res.render('nino/5/verification', {
+    createjourney : createJourney
+  })
+})
+
+//address-search
+router.get('/nino/5/previous-names/', function (req, res) {
+  res.render('nino/5/previous-names', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//manual-address
+router.get('/nino/5/manual-address/', function (req, res) {
+  res.render('nino/5/manual-address', {
+    createjourney : createJourney
+  })
+})
+
+//address-date
+router.get('/nino/5/address-date/', function (req, res) {
+  res.render('nino/5/address-date', {
+    createjourney : createJourney
+  })
+})
+
+//address-question
+router.get('/nino/5/address-question/', function (req, res) {
+  res.render('nino/5/address-question', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//contact-question
+router.get('/nino/5/contact-question/', function (req, res) {
+  res.render('nino/5/contact-question', {
+    createjourney : createJourney
+  })
+})
+
+//nationality
+router.get('/nino/5/nationality/', function (req, res) {
+  res.render('nino/5/nationality', {
+    createjourney : createJourney
+  })
+})
+
+//marital
+router.get('/nino/5/marital/', function (req, res) {
+  res.render('nino/5/marital', {
+    createjourney : createJourney
+  })
+})
+
+//non-mandatory-question
+router.get('/nino/5/non-mandatory-question/', function (req, res) {
+  res.render('nino/5/non-mandatory-question', {
+    createjourney : createJourney
+  })
+})
+
+//check
+router.get('/nino/5/check/', function (req, res) {
+  res.render('nino/5/check', {
+    createjourney : createJourney,
+    today : dates.todayAsString()
+  })
+})
+
+//check
+router.get('/nino/5/check-v2/', function (req, res) {
+  res.render('nino/5/check-v2', {
+    createjourney : createJourney,
+    today : dates.todayAsString()
+  })
+})
+
+//done
+router.get('/nino/5/done/', function (req, res) {
+  res.render('nino/5/done', {
+    createjourney : createJourney
+  })
+})
+
+//task-list
+router.get('/nino/5/task-list/', function (req, res) {
+  res.render('nino/5/task-list', {
+    createjourney : createJourney,
+    person : person
+  })
+})
+
+//ethnic-origin
+router.get('/nino/5/ethnic-origin/', function (req, res) {
+  res.render('nino/5/ethnic-origin', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//immigration
+router.get('/nino/5/immigration/', function (req, res) {
+  res.render('nino/5/immigration', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//language
+router.get('/nino/5/language/', function (req, res) {
+  res.render('nino/5/language', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//spoken-language
+router.get('/nino/5/spoken-language/', function (req, res) {
+  res.render('nino/5/spoken-language', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//disabilities
+router.get('/nino/5/disabilities/', function (req, res) {
+  res.render('nino/5/disabilities', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
+})
+
+//special-needs
+router.get('/nino/5/special-needs/', function (req, res) {
+  res.render('nino/5/special-needs', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+
+  })
 })
 
 
