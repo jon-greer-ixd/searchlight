@@ -373,28 +373,28 @@ router.get('/search-v1', function (req, res) {
 
 //update
 
-////account
-//router.get('/update/account', function (req, res) {
-//  res.render('update/account', {
-//    residentialaddress : residentialAddress,
-//    correspondenceaddress : correspondenceAddress,
-//    previousaddress : previousAddress,
-//    startdate : residentialAddress.startDate,
-//    updatetype : dataState.updateType,
-//    updated : dataState.updatedToNewAddress,
-//    cherished : dataState.cherished,
-//    editDate : content.editDate,
-//    correspondence : dataState.correspondenceAdded,
-//    statusupdated : dataState.statusUpdated,
-//    addresscorrected : dataState.addressCorrected,
-//    correspondenceremoved : dataState.correspondenceRemoved,
-//    dateisupdated : dataState.dateIsUpdated,
-//    cherishedlinecorrected : dataState.cherishedLineCorrected,
-//    currentstatus : dataState.currentStatus,
-//    statuscorrected : dataState.statusCorrected,
-//    createjourney : createJourney
-//  })
-//})
+//account
+router.get('/update/account', function (req, res) {
+  res.render('update/account', {
+    residentialaddress : residentialAddress,
+    correspondenceaddress : correspondenceAddress,
+    previousaddress : previousAddress,
+    startdate : residentialAddress.startDate,
+    updatetype : dataState.updateType,
+    updated : dataState.updatedToNewAddress,
+    cherished : dataState.cherished,
+    editDate : content.editDate,
+    correspondence : dataState.correspondenceAdded,
+    statusupdated : dataState.statusUpdated,
+    addresscorrected : dataState.addressCorrected,
+    correspondenceremoved : dataState.correspondenceRemoved,
+    dateisupdated : dataState.dateIsUpdated,
+    cherishedlinecorrected : dataState.cherishedLineCorrected,
+    currentstatus : dataState.currentStatus,
+    statuscorrected : dataState.statusCorrected,
+    createjourney : createJourney
+  })
+})
 
 router.get('/choice-handler', function (req, res) {
   res.render('address-search')
