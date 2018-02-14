@@ -374,7 +374,7 @@ router.get('/search-v1', function (req, res) {
 //update
 
 //account
-router.get('/update/account', function (req, res) {
+router.get(/account/, function (req, res) {
   res.render('account', {
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
