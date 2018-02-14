@@ -4,7 +4,8 @@
   "version": "6.1.0",
   "private": true,
   "engines": {
-    "node": ">=6.0 <7.0"
+    "node": ">=6.0 <7.0",
+    "npm": ">=3.10 <7.0"
   },
   "scripts": {
     "start": "node start.js",
