@@ -70,4 +70,34 @@ if (document.getElementById("contact-boxes")) {
   }
 }
 
+if (document.getElementById("work-number")) {
+  var work = document.getElementById("work-number");
+  var third = document.getElementById("third");
+  work.addEventListener('change', cancelPrefs);
+  function cancelPrefs() {
+    console.log("canceled");
+     third.checked = false;
+  }
+  third.addEventListener('change', changePrefs);
+  function changePrefs() {
+    console.log("changed");
+     work.checked = false;
+  }
+}
+
+if (document.getElementById("day-number")) {
+  var day = document.getElementById("day-number");
+  var night = document.getElementById("night");
+  day.addEventListener('change', cancelPrefs);
+  function cancelPrefs() {
+    console.log("canceled");
+     night.checked = false;
+  }
+  night.addEventListener('change', changePrefs);
+  function changePrefs() {
+    console.log("changed");
+     day.checked = false;
+  }
+}
+
 

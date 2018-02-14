@@ -4,7 +4,6 @@
 
     <form class="form" method="get" action="another-contact">
       
-<!--
       <fieldset class="form-group">
         <legend>
           <p>What kind of number is it?</p>
@@ -22,13 +21,12 @@
           <label for="third">Third party</label>
         </div>
       </fieldset>
--->
 
       <fieldset class="form-group">
-        <label class="form-label" for="contact-text-message">Telephone number</label>
+        <label class="form-label" for="contact-text-message">Mobile telephone number</label>
         <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
       </fieldset>
-
+      
       <fieldset class="form-group">
         <label class="form-label" for="postcode">
           Start date
@@ -40,28 +38,9 @@
       </fieldset>
       
       <fieldset class="form-group">
-        <legend>
-          <p>Do any of the following apply to this number? (optional)</p>
-        </legend>
-        <div class="multiple-choice">
-          <input id="work" name="who" type="checkbox" value="true">
-          <label for="work">It's a work number</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="third" name="who" type="checkbox" value="true">
-          <label for="third">It's a third party number</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="day" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="day">It's daytime only</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="night" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="night">It's evening only</label>
-        </div>
         <div class="multiple-choice">
           <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="checkbox-telephone-number">It's their prefered method of contact</label>
+          <label for="checkbox-telephone-number">This is their prefered method of contact (optional)</label>
         </div>
       </fieldset>
 

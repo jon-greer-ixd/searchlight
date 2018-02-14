@@ -986,6 +986,8 @@ router.get(/previous-address-handler/, function (req, res) {
 router.get(/contact-handler/, function (req, res) {
   if (req.query.data === "telephone") {
     res.redirect('telephone')
+  } else if (req.query.data === "email") {
+    res.redirect('email')
   } else {
     res.redirect('mobile')
   }
