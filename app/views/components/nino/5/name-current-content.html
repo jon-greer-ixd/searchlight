@@ -4,73 +4,103 @@
       
       <form class="form" method="get" action="previous-names">
         
-        <fieldset>
-          <div class="form-group">
-            <legend>
-              <p class="">Title</p>
-            </legend>
-            <div class="multiple-choice" data-target="contact-by-email">
-              <input id="mr" type="radio" name="radio-contact-group" value="mr">
+<!--
+                 Radio buttons 
+        <div class="form-group">
+         <fieldset class="inline" data-required data-error="Choose yes or no">
+           <legend class="heading-medium">Do have a personal user account?</legend>
+
+           <label class="block-label" for="radio-inline-1">
+             <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
+             Yes
+           </label>
+
+           <label class="block-label" for="radio-inline-2">
+             <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
+             No
+           </label>
+         </fieldset>
+        </div>
+-->
+        
+        <div class="form-group">
+         <fieldset data-required data-error="Choose a title">
+           <legend>Title</legend>
+           
+            <div class="multiple-choice">
+              <input id="mr" type="radio" name="data" value="mr">
               <label for="mr">Mr</label>
             </div>
-            <div class="multiple-choice" data-target="contact-by-phone">
-              <input id="mrs" type="radio" name="radio-contact-group" value="mrs">
+           
+            <div class="multiple-choice">
+              <input id="mrs" type="radio" name="data" value="mrs">
               <label for="mrs">Mrs</label>
             </div>
-            <div class="multiple-choice" data-target="contact-by-phone">
-              <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+           
+            <div class="multiple-choice">
+              <input id="example-contact-by-phone" type="radio" name="data" value="No">
               <label for="example-contact-by-phone">Ms</label>
             </div>
-            <div class="multiple-choice" data-target="contact-by-text">
-              <input id="other" type="radio" name="radio-contact-group" value="other">
+           
+            <div class="multiple-choice" data-target="other-options">
+              <input id="other" type="radio" name="data" value="other">
               <label for="other">Other</label>
             </div>
-            <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
-              <div class="multiple-choice" data-target="contact-by-phone">
+            <div class="panel panel-border-narrow js-hidden" id="other-options">
+              <div class="multiple-choice" data-target="other-options">
                 <input id="dr" type="radio" name="data" value="dr">
                 <label for="dr">Dr</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="rev" type="radio" name="data" value="rev">
                 <label for="rev">Rev</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="sir" type="radio" name="data" value="sir">
                 <label for="sir">Sir</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="lady" type="radio" name="data" value="lady">
                 <label for="lady">Lady</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="lord" type="radio" name="data" value="lord">
                 <label for="lord">Lord</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="proffessor" type="radio" name="data" value="proffessor">
                 <label for="proffessor">Proffessor</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="captain" type="radio" name="data" value="captain">
                 <label for="captain">Captain</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="major" type="radio" name="data" value="major">
                 <label for="major">Major</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="dame" type="radio" name="data" value="dame">
                 <label for="dame">Dame</label>
               </div>
-              <div class="multiple-choice">
+              
+              <div class="multiple-choice" data-target="other-options">
                 <input id="colonel" type="radio" name="data" value="colonel">
                 <label for="colonel">Colonel</label>
               </div>
             </div>
-          </div>
-        </fieldset>
+          </fieldset>
+        </div>
         
-        <fieldset class="form-group">
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
           <legend class="visuallyhidden">First name</legend>
           <label class="form-label" for="full-name-f1">First name</label>
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">

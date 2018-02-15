@@ -4,13 +4,13 @@
             
       <form class="form" method="get" action="name-current">
 
-        <fieldset class="form-group">
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
           <legend class="visuallyhidden">National insurance number</legend>
           <label class="form-label" for="full-name-f1">National insurance number</label>
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
         </fieldset>
         
-        <fieldset class="form-group">
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
           <legend class="visuallyhidden">Creation office</legend>
           <label class="form-label" for="date">Creation office</label>
           <input class="form-control" id="date" type="text" name="date">
