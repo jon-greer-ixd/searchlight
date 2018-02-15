@@ -38,13 +38,13 @@
         {% if createjourney === false %}
           <tr>
             <td><span class="strong">Name</span></td>
-            <td>Matheo Bangalter</td>
-=            <td><a href="name-current">Change</a></td>
+            <td>Adele Bangalter</td>
+            <td><a href="name-current">Change</a></td>
           </tr>
         {% else %}
           <tr>
             <td><span class="strong">Name</span></td>
-            <td>James Bangalter</td>
+            <td>Matheo Bangalter</td>
             <td><a href="name-current">Change</a></td>
           </tr>
         {% endif %}
@@ -82,8 +82,8 @@
           
         <tr>
           <td><span class="strong">Date of birth</span></td>
-          {% if createjourney === true %}
-            <td><span class="today">8 February 2004</span></td>
+          {% if createjourney === false %}
+            <td><span class="today">8 February 1980</span></td>
           {% else %}
             <td><span class="today">8 February 1960</span></td>
           {% endif %}
@@ -167,7 +167,12 @@
           {% if createjourney === true %}
           <tr>
             <td><span class="strong">Nationality</span></td>
-            <td>British</td>
+            <td>French</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Marital status</span></td>
+            <td>Separated</td>
             <td><a>Change</a></td>
           </tr>
           {% else %}
