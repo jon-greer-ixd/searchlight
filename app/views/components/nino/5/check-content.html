@@ -176,19 +176,22 @@
             <td>No answer given</td>
             <td><a>Change</a></td>
           </tr>
-          <tr>
-            <td><span class="strong">Marital status</span></td>
-            <td>No answer given</td>
-            <td><a>Change</a></td>
-          </tr>
           {% endif %}
+          
+          {% if underSixteen === false %}
+            <tr>
+              <td><span class="strong">Marital status</span></td>
+              <td>No answer given</td>
+              <td><a>Change</a></td>
+            </tr>
 <!--
-          <tr>
-            <td><span class="strong">Add other details for this person</span></td>
-            <td>No</td>
-            <td><a>Change</a></td>
-          </tr>
+            <tr>
+              <td><span class="strong">Add other details for this person</span></td>
+              <td>No</td>
+              <td><a>Change</a></td>
+            </tr>
 -->
+          {% endif %}
 
       </table>
         

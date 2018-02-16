@@ -38,6 +38,7 @@ var person = {
 person.reset();
 
 var trace = false;
+var underSixteen = false;
 
 /*
 
@@ -344,6 +345,7 @@ router.use('/', main);
   resetAll();
   dataState.updateType = null;
   trace = false;
+  underSixteen = false;
   dataState.updating = false;
   dataState.correcting = false;
   dataState.updatedToNewAddress = false;
@@ -1096,10 +1098,16 @@ router.get(/v2-type-handler/, function (req, res) {
 })
 
 router.get(/v3-type-handler/, function (req, res) {
+  console.log(req.query);
   ninoVersion = 3;
   if(req.query.trace[0] === "true") {
     trace = true;
-    console.log("Trace = " + trace);
+  }
+  if(req.query.sixteen[0] === "true") {
+    console.log(req.query.sixteen);
+    underSixteen = true;
+  } else {
+    underSixteen = false;
   }
   if(req.query.data === "create") {
     createJourney = true;
@@ -1419,6 +1427,15 @@ router.get('/nino/5/nationality/', function (req, res) {
   })
 })
 
+//nationality
+router.get(/v3-nationality-handler/, function (req, res) {
+  if(underSixteen === true) {
+    res.redirect('check')
+  } else {
+    res.redirect('marital')
+  }
+})
+
 //marital
 router.get('/nino/5/marital/', function (req, res) {
   res.render('nino/5/marital', {
@@ -1437,7 +1454,8 @@ router.get('/nino/5/non-mandatory-question/', function (req, res) {
 router.get('/nino/5/check/', function (req, res) {
   res.render('nino/5/check', {
     createjourney : createJourney,
-    today : dates.todayAsString()
+    today : dates.todayAsString(),
+    underSixteen : underSixteen
   })
 })
 

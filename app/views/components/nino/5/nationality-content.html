@@ -2,8 +2,26 @@
 
     <div class="column-two-thirds">
       
-      <form class="form" method="get" action="marital">
+      <form class="form" method="get" action="v3-nationality-handler">
+        
+        <div class="form-group">
+          <fieldset class="inline">
 
+            <legend>
+              <h1 class="visually-hidden">
+                Do you know their nationality?
+              </h1>
+            </legend>
+
+            <div class="multiple-choice" data-target="nat-question">
+              <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes">
+              <label for="radio-inline-1">Yes</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-inline-2" type="radio" name="radio-inline-group" value="No">
+              <label for="radio-inline-2">No</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="nat-question">
         <fieldset class="form-group">
           <legend class="visuallyhidden">Nationality</legend>
           <label class="form-label" for="nationality">Nationality</label>
@@ -285,6 +303,11 @@
           </select>
           
         </fieldset>
+            </div>
+          </fieldset>
+        </div>
+
+
 
         <div class="form-group">
           <input class="button" type="submit" value="Next">
