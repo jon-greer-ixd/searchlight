@@ -29,7 +29,7 @@
           <!-- ngIf: (data.fullAwardHistory.benefitsSummary.currentBenefits || data.fullAwardHistory.benefitsSummary.previousBenefits) && !data.fullAwardHistory.empty -->
         </div>
 
-        <div name="Relationships" id="Relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+        <div name="Relationships" id="Relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="" class="last-card">
           <h2>Relationships</h2>
           <div ng-class="{'sl-primary-card': data.relationships.empty || !data.relationships}" class="sl-primary-card">
             <!-- ngIf: !data.relationships && relationshipsTimeout -->
@@ -66,4 +66,4 @@
         </div>
       </div>
     </div>
-  </div>--></div>
+  </div>-->
