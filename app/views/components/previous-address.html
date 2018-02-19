@@ -2,18 +2,18 @@
       <summary>
         <span class="summary">Previous addresses</span>
       </summary>
-    
+    <hr class="light">
+
       <div class="grid-row address-list">
 
         <!-- new -->
         {% if previousaddress.show === true %}
+        
           <div class="column-one-third">
             <ul>
               <li>Residential address</li>
               <li class="sl-secondary-text-color sl-metadata">
-                <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">
                   01 Jan 1990 – {{editDate}}
-                </a>
               </li>
             </ul>
           </div>
@@ -70,7 +70,17 @@
           </details>
 -->
             </div>
+            <div class="column-one-third column-last">
+              <ul class="edit-menu">
+                <li>
+                  <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a>
+                </li>
+              </ul>
+            </div>
+
           </div>
+        <hr class="light">
+
         {% endif %}
 
         <!--
@@ -81,14 +91,11 @@
         status updated to no fixed abode
         -->
 
-        <br>
         <div class="column-one-third">
           <ul>
             <li>Residential address</li>
             <li class="sl-secondary-text-color sl-metadata">
-              <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">
                 1 Jan 1960 - 01 Jan 1990
-              </a>
             </li>
           </ul>
         </div>
@@ -133,8 +140,12 @@
           </details>
 -->
         </div>
-        <div class="column-one-third">
-          <p></p>
+        <div class="column-one-third column-last">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="previous-names" class="under-link">View history</a>
+            </li>
+          </ul>
         </div>
 
     </div>

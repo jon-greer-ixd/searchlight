@@ -279,9 +279,6 @@ form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-la
     img {
       margin: -4px 4px 0 0;
     }
-//    .sl-metadata {
-//      font-size: .84em;
-//    }
   }
 }
 
@@ -363,7 +360,7 @@ p.address {
 }
 
 .sl-metadata {
-  font-size: 17px;
+  font-size: 19px;
 }
 
 .status-item {
@@ -377,9 +374,6 @@ p.address {
 }
 
 //update
-.update-summary {
-  font-size: 17px;
-}
 
 .old {
   color: #666666;
@@ -642,6 +636,7 @@ input.short-field {
 
 .under-link, .sl-link .under-link {
   text-decoration: underline!important;
+  cursor: pointer;
   &:hover {
     text-decoration: none!important;
   }
@@ -811,6 +806,17 @@ input.short-field {
   }
 }
 
+.modal-footer {
+  text-align: left;
+  padding: 20px 30px;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
 .change-data {
   @include clearfix;
   div {
@@ -833,7 +839,7 @@ input.short-field {
 }
 
 .modal_link {
-  font-size: 17px;
+  font-size: 19px;
   cursor: pointer;
   text-decoration: underline;
   font-weight: normal;
@@ -890,4 +896,24 @@ input.short-field {
 
 .radio-header {
   margin-bottom: .4em;
+}
+
+.pipe {
+  padding: 0 6px;
+  color: #cccccc;
+}
+
+.edit-menu {
+  li {
+    padding-bottom: 5px;
+    font-size: 17px;
+  }
+}
+
+.last-card {
+  margin-bottom: 60px;
+}
+
+hr.light {
+  background: #e6e6e6;
 }
