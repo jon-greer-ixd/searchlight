@@ -417,14 +417,12 @@ p.address {
     font-weight: 600;
   }
   ul {
+    width: auto;
     &.change {
-      width :35%;
-    }
-    &.office-code, &.system {
-      width :10%;
+      width :auto;
     }
     float: left;
-    width : 15%;
+    width : 14.1%;
     li {
       border-bottom: 1px solid lightgrey;
       &:first-child {
@@ -906,7 +904,7 @@ input.short-field {
 .edit-menu {
   li {
     padding-bottom: 5px;
-    font-size: 17px;
+    font-size: 19px;
   }
 }
 
