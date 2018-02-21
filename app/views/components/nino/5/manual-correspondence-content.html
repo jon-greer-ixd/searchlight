@@ -48,9 +48,10 @@
               For example 31/8/1979
             </span>
             </label>
-          <input class="form-control short-field" id="date" type="text" name="date">      
+          <input value="{{today}}" class="form-control short-field" id="date" type="text" name="date">      
         </div>
       
+<!--
         {% if createjourney === false %}
           <div class="form-group">
             <label class="form-label" for="date">
@@ -58,6 +59,7 @@
             <input class="form-control" id="date" type="text" name="date">      
           </div>
         {% endif %}
+-->
 
         <div class="form-group search-group">
           <input class="button" type="submit" value="Next">
