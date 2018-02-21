@@ -1305,7 +1305,8 @@ router.get('/nino/5/name-requested/', function (req, res) {
   res.render('nino/5/name-requested', {
     createjourney : createJourney,
     previous_name : person.previous_name,
-    requested_name : person.requested_name
+    requested_name : person.requested_name,
+    today : dates.todayAsFigure("/")
   })
 })
 
