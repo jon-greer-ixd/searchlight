@@ -1264,14 +1264,24 @@ router.get('/nino/5/correspondence-question/', function (req, res) {
 //name
 router.get('/nino/5/telephone/', function (req, res) {
   res.render('nino/5/telephone', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
   })
 })
 
 //name
 router.get('/nino/5/mobile/', function (req, res) {
   res.render('nino/5/mobile', {
-    createjourney : createJourney
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
+  })
+})
+
+//name
+router.get('/nino/5/email/', function (req, res) {
+  res.render('nino/5/email', {
+    createjourney : createJourney,
+    today : dates.todayAsFigure("/")
   })
 })
 

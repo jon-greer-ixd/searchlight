@@ -65,7 +65,7 @@
         {% endif %}
           
         <tr>
-          <td><span class="strong">Another current name (Name 2)</span></td>
+          <td><span class="strong">Another current name (Name type 2)</span></td>
           <td><span class="today">No</span></td>
           <td><a href="previous-names">Change</a></td>
         </tr>
@@ -164,23 +164,15 @@
             <td><a>Change</a></td>
           </tr>
           
-          {% if createjourney === true %}
           <tr>
-            <td><span class="strong">Nationality</span></td>
-            <td>British</td>
-            <td><a>Change</a></td>
-          </tr>
-          {% else %}
-          <tr>
-            <td><span class="strong">Do you know their nationlaity?</span></td>
+            <td><span class="strong">Add nationlaity</span></td>
             <td>No</td>
             <td><a>Change</a></td>
           </tr>
-          {% endif %}
           
           {% if underSixteen === false %}
             <tr>
-              <td><span class="strong">Do you know their marital status?</span></td>
+              <td><span class="strong">Add marital status</span></td>
               <td>No</td>
               <td><a>Change</a></td>
             </tr>
