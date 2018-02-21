@@ -342,6 +342,10 @@ router.get('/search', function (req, res) {
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {
+  req.session.data.tests = "foo";
+//  console.log('session data ' + Object.getOwnPropertyNames(testz));
+  console.log('session data ' + req.session.data.tests);
+    
   resetAll();
   dataState.updateType = null;
   trace = false;
@@ -1463,6 +1467,7 @@ router.get('/nino/5/non-mandatory-question/', function (req, res) {
 
 //check
 router.get('/nino/5/check/', function (req, res) {
+  console.log("done" + req.session.data.tests);
   res.render('nino/5/check', {
     createjourney : createJourney,
     today : dates.todayAsString(),
