@@ -417,12 +417,11 @@ p.address {
     font-weight: 600;
   }
   ul {
-    width: auto;
+    width: 12.5%;
+    float: left;
     &.change {
       width :auto;
     }
-    float: left;
-    width : 14.1%;
     li {
       border-bottom: 1px solid lightgrey;
       &:first-child {
