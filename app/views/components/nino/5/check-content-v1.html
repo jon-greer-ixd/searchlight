@@ -1,7 +1,7 @@
   <div class="grid-row">
 
     <div class="column-two-thirds">
-          {% if createjourney === false %}
+          {% if data['createJourney'] === false %}
             <h2 class="table-header">National Insurance number details</h2>
             <table class="table">
               <tr>
@@ -27,7 +27,7 @@
         <table class="table">
           <tr>
             <td><span class="strong">Title</span></td>
-            {% if createjourney === false %}
+            {% if data['createJourney'] === false %}
               <td>Ms</td>
             {% else %}
               <td>Mr</td>
@@ -35,7 +35,7 @@
             <td><a href="name-current">Change</a></td>
           </tr>
           
-          {% if createjourney === false %}
+          {% if data['createJourney'] === false %}
             <tr>
               <td><span class="strong">Name</span></td>
               <td>Adele Bangalter</td>
@@ -49,7 +49,7 @@
             </tr>
           {% endif %}
 
-          {% if createjourney === false %}
+          {% if data['createJourney'] === false %}
             <tr>
               <td><span class="strong">Name start date</span></td>
               <td><span class="today">{{today}}</span></td>
@@ -80,7 +80,7 @@
           
           <tr>
             <td><span class="strong">Date of birth</span></td>
-            {% if createjourney === false %}
+            {% if data['createJourney'] === false %}
               <td><span class="today">8 February 1980</span></td>
             {% else %}
               <td><span class="today">8 February 1960</span></td>
@@ -90,7 +90,7 @@
           
           <tr>
             <td><span class="strong">Sex</span></td>
-            {% if createjourney === false %}
+            {% if data['createJourney'] === false %}
               <td>Female</td>
             {% else %}
               <td>Male</td>
@@ -123,7 +123,7 @@
             <td><a>Change</a></td>
           </tr>
           
-          {% if createjourney === false %}
+          {% if data['createJourney'] === false %}
             <tr>
               <td><span class="strong">Address start date</span></td>
               <td><span class="today">{{today}}</span></td>
@@ -142,7 +142,7 @@
             <td><a>Change</a></td>
           </tr>
           
-          {% if createjourney === true %}
+          {% if data['createJourney'] === true %}
             <tr>
               <td><span class="strong">Previous addresses</span></td>
               <td><span class="today">No</span></td>
@@ -152,7 +152,7 @@
           
         </table>
       
-        {% if createjourney === false %}
+        {% if data['createJourney'] === false %}
           <br>
           <h2 class="table-header">Previous address 1</h2>
           <table class="table">
@@ -213,7 +213,7 @@
             <td><a>Change</a></td>
           </tr>
           
-          {% if createjourney === true %}
+          {% if data['createJourney'] === true %}
           <tr>
             <td><span class="strong">Nationality</span></td>
             <td>French</td>
