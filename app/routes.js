@@ -333,7 +333,6 @@ var main = require('./main/routes');
 // search page
 router.get('/search', function (req, res) {
   res.render('pages/search.njk', {
-    createjourney : createJourney,
     ninoversion : ninoVersion
   })
 })
@@ -341,7 +340,10 @@ router.get('/search', function (req, res) {
 
 router.use('/', main);
 // Route index page
-  router.get('/', function (req, res) {
+  router.get('/', function (req, res) {    
+  req.session.data.createJourney = null;
+    
+    
   req.session.data.tests = "foo";
 //  console.log('session data ' + Object.getOwnPropertyNames(testz));
   console.log('session data ' + req.session.data.tests);
@@ -398,7 +400,6 @@ router.get('/update/account', function (req, res) {
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
-    createjourney : createJourney
   })
 })
 
@@ -1080,9 +1081,9 @@ router.get(/special-needs-handler/, function (req, res) {
 router.get(/v1-type-handler/, function (req, res) {
   ninoVersion = 1;
   if(req.query.data === "create") {
-    createJourney = true;
+    req.session.data.createJourney = true;
   } else {
-    createJourney = false;
+    req.session.data.createJourney = false;
   }
   res.redirect('../../search')
 })
@@ -1094,9 +1095,9 @@ router.get(/v2-type-handler/, function (req, res) {
     console.log("Trace = " + trace);
   }
   if(req.query.data === "create") {
-    createJourney = true;
+    req.session.data.createJourney = true;
   } else {
-    createJourney = false;
+    req.session.data.createJourney = false;
   }
   res.redirect('../../search')
 })
@@ -1114,9 +1115,9 @@ router.get(/v3-type-handler/, function (req, res) {
     underSixteen = false;
   }
   if(req.query.data === "create") {
-    createJourney = true;
+    req.session.data.createJourney = true;
   } else {
-    createJourney = false;
+    req.session.data.createJourney = false;
   }
   res.redirect('../../search')
 })
@@ -1156,15 +1157,7 @@ router.get(/another-handler/, function (req, res) {
 //nino
 router.get('/nino/5/nino/', function (req, res) {
   res.render('nino/5/nino', {
-    createjourney : createJourney,
     today : dates.todayAsFigure("/")
-  })
-})
-
-//TRACE
-router.get('/nino/5/trace/', function (req, res) {
-  res.render('nino/5/trace', {
-    createjourney : createJourney
   })
 })
 
