@@ -40,51 +40,6 @@ person.reset();
 var trace = false;
 var underSixteen = false;
 
-/*
-
-update
-  add new
-  remove
-  update to new
-  update to dlo
-  update to live
-  update to nfa/pwa
-  Update add a cherished line   
-    
-correct
-  Correct to new address 
-  Correct to dead letter office 
-  correct to nfa/pwa
-  Show correct dates
-  Correct the start date 
-  
-cherish
-  Add a line
-  Remove a line
-  Change a line (update)
-  Correct a line (update)
-  Correct a line (remove)
-  correct update cherish
-
-*/
-
-/*
-//in progress
-content - notified start date
-nino allocation
-
-
-//to do
-add neils new address pattern in
-check updateTypes
-remove inline styles
-control the dates from the javascript not the html
-none to live not working
-Reset function
-make notifications work correctly
-
-*/
-
 var resetAll = function() {
   residentialAddress.reset();
   correspondenceAddress.reset();
@@ -342,10 +297,10 @@ router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {    
   req.session.data.createJourney = null;
-    
-    
+  req.session.data.prepopulatedDate = dates.todayAsFigure("/");    
   req.session.data.tests = "foo";
 //  console.log('session data ' + Object.getOwnPropertyNames(testz));
+    
   console.log('session data ' + req.session.data.tests);
     
   resetAll();
@@ -1155,27 +1110,18 @@ router.get(/another-handler/, function (req, res) {
   }
 })
 
-//nino
-router.get('/nino/5/nino/', function (req, res) {
-  res.render('nino/5/nino', {
-    today : dates.todayAsFigure("/")
-  })
-})
-
 //current-name
 router.get('/nino/5/name-current/', function (req, res) {
   res.render('nino/5/name-current', {
     previous_name : person.previous_name,
-    requested_name : person.requested_name,
-    today : dates.todayAsFigure("/")
+    requested_name : person.requested_name
   })
 })
 
 //address-alternative
 router.get('/nino/5/name-alternative/', function (req, res) {
   res.render('nino/5/name-alternative', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
@@ -1183,56 +1129,49 @@ router.get('/nino/5/name-alternative/', function (req, res) {
 router.get('/nino/5/name-previous/', function (req, res) {
   res.render('nino/5/name-previous', {
     previous_name : person.previous_name,
-    requested_name : person.requested_name,
-    today : dates.todayAsFigure("/")
+    requested_name : person.requested_name
   })
 })
 
 //address-search
 router.get('/nino/5/address-search/', function (req, res) {
   res.render('nino/5/address-search', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //search-results
 router.get('/nino/5/search-results/', function (req, res) {
   res.render('nino/5/search-results', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //search-previous
 router.get('/nino/5/search-previous/', function (req, res) {
   res.render('nino/5/search-previous', {
-    previous_name : person.previous_name,
-    today : dates.todayAsFigure("/")
+    previous_name : person.previous_name
   })
 })
 
 //previous-results
 router.get('/nino/5/previous-results/', function (req, res) {
   res.render('nino/5/previous-results', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //search-correspondence
 router.get('/nino/5/search-correspondence/', function (req, res) {
   res.render('nino/5/search-correspondence', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //correspondence-results
 router.get('/nino/5/correspondence-results/', function (req, res) {
   res.render('nino/5/correspondence-results', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
@@ -1240,27 +1179,6 @@ router.get('/nino/5/correspondence-results/', function (req, res) {
 router.get('/nino/5/add-contact/', function (req, res) {
   res.render('nino/5/add-contact', {
     createjourney : createJourney
-  })
-})
-
-//name
-router.get('/nino/5/telephone/', function (req, res) {
-  res.render('nino/5/telephone', {
-    today : dates.todayAsFigure("/")
-  })
-})
-
-//name
-router.get('/nino/5/mobile/', function (req, res) {
-  res.render('nino/5/mobile', {
-    today : dates.todayAsFigure("/")
-  })
-})
-
-//name
-router.get('/nino/5/email/', function (req, res) {
-  res.render('nino/5/email', {
-    today : dates.todayAsFigure("/")
   })
 })
 
@@ -1275,8 +1193,7 @@ router.get('/nino/5/search-previous/', function (req, res) {
 router.get('/nino/5/name-requested/', function (req, res) {
   res.render('nino/5/name-requested', {
     previous_name : person.previous_name,
-    requested_name : person.requested_name,
-    today : dates.todayAsFigure("/")
+    requested_name : person.requested_name
   })
 })
 
@@ -1368,53 +1285,6 @@ router.get('/nino/5/task-list/', function (req, res) {
   })
 })
 
-//ethnic-origin
-router.get('/nino/5/ethnic-origin/', function (req, res) {
-  res.render('nino/5/ethnic-origin', {
-    today : dates.todayAsFigure("/")
-  })
-})
-
-//immigration
-router.get('/nino/5/immigration/', function (req, res) {
-  res.render('nino/5/immigration', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//language
-router.get('/nino/5/language/', function (req, res) {
-  res.render('nino/5/language', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//spoken-language
-router.get('/nino/5/spoken-language/', function (req, res) {
-  res.render('nino/5/spoken-language', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//disabilities
-router.get('/nino/5/disabilities/', function (req, res) {
-  res.render('nino/5/disabilities', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//special-needs
-router.get('/nino/5/special-needs/', function (req, res) {
-  res.render('nino/5/special-needs', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
 
 //*********
 //Version 2
@@ -1429,27 +1299,19 @@ router.get(/another-handler/, function (req, res) {
   }
 })
 
-//nino
-router.get('/nino/4/nino/', function (req, res) {
-  res.render('nino/4/nino', {
-    today : dates.todayAsFigure("/")
-  })
-})
 
 //current-name
 router.get('/nino/4/name-current/', function (req, res) {
   res.render('nino/4/name-current', {
     previous_name : person.previous_name,
-    requested_name : person.requested_name,
-    today : dates.todayAsFigure("/")
+    requested_name : person.requested_name
   })
 })
 
 //address-alternative
 router.get('/nino/4/name-alternative/', function (req, res) {
   res.render('nino/4/name-alternative', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
@@ -1457,56 +1319,49 @@ router.get('/nino/4/name-alternative/', function (req, res) {
 router.get('/nino/4/name-previous/', function (req, res) {
   res.render('nino/4/name-previous', {
     previous_name : person.previous_name,
-    requested_name : person.requested_name,
-    today : dates.todayAsFigure("/")
+    requested_name : person.requested_name
   })
 })
 
 //address-search
 router.get('/nino/4/address-search/', function (req, res) {
   res.render('nino/4/address-search', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //search-results
 router.get('/nino/4/search-results/', function (req, res) {
   res.render('nino/4/search-results', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //search-previous
 router.get('/nino/4/search-previous/', function (req, res) {
   res.render('nino/4/search-previous', {
-    previous_name : person.previous_name,
-    today : dates.todayAsFigure("/")
+    previous_name : person.previous_name
   })
 })
 
 //previous-results
 router.get('/nino/4/previous-results/', function (req, res) {
   res.render('nino/4/previous-results', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //search-correspondence
 router.get('/nino/4/search-correspondence/', function (req, res) {
   res.render('nino/4/search-correspondence', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
 //correspondence-results
 router.get('/nino/4/correspondence-results/', function (req, res) {
   res.render('nino/4/correspondence-results', {
-    person : person,
-    today : dates.todayAsFigure("/")
+    person : person
   })
 })
 
@@ -1591,54 +1446,7 @@ router.get('/nino/4/task-list/', function (req, res) {
   })
 })
 
-//ethnic-origin
-router.get('/nino/4/ethnic-origin/', function (req, res) {
-  res.render('nino/4/ethnic-origin', {
-    today : dates.todayAsFigure("/")
-  })
-})
-
-//immigration
-router.get('/nino/4/immigration/', function (req, res) {
-  res.render('nino/4/immigration', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//language
-router.get('/nino/4/language/', function (req, res) {
-  res.render('nino/4/language', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//spoken-language
-router.get('/nino/4/spoken-language/', function (req, res) {
-  res.render('nino/4/spoken-language', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//disabilities
-router.get('/nino/4/disabilities/', function (req, res) {
-  res.render('nino/4/disabilities', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//special-needs
-router.get('/nino/4/special-needs/', function (req, res) {
-  res.render('nino/4/special-needs', {
-    today : dates.todayAsFigure("/")
-
-  })
-})
-
-//special-needs
+//check-handler
 router.get(/check-handler/, function (req, res) {
   if(trace === true) {
     res.redirect('trace')
