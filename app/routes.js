@@ -297,9 +297,7 @@ router.use('/', main);
   router.get('/', function (req, res) {    
   req.session.data.createJourney = null;
   req.session.data.prepopulatedDate = dates.todayAsFigure("/");    
-  req.session.data.tests = "foo";
-//  console.log('session data ' + Object.getOwnPropertyNames(testz));
-    
+  req.session.data.tests = "foo";    
   console.log('session data ' + req.session.data.tests);
     
   resetAll();
