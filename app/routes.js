@@ -292,7 +292,6 @@ router.get('/search', function (req, res) {
   })
 })
 
-
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {    
@@ -1063,12 +1062,12 @@ router.get(/v3-type-handler/, function (req, res) {
   if(req.query.trace[0] === "true") {
     trace = true;
   }
-  if(req.query.sixteen[0] === "true") {
-    console.log(req.query.sixteen);
-    underSixteen = true;
-  } else {
-    underSixteen = false;
-  }
+//  if(req.query.sixteen[0] === "true") {
+//    console.log(req.query.sixteen);
+//    underSixteen = true;
+//  } else {
+//    underSixteen = false;
+//  }
   if(req.query.data === "create") {
     req.session.data.createJourney = true;
   } else {
