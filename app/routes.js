@@ -297,9 +297,13 @@ router.use('/', main);
   router.get('/', function (req, res) {    
   req.session.data.dob = "8 Feb 1940";
   req.session.data.updateOne = "20 May 1990";
+  req.session.data.startOne = "20 May 1990";
   req.session.data.updateTwo = "5 Jun 2010";
+  req.session.data.startTwo = "4 Jun 2010";
   req.session.data.updateThree = "30 Jan 2018";
+  req.session.data.startThree = "29 Jan 2018";
   req.session.data.updateFour = "2 Feb 2018";
+  req.session.data.startFour = "1 Feb 2018";
   req.session.data.dod = "20 Jan 2018";
   req.session.data.age = "78";
   req.session.data.creation = "11 Jan 1980";
