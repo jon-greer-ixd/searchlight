@@ -295,6 +295,15 @@ router.get('/search', function (req, res) {
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {    
+  req.session.data.dob = "8 Feb 1940";
+  req.session.data.updateOne = "20 May 1990";
+  req.session.data.updateTwo = "5 Jun 2010";
+  req.session.data.updateThree = "30 Jan 2018";
+  req.session.data.updateFour = "2 Feb 2018";
+  req.session.data.dod = "20 Jan 2018";
+  req.session.data.age = "78";
+  req.session.data.creation = "11 Jan 1980";
+    
   req.session.data.createJourney = null;
   req.session.data.prepopulatedDate = dates.todayAsFigure("/");    
   req.session.data.tests = "foo";    

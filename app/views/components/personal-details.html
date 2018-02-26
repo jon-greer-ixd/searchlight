@@ -45,7 +45,7 @@
       <ul>
         <li class="strong">MR TOM SMITH</li>
         <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
+          Since {{data['updateOne']}}
         </li>
       </ul>      
     </div>
@@ -53,7 +53,7 @@
     <div class="column-one-third last-col">
       <ul class="edit-menu">
         <li>
-          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+          <a data-toggle="modal" data-target="#name_modal-v2" class="under-link">View maintenance</a> 
           <span class="pipe"> | </span> 
           <a href="previous-names" class="under-link">View history</a>
         </li>
@@ -105,20 +105,13 @@
 
     <div class="column-one-third">
       <ul>
-        <li class="strong">8 Feb 1960</li>
-<!--
-          <li>
-          <span class="">
-            <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">Since 14 Dec 2016</a>
-          </span>
-        </li>
--->
-        <li>
-          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-          <span class="sl-secondary-text-color sl-metadata">Verified to level 2</span>
-        </li>
+        <li class="strong">{{data['dob']}}</li>
         <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
+          Since {{data['updateTwo']}}
+        </li>
+        <li class="multi-dates">
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-metadata">Verified to level 2</span>
         </li>
 <!--
         <li>
@@ -154,10 +147,10 @@
       <div class="column-one-third last-col">
             <ul class="edit-menu">
         <li>
-          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+          <a data-toggle="modal" data-target="#dob-v2" class="under-link">View maintenance</a> 
           <span class="pipe"> | </span> 
 <!--          <a href="previous-names" class="under-link">View history</a>-->
-          <a href="">View history</a>
+          <a href="birth-history">View history</a>
         </li>
         <li>
           <a class="secondary-link" href="">Change</a>
@@ -177,7 +170,7 @@
 
     <div class="column-one-third">
       <ul>
-        <li><span class="red">20 Jan 2018 &nbsp;</span> <span>(aged 58)</span></li>
+        <li><span class="red">{{data['dod']}} &nbsp;</span> <span>(Age {{data['age']}})</span></li>
 <!--
           <li>
           <span class="">
@@ -185,15 +178,16 @@
           </span>
         </li>
 -->
-        <li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Since {{data['updateFour']}}
+        </li>
+        <li class="multi-dates">
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-          <span class="sl-secondary-text-color sl-metadata">Verified to level 3</span>
+          <span class="sl-metadata">Verified to level 3</span>
         </li>
-<!--
-        <li>
-          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
+        <li class="sl-secondary-text-color sl-metadata">
+          Since {{data['updateFour']}}
         </li>
--->
       </ul>
 <!--
             <details>
