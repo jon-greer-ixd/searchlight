@@ -1,153 +1,75 @@
-    <details>
-      <summary>
-        <span class="summary">Previous addresses</span>
-      </summary>
-    <hr class="light">
-
-      <div class="grid-row address-list">
-
-        <!-- new -->
-        {% if previousaddress.show === true %}
-        
-          <div class="column-one-third">
-            <ul>
-              <li>Residential address</li>
-              <li class="sl-secondary-text-color sl-metadata">
-                  01 Jan 1990 – {{editDate}}
-              </li>
-            </ul>
-          </div>
-
-          <div class="grid-row address-list">
-            <div class="column-one-third">
-              {% if previousaddress.correct === true %}
-                <p class="address">
-              {% else %}
-                <p class="address incorrect">
-              {% endif %}
-              {% if previousaddress.cherish != false %}
-              {{previousaddress.cherish}}<br>
-              {% endif %}
-
-              {{previousaddress.line}}<br>
-              Gateshead<br>
-              Tyne and wear<br>
-              NE1 1HH<br>
-              England
-            <p>
-              
-<!--
-          <details style="margin-top: -20px;">
-            <summary class="update-summary old">
-              <span class="summary date-updated old">
-                Updated about 5 years ago-  show details
-              </span>
-            </summary>
-            <div class="panel panel-border-wide maintenance">
-              <p>Maintenance information</p>
-
-              <ul>
-                <li>Business system</li>
-                <li>PSCS</li>
-              </ul>
-              <ul>
-                <li>Office name</li>
-                <li>Glasgow South DO</li>
-              </ul>
-              <ul>
-                <li>Office code</li>
-                <li>1234</li>
-              </ul>
-              <ul>
-                <li>Telephone number</li>
-                <li>0191 123 456</li>
-              </ul>
-              <ul>
-                <li>Date</li>
-                <li>01 June 2013</li>
-              </ul>
-            </div>
-          </details>
--->
-            </div>
-            <div class="column-one-third column-last">
-              <ul class="edit-menu">
-                <li>
-                  <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-        <hr class="light">
-
-        {% endif %}
-
-        <!--
-        4 main streert should show if
-        address updated
-        address corrected incorrect
-        status corrected to no fixed abode incorrect
-        status updated to no fixed abode
-        -->
-
-        <div class="column-one-third">
-          <ul>
-            <li>Residential address</li>
-            <li class="sl-secondary-text-color sl-metadata">
-                1 Jan 1960 - 01 Jan 1990
-            </li>
-          </ul>
-        </div>
-        <div class="column-one-third">
+<details>
+  <summary><span class="summary">Previous addresses</span></summary>
+  
+  <hr class="light">
+  
+  <div class="grid-row address-list">
+    {% if previousaddress.show === true %}
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              01 Jan 1990 – {{editDate}}
+          </li>
+        </ul>
+      </div>
+    
+      <div class="column-one-third">
+        {% if previousaddress.correct === true %}
           <p class="address">
-            1 Old Street<br>
-            Newcastle upon Tyne<br>
-            Tyne and Wear<br>
-            NE1 111<br>
-            England
-          </p>
-<!--
-          <details>
-            <summary class="update-summary old">
-              <span class="summary date-updated old">
-                Updated over 10 years ago-  show details
-              </span>
-            </summary>
-            <div class="panel panel-border-wide maintenance">
-               <p>Maintenance information</p>
-              <ul>
-                <li>Business system</li>
-                <li>PSCS</li>
-              </ul>
-              <ul>
-                <li>Office name</li>
-                <li>Glasgow South DO</li>
-              </ul>
-              <ul>
-                <li>Office code</li>
-                <li>1234</li>
-              </ul>
-              <ul>
-                <li>Telephone number</li>
-                <li>0191 123 456</li>
-              </ul>
-              <ul>
-                <li>Date changed</li>
-                <li>01 Jan 1990</li>
-              </ul>
-            </div>
-          </details>
--->
-        </div>
-        <div class="column-one-third column-last">
-          <ul class="edit-menu">
-            <li>
-              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="previous-names" class="under-link">View history</a>
-            </li>
-          </ul>
-        </div>
-
+        {% else %}
+          <p class="address incorrect">
+        {% endif %}
+        {% if previousaddress.cherish != false %}
+          {{previousaddress.cherish}}<br>
+        {% endif %}
+        {{previousaddress.line}}<br>
+          Gateshead<br>
+          Tyne and wear<br>
+          NE1 1HH<br>
+          England
+        </p>
+      </div>
+        
+      <div class="column-one-third column-last">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a>
+          </li>
+        </ul>
+      </div>
     </div>
-            
-  </details>
+    <hr class="light">
+    {% endif %}
+  
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              1 Jan 1960 - 01 Jan 1990
+          </li>
+        </ul>
+      </div>
+    
+      <div class="column-one-third">
+        <p class="address">
+          1 Old Street<br>
+          Newcastle upon Tyne<br>
+          Tyne and Wear<br>
+          NE1 111<br>
+          England
+        </p>
+      </div>
+    
+      <div class="column-one-third column-last">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a>
+          </li>
+        </ul>
+      </div>
+    </div>  
+  
+</details>
+

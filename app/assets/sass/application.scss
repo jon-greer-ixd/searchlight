@@ -431,6 +431,11 @@ p.address {
       float: none;
     }
   }
+  &.language {
+    ul {
+      width: 16.5%;
+    }
+  }
 }
 
 .date-updated {
@@ -816,6 +821,9 @@ input.short-field {
 
 .change-data {
   @include clearfix;
+  p {
+    margin-bottom: 10px;
+  }
   div {
     float: left;
     &:last-child {
@@ -824,14 +832,20 @@ input.short-field {
     }
   }
   .office {
-    font-weight: bold;
     font-size: 24px;
   }
   .office-code {
     font-weight: bold;
   }
-  .date, .system, .contact-type {
+  .system {
     color: #666666;
+  }
+  .contact {
+    padding-top: 11px;;
+  }
+  .date {
+    color: #333333;
+    padding-bottom: 6px;
   }
 }
 
@@ -923,4 +937,14 @@ hr.light {
 .red {
   color: #af1224;
   font-weight: bold;
+}
+
+.ac-info {
+  li {
+    margin-bottom: 15px;
+  }
+}
+
+.multi-dates {
+  margin-top: 10px;
 }
