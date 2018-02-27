@@ -408,6 +408,30 @@ p.address {
   margin-bottom: 40px;
   font-size: 17px;
   line-height: 3;
+  &.name-history {
+    ul {
+      width: auto;
+      li {
+        padding-right: 77px;
+      }
+    }
+  }
+  &.dob-history {
+    ul {
+      width: auto;
+      li {
+        padding-right: 68px;
+      }
+    }
+  }
+  &.language {
+    ul {
+      width: auto;
+      li {
+        padding-right: 92px;
+      }
+    }
+  }
   .heading-small {
     font-family: $sl-font;
     font-size: 19px;
@@ -430,11 +454,6 @@ p.address {
       }
       padding : 0;
       float: none;
-    }
-  }
-  &.language {
-    ul {
-      width: 16.5%;
     }
   }
 }
