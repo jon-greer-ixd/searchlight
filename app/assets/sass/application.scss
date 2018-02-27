@@ -425,7 +425,8 @@ p.address {
     li {
       border-bottom: 1px solid lightgrey;
       &:first-child {
-        color: #005ea5;
+        color: #333333;
+        font-weight: bold;
       }
       padding : 0;
       float: none;
@@ -912,12 +913,26 @@ input.short-field {
 .pipe {
   padding: 0 6px;
   color: #cccccc;
+    @media (max-width: 640px) { 
+    display: none;
+  }
 }
 
 .edit-menu {
   li {
     padding-bottom: 5px;
     font-size: 17px;
+  }
+  @media (max-width: 640px) { 
+    margin-top: 10px;
+    li {
+      text-align: left;
+    }
+    .under-link {
+      float: left;
+      width :100%;
+      padding-bottom: 10px;
+    }
   }
 }
 
