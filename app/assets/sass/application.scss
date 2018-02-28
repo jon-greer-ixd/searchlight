@@ -902,7 +902,6 @@ input.short-field {
   margin-left: 10p;
   &.crl {
     background-color: black;
-    margin-left: 25px;
     padding: 2px 8px 0;
   }
 }
@@ -981,4 +980,16 @@ hr.light {
 
 .multi-dates {
   margin-top: 10px;
+}
+
+.interest {
+  padding-top: 10px;
+  margin-bottom: 25px;
+  &.first {
+    padding-top: 15px;
+  }
+}
+
+.column-one-third.expanded {
+  padding:0;
 }
