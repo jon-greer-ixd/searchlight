@@ -71,6 +71,7 @@ if (document.getElementById("contact-boxes")) {
 }
 
 if (document.getElementById("work-number")) {
+  console.log('start');
   var work = document.getElementById("work-number");
   var third = document.getElementById("third");
   work.addEventListener('change', cancelPrefs);

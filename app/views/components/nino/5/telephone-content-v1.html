@@ -25,15 +25,15 @@
 -->
 
       <fieldset class="form-group">
-        <label class="form-label" for="contact-text-message">Mobile telephone number</label>
+        <label class="form-label" for="contact-text-message">Telephone number</label>
         <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
       </fieldset>
-      
+
       <fieldset class="form-group">
         <label class="form-label" for="postcode">
           Start date
           <span class="form-hint">
-            For example 31/8/1979
+            For example 31/8/197
           </span>
         </label>
         <input value="{{data['prepopulatedDate']}}" class="form-control" name="postcode" type="text" id="postcode">
@@ -48,56 +48,26 @@
           <label for="checkbox-telephone-number">It's their prefered method of contact</label>
         </div>
         <div class="multiple-choice">
-          <input id="work" name="who" type="checkbox" value="true">
-          <label for="work">It's a business number</label>
+          <input id="ex" name="ex" type="checkbox" value="true">
+          <label for="ex">It's an ex-directory number</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="work-number" name="who" type="checkbox" value="true">
+          <label for="work-number">It's a business number</label>
         </div>
         <div class="multiple-choice">
           <input id="third" name="who" type="checkbox" value="true">
           <label for="third">It's a third party number</label>
         </div>
         <div class="multiple-choice">
-          <input id="day" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="day">It's daytime only</label>
+          <input id="day-number" name="contact-by-text-phone" type="checkbox" value="true">
+          <label for="day-number">It's daytime only</label>
         </div>
         <div class="multiple-choice">
           <input id="night" name="contact-by-text-phone" type="checkbox" value="true">
           <label for="night">It's evening only</label>
         </div>
       </fieldset>
-
-<!--
-      <fieldset class="form-group">
-        <legend>
-          <p>Do any of the following apply to this number? (optional)</p>
-        </legend>
-        <div class="multiple-choice">
-          <input id="work-number" name="who" type="checkbox" value="true">
-          <label for="work-number">Work number</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="third" name="who" type="checkbox" value="true">
-          <label for="third">Third party number</label>
-        </div>
-      </fieldset>
-      
-      <fieldset class="form-group">
-        <div class="multiple-choice">
-          <input id="day-number" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="day-number">Daytime only</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="night" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="night">Evening only</label>
-        </div>
-      </fieldset>
-      
-      <fieldset class="form-group">
-        <div class="multiple-choice">
-          <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="checkbox-telephone-number">Prefered method of contact</label>
-        </div>
-      </fieldset>
--->
 
       <div class="form-group">
         <input class="button" type="submit" value="Next">
@@ -108,3 +78,9 @@
   </div>
 
 </div>
+
+
+
+
+
+

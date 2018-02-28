@@ -2,7 +2,7 @@
 
   <div class="column-two-thirds">
 
-    <form class="form" method="get" action="another-contact">
+    <form class="form" id="work-number" method="get" action="another-contact">
       
       <fieldset class="form-group">
         <label class="form-label" for="contact-text-message">Email address</label>
@@ -24,16 +24,16 @@
           <p class="bold">Do any of the following apply to this email address? (optional)</p>
         </legend>
         <div class="multiple-choice">
+          <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+          <label for="checkbox-telephone-number">It's their prefered method of contact</label>
+        </div>
+        <div class="multiple-choice">
           <input id="work" name="who" type="checkbox" value="true">
-          <label for="work">It's a work email address</label>
+          <label for="work">It's a business email address</label>
         </div>
         <div class="multiple-choice">
           <input id="third" name="who" type="checkbox" value="true">
           <label for="third">It's a third party email address</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
-          <label for="checkbox-telephone-number">It's their prefered method of contact</label>
         </div>
       </fieldset>
 
