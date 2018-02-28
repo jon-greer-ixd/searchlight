@@ -55,16 +55,16 @@
         <li>
           <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add</a>
         </li>
+        {% if updatetype === 'end' %}
+          <li>
+            <a data-toggle="modal" data-target="#correspondence_modal" class="under-link">View maintenance</a> 
+          </li>
+        {% endif %}
       </ul>
-
     {% else %}
       <ul class="edit-menu">
         <li>
           <a data-toggle="modal" data-target="#correspondence_modal" class="under-link">View maintenance</a> 
-<!--
-          <span class="pipe"> | </span> 
-          <a href="previous-names" class="under-link">View history</a>
--->
         </li>
         <li>
           <a class="secondary-link" href="update-correspondence">Change</a>
