@@ -29,7 +29,7 @@
             <li>
               <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add a correspondence address</a>
             </li>
-            {% if updatetype === 'end' %}
+            {% if data['updateType'] === 'end' %}
               <li>
                 <a data-toggle="modal" data-target="#correspondence_modal" class="under-link">View maintenance</a> 
               </li>
@@ -52,7 +52,7 @@
         <li class="sl-secondary-text-color sl-metadata">
           
             {% if residentialaddress.updated === true %} 
-              {% if updatetype === "correctDate" or updatetype === "correctToNew" or updatetype === "correctNew" or updatetype === "correctStatusDlo" or updatetype === "correctChangeCherish" or updatetype === "correctAddCherish" or updatetype === "correctRemoveCherish" %}
+              {% if data['updateType'] === "correctDate" or data['updateType'] === "correctToNew" or data['updateType'] === "correctNew" or data['updateType'] === "correctStatusDlo" or data['updateType'] === "correctChangeCherish" or data['updateType'] === "correctAddCherish" or data['updateType'] === "correctRemoveCherish" %}
                 {{startdate}} 
               {% else %}
                 {{editDate}}

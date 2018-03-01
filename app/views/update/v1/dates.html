@@ -123,7 +123,7 @@
               
 
 <h2 class="heading-medium question">
-  {% if updatetype != "status" %}
+  {% if data['updateType'] != "status" %}
     What are the start and notified dates?
   {% else %}
     What is the notified date?
@@ -133,7 +133,7 @@
   <div class="column-one-half">
     <form method="get" action="check">
       
-    {% if updatetype != "status" %}
+    {% if data['updateType'] != "status" %}
     <div class="form-group">
       <fieldset>
         <legend>

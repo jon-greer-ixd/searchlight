@@ -1,9 +1,9 @@
 <h2 class="heading-medium question">
-  {% if updatetype === "end" %}
+  {% if data['updateType'] === "end" %}
       What is the end date and the notified end date?
-  {% elif updatetype === "correctDateNotified" %}
+  {% elif data['updateType'] === "correctDateNotified" %}
       What is the notified start date?
-  {% elif updatetype === "correctDate" %}
+  {% elif data['updateType'] === "correctDate" %}
       Which date do you need to correct?
   {% else %}
       What is the start date and the notified start date?
@@ -23,7 +23,7 @@
 </div>
 -->
 
-  {% if updatetype === "correctDate" %}
+  {% if data['updateType'] === "correctDate" %}
     <p>Select all that apply</p>
   {% endif %}
 
@@ -31,7 +31,7 @@
   <div class="column-one-half">
     <form method="get" action="dates-handler">
 
-      {% if updatetype === "correctDateNotified" %}
+      {% if data['updateType'] === "correctDateNotified" %}
       <div class="form-group">
         <fieldset>
           <label class="form-label" for="full-name-f1">
@@ -43,7 +43,7 @@
         </fieldset>
       </div>
       
-      {% elif updatetype === "correctDate" %}
+      {% elif data['updateType'] === "correctDate" %}
         <div class="form-group">
           <fieldset>
 
@@ -84,7 +84,7 @@
       <div class="form-group">
         <fieldset>
           <label class="form-label" for="full-name-f1">
-          {% if updatetype === "end" %}
+          {% if data['updateType'] === "end" %}
             End 
           {% else %}
             Start

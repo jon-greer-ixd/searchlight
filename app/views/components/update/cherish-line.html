@@ -1,8 +1,8 @@
-{% if updatetype === "updateAddCherish" or updatetype === "correctAddCherish" %}
+{% if data['updateType'] === "updateAddCherish" or data['updateType'] === "correctAddCherish" %}
   <h2 class="heading-medium question">What is the cherished line of this address?</h2>
 {% else %}
   <h2 class="heading-medium question">
-  {% if updatetype === "updateCherish" %}
+  {% if data['updateType'] === "updateCherish" %}
     What kind of update do you need to make?
   {% else %}
     What kind of change do you need to make?
@@ -10,7 +10,7 @@
    </h2>
 {% endif %}
 
-{% if updatetype === "correctCherish" %} 
+{% if data['updateType'] === "correctCherish" %} 
   <div class="panel panel-border-wide">
     <ul>
       <li>
@@ -28,7 +28,7 @@
         <p>What is the cherished line of this address</p>
       </legend>
 
-      {% if updatetype === "updateAddCherish" or updatetype === "correctAddCherish" %}
+      {% if data['updateType'] === "updateAddCherish" or data['updateType'] === "correctAddCherish" %}
 
           <div class="form-group">
             <fieldset>
@@ -47,7 +47,7 @@
           <div class="multiple-choice" data-target="contact-by-email">
             <input id="update" type="radio" name="data" value="change_cherish">
             <label for="update">
-            {% if updatetype === "updateCherish" %}
+            {% if data['updateType'] === "updateCherish" %}
               Update the cherished line
             {% else %}
               Correct the cherished line

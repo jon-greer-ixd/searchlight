@@ -5,7 +5,7 @@
     <table class="table">
     
     <!-- Add Correspondence -->
-    {% if updatetype === "addCorrespondence" %}
+    {% if data['updateType'] === "addCorrespondence" %}
       <tr>
         <td><span class="strong">Correspondence address</span></td>
         <td>{{addressthree}} {{addressfour}}</td>
@@ -24,7 +24,7 @@
     {% endif %}  
       
     <!-- End Correspondence -->
-    {% if updatetype === "end" %}
+    {% if data['updateType'] === "end" %}
       <tr>
         <td><span class="strong">End date</span></td>
         <td>1 December 2017</td>
@@ -38,7 +38,7 @@
     {% endif %}
       
     <!-- Update to new -->
-    {% if updatetype === "updateNew" %}
+    {% if data['updateType'] === "updateNew" %}
       <tr>
         <td><span class="strong">New address</span></td>
         <td>{{addresstwo}} {{addressfour}}</td>
@@ -57,7 +57,7 @@
     {% endif %}
       
     <!-- Update status -->
-    {% if updatetype === "updateStatus" or updatetype === "updateStatusDLO" or updatetype === "updateStatusLive" %}
+    {% if data['updateType'] === "updateStatus" or data['updateType'] === "updateStatusDLO" or data['updateType'] === "updateStatusLive" %}
       <tr>
         <td><span class="strong">Status</span></td>
         <td>{{newstatus}}</td>
@@ -76,7 +76,7 @@
     {% endif %}
     
     <!-- Update add cherished line -->
-    {% if updatetype === "updateAddCherish" %}
+    {% if data['updateType'] === "updateAddCherish" %}
       <tr>
         <td><span class="strong">Cherished line</span></td>
         <td>Flat A</td>
@@ -95,7 +95,7 @@
     {% endif %}    
       
     <!-- Update remove cherished line -->
-    {% if updatetype === "updateRemoveCherish" %}
+    {% if data['updateType'] === "updateRemoveCherish" %}
       <tr>
         <td><span class="strong">Start date</span></td>
         <td>9 December 2017</td>
@@ -109,7 +109,7 @@
     {% endif %}
       
     <!-- Update change the cherished line -->
-    {% if updatetype === "updateChangeCherish" %}
+    {% if data['updateType'] === "updateChangeCherish" %}
       <tr>
         <td><span class="strong">Cherished line</span></td>
         <td>Flat B</td>
@@ -133,7 +133,7 @@
     <!-- -----*----- -->
       
     <!-- Correct to a new address -->
-    {% if updatetype === "correctNew" %}
+    {% if data['updateType'] === "correctNew" %}
 <!--
       <tr>
         <td><span class="strong">Current address</span></td>
@@ -149,7 +149,7 @@
     {% endif %}
       
     <!-- Correct the status -->
-    {% if updatetype === "correctStatus" or updatetype === "correctStatusDlo" or updatetype === "correctStatusLive" %}
+    {% if data['updateType'] === "correctStatus" or data['updateType'] === "correctStatusDlo" or data['updateType'] === "correctStatusLive" %}
       <tr>
         <td><span class="strong">Status</span></td>
         <td>{{newstatus}}</td>
@@ -158,7 +158,7 @@
     {% endif %}
       
     <!-- Correct the start date -->
-    {% if updatetype === "correctDate" %}
+    {% if data['updateType'] === "correctDate" %}
       <tr>
         <td><span class="strong">Start date</span></td>
         <td>30 November 1990</td>
@@ -174,7 +174,7 @@
     {% endif %}
 
     <!-- Correct the notified start date -->
-    {% if updatetype === "correctDateNotified" %}
+    {% if data['updateType'] === "correctDateNotified" %}
       <tr>
         <td><span class="strong">Notified start date</span></td>
         <td>01 Jan 1990</td>
@@ -183,7 +183,7 @@
     {% endif %}
 
     <!-- Correct add a cherished line -->
-    {% if updatetype === "correctAddCherish" %}
+    {% if data['updateType'] === "correctAddCherish" %}
       <tr>
         <td><span class="strong">Cherished line</span></td>
         <td>Flat A</td>
@@ -192,7 +192,7 @@
     {% endif %}
 
     <!-- Correct update a cherished line -->
-    {% if updatetype === "correctChangeCherish" %}
+    {% if data['updateType'] === "correctChangeCherish" %}
       <tr>
         <td><span class="strong">Cherished line</span></td>
         <td>Flat B</td>
@@ -201,7 +201,7 @@
     {% endif %}
 
     <!-- Correct remove a cherished line -->
-    {% if updatetype === "correctRemoveCherish" %}
+    {% if data['updateType'] === "correctRemoveCherish" %}
       <tr>
         <td><span class="strong">Address</span></td>
         <td>{{addressone}} {{addressfour}}</td>
@@ -211,7 +211,7 @@
                    
     <!-- Update change the cherished line -->
     <!--
-    {% if updatetype === "updateCherish" %}
+    {% if data['updateType'] === "updateCherish" %}
       <tr>
         <td><span class="strong">Cherished line</span></td>
         <td>Flat B</td>
@@ -231,7 +231,7 @@
     -->
       
     <!--
-    {% if updatetype === "correctCherish" %}
+    {% if data['updateType'] === "correctCherish" %}
       <tr>
         <td><span class="strong">Current cherished line</span></td>
         <td>Flat A</td>
