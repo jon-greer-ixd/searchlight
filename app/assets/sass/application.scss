@@ -656,10 +656,12 @@ input.short-field {
   width :30%;
 }
 
-.under-link, .sl-link .under-link {
+.under-link, .sl-link .under-link, .edit-menu a {
   text-decoration: underline!important;
+  color: #005ea5;
   cursor: pointer;
   &:hover {
+  color: #2b8cc4;
     text-decoration: none!important;
   }
 }
