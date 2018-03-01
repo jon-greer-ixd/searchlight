@@ -1,7 +1,7 @@
 <h2 class="heading-medium question">What kind of change do you need to make?</h2>
 <div class="grid-row">
   <div class="column-one-half">
-    <form method="get" action="update-type-handler">
+    <form method="get" action="update-interest-handler">
       
       <legend class="visually-hidden">
         <p>
@@ -11,17 +11,12 @@
       
       <div class="form-group">
 
-        <div class="multiple-choice" data-target="contact-by-email">
-          <input id="update" type="radio" name="updateorcorrect" value="update">
-          <label for="update">Update</label>
+        <div class="multiple-choice">
+          <input id="update" type="radio" name="data" value="parties">
+          <label for="update">Update the interested parties</label>
         </div>
       
-        <div class="multiple-choice" data-target="contact-by-text">
-          <input id="correct" type="radio" name="updateorcorrect" value="correct">
-          <label for="correct">Correct a mistake</label>
-        </div>
-        
-        <div class="multiple-choice" data-target="contact-by-text">
+        <div class="multiple-choice">
           <input id="end" type="radio" name="data" value="end">
           <label for="end">End the interest</label>
         </div>

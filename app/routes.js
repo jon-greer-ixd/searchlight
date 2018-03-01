@@ -763,6 +763,28 @@ router.get(/correction-type-handler/, function (req, res) {
 })
 
 
+//***********
+// INTERESTS 
+//***********
+
+router.get(/update-interest-handler/, function (req, res) {
+  if (req.query.data === "end") {
+    dataState.updateType = "endInterest"
+    console.log('here: '+ dataState.updateType);
+    res.redirect("check");
+  } else {
+    res.redirect("parties");
+  }
+})
+
+router.get('/update/interests/check', function (req, res) {
+  console.log('here: '+ dataState.updateType);
+  res.render('update/interests/check', {
+    update : dataState.updateType
+  })
+})
+
+
 
 //*****************
 // ACCOUNT CREATION 

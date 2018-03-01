@@ -1,0 +1,58 @@
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">
+      
+      <legend>
+        <p class="">
+          Interest type
+        </p>
+      </legend>
+      
+      <div class="form-group">
+
+        <div class="multiple-choice" data-target="contact-by-email">
+          <input id="update" type="radio" name="updateorcorrect" value="update">
+          <label for="update">System</label>
+        </div>
+      
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="correct" type="radio" name="updateorcorrect" value="correct">
+          <label for="correct">CRL</label>
+        </div>
+        
+      </div> 
+      
+      <div class="form-group">
+        <label class="form-label" for="first-name-2">Benefit type</label>
+        <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="first-name-2">Business system</label>
+        <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+      </div>
+      
+<!--
+      <div class="form-group">
+        <label class="form-label" for="select-box">Business system</label>
+        <select class="form-control" id="select-box" name="select-box">
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Otion 3</option>
+        </select>
+      </div>
+-->
+
+      <div class="form-group">
+        <label class="form-label" for="first-name-2">Start date</label>
+        <input class="form-control" id="first-name-2" name="first-name-2" type="text" value={{data['prepopulatedDate']}}>
+      </div>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>
