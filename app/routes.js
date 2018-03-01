@@ -9,6 +9,21 @@ var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 var NINO = require('./nino.js');
 var content = require('./content.js').content;
 
+var Interest = require('./interest.js');
+var tempInterest = Interest.createInterest();
+tempInterest.startDate = "1 Jun 2017"
+tempInterest.title = "Personal Independence Payment"
+tempInterest.system = "Personal Independence Payment"
+var interests = require('./interests.js').interests;
+interests.push(tempInterest);
+
+//var testInterest = Interest.createInterest();
+//testInterest.system = false;
+//testInterest.title = "Personal Independence Payment";
+//testInterest.startDate = "21 June 1979";
+//testInterest.printInterest();
+
+
 var Dates = require('./dates.js');
 var dates = Dates.dates;
 dates.logToday();
@@ -247,7 +262,9 @@ router.get('/search', function (req, res) {
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {    
+  req.session.data.interests = interests;
   req.session.data.updateType = null;
+    
   req.session.data.dob = "8 Feb 1940";
     
   req.session.data.updateOne = "20 May 1990";
@@ -684,6 +701,25 @@ router.get(/update-interest-handler/, function (req, res) {
     res.redirect("parties");
   }
 })
+
+router.get(/add-interest-handler/, function (req, res) {
+  console.log(req.query);
+  tempInterest = Interest.createInterest();
+  if (req.query.system === 'true') {
+    tempInterest.system = true;
+  } else {
+    tempInterest.system = false;
+  }
+  tempInterest.title = req.query.title;
+  tempInterest.startDate = req.query.startDate;
+  req.session.data.interests.unshift(tempInterest);
+  tempInterest.printInterest();
+  for (interest in interests) {
+    console.log(interests[interest].title);
+  }
+  res.redirect("check");
+})
+
 
 
 //*****************

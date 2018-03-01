@@ -1,3 +1,4 @@
+<!--
 <div id="interests">
   
     <div class="grid-row nav">
@@ -141,8 +142,36 @@
   </div> 
 
 </div> 
+-->
+
+<div id="interests">
+  
+    <div class="grid-row nav">
+      <div class="column-one-third">
+        Start date
+      </div>
+      <div class="column-one-third expanded">
+        Interest
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="interests/add-interest" class="under-link">Add an interest</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+  <hr>
+  
+    {% for interest in data['interests'] %}
+      {% include "components/update/interest.html" %}
+    {% endfor %}  
+
+</div> 
 
 <hr>
+
 
 <details>
   <summary>Previous interests</summary>
