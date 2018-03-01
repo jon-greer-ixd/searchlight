@@ -127,7 +127,7 @@
     <form method="get" action="dates">
       <div class="form-group">
         <!--<label class="form-label" for="select-box">Select an address</label>-->
-        {% if updatetype === "add" %}
+        {% if data['updateType'] === "add" %}
         <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
           <option>10 addressess found</option>
           <option>1 Post Street, Gateshead</option>
@@ -163,7 +163,7 @@
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
         </div>
         <div class="form-group">
-          {% if updatetype === "add" %}
+          {% if data['updateType'] === "add" %}
           <ul>
             <li>7 Post Street</li>
             <li>Gateshead</li>
