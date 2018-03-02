@@ -700,14 +700,20 @@ router.get(/correction-type-handler/, function (req, res) {
 router.get(/update-interest-handler/, function (req, res) {
   if (req.query.data === "end") {
     req.session.data.updateType = "endInterest"
-    req.session.data.tempInterest = req.session.data.interests[req.session.data.tempPos];
-    req.session.data.tempInterest.live = false;
-    req.session.data.previousInterests.unshift(req.session.data.tempInterest);
-    req.session.data.interests.splice(req.session.data.tempPos, 1);
     res.redirect("interests");
   } else {
     res.redirect("parties");
   }
+})
+
+router.get(/end-interests-handler/, function (req, res) {
+  for (i in req.query) {
+    var pos = parseInt(req.query[i]);
+    req.session.data.interests[pos].live = false;
+    req.session.data.interests.splice(pos, 1);
+    req.session.data.previousInterests.unshift(interests[pos]);
+  }  
+    res.redirect("check");
 })
 
 router.get(/add-interest-handler/, function (req, res) {
