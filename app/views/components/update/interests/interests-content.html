@@ -1,0 +1,40 @@
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">
+        
+        <div class="form-group">
+          <fieldset>
+            <legend>
+              <p class="bold">
+                Which interests do you want to end?
+              </p>
+            </legend>
+<!--
+              <table>
+                <tr>
+                  <th>Select</th>
+                  <th>Interest</th>
+                  <th>Start date</th>
+                </tr>
+              </table>
+-->
+
+            <div class="form-table">
+              {% for interest in data['interests'] %}
+                <div class="multiple-choice">
+                  <input id="{{ data['interests'].indexOf(interest) }}" name="interests" type="checkbox" value="{{ data['interests'].indexOf(interest) }}">
+                  <label for="{{ data['interests'].indexOf(interest) }}"><span class="title">{{interest.title}}</span> <span class="date">Started {{interest.startDate}}</span></label>
+                </div>
+              {% endfor %}
+            </div>
+          </fieldset>  
+        </div>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>

@@ -704,7 +704,7 @@ router.get(/update-interest-handler/, function (req, res) {
     req.session.data.tempInterest.live = false;
     req.session.data.previousInterests.unshift(req.session.data.tempInterest);
     req.session.data.interests.splice(req.session.data.tempPos, 1);
-    res.redirect("check");
+    res.redirect("interests");
   } else {
     res.redirect("parties");
   }

@@ -1004,3 +1004,24 @@ hr.light {
     padding: 0;
   }
 }
+
+.form-table {
+  .multiple-choice {
+    width: 100%;
+    padding-top :0;
+    label {
+      width: 100%;
+    }
+    span {
+      float: left;
+      &.title {
+        width: 100%;
+        margin-top: -1px;
+      }
+      &.date {
+        width: 100%;
+        margin-top: 0px;
+      }
+    }
+  }
+}
