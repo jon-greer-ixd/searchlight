@@ -32,10 +32,33 @@ months[11] = "December";
 var monthAsString = months[thisMonth];
 
 var dates = {
+  months : [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  convertDayToString : function (date) {
+      var parts = date.split('/');
+      d = parseInt(parts[0]);
+      m = parseInt(parts[1]);
+      y = parseInt(parts[2]);
+    date = d + " " + this.months[m - 1] + " " + y;
+    console.log(date);
+    return (date);
+  },
   todayAsString : function() {
     return dayOfTheMonth + " " + monthAsString + " " + year;
   },
-  todayAsFigure : function(separator) {
+    todayAsFigure : function(separator) {
     if (separator != null) {
       return dayOfTheMonth + separator + (thisMonth+1) + separator + year;
     } else {

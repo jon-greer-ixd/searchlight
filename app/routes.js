@@ -32,6 +32,8 @@ var Dates = require('./dates.js');
 var dates = Dates.dates;
 dates.logToday();
 
+dates.convertDayToString('21/06/1979');
+
 var createJourney = null;
 var ninoVersion = null;
 
@@ -720,7 +722,7 @@ router.get(/add-interest-handler/, function (req, res) {
   }
   tempInterest.live = true;
   tempInterest.title = req.query.title;
-  tempInterest.startDate = req.query.startdate;
+  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
   tempInterest.businessSystem = req.query.businesssystem;
   req.session.data.interests.unshift(tempInterest);
   tempInterest.printInterest();
