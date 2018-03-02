@@ -32,8 +32,6 @@ var Dates = require('./dates.js');
 var dates = Dates.dates;
 dates.logToday();
 
-dates.convertDayToString('21/06/1979');
-
 var createJourney = null;
 var ninoVersion = null;
 
