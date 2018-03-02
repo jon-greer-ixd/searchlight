@@ -996,3 +996,11 @@ hr.light {
 .column-one-third.expanded {
   padding:0;
 }
+
+.dumbform {
+  input[type="submit"] {
+    background:  none;
+    border: none;
+    padding: 0;
+  }
+}

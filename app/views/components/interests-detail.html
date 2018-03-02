@@ -146,33 +146,115 @@
 
 <div id="interests">
   
-    <div class="grid-row nav">
-      <div class="column-one-third">
-        Start date
+    {% if data['interests'].length > 0 %} 
+      <div class="grid-row nav">
+        <div class="column-one-third">
+          Start date
+        </div>
+        <div class="column-one-third expanded">
+          Interest
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a href="interests/add-interest" class="under-link">Add an interest</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="column-one-third expanded">
-        Interest
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a href="interests/add-interest" class="under-link">Add an interest</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+      <hr>      
+        {% for interest in data['interests'] %}
+        {% include "components/update/interest.html" %}
+        <hr class="light">
+        
+        {% if data['previousInterests'].length > 0 %} 
+          <details>
+          <summary>Previous interests</summary>
+            {% for interest in data['previousInterests'] %}
+              {% include "components/update/interest.html" %}
+            <hr class="light">
+            {% endfor %}  
+        </details>
+        {% endif %}  
+      {% endfor %}  
   
-  <hr>
-  
-    {% for interest in data['interests'] %}
-      {% include "components/update/interest.html" %}
-    {% endfor %}  
-
+    {% else %} 
+      <div class="grid-row">
+        <div class="column-one-third">
+          No current interests.
+        </div>
+        <div class="column-one-third expanded">
+          &nbsp;
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a href="interests/add-interest" class="under-link">Add an interest</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <details>
+        <summary>Previous interests</summary>
+<!--          <hr class="light">-->
+          <br>
+          <div class="grid-row nav">
+            <div class="column-one-third">
+              Start date
+            </div>
+            <div class="column-one-third expanded">
+              Interest
+            </div>
+            <div class="column-one-third last-col">
+<!--
+              <ul class="edit-menu">
+                <li>
+                  <a href="interests/add-interest" class="under-link">Add an interest</a>
+                </li>
+              </ul>
+-->
+            </div>
+          </div>
+          <hr>
+          {% for interest in data['previousInterests'] %}
+            {% include "components/update/interest.html" %}
+          <hr class="light">
+          {% endfor %}  
+      </details>
+    {% endif %} 
+    
 </div> 
+<!--
+<div class="grid-row">
+  <div class="column-one-third">
+    No interests held for this customer.
+  </div>
+  <div class="column-one-third">
+    &nbsp;
+  </div>
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a href="interests/add-interest" class="under-link">Add an interest</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<hr>
-
-
-<details>
-  <summary>Previous interests</summary>
-</details>
+<div class="grid-row">
+  <div class="column-one-third">
+    No interests held for this customer.
+  </div>
+  <div class="column-one-third">
+    &nbsp;
+  </div>
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a href="interests/add-interest" class="under-link">Add an interest</a>
+      </li>
+    </ul>
+  </div>
+</div>
+-->

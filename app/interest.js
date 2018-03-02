@@ -85,17 +85,21 @@
 //module.exports.createAddress = createAddress;
 
 function Interest (
+  live,
   system,
   title,
-  startDate
+  startDate,
+  businessSystem
 ) {
+  this.live = live;
   this.system = system;
   this.title = title;
   this.startDate = startDate;
+  this.businessSystem = businessSystem;
 };
 
 Interest.prototype.printInterest = function () {
-  console.log(this.system + ", " + this.title + " " + this.startDate);
+  console.log(this.system + ", " + this.title + " " + this.startDate + " " + this.businessSystem);
 };
 
 function createInterest() {

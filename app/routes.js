@@ -12,9 +12,13 @@ var content = require('./content.js').content;
 var Interest = require('./interest.js');
 var tempInterest = Interest.createInterest();
 tempInterest.startDate = "1 Jun 2017"
+tempInterest.live = true;
 tempInterest.title = "Personal Independence Payment"
 tempInterest.system = "Personal Independence Payment"
+tempInterest.businessSystem = "Personal Independence Payment"
+
 var interests = require('./interests.js').interests;
+var previousInterests = [];
 interests.push(tempInterest);
 
 //var testInterest = Interest.createInterest();
@@ -263,8 +267,9 @@ router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {    
   req.session.data.interests = interests;
-  req.session.data.updateType = null;
+  req.session.data.previousInterests = previousInterests;
     
+  req.session.data.updateType = null;
   req.session.data.dob = "8 Feb 1940";
     
   req.session.data.updateOne = "20 May 1990";
@@ -695,7 +700,10 @@ router.get(/correction-type-handler/, function (req, res) {
 router.get(/update-interest-handler/, function (req, res) {
   if (req.query.data === "end") {
     req.session.data.updateType = "endInterest"
-    console.log('here: '+ req.session.data.updateType);
+    req.session.data.tempInterest = req.session.data.interests[req.session.data.tempPos];
+    req.session.data.tempInterest.live = false;
+    req.session.data.previousInterests.unshift(req.session.data.tempInterest);
+    req.session.data.interests.splice(req.session.data.tempPos, 1);
     res.redirect("check");
   } else {
     res.redirect("parties");
@@ -703,23 +711,22 @@ router.get(/update-interest-handler/, function (req, res) {
 })
 
 router.get(/add-interest-handler/, function (req, res) {
-  console.log(req.query);
+  req.session.data.updateType = "addInterest"
   tempInterest = Interest.createInterest();
   if (req.query.system === 'true') {
     tempInterest.system = true;
   } else {
     tempInterest.system = false;
   }
+  tempInterest.live = true;
   tempInterest.title = req.query.title;
-  tempInterest.startDate = req.query.startDate;
+  tempInterest.startDate = req.query.startdate;
+  tempInterest.businessSystem = req.query.businesssystem;
   req.session.data.interests.unshift(tempInterest);
   tempInterest.printInterest();
-  for (interest in interests) {
-    console.log(interests[interest].title);
-  }
+  console.log(req.session.data);
   res.redirect("check");
 })
-
 
 
 //*****************

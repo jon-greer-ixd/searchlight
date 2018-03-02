@@ -10,13 +10,13 @@
       
       <div class="form-group">
         <div class="multiple-choice" data-target="contact-by-email">
-          <input id="system" type="radio" name="system" value="true">
-          <label for="system">System</label>
+          <input id="sys" type="radio" name="system" value="true">
+          <label for="sys">System</label>
         </div>
       
         <div class="multiple-choice" data-target="contact-by-text">
-          <input id="correct" type="radio" name="system" value="correct">
-          <label for="correct">CRL</label>
+          <input id="crl" type="radio" name="system" value="false">
+          <label for="crl">CRL</label>
         </div>
       </div> 
       
@@ -26,8 +26,8 @@
       </div>
       
       <div class="form-group">
-        <label class="form-label" for="first-name-2">Business system</label>
-        <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        <label class="form-label" for="businesssystem">Business system</label>
+        <input class="form-control" id="businesssystem" name="businesssystem" type="text">
       </div>
       
 <!--
@@ -42,8 +42,8 @@
 -->
 
       <div class="form-group">
-        <label class="form-label" for="startDate">Start date</label>
-        <input class="form-control" id="startDate" name="startDate" type="text" value={{data['prepopulatedDate']}}>
+        <label class="form-label" for="startdate">Start date</label>
+        <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
       </div>
       
       <div class="form-group">

@@ -6,7 +6,7 @@
       {% if data['updateType'] === "endInterest" %}
         <tr>
           <td><span class="strong">Interest</span></td>
-          <td>Personal Independence Payment</td>
+          <td>{{ data.tempInterest.title }}</td>
           <td><a>Change</a></td>
         </tr>
 <!--
@@ -20,22 +20,26 @@
       {% else %}
         <tr>
           <td><span class="strong">Interest type</span></td>
-          <td>System</td>
+          {% if data.interests[0].system == true %}
+            <td>System</td>
+          {% else %}
+            <td>CRL</td>
+          {% endif %}
           <td><a>Change</a></td>
         </tr>
         <tr>
           <td><span class="strong">Benefit type</span></td>
-          <td>Personal independence payment</td>
+          <td>{{ data.interests[0].title }}</td>
           <td><a>Change</a></td>
         </tr>
         <tr>
           <td><span class="strong">Business system</span></td>
-          <td>PIP</td>
+          <td>{{ data.interests[0].businessSystem }}</td>
           <td><a>Change</a></td>
         </tr>
         <tr>
           <td><span class="strong">Start date</span></td>
-          <td>1/3/2018</td>
+          <td>{{ data.interests[0].startDate }}</td>
           <td><a>Change</a></td>
         </tr>
         <tr>
