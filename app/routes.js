@@ -26,6 +26,13 @@ jsa.businessSystem = "JSA";
 
 var interests = [];
 
+function resetInterests() {
+  interests = [];
+  addInterest(pip);
+  addInterest(jsa);
+};
+
+
 var addInterest = function(interest) {
   interests.unshift(interest);
 };
@@ -34,9 +41,6 @@ var removeInterest = function(interest) {
   interest.live = false;
 };
 
-addInterest(pip);
-addInterest(jsa);
-console.log(interests);
 
 var Dates = require('./dates.js');
 var dates = Dates.dates;
@@ -275,6 +279,7 @@ router.get('/search', function (req, res) {
 
 router.use('/', main);
 // Route index page
+  resetInterests();
   router.get('/', function (req, res) {    
   req.session.data.interests = interests;
     
@@ -296,7 +301,6 @@ router.use('/', main);
   req.session.data.createJourney = null;
   req.session.data.prepopulatedDate = dates.todayAsFigure("/");    
   req.session.data.tests = "foo";    
-  console.log('session data ' + req.session.data.tests);
     
   resetAll();
   req.session.data.updateType = null;
@@ -412,7 +416,6 @@ router.get('/update/cherish-line', function (req, res) {
 })
 
 router.get('/update/cherish-handler', function (req, res) {
-  console.log("here " + req.query.data);
   if (req.session.data.updateType === "updateAddCherish") {
     res.redirect('dates')
   }
@@ -681,7 +684,6 @@ router.get(/change-handler-v1/, function (req, res) {
 })
 
 router.get(/correction-type-handler/, function (req, res) {
-  console.log(req.query);
   var next = "update/dates";
   if(req.query.data === 'new') {
   dataState.correctionType = "toNew";
@@ -698,7 +700,6 @@ router.get(/correction-type-handler/, function (req, res) {
     res.render('update/correct')
     res.redirect('address-search')
   } 
-  console.log(dataState.correctionType);
   res.render(next);
 })
 
@@ -717,20 +718,45 @@ router.get(/update-interest-handler/, function (req, res) {
 })
 
 router.get(/end-interests-handler/, function (req, res) {
-    res.redirect("check");
+  for (item in req.query) {
+    interests[ parseInt( req.query[item] ) ].live = false;
+  }
+  console.log(interests);
+  res.redirect("check");
 })
 
 router.get(/add-interest-handler/, function (req, res) {
+  var tempInterest = Interest.createInterest();  
   req.session.data.updateType = "addInterest"
-  console.log(req.query);
-  var tempInterest = Interest.createInterest();
   tempInterest.system = req.query.system;
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
   tempInterest.live = true;
   interests.unshift(tempInterest);
+  req.session.data.tempInterest = tempInterest;
   res.redirect("check");
 })
+
+router.get('/update/interests/interests', function (req, res) {
+  res.render('update/interests/interests', {
+    interests : interests
+  })
+})
+
+//router.get('/update/check', function (req, res) {
+//  res.render('update/check', {
+//    addressone : addressOne,
+//    addresstwo : addressTwo,
+//    addressthree : addressThree,
+//    addressfour : addressFour,
+//    editdate : content.editDate,
+//    correctiontype :dataState.correctionType,
+//    correcting : dataState.correcting,
+//    pagetitle : content.pageTitle,
+//    currentstatus : content.statusToText(dataState.currentStatus),
+//    newstatus : content.statusToText(dataState.newStatus)
+//  })
+//})
 
 
 //*****************
@@ -799,7 +825,6 @@ router.get(/alternative-name-handler/, function (req, res) {
 
 //previous-question-handler
 router.get(/previous-question-handler/, function (req, res) {
-  console.log(person);
   if (req.query.data === "yes") {
     person.previous_name_count++;
     res.redirect('name-previous')
@@ -813,11 +838,9 @@ router.get(/previous-question-handler/, function (req, res) {
 //correspondence-address-handler
 router.get(/correspondence-address-handler/, function (req, res) {
   if (req.query.data === 'yes') {
-    console.log(person.correspondence_address);
     res.redirect('search-correspondence')
   } else {
     person.correspondence_address = false;
-    console.log(person.correspondence_address);
     res.redirect('contact-question')
   }
 })
@@ -884,7 +907,6 @@ router.get(/s-correspondence-handler/, function (req, res) {
 
 //previous-address-handler
 router.get(/previous-address-handler/, function (req, res) {
-  console.log(person.correspondence_address);
   var next;
   if (person.previous_address_count === 0) {
     if (req.query.data === 'yes') {
@@ -1026,7 +1048,6 @@ router.get(/v2-type-handler/, function (req, res) {
   ninoVersion = 2;
   if(req.query.trace[0] === "true") {
     trace = true;
-    console.log("Trace = " + trace);
   }
   if(req.query.data === "create") {
     req.session.data.createJourney = true;
@@ -1037,7 +1058,6 @@ router.get(/v2-type-handler/, function (req, res) {
 })
 
 router.get(/v3-type-handler/, function (req, res) {
-  console.log(req.query);
   ninoVersion = 3;
   if(req.query.trace[0] === "true") {
     trace = true;
@@ -1053,7 +1073,6 @@ router.get(/v3-type-handler/, function (req, res) {
   } else {
     req.session.data.createJourney = false;
   }
-  console.log("here " + req.session.data.createJourney);
   res.redirect('../../search')
 })
 
@@ -1233,8 +1252,6 @@ router.get(/v3-nationality-handler/, function (req, res) {
 
 //check
 router.get('/nino/5/check/', function (req, res) {
-  console.log("here " + req.session.data.createJourney);
-  console.log("done" + req.session.data.tests);
   res.render('nino/5/check', {
     today : dates.todayAsString(),
     underSixteen : underSixteen

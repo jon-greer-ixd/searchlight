@@ -20,7 +20,7 @@
       {% else %}
         <tr>
           <td><span class="strong">Interest type</span></td>
-          {% if data.interests[0].system == true %}
+          {% if data.tempInterest.system == true %}
             <td>System</td>
           {% else %}
             <td>CRL</td>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <td><span class="strong">Benefit type</span></td>
-          <td>{{ data.interests[0].title }}</td>
+          <td>{{ data.tempInterest.title }}</td>
           <td><a>Change</a></td>
         </tr>
 <!--
@@ -41,7 +41,7 @@
 -->
         <tr>
           <td><span class="strong">Start date</span></td>
-          <td>{{ data.interests[0].startDate }}</td>
+          <td>{{ data.tempInterest.startDate }}</td>
           <td><a>Change</a></td>
         </tr>
         <tr>
