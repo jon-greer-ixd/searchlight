@@ -1,0 +1,224 @@
+<!--
+<div id="interests">
+  
+    <div class="grid-row nav">
+      <div class="column-one-third">
+        Start date
+      </div>
+      <div class="column-one-third expanded">
+        Interest
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="interests/add-interest" class="under-link">Add an interest</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+  <hr>
+  
+  <div class="grid-row interest first">
+
+    <div class="column-one-third">
+      <ul>
+        <li>5 Sep 2016</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third expanded">
+      <ul>
+        <li><span class="strong"><span class="interest-type">System</span>Personal Independence Payment</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#unnamed">UNNAMED INTERESTED PARTY</a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="column-one-third last-col">
+                <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <a class="secondary-link" href="interests/update-interest">Change</a>
+            </li>
+          </ul>
+
+      </div>
+  </div> 
+  
+  <hr class="light">
+  
+  <div class="grid-row interest">
+
+    <div class="column-one-third">
+      <ul>
+        <li>30 Apr 2016</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third expanded">
+      <ul>
+        <li><span class="strong"><span class="interest-type">System</span>Housing Benefit</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">CHESTER LE STREET DC and 2 more</a>
+      </ul>
+
+    </div>
+    <div class="column-one-third last-col">
+                <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+          </ul>
+
+      </div>
+  </div> 
+  <hr class="light">
+  <div class="grid-row interest">
+
+    <div class="column-one-third">
+      <ul>
+        <li>8 Feb 2016</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third expanded">
+      <ul>
+        <li><span class="strong"><span class="interest-type crl">CRL</span>Employment And Support Allowance</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">SUNDERLAND BDC</a>
+        </li>
+      </ul>
+
+    </div>
+      <div class="column-one-third last-col">
+                <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+          </ul>
+
+      </div>
+
+  </div> 
+  <hr class="light">
+  <div class="grid-row interest last">
+
+    <div class="column-one-third">
+      <ul>
+        <li>8 Feb 2016 </li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third expanded">
+      <ul>
+        <li><span class="strong"><span class="interest-type crl">CRL</span>Job Seekers Allowance</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">SUNDERLAND BDC</a>
+        </li>
+      </ul>
+
+    </div>
+      <div class="column-one-third last-col">
+                <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+          </ul>
+
+      </div>
+  </div> 
+
+</div> 
+-->
+
+<!--
+<div id="interests">
+    
+  {% if interests.length > 0 %} 
+    
+    <div class="grid-row nav">
+      <div class="column-one-third">
+        Start date
+      </div>
+      <div class="column-one-third expanded">
+        Interest
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="interests/add-interest" class="under-link">Add an interest</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr>      
+      {% for interest in interests %}
+        {% if interest.live === true %}
+          {% include "components/update/interest.html" %}
+        {% endif %}  
+      {% endfor %}  
+      <hr class="light">
+  
+      <details>
+        <summary>Previous interests</summary>
+        {% for interest in interests %}
+          {% if interest.live === false %}
+              {% include "components/update/interest.html" %}
+            <hr class="light">
+          {% endif %}  
+        {% endfor %}  
+      </details>
+  
+    {% endif %} 
+  
+      <div class="grid-row">
+        <div class="column-one-third">
+          No current interests.
+        </div>
+        <div class="column-one-third expanded">
+          &nbsp;
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a href="interests/add-interest" class="under-link">Add an interest</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <details>
+        <summary>Previous interests</summary>
+          <br>
+          <div class="grid-row nav">
+            <div class="column-one-third">
+              Start date
+            </div>
+            <div class="column-one-third expanded">
+              Interest
+            </div>
+            <div class="column-one-third last-col">
+            </div>
+          </div>
+          <hr>
+          {% for interest in data['previousInterests'] %}
+            {% include "components/update/interest.html" %}
+          <hr class="light">
+          {% endfor %}  
+      </details>
+    {% endif %} 
+    
+</div>-->

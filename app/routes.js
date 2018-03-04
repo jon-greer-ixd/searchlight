@@ -10,23 +10,33 @@ var NINO = require('./nino.js');
 var content = require('./content.js').content;
 
 var Interest = require('./interest.js');
-var tempInterest = Interest.createInterest();
-tempInterest.startDate = "1 Jun 2017"
-tempInterest.live = true;
-tempInterest.title = "Personal Independence Payment"
-tempInterest.system = "Personal Independence Payment"
-tempInterest.businessSystem = "Personal Independence Payment"
+var pip = Interest.createInterest();
+pip.startDate = "1 Jun 2017";
+pip.live = true;
+pip.title = "Personal Independence Payment";
+pip.system = true;
+pip.businessSystem = "Personal Independence Payment";
 
-var interests = require('./interests.js').interests;
-var previousInterests = [];
-interests.push(tempInterest);
+var jsa = Interest.createInterest();
+jsa.startDate = "1 Jun 2017";
+jsa.live = false;
+jsa.title = "Job Seekers Allowance";
+jsa.system = false;
+jsa.businessSystem = "JSA";
 
-//var testInterest = Interest.createInterest();
-//testInterest.system = false;
-//testInterest.title = "Personal Independence Payment";
-//testInterest.startDate = "21 June 1979";
-//testInterest.printInterest();
+var interests = [];
 
+var addInterest = function(interest) {
+  interests.unshift(interest);
+};
+
+var removeInterest = function(interest) {
+  interest.live = false;
+};
+
+addInterest(pip);
+addInterest(jsa);
+console.log(interests);
 
 var Dates = require('./dates.js');
 var dates = Dates.dates;
@@ -267,7 +277,6 @@ router.use('/', main);
 // Route index page
   router.get('/', function (req, res) {    
   req.session.data.interests = interests;
-  req.session.data.previousInterests = previousInterests;
     
   req.session.data.updateType = null;
   req.session.data.dob = "8 Feb 1940";
@@ -340,6 +349,7 @@ router.get('/update/account', function (req, res) {
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
+    interests : interests
   })
 })
 
@@ -707,30 +717,11 @@ router.get(/update-interest-handler/, function (req, res) {
 })
 
 router.get(/end-interests-handler/, function (req, res) {
-  for (i in req.query) {
-    var pos = parseInt(req.query[i]);
-    req.session.data.interests[pos].live = false;
-    req.session.data.interests.splice(pos, 1);
-    req.session.data.previousInterests.unshift(interests[pos]);
-  }  
     res.redirect("check");
 })
 
 router.get(/add-interest-handler/, function (req, res) {
   req.session.data.updateType = "addInterest"
-  tempInterest = Interest.createInterest();
-  if (req.query.system === 'true') {
-    tempInterest.system = true;
-  } else {
-    tempInterest.system = false;
-  }
-  tempInterest.live = true;
-  tempInterest.title = req.query.title;
-  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
-  tempInterest.businessSystem = req.query.businesssystem;
-  req.session.data.interests.unshift(tempInterest);
-  tempInterest.printInterest();
-  console.log(req.session.data);
   res.redirect("check");
 })
 

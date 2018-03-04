@@ -20,7 +20,7 @@
 -->
 
             <div class="form-table">
-              {% for interest in data['interests'] %}
+              {% for interest in interests %}
                 <div class="multiple-choice">
                   <input id="{{ data['interests'].indexOf(interest) }}" name="interests" type="checkbox" value="{{ data['interests'].indexOf(interest) }}">
                   <label for="{{ data['interests'].indexOf(interest) }}"><span class="title">{{interest.title}}</span> <span class="date">Started {{interest.startDate}}</span></label>
