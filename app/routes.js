@@ -722,6 +722,13 @@ router.get(/end-interests-handler/, function (req, res) {
 
 router.get(/add-interest-handler/, function (req, res) {
   req.session.data.updateType = "addInterest"
+  console.log(req.query);
+  var tempInterest = Interest.createInterest();
+  tempInterest.system = req.query.system;
+  tempInterest.title = req.query.title;
+  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
+  tempInterest.live = true;
+  interests.unshift(tempInterest);
   res.redirect("check");
 })
 
