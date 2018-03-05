@@ -6,7 +6,7 @@ var addressTwo = "2 New Street";
 var addressThree = "7 Post Street";
 var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
-var NINO = require('./nino.js');
+//var NINO = require('./nino.js');
 var content = require('./content.js').content;
 
 var Interest = require('./interest.js');
@@ -17,16 +17,17 @@ var addInterest = function(interest) {
   interests.unshift(interest);
 };
 
-var resetInterests = function() {
-  interests = [];
-  var pip = Interest.createInterest();
+var pip = Interest.createInterest();
+var jsa = Interest.createInterest();
+
+function resetInterests() {
+  interests.length = 0;
   pip.startDate = "1 Jun 2017";
   pip.live = true;
   pip.title = "Personal Independence Payment";
   pip.system = true;
   pip.businessSystem = "Personal Independence Payment";
   
-  var jsa = Interest.createInterest();
   jsa.startDate = "1 Jun 2017";
   jsa.live = false;
   jsa.title = "Job Seekers Allowance";
@@ -35,7 +36,9 @@ var resetInterests = function() {
   
   addInterest(pip);
   addInterest(jsa);
-};
+  console.log("Resetting interests...");
+  console.log(interests);
+}
 
 var removeInterest = function(interest) {
   interest.live = false;
@@ -278,8 +281,8 @@ router.get('/search', function (req, res) {
 
 router.use('/', main);
 // Route index page
+  router.get('/', function (req, res) { 
   resetInterests();
-  router.get('/', function (req, res) {    
   req.session.data.interests = interests;
     
   req.session.data.updateType = null;

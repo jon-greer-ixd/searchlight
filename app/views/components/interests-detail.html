@@ -18,7 +18,7 @@
     </div>
     <hr>      
     {% for interest in interests %}
-      {% if interest.live === true %}
+      {% if interest.live == true %}
         {% include "components/update/interest.html" %}
       {% endif %}  
     {% endfor %}  
@@ -27,7 +27,7 @@
     <details>
       <summary>Previous interests</summary>
       {% for interest in interests %}
-        {% if interest.live === false %}
+        {% if interest.live == false %}
             {% include "components/update/interest.html" %}
           <hr class="light">
         {% endif %}  
