@@ -10,37 +10,36 @@ var NINO = require('./nino.js');
 var content = require('./content.js').content;
 
 var Interest = require('./interest.js');
-var pip = Interest.createInterest();
-pip.startDate = "1 Jun 2017";
-pip.live = true;
-pip.title = "Personal Independence Payment";
-pip.system = true;
-pip.businessSystem = "Personal Independence Payment";
-
-var jsa = Interest.createInterest();
-jsa.startDate = "1 Jun 2017";
-jsa.live = false;
-jsa.title = "Job Seekers Allowance";
-jsa.system = false;
-jsa.businessSystem = "JSA";
 
 var interests = [];
-
-function resetInterests() {
-  interests = [];
-  addInterest(pip);
-  addInterest(jsa);
-};
-
 
 var addInterest = function(interest) {
   interests.unshift(interest);
 };
 
+var resetInterests = function() {
+  interests = [];
+  var pip = Interest.createInterest();
+  pip.startDate = "1 Jun 2017";
+  pip.live = true;
+  pip.title = "Personal Independence Payment";
+  pip.system = true;
+  pip.businessSystem = "Personal Independence Payment";
+  
+  var jsa = Interest.createInterest();
+  jsa.startDate = "1 Jun 2017";
+  jsa.live = false;
+  jsa.title = "Job Seekers Allowance";
+  jsa.system = false;
+  jsa.businessSystem = "JSA";
+  
+  addInterest(pip);
+  addInterest(jsa);
+};
+
 var removeInterest = function(interest) {
   interest.live = false;
 };
-
 
 var Dates = require('./dates.js');
 var dates = Dates.dates;
@@ -337,6 +336,8 @@ router.get('/search-v1', function (req, res) {
 
 //account
 router.get('/update/account', function (req, res) {
+//  var interestsReversed = interests.slice();
+//  interestsReversed.reverse();
   res.render('update/account.html', {
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
@@ -354,6 +355,7 @@ router.get('/update/account', function (req, res) {
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
     interests : interests
+//    interestsReversed : interestsReversed
   })
 })
 
@@ -728,12 +730,17 @@ router.get(/end-interests-handler/, function (req, res) {
 router.get(/add-interest-handler/, function (req, res) {
   var tempInterest = Interest.createInterest();  
   req.session.data.updateType = "addInterest"
-  tempInterest.system = req.query.system;
+  if (req.query.system === 'true') {
+    tempInterest.system = true;
+  } else {
+    tempInterest.system = false;
+  }
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
   tempInterest.live = true;
   interests.unshift(tempInterest);
   req.session.data.tempInterest = tempInterest;
+  console.log('data ' + req.session.data.tempInterest.system);
   res.redirect("check");
 })
 
