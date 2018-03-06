@@ -126,7 +126,7 @@ var previousAddress = {
 };
 previousAddress.reset();
 
-var updateOmatic = function(updatetype) {
+var updater = function(updatetype) {
   if(updatetype === "addCorrespondence") {
     correspondenceAddress.show = true;
   }
@@ -582,7 +582,7 @@ router.get('/update/check', function (req, res) {
 })
 
 router.get(/check-answers-handler/, function (req, res) {
-  updateOmatic(req.session.data.updateType);
+  updater(req.session.data.updateType);
   if(req.session.data.updateType === "addCorrespondence") {
     dataState.correspondenceAdded = true;
   }
