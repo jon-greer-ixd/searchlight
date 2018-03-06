@@ -725,10 +725,12 @@ router.get(/update-interest-handler/, function (req, res) {
 })
 
 router.get(/end-interests-handler/, function (req, res) {
-  for (item in req.query) {
-    interests[ parseInt( req.query[item] ) ].live = false;
+  console.log(req.query.interests);
+  for (item in req.query.interests) {
+    var x = parseInt(req.query.interests[item]);
+    console.log("item = " + x);
+    interests[x].live = false;
   }
-  console.log(interests);
   res.redirect("check");
 })
 
