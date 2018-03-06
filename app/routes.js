@@ -1,5 +1,7 @@
-var express = require('express')
-var router = express.Router()
+/*jslint devel: true */
+
+var express = require('express');
+var router = express.Router();
 
 var addressOne = "1 Current Crescent";
 var addressTwo = "2 New Street";
@@ -13,7 +15,7 @@ var Interest = require('./interest.js');
 
 var interests = [];
 
-var addInterest = function(interest) {
+var addInterest = function (interest) {
   interests.unshift(interest);
 };
 
@@ -40,7 +42,7 @@ function resetInterests() {
   console.log(interests);
 }
 
-var removeInterest = function(interest) {
+var removeInterest = function (interest) {
   interest.live = false;
 };
 
@@ -52,7 +54,7 @@ var createJourney = null;
 var ninoVersion = null;
 
 var person = {
-  reset : function() {
+  reset : function () {
     //address
     this.previous_address = null;
     this.previous_address_count = 0;

@@ -854,21 +854,27 @@ input.short-field {
       text-align: right;
     }
   }
+  .title {
+    font-weight: bold;
+  }
+  .system {
+    color: #666666;    
+  }
   .office {
-    font-size: 24px;
+    font-size: 19px;
+    font-weight: bold;
   }
   .office-code {
     font-weight: bold;
   }
-  .system {
-    color: #666666;
+  .date {
+    color: #666666;    
   }
   .contact {
-    padding-top: 11px;;
+    color: #666666;    
   }
-  .date {
-    color: #333333;
-    padding-bottom: 6px;
+  .number {
+    font-size: 19px;
   }
 }
 
