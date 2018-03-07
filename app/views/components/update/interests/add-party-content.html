@@ -1,0 +1,73 @@
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="">
+      
+      <legend>
+        <p class="">
+          Interested party type
+        </p>
+      </legend>
+      
+      <div class="form-group">
+        <fieldset class="inline">
+
+          <div class="multiple-choice" style="margin-right:0" data-target="contact-by-email">
+            <input id="sys" type="radio" name="system" value="true">
+            <label style="width:120px;" for="sys">Owning</label>
+          </div>
+   
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="crl" type="radio" name="system" value="false">
+            <label style="width:120px;" for="crl">Broadcasting</label>
+          </div>
+        </fieldset>
+      </div> 
+      
+      <div class="form-group">
+        <label class="form-label" for="code">Office code</label>
+        <input class="form-control" id="code" name="code" type="text">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="startdate">Start date</label>
+        <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
+      </div>
+      
+      <div class="form-group">
+        <input class="secondary-button" type="submit" value="Add">
+      </div>
+      
+    </form>
+        
+    <p><a href="account">Cancel</a></p>
+    
+    <table class="">
+      <tr>
+        <th>Interested party type</th>
+        <th>Office code</th>
+        <th>Start date</th>
+        <th>&nbsp;</th>
+      </tr>
+      <tr>
+        <td>Owning</td>
+        <td>65432</td>
+        <td>7 March 2018</td>
+        <td><a href="">Remove</a></td>
+      </tr>
+      <tr></tr>
+    </table>
+    <br>
+    <br>
+    
+    
+    
+    <form method="get" action="check">
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+
+    
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>

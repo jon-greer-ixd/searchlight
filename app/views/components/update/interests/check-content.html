@@ -4,6 +4,11 @@
     <div>
     <table class="table">
       {% if data['updateType'] === "endInterest" %}
+        
+        {% for item in data.tempInterests %}
+          <p>{{item}}</p>
+        {% endfor %}
+        
         <tr>
           <td><span class="strong">Interest</span></td>
           <td>{{ data.tempInterest.title }}</td>
@@ -23,7 +28,7 @@
           {% if data.tempInterest.system === 'true' %}
             <td>System</td>
           {% else %}
-            <td>CRL</td>
+            <td>Computer record location (CRL)</td>
           {% endif %}
           <td><a>Change</a></td>
         </tr>

@@ -285,6 +285,7 @@ router.use('/', main);
 // Route index page
   router.get('/', function (req, res) { 
   resetInterests();
+  req.session.data.tempInterests = [];
   req.session.data.interests = interests;
     
   req.session.data.updateType = null;
@@ -728,6 +729,7 @@ router.get(/end-interests-handler/, function (req, res) {
   console.log(req.query.interests);
   for (item in req.query.interests) {
     var x = parseInt(req.query.interests[item]);
+    req.session.data.tempInterests.unshift(interests[x].title);
     console.log("item = " + x);
     interests[x].live = false;
   }
