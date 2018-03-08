@@ -53,16 +53,16 @@ $path: "/public/images/";
 }
 
 .super-slim-header {
-  padding-top: 0!important;
-  .col-xs-12 {
-    background: white;
-  }
-  .sl-address-primary-card, .sl-primary-card {
-    box-shadow: none;
-  }
-  #sl-address-primary-card.sl-primary-card {
-    padding: 0!important;
-  }
+  padding-top: 30px!important;
+//  .col-xs-12 {
+//    background: white;
+//  }
+//  .sl-address-primary-card, .sl-primary-card {
+//    box-shadow: none;
+//  }
+//  #sl-address-primary-card.sl-primary-card {
+//    padding: 0!important;
+//  }
 }
 
 .slim {
@@ -207,7 +207,7 @@ table.table {
 #sl-account .sl-account-canvas {
   &.updater {
     min-height: 0;
-    margin-bottom: 60px
+    padding-bottom: 60px
   }
 }
 
@@ -351,12 +351,13 @@ p.address {
   font-weight: bold;
 }
 
-.link-back:hover {
-  text-decoration: none;
-}
-
 .link-back {
   padding-bottom: 2px;
+  margin-bottom: 20px;
+    &:hover {
+    text-decoration: none;
+    cursor: pointer;
+  }
 }
 
 .sl-metadata {
@@ -604,7 +605,7 @@ hr {
 
 h1.question-title {
   display: block;
-  margin: 30px 0;
+  margin: 0 0 40px 0;
   font-size: 36px;
   line-height: 1.11111;
   padding: 0;
@@ -775,9 +776,6 @@ input.short-field {
   }
 }
 
-.link-back:hover {
-  cursor: pointer;
-}
 
 .ui-helper-hidden-accessible {
   display: none;

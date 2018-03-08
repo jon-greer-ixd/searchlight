@@ -7,12 +7,12 @@
           
           <a class="link-back" onCLick="history.back()">Back</a>
           
-          {% if person.previous_address === true %}
-            <h1 class="question-title">Do they have another previous address?</h1>
-          {% else %}
-            <h1 class="question-title">Do they have a previous address?</h1>
-          {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card">
+            {% if person.previous_address === true %}
+              <h1 class="question-title">Do they have another previous address?</h1>
+            {% else %}
+              <h1 class="question-title">Do they have a previous address?</h1>
+            {% endif %}
             <div id="address-pane">
               
                 {% include "components/nino/5/address-question-content.html" %}
