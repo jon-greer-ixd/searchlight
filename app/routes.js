@@ -857,7 +857,7 @@ router.get(/correspondence-address-handler/, function (req, res) {
     res.redirect('search-correspondence')
   } else {
     person.correspondence_address = false;
-    res.redirect('contact-question')
+    res.redirect('address-question')
   }
 })
 
@@ -892,10 +892,16 @@ router.get(/address-stat-handler/, function (req, res) {
 //search-handler
 router.get(/search-handler/, function (req, res) {
   if (req.query.uk === "no") {
-    res.redirect('address-question')
+    res.redirect('correspondence-question')
   } else {
     res.redirect('search-results')
   }
+})
+
+//search-handler
+router.get(/mauual-previous-handler/, function (req, res) {
+  person.previous_address_count++;
+  res.redirect('address-question')
 })
 
 //search-previous-handler
