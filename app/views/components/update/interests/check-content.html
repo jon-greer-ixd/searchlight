@@ -6,14 +6,13 @@
       {% if data['updateType'] === "endInterest" %}
         
         {% for item in data.tempInterests %}
-          <p>{{item}}</p>
+          <tr>
+            <td><span class="strong">Interest</span></td>
+            <td>{{item}}</td>
+            <td><a>Change</a></td>
+          </tr>
         {% endfor %}
         
-        <tr>
-          <td><span class="strong">Interest</span></td>
-          <td>{{ data.tempInterest.title }}</td>
-          <td><a>Change</a></td>
-        </tr>
 <!--
         <tr>
           <td><span class="strong">End date</span></td>
@@ -24,17 +23,17 @@
         <tr>
       {% else %}
         <tr>
+          <td><span class="strong">Benefit type</span></td>
+          <td>{{ data.tempInterest.title }}</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
           <td><span class="strong">Interest type</span></td>
           {% if data.tempInterest.system === 'true' %}
             <td>System</td>
           {% else %}
             <td>Computer record location (CRL)</td>
           {% endif %}
-          <td><a>Change</a></td>
-        </tr>
-        <tr>
-          <td><span class="strong">Benefit type</span></td>
-          <td>{{ data.tempInterest.title }}</td>
           <td><a>Change</a></td>
         </tr>
 <!--
@@ -44,6 +43,11 @@
           <td><a>Change</a></td>
         </tr>
 -->
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>{{ data.tempInterest.startDate }}</td>
+          <td><a>Change</a></td>
+        </tr>
         <tr>
           <td><span class="strong">Start date</span></td>
           <td>{{ data.tempInterest.startDate }}</td>

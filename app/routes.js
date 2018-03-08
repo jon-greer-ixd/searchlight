@@ -750,7 +750,7 @@ router.get(/add-interest-handler/, function (req, res) {
   interests.unshift(tempInterest);
   req.session.data.tempInterest = tempInterest;
   console.log('data ' + req.session.data.tempInterest.system);
-  res.redirect("check");
+  res.redirect("add-party");
 })
 
 router.get('/update/interests/interests', function (req, res) {
