@@ -1,50 +1,8 @@
 <div class="grid-row">
   <div class="column-one-half">
-    <form method="get" action="add-interest-handler">
-      <fieldset>
-        <div class="form-group">
-          <label class="form-label" id="title" for="title">Benefit type</label>
-          <select  class="form-control" name="title" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
-            <option value="" selected="selected">Select benefit</option>
-            <option value="Bermuda" data-alternative-spellings="BM" data-relevancy-booster="0.5">Bermuda</option>
-            <option value="Attendance Allowance" data-alternative-spellings="AA">Attendance Allowance</option>
-            <option value="Bereavement Allowance" data-alternative-spellings="BA">Bereavement Allowance</option>
-            <option value="Bereavement Benefit" data-alternative-spellings="BM">ereavement Benefit</option>
-            <option value="Carer's Allowance" data-alternative-spellings="CA">Carer's Allowance</option>
-            <option value="Carers Credit" data-alternative-spellings="CC">Carers Credit</option>
-            <option value="Child Benefit" data-alternative-spellings="CB">Child Benefit</option>
-            <option value="Child Support Agency" data-alternative-spellings="CSA">Child Support Agency</option>
-            <option value="Child Support Reform" data-alternative-spellings="CSR">Child Support Reform</option>
-            <option value="Compensation Recovery Unit" data-alternative-spellings="CRU">Compensation Recovery Unit</option>
-            <option value="Council Tax Benefit" data-alternative-spellings="CTB">Council Tax Benefit</option>
-            <option value="Council Tax Reduction" data-alternative-spellings="CTR">Council Tax Reduction</option>
-            <option value="Debt Management" data-alternative-spellings="DM" >Debt Management</option>
-            <option value="Disability Living Allowance" data-alternative-spellings="DLA">Disability Living Allowance</option>
-            <option value="Employment &amp; Support Allowance" data-alternative-spellings="ESA">Employment &amp; Support Allowance</option>
-            <option value="Guardians Allowance" data-alternative-spellings="GA">Guardians Allowance</option>
-            <option value="Healthcare Entitlement Case" data-alternative-spellings="HEC">Healthcare Entitlement Case</option>
-            <option value="Housing Benefit" data-alternative-spellings="HB">Housing Benefit</option>
-            <option value="Incapacity Benefit" data-alternative-spellings="IB">Incapacity Benefit</option>
-            <option value="Income Support" data-alternative-spellings="IS">Income Support</option>
-            <option value="Industrial Injuries Disablement Benefit" data-alternative-spellings="IIDB">Industrial Injuries Disablement Benefit</option>
-            <option value="Jobseeker's Allowance" data-alternative-spellings="JSA">Jobseeker's Allowance</option>
-            <option value="Local Authority Benefits" data-alternative-spellings="LAB">Local Authority Benefits</option>
-            <option value="Maternity Allowance" data-alternative-spellings="MA">Maternity Allowance</option>
-            <option value="New Tax Credits" data-alternative-spellings="NTC">New Tax Credits</option>
-            <option value="Pension Credit" data-alternative-spellings="PC">Pension Credit</option>
-            <option value="Personal Independence Payment" data-alternative-spellings="PIP">Personal Independence Payment</option>
-            <option value="Severe Disablement Allowance" data-alternative-spellings="SDA">Severe Disablement Allowance</option>
-            <option value="Social Fund" data-alternative-spellings="SF">Social Fund</option>
-            <option value="State Pension" data-alternative-spellings="SP">State Pension</option>
-            <option value="Universal Credits" data-alternative-spellings="UC">Universal Credits</option>
-            <option value="Work Service Platform" data-alternative-spellings="WSP">Work Service Platform</option>
-            <option value="War Pension" data-alternative-spellings="WP">War Pension</option>
-          </select>
-        </div>
-      </fieldset>
+    <form method="get" action="add-system-handler">
       
       <fieldset>
-      
         <div class="form-group">
           <legend>
             <p class="">
@@ -61,41 +19,13 @@
             <label for="crl">Computer record location (CRL)</label>
           </div>
         </div> 
+      </fieldset>
       
-<!--
-      <div class="form-group">
-        <label class="form-label" for="title">Benefit type</label>
-        <input class="form-control" id="title" name="title" type="text">
-      </div>
--->
-      
-      
-<!--
-      <div class="form-group">
-        <label class="form-label" for="businesssystem">Business system</label>
-        <input class="form-control" id="businesssystem" name="businesssystem" type="text">
-      </div>
--->
-      
-<!--
-      <div class="form-group">
-        <label class="form-label" for="select-box">Business system</label>
-        <select class="form-control" id="select-box" name="select-box">
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Otion 3</option>
-        </select>
-      </div>
--->
-
-      <div class="form-group">
-        <label class="form-label" for="startdate">Start date</label>
-        <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
-      </div>
-      
-      <div class="form-group">
-        <input class="button" type="submit" value="Next">
-      </div>
+      <fieldset>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+      </fieldset>
       
     </form>
     <p><a href="account">Cancel</a></p>

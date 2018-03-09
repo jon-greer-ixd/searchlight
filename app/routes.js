@@ -29,17 +29,45 @@ function resetInterests() {
   pip.title = "Personal Independence Payment";
   pip.system = true;
   pip.businessSystem = "Personal Independence Payment";
+  pip.systemRef = 1;
+  pip.partyRef = 1;
   
   jsa.startDate = "1 Jun 2017";
   jsa.live = false;
   jsa.title = "Job Seekers Allowance";
   jsa.system = false;
   jsa.businessSystem = "JSA";
+  pip.systemRef = 3;
+  pip.partyRef = 1;
   
   addInterest(pip);
   addInterest(jsa);
   console.log("Resetting interests...");
   console.log(interests);
+}  
+
+function setSystemAndParties(selectedInterest) {
+  if (selectedInterest === "Child support reform") {
+    tempInterest.partyRef = 0; //none
+    tempInterest.systemRef = 3; //both
+  } else if (selectedInterest === "Bereavement Allowance" ||
+    selectedInterest === "Bereavement Benefit") {
+    tempInterest.partyRef = 1; //owning
+    tempInterest.systemRef = 1; //system
+  } else if ( 
+    selectedInterest === "Carers Credit") {
+    tempInterest.partyRef = 2; //broadcasting
+    tempInterest.systemRef = 1; //system
+  } else if (selectedInterest === "Attendance Allowance") {
+    tempInterest.partyRef = 3; //both
+    tempInterest.systemRef = 3; //both
+  } else if (selectedInterest === "Jobseeker's Allowance") {
+    tempInterest.partyRef = 4; //CRL Office ID
+    tempInterest.systemRef = 3; //both
+  } else {
+    tempInterest.partyRef = 3; //both
+    tempInterest.systemRef = 3; //both
+  }
 }
 
 var removeInterest = function (interest) {
@@ -281,9 +309,12 @@ router.get('/search', function (req, res) {
   })
 })
 
+var tempInterest
+
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) { 
+  tempInterest = Interest.createInterest();
   resetInterests();
   req.session.data.tempInterests = [];
   req.session.data.interests = interests;
@@ -737,26 +768,58 @@ router.get(/end-interests-handler/, function (req, res) {
 })
 
 router.get(/add-interest-handler/, function (req, res) {
-  var tempInterest = Interest.createInterest();  
   req.session.data.updateType = "addInterest"
+  tempInterest.title = req.query.title;
+  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
+  tempInterest.live = true;
+  setSystemAndParties(tempInterest.title);
+  console.log("title = " + tempInterest.title);
+  console.log("systems = " + tempInterest.systemRef);
+  console.log("parties = " + tempInterest.partyRef);
+  if (tempInterest.systemRef === 2 ||
+    tempInterest.systemRef === 3) {
+    res.redirect("add-system");
+  } else {
+    tempInterest.system = true;
+    res.redirect("add-party");
+  }
+})
+
+router.get(/add-system-handler/, function (req, res) {
   if (req.query.system === 'true') {
     tempInterest.system = true;
   } else {
     tempInterest.system = false;
   }
-  tempInterest.title = req.query.title;
-  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
-  tempInterest.live = true;
-  interests.unshift(tempInterest);
-  req.session.data.tempInterest = tempInterest;
-  console.log('data ' + req.session.data.tempInterest.system);
   res.redirect("add-party");
+})
+
+router.get(/party-handler/, function (req, res) {
+  res.redirect("check");
 })
 
 router.get('/update/interests/interests', function (req, res) {
   res.render('update/interests/interests', {
     interests : interests
   })
+})
+
+router.get('/update/interests/check', function (req, res) {
+  res.render('update/interests/check', {
+    tempInterest : tempInterest
+  })
+})
+
+router.get('/update/interests/add-party', function (req, res) {
+  res.render('update/interests/add-party', {
+    tempInterest : tempInterest
+  })
+})
+
+router.get(/interest-check-handler/, function (req, res) {
+  interests.unshift(tempInterest);
+  req.session.data.tempInterest = tempInterest;
+  res.redirect("../account");
 })
 
 //router.get('/update/check', function (req, res) {

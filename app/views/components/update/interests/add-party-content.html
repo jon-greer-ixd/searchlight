@@ -1,8 +1,37 @@
 <div class="grid-row">
   <div class="column-one-half">
+    <form method="get" action="party-handler">
+      
+      {% if tempInterest.partyRef === 1 or tempInterest.partyRef === 3 %}
+        <div class="form-group">
+          <label class="form-label" for="code">Owning office code</label>
+          <input class="form-control" id="code" name="code" type="text">
+        </div>
+      {% endif %}
+      
+      {% if tempInterest.partyRef === 2 or tempInterest.partyRef === 3 %}
+        <div class="form-group">
+          <label class="form-label" for="code">Broadcast office code</label>
+          <input class="form-control" id="code" name="code" type="text">
+        </div>
+      {% endif %}
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>
+
+
+<!--
+
+<div class="grid-row">
+  <div class="column-one-half">
     <form method="get" action="">
       
-<!--
       <legend>
         <p class="">
           Interested party type
@@ -23,7 +52,7 @@
           </div>
         </fieldset>
       </div> 
--->
+  
       
       <div class="form-group">
         <label class="form-label" for="code">Owning office code</label>
@@ -35,26 +64,18 @@
         <input class="form-control" id="code" name="code" type="text">
       </div>
 
-<!--
       <div class="form-group">
         <label class="form-label" for="startdate">Start date</label>
         <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
       </div>
       
--->
-<!--
       <div class="form-group">
         <input class="secondary-button" type="submit" value="Add">
       </div>
--->
-      
-<!--
     </form>
         
     <p><a href="account">Cancel</a></p>
     
--->
-<!--
     <table class="">
       <tr>
         <th>Interested party type</th>
@@ -68,9 +89,8 @@
       </tr>
       <tr></tr>
     </table>
--->
     
-<!--    <form method="get" action="check">-->
+   <form method="get" action="check">
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
@@ -80,3 +100,4 @@
     <p><a href="account">Cancel</a></p>
   </div>
 </div>
+-->

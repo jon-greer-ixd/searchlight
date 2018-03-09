@@ -5,7 +5,7 @@
     <table class="table">
       {% if data['updateType'] === "endInterest" %}
         
-        {% for item in data.tempInterests %}
+        {% for item in tempInterests %}
           <tr>
             <td><span class="strong">Interest</span></td>
             <td>{{item}}</td>
@@ -21,36 +21,42 @@
         </tr>
 -->
         <tr>
-      {% else %}
+      {% else %} <!-- Add an interest-->
+          
         <tr>
           <td><span class="strong">Benefit type</span></td>
-          <td>{{ data.tempInterest.title }}</td>
+          <td>{{ tempInterest.title }}</td>
           <td><a>Change</a></td>
         </tr>
         <tr>
           <td><span class="strong">Interest type</span></td>
-          {% if data.tempInterest.system === 'true' %}
+          {% if tempInterest.system === true %}
             <td>System</td>
           {% else %}
             <td>Computer record location (CRL)</td>
           {% endif %}
           <td><a>Change</a></td>
         </tr>
-<!--
+      
+        {% if tempInterest.partyRef === 1 or tempInterest.partyRef === 3 %}
+          <tr>
+            <td><span class="strong">Owning office code</span></td>
+              <td>100017</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+      
+        {% if tempInterest.partyRef === 2 or tempInterest.partyRef === 3 %}
         <tr>
-          <td><span class="strong">Business system</span></td>
-          <td>{{ data.interests[0].businessSystem }}</td>
+          <td><span class="strong">Broadcasting office code</span></td>
+            <td>100017</td>
           <td><a>Change</a></td>
         </tr>
--->
+        {% endif %}
+
         <tr>
           <td><span class="strong">Start date</span></td>
-          <td>{{ data.tempInterest.startDate }}</td>
-          <td><a>Change</a></td>
-        </tr>
-        <tr>
-          <td><span class="strong">Start date</span></td>
-          <td>{{ data.tempInterest.startDate }}</td>
+          <td>{{ tempInterest.startDate }}</td>
           <td><a>Change</a></td>
         </tr>
         <tr>
@@ -59,7 +65,7 @@
   </div>
   <br>
   <div>
-    <form method="get" action="../account">
+    <form method="get" action="interest-check-handler">
       <div class="form-group">
         <input class="button" type="submit" value="Submit">
       </div>
