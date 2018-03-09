@@ -23,8 +23,10 @@
         </tr>
         <tr>
           <td><span class="strong">Interest type</span></td>
-          {% if tempInterest.system === true %}
+          {% if tempInterest.system === "sys" %}
             <td>System</td>
+          {% elseif tempInterest.system === "cle" %}
+            <td>Clerical</td>
           {% else %}
             <td>Computer record location (CRL)</td>
           {% endif %}

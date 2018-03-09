@@ -27,18 +27,16 @@ function resetInterests() {
   pip.startDate = "1 Jun 2017";
   pip.live = true;
   pip.title = "Personal Independence Payment";
-  pip.system = true;
+  pip.system = "sys";
   pip.businessSystem = "Personal Independence Payment";
   pip.systemRef = 1;
-  pip.partyRef = 1;
   
   jsa.startDate = "1 Jun 2017";
   jsa.live = false;
   jsa.title = "Job Seekers Allowance";
-  jsa.system = false;
+  jsa.system = "crl";
   jsa.businessSystem = "JSA";
   pip.systemRef = 3;
-  pip.partyRef = 1;
   
   addInterest(pip);
   addInterest(jsa);
@@ -48,24 +46,18 @@ function resetInterests() {
 
 function setSystemAndParties(selectedInterest) {
   if (selectedInterest === "Child support reform") {
-    tempInterest.partyRef = 0; //none
     tempInterest.systemRef = 3; //both
   } else if (selectedInterest === "Bereavement Allowance" ||
     selectedInterest === "Bereavement Benefit") {
-    tempInterest.partyRef = 1; //owning
     tempInterest.systemRef = 1; //system
   } else if ( 
     selectedInterest === "Carers Credit") {
-    tempInterest.partyRef = 2; //broadcasting
     tempInterest.systemRef = 1; //system
   } else if (selectedInterest === "Attendance Allowance") {
-    tempInterest.partyRef = 3; //both
     tempInterest.systemRef = 3; //both
   } else if (selectedInterest === "Jobseeker's Allowance") {
-    tempInterest.partyRef = 4; //CRL Office ID
     tempInterest.systemRef = 3; //both
   } else {
-    tempInterest.partyRef = 3; //both
     tempInterest.systemRef = 3; //both
   }
 }
@@ -775,23 +767,24 @@ router.get(/add-interest-handler/, function (req, res) {
   setSystemAndParties(tempInterest.title);
   console.log("title = " + tempInterest.title);
   console.log("systems = " + tempInterest.systemRef);
-  console.log("parties = " + tempInterest.partyRef);
   if (tempInterest.systemRef === 2 ||
     tempInterest.systemRef === 3) {
     res.redirect("add-system");
   } else {
-    tempInterest.system = true;
+    tempInterest.system = "sys";
     res.redirect("add-party");
   }
 })
 
 router.get(/add-system-handler/, function (req, res) {
-  if (req.query.system === 'true') {
-    tempInterest.system = true;
-  } else {
-    tempInterest.system = false;
-  }
+  tempInterest.system = req.query.system;
   res.redirect("add-party");
+})
+
+router.get('/update/interests/add-system', function (req, res) {
+  res.render('update/interests/add-system', {
+    tempInterest : tempInterest
+  })
 })
 
 router.get(/party-handler/, function (req, res) {

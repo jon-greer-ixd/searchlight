@@ -8,8 +8,10 @@
 
   <div class="column-one-third expanded">
     <ul>
-      {% if interest.system === true %}
+      {% if interest.system === "sys" %}
         <li><span class="strong"><span class="interest-type">System</span>{{interest.title}}</span></li>
+      {% elseif interest.system === "cle" %}
+        <li><span class="strong"><span class="interest-type">Clerical</span>{{interest.title}}</span></li>
       {% else %}
         <li><span class="strong"><span class="interest-type crl">CRL</span>{{interest.title}}</span></li>
       {% endif %}

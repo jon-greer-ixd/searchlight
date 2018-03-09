@@ -90,20 +90,18 @@ function Interest (
   title,
   startDate,
   businessSystem,
-  systemRef, //which systems can this be in 1 = system, 2 = CRL, 3 = both
-  partyRef //which parties can this have 0 = none, 1 = owning, 2 = BC, 3 = both
+  systemRef //which systems can this be in 1 = system, 2 = CRL, 3 = both
 ) {
   this.live = live;
   this.system = system;
   this.title = title;
   this.startDate = startDate;
   this.businessSystem = businessSystem;
-  this.type = partyRef;
   this.systemRef = systemRef;
 };
 
 Interest.prototype.printInterest = function () {
-  console.log(this.system + ", " + this.title + " " + this.startDate + " " + this.businessSystem + " " + this.partyRef + " " + this.systemRef);
+  console.log(this.system + ", " + this.title + " " + this.startDate + " " + this.businessSystem + " " + this.systemRef);
 };
 
 function createInterest() {
