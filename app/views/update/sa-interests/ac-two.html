@@ -521,10 +521,247 @@
     </div>
   </div>
 </div>        
-        {% include "components/contact.html" %}
-        
-        {% include "components/interest.html" %}
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Contact</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    <div>      
+<div id="address-pane">
+  
+  <div class="grid-row">
 
+    <div class="column-one-third">
+      <ul>
+        <li>Home telephone</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <ul>
+        <li><span class="strong">0113 287 6365</span></li>
+      </ul>
+
+    </div>
+  
+    <div class="column-one-third">
+    </div>
+    
+  </div> 
+  
+  <hr class="light">
+  
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <ul>
+        <li>Email</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <ul>
+        <li><span class="strong">tom.smith@gmail.com</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+        </li>
+      </ul>
+
+    </div>
+  
+    <div class="column-one-third">
+    </div>
+    
+  </div> 
+  
+  <hr class="light">
+
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <ul>
+        <li>Mobile</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <ul>
+        <li><span class="strong">07712 345 678</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+        </li>
+      </ul>
+
+    </div>
+  
+    <div class="column-one-third">
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
+        </li>
+      </ul>
+    </div>
+    
+  </div> 
+  
+  <hr class="light">
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <ul>
+        <li class="sl-secondary-text-color sl-metadata">
+            &nbsp;
+        </li>
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul class="edit-menu">
+      </ul>    
+    </div>
+
+    </div>
+</div>     </div>
+  </div>
+</div>        
+          
+          
+          
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Interests</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    <div>
+      
+      
+<div id="interests">
+    
+    <div class="grid-row nav">
+      <div class="column-one-third">
+        Start date
+      </div>
+      <div class="column-one-third expanded">
+        Interest
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="../sa-interests/add-interest" class="under-link">Add an interest</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <hr>
+
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 1980</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>State Pension</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                  {% if int.live === true %}
+                    <input type="submit" class="under-link" value="Change">
+                  {% endif %}
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div> 
+
+    <hr class="light">
+  
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 1980</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type crl">CRL</span>State Pension</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div> 
+  
+    <hr>
+  
+    <details>
+      <summary>Previous interests</summary>
+      
+      <hr>
+      
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 1980</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type crl">CRL</span>Incapacity Benefit</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              No interested parties
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div> 
+    </details>
+    
+</div>
+    
+    </div>
+  </div>
+</div>
+          
 
         <div name="Benefits" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           <h2>Benefits</h2>
