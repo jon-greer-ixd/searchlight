@@ -86,19 +86,19 @@
 
 function Interest (
   live,
-  system,
   title,
   startDate,
   businessSystem,
-  systemRef //which systems can this be in 1 = system, 2 = CRL, 3 = both
+  systemRef, //which systems can this be in 0 = clerical, 1 = system, 2 = CRL, 3 = both sys and crl
+  system //which system type is this? 'crl', 'sys', 'clerical'
 ) {
   this.live = live;
-  this.system = system;
   this.title = title;
   this.startDate = startDate;
   this.businessSystem = businessSystem;
   this.systemRef = systemRef;
-};
+  this.system = system;
+}
 
 Interest.prototype.printInterest = function () {
   console.log(this.system + ", " + this.title + " " + this.startDate + " " + this.businessSystem + " " + this.systemRef);

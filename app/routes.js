@@ -17,12 +17,17 @@ var interests = [];
 
 var addInterest = function (interest) {
   interests.unshift(interest);
+  console.log(" \n start ////");
+  for (var x in interests) {
+    console.log(interests[x]);
+  }
+  console.log("//// end \n");
 };
 
 var pip = Interest.createInterest();
 var jsa = Interest.createInterest();
 
-function resetInterests() {
+var resetInterests = function() {
   interests.length = 0;
   pip.startDate = "1 Jun 2017";
   pip.live = true;
@@ -40,8 +45,6 @@ function resetInterests() {
   
   addInterest(pip);
   addInterest(jsa);
-  console.log("Resetting interests...");
-  console.log(interests);
 }  
 
 function setSystemAndParties(selectedInterest) {
@@ -301,7 +304,7 @@ router.get('/search', function (req, res) {
   })
 })
 
-var tempInterest
+var tempInterest;
 
 router.use('/', main);
 // Route index page
@@ -739,6 +742,28 @@ router.get(/correction-type-handler/, function (req, res) {
 // INTERESTS 
 //***********
 
+router.get(/add-interest-handler/, function (req, res) {
+  req.session.data.updateType = "addInterest"
+  tempInterest.title = req.query.title;
+  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
+  tempInterest.live = true;
+  if (req.query.clerical == "true") {
+    tempInterest.systemRef = 0;
+  } else {
+    setSystemAndParties(tempInterest.title);
+  }
+  if (tempInterest.systemRef === 0) {
+    tempInterest.system = "clerical";
+    res.redirect("add-party");
+  } else if (tempInterest.systemRef === 2 ||
+    tempInterest.systemRef === 3) {
+    res.redirect("add-system");
+  } else {
+    tempInterest.system = "sys";
+    res.redirect("add-party");
+  }
+})
+
 router.get(/update-interest-handler/, function (req, res) {
   if (req.query.data === "end") {
     req.session.data.updateType = "endInterest"
@@ -749,31 +774,19 @@ router.get(/update-interest-handler/, function (req, res) {
 })
 
 router.get(/end-interests-handler/, function (req, res) {
-  console.log(req.query.interests);
   for (item in req.query.interests) {
     var x = parseInt(req.query.interests[item]);
     req.session.data.tempInterests.unshift(interests[x].title);
-    console.log("item = " + x);
     interests[x].live = false;
   }
   res.redirect("check");
 })
 
-router.get(/add-interest-handler/, function (req, res) {
-  req.session.data.updateType = "addInterest"
-  tempInterest.title = req.query.title;
-  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
-  tempInterest.live = true;
-  setSystemAndParties(tempInterest.title);
-  console.log("title = " + tempInterest.title);
-  console.log("systems = " + tempInterest.systemRef);
-  if (tempInterest.systemRef === 2 ||
-    tempInterest.systemRef === 3) {
-    res.redirect("add-system");
-  } else {
-    tempInterest.system = "sys";
-    res.redirect("add-party");
-  }
+
+router.get('/add-system', function (req, res) {
+  res.render("add-party", {
+    tempInterest : tempInterest
+  });
 })
 
 router.get(/add-system-handler/, function (req, res) {
@@ -810,7 +823,8 @@ router.get('/update/interests/add-party', function (req, res) {
 })
 
 router.get(/interest-check-handler/, function (req, res) {
-  interests.unshift(tempInterest);
+  addInterest(tempInterest);
+  tempInterest = Interest.createInterest();
   req.session.data.tempInterest = tempInterest;
   res.redirect("../account");
 })
@@ -1141,7 +1155,6 @@ router.get(/v3-type-handler/, function (req, res) {
     trace = true;
   }
 //  if(req.query.sixteen[0] === "true") {
-//    console.log(req.query.sixteen);
 //    underSixteen = true;
 //  } else {
 //    underSixteen = false;

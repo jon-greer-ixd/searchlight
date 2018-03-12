@@ -19,8 +19,8 @@
     <hr>
     {% set counter = false %}
   
-    {% for interest in interests %}
-      {% if interest.live == true %}
+    {% for int in interests %}
+      {% if int.live == true %}
         {% include "components/update/interest.html" %}
         <hr class="light">
         {% set counter = true %}  
@@ -34,8 +34,8 @@
   
     <details>
       <summary>Previous interests</summary>
-      {% for interest in interests %}
-        {% if interest.live == false %}
+      {% for int in interests %}
+        {% if int.live == false %}
             {% include "components/update/interest.html" %}
           <hr class="light">
         {% endif %}  

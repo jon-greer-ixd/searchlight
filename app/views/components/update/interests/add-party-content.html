@@ -1,3 +1,84 @@
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="party-handler">
+
+      {% if tempInterest.system === "sys" or tempInterest.system === "clerical" %}
+      
+        <div class="form-group">
+          <fieldset>
+            <legend>
+              <p class="bold">
+                Which interested parties do you need to add?
+              </p>
+            </legend>
+
+            <div class="multiple-choice" data-target="owning">
+              <input id="owning-office" name="nationalities" type="checkbox" value="Citizen of a different country">
+              <label for="owning-office">An owning office</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="owning">
+              <label class="form-label" for="nationalities-other-country">Owning office code</label>
+              <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+            </div>
+
+            <div class="multiple-choice" data-target="broadcast">
+              <input id="broadcasting-office" name="nationalities" type="checkbox" value="Citizen of a different country">
+              <label for="broadcasting-office">A broadcasting office</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="broadcast">
+              <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
+              <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+            </div>
+          </fieldset>
+        </div>
+      
+      {% else %}
+      
+        <div class="form-group">
+          <fieldset>
+            <legend>
+              <p class="bold">
+                Is this a maintained interest?
+              </p>
+            </legend>
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="maint" value="true">
+              <label for="radio-1">Maintained</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="maint" value="false">
+              <label for="radio-2">Non-maintained</label>
+            </div>
+          </fieldset>
+        </div>
+      
+        <div class="form-group">
+          <label class="form-label" for="nationalities-other-country">Office code</label>
+          <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+        </div>
+      
+      {% endif %}
+
+      <div class="form-group">
+        <label class="form-label" for="startdate">Start date</label>
+        <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
+      </div>
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+
+    
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>
+
+
+
+
+
+
 <!--
 
 Ver 1
@@ -66,10 +147,6 @@ Ver 2
         <input class="form-control" id="code" name="code" type="text">
       </div>
 
-      <div class="form-group">
-        <label class="form-label" for="startdate">Start date</label>
-        <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
-      </div>
       
       <div class="form-group">
         <input class="secondary-button" type="submit" value="Add">
@@ -103,10 +180,9 @@ Ver 2
   </div>
 </div>
 
--->
 
 
-<!-- version 3 -->
+version 3
 
 <div class="grid-row">
   <div class="column-one-half">
@@ -122,36 +198,6 @@ Ver 2
         <input class="form-control" id="code" name="code" type="text">
       </div>
 
-<!--
-  <div class="form-group">
-    <fieldset>
-      <legend>
-        <p class="">
-          Select the interested parties
-        </p>
-      </legend>
-
-      <div class="multiple-choice" data-target="owning">
-        <input id="owning-office" name="nationalities" type="checkbox" value="Citizen of a different country">
-        <label for="owning-office">Add an owning office</label>
-      </div>
-      <div class="panel panel-border-narrow js-hidden" id="owning">
-        <label class="form-label" for="nationalities-other-country">Owning office code</label>
-        <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
-      </div>
-
-      <div class="multiple-choice" data-target="broadcast">
-        <input id="broadcasting-office" name="nationalities" type="checkbox" value="Citizen of a different country">
-        <label for="broadcasting-office">Add a broadcasting office</label>
-      </div>
-      <div class="panel panel-border-narrow js-hidden" id="broadcast">
-        <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
-        <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
-      </div>
-
-</fieldset>
-  </div>
--->
   
   <div class="form-group">
     <fieldset>
@@ -171,3 +217,4 @@ Ver 2
   </div>
 </div>
 
+-->

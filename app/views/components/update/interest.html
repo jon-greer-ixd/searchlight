@@ -2,18 +2,18 @@
 
   <div class="column-one-third">
     <ul>
-      <li>{{interest.startDate}}</li>
+      <li>{{int.startDate}}</li>
     </ul>
   </div>
 
   <div class="column-one-third expanded">
     <ul>
-      {% if interest.system === "sys" %}
-        <li><span class="strong"><span class="interest-type">System</span>{{interest.title}}</span></li>
-      {% elseif interest.system === "cle" %}
-        <li><span class="strong"><span class="interest-type">Clerical</span>{{interest.title}}</span></li>
+      {% if int.system === "sys" %}
+        <li><span class="strong"><span class="interest-type">System</span>{{int.title}}</span></li>
+      {% elseif int.system === "clerical" %}
+        <li><span class="strong"><span class="interest-type crl">Clerical</span>{{int.title}}</span></li>
       {% else %}
-        <li><span class="strong"><span class="interest-type crl">CRL</span>{{interest.title}}</span></li>
+        <li><span class="strong"><span class="interest-type crl">CRL</span>{{int.title}}</span></li>
       {% endif %}
       <li class="sl-secondary-text-color sl-metadata">
         Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">CHESTER LE STREET DC</a>
@@ -29,7 +29,7 @@
           <form class="dumbform" method="get" action="interests/update-interest">
             <div class="form-group">
                <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
-              {% if interest.live === true %}
+              {% if int.live === true %}
                 <input type="submit" class="under-link" value="Change">
               {% endif %}
             </div>

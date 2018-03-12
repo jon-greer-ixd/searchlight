@@ -14,7 +14,8 @@
         {% endfor %}
         
         <tr>
-      {% else %} <!-- Add an interest-->
+      {% else %} 
+      <!-- Add an interest-->
           
         <tr>
           <td><span class="strong">Benefit type</span></td>
@@ -25,7 +26,7 @@
           <td><span class="strong">Interest type</span></td>
           {% if tempInterest.system === "sys" %}
             <td>System</td>
-          {% elseif tempInterest.system === "cle" %}
+          {% elseif tempInterest.system === "clerical" %}
             <td>Clerical</td>
           {% else %}
             <td>Computer record location (CRL)</td>
@@ -33,21 +34,17 @@
           <td><a>Change</a></td>
         </tr>
       
-        {% if tempInterest.partyRef === 1 or tempInterest.partyRef === 3 %}
           <tr>
             <td><span class="strong">Owning office code</span></td>
               <td>100017</td>
             <td><a>Change</a></td>
           </tr>
-        {% endif %}
       
-        {% if tempInterest.partyRef === 2 or tempInterest.partyRef === 3 %}
         <tr>
           <td><span class="strong">Broadcasting office code</span></td>
             <td>100017</td>
           <td><a>Change</a></td>
         </tr>
-        {% endif %}
 
         <tr>
           <td><span class="strong">Start date</span></td>
