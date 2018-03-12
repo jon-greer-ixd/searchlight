@@ -35,14 +35,21 @@ var resetInterests = function() {
   pip.system = "sys";
   pip.businessSystem = "Personal Independence Payment";
   pip.systemRef = 1;
+  pip.owning = false;
+  pip.broadcasting = false;
+  pip.maintained = false;
+
   
   jsa.startDate = "1 Jun 2017";
   jsa.live = false;
   jsa.title = "Job Seekers Allowance";
   jsa.system = "crl";
   jsa.businessSystem = "JSA";
-  pip.systemRef = 3;
-  
+  jsa.systemRef = 3;
+  jsa.owning = false;
+  jsa.broadcasting = false;
+  jsa.maintained = false;
+
   addInterest(pip);
   addInterest(jsa);
 }  
@@ -801,6 +808,22 @@ router.get('/update/interests/add-system', function (req, res) {
 })
 
 router.get(/party-handler/, function (req, res) {
+  console.log(req.query);
+  if (req.query.own == "true") {
+    tempInterest.owning = true;
+  } else {
+    tempInterest.owning = false;
+  }
+  if (req.query.broadcasting == "true") {
+    tempInterest.broadcasting = true;
+  } else {
+    tempInterest.broadcasting = false;
+  }
+  if (req.query.maint == "true") {
+    tempInterest.maintained = true;
+  } else {
+    tempInterest.maintained = false;
+  }
   res.redirect("check");
 })
 
