@@ -9,9 +9,7 @@
 <div id="sl-account" class="container-fluid ng-scope">  
 
   <div class="sl-account-header row">
-    
-    {% include "components/update/toasters/interest-added.html" %}
-    
+        
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder ng-scope">
       <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">
@@ -640,13 +638,11 @@
         Interest
       </div>
       <div class="column-one-third last-col">
-<!--
         <ul class="edit-menu">
           <li>
             <a href="../sa-interests/add-interest" class="under-link">Add an interest</a>
           </li>
         </ul>
--->
       </div>
     </div>
   
@@ -656,42 +652,6 @@
         <div class="column-one-third">
           <ul>
             <li>01 Jan 1980</li>
-          </ul>
-        </div>
-        
-        <div class="column-one-third expanded">
-          <ul>
-            <li><span class="strong"><span class="interest-type">System</span>Compensation Recovery Unit</span></li>
-            <li class="sl-secondary-text-color sl-metadata">
-              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">COMPENSATION RECOVERY UNIT</a>
-          </ul>
-        </div>
-        
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-            <li>
-              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
-            </li>
-            <li>
-              <a href="ac-three" class="under-link">Change</a>
-            </li>
-            <li>
-              <form class="dumbform" method="get" action="interests/update-interest">
-                <div class="form-group">
-                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
-                </div>
-              </form>
-            </li>
-          </ul>
-        </div>
-      </div> 
-  
-      <hr class="light">
-  
-      <div class="grid-row interest">
-        <div class="column-one-third">
-          <ul>
-            <li>{{data['prepopulatedDate']}}</li>
           </ul>
         </div>
         
@@ -761,6 +721,42 @@
       <summary>Previous interests</summary>
       
       <hr>
+      
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 1980</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>Compensation Recovery Unit</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">COMPENSATION RECOVERY UNIT</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                  {% if int.live === true %}
+                    <input type="submit" class="under-link" value="Change">
+                  {% endif %}
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div> 
+      
+      <hr class="light">
       
       <div class="grid-row interest">
         <div class="column-one-third">

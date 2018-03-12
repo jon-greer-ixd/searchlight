@@ -311,6 +311,13 @@ router.get('/search', function (req, res) {
   })
 })
 
+// simple search page for interests
+router.get('/search-v2', function (req, res) {
+  res.render('pages/search-v2.njk', {
+    ninoversion : ninoVersion
+  })
+})
+
 var tempInterest;
 
 router.use('/', main);
