@@ -11,7 +11,7 @@
   <div class="sl-account-header row">
         
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
-    <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder ng-scope">
+    <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder blue-header ng-scope">
       <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">
         
 <div class="sl-account-canvas-width">
@@ -218,41 +218,6 @@
   </div>
   
   <hr class="light">
-      
-  <div class="grid-row">
-    
-    <div class="column-one-third">
-      <p>Date of death</p>
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li><span class="red">20 Jan 2018 &nbsp;</span> <span>(Age 78)</span></li>
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 2 Feb 2018
-        </li>
-        <li class="multi-dates">
-          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-          <span class="sl-metadata">Verified to level 3</span>
-        </li>
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 2 Feb 2018
-        </li>
-      </ul>
-
-    </div>
-
-      <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-          <a data-toggle="modal" data-target="#death_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="death-history" class="under-link">View history</a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-  
-  <hr class="light">
 
   <div class="grid-row">
 
@@ -278,72 +243,164 @@
     </div>
 
   </div>
-      
-  <div class="grid-row">
-
-    <div class="column-one-third">
-      Superseding National Insurance number
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li class="strong"><a class="under-link" style="color:#005ea5;">SY119284Z</a></li>
-      </ul>
-    </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-        </li>
-      </ul>
-
-    </div>
-
-  </div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      National Insurance number status
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">Superseded</li>
-      </ul>
-    </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-        </li>
-      </ul>
-
-    </div>
-
-  </div>
-  
-<div class="grid-row">
-
-    <div class="column-one-third">
-      National Insurance number usage status
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">Deleted</li>
-      </ul>
-    </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-        </li>
-      </ul>
-
-    </div>
-
-  </div>
-      
+              
 <hr class="light">
-  {% include "components/other-personal-details.html" %}
+<details>
+  <summary>
+    <span class="summary">More personal details</span>
+  </summary>
+  
+  <div class="personal-details">
+    <hr class="light">
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Nationality</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">British</li>
+        </ul>
+      </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+<!--
+            <li>
+              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            </li>
+-->
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+          </ul>
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Sex</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">Male</p>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+<!--
+          <li>
+            <a class="under-link">View maintenance</a> 
+          </li>
+-->
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Spoken language</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">English</p>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+<!--
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
+          </li>
+-->
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Preferred language</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">English</li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+          </li>
+        </ul>      
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="language-pref-history" class="under-link">View history</a>
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>National identity fraud unit</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">Yes</p>
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a class="under-link">View maintenance</a> 
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Civil status</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">Married</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+<!--
+          <li>
+            <a class="under-link">View history</a> 
+          </li>
+-->
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+</div>
+  
+</details>
+
 
   {% include "components/modals.html" %}
           </div>
@@ -379,9 +436,11 @@
         </div>
         <div class="column-two-thirds column-last">
           <ul class="edit-menu">
+<!--
             <li>
               <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add a correspondence address</a>
             </li>
+-->
             {% if data['updateType'] === 'end' %}
               <li>
                 <a data-toggle="modal" data-target="#correspondence_modal" class="under-link">View maintenance</a> 
@@ -430,9 +489,11 @@
         <li>
           <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a> 
         </li>
+<!--
         <li>
           <a class="secondary-link" href="update-V2">Change</a>
         </li>
+-->
       </ul>
     </div>
     
@@ -592,30 +653,16 @@
   
     <div class="column-one-third">
       <ul class="edit-menu">
+<!--
         <li>
           <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
         </li>
+-->
       </ul>
     </div>
     
   </div> 
   
-  <hr class="light">
-  
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <ul>
-        <li class="sl-secondary-text-color sl-metadata">
-            &nbsp;
-        </li>
-      </ul>
-    </div>
-    <div class="column-one-third">
-      <ul class="edit-menu">
-      </ul>    
-    </div>
-
-    </div>
 </div>     </div>
   </div>
 </div>        
@@ -672,9 +719,7 @@
               <form class="dumbform" method="get" action="interests/update-interest">
                 <div class="form-group">
                    <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
-                  {% if int.live === true %}
-                    <input type="submit" class="under-link" value="Change">
-                  {% endif %}
+<!--                    <input type="submit" class="under-link" value="Change">-->
                 </div>
               </form>
             </li>

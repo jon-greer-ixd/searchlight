@@ -976,6 +976,9 @@ hr.light {
 #sl-account .sl-primary-name-container-placeholder {
     background-color: #6f777a;
     height: 140px;
+    &.blue-header {
+      background-color: #005ea5!important;
+    }
   }
 
 .red {
