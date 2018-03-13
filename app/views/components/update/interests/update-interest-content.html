@@ -11,17 +11,41 @@
       
       <div class="form-group">
 
-<!--
         <div class="multiple-choice">
           <input id="update" type="radio" name="data" value="parties">
-          <label for="update">Update the interested parties</label>
+          <label for="update">End interested parties</label>
         </div>
--->
+        
+        <div class="multiple-choice">
+          <input id="update" type="radio" name="data" value="parties">
+          <label for="update">Transfer the interest</label>
+        </div>
+        
+        {% set counter = 0 %}
+        {% for interest in interests %}
+          {% if interest.live === true %}
+          {% set counter = counter + 1 %}
+          {% endif %}
+        {% endfor %}
+        
+        {% if counter === 1 %}
+          <div class="multiple-choice">
+            <input id="end-single" type="radio" name="data" value="end-single">
+            <label for="end-single">End the interest</label>
+          </div>
+        {% else %}
+          <div class="multiple-choice">
+            <input id="end" type="radio" name="data" value="end">
+            <label for="end">End interests</label>
+          </div>
+        {% endif %}
       
+<!--
         <div class="multiple-choice">
           <input id="end" type="radio" name="data" value="end">
           <label for="end">End interests</label>
         </div>
+-->
                 
       </div> 
       

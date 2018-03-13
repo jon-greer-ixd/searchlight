@@ -1,90 +1,95 @@
-<h2 class="heading-medium question">Check your answers</h2>
-<div class="grid-row">
-  <div class="column-one-half">
-    <div>
-    <table class="table">
-      {% if data['updateType'] === "endInterest" %}
-        
-        {% for item in tempInterests %}
-          <tr>
-            <td><span class="strong">Interest</span></td>
-            <td>{{item}}</td>
-            <td><a>Change</a></td>
-          </tr>
-        {% endfor %}
-        
-        <tr>
-      {% else %} 
-      <!-- Add an interest-->
-          
-        <tr>
-          <td><span class="strong">Benefit type</span></td>
-          <td>{{ tempInterest.title }}</td>
-          <td><a>Change</a></td>
-        </tr>
-        <tr>
-          <td><span class="strong">Interest type</span></td>
-          {% if tempInterest.system === "sys" %}
-            <td>System</td>
-          {% elseif tempInterest.system === "clerical" %}
-            <td>Clerical</td>
-          {% else %}
-            <td>Computer record location (CRL)</td>
-          {% endif %}
-          <td><a>Change</a></td>
-        </tr>
-      
-        {% if tempInterest.owning === true %}
-          <tr>
-            <td><span class="strong">Owning office code</span></td>
-              <td>100017</td>
-            <td><a>Change</a></td>
-          </tr>
-        {% endif %}
-      
-        <tr>
-          <td><span class="strong">Service delivery office</span></td>
-            <td>Attendance Allowance</td>
-          <td><a>Change</a></td>
-        </tr>
-      
-        {% if tempInterest.broadcasting === true %}
-          <tr>
-            <td><span class="strong">Broadcasting office code</span></td>
-              <td>100017</td>
-            <td><a>Change</a></td>
-          </tr>
-        {% endif %}
-      
-        {% if tempInterest.system === "crl" %}
-          <tr>
-            <td><span class="strong">Maintained or non-maintained interest</span></td>
-            {% if tempInterest.maintained == true %}
-              <td>Maintained</td>
-            {% else %}
-              <td>Non-maintained</td>
+    <h2 class="heading-medium question">Check your answers</h2>
+      <div class="grid-row">
+        <div class="column-one-half">
+
+          {% if data['updateType'] === "endInterest" %}
+
+            <!-- End multiple interests -->
+            <table class="table">
+              {% for item in tempInterests %}
+                <tr>
+                  <td>Interest</td>
+                  <td>{{item.title}}</td>
+                  <td><a href="interests">Change</a></td>
+                </tr>
+              {% endfor %}
+            </table>
+
+          {% else %} 
+
+          <table class="table">
+            <tr>
+              <td><span class="strong">Benefit type</span></td>
+              <td>{{ tempInterest.title }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">Interest start date</span></td>
+              <td>{{ tempInterest.startDate }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">Interest type</span></td>
+              {% if tempInterest.system === "sys" %}
+                <td>System</td>
+              {% elseif tempInterest.system === "clerical" %}
+                <td>Clerical</td>
+              {% else %}
+                <td>Computer record location (CRL)</td>
+              {% endif %}
+              <td><a>Change</a></td>
+            </tr>
+
+            {% if tempInterest.owning === true %}
+              <tr>
+                <td><span class="strong">Owning office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
             {% endif %}
-            <td><a>Change</a></td>
-          </tr>
-        {% endif %}
-      
-        <tr>
-          <td><span class="strong">Interested party start date</span></td>
-          <td>{{ tempInterest.startDate }}</td>
-          <td><a>Change</a></td>
-        </tr>
-        <tr>
-      {% endif %}
-    </table>
-  </div>
-  <br>
-  <div>
-    <form method="get" action="interest-check-handler">
-      <div class="form-group">
-        <input class="button" type="submit" value="Submit">
+
+            {% if tempInterest.broadcasting === true %}
+              <tr>
+                <td><span class="strong">Broadcasting office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+
+            {% if tempInterest.system === "crl" %}
+              <tr>
+                <td><span class="strong">Maintained or non-maintained interest</span></td>
+                {% if tempInterest.maintained == true %}
+                  <td>Maintained</td>
+                {% else %}
+                  <td>Non-maintained</td>
+                {% endif %}
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+
+            <tr>
+              <td><span class="strong">Interested party start date</span></td>
+              <td>{{ tempInterest.startDate }}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+        </table>
       </div>
-    </form>
-    <a href="../account">Cancel</a>
-  </div>
-  </div>
-</div>
+    </div>
+
+      {% endif %}
+
+      <br>
+      <div>
+        <form method="get" action="interest-check-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+        <a href="../account">Cancel</a>
+      </div>
+      </div>
+    </div>

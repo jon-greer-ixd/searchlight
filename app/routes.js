@@ -14,6 +14,7 @@ var content = require('./content.js').content;
 var Interest = require('./interest.js');
 
 var interests = [];
+var tempInterests = [];
 
 var addInterest = function (interest) {
   interests.unshift(interest);
@@ -39,7 +40,6 @@ var resetInterests = function() {
   pip.broadcasting = false;
   pip.maintained = false;
 
-  
   jsa.startDate = "1 Jun 2017";
   jsa.live = false;
   jsa.title = "Job Seekers Allowance";
@@ -52,6 +52,8 @@ var resetInterests = function() {
 
   addInterest(pip);
   addInterest(jsa);
+  
+  tempInterests.length = 0;
 }  
 
 function setSystemAndParties(selectedInterest) {
@@ -757,6 +759,11 @@ router.get(/correction-type-handler/, function (req, res) {
 //***********
 
 router.get(/add-interest-handler/, function (req, res) {
+  console.log(
+    "\n" +
+    req.query.title +
+    "\n"
+  );
   req.session.data.updateType = "addInterest"
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
@@ -782,15 +789,28 @@ router.get(/update-interest-handler/, function (req, res) {
   if (req.query.data === "end") {
     req.session.data.updateType = "endInterest"
     res.redirect("interests");
+  } else if (req.query.data === "end-single") {
+    req.session.data.updateType = "endSingle"
+    res.redirect("check");
   } else {
     res.redirect("parties");
   }
 })
 
+//router.get(/end-interests-handler/, function (req, res) {
+//  for (item in req.query.interests) {
+//    var x = parseInt(req.query.interests[item]);
+//    req.session.data.tempInterests.unshift(interests[x].title);
+//    interests[x].live = false;
+//  }
+//  res.redirect("check");
+//})
+
 router.get(/end-interests-handler/, function (req, res) {
   for (item in req.query.interests) {
     var x = parseInt(req.query.interests[item]);
     req.session.data.tempInterests.unshift(interests[x].title);
+    tempInterests.unshift(interests[x]);
     interests[x].live = false;
   }
   res.redirect("check");
@@ -840,9 +860,16 @@ router.get('/update/interests/interests', function (req, res) {
   })
 })
 
+router.get('/update/interests/update-interest', function (req, res) {
+  res.render('update/interests/update-interest', {
+    interests : interests
+  })
+})
+
 router.get('/update/interests/check', function (req, res) {
   res.render('update/interests/check', {
-    tempInterest : tempInterest
+    tempInterest : tempInterest,
+    tempInterests : tempInterests
   })
 })
 
