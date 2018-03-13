@@ -1,99 +1,5 @@
 <div class="grid-row">
   <div class="column-one-half">
-    <form method="get" action="party-handler">
-
-      
-        <div class="form-group">
-          <fieldset>
-            <legend>
-              <p class="bold">
-                Which interested parties do you need to add?
-              </p>
-            </legend>
-
-            <div class="multiple-choice" data-target="owning">
-              <input id="owning-office" name="own" type="checkbox" value="true">
-              <label for="owning-office">An owning office</label>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="owning">
-              
-              <div class="form-group">
-                <label class="form-label" for="nationalities-other-country">Owning office code</label>
-                <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="startdate">Owning office start date</label>
-                <input class="form-control" id="startdate" name="startdate" type="text">
-              </div>
-
-            </div>
-
-            <div class="multiple-choice" data-target="broadcast">
-              <input id="broadcasting-office" name="broadcasting" type="checkbox" value="true">
-              <label for="broadcasting-office">A broadcasting office</label>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="broadcast">
-              <div class="form-group">
-                <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
-                <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="startdate">Broadcasting office start date</label>
-                <input class="form-control" id="startdate" name="startdate" type="text">
-              </div>
-            </div>
-          </fieldset>
-        </div>
-      
-      <div class="form-group">
-        <input class="button" type="submit" value="Next">
-      </div>
-    </form>
-
-    
-    <p><a href="account">Cancel</a></p>
-  </div>
-</div>
-
-
-
-
-
-
-<!--
-
-Ver 1
-
-<div class="grid-row">
-  <div class="column-one-half">
-    <form method="get" action="party-handler">
-      
-        <div class="form-group">
-          <label class="form-label" for="code">Owning office code</label>
-          <input class="form-control" id="code" name="code" type="text">
-        </div>
-
-      <div class="form-group">
-          <label class="form-label" for="code">Broadcast office code</label>
-          <input class="form-control" id="code" name="code" type="text">
-        </div>
-      
-      <div class="form-group">
-        <input class="button" type="submit" value="Next">
-      </div>
-    </form>
-    
-    <p><a href="account">Cancel</a></p>
-  </div>
-</div>
--->
-
-<!--
-
-Ver 2
-
-<div class="grid-row">
-  <div class="column-one-half">
     <form method="get" action="">
       
       <legend>
@@ -122,19 +28,11 @@ Ver 2
         <label class="form-label" for="code">Office code</label>
         <input class="form-control" id="code" name="code" type="text">
       </div>
-
-      <div class="form-group">
-        <label class="form-label" for="code">Broadcast office code</label>
-        <input class="form-control" id="code" name="code" type="text">
-      </div>
-
       
       <div class="form-group">
         <input class="secondary-button" type="submit" value="Add">
       </div>
     </form>
-        
-    <p><a href="account">Cancel</a></p>
     
     <table class="">
       <tr>
@@ -149,6 +47,7 @@ Ver 2
       </tr>
       <tr></tr>
     </table>
+    <br>
     
    <form method="get" action="check">
       <div class="form-group">
@@ -161,41 +60,3 @@ Ver 2
   </div>
 </div>
 
-
-
-version 3
-
-<div class="grid-row">
-  <div class="column-one-half">
-  <form method="get" action="check">
-      
-      <div class="form-group">
-        <label class="form-label" for="code">Owning office code</label>
-        <input class="form-control" id="code" name="code" type="text">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="code">Broadcast office code</label>
-        <input class="form-control" id="code" name="code" type="text">
-      </div>
-
-  
-  <div class="form-group">
-    <fieldset>
-      <label class="form-label" for="startdate">Start date</label>
-      <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
-    </fieldset>
-  </div>
-
-  
-      <div class="form-group">
-        <input class="button" type="submit" value="Next">
-      </div>
-    </form>
-
-    
-    <p><a href="account">Cancel</a></p>
-  </div>
-</div>
-
--->
