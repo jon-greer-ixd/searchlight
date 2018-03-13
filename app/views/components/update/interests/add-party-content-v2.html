@@ -2,7 +2,6 @@
   <div class="column-one-half">
     <form method="get" action="party-handler">
 
-      {% if tempInterest.system === "sys" or tempInterest.system === "clerical" %}
       
         <div class="form-group">
           <fieldset>
@@ -46,39 +45,6 @@
           </fieldset>
         </div>
       
-      {% else %}
-      
-        <div class="form-group">
-          <fieldset>
-            <legend>
-              <p class="bold">
-                Is this a maintained interest?
-              </p>
-            </legend>
-            <div class="multiple-choice">
-              <input id="radio-1" type="radio" name="maint" value="true">
-              <label for="radio-1">Maintained</label>
-            </div>
-            <div class="multiple-choice">
-              <input id="radio-2" type="radio" name="maint" value="false">
-              <label for="radio-2">Non-maintained</label>
-            </div>
-          </fieldset>
-        </div>
-      
-        <div class="form-group">
-          <label class="form-label" for="nationalities-other-country">Office code</label>
-          <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
-        </div>
-      
-      <div class="form-group">
-        <label class="form-label" for="startdate">Start date</label>
-        <input class="form-control" id="startdate" name="startdate" type="text" value={{data['prepopulatedDate']}}>
-      </div>
-
-      
-      {% endif %}
-
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
