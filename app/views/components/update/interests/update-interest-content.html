@@ -21,32 +21,10 @@
           <label for="update">Transfer the interest</label>
         </div>
         
-        {% set counter = 0 %}
-        {% for interest in interests %}
-          {% if interest.live === true %}
-          {% set counter = counter + 1 %}
-          {% endif %}
-        {% endfor %}
-        
-        {% if counter === 1 %}
-          <div class="multiple-choice">
-            <input id="end-single" type="radio" name="data" value="end-single">
-            <label for="end-single">End the interest</label>
-          </div>
-        {% else %}
           <div class="multiple-choice">
             <input id="end" type="radio" name="data" value="end">
-            <label for="end">End interests</label>
+            <label for="end">End the interest</label>
           </div>
-        {% endif %}
-      
-<!--
-        <div class="multiple-choice">
-          <input id="end" type="radio" name="data" value="end">
-          <label for="end">End interests</label>
-        </div>
--->
-                
       </div> 
       
       <div class="form-group">

@@ -785,16 +785,16 @@ router.get(/add-interest-handler/, function (req, res) {
   }
 })
 
+router.get(/change-interest-handler/, function (req, res) {
+  var y = parseInt(req.query.tempPos);
+  tempInterest = interests[y];
+  console.log(tempInterest.title);
+  res.redirect("interests/update-interest");
+})
+
 router.get(/update-interest-handler/, function (req, res) {
-  if (req.query.data === "end") {
-    req.session.data.updateType = "endInterest"
-    res.redirect("interests");
-  } else if (req.query.data === "end-single") {
-    req.session.data.updateType = "endSingle"
-    res.redirect("check");
-  } else {
-    res.redirect("parties");
-  }
+  req.session.data.updateType = "endInterest"
+  res.redirect("check");
 })
 
 //router.get(/end-interests-handler/, function (req, res) {
@@ -806,16 +806,10 @@ router.get(/update-interest-handler/, function (req, res) {
 //  res.redirect("check");
 //})
 
-router.get(/end-interests-handler/, function (req, res) {
-  for (item in req.query.interests) {
-    var x = parseInt(req.query.interests[item]);
-    req.session.data.tempInterests.unshift(interests[x].title);
-    tempInterests.unshift(interests[x]);
-    interests[x].live = false;
-  }
-  res.redirect("check");
+router.get(/end-interest-handler/, function (req, res) {
+  tempInterest.live = false;
+  res.redirect("../account");
 })
-
 
 router.get('/add-system', function (req, res) {
   res.render("add-party", {
@@ -835,7 +829,6 @@ router.get('/update/interests/add-system', function (req, res) {
 })
 
 router.get(/party-handler/, function (req, res) {
-  console.log(req.query);
   if (req.query.own == "true") {
     tempInterest.owning = true;
   } else {

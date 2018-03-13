@@ -6,6 +6,11 @@
 
             <!-- End multiple interests -->
             <table class="table">
+              <tr>
+                <td><span class="strong">Benefit type</span></td>
+                <td>{{tempInterest.title}}</td>
+              </tr>
+<!--
               {% for item in tempInterests %}
                 <tr>
                   <td>Interest</td>
@@ -13,7 +18,17 @@
                   <td><a href="interests">Change</a></td>
                 </tr>
               {% endfor %}
+-->
             </table>
+          
+                <br>
+      <div>
+        <form method="get" action="end-interest-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+
 
           {% else %} 
 
@@ -48,12 +63,23 @@
                   <td>100017</td>
                 <td><a>Change</a></td>
               </tr>
+              <tr>
+                <td><span class="strong">Interested party start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+
             {% endif %}
 
             {% if tempInterest.broadcasting === true %}
               <tr>
                 <td><span class="strong">Broadcasting office code</span></td>
                   <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Interested party start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
                 <td><a>Change</a></td>
               </tr>
             {% endif %}
@@ -70,17 +96,7 @@
               </tr>
             {% endif %}
 
-            <tr>
-              <td><span class="strong">Interested party start date</span></td>
-              <td>{{ tempInterest.startDate }}</td>
-              <td><a>Change</a></td>
-            </tr>
-            <tr>
         </table>
-      </div>
-    </div>
-
-      {% endif %}
 
       <br>
       <div>
@@ -89,6 +105,9 @@
             <input class="button" type="submit" value="Submit">
           </div>
         </form>
+
+      {% endif %}
+
         <a href="../account">Cancel</a>
       </div>
       </div>

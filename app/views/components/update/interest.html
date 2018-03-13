@@ -26,9 +26,9 @@
           <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
         </li>
         <li>
-          <form class="dumbform" method="get" action="interests/update-interest">
+          <form class="dumbform" method="get" action="change-interest-handler">
             <div class="form-group">
-               <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+               <input class="visually-hidden" name="tempPos" value="{{ interests.indexOf(int) }}">
               {% if int.live === true %}
                 <input type="submit" class="under-link" value="Change">
               {% endif %}

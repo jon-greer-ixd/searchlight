@@ -30,19 +30,26 @@
       </div>
       
       <div class="form-group">
+        <label class="form-label" for="code">Start date</label>
+        <input class="form-control" id="code" name="code" type="text">
+      </div>
+      
+      <div class="form-group">
         <input class="secondary-button" type="submit" value="Add">
       </div>
     </form>
     
     <table class="">
       <tr>
-        <th>Interested party type</th>
+        <th>Type</th>
         <th>Office code</th>
+        <th>Start date</th>
         <th>&nbsp;</th>
       </tr>
       <tr>
         <td>Owning</td>
         <td>65432</td>
+        <td>{{data['prepopulatedDate']}}</td>
         <td><a href="">Remove</a></td>
       </tr>
       <tr></tr>
