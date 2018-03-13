@@ -173,6 +173,7 @@
     </div>
     
     <div class="column-one-third last-col">
+<!--
       <ul class="edit-menu">
         <li>
           <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
@@ -180,6 +181,7 @@
           <a href="previous-names" class="under-link">View history</a>
         </li>
       </ul>
+-->
     </div>
   </div>
     
@@ -206,6 +208,7 @@
     </div>
 
       <div class="column-one-third last-col">
+<!--
             <ul class="edit-menu">
         <li>
           <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
@@ -213,6 +216,7 @@
           <a href="birth-history" class="under-link">View history</a>
         </li>
       </ul>
+-->
 
     </div>
   </div>
@@ -262,16 +266,16 @@
         </ul>
       </div>
         <div class="column-one-third last-col">
-          <ul class="edit-menu">
 <!--
+          <ul class="edit-menu">
             <li>
               <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
             </li>
--->
             <li>
               <a class="secondary-link" href="">Change</a>
             </li>
           </ul>
+-->
       </div>
     </div>
     
@@ -285,16 +289,16 @@
         <p class="strong">Male</p>
       </div>
       <div class="column-one-third last-col">
-        <ul class="edit-menu">
 <!--
+        <ul class="edit-menu">
           <li>
             <a class="under-link">View maintenance</a> 
           </li>
--->
           <li>
             <a class="secondary-link" href="">Change</a>
           </li>
         </ul>
+-->
       </div>
     </div>
     
@@ -308,16 +312,16 @@
         <p class="strong">English</p>
       </div>
       <div class="column-one-third last-col">
-        <ul class="edit-menu">
 <!--
+        <ul class="edit-menu">
           <li>
             <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
           </li>
--->
           <li>
             <a class="secondary-link" href="">Change</a>
           </li>
         </ul>
+-->
       </div>
     </div>
     
@@ -336,6 +340,7 @@
         </ul>      
       </div>
       <div class="column-one-third last-col">
+<!--
         <ul class="edit-menu">
           <li>
             <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
@@ -346,6 +351,7 @@
             <a class="secondary-link" href="">Change</a>
           </li>
         </ul>
+-->
       </div>
     </div>
     
@@ -384,16 +390,16 @@
         </ul>
       </div>
       <div class="column-one-third last-col">
-        <ul class="edit-menu">
 <!--
+        <ul class="edit-menu">
           <li>
             <a class="under-link">View history</a> 
           </li>
--->
           <li>
             <a class="secondary-link" href="">Change</a>
           </li>
         </ul>
+-->
       </div>
     </div>
 
@@ -485,16 +491,16 @@
     </div>
   
     <div class="column-one-third">
+<!--
       <ul class="edit-menu">
         <li>
           <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a> 
         </li>
-<!--
         <li>
           <a class="secondary-link" href="update-V2">Change</a>
         </li>
--->
       </ul>
+-->
     </div>
     
   </div> 
@@ -711,6 +717,7 @@
         </div>
         
         <div class="column-one-third last-col">
+<!--
           <ul class="edit-menu">
             <li>
               <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
@@ -719,11 +726,12 @@
               <form class="dumbform" method="get" action="interests/update-interest">
                 <div class="form-group">
                    <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
-<!--                    <input type="submit" class="under-link" value="Change">-->
+                    <input type="submit" class="under-link" value="Change">
                 </div>
               </form>
             </li>
           </ul>
+-->
         </div>
       </div> 
 
@@ -745,6 +753,7 @@
         </div>
         
         <div class="column-one-third last-col">
+<!--
           <ul class="edit-menu">
             <li>
               <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
@@ -757,6 +766,7 @@
               </form>
             </li>
           </ul>
+-->
         </div>
       </div> 
   
@@ -831,7 +841,6 @@
         </div>
 
         <div class="last-card">
-          {% include "components/creation.html" %}
         </div>
         
       </div>
