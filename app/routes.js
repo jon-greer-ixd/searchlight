@@ -325,7 +325,7 @@ var tempInterest;
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) { 
-  tempInterest = Interest.createInterest();
+  resetTempInterest(req.session.data.tempInterest);
   resetInterests();
   req.session.data.tempInterests = [];
   req.session.data.interests = interests;
@@ -758,6 +758,11 @@ router.get(/correction-type-handler/, function (req, res) {
 // INTERESTS 
 //***********
 
+function resetTempInterest(interest) {
+  tempInterest = Interest.createInterest();
+  interest = tempInterest;
+}
+
 
 router.get(/add-interest-handler/, function (req, res) {
   req.session.data.updateType = "addInterest"
@@ -886,8 +891,7 @@ router.get(/interest-check-handler/, function (req, res) {
   if (req.session.data.updateType === "addInterest") {
     addInterest(tempInterest);
   }
-  tempInterest = Interest.createInterest();
-  req.session.data.tempInterest = tempInterest;
+  resetTempInterest(req.session.data.tempInterest);
   res.redirect("../account");
 })
 
