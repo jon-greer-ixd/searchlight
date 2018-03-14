@@ -794,7 +794,7 @@ router.get(/change-interest-handler/, function (req, res) {
 
 router.get(/update-interest-handler/, function (req, res) {
   req.session.data.updateType = "endInterest"
-  res.redirect("check");
+  res.redirect("end-interest");
 })
 
 //router.get(/end-interests-handler/, function (req, res) {

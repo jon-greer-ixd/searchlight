@@ -10,6 +10,10 @@
                 <td><span class="strong">Benefit type</span></td>
                 <td>{{tempInterest.title}}</td>
               </tr>
+              <tr>
+                <td><span class="strong">End date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+              </tr>
 <!--
               {% for item in tempInterests %}
                 <tr>
@@ -94,6 +98,17 @@
                 {% endif %}
                 <td><a>Change</a></td>
               </tr>
+              <tr>
+                <td><span class="strong">Broadcasting office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Interested party start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+
             {% endif %}
 
         </table>
