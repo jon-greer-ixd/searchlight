@@ -5,7 +5,9 @@
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           {% if data['updateType'] == 'endInterest' %}
-            <h2>End interests</h2>
+            <h2>End an interest</h2>
+          {% elif data['updateType'] == 'transferInterest' %}
+            <h2>Transfer an interest</h2>
           {% else %}
             <h2>Add an interest</h2>
           {% endif %}

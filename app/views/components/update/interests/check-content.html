@@ -32,6 +32,29 @@
             <input class="button" type="submit" value="Submit">
           </div>
         </form>
+        
+        {% elif data['updateType'] === "transferInterest" %}
+        
+          <table class="table">
+            <tr>
+              <td><span class="strong">Interest</span></td>
+              <td>{{ tempInterest.title }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">New office code</span></td>
+              <td>100017</td>
+              <td><a>Change</a></td>
+            </tr>
+        </table>
+              <br>
+      <div>
+        <form method="get" action="interest-check-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
 
 
           {% else %} 

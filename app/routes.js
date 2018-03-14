@@ -18,7 +18,7 @@ var tempInterests = [];
 
 var addInterest = function (interest) {
   interests.unshift(interest);
-  console.log(" \n start ////");
+  console.log(" \n Interests ////");
   for (var x in interests) {
     console.log(interests[x]);
   }
@@ -758,12 +758,8 @@ router.get(/correction-type-handler/, function (req, res) {
 // INTERESTS 
 //***********
 
+
 router.get(/add-interest-handler/, function (req, res) {
-  console.log(
-    "\n" +
-    req.query.title +
-    "\n"
-  );
   req.session.data.updateType = "addInterest"
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
@@ -788,13 +784,19 @@ router.get(/add-interest-handler/, function (req, res) {
 router.get(/change-interest-handler/, function (req, res) {
   var y = parseInt(req.query.tempPos);
   tempInterest = interests[y];
-  console.log(tempInterest.title);
   res.redirect("interests/update-interest");
 })
 
 router.get(/update-interest-handler/, function (req, res) {
-  req.session.data.updateType = "endInterest"
-  res.redirect("end-interest");
+  if (req.query.data === "end-parties") {
+    req.session.data.updateType = "endfParties"
+  } else if (req.query.data === "transfer") {
+    req.session.data.updateType = "transferInterest"
+    res.redirect("transfer-interest");
+  } else  {
+    req.session.data.updateType = "endInterest"
+    res.redirect("end-interest");
+  }
 })
 
 //router.get(/end-interests-handler/, function (req, res) {
@@ -855,7 +857,15 @@ router.get('/update/interests/interests', function (req, res) {
 
 router.get('/update/interests/update-interest', function (req, res) {
   res.render('update/interests/update-interest', {
-    interests : interests
+    interests : interests,
+    tempInterest : tempInterest
+  })
+})
+
+router.get('/update/interests/transfer-interest', function (req, res) {
+  res.render('update/interests/transfer-interest', {
+    interests : interests,
+    tempInterest : tempInterest
   })
 })
 
@@ -873,7 +883,9 @@ router.get('/update/interests/add-party', function (req, res) {
 })
 
 router.get(/interest-check-handler/, function (req, res) {
-  addInterest(tempInterest);
+  if (req.session.data.updateType === "addInterest") {
+    addInterest(tempInterest);
+  }
   tempInterest = Interest.createInterest();
   req.session.data.tempInterest = tempInterest;
   res.redirect("../account");
