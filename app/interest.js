@@ -1,95 +1,12 @@
-//////applicant.js
-////function Applicant (
-////  firstName,
-////  lastName,
-////  fullName,
-////  dobDay,
-////  dobMonth,
-////  dobYear,
-////  hasNhsno,
-////  nhsno,
-////  postCode,
-////  hasMobile,
-////  hasEmail,
-////  mobile,
-////  contactPref,
-////  contactValue,
-////  email,
-////  address,
-////  age,
-////  renewing
-////  ) {
-////    this.firstName = firstName;
-////    this.lastName = lastName;
-////    this.fullName = fullName;
-////    this.dobDay = dobDay;
-////    this.dobMonth = dobMonth;
-////    this.dobYear = dobYear;
-////    this.hasNhsno = hasNhsno;
-////    this.nhsno = nhsno;
-////    this.postCode = postCode;
-////    this.hasMobile = hasMobile;
-////    this.hasEmail = hasEmail;
-////    this.mobile = mobile;
-////    this.contactPref = contactPref;
-////    this.contactValue = contactValue;
-////    this.email = email;
-////    this.address = address;
-////    this.age = age;
-////    this.renewing = renewing;
-////};
-////
-////Applicant.prototype.setFullName = function () {
-////  this.fullName = this.firstName + " " + this.lastName;
-////};
-////
-////Applicant.prototype.checkAge = function () {
-//// if (this.age < 60) {
-////   return true;
-//// }
-////};
-////
-////Applicant.prototype.check = function () {
-////  if (this.firstname === 'Bill' && this.lastname === 'Smith' && this.postcode === 'NE1 234') {
-////    return true;
-////  }
-////};
-////
-////function createApplicant() {
-////  return new Applicant();
-////};
-////
-////module.exports.createApplicant = createApplicant;
-//
-//
-//function Address (
-//  lineOne,
-//  lineTwo,
-//  lineThree,
-//  postCode
-//) {
-//    this.lineOne = lineOne; 
-//    this.lineTwo = lineTwo; 
-//    this.lineThree = lineThree; 
-//    this.postCode = postCode; 
-//};
-//
-//Address.prototype.printAddress = function () {
-//  console.log(this.lineOne + ", " + this.lineTwo + " " + this.postCode);
-//};
-//
-//function createAddress() {
-//  return new Address();
-//};
-//
-//module.exports.createAddress = createAddress;
-
 function Interest (
   live,
   title,
   startDate,
   businessSystem,
   systemRef, //which systems can this be in 0 = clerical, 1 = system, 2 = CRL, 3 = both sys and crl
+  canBeSystem,
+  canBeClerical,
+  canBeCrl,
   system, //which system type is this? 'crl', 'sys', 'clerical'
   owning,
   broadcasting,
@@ -100,6 +17,9 @@ function Interest (
   this.startDate = startDate;
   this.businessSystem = businessSystem;
   this.systemRef = systemRef;
+  this.canBeSystem = canBeSystem;
+  this.canBeClerical = canBeClerical;
+  this.canBeCrl = canBeCrl;
   this.system = system;
   this.owning = owning;
   this.broadcasting = broadcasting;
@@ -117,9 +37,6 @@ Interest.prototype.printInterest = function () {
 
 function createInterest() {
   return new Interest();
-};
+}
 
 module.exports.createInterest = createInterest;
-
-
-

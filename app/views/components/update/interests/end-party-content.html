@@ -1,3 +1,4 @@
+<h2 class="heading-medium question">Which parties do you need to end?</h2>
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="check">
@@ -7,16 +8,16 @@
           Interest type
         </p>
       </legend>
-      <div class="form-group">
+      <div class="form-group multi-line">
         <fieldset>
 
       <div class="multiple-choice">
-        <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
-        <label for="radio-1">The owning office title</label>
+        <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
+        <label for="waste-type-1">Owning office <br>Disability Living Allowance<br>Office code 9882</label>
       </div>
       <div class="multiple-choice">
-        <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
-        <label for="radio-2">The broadcast office title</label>
+        <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
+        <label for="waste-type-2">Broadcasting office <br>Disability Living Allowance<br> Office code 18</label>
       </div>
 
       </fieldset>
@@ -24,7 +25,7 @@
       
       <div class="form-group">
         <label class="form-label" for="first-name-2">End date</label>
-        <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        <input class="form-control" id="first-name-2" name="first-name-2" type="text" value={{data['prepopulatedDate']}}>
       </div>
       
       <div class="form-group">

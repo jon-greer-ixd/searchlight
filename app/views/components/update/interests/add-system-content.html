@@ -10,20 +10,27 @@
             </p>
           </legend>
           
-          {% if tempInterest.systemRef === 1 or tempInterest.systemRef === 3 %}
-          <div class="multiple-choice" data-target="contact-by-email">
-            <input id="sys" type="radio" name="system" value="sys">
-            <label for="sys">System</label>
-          </div>
+          {% if tempInterest.canBeSystem === true %}
+            <div class="multiple-choice" data-target="contact-by-email">
+              <input id="sys" type="radio" name="system" value="sys">
+              <label for="sys">System</label>
+            </div>
           {% endif %}
           
-          {% if tempInterest.systemRef === 2 or tempInterest.systemRef === 3 %}
-          <div class="multiple-choice" data-target="contact-by-text">
-            <input id="crl" type="radio" name="system" value="crl">
-            <label for="crl">Computer record location (CRL)</label>
-          </div>
+          {% if tempInterest.canBeCrl === true %}
+            <div class="multiple-choice" data-target="contact-by-text">
+              <input id="crl" type="radio" name="system" value="crl">
+              <label for="crl">Computer record location (CRL)</label>
+            </div>
           {% endif %}
           
+          {% if tempInterest.canBeClerical === true %}
+            <div class="multiple-choice" data-target="contact-by-text">
+              <input id="clerical" type="radio" name="system" value="clerical">
+              <label for="clerical">Clerical</label>
+            </div>          
+          {% endif %}
+
         </div> 
       </fieldset>
       

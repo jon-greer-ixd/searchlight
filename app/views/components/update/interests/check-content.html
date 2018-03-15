@@ -4,15 +4,16 @@
 
           {% if data['updateType'] === "endInterest" %}
 
-            <!-- End multiple interests -->
             <table class="table">
               <tr>
                 <td><span class="strong">Benefit type</span></td>
                 <td>{{tempInterest.title}}</td>
+                <td><a>Change</a></td>
               </tr>
               <tr>
                 <td><span class="strong">End date</span></td>
                 <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
               </tr>
 <!--
               {% for item in tempInterests %}
@@ -32,6 +33,32 @@
             <input class="button" type="submit" value="Submit">
           </div>
         </form>
+        
+        {% elif data['updateType'] === "endfParties" %}
+        
+          <table class="table">
+            <tr>
+              <td><span class="strong">End owning party</span></td>
+              <td>Disability Living Allowance<br>
+              Office code 100017</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">End broadcasting party</span></td>
+              <td>Disability Living Allowance<br>
+              Office code  100017
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+        </table>
+                
+      <div>
+        <form method="get" action="interest-check-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+
         
         {% elif data['updateType'] === "transferInterest" %}
         

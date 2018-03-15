@@ -1,5 +1,3 @@
-/*jslint devel: true */
-
 var express = require('express');
 var router = express.Router();
 
@@ -8,38 +6,35 @@ var addressTwo = "2 New Street";
 var addressThree = "7 Post Street";
 var addressFour = "Gateshead, Tyne and Wear NE1 1HH";
 
-//var NINO = require('./nino.js');
 var content = require('./content.js').content;
 
 var Interest = require('./interest.js');
 
+
+//***********
+// INTERESTS 
+//***********
+
 var interests = [];
-var tempInterests = [];
-
-var addInterest = function (interest) {
-  interests.unshift(interest);
-  console.log(" \n Interests ////");
-  for (var x in interests) {
-    console.log(interests[x]);
-  }
-  console.log("//// end \n");
-};
-
 var pip = Interest.createInterest();
 var jsa = Interest.createInterest();
 
 var resetInterests = function() {
   interests.length = 0;
+  //reset PIP
   pip.startDate = "1 Jun 2017";
   pip.live = true;
   pip.title = "Personal Independence Payment";
   pip.system = "sys";
   pip.businessSystem = "Personal Independence Payment";
   pip.systemRef = 1;
+  pip.canBeSystem = true;
+  pip.canBeCrl = false;
+  pip.canBeClerical = true; 
   pip.owning = false;
   pip.broadcasting = false;
   pip.maintained = false;
-
+  //reset JSA
   jsa.startDate = "1 Jun 2017";
   jsa.live = false;
   jsa.title = "Job Seekers Allowance";
@@ -52,31 +47,74 @@ var resetInterests = function() {
 
   addInterest(pip);
   addInterest(jsa);
-  
-  tempInterests.length = 0;
-}  
+}
+
+function addInterest(interest) {
+  interests.unshift(interest);
+};
+
+function resetTempInterest(interest) {
+  tempInterest = Interest.createInterest();
+  interest = tempInterest;
+}
+
+function printInterests() {
+  console.log(" \n Interests ////");
+  for (var x in interests) {
+    console.log(interests[x]);
+  }
+  console.log("//// end \n");
+};
 
 function setSystemAndParties(selectedInterest) {
   if (selectedInterest === "Child support reform") {
     tempInterest.systemRef = 3; //both
+    tempInterest.canBeSystem = true;
+    tempInterest.canBeCrl = true;
+    tempInterest.canBeClerical = true; 
   } else if (selectedInterest === "Bereavement Allowance" ||
     selectedInterest === "Bereavement Benefit") {
     tempInterest.systemRef = 1; //system
+    tempInterest.canBeSystem = true;
+    tempInterest.canBeCrl = false;
+    tempInterest.canBeClerical = true; 
   } else if ( 
     selectedInterest === "Carers Credit") {
     tempInterest.systemRef = 1; //system
+    tempInterest.canBeSystem = true;
+    tempInterest.canBeCrl = false;
+    tempInterest.canBeClerical = false; 
   } else if (selectedInterest === "Attendance Allowance") {
     tempInterest.systemRef = 3; //both
+    tempInterest.canBeSystem = true;
+    tempInterest.canBeCrl = true;
+    tempInterest.canBeClerical = true; 
   } else if (selectedInterest === "Jobseeker's Allowance") {
     tempInterest.systemRef = 3; //both
+    tempInterest.canBeSystem = true;
+    tempInterest.canBeCrl = true;
+    tempInterest.canBeClerical = true; 
+  } else if (selectedInterest === "Disability Living Allowance") {
+    tempInterest.systemRef = 3; //both
+    tempInterest.canBeSystem = true;
+    tempInterest.canBeCrl = true;
+    tempInterest.canBeClerical = true; 
   } else {
     tempInterest.systemRef = 3; //both
+    tempInterest.canBeSystem = true;
+    tempInterest.canBeCrl = true;
+    tempInterest.canBeClerical = true; 
   }
 }
 
 var removeInterest = function (interest) {
   interest.live = false;
 };
+
+
+//******•
+// DATES 
+//******•
 
 var Dates = require('./dates.js');
 var dates = Dates.dates;
@@ -327,7 +365,6 @@ router.use('/', main);
   router.get('/', function (req, res) { 
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
-  req.session.data.tempInterests = [];
   req.session.data.interests = interests;
     
   req.session.data.updateType = null;
@@ -384,8 +421,6 @@ router.get('/search-v1', function (req, res) {
 
 //account
 router.get('/update/account', function (req, res) {
-//  var interestsReversed = interests.slice();
-//  interestsReversed.reverse();
   res.render('update/account.html', {
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
@@ -403,7 +438,6 @@ router.get('/update/account', function (req, res) {
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
     interests : interests
-//    interestsReversed : interestsReversed
   })
 })
 
@@ -462,6 +496,12 @@ router.get(/status-handler/, function (req, res) {
 router.get('/update/cherish-line', function (req, res) {
   res.render('update/cherish-line', {
     pagetitle : content.pageTitle
+  })
+})
+
+router.get('/update/print-sar', function (req, res) {
+  res.render('update/print-sar', {
+    sar : true
   })
 })
 
@@ -758,30 +798,32 @@ router.get(/correction-type-handler/, function (req, res) {
 // INTERESTS 
 //***********
 
-function resetTempInterest(interest) {
-  tempInterest = Interest.createInterest();
-  interest = tempInterest;
-}
-
-
 router.get(/add-interest-handler/, function (req, res) {
   req.session.data.updateType = "addInterest"
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
   tempInterest.live = true;
-  if (req.query.clerical == "true") {
-    tempInterest.systemRef = 0;
-  } else {
-    setSystemAndParties(tempInterest.title);
+  setSystemAndParties(tempInterest.title);
+  var counter = 0;
+  if(tempInterest.canBeSystem === true) {
+    counter++;
   }
-  if (tempInterest.systemRef === 0) {
-    tempInterest.system = "clerical";
-    res.redirect("add-party");
-  } else if (tempInterest.systemRef === 2 ||
-    tempInterest.systemRef === 3) {
+  if(tempInterest.canBeCrl === true) {
+    counter++;
+  }
+  if (tempInterest.canBeClerical === true) {
+    counter++;
+  }
+  if( counter > 1) {
     res.redirect("add-system");
   } else {
-    tempInterest.system = "sys";
+    if(tempInterest.canBeSystem === true) {
+      tempInterest.system = "sys"
+    } else if (tempInterest.canBeCrl === true) {
+      tempInterest.system = "crl"
+    } else if(tempInterest.canBeClerical === true) {
+      tempInterest.system = "clerical"
+    }
     res.redirect("add-party");
   }
 })
@@ -795,6 +837,7 @@ router.get(/change-interest-handler/, function (req, res) {
 router.get(/update-interest-handler/, function (req, res) {
   if (req.query.data === "end-parties") {
     req.session.data.updateType = "endfParties"
+    res.redirect("end-party");
   } else if (req.query.data === "transfer") {
     req.session.data.updateType = "transferInterest"
     res.redirect("transfer-interest");
@@ -803,15 +846,6 @@ router.get(/update-interest-handler/, function (req, res) {
     res.redirect("end-interest");
   }
 })
-
-//router.get(/end-interests-handler/, function (req, res) {
-//  for (item in req.query.interests) {
-//    var x = parseInt(req.query.interests[item]);
-//    req.session.data.tempInterests.unshift(interests[x].title);
-//    interests[x].live = false;
-//  }
-//  res.redirect("check");
-//})
 
 router.get(/end-interest-handler/, function (req, res) {
   tempInterest.live = false;
@@ -876,8 +910,7 @@ router.get('/update/interests/transfer-interest', function (req, res) {
 
 router.get('/update/interests/check', function (req, res) {
   res.render('update/interests/check', {
-    tempInterest : tempInterest,
-    tempInterests : tempInterests
+    tempInterest : tempInterest
   })
 })
 
