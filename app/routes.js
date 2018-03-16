@@ -18,6 +18,7 @@ var Interest = require('./interest.js');
 var interests = [];
 var pip = Interest.createInterest();
 var jsa = Interest.createInterest();
+var esa = Interest.createInterest();
 
 var resetInterests = function() {
   interests.length = 0;
@@ -44,9 +45,23 @@ var resetInterests = function() {
   jsa.owning = false;
   jsa.broadcasting = false;
   jsa.maintained = false;
+  //reset ESA
+  esa.startDate = "1 Mar 2018";
+  esa.live = true;
+  esa.title = "Emplyment and Support Allowance";
+  esa.system = "sys";
+  esa.businessSystem = "J";
+  esa.systemRef = 3;
+  esa.canBeSystem = true;
+  esa.canBeCrl = false;
+  esa.canBeClerical = true; 
+  esa.owning = false;
+  esa.broadcasting = false;
+  esa.maintained = false;
 
   addInterest(pip);
   addInterest(jsa);
+  addInterest(esa);
 }
 
 function addInterest(interest) {

@@ -16,7 +16,12 @@
         <li><span class="strong"><span class="interest-type crl">CRL</span>{{int.title}}</span></li>
       {% endif %}
       <li class="sl-secondary-text-color sl-metadata">
-        Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">CHESTER LE STREET DC</a>
+        {% if int.system === "sys" %}
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#newinterest">PRESTON BDC and 1 other</a>
+        {% else %}
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">CHESTER LE STREET DC</a>
+        {% endif %}
+      </li>
     </ul>
   </div>
   
