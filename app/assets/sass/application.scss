@@ -1043,11 +1043,13 @@ hr.light {
 
 .multi-line {
   .multiple-choice {
-    &:first-child{
-      margin-bottom :25px;
-    }
-    label {
-      margin-top :-10px;
-    }
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  .last {
+    margin-top :25px;
+  }
+  label {
+    margin-top :-10px;
   }
 }
