@@ -1,9 +1,103 @@
+<!--
+//tempInterest.canBeSystemOwning = true;
+//tempInterest.canBeSystemBroadcast = true;
+//tempInterest.maintained = true;
+//tempInterest.nonMaintained = true;
+//tempInterest.canBeClericalOwning = true;
+//tempInterest.canBeClericalBroadcast = true;
+-->
+
+  {% if counter == 1 %}
+    {% if tempInterest.canBeSystem %}
+      {% if tempInterest.systemOwning === true %}
+        system own only
+      {% endif %}
+      {% if tempInterest.systemBroadcast === true %}
+        broadcast only
+      {% endif %}
+    {% elseif tempInterest.canBeClerical %}
+      {% if tempInterest.clericalOwning === true %}
+        clerical own only
+      {% endif %}
+      {% if tempInterest.clericalBroadcast === true %}
+        clerical Broadcast only
+      {% endif %}
+    {% elseif tempInterest.canBeCrl %}
+      {% if tempInterest.crlMaintained === true %}
+        crl Maintained only
+      {% endif %}
+      {% if tempInterest.crlNon === true %}
+        crl Non Maintained only
+      {% endif %}
+    {% endif %}
+
+  {% else %}
+
+  multiple system
+  multiple crl
+
+  {% endif %}
+
+
+<!--
 <div class="grid-row">
+  
   <div class="column-one-half">
+    
     <form method="get" action="party-handler">
 
-      {% if tempInterest.system === "sys" or tempInterest.system === "clerical" %}
+      {% if tempInterest.canBeSystemOwning === true or tempInterest.canBeSystemBroadcast === true %}
+        {% if tempInterest.canBeSystemOwning === true or tempInterest.canBeSystemBroadcast === true %}
+
+          //only Owning code
+          {% if tempInterest.canBeSystemOwning === true and tempInterest.canBeSystemBroadcast === false %}
+            <div class="form-group">
+              <label class="form-label" for="nationalities-other-country">Owning office code</label>
+              <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="startdate">Owning office start date</label>
+              <input class="form-control" id="startdate" name="startdate" type="text">
+            </div>
+          {% endif %}
+
+          {% if tempInterest.canBeSystemOwning === false and tempInterest.canBeSystemBroadcast === true %}
+            <div class="form-group">
+              <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
+              <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="startdate">Broadcasting office start date</label>
+              <input class="form-control" id="startdate" name="startdate" type="text">
+            </div>
+          {% endif %}
+
+        {% endif %}
+
+        {% else %}
+
+        {% endif %}
+      {% endif %}
       
+      <div class="form-group">
+        <fieldset>
+          <p class="visually-hidden">
+            Which interested parties do you need to add?
+          </p>
+          <div class="form-group">
+            <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="startdate">Broadcasting office start date</label>
+            <input class="form-control" id="startdate" name="startdate" type="text">
+          </div>
+        </fieldset>
+      </div>
+      
+      {% else %}
         <div class="form-group">
           <fieldset>
             <legend>
@@ -45,6 +139,7 @@
             </div>
           </fieldset>
         </div>
+      {% endif %}
       
       {% else %}
       
@@ -88,3 +183,4 @@
     <p><a href="account">Cancel</a></p>
   </div>
 </div>
+-->

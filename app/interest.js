@@ -5,12 +5,16 @@ function Interest (
   businessSystem,
   systemRef, //which systems can this be in 0 = clerical, 1 = system, 2 = CRL, 3 = both sys and crl
   canBeSystem,
-  canBeClerical,
+    systemOwning,
+    systemBroadcast, 
   canBeCrl,
+    crlMaintained, 
+    crlNon, 
+  canBeClerical,
+  clericalOwning,
+  clericalBroadcast,
   system, //which system type is this? 'crl', 'sys', 'clerical'
-  owning,
-  broadcasting,
-  maintained
+  codes
 ) {
   this.live = live;
   this.title = title;
@@ -18,12 +22,16 @@ function Interest (
   this.businessSystem = businessSystem;
   this.systemRef = systemRef;
   this.canBeSystem = canBeSystem;
-  this.canBeClerical = canBeClerical;
+  this.systemOwning = systemOwning;
+  this.systemBroadcast = systemBroadcast;
   this.canBeCrl = canBeCrl;
+  this.crlMaintained = crlMaintained;
+  this.crlNon = crlNon;
+  this.canBeClerical = canBeClerical;
+  this.clericalOwning = clericalOwning;
+  this.clericalBroadcast = clericalBroadcast;
   this.system = system;
-  this.owning = owning;
-  this.broadcasting = broadcasting;
-  this.maintained = maintained;
+  this.codes = codes;
 
 }
 

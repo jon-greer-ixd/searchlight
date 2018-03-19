@@ -29,12 +29,20 @@ var resetInterests = function() {
   pip.system = "sys";
   pip.businessSystem = "Personal Independence Payment";
   pip.systemRef = 1;
-  pip.canBeSystem = true;
-  pip.canBeCrl = false;
-  pip.canBeClerical = true; 
   pip.owning = false;
   pip.broadcasting = false;
   pip.maintained = false;
+
+  pip.canBeSystem = true;
+  pip.canBeSystemOwning = true;
+  pip.canBeSystemBroadcast = false; 
+  pip.canBeCrl = false;
+  pip.maintained = false; 
+  pip.nonMaintained = false; 
+  pip.canBeClerical = true; 
+  pip.canBeClericalOwning = true;
+  pip.canBeClericalBroadcast = false;
+  
   //reset JSA
   jsa.startDate = "1 Jun 2017";
   jsa.live = false;
@@ -45,6 +53,17 @@ var resetInterests = function() {
   jsa.owning = false;
   jsa.broadcasting = false;
   jsa.maintained = false;
+  
+  jsa.canBeSystem = true;
+  jsa.canBeSystemOwning = true;
+  jsa.canBeSystemBroadcast = true; 
+  jsa.canBeCrl = true;
+  jsa.maintained = true; 
+  jsa.nonMaintained = true; 
+  jsa.canBeClerical = true; 
+  jsa.canBeClericalOwning = true;
+  jsa.canBeClericalBroadcast = true;
+  
   //reset ESA
   esa.startDate = "1 Mar 2018";
   esa.live = true;
@@ -52,13 +71,22 @@ var resetInterests = function() {
   esa.system = "sys";
   esa.businessSystem = "J";
   esa.systemRef = 3;
-  esa.canBeSystem = true;
   esa.canBeCrl = false;
   esa.canBeClerical = true; 
   esa.owning = false;
   esa.broadcasting = false;
   esa.maintained = false;
-
+  
+  esa.canBeSystem = true;
+  esa.canBeSystemOwning = true;
+  esa.canBeSystemBroadcast = true; 
+  esa.canBeCrl = true;
+  esa.maintained = true; 
+  esa.nonMaintained = false; 
+  esa.canBeClerical = true; 
+  esa.canBeClericalOwning = true;
+  esa.canBeClericalBroadcast = true;
+  
   addInterest(pip);
   addInterest(jsa);
   addInterest(esa);
@@ -81,39 +109,67 @@ function printInterests() {
   console.log("//// end \n");
 };
 
+function resetInterestTypes() {
+  tempInterest.codes = [];
+  tempInterest.canBeSystemOwning = false;
+  tempInterest.canBeSystemBroadcast = false; 
+  tempInterest.canBeCrl = false;
+  tempInterest.maintained = false; 
+  tempInterest.nonMaintained = false; 
+  tempInterest.canBeClericalOwning = false;
+  tempInterest.canBeClericalBroadcast = false;
+};
+
+function setInterestTypes(codes) {
+  resetInterestTypes();
+  for (var code in codes) {
+    if (code == 24) {
+      tempInterest.canBeSystemOwning = true;
+    }
+    if (code == 70) {
+      tempInterest.canBeSystemBroadcast = true;
+    }
+    if (code == 71) {
+      tempInterest.maintained = true;
+    }
+    if (code == 72) {
+      tempInterest.nonMaintained = true;
+    }
+    if (code == 224) {
+      tempInterest.canBeClericalOwning = true;
+    }
+    if (code == 270) {
+      tempInterest.canBeClericalBroadcast = true;
+    }
+  }
+}
+
+//tempInterest.canBeSystemOwning = true;
+//tempInterest.canBeSystemBroadcast = true;
+//tempInterest.maintained = true;
+//tempInterest.nonMaintained = true;
+//tempInterest.canBeClericalOwning = true;
+//tempInterest.canBeClericalBroadcast = true;
+
+
 function setSystemAndParties(selectedInterest) {
-  if (selectedInterest === "Child support reform") {
-    tempInterest.systemRef = 3; //both
-    tempInterest.canBeSystem = true;
-    tempInterest.canBeCrl = true;
-    tempInterest.canBeClerical = true; 
+  if (selectedInterest === "Child Support Reform") {
+    tempInterest.codes = [24, 70, 71, 72];
   } else if (selectedInterest === "Bereavement Allowance" ||
     selectedInterest === "Bereavement Benefit") {
-    tempInterest.systemRef = 1; //system
-    tempInterest.canBeSystem = true;
-    tempInterest.canBeCrl = false;
-    tempInterest.canBeClerical = true; 
+    tempInterest.codes = [24, 71];
   } else if ( 
     selectedInterest === "Carers Credit") {
-    tempInterest.systemRef = 1; //system
-    tempInterest.canBeSystem = true;
-    tempInterest.canBeCrl = false;
-    tempInterest.canBeClerical = false; 
+    tempInterest.codes = [70];
   } else if (selectedInterest === "Attendance Allowance") {
-    tempInterest.systemRef = 3; //both
-    tempInterest.canBeSystem = true;
-    tempInterest.canBeCrl = true;
-    tempInterest.canBeClerical = true; 
+    tempInterest.codes = [24, 70, 224];
   } else if (selectedInterest === "Jobseeker's Allowance") {
-    tempInterest.systemRef = 3; //both
-    tempInterest.canBeSystem = true;
-    tempInterest.canBeCrl = true;
-    tempInterest.canBeClerical = true; 
-  } else if (selectedInterest === "Disability Living Allowance") {
-    tempInterest.systemRef = 3; //both
-    tempInterest.canBeSystem = true;
-    tempInterest.canBeCrl = true;
-    tempInterest.canBeClerical = true; 
+    tempInterest.codes = [24, 70, 224, 270, 71, 72];
+//  } else if (selectedInterest === "Disability Living Allowance") {
+//    tempInterest.systemRef = 3; //both
+//    tempInterest.canBeSystem = true;
+//    tempInterest.canBeCrl = true;
+//    tempInterest.canBeClerical = true; 
   } else {
     tempInterest.systemRef = 3; //both
     tempInterest.canBeSystem = true;
@@ -813,17 +869,27 @@ router.get(/correction-type-handler/, function (req, res) {
 // INTERESTS 
 //***********
 
+var counter;
+
 router.get(/add-interest-handler/, function (req, res) {
-  req.session.data.updateType = "addInterest"
+  counter = 0;
+  req.session.data.updateType = "addInterest";
   tempInterest.title = req.query.title;
+  console.log(tempInterest.title);
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
   tempInterest.live = true;
   setSystemAndParties(tempInterest.title);
-  var counter = 0;
+  //tempInterest.canBeSystemOwning = true;
+  //tempInterest.canBeSystemBroadcast = true;
+  //tempInterest.maintained = true;
+  //tempInterest.nonMaintained = true;
+  //tempInterest.canBeClericalOwning = true;
+  //tempInterest.canBeClericalBroadcast = true;
+  
   if(tempInterest.canBeSystem === true) {
     counter++;
   }
-  if(tempInterest.canBeCrl === true) {
+  if (tempInterest.canBeCrl === true ) {
     counter++;
   }
   if (tempInterest.canBeClerical === true) {
@@ -832,13 +898,6 @@ router.get(/add-interest-handler/, function (req, res) {
   if( counter > 1) {
     res.redirect("add-system");
   } else {
-    if(tempInterest.canBeSystem === true) {
-      tempInterest.system = "sys"
-    } else if (tempInterest.canBeCrl === true) {
-      tempInterest.system = "crl"
-    } else if(tempInterest.canBeClerical === true) {
-      tempInterest.system = "clerical"
-    }
     res.redirect("add-party");
   }
 })
@@ -931,7 +990,8 @@ router.get('/update/interests/check', function (req, res) {
 
 router.get('/update/interests/add-party', function (req, res) {
   res.render('update/interests/add-party', {
-    tempInterest : tempInterest
+    tempInterest : tempInterest,
+    counter : counter
   })
 })
 
