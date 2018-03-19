@@ -23,69 +23,20 @@ var esa = Interest.createInterest();
 var resetInterests = function() {
   interests.length = 0;
   //reset PIP
-  pip.startDate = "1 Jun 2017";
   pip.live = true;
   pip.title = "Personal Independence Payment";
+  pip.startDate = "1 Jun 2017";
   pip.system = "sys";
-  pip.businessSystem = "Personal Independence Payment";
-  pip.systemRef = 1;
-  pip.owning = false;
-  pip.broadcasting = false;
-  pip.maintained = false;
-
-  pip.canBeSystem = true;
-  pip.canBeSystemOwning = true;
-  pip.canBeSystemBroadcast = false; 
-  pip.canBeCrl = false;
-  pip.maintained = false; 
-  pip.nonMaintained = false; 
-  pip.canBeClerical = true; 
-  pip.canBeClericalOwning = true;
-  pip.canBeClericalBroadcast = false;
   
-  //reset JSA
-  jsa.startDate = "1 Jun 2017";
   jsa.live = false;
   jsa.title = "Job Seekers Allowance";
+  jsa.startDate = "1 Jun 2017";
   jsa.system = "crl";
-  jsa.businessSystem = "JSA";
-  jsa.systemRef = 3;
-  jsa.owning = false;
-  jsa.broadcasting = false;
-  jsa.maintained = false;
   
-  jsa.canBeSystem = true;
-  jsa.canBeSystemOwning = true;
-  jsa.canBeSystemBroadcast = true; 
-  jsa.canBeCrl = true;
-  jsa.maintained = true; 
-  jsa.nonMaintained = true; 
-  jsa.canBeClerical = true; 
-  jsa.canBeClericalOwning = true;
-  jsa.canBeClericalBroadcast = true;
-  
-  //reset ESA
-  esa.startDate = "1 Mar 2018";
   esa.live = true;
   esa.title = "Emplyment and Support Allowance";
-  esa.system = "sys";
-  esa.businessSystem = "J";
-  esa.systemRef = 3;
-  esa.canBeCrl = false;
-  esa.canBeClerical = true; 
-  esa.owning = false;
-  esa.broadcasting = false;
-  esa.maintained = false;
-  
-  esa.canBeSystem = true;
-  esa.canBeSystemOwning = true;
-  esa.canBeSystemBroadcast = true; 
-  esa.canBeCrl = true;
-  esa.maintained = true; 
-  esa.nonMaintained = false; 
-  esa.canBeClerical = true; 
-  esa.canBeClericalOwning = true;
-  esa.canBeClericalBroadcast = true;
+  esa.startDate = "1 Mar 2018";
+  esa.system = "clerical";
   
   addInterest(pip);
   addInterest(jsa);
@@ -94,7 +45,7 @@ var resetInterests = function() {
 
 function addInterest(interest) {
   interests.unshift(interest);
-};
+}
 
 function resetTempInterest(interest) {
   tempInterest = Interest.createInterest();
@@ -107,75 +58,6 @@ function printInterests() {
     console.log(interests[x]);
   }
   console.log("//// end \n");
-};
-
-function resetInterestTypes() {
-  tempInterest.codes = [];
-  tempInterest.canBeSystemOwning = false;
-  tempInterest.canBeSystemBroadcast = false; 
-  tempInterest.canBeCrl = false;
-  tempInterest.maintained = false; 
-  tempInterest.nonMaintained = false; 
-  tempInterest.canBeClericalOwning = false;
-  tempInterest.canBeClericalBroadcast = false;
-};
-
-function setInterestTypes(codes) {
-  resetInterestTypes();
-  for (var code in codes) {
-    if (code == 24) {
-      tempInterest.canBeSystemOwning = true;
-    }
-    if (code == 70) {
-      tempInterest.canBeSystemBroadcast = true;
-    }
-    if (code == 71) {
-      tempInterest.maintained = true;
-    }
-    if (code == 72) {
-      tempInterest.nonMaintained = true;
-    }
-    if (code == 224) {
-      tempInterest.canBeClericalOwning = true;
-    }
-    if (code == 270) {
-      tempInterest.canBeClericalBroadcast = true;
-    }
-  }
-}
-
-//tempInterest.canBeSystemOwning = true;
-//tempInterest.canBeSystemBroadcast = true;
-//tempInterest.maintained = true;
-//tempInterest.nonMaintained = true;
-//tempInterest.canBeClericalOwning = true;
-//tempInterest.canBeClericalBroadcast = true;
-
-
-function setSystemAndParties(selectedInterest) {
-  if (selectedInterest === "Child Support Reform") {
-    tempInterest.codes = [24, 70, 71, 72];
-  } else if (selectedInterest === "Bereavement Allowance" ||
-    selectedInterest === "Bereavement Benefit") {
-    tempInterest.codes = [24, 71];
-  } else if ( 
-    selectedInterest === "Carers Credit") {
-    tempInterest.codes = [70];
-  } else if (selectedInterest === "Attendance Allowance") {
-    tempInterest.codes = [24, 70, 224];
-  } else if (selectedInterest === "Jobseeker's Allowance") {
-    tempInterest.codes = [24, 70, 224, 270, 71, 72];
-//  } else if (selectedInterest === "Disability Living Allowance") {
-//    tempInterest.systemRef = 3; //both
-//    tempInterest.canBeSystem = true;
-//    tempInterest.canBeCrl = true;
-//    tempInterest.canBeClerical = true; 
-  } else {
-    tempInterest.systemRef = 3; //both
-    tempInterest.canBeSystem = true;
-    tempInterest.canBeCrl = true;
-    tempInterest.canBeClerical = true; 
-  }
 }
 
 var removeInterest = function (interest) {
@@ -872,33 +754,24 @@ router.get(/correction-type-handler/, function (req, res) {
 var counter;
 
 router.get(/add-interest-handler/, function (req, res) {
-  counter = 0;
-  req.session.data.updateType = "addInterest";
-  tempInterest.title = req.query.title;
-  console.log(tempInterest.title);
-  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
-  tempInterest.live = true;
-  setSystemAndParties(tempInterest.title);
-  //tempInterest.canBeSystemOwning = true;
-  //tempInterest.canBeSystemBroadcast = true;
-  //tempInterest.maintained = true;
-  //tempInterest.nonMaintained = true;
-  //tempInterest.canBeClericalOwning = true;
-  //tempInterest.canBeClericalBroadcast = true;
   
-  if(tempInterest.canBeSystem === true) {
-    counter++;
-  }
-  if (tempInterest.canBeCrl === true ) {
-    counter++;
-  }
-  if (tempInterest.canBeClerical === true) {
-    counter++;
-  }
-  if( counter > 1) {
-    res.redirect("add-system");
-  } else {
+//Child Support Reform - 1:24, 3:71, 3:72
+//Bereavement Allowance - 1:24, 2:24
+//Bereavement Benefit - 1:24, 2:24, 3:71, 3:72
+//Jobseeker's Allowance - 1:24, 1:70, 2:24, 2:70, 3:71, 3:72
+
+//Winter Fuel Payment - 3:71 - DONE
+//Carers Credit - 1:70 - DONE
+
+  req.session.data.updateType = "addInterest";
+  tempInterest.live = true;
+  tempInterest.title = req.query.title;
+  tempInterest.startDate = dates.convertDayToString(req.query.startdate);
+  console.log(tempInterest.title);
+  if(tempInterest.title === "Carers Credit" || tempInterest.title === "Bereavement Support Payment" || tempInterest.title === "Winter Fuel Payment") {
     res.redirect("add-party");
+  } else {
+    res.redirect("add-system");
   }
 })
 
