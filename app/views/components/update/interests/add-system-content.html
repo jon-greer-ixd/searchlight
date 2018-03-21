@@ -9,6 +9,14 @@
               Interest type
             </p>
           </legend>
+        
+        {% if 
+          tempInterest.title == "Child Support Reform" or 
+          tempInterest.title == "Bereavement Allowance" or 
+          tempInterest.title == "Bereavement Benefit" or 
+          tempInterest.title == "Jobseeker's Allowance" 
+        %}
+
           
           {% if tempInterest.title == "Child Support Reform" or tempInterest.title == "Bereavement Allowance" or tempInterest.title == "Bereavement Benefit" or tempInterest.title == "Jobseeker's Allowance" %}
             <div class="multiple-choice" data-target="contact-by-email">
@@ -30,6 +38,21 @@
               <label for="clerical">Clerical</label>
             </div>          
           {% endif %}
+        
+        {% else %}
+          <div class="multiple-choice" data-target="contact-by-email">
+            <input id="sys" type="radio" name="system" value="sys">
+            <label for="sys">System</label>
+          </div>
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="crl" type="radio" name="system" value="crl">
+            <label for="crl">Computer record location (CRL)</label>
+          </div>
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="clerical" type="radio" name="system" value="clerical">
+            <label for="clerical">Clerical</label>
+          </div>          
+        {% endif %}
 
         </div> 
       </fieldset>

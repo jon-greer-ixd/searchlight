@@ -4,6 +4,9 @@
     
     <form method="get" action="party-handler">
       
+      {% if tempInterest.title === "Child Support Reform" or tempInterest.title === "Bereavement Allowance" or tempInterest.title === "Bereavement Benefit" or  tempInterest.title === "Jobseeker's Allowance" or tempInterest.title === "Winter Fuel Payment" or tempInterest.title === "Carers Credit" %}
+
+      
       {% if tempInterest.title == "Carers Credit" or tempInterest.title == "Bereavement Support Payment" %}
         <div class="form-group">
           <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
@@ -25,21 +28,240 @@
           <input class="form-control" id="startdate" name="startdate" type="text">
         </div>
       {% endif %}
+            
+      {% if tempInterest.title == "Child Support Reform" or tempInterest.title == "Bereavement Allowance" %}
       
-      {% if tempInterest.title == "Child Support Reform" %}
-        <div class="form-group">
-          <label class="form-label" for="nationalities-other-country">Owning office code</label>
-          <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="startdate">Owning office start date</label>
-          <input class="form-control" id="startdate" name="startdate" type="text">
-        </div>
+        {% if tempInterest.system == "sys" %}
+          <div class="form-group">
+            <label class="form-label" for="nationalities-other-country">Owning office code</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="startdate">Owning office start date</label>
+            <input class="form-control" id="startdate" name="startdate" type="text">
+          </div>
+        {% else %}
+          <div class="form-group">
+            <fieldset>
+              <legend>
+                <p class="bold">
+                  Is this a maintained interest?
+                </p>
+              </legend>
+              <div class="multiple-choice">
+                <input id="radio-1" type="radio" name="maint" value="true">
+                <label for="radio-1">Maintained</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="radio-2" type="radio" name="maint" value="false">
+                <label for="radio-2">Non-maintained</label>
+              </div>
+            </fieldset>
+          </div>
+      
+          <div class="form-group">
+            <label class="form-label" for="nationalities-other-country">Owning office code</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+          </div>
+      
+          <div class="form-group">
+            <label class="form-label" for="startdate">Owning office start date</label>
+            <input class="form-control" id="startdate" name="startdate" type="text">
+          </div>  
+      
+        {% endif %}
+            
       {% endif %}
-
-
       
-      <div class="form-group">
+      {% if tempInterest.title == "Bereavement Benefit" %}
+        {% if tempInterest.system == "crl" %}
+          <div class="form-group">
+            <fieldset>
+              <legend>
+                <p class="bold">
+                  Is this a maintained interest?
+                </p>
+              </legend>
+              <div class="multiple-choice">
+                <input id="radio-1" type="radio" name="maint" value="true">
+                <label for="radio-1">Maintained</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="radio-2" type="radio" name="maint" value="false">
+                <label for="radio-2">Non-maintained</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nationalities-other-country">Owning office code</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="startdate">Owning office start date</label>
+            <input class="form-control" id="startdate" name="startdate" type="text">
+          </div>  
+        {% else %}
+          <div class="form-group">
+            <label class="form-label" for="nationalities-other-country">Owning office code</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="startdate">Owning office start date</label>
+            <input class="form-control" id="startdate" name="startdate" type="text">
+          </div>
+        {% endif %}
+      {% endif %}
+      
+      {% if tempInterest.title == "Jobseeker's Allowance" %}
+        {% if tempInterest.system == "crl" %}
+          <div class="form-group">
+            <fieldset>
+              <legend>
+                <p class="bold">
+                  Is this a maintained interest?
+                </p>
+              </legend>
+              <div class="multiple-choice">
+                <input id="radio-1" type="radio" name="maint" value="true">
+                <label for="radio-1">Maintained</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="radio-2" type="radio" name="maint" value="false">
+                <label for="radio-2">Non-maintained</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="nationalities-other-country">Owning office code</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="startdate">Owning office start date</label>
+            <input class="form-control" id="startdate" name="startdate" type="text">
+          </div>  
+        {% else %}
+          <div class="form-group">
+            <fieldset>
+              <legend>
+                <p class="bold">
+                  Which interested parties do you need to add?
+                </p>
+              </legend>
+
+              <div class="multiple-choice" data-target="owning">
+                <input id="owning-office" name="own" type="checkbox" value="true">
+                <label for="owning-office">An owning office</label>
+              </div>
+              <div class="panel panel-border-narrow js-hidden" id="owning">
+
+                <div class="form-group">
+                  <label class="form-label" for="nationalities-other-country">Owning office code</label>
+                  <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="startdate">Owning office start date</label>
+                  <input class="form-control" id="startdate" name="startdate" type="text">
+                </div>
+
+              </div>
+
+              <div class="multiple-choice" data-target="broadcast">
+                <input id="broadcasting-office" name="broadcasting" type="checkbox" value="true">
+                <label for="broadcasting-office">A broadcasting office</label>
+              </div>
+              <div class="panel panel-border-narrow js-hidden" id="broadcast">
+                <div class="form-group">
+                  <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
+                  <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="startdate">Broadcasting office start date</label>
+                  <input class="form-control" id="startdate" name="startdate" type="text">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+      
+      {% endif %}
+      
+          
+    {% else %}
+      
+        <div class="form-group">
+          {% if tempInterest.system == "crl" %}
+            <div class="form-group">
+              <fieldset>
+                <legend>
+                  <p class="bold">
+                    Is this a maintained interest?
+                  </p>
+                </legend>
+                <div class="multiple-choice">
+                  <input id="radio-1" type="radio" name="maint" value="true">
+                  <label for="radio-1">Maintained</label>
+                </div>
+                <div class="multiple-choice">
+                  <input id="radio-2" type="radio" name="maint" value="false">
+                  <label for="radio-2">Non-maintained</label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="nationalities-other-country">Owning office code</label>
+              <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="startdate">Owning office start date</label>
+              <input class="form-control" id="startdate" name="startdate" type="text">
+            </div>  
+          {% else %}
+            <div class="form-group">
+              <fieldset>
+                <legend>
+                  <p class="bold">
+                    Which interested parties do you need to add?
+                  </p>
+                </legend>
+
+                <div class="multiple-choice" data-target="owning">
+                  <input id="owning-office" name="own" type="checkbox" value="true">
+                  <label for="owning-office">An owning office</label>
+                </div>
+                <div class="panel panel-border-narrow js-hidden" id="owning">
+
+                  <div class="form-group">
+                    <label class="form-label" for="nationalities-other-country">Owning office code</label>
+                    <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="startdate">Owning office start date</label>
+                    <input class="form-control" id="startdate" name="startdate" type="text">
+                  </div>
+
+                </div>
+
+                <div class="multiple-choice" data-target="broadcast">
+                  <input id="broadcasting-office" name="broadcasting" type="checkbox" value="true">
+                  <label for="broadcasting-office">A broadcasting office</label>
+                </div>
+                <div class="panel panel-border-narrow js-hidden" id="broadcast">
+                  <div class="form-group">
+                    <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
+                    <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="startdate">Broadcasting office start date</label>
+                    <input class="form-control" id="startdate" name="startdate" type="text">
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          {% endif %}
+      
+      {% endif %}      
+      
+          <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
     </form>

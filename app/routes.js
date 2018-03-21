@@ -759,7 +759,6 @@ router.get(/add-interest-handler/, function (req, res) {
 //Bereavement Allowance - 1:24, 2:24
 //Bereavement Benefit - 1:24, 2:24, 3:71, 3:72
 //Jobseeker's Allowance - 1:24, 1:70, 2:24, 2:70, 3:71, 3:72
-
 //Winter Fuel Payment - 3:71 - DONE
 //Carers Credit - 1:70 - DONE
 
@@ -768,7 +767,14 @@ router.get(/add-interest-handler/, function (req, res) {
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
   console.log(tempInterest.title);
-  if(tempInterest.title === "Carers Credit" || tempInterest.title === "Bereavement Support Payment" || tempInterest.title === "Winter Fuel Payment") {
+  if(tempInterest.title === "Carers Credit") {
+    tempInterest.system = "sys";
+    res.redirect("add-party");
+  } else if (tempInterest.title === "Bereavement Support Payment") {
+    tempInterest.system = "sys";
+    res.redirect("add-party");
+  } else if (tempInterest.title === "Winter Fuel Payment") {
+    tempInterest.system = "sys";
     res.redirect("add-party");
   } else {
     res.redirect("add-system");
