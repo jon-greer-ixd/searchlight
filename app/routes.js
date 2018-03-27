@@ -34,7 +34,7 @@ var resetInterests = function() {
   jsa.system = "crl";
   
   esa.live = true;
-  esa.title = "Emplyment and Support Allowance";
+  esa.title = "Employment and Support Allowance";
   esa.startDate = "1 Mar 2018";
   esa.system = "clerical";
   
