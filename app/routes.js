@@ -291,6 +291,7 @@ var dataState = {
   cherishedLineCorrected : false,
   statusUpdated : false,
   dateIsUpdated : false,
+  interestAdded : false,
   addressCorrected : false,
   statusCorrected : false
 };
@@ -352,6 +353,7 @@ router.use('/', main);
   dataState.statusUpdated = false;
   dataState.addressCorrected = false;
   dataState.dateIsUpdated = false;
+  dataState.interestAdded = false;
   dataState.currentStatus = "live";
   dataState.newStatus = "live";
   //corrections
@@ -387,6 +389,7 @@ router.get('/update/account', function (req, res) {
     addresscorrected : dataState.addressCorrected,
     correspondenceremoved : dataState.correspondenceRemoved,
     dateisupdated : dataState.dateIsUpdated,
+    interestAdded : dataState.interestAdded,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
@@ -877,8 +880,10 @@ router.get('/update/interests/add-party', function (req, res) {
 router.get(/interest-check-handler/, function (req, res) {
   if (req.session.data.updateType === "addInterest") {
     addInterest(tempInterest);
+    dataState.interestAdded = true;   
   }
   resetTempInterest(req.session.data.tempInterest);
+  
   res.redirect("../account");
 })
 
