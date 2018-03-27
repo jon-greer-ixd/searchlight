@@ -21,6 +21,14 @@
     {% if interestAdded === true %}
       {% include "components/update/toasters/interest-added.html" %}
     {% endif %}
+    
+    {% if interestRemoved === true %}
+      {% include "components/update/toasters/interest-removed.html" %}
+    {% endif %}
+
+    {% if interestTransfered === true %}
+      {% include "components/update/toasters/interest-transfered.html" %}
+    {% endif %}
 
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder ng-scope">

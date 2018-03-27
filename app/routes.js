@@ -292,6 +292,8 @@ var dataState = {
   statusUpdated : false,
   dateIsUpdated : false,
   interestAdded : false,
+  interestRemoved : false,
+  interestTransfered : false,
   addressCorrected : false,
   statusCorrected : false
 };
@@ -354,6 +356,8 @@ router.use('/', main);
   dataState.addressCorrected = false;
   dataState.dateIsUpdated = false;
   dataState.interestAdded = false;
+  dataState.interestRemoved = false;
+  dataState.interestTransfered = false;
   dataState.currentStatus = "live";
   dataState.newStatus = "live";
   //corrections
@@ -390,6 +394,8 @@ router.get('/update/account', function (req, res) {
     correspondenceremoved : dataState.correspondenceRemoved,
     dateisupdated : dataState.dateIsUpdated,
     interestAdded : dataState.interestAdded,
+    interestRemoved : dataState.interestRemoved,
+    interestTransfered : dataState.interestTransfered,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
@@ -805,6 +811,7 @@ router.get(/update-interest-handler/, function (req, res) {
 
 router.get(/end-interest-handler/, function (req, res) {
   tempInterest.live = false;
+  dataState.interestRemoved = true;
   res.redirect("../account");
 })
 
@@ -884,6 +891,9 @@ router.get(/interest-check-handler/, function (req, res) {
   }
   resetTempInterest(req.session.data.tempInterest);
   
+  if (req.session.data.updateType === "transferInterest") {
+    dataState.interestTransfered = true;
+  }
   res.redirect("../account");
 })
 
