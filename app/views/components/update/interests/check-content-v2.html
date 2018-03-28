@@ -84,7 +84,7 @@
               <tr>
                 <td><span class="strong">Interest type</span></td>
                   <td>System</td>
-                <td><a>Change</a></td>
+                <td><a></a></td>
               </tr>
               <tr>
                 <td><span class="strong">Broadcasting office code</span></td>
@@ -111,6 +111,11 @@
                 <td><a>Change</a></td>
               </tr>
               <tr>
+                <td><span class="strong">Interest type</span></td>
+                  <td>Computer Record Location (CRL)</td>
+                <td><a></a></td>
+              </tr>
+              <tr>
                 <td><span class="strong">Business office code</span></td>
                   <td>100017</td>
                 <td><a>Change</a></td>
@@ -132,6 +137,17 @@
               <tr>
                 <td><span class="strong">Interest start date</span></td>
                 <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Interest type</span></td>
+                {% if tempInterest.system === "sys" %}
+                  <td>System</td>
+                {% elseif tempInterest.system === "clerical" %}
+                  <td>Clerical</td>
+                {% else %}
+                  <td>Computer record location (CRL)</td>
+                {% endif %}
                 <td><a>Change</a></td>
               </tr>
               {% if tempInterest.system == "sys" %}
@@ -247,11 +263,21 @@
                 <td><a>Change</a></td>
               </tr>
               <tr>
+                <td><span class="strong">Interest type</span></td>
+                {% if tempInterest.system === "sys" %}
+                  <td>System</td>
+                {% elseif tempInterest.system === "clerical" %}
+                  <td>Clerical</td>
+                {% else %}
+                  <td>Computer record location (CRL)</td>
+                {% endif %}
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
                 <td><span class="strong">Interest start date</span></td>
                 <td>{{ tempInterest.startDate }}</td>
                 <td><a>Change</a></td>
               </tr>
-              {% if tempInterest.system == "sys" %}
                 <tr>
                   <td><span class="strong">Owning office code</span></td>
                     <td>100017</td>
@@ -262,7 +288,72 @@
                   <td>{{ tempInterest.startDate }}</td>
                   <td><a>Change</a></td>
                 </tr>
+            </table>
+
+          {% else %}
+          <!-- add other generric interests -->
+        
+          <table class="table">
+            <tr>
+              <td><span class="strong">Benefit type</span></td>
+              <td>{{ tempInterest.title }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">Interest start date</span></td>
+              <td>{{ tempInterest.startDate }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">Interest type</span></td>
+              {% if tempInterest.system === "sys" %}
+                <td>System</td>
+              {% elseif tempInterest.system === "clerical" %}
+                <td>Clerical</td>
               {% else %}
+                <td>Computer record location (CRL)</td>
+              {% endif %}
+              <td><a>Change</a></td>
+            </tr>
+
+            {% if tempInterest.owning === true %}
+              <tr>
+                <td><span class="strong">Owning office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Owning office start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+
+            {% if tempInterest.broadcasting === true %}
+              <tr>
+                <td><span class="strong">Broadcasting office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Broadcasting office start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+
+            {% if tempInterest.system === "crl" %}
+              <tr>
+                <td><span class="strong">Maintained or non-maintained interest</span></td>
+                {% if tempInterest.maintained == true %}
+                  <td>Maintained</td>
+                {% else %}
+                  <td>Non-maintained</td>
+                {% endif %}
+                <td><a>Change</a></td>
+              </tr>
               <tr>
                 <td><span class="strong">Business office code</span></td>
                   <td>100017</td>
@@ -273,12 +364,11 @@
                 <td>{{ tempInterest.startDate }}</td>
                 <td><a>Change</a></td>
               </tr>
-              {% endif %}
-            </table>
+            {% endif %}
 
-          {% else %}
-          <!-- add other generric interests -->
-          {% endif %}
+        </table>
+        
+       {% endif %}
 
         <br>
         <form method="get" action="interest-check-handler">

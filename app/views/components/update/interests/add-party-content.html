@@ -6,7 +6,6 @@
       
       {% if tempInterest.title === "Child Support Reform" or tempInterest.title === "Bereavement Allowance" or tempInterest.title === "Bereavement Benefit" or  tempInterest.title === "Jobseeker's Allowance" or tempInterest.title === "Winter Fuel Payment" or tempInterest.title === "Carers Credit" %}
 
-      
       {% if tempInterest.title == "Carers Credit" or tempInterest.title == "Bereavement Support Payment" %}
         <div class="form-group">
           <label class="form-label" for="nationalities-other-country">Broadcasting office code</label>
@@ -29,7 +28,7 @@
         </div>
       {% endif %}
             
-      {% if tempInterest.title == "Child Support Reform" or tempInterest.title == "Bereavement Allowance" %}
+      {% if tempInterest.title == "Child Support Reform" %}
       
         {% if tempInterest.system == "sys" %}
           <div class="form-group">
@@ -70,6 +69,19 @@
           </div>  
       
         {% endif %}
+            
+      {% endif %}
+
+      {% if tempInterest.title == "Bereavement Allowance" %}
+      
+          <div class="form-group">
+            <label class="form-label" for="nationalities-other-country">Owning office code</label>
+            <input class="form-control" type="text" id="nationalities-other-country" name="nationalities-other-country">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="startdate">Owning office start date</label>
+            <input class="form-control" id="startdate" name="startdate" type="text">
+          </div>      
             
       {% endif %}
       
