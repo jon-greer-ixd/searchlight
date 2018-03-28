@@ -53,12 +53,32 @@
               <td>{{ tempInterest.title }}</td>
               <td><a>Change</a></td>
             </tr>
-
-            <tr>
-              <td><span class="strong">New office code</span></td>
-              <td>100017</td>
-              <td><a>Change</a></td>
-            </tr>
+            
+            {% if tempInterest.system === "sys" %}
+              <tr>
+                <td><span class="strong">New owning office code</span></td>
+                <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">New broadcasting office code</span></td>
+                <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% elif tempInterest.system === "crl" %}
+              <tr>
+                <td><span class="strong">New business office code</span></td>
+                <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% else %}
+              <tr>
+                <td><span class="strong">New owning office code</span></td>
+                <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+                        
           </table>
           <br>
           <form method="get" action="interest-check-handler">
