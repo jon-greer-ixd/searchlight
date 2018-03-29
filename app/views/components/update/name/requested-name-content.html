@@ -1,0 +1,45 @@
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">
+      
+      <legend class="visually-hidden">
+        <p class="">
+          What kind of change do you need to make?
+        </p>
+      </legend>
+            
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
+          <legend class="visuallyhidden">Requested name</legend>
+          <label class="form-label" for="full-name-f1">Requested name</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Start date</legend>
+          <label class="form-label" for="postcode">
+            Start date
+            <span class="form-hint">
+              For example 31/8/1979
+            </span>
+          </label>
+          <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+        </fieldset>
+      
+<!--
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Notified date</legend>
+          <label class="form-label" for="postcode">
+            Notified date
+          </label>
+          <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+        </fieldset>
+-->
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>

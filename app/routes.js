@@ -293,6 +293,10 @@ var dataState = {
   dateIsUpdated : false,
   interestAdded : false,
   interestRemoved : false,
+  nameUpdated : false,
+  nameCorrected : false,
+  typeTwoAdded : false,
+  nameAdded : false,
   interestTransfered : false,
   addressCorrected : false,
   statusCorrected : false
@@ -376,7 +380,66 @@ router.get('/search-v1', function (req, res) {
   res.render('pages/search-v1.njk')
 })
 
-//update
+
+/************/
+/** update **/
+/************/
+
+//update name
+router.get(/update-name-handler/, function (req, res) {
+  if(req.query.data === "update") {
+     req.session.data.updateType = "updateName"
+    dataState.nameUpdated = true;
+  } else {
+     req.session.data.updateType = "correctName"
+    dataState.nameCorrected = true;
+  }
+  res.redirect('update-name')
+})
+
+//add name
+router.get(/add-name-handler/, function (req, res) {
+  if(req.query.data === "requested") {
+    req.session.data.updateType = "addRequested"
+    dataState.nameAdded = true;
+    res.redirect('requested-name')
+  } else {
+    req.session.data.updateType = "addTypeTwo"
+    dataState.typeTwoAdded = true;
+    res.redirect('update-name')
+  }
+})
+
+//update address
+
+//account2
+router.get('/account2/account', function (req, res) {
+  res.render('account2/account.html', {
+    residentialaddress : residentialAddress,
+    correspondenceaddress : correspondenceAddress,
+    previousaddress : previousAddress,
+    startdate : residentialAddress.startDate,
+    updated : dataState.updatedToNewAddress,
+    cherished : dataState.cherished,
+    editDate : content.editDate,
+    correspondence : dataState.correspondenceAdded,
+    statusupdated : dataState.statusUpdated,
+    addresscorrected : dataState.addressCorrected,
+    correspondenceremoved : dataState.correspondenceRemoved,
+    dateisupdated : dataState.dateIsUpdated,
+    interestAdded : dataState.interestAdded,
+    interestRemoved : dataState.interestRemoved,
+    interestTransfered : dataState.interestTransfered,
+    nameUpdated : dataState.nameUpdated,
+    nameCorrected : dataState.nameCorrected,
+    typeTwoAdded : dataState.typeTwoAdded,
+    nameAdded : dataState.nameCorrected,
+    cherishedlinecorrected : dataState.cherishedLineCorrected,
+    currentstatus : dataState.currentStatus,
+    statuscorrected : dataState.statusCorrected,
+    interests : interests
+  })
+})
 
 //account
 router.get('/update/account', function (req, res) {
@@ -395,6 +458,9 @@ router.get('/update/account', function (req, res) {
     dateisupdated : dataState.dateIsUpdated,
     interestAdded : dataState.interestAdded,
     interestRemoved : dataState.interestRemoved,
+    nameUpdated : dataState.nameUpdated,
+    nameCorrected : dataState.nameCorrected,
+    typeTwoAdded : dataState.typeTwoAdded,
     interestTransfered : dataState.interestTransfered,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,

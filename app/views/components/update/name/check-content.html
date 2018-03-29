@@ -1,0 +1,60 @@
+  <h2 class="heading-medium question">Check your answers</h2>
+    <div class="grid-row">
+      <div class="column-one-half">
+        
+        <table class="table">
+          {% if data['updateType'] == "addRequested" %}
+            <tr>
+              <td><span class="strong">Requested name</span></td>
+              <td>Lord Smith</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Start date</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% else %}
+            <tr>
+              <td><span class="strong">Title</span></td>
+              <td>Mr</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">First name</span></td>
+              <td>Tom</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Last name</span></td>
+              <td>Smith</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Suffix</span></td>
+              <td>-</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          {% if data['updateType'] == "updateName" or data['updateType'] == "addTypeTwo" %}
+            <tr>
+              <td><span class="strong">Start date</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Notified date</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+         {% endif %}
+      </table>
+      <br>
+      <form method="get" action="./../../account2/account">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="../../../account2/account">Cancel</a>
+    </div>
+  </div>

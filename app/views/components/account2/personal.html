@@ -1,29 +1,7 @@
+<div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Personal details</h2>
+  <div class="sl-primary-card sl-personal-details-card">
 <div class="personal-details">
-  
-  <div class="grid-row">
-    <div class="column-two-thirds">
-      <ul>
-        <li class="bold">This customer has been flagged as potentially violent.</li>
-      </ul>
-    </div>
-        
-    <div class="column-one-third last-col">
-      <ul class="edit-menu">
-        <li>
-          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-          <span class="pipe"> | </span> 
-          <a href="pv-history" class="under-link">View history</a>
-        </li>
-<!--
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
--->
-      </ul>
-    </div>
-  </div>
-  
-  <hr class="light">
   
   <div class="grid-row">
     <div class="column-one-third">
@@ -31,42 +9,36 @@
         <li>Name</li>
       </ul>
     </div>
-    
     <div class="column-one-third">
       <ul>
-        <li class="strong">MR TOM JONES</li>
-        <li class="sl-secondary-text-color sl-metadata">
-          Name 2 
-          <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span> 
-          Since {{data['updateTwo']}}
-        </li>
-      </ul>      
-      <ul class="multi-dates">
         <li class="strong">MR TOM SMITH</li>
         <li class="sl-secondary-text-color sl-metadata">
-          Name 1 
-          <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span>
-          Since {{data['updateOne']}}
+          Since 8 Feb 1940
         </li>
-      </ul>      
+      </ul>  
+      <br>
     </div>
-    
     <div class="column-one-third last-col">
       <ul class="edit-menu">
         <li>
           <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+<!--
           <span class="pipe"> | </span> 
           <a href="previous-names" class="under-link">View history</a>
-        </li>
-<!--
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
 -->
+        </li>
+        <li>
+          <a class="secondary-link" href="../../update/name/add">Add</a>
+          <span class="pipe"> | </span> 
+          <a class="secondary-link" href="../../update/name/update">Change</a>
+        </li>
+        <li>
+         
+        </li>
       </ul>
     </div>
   </div>
-  
+    
 <!--
   <hr class="light">
   
@@ -155,87 +127,15 @@
 <!--          <a href="previous-names" class="under-link">View history</a>-->
           <a href="birth-history" class="under-link">View history</a>
         </li>
-<!--
         <li>
           <a class="secondary-link" href="">Change</a>
         </li>
--->
       </ul>
 
     </div>
   </div>
   
   <hr class="light">
-      
-  <div class="grid-row">
-    
-    <div class="column-one-third">
-      <p>Date of death</p>
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li><span class="red">{{data['dod']}} &nbsp;</span> <span>(Age {{data['age']}})</span></li>
-<!--
-          <li>
-          <span class="">
-            <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">Since 14 Dec 2016</a>
-          </span>
-        </li>
--->
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 2 Feb 2018
-        </li>
-        <li class="multi-dates">
-          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-          <span class="sl-metadata">Verified to level 3</span>
-        </li>
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 2 Feb 2018
-        </li>
-      </ul>
-<!--
-            <details>
-        <summary class="update-summary">
-          <span class="summary">
-           Previous dates of birth
-          </span>
-        </summary>
-        <div>
-          <ul class="historic-name">
-            <li class="sl-secondary-text-color oval">
-              <span>10 Feb 1960</span>
-            </li>
-            <li class="sl-secondary-text-color">
-              <span>9 Mar 1999 – 13 Dec 2016</span>
-            </li>
-            <li class="sl-metadata sl-secondary-text-color spacing-top-sixth ng-binding">
-              <span class=""><a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">9 Mar 1999 – 13 Dec 2016</a></span>
-            </li>
-          </ul>
-        </div>
-      </details>
--->
-
-    </div>
-
-      <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-          <a data-toggle="modal" data-target="#death_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="death-history" class="under-link">View history</a>
-        </li>
-<!--
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
--->
-      </ul>
-
-    </div>
-  </div>
-  
-  <hr class="light">
-
 
   <!--
     <div class="grid-row">
@@ -281,11 +181,9 @@
         <li>
          <a href="nino-history" class="under-link">View history</a>
         </li>
-<!--
         <li>
           <a class="secondary-link" href="">Change</a>
         </li>
--->
       </ul>
 
     </div>
@@ -428,3 +326,5 @@
   {% include "components/modals.html" %}
 
 
+  </div>
+</div>

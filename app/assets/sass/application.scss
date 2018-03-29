@@ -974,7 +974,8 @@ hr.light {
 }
 
 #sl-account .sl-primary-name-container-placeholder {
-    background-color: #6f777a;
+//    background-color: #6f777a;
+    background-color: #005ea5;
     height: 140px;
     &.blue-header {
       background-color: #005ea5!important;
@@ -1060,4 +1061,8 @@ hr.light {
     padding-bottom: 0;
     margin-bottom: 0;
   }
+}
+
+#live {
+  background-color: #005ea5!important;
 }
