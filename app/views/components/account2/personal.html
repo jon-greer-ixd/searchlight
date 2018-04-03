@@ -11,9 +11,24 @@
     </div>
     <div class="column-one-third">
       <ul>
-        <li class="strong">MR TOM SMITH</li>
+        <li class="strong">
+          LORD {{newPerson.nameOneFirst}} {{newPerson.nameOneLast}}
+        </li>
         <li class="sl-secondary-text-color sl-metadata">
-          Since 8 Feb 1940
+                    
+          {% if newPerson.hasNameTwo == true %}
+            Name type 1  •  since
+          {% else %}
+            Since
+          {% endif %}
+          
+          {% if dataState.nameUpdated == true %}
+            today
+          {% else %}
+            15 Dec 2000
+          {% endif %}
+          
+          
         </li>
       </ul>  
       <br>

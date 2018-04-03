@@ -10,6 +10,19 @@ var content = require('./content.js').content;
 
 var Interest = require('./interest.js');
 
+var Person = require('./person.js');
+var newPerson = Person.createPerson();
+
+//New person (maintain name)
+var resetNewPerson = function() {
+  newPerson.nameOneFirst = "JAMES";
+  newPerson.nameOneLast = "SMITH";
+  newPerson.nameTwoFirst = "MICHAEL";
+  newPerson.nameTwoLast = "SMITH JONES BOOTH";
+  newPerson.hasNameTwo = false;
+}
+resetNewPerson();
+
 
 //***********
 // INTERESTS 
@@ -323,6 +336,9 @@ var tempInterest;
 router.use('/', main);
 // Route index page
   router.get('/', function (req, res) { 
+    
+  resetNewPerson();
+    
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
   req.session.data.interests = interests;
@@ -382,11 +398,15 @@ router.get('/search-v1', function (req, res) {
 
 
 /************/
-/** update **/
+/** UPDATE **/
 /************/
 
-//update name
-router.get(/update-name-handler/, function (req, res) {
+/**********/
+/** NAME **/
+/**********/
+
+//change name
+router.get(/change-name-handler/, function (req, res) {
   if(req.query.data === "update") {
      req.session.data.updateType = "updateName"
     dataState.nameUpdated = true;
@@ -395,6 +415,21 @@ router.get(/update-name-handler/, function (req, res) {
     dataState.nameCorrected = true;
   }
   res.redirect('update-name')
+})
+
+//update name
+router.get(/update-name-handler/, function (req, res) {
+  newPerson.nameOneFirst = req.query.firstname;
+  newPerson.nameOneLast = req.query.lastname;
+  res.redirect('check')
+})
+
+//check
+router.get('/update/name/check', function (req, res) {
+  console.log('HERE');
+  res.render('update/name/check', {
+    newPerson : newPerson
+  })
 })
 
 //add name
@@ -410,11 +445,16 @@ router.get(/add-name-handler/, function (req, res) {
   }
 })
 
-//update address
+/*************/
+/** ADDRESS **/
+/*************/
 
 //account2
 router.get('/account2/account', function (req, res) {
   res.render('account2/account.html', {
+    newPerson : newPerson,
+    dataState : dataState,
+    today : dates.todayAsString(),
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
     previousaddress : previousAddress,

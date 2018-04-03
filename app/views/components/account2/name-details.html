@@ -8,7 +8,9 @@
             <!-- ngIf: !data.name.nameDetails -->
             <!-- ngIf: data.name.primaryName -->
             <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
-              MR TOM SMITH
+              
+              LORD {{newPerson.nameOneFirst}} {{newPerson.nameOneLast}}
+              
             </h1><!-- end ngIf: data.name.primaryName -->
           </span>
           <!-- ngIf: !data.person.person[0].birthDateGroup[0] -->
