@@ -92,13 +92,23 @@
       
         <fieldset class="form-group" data-required data-error="Cannot be blank">
           <legend class="visuallyhidden">First name</legend>
-          <label class="form-label" for="nameOneFirst">First name</label>
-          <input class="form-control" id="nameOneFirst" type="text" name="nameOneFirst">
+          {% if data.updateType === "addTypeTwo" %}
+            <label class="form-label" for="nameTwoFirst">First name</label>
+            <input class="form-control" id="nameTwoFirst" type="text" name="nameTwoFirst">
+          {% else %}
+            <label class="form-label" for="nameOneFirst">First name</label>
+            <input class="form-control" id="nameOneFirst" type="text" name="nameOneFirst">
+          {% endif %}
         </fieldset>
         <fieldset class="form-group">
           <legend class="visuallyhidden">Last name</legend>
-          <label class="form-label" for="nameOneLast">Last name</label>
-          <input class="form-control" id="nameOneLast" type="text" name="nameOneLast">
+          {% if data.updateType === "addTypeTwo" %}
+            <label class="form-label" for="nameTwoLast">Last name</label>
+            <input class="form-control" id="nameTwoLast" type="text" name="nameTwoLast">
+          {% else %}
+            <label class="form-label" for="nameOneLast">Last name</label>
+            <input class="form-control" id="nameOneLast" type="text" name="nameOneLast">
+          {% endif %}
         </fieldset>
         
         <fieldset class="form-group">

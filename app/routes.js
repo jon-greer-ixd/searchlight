@@ -12,6 +12,7 @@ var Interest = require('./interest.js');
 
 var defaults = require('./defaults.js').defaults;
 
+
 //***********
 // INTERESTS 
 //***********
@@ -325,24 +326,17 @@ var tempInterest;
 router.use('/', main);
   // Route index page
   router.get('/', function (req, res) { 
-  
-  //PERSON
-//  req.session.data.nameOneFirst = "JAMES";
-//  req.session.data.nameOneLast = "SMITH";
-    
+      
   for (var key in defaults) {
     if (defaults.hasOwnProperty(key)) {
       req.session.data[key] = defaults[key];
     }
   }
     
-    
-    
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
   req.session.data.interests = interests;
     
-  req.session.data.updateType = null;
   req.session.data.dob = "8 Feb 1940";
     
   req.session.data.updateOne = "20 May 1990";
@@ -404,6 +398,15 @@ router.get('/search-v1', function (req, res) {
 /** NAME **/
 /**********/
 
+router.get(/add-handler/, function (req, res) {
+  if(req.session.data.hasNameTwo == true) {
+    req.session.data.updateType = "addRequested";
+    res.redirect('../../update/name/requested-name')
+  } else {
+    res.redirect('../../update/name/add')
+  }
+})
+
 //change name
 router.get(/change-name-handler/, function (req, res) {
   if(req.query.data === "update") {
@@ -415,7 +418,6 @@ router.get(/change-name-handler/, function (req, res) {
   }
   res.redirect('update-name')
 })
-
 
 //add name
 router.get(/add-name-handler/, function (req, res) {
@@ -429,6 +431,17 @@ router.get(/add-name-handler/, function (req, res) {
     res.redirect('update-name')
   }
 })
+
+router.get(/check-name-handler/, function (req, res) {
+  if(req.session.data.updateType === "addTypeTwo") {
+    req.session.data.hasNameTwo = true;
+  }
+  if(req.session.data.updateType === "addRequested") {
+    req.session.data.hasRequestedName = true;
+  }
+  res.redirect('../../account2/account')
+})
+
 
 /*************/
 /** ADDRESS **/

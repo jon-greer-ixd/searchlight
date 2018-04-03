@@ -5,7 +5,9 @@ var defaults = {
   nameTwoFirst : "MICHAEL",
   nameTwoLast : "SMITH JONES BOOTH",
   hasNameTwo : false,
-  hasRequestedName : false
+  hasRequestedName : false,
+  //updaters
+  updateType : null
 };
 
 module.exports.defaults = defaults;
