@@ -10,19 +10,7 @@ var content = require('./content.js').content;
 
 var Interest = require('./interest.js');
 
-var Person = require('./person.js');
-var newPerson = Person.createPerson();
-
-//New person (maintain name)
-var resetNewPerson = function() {
-  newPerson.nameOneFirst = "JAMES";
-  newPerson.nameOneLast = "SMITH";
-  newPerson.nameTwoFirst = "MICHAEL";
-  newPerson.nameTwoLast = "SMITH JONES BOOTH";
-  newPerson.hasNameTwo = false;
-}
-resetNewPerson();
-
+var defaults = require('./defaults.js').defaults;
 
 //***********
 // INTERESTS 
@@ -333,11 +321,22 @@ router.get('/search-v2', function (req, res) {
 
 var tempInterest;
 
+
 router.use('/', main);
-// Route index page
+  // Route index page
   router.get('/', function (req, res) { 
+  
+  //PERSON
+//  req.session.data.nameOneFirst = "JAMES";
+//  req.session.data.nameOneLast = "SMITH";
     
-  resetNewPerson();
+  for (var key in defaults) {
+    if (defaults.hasOwnProperty(key)) {
+      req.session.data[key] = defaults[key];
+    }
+  }
+    
+    
     
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
@@ -417,20 +416,6 @@ router.get(/change-name-handler/, function (req, res) {
   res.redirect('update-name')
 })
 
-//update name
-router.get(/update-name-handler/, function (req, res) {
-  newPerson.nameOneFirst = req.query.firstname;
-  newPerson.nameOneLast = req.query.lastname;
-  res.redirect('check')
-})
-
-//check
-router.get('/update/name/check', function (req, res) {
-  console.log('HERE');
-  res.render('update/name/check', {
-    newPerson : newPerson
-  })
-})
 
 //add name
 router.get(/add-name-handler/, function (req, res) {
@@ -452,7 +437,6 @@ router.get(/add-name-handler/, function (req, res) {
 //account2
 router.get('/account2/account', function (req, res) {
   res.render('account2/account.html', {
-    newPerson : newPerson,
     dataState : dataState,
     today : dates.todayAsString(),
     residentialaddress : residentialAddress,
@@ -1719,3 +1703,5 @@ router.get('/nino/2/task-list/', function (req, res) {
 })
 
 module.exports = router
+
+//1714
