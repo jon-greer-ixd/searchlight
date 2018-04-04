@@ -6,8 +6,11 @@ var defaults = {
   nameTwoLast : "SMITH JONES BOOTH",
   hasNameTwo : false,
   hasRequestedName : false,
+  requestedName : "JIMBOB",
   //updaters
-  updateType : null
+  updateType : null,
+  nameUpdated : false,
+  nameCorrected : false
 };
 
 module.exports.defaults = defaults;

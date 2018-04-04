@@ -295,8 +295,6 @@ var dataState = {
   dateIsUpdated : false,
   interestAdded : false,
   interestRemoved : false,
-  nameUpdated : false,
-  nameCorrected : false,
   typeTwoAdded : false,
   nameAdded : false,
   interestTransfered : false,
@@ -402,6 +400,9 @@ router.get(/add-handler/, function (req, res) {
   if(req.session.data.hasNameTwo == true) {
     req.session.data.updateType = "addRequested";
     res.redirect('../../update/name/requested-name')
+  } else if(req.session.data.hasRequestedName == true) {
+    req.session.data.updateType = "addTypeTwo";
+    res.redirect('../../update/name/update-name')
   } else {
     res.redirect('../../update/name/add')
   }
@@ -411,10 +412,8 @@ router.get(/add-handler/, function (req, res) {
 router.get(/change-name-handler/, function (req, res) {
   if(req.query.data === "update") {
      req.session.data.updateType = "updateName"
-    dataState.nameUpdated = true;
   } else {
      req.session.data.updateType = "correctName"
-    dataState.nameCorrected = true;
   }
   res.redirect('update-name')
 })
@@ -435,10 +434,14 @@ router.get(/add-name-handler/, function (req, res) {
 router.get(/check-name-handler/, function (req, res) {
   if(req.session.data.updateType === "addTypeTwo") {
     req.session.data.hasNameTwo = true;
-  }
-  if(req.session.data.updateType === "addRequested") {
+  } else if(req.session.data.updateType === "addRequested") {
     req.session.data.hasRequestedName = true;
+  } else if(req.session.data.updateType === "updateName") {
+    req.session.data.nameUpdated = true;
+  } else if(req.session.data.updateType === "correctName") {
+    req.session.data.nameCorrected = true;
   }
+  console.log(req.session.data);
   res.redirect('../../account2/account')
 })
 
@@ -450,6 +453,9 @@ router.get(/check-name-handler/, function (req, res) {
 //account2
 router.get('/account2/account', function (req, res) {
   res.render('account2/account.html', {
+    nameUpdated : req.session.data.nameUpdated,
+    nameCorrected : req.session.data.nameCorrected,
+
     dataState : dataState,
     today : dates.todayAsString(),
     residentialaddress : residentialAddress,
@@ -467,8 +473,6 @@ router.get('/account2/account', function (req, res) {
     interestAdded : dataState.interestAdded,
     interestRemoved : dataState.interestRemoved,
     interestTransfered : dataState.interestTransfered,
-    nameUpdated : dataState.nameUpdated,
-    nameCorrected : dataState.nameCorrected,
     typeTwoAdded : dataState.typeTwoAdded,
     nameAdded : dataState.nameCorrected,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
@@ -481,6 +485,8 @@ router.get('/account2/account', function (req, res) {
 //account
 router.get('/update/account', function (req, res) {
   res.render('update/account.html', {
+    nameUpdated : req.session.data.nameUpdated,
+    nameCorrected : req.session.data.nameCorrected,
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
     previousaddress : previousAddress,
@@ -495,8 +501,6 @@ router.get('/update/account', function (req, res) {
     dateisupdated : dataState.dateIsUpdated,
     interestAdded : dataState.interestAdded,
     interestRemoved : dataState.interestRemoved,
-    nameUpdated : dataState.nameUpdated,
-    nameCorrected : dataState.nameCorrected,
     typeTwoAdded : dataState.typeTwoAdded,
     interestTransfered : dataState.interestTransfered,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
