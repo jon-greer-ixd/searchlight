@@ -8,8 +8,13 @@
             <!-- ngIf: !data.name.nameDetails -->
             <!-- ngIf: data.name.primaryName -->
             <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
-              
-              LORD {{newPerson.nameOneFirst}} {{newPerson.nameOneLast}}
+              {% if data.hasRequestedName %}
+                {{data.requestedName}}
+              {% elif data.hasNameTwo %}
+                LORD {{data.nameTwoFirst}} {{data.nameTwoLast}}
+              {% else %}
+                LORD {{data.nameOneFirst}} {{data.nameOneLast}}
+              {% endif %}
               
             </h1><!-- end ngIf: data.name.primaryName -->
           </span>

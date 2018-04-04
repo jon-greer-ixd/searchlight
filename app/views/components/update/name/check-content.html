@@ -6,7 +6,7 @@
           {% if data['updateType'] == "addRequested" %}
             <tr>
               <td><span class="strong">Requested name</span></td>
-              <td>Lord Smith</td>
+              <td>{{data.requestedName}}</td>
               <td><a>Change</a></td>
             </tr>
             <tr>
@@ -22,12 +22,20 @@
             </tr>
             <tr>
               <td><span class="strong">First name</span></td>
-              <td>{{newPerson.nameOneFirst}}</td>
+              {% if data.updateType === "addTypeTwo" %}
+                <td>{{data.nameTwoFirst}}</td>
+              {% else %}
+                <td>{{data.nameOneFirst}}</td>
+              {% endif %}
               <td><a>Change</a></td>
             </tr>
             <tr>
               <td><span class="strong">Last name</span></td>
-              <td>{{newPerson.nameOneLast}}</td>
+              {% if data.updateType === "addTypeTwo" %}
+                <td>{{data.nameTwoLast}}</td>
+              {% else %}
+                <td>{{data.nameOneLast}}</td>
+              {% endif %}
               <td><a>Change</a></td>
             </tr>
             <tr>
@@ -50,7 +58,7 @@
          {% endif %}
       </table>
       <br>
-      <form method="get" action="./../../account2/account">
+      <form method="get" action="check-name-handler">
         <div class="form-group">
           <input class="button" type="submit" value="Submit">
         </div>

@@ -10,27 +10,46 @@
       </ul>
     </div>
     <div class="column-one-third">
+      {% if data.hasRequestedName == true %}
+        <ul class="first-data-item">
+          <li class="strong">
+            {{data.requestedName}}
+          </li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Requested name&nbsp; · &nbsp;since today
+          </li>
+        </ul> 
+      {% endif %}
+      {% if data.hasNameTwo == true %}
+        <ul class="first-data-item">
+          <li class="strong">
+            LORD {{data.nameTwoFirst}} {{data.nameTwoLast}}
+          </li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Name type 2&nbsp; · &nbsp;since today
+          </li>
+        </ul> 
+      {% endif %}
       <ul>
         <li class="strong">
-          LORD {{newPerson.nameOneFirst}} {{newPerson.nameOneLast}}
+          LORD {{data.nameOneFirst}} {{data.nameOneLast}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
                     
-          {% if newPerson.hasNameTwo == true %}
-            Name type 1  •  since
+          {% if data.hasNameTwo == true %}
+            Name type 1&nbsp; · &nbsp;since
           {% else %}
             Since
           {% endif %}
           
-          {% if dataState.nameUpdated == true %}
+          {% if data.nameUpdated == true %}
             today
           {% else %}
             15 Dec 2000
           {% endif %}
           
-          
         </li>
-      </ul>  
+      </ul> 
       <br>
     </div>
     <div class="column-one-third last-col">
@@ -43,12 +62,25 @@
 -->
         </li>
         <li>
-          <a class="secondary-link" href="../../update/name/add">Add</a>
-          <span class="pipe"> | </span> 
-          <a class="secondary-link" href="../../update/name/update">Change</a>
-        </li>
-        <li>
-         
+          <ul class="sub-menu">
+            {% if data.hasNameTwo === true and data.hasRequestedName === true %}
+            
+            {% else %}
+              <li>
+                <form class="dumbform" method="get" action="add-handler">
+                  <div class="form-group">
+                    <input type="submit" class="under-link" value="Add">
+                  </div>
+                </form>
+              </li>
+              <li>
+                <span class="pipe"> | </span> 
+              </li>
+            {% endif %}
+            <li>
+              <a class="secondary-link" href="../../update/name/update">Change</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
