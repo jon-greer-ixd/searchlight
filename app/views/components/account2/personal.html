@@ -1,17 +1,49 @@
 <div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
   <h2>Personal details</h2>
   <div class="sl-primary-card sl-personal-details-card">
-<div class="personal-details">
-  
-  <div class="grid-row">
-    <div class="column-one-third">
-      <ul>
-        <li>Name</li>
-      </ul>
-    </div>
-    <div class="column-one-third">
-      {% if data.hasRequestedName == true %}
-        <ul class="first-data-item">
+
+    <div class="personal-details">
+
+      {% if data.hasNameTwo === true and data.hasRequestedName === true %}
+      {% else %}
+        <div class="grid-row">
+          <div class="column-one-third">
+            <ul>
+              {% if data.hasNameTwo === false and data.hasRequestedName === false %}
+                <li>Requested name and name type 2</li>
+              {% elif data.hasNameTwo === true and data.hasRequestedName === false  %}
+                <li>Requested name</li>
+              {% elif data.hasNameTwo === false and data.hasRequestedName === true  %}
+                <li>Name type 2</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="column-one-third">
+            &nbsp;
+          </div>
+          <div class="column-one-third last-col">
+            <ul class="sub-menu">
+              <li style="font-size:17px;">
+                <form class="dumbform" method="get" action="add-handler">
+                  <input type="submit" class="under-link" value="Add">
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="light">
+      {% endif %}
+      
+  <!-- REQUESTED NAME-->
+  {% if data.hasRequestedName == true %}
+    <div class="grid-row names">
+      <div class="column-one-third">
+        <ul>
+          <li>Name</li>
+        </ul>
+      </div>
+      <div class="column-one-third">
+        <ul class="">
           <li class="strong">
             {{data.requestedName}}
           </li>
@@ -19,9 +51,38 @@
             Requested name&nbsp; · &nbsp;since today
           </li>
         </ul> 
-      {% endif %}
-      {% if data.hasNameTwo == true %}
-        <ul class="first-data-item">
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+          </li>
+          <li>
+            <a class="secondary-link" href="../../update/name/update">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-row names">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-two-thirds">
+        <hr class="light">
+      </div>
+    </div>
+  {% endif %}
+  
+  <!-- NAME 2 -->
+  {% if data.hasNameTwo == true %}
+    <div class="grid-row names">
+      <div class="column-one-third">
+        <ul>
+          <li>&nbsp;</li>
+        </ul>
+      </div>
+      <div class="column-one-third">
+        <ul class="">
           <li class="strong">
             LORD {{data.nameTwoFirst}} {{data.nameTwoLast}}
           </li>
@@ -29,13 +90,45 @@
             Name type 2&nbsp; · &nbsp;since today
           </li>
         </ul> 
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+          </li>
+          <li>
+            <a class="secondary-link" href="../../update/name/update">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-row names">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-two-thirds">
+        <hr class="light">
+      </div>
+    </div>
+  {% endif %}
+  
+  <!-- NAME 1 -->
+  <div class="grid-row names">
+    <div class="column-one-third">
+      <ul>
+      {% if data.hasRequestedName == false and data.hasNameTwo == false %}
+        <li>Name</li>
+      {% else %}
+        <li>&nbsp;</li>
       {% endif %}
+      </ul>
+    </div>
+    <div class="column-one-third">
       <ul>
         <li class="strong">
           LORD {{data.nameOneFirst}} {{data.nameOneLast}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
-                    
           {% if data.hasNameTwo == true %}
             Name type 1&nbsp; · &nbsp;since
           {% else %}
@@ -47,76 +140,21 @@
           {% else %}
             15 Dec 2000
           {% endif %}
-          
         </li>
       </ul> 
-      <br>
     </div>
     <div class="column-one-third last-col">
       <ul class="edit-menu">
         <li>
           <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
-<!--
-          <span class="pipe"> | </span> 
-          <a href="previous-names" class="under-link">View history</a>
--->
         </li>
         <li>
-          <ul class="sub-menu">
-            {% if data.hasNameTwo === true and data.hasRequestedName === true %}
-            
-            {% else %}
-              <li>
-                <form class="dumbform" method="get" action="add-handler">
-                  <div class="form-group">
-                    <input type="submit" class="under-link" value="Add">
-                  </div>
-                </form>
-              </li>
-              <li>
-                <span class="pipe"> | </span> 
-              </li>
-            {% endif %}
-            <li>
-              <a class="secondary-link" href="../../update/name/update">Change</a>
-            </li>
-          </ul>
+          <a class="secondary-link" href="../../update/name/update">Change</a>
         </li>
       </ul>
     </div>
   </div>
     
-<!--
-  <hr class="light">
-  
-  <div class="grid-row">
-    
-    <div class="column-one-third">
-      <ul>
-        <li>Name type 2</li>
-      </ul>
-    </div>
-    
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">MR TOM SMITH</li>
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
-        </li>
-      </ul>
-    </div>
-    
-    <div class="column-one-third last-col">
-      
-      <ul class="edit-menu">
-        <li>
-          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-        </li>
-      </ul>
-    </div>
-  </div>
--->
-  
   <hr class="light">
       
   <div class="grid-row">

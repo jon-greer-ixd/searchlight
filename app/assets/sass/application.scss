@@ -284,6 +284,9 @@ form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-la
       margin: -4px 4px 0 0;
     }
   }
+  .names {
+    margin-bottom: 0!important;
+  }
 }
 
 #trace { 
@@ -1068,7 +1071,7 @@ hr.light {
 }
 
 .first-data-item {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .sub-menu {
