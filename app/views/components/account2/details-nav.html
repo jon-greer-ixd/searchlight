@@ -29,15 +29,50 @@
     {% if interestTransfered === true %}
       {% include "components/update/toasters/interest-transfered.html" %}
     {% endif %}
+    
+    <!-- names -->
 
-    {% if data.nameUpdated === true %}
-      {% include "components/update/toasters/name-updated.html" %}
+    {% if data.nameOneUpdated === true %}
+      {% include "components/update/toasters/name-one-updated.html" %}
+    {% endif %}
+        
+    {% if data.nameOneCorrected === true %}
+      {% include "components/update/toasters/name-one-corrected.html" %}
+    {% endif %}
+    
+    {% if data.nameTwoAdded === true %}
+      {% include "components/update/toasters/name-two-added.html" %}
+    {% endif %}
+    
+    {% if data.nameTwoUpdated === true %}
+      {% include "components/update/toasters/name-two-updated.html" %}
+    {% endif %}
+    
+    {% if data.nameTwoCorrected === true %}
+      {% include "components/update/toasters/name-two-corrected.html" %}
+    {% endif %}
+    
+    {% if data.nameTwoRemoved === true %}
+      {% include "components/update/toasters/name-two-removed.html" %}
+    {% endif %}
+    
+    {% if data.requestedNameAdded === true %}
+      {% include "components/update/toasters/requested-name-added.html" %}
+    {% endif %}
+        
+    {% if data.requestedNameUpdated === true %}
+      {% include "components/update/toasters/requested-name-updated.html" %}
+    {% endif %}
+    
+    {% if data.requestedNameCorrected === true %}
+      {% include "components/update/toasters/requested-name-corrected.html" %}
     {% endif %}
 
-    {% if data.nameCorrected === true %}
-      {% include "components/update/toasters/name-corrected.html" %}
+    {% if data.requestedNameRemoved === true %}
+      {% include "components/update/toasters/requested-name-removed.html" %}
     {% endif %}
 
+    
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" id="live" class="sl-primary-name-container-placeholder ng-scope">
       <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">

@@ -257,8 +257,11 @@ form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-la
     left: 1155px;
   }
   position: absolute;
-  left: 900px;
+  left: 1184px;
   z-index: 5000;
+  .alert-info {
+    color: #000000;
+  }
 }
 
 #sl-account-primary-name {

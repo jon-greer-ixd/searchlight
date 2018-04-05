@@ -9,9 +9,16 @@ var defaults = {
   requestedName : "JIMBOB",
   //updaters
   updateType : null,
-  nameUpdated : false,
-  nameCorrected : false
+  nameOneUpdated : false,
+  nameOneCorrected : false,
+  nameTwoAdded : false,
+  nameTwoUpdated : false,
+  nameTwoCorrected : false,
+  nameTwoRemoved : false,
+  requestedNameAdded : false,
+  requestedNameUpdated : false,
+  requestedNameCorrected : false,
+  requestedNameRemoved : false
 };
 
 module.exports.defaults = defaults;
-

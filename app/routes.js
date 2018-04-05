@@ -410,7 +410,7 @@ router.get(/change-type-handler/, function (req, res) {
 
 router.get(/add-handler/, function (req, res) {
   if(req.session.data.hasNameTwo == true) {
-    req.session.data.updateType = "addRequested";
+    req.session.data.updateType = "addRequestedName";
     res.redirect('../../update/name/requested-name')
   } else if(req.session.data.hasRequestedName == true) {
     req.session.data.updateType = "addNameTwo";
@@ -426,7 +426,7 @@ router.get(/change-name-handler/, function (req, res) {
   if(req.query.data === "update") {
     if(req.session.data.updateType == "changeRequested") {
       nextPage = 'requested-name';
-      req.session.data.updateType = "updateRequested";
+      req.session.data.updateType = "updateRequestedName";
     } else if (req.session.data.updateType == "changeNameTwo") {
       req.session.data.updateType = "updateNameTwo";
     } else if (req.session.data.updateType == "changeNameOne") {
@@ -434,7 +434,7 @@ router.get(/change-name-handler/, function (req, res) {
     }
   } else if (req.query.data === "correct") {
     if(req.session.data.updateType == "changeRequested") {
-      req.session.data.updateType = "correctRequested";
+      req.session.data.updateType = "correctRequestedName";
       nextPage = 'requested-name';
     } else if (req.session.data.updateType == "changeNameTwo") {
       req.session.data.updateType = "correctNameTwo";
@@ -446,7 +446,7 @@ router.get(/change-name-handler/, function (req, res) {
     if(req.session.data.updateType == "changeNameTwo") {
       req.session.data.updateType = "removeNameTwo";
     } else {
-      req.session.data.updateType = "removeRequested";
+      req.session.data.updateType = "removeRequestedName";
     }
   }
   console.log(req.session.data.updateType);
@@ -456,7 +456,7 @@ router.get(/change-name-handler/, function (req, res) {
 //add name
 router.get(/add-name-handler/, function (req, res) {
   if(req.query.data === "requested") {
-    req.session.data.updateType = "addRequested"
+    req.session.data.updateType = "addRequestedName"
     dataState.nameAdded = true;
     res.redirect('requested-name')
   } else {
@@ -467,18 +467,30 @@ router.get(/add-name-handler/, function (req, res) {
 })
 
 router.get(/check-name-handler/, function (req, res) {
-  if(req.session.data.updateType === "addNameTwo") {
+  if(req.session.data.updateType === "updateNameOne") {
+    req.session.data.nameOneUpdated = true;
+  } else if(req.session.data.updateType === "correctNameOne") {
+    req.session.data.nameOneCorrected = true;
+  } else if(req.session.data.updateType === "addNameTwo") {
     req.session.data.hasNameTwo = true;
-  } else if(req.session.data.updateType === "addRequested") {
-    req.session.data.hasRequestedName = true;
-  } else if(req.session.data.updateType === "updateName") {
-    req.session.data.nameUpdated = true;
-  } else if(req.session.data.updateType === "correctName") {
-    req.session.data.nameCorrected = true;
-  } else if(req.session.data.updateType === "removeRequested") {
-    req.session.data.hasRequestedName = false;
+    req.session.data.nameTwoAdded = true;
+  } else if(req.session.data.updateType === "updateNameTwo") {
+    req.session.data.nameTwoUpdated = true;
+  } else if(req.session.data.updateType === "correctNameTwo") {
+    req.session.data.nameTwoCorrected = true;
   } else if(req.session.data.updateType === "removeNameTwo") {
     req.session.data.hasNameTwo = false;
+    req.session.data.nameTwoRemoved = true;
+  } else if(req.session.data.updateType === "addRequestedName") {
+    req.session.data.hasRequestedName = true;
+    req.session.data.requestedNameAdded = true;
+  } else if(req.session.data.updateType === "updateRequestedName") {
+    req.session.data.requestedNameUpdated = true;
+  } else if(req.session.data.updateType === "correctRequestedName") {
+    req.session.data.requestedNameCorrected = true;
+  } else if(req.session.data.updateType === "removeRequestedName") {
+    req.session.data.hasRequestedName = false;
+    req.session.data.requestedNameRemoved = true;
   }
   console.log(req.session.data);
   res.redirect('../../account2/account')
@@ -492,8 +504,8 @@ router.get(/check-name-handler/, function (req, res) {
 //account2
 router.get('/account2/account', function (req, res) {
   res.render('account2/account.html', {
-    nameUpdated : req.session.data.nameUpdated,
-    nameCorrected : req.session.data.nameCorrected,
+    nameOneUpdated : req.session.data.nameOneUpdated,
+    nameOneCorrected : req.session.data.nameOneCorrected,
 
     dataState : dataState,
     today : dates.todayAsString(),
@@ -513,7 +525,7 @@ router.get('/account2/account', function (req, res) {
     interestRemoved : dataState.interestRemoved,
     interestTransfered : dataState.interestTransfered,
     typeTwoAdded : dataState.typeTwoAdded,
-    nameAdded : dataState.nameCorrected,
+    nameAdded : dataState.nameOneCorrected,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
@@ -524,8 +536,8 @@ router.get('/account2/account', function (req, res) {
 //account
 router.get('/update/account', function (req, res) {
   res.render('update/account.html', {
-    nameUpdated : req.session.data.nameUpdated,
-    nameCorrected : req.session.data.nameCorrected,
+    nameOneUpdated : req.session.data.nameOneUpdated,
+    nameOneCorrected : req.session.data.nameOneCorrected,
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
     previousaddress : previousAddress,

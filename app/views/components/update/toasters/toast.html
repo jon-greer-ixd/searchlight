@@ -5,7 +5,11 @@
         <li class="ng-toast__message " ng-mouseenter="onMouseEnter()" ng-mouseleave="onMouseLeave()" ng-repeat="message in messages" message="message" count="message.count" data-message-id="32"><div class="alert alert-info alert-dismissible" ng-class="{'alert-dismissible': message.dismissButton}"><!-- ngIf: message.dismissButton --><!-- end ngIf: message.dismissButton --><!-- ngIf: count --><!-- ngIf: !message.compileContent -->
           <span ng-if="!message.compileContent" ng-transclude="" class="ng-scope">
             <span ng-bind-html="message.content" class="ng-binding ng-scope">
-              <span>Name type 1 has been corrected.</span>
+              <span>
+                {% block message %}
+                  
+                {% endblock %}
+              </span>
 <!--              <a href="#" class="sl-hyperlink underline sl-toastr-superseding ng-scope" ng-click="slAccountClick('SY829758F')" id="sl-toastr-superseding-link">View superseding record</a>-->
             </span>
           </span>
