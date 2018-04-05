@@ -3,6 +3,21 @@
       <div class="column-one-half">
         
         <table class="table"> 
+          {% if data['updateType'] == "removeRequested" or data['updateType'] == "removeNameTwo" %}
+            <tr>
+              <td><span class="strong">End date</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            {% if data['updateType'] == "addRequested" or data['updateType'] == "updateRequested" %}
+              <tr>
+                <td><span class="strong">Start date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% endif %}
+          
           {% if data['updateType'] == "addRequested" or data['updateType'] == "correctRequested" or data['updateType'] == "updateRequested" %}
             <tr>
               <td><span class="strong">Requested name</span></td>

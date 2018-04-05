@@ -441,6 +441,13 @@ router.get(/change-name-handler/, function (req, res) {
     } else if (req.session.data.updateType == "changeNameOne") {
       req.session.data.updateType = "correctNameOne";
     }
+  } else if (req.query.data === "remove") {
+    nextPage = "remove"
+    if(req.session.data.updateType == "changeNameTwo") {
+      req.session.data.updateType = "removeNameTwo";
+    } else {
+      req.session.data.updateType = "removeRequested";
+    }
   }
   console.log(req.session.data.updateType);
   res.redirect(nextPage)
@@ -468,6 +475,10 @@ router.get(/check-name-handler/, function (req, res) {
     req.session.data.nameUpdated = true;
   } else if(req.session.data.updateType === "correctName") {
     req.session.data.nameCorrected = true;
+  } else if(req.session.data.updateType === "removeRequested") {
+    req.session.data.hasRequestedName = false;
+  } else if(req.session.data.updateType === "removeNameTwo") {
+    req.session.data.hasNameTwo = false;
   }
   console.log(req.session.data);
   res.redirect('../../account2/account')
