@@ -92,7 +92,7 @@
       
         <fieldset class="form-group" data-required data-error="Cannot be blank">
           <legend class="visuallyhidden">First name</legend>
-          {% if data.updateType === "addTypeTwo" %}
+          {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
             <label class="form-label" for="nameTwoFirst">First name</label>
             <input class="form-control" id="nameTwoFirst" type="text" name="nameTwoFirst">
           {% else %}
@@ -102,7 +102,7 @@
         </fieldset>
         <fieldset class="form-group">
           <legend class="visuallyhidden">Last name</legend>
-          {% if data.updateType === "addTypeTwo" %}
+          {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
             <label class="form-label" for="nameTwoLast">Last name</label>
             <input class="form-control" id="nameTwoLast" type="text" name="nameTwoLast">
           {% else %}
@@ -117,7 +117,7 @@
           <input class="form-control" id="postcode" type="text" name="postcode">
         </fieldset>
       
-          {% if data['updateType'] == "updateName" or data['updateType'] == "addRequested" or data['updateType'] == "addTypeTwo" %}
+          {% if data['updateType'] == "updateName" or data['updateType'] == "addRequested" or data['updateType'] == "addNameTwo" or data['updateType'] == "updateNameTwo" %}
           <fieldset class="form-group">
             <legend class="visuallyhidden">Start date</legend>
             <label class="form-label" for="postcode">

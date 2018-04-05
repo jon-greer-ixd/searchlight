@@ -4,20 +4,20 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.updateType == 'updateName' %}
+          {% if data.updateType == 'updateNameOne' %}
             <h2>Update name type 1</h2>
-          {% elif data.updateType == 'correctName' %}
+          {% elif data.updateType == 'correctNameOne' %}
             <h2>Correct name type 1</h2>
-          {% elif data.updateType == 'addRequested' %}
-            <h2>Add a requested name</h2>
-          {% elif data.updateType == 'addTypeTwo' %}
-            <h2>Add a name type 2</h2>
+          {% elif data.updateType == 'addNameTwo' %}
+            <h2>Add name type 2</h2>
+          {% elif data.updateType == 'updateNameTwo' %}
+            <h2>Update name type 2</h2>
+          {% elif data.updateType == 'correctNameTwo' %}
+            <h2>Correct name type 2</h2>
           {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
-              
-                {% include "components/update/name/update-name-content.html" %}
-              
+              {% include "components/update/name/update-name-content.html" %}
           </div>
         </div>
       </div>

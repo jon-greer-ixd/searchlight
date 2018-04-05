@@ -34,382 +34,247 @@
         <hr class="light">
       {% endif %}
       
-  <!-- REQUESTED NAME-->
-  {% if data.hasRequestedName == true %}
-    <div class="grid-row names">
-      <div class="column-one-third">
-        <ul>
-          <li>Name</li>
-        </ul>
-      </div>
-      <div class="column-one-third">
-        <ul class="">
-          <li class="strong">
-            {{data.requestedName}}
-          </li>
-          <li class="sl-secondary-text-color sl-metadata">
-            Requested name&nbsp; · &nbsp;since today
-          </li>
-        </ul> 
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
-          </li>
-          <li>
-            <a class="secondary-link" href="../../update/name/update">Change</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="grid-row names">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="light">
-      </div>
-    </div>
-  {% endif %}
-  
-  <!-- NAME 2 -->
-  {% if data.hasNameTwo == true %}
-    <div class="grid-row names">
-      <div class="column-one-third">
-        <ul>
-          <li>&nbsp;</li>
-        </ul>
-      </div>
-      <div class="column-one-third">
-        <ul class="">
-          <li class="strong">
-            LORD {{data.nameTwoFirst}} {{data.nameTwoLast}}
-          </li>
-          <li class="sl-secondary-text-color sl-metadata">
-            Name type 2&nbsp; · &nbsp;since today
-          </li>
-        </ul> 
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
-          </li>
-          <li>
-            <a class="secondary-link" href="../../update/name/update">Change</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="grid-row names">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="light">
-      </div>
-    </div>
-  {% endif %}
-  
-  <!-- NAME 1 -->
-  <div class="grid-row names">
-    <div class="column-one-third">
-      <ul>
-      {% if data.hasRequestedName == false and data.hasNameTwo == false %}
-        <li>Name</li>
-      {% else %}
-        <li>&nbsp;</li>
+      <!-- REQUESTED NAME-->
+      {% if data.hasRequestedName == true %}
+        <div class="grid-row names">
+          <div class="column-one-third">
+            <ul>
+              <li>Name</li>
+            </ul>
+          </div>
+          <div class="column-one-third">
+            <ul class="">
+              <li class="strong">
+                {{data.requestedName}}
+              </li>
+              <li class="sl-secondary-text-color sl-metadata">
+                Requested name&nbsp; · &nbsp;since today
+              </li>
+            </ul> 
+          </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+              </li>
+              <li style="font-size:17px;">
+                <form class="dumbform" method="get" action="change-type-handler">
+                  <input class="visually-hidden" type="text" value="three" id="name" name="name">
+                  <input type="submit" class="under-link" value="Change">
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid-row names">
+          <div class="column-one-third">
+            &nbsp;
+          </div>
+          <div class="column-two-thirds">
+            <hr class="light">
+          </div>
+        </div>
       {% endif %}
-      </ul>
-    </div>
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">
-          LORD {{data.nameOneFirst}} {{data.nameOneLast}}
-        </li>
-        <li class="sl-secondary-text-color sl-metadata">
-          {% if data.hasNameTwo == true %}
-            Name type 1&nbsp; · &nbsp;since
+  
+      <!-- NAME 2 -->
+      {% if data.hasNameTwo == true %}
+        <div class="grid-row names">
+          <div class="column-one-third">
+            <ul>
+              <li>&nbsp;</li>
+            </ul>
+          </div>
+          <div class="column-one-third">
+            <ul class="">
+              <li class="strong">
+                LORD {{data.nameTwoFirst}} {{data.nameTwoLast}}
+              </li>
+              <li class="sl-secondary-text-color sl-metadata">
+                Name type 2&nbsp; · &nbsp;since today
+              </li>
+            </ul> 
+          </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+              </li>
+              <li style="font-size:17px;">
+                <form class="dumbform" method="get" action="change-type-handler">
+                  <input class="visually-hidden" type="text" value="two" id="name" name="name">
+                  <input type="submit" class="under-link" value="Change">
+                </form>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid-row names">
+          <div class="column-one-third">
+            &nbsp;
+          </div>
+          <div class="column-two-thirds">
+            <hr class="light">
+          </div>
+        </div>
+      {% endif %}
+  
+      <!-- NAME 1 -->
+      <div class="grid-row names">
+        <div class="column-one-third">
+          <ul>
+          {% if data.hasRequestedName == false and data.hasNameTwo == false %}
+            <li>Name</li>
           {% else %}
-            Since
+            <li>&nbsp;</li>
           {% endif %}
-          
-          {% if data.nameUpdated == true %}
-            today
-          {% else %}
-            15 Dec 2000
-          {% endif %}
-        </li>
-      </ul> 
-    </div>
-    <div class="column-one-third last-col">
-      <ul class="edit-menu">
-        <li>
-          <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
-        </li>
-        <li>
-          <a class="secondary-link" href="../../update/name/update">Change</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-    
-  <hr class="light">
-      
-  <div class="grid-row">
-    
-    <div class="column-one-third">
-      <p>Date of birth</p>
-    </div>
+          </ul>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">
+              LORD {{data.nameOneFirst}} {{data.nameOneLast}}
+            </li>
+            <li class="sl-secondary-text-color sl-metadata">
+              {% if data.hasNameTwo == true %}
+                Name type 1&nbsp; · &nbsp;since
+              {% else %}
+                Since
+              {% endif %}
 
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">{{data['dob']}}</li>
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 5 Jun 2010
-        </li>
-        <li class="multi-dates">
-          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-          <span class="sl-metadata">Verified to level 2</span>
-        </li>
-<!--
-        <li>
-          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
-        </li>
--->
-      </ul>
-<!--
-            <details>
-        <summary class="update-summary">
-          <span class="summary">
-           Previous dates of birth
-          </span>
-        </summary>
-        <div>
-          <ul class="historic-name">
-            <li class="sl-secondary-text-color oval">
-              <span>10 Feb 1960</span>
+              {% if data.nameUpdated == true %}
+                today
+              {% else %}
+                15 Dec 2000
+              {% endif %}
             </li>
-            <li class="sl-secondary-text-color">
-              <span>9 Mar 1999 – 13 Dec 2016</span>
+          </ul> 
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
             </li>
-            <li class="sl-metadata sl-secondary-text-color spacing-top-sixth ng-binding">
-              <span class=""><a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">9 Mar 1999 – 13 Dec 2016</a></span>
+            <li style="font-size:17px;">
+              <form class="dumbform" method="get" action="change-type-handler">
+                <input class="visually-hidden" type="text" value="one" id="name" name="name">
+                <input type="submit" class="under-link" value="Change">
+              </form>
             </li>
           </ul>
         </div>
-      </details>
--->
+      </div>
+    
+      <hr class="light">
+      
+      <div class="grid-row">
+        <div class="column-one-third">
+          <p>Date of birth</p>
+        </div>
 
-    </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">{{data['dob']}}</li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Since 5 Jun 2010
+            </li>
+            <li class="multi-dates">
+              <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+              <span class="sl-metadata">Verified to level 2</span>
+            </li>
+          </ul>
+        </div>
 
       <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-          <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
-          <span class="pipe"> | </span> 
-<!--          <a href="previous-names" class="under-link">View history</a>-->
-          <a href="birth-history" class="under-link">View history</a>
-        </li>
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-  
-  <hr class="light">
-
-  <!--
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Date of death</p>
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li>28 Mar 1995 (aged 54)</li>
-          <li class="sl-secondary-text-color">Green tick Verified to level 3</li>
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="birth-history" class="under-link">View history</a>
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
         </ul>
       </div>
     </div>
-  -->
-
-  <div class="grid-row">
-
-    <div class="column-one-third">
-      National Insurance number
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">SY119284Z</li>
-        <li>
-          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-          <span class="sl-secondary-text-color sl-metadata">Verified</span>
-        </li>
-<!--
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
-        </li>
--->
-<!--
-        <li>
-          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
-        </li>
--->
-      </ul>
-    </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-         <a href="nino-history" class="under-link">View history</a>
-        </li>
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
-      </ul>
-
-    </div>
-
-
-  </div>
-      
-  <div class="grid-row">
-
-    <div class="column-one-third">
-      Superseding National Insurance number
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li class="strong"><a class="under-link" style="color:#005ea5;">SY119284Z</a></li>
-<!--
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
-        </li>
--->
-<!--
-        <li>
-          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
-        </li>
--->
-      </ul>
-    </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-<!--
-          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-          <span class="pipe"> | </span> 
--->
-<!--          <a href="previous-names" class="under-link">View history</a>-->
-        </li>
-<!--
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
--->
-      </ul>
-
-    </div>
-
-  </div>
-
-<div class="grid-row">
-
-    <div class="column-one-third">
-      National Insurance number status
-    </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">Superseded</li>
-<!--
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
-        </li>
--->
-<!--
-        <li>
-          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
-        </li>
--->
-      </ul>
-    </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-<!--
-          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-          <span class="pipe"> | </span> 
--->
-<!--          <a href="previous-names" class="under-link">View history</a>-->
-        </li>
-<!--
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
--->
-      </ul>
-
-    </div>
-
-  </div>
   
-<div class="grid-row">
+    <hr class="light">
 
-    <div class="column-one-third">
-      National Insurance number usage status
+    <div class="grid-row">
+      <div class="column-one-third">
+        National Insurance number
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">SY119284Z</li>
+          <li>
+            <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+            <span class="sl-secondary-text-color sl-metadata">Verified</span>
+          </li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+           <a href="nino-history" class="under-link">View history</a>
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+      </div>
     </div>
-
-    <div class="column-one-third">
-      <ul>
-        <li class="strong">Deleted</li>
-<!--
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 14 Dec 2016
-        </li>
--->
-<!--
-        <li>
-          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
-        </li>
--->
-      </ul>
-    </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-        <li>
-<!--
-          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-          <span class="pipe"> | </span> 
--->
-<!--          <a href="previous-names" class="under-link">View history</a>-->
-        </li>
-<!--
-        <li>
-          <a class="secondary-link" href="">Change</a>
-        </li>
--->
-      </ul>
-
-    </div>
-
-  </div>
       
-<hr class="light">
-  {% include "components/other-personal-details.html" %}
+    <div class="grid-row">
+      <div class="column-one-third">
+        Superseding National Insurance number
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong"><a class="under-link" style="color:#005ea5;">SY119284Z</a></li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+        </ul>
+      </div>
+    </div>
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        National Insurance number status
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">Superseded</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+        </ul>
+      </div>
+    </div>
+  
+    <div class="grid-row">
+      <div class="column-one-third">
+        National Insurance number usage status
+      </div>
 
-<!--
-<hr>
-  {% include "components/personal-details-history.html" %}
--->
-
-
-  {% include "components/modals.html" %}
-
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">Deleted</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+        </ul>
+      </div>
+    </div>
+      
+    <hr class="light">
+      {% include "components/other-personal-details.html" %}
+      
+      {% include "components/modals.html" %}
 
   </div>
 </div>

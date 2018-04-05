@@ -2,19 +2,23 @@
     <div class="grid-row">
       <div class="column-one-half">
         
-        <table class="table">
-          {% if data['updateType'] == "addRequested" %}
+        <table class="table"> 
+          {% if data['updateType'] == "addRequested" or data['updateType'] == "correctRequested" or data['updateType'] == "updateRequested" %}
             <tr>
               <td><span class="strong">Requested name</span></td>
               <td>{{data.requestedName}}</td>
               <td><a>Change</a></td>
             </tr>
-            <tr>
-              <td><span class="strong">Start date</span></td>
-              <td>{{data['prepopulatedDate']}}</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% else %}
+            {% if data['updateType'] == "addRequested" or data['updateType'] == "updateRequested" %}
+              <tr>
+                <td><span class="strong">Start date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% endif %}
+          
+          {% if data['updateType'] == "updateNameOne" or data['updateType'] == "correctNameOne" or data['updateType'] == "addNameTwo" or data['updateType'] == "updateNameTwo" or data['updateType'] == "correctNameTwo" %}
             <tr>
               <td><span class="strong">Title</span></td>
               <td>Mr</td>
@@ -22,7 +26,7 @@
             </tr>
             <tr>
               <td><span class="strong">First name</span></td>
-              {% if data.updateType === "addTypeTwo" %}
+              {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
                 <td>{{data.nameTwoFirst}}</td>
               {% else %}
                 <td>{{data.nameOneFirst}}</td>
@@ -31,7 +35,7 @@
             </tr>
             <tr>
               <td><span class="strong">Last name</span></td>
-              {% if data.updateType === "addTypeTwo" %}
+              {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
                 <td>{{data.nameTwoLast}}</td>
               {% else %}
                 <td>{{data.nameOneLast}}</td>
@@ -43,19 +47,19 @@
               <td>-</td>
               <td><a>Change</a></td>
             </tr>
+            {% if data['updateType'] == "updateNameOne" or data['updateType'] == "addNameTwo" or data['updateType'] == "updateNameTwo"  or data['updateType'] == "addRequested" or data['updateType'] == "updateCorrected" %}
+              <tr>
+                <td><span class="strong">Start date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Notified date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
           {% endif %}
-          {% if data['updateType'] == "updateName" or data['updateType'] == "addTypeTwo" %}
-            <tr>
-              <td><span class="strong">Start date</span></td>
-              <td>{{data['prepopulatedDate']}}</td>
-              <td><a>Change</a></td>
-            </tr>
-            <tr>
-              <td><span class="strong">Notified date</span></td>
-              <td>{{data['prepopulatedDate']}}</td>
-              <td><a>Change</a></td>
-            </tr>
-         {% endif %}
       </table>
       <br>
       <form method="get" action="check-name-handler">

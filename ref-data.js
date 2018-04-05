@@ -5,4 +5,7 @@ updateType
 addTypeTwo
 addRequested
 
+changeNameOne
+changeNameTwo
+changeRequested
 */

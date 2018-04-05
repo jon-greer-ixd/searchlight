@@ -10,56 +10,16 @@
           </p>
         </legend>
       
-        {% if data.hasNameTwo == false and data.hasRequestedName == false %}
-          <div class="form-group">
-            <div class="multiple-choice">
-              <input id="update" type="radio" name="data" value="update">
-              <label for="update">Update</label>
-            </div>
-            <div class="multiple-choice">
-              <input id="correct" type="radio" name="data" value="correct">
-              <label for="correct">Correct a mistake</label>
-            </div>
-          </div> 
-        {% else %}
-          <div class="form-group">
-            <div class="multiple-choice">
-              <input id="update" type="radio" name="data" value="update">
-              <label for="update">Update</label>
-            </div>
-<!--
-            <div class="multiple-choice">
-              <input id="correct" type="radio" name="data" value="correct" data-target="contact-by-email">
-              <label for="correct">Correct a mistake which</label>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
-              <label class="form-label" for="contact-email">Email address</label>
-              <input class="form-control" name="contact-email" type="text" id="contact-email">
-            </div>
--->
-            
-            <div class="multiple-choice" data-target="contact-by-email">
-              <input id="correct" type="radio" name="data" value="correct">
-              <label for="correct">Correct a mistake</label>
-            </div>
-            <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
-              <p>To which name?</p>
-              <div class="multiple-choice">
-                <input id="requested" type="radio" name="correct" value="requested">
-                <label for="requested">Requested name&nbsp; · &nbsp; {{data.requestedName}}</label>
-              </div>
-              <div class="multiple-choice">
-                <input id="nametwo" type="radio" name="correct" value="nametwo">
-                <label for="nametwo">Correct name type 2&nbsp; · &nbsp; {{data.nameTwoFirst}} {{data.nameTwoLast}}</label>
-              </div>
-              <div class="multiple-choice">
-                <input id="nameone" type="radio" name="correct" value="nameone">
-                <label for="nameone">Correct name type 1&nbsp; · &nbsp; {{data.nameOneFirst}} {{data.nameOneLast}}</label>
-              </div>
-            </div>
-            
-          </div> 
-        {% endif %}
+        <div class="form-group">
+          <div class="multiple-choice">
+            <input id="update" type="radio" name="data" value="update">
+            <label for="update">Update</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="correct" type="radio" name="data" value="correct">
+            <label for="correct">Correct a mistake</label>
+          </div>
+        </div> 
       
         <div class="form-group">
           <input class="button" type="submit" value="Next">

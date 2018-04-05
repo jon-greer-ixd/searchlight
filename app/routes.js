@@ -387,7 +387,6 @@ router.get('/search-v1', function (req, res) {
   res.render('pages/search-v1.njk')
 })
 
-
 /************/
 /** UPDATE **/
 /************/
@@ -396,13 +395,25 @@ router.get('/search-v1', function (req, res) {
 /** NAME **/
 /**********/
 
+//change-type-handler
+router.get(/change-type-handler/, function (req, res) {
+  console.log(req.query.name);
+  if (req.query.name === "one") {
+    req.session.data.updateType = "changeNameOne";  
+  } else if (req.query.name === "two") {
+    req.session.data.updateType = "changeNameTwo";  
+  } else { //requested
+    req.session.data.updateType = "changeRequested";  
+  }
+  res.redirect('../update/name/update')
+})
 
 router.get(/add-handler/, function (req, res) {
   if(req.session.data.hasNameTwo == true) {
     req.session.data.updateType = "addRequested";
     res.redirect('../../update/name/requested-name')
   } else if(req.session.data.hasRequestedName == true) {
-    req.session.data.updateType = "addTypeTwo";
+    req.session.data.updateType = "addNameTwo";
     res.redirect('../../update/name/update-name')
   } else {
     res.redirect('../../update/name/add')
@@ -411,12 +422,28 @@ router.get(/add-handler/, function (req, res) {
 
 //change name
 router.get(/change-name-handler/, function (req, res) {
+  var nextPage = "update-name";
   if(req.query.data === "update") {
-     req.session.data.updateType = "updateName"
-  } else {
-     req.session.data.updateType = "correctName"
+    if(req.session.data.updateType == "changeRequested") {
+      nextPage = 'requested-name';
+      req.session.data.updateType = "updateRequested";
+    } else if (req.session.data.updateType == "changeNameTwo") {
+      req.session.data.updateType = "updateNameTwo";
+    } else if (req.session.data.updateType == "changeNameOne") {
+      req.session.data.updateType = "updateNameOne";
+    }
+  } else if (req.query.data === "correct") {
+    if(req.session.data.updateType == "changeRequested") {
+      req.session.data.updateType = "correctRequested";
+      nextPage = 'requested-name';
+    } else if (req.session.data.updateType == "changeNameTwo") {
+      req.session.data.updateType = "correctNameTwo";
+    } else if (req.session.data.updateType == "changeNameOne") {
+      req.session.data.updateType = "correctNameOne";
+    }
   }
-  res.redirect('update-name')
+  console.log(req.session.data.updateType);
+  res.redirect(nextPage)
 })
 
 //add name
@@ -426,14 +453,14 @@ router.get(/add-name-handler/, function (req, res) {
     dataState.nameAdded = true;
     res.redirect('requested-name')
   } else {
-    req.session.data.updateType = "addTypeTwo"
+    req.session.data.updateType = "addNameTwo"
     dataState.typeTwoAdded = true;
     res.redirect('update-name')
   }
 })
 
 router.get(/check-name-handler/, function (req, res) {
-  if(req.session.data.updateType === "addTypeTwo") {
+  if(req.session.data.updateType === "addNameTwo") {
     req.session.data.hasNameTwo = true;
   } else if(req.session.data.updateType === "addRequested") {
     req.session.data.hasRequestedName = true;
