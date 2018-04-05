@@ -21,7 +21,7 @@
           {% if data['updateType'] == "addRequestedName" or data['updateType'] == "correctRequestedName" or data['updateType'] == "updateRequestedName" %}
             <tr>
               <td><span class="strong">Requested name</span></td>
-              <td>{{data.requestedName}}</td>
+              <td>{{data.requestedName | upper}}</td>
               <td><a>Change</a></td>
             </tr>
             {% if data['updateType'] == "addRequestedName" or data['updateType'] == "updateRequestedName" %}
@@ -42,18 +42,18 @@
             <tr>
               <td><span class="strong">First name</span></td>
               {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
-                <td>{{data.nameTwoFirst}}</td>
+                <td>{{data.nameTwoFirst | upper}}</td>
               {% else %}
-                <td>{{data.nameOneFirst}}</td>
+                <td>{{data.nameOneFirst | upper}}</td>
               {% endif %}
               <td><a>Change</a></td>
             </tr>
             <tr>
               <td><span class="strong">Last name</span></td>
               {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
-                <td>{{data.nameTwoLast}}</td>
+                <td>{{data.nameTwoLast | upper}}</td>
               {% else %}
-                <td>{{data.nameOneLast}}</td>
+                <td>{{data.nameOneLast | upper}}</td>
               {% endif %}
               <td><a>Change</a></td>
             </tr>
