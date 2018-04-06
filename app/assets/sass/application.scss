@@ -937,7 +937,7 @@ input.short-field {
   padding: 2px 8px;
   border-radius: 5px;
   display: inline-block;
-  font-size: .84em;
+  font-size: 17px;
   vertical-align: 10%;
   margin-right: 10px;
   text-align: center;
@@ -945,6 +945,13 @@ input.short-field {
   &.crl {
     background-color: black;
     padding: 2px 8px 0;
+  }
+  &.clerical {
+    background-color: #f1f1f1;
+    padding: 2px 8px 0;
+    border: 2px solid #939598;
+    color: #333333;
+    font-size: 95%;
   }
 }
 
