@@ -395,21 +395,32 @@ router.get('/search-v1', function (req, res) {
 /** SEX **/
 /*********/
 
+router.get(/sex-adv-handler/, function (req, res) {
+  req.session.data.updateType = "updateGender";
+  res.redirect('/update/sex/update-sex')
+})
+
+router.get(/sex-simple-handler/, function (req, res) {
+  req.session.data.updateType = "correctSex";
+  res.redirect('/update/sex/check')
+})
+
 router.get('/sex/update', function (req, res) {
+  req.session.data.updateType = "updateGender";
   res.render('update/sex/update')
 })
 
-router.get(/update-sex-handler/, function (req, res) {
-  if (req.query.data === "correct") {
-    req.session.data.updateType = "correctSex";
-    console.log(req.session.data.updateType);
-    res.redirect('/update/sex/check')
-  } else {
-    req.session.data.updateType = "updateGender";
-    console.log(req.session.data.updateType);
-    res.redirect('/update/sex/update-sex')
-  }
-})
+//router.get(/update-sex-handler/, function (req, res) {
+//  if (req.query.data === "correct") {
+//    req.session.data.updateType = "correctSex";
+//    console.log(req.session.data.updateType);
+//    res.redirect('/update/sex/check')
+//  } else {
+//    req.session.data.updateType = "updateGender";
+//    console.log(req.session.data.updateType);
+//    res.redirect('/update/sex/update-sex')
+//  }
+//})
 
 router.get(/check-sex-handler/, function (req, res) {
   if(req.session.data.updateType === "correctSex") {

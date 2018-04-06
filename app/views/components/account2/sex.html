@@ -21,11 +21,50 @@
       <li>
         <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
         <span class="pipe"> | </span> 
-        <a href="../history/sex-history-adv" class="under-link">View history</a>
+        <a href="../history/sex-history" class="under-link">View history</a>
       </li>
       <li>
-        <a class="secondary-link" href="/sex/update">Change</a>
+        <a href="sex-simple-handler" class="under-link" style="font-size:17px;">Correct</a>
       </li>
     </ul>
   </div>
+</div>
+
+<hr class="light">
+
+<div class="grid-row">
+  <div class="column-one-third">
+    <p>Gender</p>
+  </div>
+  {% if data.genderUpdated === false %}
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <a href="sex-adv-handler" class="under-link" style="font-size:17px;">Correct</a>
+      </ul>
+    </div>
+  {% else %}
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">Acquired gender - GRA</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Since today
+        </li>
+      </ul>    
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="../history/sex-history-adv" class="under-link">View history</a>
+        </li>
+        <li>
+          <a href="sex-adv-handler" class="under-link" style="font-size:17px;">Change</a>
+        </li>
+      </ul>
+    </div>
+  {% endif %}
 </div>
