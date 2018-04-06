@@ -1,0 +1,36 @@
+  <h2 class="heading-medium question">Check your answers</h2>
+    <div class="grid-row">
+      <div class="column-one-half">
+        <table class="table"> 
+          {% if data.updateType == 'correctSex' %}  
+            <tr>
+              <td><span class="strong">Sex</span></td>
+              <td>Female</td>
+            </tr>
+          {% else %}
+            <tr>
+              <td><span class="strong">Effective date of gender change</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Notified or decision date</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Gender change reason</span></td>
+              <td>Acquired gender - GRA</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+        </table>
+      <br>
+      <form method="get" action="check-sex-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="../../../account2/account">Cancel</a>
+    </div>
+  </div>

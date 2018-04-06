@@ -30,8 +30,16 @@
       {% include "components/update/toasters/interest-transfered.html" %}
     {% endif %}
     
+    <!-- sex -->
+    {% if data.sexCorrected === true %}
+      {% include "components/update/toasters/sex-corrected.html" %}
+    {% endif %}
+    
+    {% if data.genderUpdated === true %}
+      {% include "components/update/toasters/gender-updated.html" %}
+    {% endif %}
+    
     <!-- names -->
-
     {% if data.nameOneUpdated === true %}
       {% include "components/update/toasters/name-one-updated.html" %}
     {% endif %}

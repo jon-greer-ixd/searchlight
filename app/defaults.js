@@ -18,7 +18,11 @@ var defaults = {
   requestedNameAdded : false,
   requestedNameUpdated : false,
   requestedNameCorrected : false,
-  requestedNameRemoved : false
+  requestedNameRemoved : false,
+  //sex
+  sex : "Male",
+  sexCorrected : false,
+  genderUpdated : false
 };
 
 module.exports.defaults = defaults;

@@ -444,6 +444,22 @@ p.address {
       }
     }
   }
+  &.sex-adv-history {
+    ul {
+      width: auto;
+      li {
+        padding-right: 32px;
+      }
+    }
+  }
+  &.sex-history {
+    ul {
+      width: auto;
+      li {
+        padding-right: 110px;
+      }
+    }
+  }
   &.language {
     ul {
       width: auto;

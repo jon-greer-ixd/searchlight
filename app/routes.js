@@ -391,6 +391,37 @@ router.get('/search-v1', function (req, res) {
 /** UPDATE **/
 /************/
 
+/*********/
+/** SEX **/
+/*********/
+
+router.get('/sex/update', function (req, res) {
+  res.render('update/sex/update')
+})
+
+router.get(/update-sex-handler/, function (req, res) {
+  if (req.query.data === "correct") {
+    req.session.data.updateType = "correctSex";
+    console.log(req.session.data.updateType);
+    res.redirect('/update/sex/check')
+  } else {
+    req.session.data.updateType = "updateGender";
+    console.log(req.session.data.updateType);
+    res.redirect('/update/sex/update-sex')
+  }
+})
+
+router.get(/check-sex-handler/, function (req, res) {
+  if(req.session.data.updateType === "correctSex") {
+    req.session.data.sexCorrected = true;
+  } else {
+    req.session.data.genderUpdated = true;
+  }
+  req.session.data.sex = "Female";
+  res.redirect('../../account2/account')
+})
+
+
 /**********/
 /** NAME **/
 /**********/
