@@ -1,0 +1,161 @@
+  {% if data.hasNameTwo === true and data.hasRequestedName === true %}
+  {% else %}
+    <div class="grid-row">
+      <div class="column-one-third">
+        <ul>
+          {% if data.hasNameTwo === false and data.hasRequestedName === false %}
+            <li>Requested name and name type 2</li>
+          {% elif data.hasNameTwo === true and data.hasRequestedName === false  %}
+            <li>Requested name</li>
+          {% elif data.hasNameTwo === false and data.hasRequestedName === true  %}
+            <li>Name type 2</li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="sub-menu">
+          <li style="font-size:17px;">
+            <form class="dumbform" method="get" action="add-handler">
+              <input type="submit" class="under-link" value="Add">
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="light">
+  {% endif %}
+
+  <!-- REQUESTED NAME-->
+  {% if data.hasRequestedName == true %}
+    <div class="grid-row names">
+      <div class="column-one-third">
+        <ul>
+          <li>Name</li>
+        </ul>
+      </div>
+      <div class="column-one-third">
+        <ul class="">
+          <li class="strong">
+            {{data.requestedName | upper}}
+          </li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Requested name&nbsp; · &nbsp;since today
+          </li>
+        </ul> 
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#requested_name_modal" class="under-link">View maintenance</a> 
+          </li>
+          <li style="font-size:17px;">
+            <form class="dumbform" method="get" action="change-type-handler">
+              <input class="visually-hidden" type="text" value="three" id="name" name="name">
+              <input type="submit" class="under-link" value="Change">
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-row names">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-two-thirds">
+        <hr class="light">
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- NAME 2 -->
+  {% if data.hasNameTwo == true %}
+    <div class="grid-row names">
+      <div class="column-one-third">
+        <ul>
+          <li>&nbsp;</li>
+        </ul>
+      </div>
+      <div class="column-one-third">
+        <ul class="">
+          <li class="strong">
+            LORD {{data.nameTwoFirst | upper}} {{data.nameTwoLast | upper}}
+          </li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Name type 2&nbsp; · &nbsp;since today
+          </li>
+        </ul> 
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_two_modal" class="under-link">View maintenance</a> 
+          </li>
+          <li style="font-size:17px;">
+            <form class="dumbform" method="get" action="change-type-handler">
+              <input class="visually-hidden" type="text" value="two" id="name" name="name">
+              <input type="submit" class="under-link" value="Change">
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid-row names">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-two-thirds">
+        <hr class="light">
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- NAME 1 -->
+  <div class="grid-row names">
+    <div class="column-one-third">
+      <ul>
+      {% if data.hasRequestedName == false and data.hasNameTwo == false %}
+        <li>Name</li>
+      {% else %}
+        <li>&nbsp;</li>
+      {% endif %}
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">
+          LORD {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
+        </li>
+        <li class="sl-secondary-text-color sl-metadata">
+          {% if data.hasNameTwo == true %}
+            Name type 1&nbsp; · &nbsp;since
+          {% else %}
+            Since
+          {% endif %}
+
+          {% if data.nameOneUpdated == true %}
+            today
+          {% else %}
+            15 Dec 2000
+          {% endif %}
+        </li>
+      </ul> 
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#name_one_modal" class="under-link">View maintenance</a> 
+        </li>
+        <li style="font-size:17px;">
+          <form class="dumbform" method="get" action="change-type-handler">
+            <input class="visually-hidden" type="text" value="one" id="name" name="name">
+            <input type="submit" class="under-link" value="Change">
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+      {% include "components/account2/previous-names.html" %}

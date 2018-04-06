@@ -291,6 +291,16 @@ form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-la
   }
 }
 
+#previous-names {
+  background: url(../../../public/images/names-background.png);
+  background-repeat: no-repeat;
+  background-size: 6.5%;
+  background-position: 0  51px;
+  .names {
+    padding-left: 50px;
+  }
+}
+
 #trace { 
   input {
     border: 2px solid black;
@@ -956,6 +966,9 @@ input.short-field {
   li {
     padding-bottom: 5px;
     font-size: 17px;
+    &:last-child {
+      padding-bottom: 0;
+    }
   }
   @media (max-width: 640px) { 
     margin-top: 10px;
@@ -1081,4 +1094,8 @@ hr.light {
     li {
     float: left;
   }
+}
+
+summary {
+  margin-bottom: 0!important;
 }
