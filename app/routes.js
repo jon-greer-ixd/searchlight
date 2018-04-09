@@ -960,6 +960,10 @@ router.get(/correction-type-handler/, function (req, res) {
 // INTERESTS 
 //***********
 
+router.get(/add-int-handler/, function (req, res) {
+  res.redirect("/update/interests/add-interest");
+})
+
 var counter;
 
 router.get(/add-interest-handler/, function (req, res) {
