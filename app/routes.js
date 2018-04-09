@@ -1016,7 +1016,7 @@ router.get(/interest-check-handler/, function (req, res) {
 router.get(/change-interest-handler/, function (req, res) {
   var y = parseInt(req.query.tempPos);
   tempInterest = interests[y];
-  res.redirect("interests/update-interest");
+  res.redirect("/update/interests/update-interest");
 })
 
 router.get(/update-interest-handler/, function (req, res) {

@@ -1,6 +1,14 @@
 /* global $ */
 /* global GOVUK */
 
+//dates.js
+var today = new Date();
+var dayOfTheWeek = today.getDay();
+var dayOfTheMonth = today.getDate();
+var thisMonth = today.getMonth();
+var year = today.getFullYear();
+
+
 // Warn about using the kit in production
 if (
   window.sessionStorage && window.sessionStorage.getItem('prototypeWarning') !== 'false' &&
@@ -20,7 +28,20 @@ $(document).ready(function () {
   // to toggle hidden content
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
-    
+  
+  //prepopulate date
+  var btnOne = $('.populate-link-one');
+  var boxOne = $('.box-one');
+  $(btnOne).click(function() {
+    boxOne.val(dayOfTheMonth + "/" + (thisMonth + 1) + "/" + year);
+  });
+  
+  var btnTwo = $('.populate-link-two');
+  var boxTwo = $('.box-two');
+  $(btnTwo).click(function() {
+    boxTwo.val(dayOfTheMonth + "/" + (thisMonth + 1) + "/" + year);
+  });
+  
 })
 
 if ( document.getElementById('hidden') ){
@@ -100,5 +121,6 @@ if (document.getElementById("day-number")) {
      day.checked = false;
   }
 }
+
 
 
