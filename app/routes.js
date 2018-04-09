@@ -54,6 +54,10 @@ function resetTempInterest(interest) {
   interest = tempInterest;
 }
 
+function resetToDefaults() {
+  tempInterest = Interest.createInterest();
+}
+
 function printInterests() {
   console.log(" \n Interests ////");
   for (var x in interests) {
@@ -976,6 +980,7 @@ router.get(/add-interest-handler/, function (req, res) {
 //Carers Credit - 1:70 - DONE
 
   req.session.data.updateType = "addInterest";
+  resetToDefaults();
   tempInterest.live = true;
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
@@ -992,6 +997,20 @@ router.get(/add-interest-handler/, function (req, res) {
   } else {
     res.redirect("add-system");
   }
+})
+
+router.get(/interest-check-handler/, function (req, res) {
+  console.log("\n" + interests + "\n");
+  if (req.session.data.updateType === "addInterest") {
+    addInterest(tempInterest);
+    dataState.interestAdded = true;   
+  }
+  resetTempInterest(req.session.data.tempInterest);
+  if (req.session.data.updateType === "transferInterest") {
+    dataState.interestTransfered = true;
+  }
+  console.log("\n" + interests + "\n");
+  res.redirect("../account");
 })
 
 router.get(/change-interest-handler/, function (req, res) {
@@ -1088,18 +1107,6 @@ router.get('/update/interests/add-party', function (req, res) {
   })
 })
 
-router.get(/interest-check-handler/, function (req, res) {
-  if (req.session.data.updateType === "addInterest") {
-    addInterest(tempInterest);
-    dataState.interestAdded = true;   
-  }
-  resetTempInterest(req.session.data.tempInterest);
-  
-  if (req.session.data.updateType === "transferInterest") {
-    dataState.interestTransfered = true;
-  }
-  res.redirect("../account");
-})
 
 //router.get('/update/check', function (req, res) {
 //  res.render('update/check', {
