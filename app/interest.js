@@ -14,8 +14,14 @@ Interest.prototype.printInterest = function () {
   console.log(this.system + ", " + 
               this.title + " " + 
               this.startDate + " " + 
-              this.businessSystem + " " + 
               this.systemRef);
+};
+
+Interest.prototype.reset = function () {
+  this.system = null; 
+  this.title = null;
+  this.startDate = null; 
+  this.systemRef = null;
 };
 
 function createInterest() {

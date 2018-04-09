@@ -1122,3 +1122,14 @@ hr.light {
 summary {
   margin-bottom: 0!important;
 }
+
+.prepop a {
+  font-size : 19px;
+  display: block;
+  margin-top :10px;
+  cursor: pointer;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
