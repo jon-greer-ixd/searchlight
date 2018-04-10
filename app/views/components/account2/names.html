@@ -75,7 +75,11 @@
     <div class="grid-row names">
       <div class="column-one-third">
         <ul>
-          <li>&nbsp;</li>
+          {% if data.hasRequestedName == false %}
+            <li>Name</li>
+          {% else %}
+            <li>&nbsp;</li>
+          {% endif %}
         </ul>
       </div>
       <div class="column-one-third">
@@ -129,7 +133,7 @@
           LORD {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
-          {% if data.hasNameTwo == true %}
+          {% if data.hasNameTwo == true or data.hasRequestedName == true %}
             Name type 1&nbsp; · &nbsp;since
           {% else %}
             Since
