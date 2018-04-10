@@ -13,77 +13,77 @@
            <legend class="radio-header">Title</legend>
            
             <div class="multiple-choice">
-              <input id="mr" type="radio" name="data" value="mr">
+              <input id="mr" type="radio" name="title" value="mr">
               <label for="mr">Mr</label>
             </div>
            
             <div class="multiple-choice">
-              <input id="mrs" type="radio" name="data" value="mrs">
+              <input id="mrs" type="radio" name="title" value="mrs">
               <label for="mrs">Mrs</label>
             </div>
            
             <div class="multiple-choice">
-              <input id="miss" type="radio" name="data" value="miss">
+              <input id="miss" type="radio" name="title" value="miss">
               <label for="miss">Miss</label>
             </div>
            
             <div class="multiple-choice">
-              <input id="example-contact-by-phone" type="radio" name="data" value="No">
+              <input id="example-contact-by-phone" type="radio" name="title" value="ms">
               <label for="example-contact-by-phone">Ms</label>
             </div>
            
             <div class="multiple-choice" data-target="other-options">
-              <input id="other" type="radio" name="data" value="other">
+              <input id="other" type="radio" name="title" value="other">
               <label for="other">Other</label>
             </div>
             <div class="panel panel-border-narrow js-hidden" id="other-options">
               <div class="multiple-choice" data-target="other-options">
-                <input id="dr" type="radio" name="data" value="dr">
+                <input id="dr" type="radio" name="title" value="dr">
                 <label for="dr">Dr</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="rev" type="radio" name="data" value="rev">
+                <input id="rev" type="radio" name="title" value="rev">
                 <label for="rev">Rev</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="sir" type="radio" name="data" value="sir">
+                <input id="sir" type="radio" name="title" value="sir">
                 <label for="sir">Sir</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="lady" type="radio" name="data" value="lady">
+                <input id="lady" type="radio" name="title" value="lady">
                 <label for="lady">Lady</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="lord" type="radio" name="data" value="lord">
+                <input id="lord" type="radio" name="title" value="lord">
                 <label for="lord">Lord</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="proffessor" type="radio" name="data" value="proffessor">
+                <input id="proffessor" type="radio" name="title" value="proffessor">
                 <label for="proffessor">Proffessor</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="captain" type="radio" name="data" value="captain">
+                <input id="captain" type="radio" name="title" value="captain">
                 <label for="captain">Captain</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="major" type="radio" name="data" value="major">
+                <input id="major" type="radio" name="title" value="major">
                 <label for="major">Major</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="dame" type="radio" name="data" value="dame">
+                <input id="dame" type="radio" name="title" value="dame">
                 <label for="dame">Dame</label>
               </div>
               
               <div class="multiple-choice" data-target="other-options">
-                <input id="colonel" type="radio" name="data" value="colonel">
+                <input id="colonel" type="radio" name="title" value="colonel">
                 <label for="colonel">Colonel</label>
               </div>
             </div>
@@ -118,6 +118,21 @@
         </fieldset>
       
           {% if data['updateType'] == "updateNameOne" or data['updateType'] == "addRequestedName" or data['updateType'] == "addNameTwo" or data['updateType'] == "updateNameTwo" %}
+      
+          <fieldset>
+            <div class="form-group prepop">
+              <label class="form-label" for="startdate">
+                Start date
+                <span class="form-hint">
+                  For example 31/8/1979
+                </span>
+              </label>
+              <input class="form-control box-one" id="startdate" name="startdate" type="text">
+              <a class="populate-link-one">Today</a>
+            </div>
+          </fieldset>
+      
+<!--
           <fieldset class="form-group">
             <legend class="visuallyhidden">Start date</legend>
             <label class="form-label" for="postcode">
@@ -128,7 +143,19 @@
             </label>
             <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
           </fieldset>
+-->
       
+          <fieldset>
+            <div class="form-group prepop">
+              <label class="form-label" for="startdate">
+                Notified date
+              </label>
+              <input class="form-control box-two" id="startdate" name="startdate" type="text">
+              <a class="populate-link-two">Today</a>
+            </div>
+          </fieldset>
+      
+<!--
           <fieldset class="form-group">
             <legend class="visuallyhidden">Notified date</legend>
             <label class="form-label" for="postcode">
@@ -136,6 +163,7 @@
             </label>
             <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
           </fieldset>
+-->
         {% endif %}
       
       <div class="form-group">

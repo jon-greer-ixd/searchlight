@@ -4,7 +4,7 @@
       <div class="column-one-third">
         <ul>
           {% if data.hasNameTwo === false and data.hasRequestedName === false %}
-            <li>Requested name and name type 2</li>
+            <li>Other names</li>
           {% elif data.hasNameTwo === true and data.hasRequestedName === false  %}
             <li>Requested name</li>
           {% elif data.hasNameTwo === false and data.hasRequestedName === true  %}
@@ -85,7 +85,7 @@
       <div class="column-one-third">
         <ul class="">
           <li class="strong">
-            LORD {{data.nameTwoFirst | upper}} {{data.nameTwoLast | upper}}
+            {{data.title}} {{data.nameTwoFirst | upper}} {{data.nameTwoLast | upper}}
           </li>
           <li class="sl-secondary-text-color sl-metadata">
             Name type 2&nbsp; · &nbsp;since today
@@ -130,7 +130,7 @@
     <div class="column-one-third">
       <ul>
         <li class="strong">
-          LORD {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
+          {{data.title | upper}} {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
           {% if data.hasNameTwo == true or data.hasRequestedName == true %}
