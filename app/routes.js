@@ -355,6 +355,8 @@ router.use('/', main);
     
   req.session.data.createJourney = null;
   req.session.data.prepopulatedDate = dates.todayAsFigure("/");    
+  req.session.data.prepopulatedString = ( dates.convertDayToString( req.session.data.prepopulatedDate ) );    
+  console.log(req.session.data.prepopulatedString);
   req.session.data.tests = "foo";    
     
   resetAll();
