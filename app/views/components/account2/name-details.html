@@ -11,9 +11,9 @@
               {% if data.hasRequestedName %}
                 {{data.requestedName | upper}}
               {% elif data.hasNameTwo %}
-                LORD {{data.nameTwoFirst | upper}} {{data.nameTwoLast | upper}}
+                {{data.title | upper}} {{data.nameTwoFirst | upper}} {{data.nameTwoLast | upper}}
               {% else %}
-                LORD {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
+                {{data.title | upper}} {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
               {% endif %}
               
             </h1><!-- end ngIf: data.name.primaryName -->

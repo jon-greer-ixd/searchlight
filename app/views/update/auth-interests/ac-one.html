@@ -1,0 +1,851 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+<div id="sl-account" class="container-fluid ng-scope">  
+
+  <div class="sl-account-header row">
+        
+    <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
+    <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder blue-header ng-scope">
+      <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">
+        
+<div class="sl-account-canvas-width">
+  <sl-account-person-summary><div id="sl-account-person-summary">
+    <div class="sl-primary-name-card-container" ng-class="{'sl-deceased':data.p erson.person[0].deathDateGroup[0].deathDate}">
+      <div class="sl-primary-name-card">
+        <div class="sl-primary-name-height" id="sl-primary-name-height" style="min-height: 50px; height: 10px;">
+        <span class="sl-primary-name-and-age">
+          <span id="sl-account-primary-name" class="spacing-top-mid sl-account-primary-name">
+            <!-- ngIf: !data.name.nameDetails -->
+            <!-- ngIf: data.name.primaryName -->
+            <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
+              MR TOM SMITH
+            </h1><!-- end ngIf: data.name.primaryName -->
+          </span>
+          <!-- ngIf: !data.person.person[0].birthDateGroup[0] -->
+          <!-- ngIf: data.person.person[0].birthDateGroup[0] -->
+          <div id="sl-account-person-age" class="spacing-bottom-mid sl-account-person-age sl-third-heading ng-scope" ng-if="data.person.person[0].birthDateGroup[0]">
+            <span class="sl-nino-metadata">
+              <span ng-bind-html="data.nino + data.person.person[0].ninoGroup[0].ninoSuffix | nino" class="ng-binding">
+                <span> 
+                  <span class="nino-separator">SY</span>
+                  <span class="nino-separator">11</span>
+                  <span class="nino-separator">92</span>
+                  <span class="nino-separator">84</span>
+                  <span>Z</span> · 
+                </span>
+              </span>
+            </span>
+            <span class="sl-age-metadata">
+            <!-- ngIf: !data.person.person[0].deathDateGroup[0].deathDate -->
+            <!-- ngIf: data.person.person[0].deathDateGroup[0].deathDate -->
+              <sl-age-info ng-if="data.person.person[0].deathDateGroup[0].deathDate" dates="{dateOfBirth: data.person.person[0].birthDateGroup[0].birthDate,
+        dateOfDeath: data.person.person[0].deathDateGroup[0].deathDate,  accountFlag: true}" class="ng-scope ng-isolate-scope">
+                <span id="birth-death-date">
+                <!-- ngIf: dob -->
+                  <span id="sl-date-of-birth" ng-if="dob" class="ng-scope">
+                    <!-- ngIf: !dod -->
+                    <!-- ngIf: dod -->
+                    <span ng-class="{'sl-person-age': !dates.accountFlag, 'sl-account-age-metadata': dates.accountFlag}" ng-if="dod" class="ng-scope sl-account-age-metadata">
+                      <span class="ng-binding">{{data['dob']}}</span> 
+                      <span ng-class="{'sl-warning-text-red':dates.bold}" class="ng-binding"> </span>
+                    </span><!-- end ngIf: dod -->
+                  </span><!-- end ngIf: dob -->
+                </span>
+              </sl-age-info><!-- end ngIf: data.person.person[0].deathDateGroup[0].deathDate -->
+            </span>
+          </div><!-- end ngIf: data.person.person[0].birthDateGroup[0] -->
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+  </sl-account-person-summary>
+</div>
+        
+      <div id="sl-placeholder">
+      
+      <!-- ngIf: placeholderType === 'primary-name-placeholder' -->
+      <div ng-if="placeholderType === 'primary-name-placeholder'" class="primary-name spacing-top-single-half ng-scope">
+      
+      <div>
+        
+      <div class="primary-animated-background primary-name-placeholder"></div>
+      
+      </div>
+
+      <div class="spacing-top-single">
+        <div class="secondary-animated-background secondary-name-placeholder"></div>
+      </div>
+    </div>
+      </div>
+      </sl-placeholder>
+    </div>
+    
+    <div class="sl-local-nav-container col-xs-12">
+      <div class="sl-account-canvas-width">
+        <sl-account-local-nav><div id="sl-account-local-nav">
+  <ul class="sl-local-nav-menu sl-metadata">
+    <li class="sl-local-nav-item Personal active">
+      <a href="#" class="sl-local-nav-anchor sl-local-nav-anchor-first Personal" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Personal" analytics-label="Personal anchor tag" aria-label="personal details menu selection">
+        <span class="personal-scrollspy active" du-scrollspy="" du-smooth-scroll="Personal" offset="245">Personal details</span>
+      </a>
+    </li>
+    
+    <li class="sl-local-nav-item Address">
+      <a href="#" class="sl-local-nav-anchor Address" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Address" analytics-label="Address anchor tag" aria-label="address menu selection">
+        <span class="address-scrollspy" du-scrollspy="" du-smooth-scroll="Address" offset="155">Address</span>
+      </a>
+    </li>
+    
+    <li class="sl-local-nav-item Contact">
+      <a href="#" class="sl-local-nav-anchor Contact" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Contact" analytics-label="Contact anchor tag" aria-label="contact menu selection">
+        <span class="contact-scrollspy" du-scrollspy="" du-smooth-scroll="Contact" offset="155">Contact</span></a></li>
+    
+    <li class="sl-local-nav-item Interests">
+      <a class="sl-local-nav-anchor Interests" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Interests" analytics-label="Interests anchor tag" aria-label="interests menu selection" href="#interests">
+        <span class="interests-scrollspy" du-scrollspy="" du-smooth-scroll="Interests" offset="155">Interests</span>
+      </a>
+    </li>
+    
+    <li class="sl-local-nav-item Benefits">
+      <a href="#interests" class="sl-local-nav-anchor Benefits" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Benefits" analytics-label="Benefits anchor tag" aria-label="benefits menu selection">
+        <span class="benefits-scrollspy" du-scrollspy="" du-smooth-scroll="Benefits" offset="155">Benefits</span>
+      </a>
+    </li>
+    
+    <li class="sl-local-nav-item Relationships">
+      <a href="#benefits" class="sl-local-nav-anchor Relationships" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Relationships" analytics-label="Relationships anchor tag" aria-label="relationships menu selection">   
+        <span class="relationships-scrollspy" du-scrollspy="" du-smooth-scroll="Relationships" offset="155">Relationships</span>
+      </a>
+    </li>
+    
+    <li class="sl-local-nav-item Relationships">
+      <a href="#creation-pane" class="sl-local-nav-anchor Relationships" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Relationships" analytics-label="Relationships anchor tag" aria-label="relationships menu selection">   
+        <span class="relationships-scrollspy" du-scrollspy="" du-smooth-scroll="Relationships" offset="155">Account information</span>
+      </a>
+    </li>
+    
+  </ul>
+  </div></sl-account-local-nav>
+  </div>
+    </div>
+
+  </div>
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+
+        <div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Personal details</h2>
+          <div class="sl-primary-card sl-personal-details-card">
+<div class="personal-details">
+    
+  <div class="grid-row">
+    <div class="column-one-third">
+      <ul>
+        <li>Name</li>
+      </ul>
+    </div>
+    
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">MR TOM JONES</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Name 2 
+          <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span> 
+          Since {{data['updateTwo']}}
+        </li>
+      </ul>      
+      <ul class="multi-dates">
+        <li class="strong">MR TOM SMITH</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Name 1 
+          <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span>
+          Since {{data['updateOne']}}
+        </li>
+      </ul>      
+    </div>
+    
+    <div class="column-one-third last-col">
+<!--
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="previous-names" class="under-link">View history</a>
+        </li>
+      </ul>
+-->
+    </div>
+  </div>
+    
+  <hr class="light">
+      
+  <div class="grid-row">
+    
+    <div class="column-one-third">
+      <p>Date of birth</p>
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">8 Feb 1940</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 5 Jun 2010
+        </li>
+        <li class="multi-dates">
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-metadata">Verified to level 2</span>
+        </li>
+      </ul>
+
+    </div>
+
+      <div class="column-one-third last-col">
+<!--
+            <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="birth-history" class="under-link">View history</a>
+        </li>
+      </ul>
+-->
+
+    </div>
+  </div>
+  
+  <hr class="light">
+
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      National Insurance number
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">SY119284Z</li>
+        <li>
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">Verified</span>
+        </li>
+      </ul>
+    </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+              
+<hr class="light">
+<details>
+  <summary>
+    <span class="summary">More personal details</span>
+  </summary>
+  
+  <div class="personal-details">
+    <hr class="light">
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Nationality</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">British</li>
+        </ul>
+      </div>
+        <div class="column-one-third last-col">
+<!--
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            </li>
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+          </ul>
+-->
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Sex</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">Male</p>
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a class="under-link">View maintenance</a> 
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Spoken language</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">English</p>
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Preferred language</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">English</li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+          </li>
+        </ul>      
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="language-pref-history" class="under-link">View history</a>
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>National identity fraud unit</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">Yes</p>
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a class="under-link">View maintenance</a> 
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Civil status</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">Married</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a class="under-link">View history</a> 
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+
+</div>
+  
+</details>
+
+
+  {% include "components/modals.html" %}
+          </div>
+        </div>
+        
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Address</h2>
+
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    <div>
+      
+      
+<div id="address-pane">
+  
+  <div class="previous-addresses">
+    
+    <div class="grid-row" id="correspondence">
+    
+      <div class="column-one-third" >
+        <ul>
+          <li>Correspondence address</li>
+          {% if correspondence == true %}
+            <li class="sl-secondary-text-color sl-metadata">
+              {{editDate}} - present
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      {% if correspondence === true %}
+        {% include "components/correspondence.html" %}
+      {% else %}
+        <div class="column-one-third">
+        </div>
+        <div class="column-two-thirds column-last">
+          <ul class="edit-menu">
+<!--
+            <li>
+              <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add a correspondence address</a>
+            </li>
+-->
+          </ul>
+        </div>
+      {% endif %}
+      
+    </div>
+    
+  </div>
+  
+  <hr class="light">
+  
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <ul>
+        <li>Residential address</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          01 Jan 1980 – present
+        </li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <p class="address">
+          First Street<br>
+          Gateshead<br>
+          Tyne and wear<br>
+          NE1 1HH<br>
+          England
+      </p>
+      
+      <ul>
+        <li class="status-item">
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">Live</span>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+<!--
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a> 
+        </li>
+        <li>
+          <a class="secondary-link" href="update-V2">Change</a>
+        </li>
+      </ul>
+-->
+    </div>
+    
+  </div> 
+
+</div> 
+
+<hr class="light">
+<details>
+  <summary><span class="summary">Previous addresses</span></summary>
+  
+  <hr class="light">
+  
+    {% if previousaddress.show === true %}
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              01 Jan 1990 – {{editDate}}
+          </li>
+        </ul>
+      </div>
+    
+      <div class="column-one-third">
+        {% if previousaddress.correct === true %}
+          <p class="address">
+        {% else %}
+          <p class="address incorrect">
+        {% endif %}
+        {% if previousaddress.cherish != false %}
+          {{previousaddress.cherish}}<br>
+        {% endif %}
+        {{previousaddress.line}}<br>
+          Gateshead<br>
+          Tyne and wear<br>
+          NE1 1HH<br>
+          England
+        </p>
+      </div>
+        
+      <div class="column-one-third column-last">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+    <hr class="light">
+    {% endif %}
+  
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              1 Jan 1960 - 01 Jan 1990
+          </li>
+        </ul>
+      </div>
+    
+      <div class="column-one-third">
+        <p class="address">
+          1 Old Street<br>
+          Newcastle upon Tyne<br>
+          Tyne and Wear<br>
+          NE1 111<br>
+          England
+        </p>
+      </div>
+    
+      <div class="column-one-third column-last">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>  
+  
+</details>
+
+    </div>
+  </div>
+</div>        
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Contact</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    <div>      
+<div id="address-pane">
+  
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <ul>
+        <li>Home telephone</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <ul>
+        <li><span class="strong">0113 287 6365</span></li>
+      </ul>
+
+    </div>
+  
+    <div class="column-one-third">
+    </div>
+    
+  </div> 
+  
+  <hr class="light">
+  
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <ul>
+        <li>Email</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <ul>
+        <li><span class="strong">tom.smith@gmail.com</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+        </li>
+      </ul>
+
+    </div>
+  
+    <div class="column-one-third">
+    </div>
+    
+  </div> 
+  
+  <hr class="light">
+
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <ul>
+        <li>Mobile</li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <ul>
+        <li><span class="strong">07712 345 678</span></li>
+        <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+        </li>
+      </ul>
+
+    </div>
+  
+    <div class="column-one-third">
+      <ul class="edit-menu">
+<!--
+        <li>
+          <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
+        </li>
+-->
+      </ul>
+    </div>
+    
+  </div> 
+  
+</div>     </div>
+  </div>
+</div>        
+          
+          
+          
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Interests</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    <div>
+      
+      
+<div id="interests">
+    
+    <div class="grid-row nav">
+      <div class="column-one-third">
+        Start date
+      </div>
+      <div class="column-one-third expanded">
+        Interest
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="add-interest" class="under-link">Add an interest</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <hr>
+
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 1980</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>State Pension</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+<!--
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                    <input type="submit" class="under-link" value="Change">
+                </div>
+              </form>
+            </li>
+          </ul>
+-->
+        </div>
+      </div> 
+
+    <hr class="light">
+  
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 1980</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type crl">CRL</span>State Pension</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+<!--
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                </div>
+              </form>
+            </li>
+          </ul>
+-->
+        </div>
+      </div> 
+  
+    <hr>
+  
+    <details>
+      <summary>Previous interests</summary>
+      
+      <hr>
+      
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 1980</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type crl">CRL</span>Incapacity Benefit</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              No interested parties
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div> 
+    </details>
+    
+</div>
+    
+    </div>
+  </div>
+</div>
+          
+
+        <div name="Benefits" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Benefits</h2>
+
+         <div class="sl-primary-card ng-scope" ng-if="!data.fullAwardHistory || data.fullAwardHistory.empty">
+
+          <div class="row ng-scope" ng-if="data.fullAwardHistory.empty">
+
+              <div class="col-xs-12">No benefits held for this customer.
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div name="Relationships" id="relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Relationships</h2>
+          <div ng-class="{'sl-primary-card': data.relationships.empty || !data.relationships}" class="sl-primary-card">
+            <div class="row ng-scope" ng-if="data.relationships.empty">
+              <div class="col-xs-12">No relationships held for this customer.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="last-card">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+
