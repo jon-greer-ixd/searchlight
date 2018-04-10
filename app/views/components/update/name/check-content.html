@@ -36,7 +36,7 @@
           {% if data['updateType'] == "updateNameOne" or data['updateType'] == "correctNameOne" or data['updateType'] == "addNameTwo" or data['updateType'] == "updateNameTwo" or data['updateType'] == "correctNameTwo" %}
             <tr>
               <td><span class="strong">Title</span></td>
-              <td>Mr</td>
+              <td>{{data.title | upper}}</td>
               <td><a>Change</a></td>
             </tr>
             <tr>

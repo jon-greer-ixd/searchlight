@@ -1,5 +1,6 @@
 var defaults = {
   //names
+  title : "LORD",
   nameOneFirst : "JAMES",
   nameOneLast : "SMITH",
   nameTwoFirst : "MICHAEL",

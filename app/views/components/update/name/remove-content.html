@@ -8,6 +8,7 @@
         </p>
       </legend>
             
+<!--
       <fieldset class="form-group">
         <legend class="visuallyhidden">End date</legend>
         <label class="form-label" for="postcode">
@@ -18,7 +19,21 @@
         </label>
         <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
       </fieldset>
-            
+-->
+      
+      <fieldset>
+        <div class="form-group prepop">
+          <label class="form-label" for="startdate">
+            End date
+            <span class="form-hint">
+              For example 31/8/1979
+            </span>
+          </label>
+          <input class="form-control box-one" id="startdate" name="startdate" type="text">
+          <a class="populate-link-one">Today</a>
+        </div>
+      </fieldset>
+
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
