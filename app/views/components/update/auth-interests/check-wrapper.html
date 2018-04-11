@@ -4,6 +4,18 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+<!--
+            {% if data.authority.editTax === true and data.authority.editHousing === true %}
+              <h2>Add interests</h2>
+            {% else %}
+              {% if data.authority.editHousing === true %}
+                <h2>Add a Housing Benefit interest</h2>
+              {% else %}
+                <h2>Add a Council Tax reduction interest</h2>
+              {% endif %}
+            {% endif %}
+
+-->
           <h2>Add interests</h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

@@ -680,15 +680,12 @@
   </div>
 </div>        
           
-          
-          
 <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
   <h2>Interests</h2>
   <div id="sl-address-primary-card" class="sl-primary-card">
     <div>
       
-      
-<div id="interests">
+  <div id="interests">
     
     <div class="grid-row nav">
       <div class="column-one-third">
@@ -703,9 +700,9 @@
             {% if data.authority.housingBenefit === "on" and data.authority.taxReduction === "on"  %}
               &nbsp;
             {% elif data.authority.housingBenefit === "on" %}
-              <a href="check" class="under-link">Add a Council Tax Reduction interest</a>
+              <a href="ctax-handler" class="under-link">Add a Council tax reduction interest</a>
             {% elif data.authority.taxReduction === "on" %}
-              <a href="check" class="under-link">Add a Housing Benefit interest</a>
+              <a href="hb-handler" class="under-link">Add a Housing Benefit interest</a>
             {% else %}
               <a href="add-interest" class="under-link">Add an interest</a>
             {% endif %}
@@ -739,7 +736,11 @@
               <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
             </li>
             <li>
-              <a href="authority-end-handler" class="under-link">End this interest</a>
+              {% if data.authority.housingBenefit === "on" and data.authority.housingBenefit === "on" %}
+                <a href="authority-end-handler" class="under-link">End an interest</a>
+              {% else %}
+                <a href="authority-end-handler" class="under-link">End this interest</a>
+              {% endif %}
             </li>
           </ul>
         </div>
@@ -769,7 +770,11 @@
               <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
             </li>
             <li>
-              <a href="authority-end-handler" class="under-link">End this interest</a>
+              {% if data.authority.housingBenefit === "on" and data.authority.housingBenefit === "on" %}
+                <a href="authority-end-handler" class="under-link">End an interest</a>
+              {% else %}
+                <a href="authority-end-handler" class="under-link">End this interest</a>
+              {% endif %}
             </li>
           </ul>
         </div>
@@ -853,6 +858,60 @@
       
       <hr>
       
+      <!-- Housing benefit -->
+      {% if data.authority.housingBenefit === "off" %}
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>{{data.prepopulatedString}}</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>HOUSING BENEFIT</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+      <hr class="light">
+      {% endif %}
+  
+      {% if data.authority.taxReduction === "off" %}
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>{{data.prepopulatedString}}</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>COUNCIL TAX REDUCTION</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+      <hr class="light">
+      {% endif %}      
       <div class="grid-row interest">
         <div class="column-one-third">
           <ul>
