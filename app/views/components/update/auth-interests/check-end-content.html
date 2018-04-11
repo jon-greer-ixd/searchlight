@@ -1,6 +1,6 @@
 <h2 class="heading-medium question">Check your answers</h2>
 
-{% if data.authority.housingBenefit === "off" and data.authority.taxReduction === "off" %}
+{% if data.authority.editHousing === true and data.authority.editTax === true %}
   <div class="grid-row">
     <div class="column-one-half">
       <div>
@@ -28,13 +28,13 @@
     <div class="column-one-half">
       <div>
       <table class="table">
-        {% if data.authority.housingBenefit === "on" %}
+        {% if data.authority.editHousing === true %}
         <tr>
           <td><span class="strong">Interest</span></td>
             <td>Housing Benefit</td>
           <td> </td>
         </tr>
-        {% elseif data.authority.taxReduction === "on" %}
+        {% elseif data.authority.editTax === true %}
         <tr>
           <td><span class="strong">Interest</span></td>
             <td>Council Tax reduction</td>

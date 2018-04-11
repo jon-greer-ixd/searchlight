@@ -361,7 +361,6 @@ router.use('/', main);
   req.session.data.createJourney = null;
   req.session.data.prepopulatedDate = dates.todayAsFigure("/");    
   req.session.data.prepopulatedString = ( dates.convertDayToString( req.session.data.prepopulatedDate ) );    
-  console.log(req.session.data.prepopulatedString);
   req.session.data.tests = "foo";    
     
   resetAll();
@@ -406,52 +405,90 @@ router.get('/search-v1', function (req, res) {
 /** authority **/
 /***************/
 
-router.get(/authority-add-handler/, function (req, res) {
+router.get(/authority-select-handler/, function (req, res) {
   if (req.query.ctr[0] === "true" ) {
-    req.session.data.authority.taxReduction = "on";
+    req.session.data.authority.editTax = true;
   } else {
-    req.session.data.authority.taxReduction = null;
+    req.session.data.authority.editTax = false;
   }
   if (req.query.hb[0] === "true" ) {
-    req.session.data.authority.housingBenefit = "on";
+    req.session.data.authority.editHousing = true;
   } else {
-    req.session.data.authority.housingBenefit = null;
+    req.session.data.authority.editHousing = false;
   }
-  console.log(req.query);
-  console.log("ctr = " + req.session.data.authority.taxReduction + "\n");
-  console.log("hb = " + req.session.data.authority.housingBenefit + "\n");
   res.redirect('check')
 })
 
+router.get(/authority-check-handler/, function (req, res) {
+  if ( req.session.data.authority.editTax === true ) {
+    req.session.data.authority.taxReduction = "on";
+  }
+  if ( req.session.data.authority.editHousing === true ) {
+    req.session.data.authority.housingBenefit = "on";
+  }
+  req.session.data.authority.added = true;
+  req.session.data.authority.removed = false;
+  req.session.data.authority.editTax = false;
+  req.session.data.authority.editHousing = false;
+  res.redirect('authority-account')
+})
+
 router.get(/authority-end-handler/, function (req, res) {
-  if( req.session.data.authority.housingBenefit  === "on" && req.session.data.authority.taxReduction === "on") {
-    //both
+  if( req.session.data.authority.housingBenefit === "on" && req.session.data.authority.taxReduction === "on") {
     res.redirect('end-interest')
-  } else {
+  } else if(req.session.data.authority.housingBenefit === "on") {
+    req.session.data.authority.editHousing = true
+    res.redirect('check-end')
+  } else if(req.session.data.authority.taxReduction === "on") {
+    req.session.data.authority.editTax = true
     res.redirect('check-end')
   }
 })
 
+//router.get(/authority-end-handler/, function (req, res) {
+//  req.session.data.authority.added = false;
+//  req.session.data.authority.removed = true;
+//  if( req.session.data.authority.housingBenefit  === "on" && req.session.data.authority.taxReduction === "on") {
+//    res.redirect('end-interest')
+//  } else {
+//    res.redirect('check-end')
+//  }
+//})
+
 router.get(/authority-switch-handler/, function (req, res) {
   if (req.query.ctr[0] === "true" ) {
-    req.session.data.authority.taxReduction = "off";
+    req.session.data.authority.editTax = true;
+  } else {
+    req.session.data.authority.editTax = false;
   }
   if (req.query.hb[0] === "true" ) {
-    req.session.data.authority.housingBenefit = "off";
+    req.session.data.authority.editHousing = true;
+  } else {
+    req.session.data.authority.editHousing = false;
   }
   res.redirect('check-end')
 })
 
 router.get(/authority-stop-handler/, function (req, res) {
-  if (req.session.data.authority.housingBenefit === "off" && req.session.data.authority.taxReduction === "off") {
+  if (req.session.data.authority.editHousing === true && req.session.data.authority.editTax === true) {
+    req.session.data.authority.taxReduction = "off";
+    req.session.data.authority.housingBenefit = "off";
+      req.session.data.authority.removed = true;
+      req.session.data.authority.added = false;
+      req.session.data.authority.editTax = false;
+      req.session.data.authority.editHousing = false;
     res.redirect('authority-account')
   } else {
-    if(req.session.data.authority.housingBenefit === "on") {
+    if(req.session.data.authority.editHousing === true) {
       req.session.data.authority.housingBenefit = "off"
     }
-    if(req.session.data.authority.taxReduction === "on") {
-      req.session.data.authority.taxReduction = "off"
+    if(req.session.data.authority.editTax === true) {
+      req.session.data.authority.taxReduction = "off";
     }
+      req.session.data.authority.removed = true;
+      req.session.data.authority.added = false;
+      req.session.data.authority.editTax = false;
+      req.session.data.authority.editHousing = false;
     res.redirect('authority-account')
   }
 })
@@ -475,18 +512,6 @@ router.get('/sex/update', function (req, res) {
   res.render('update/sex/update')
 })
 
-//router.get(/update-sex-handler/, function (req, res) {
-//  if (req.query.data === "correct") {
-//    req.session.data.updateType = "correctSex";
-//    console.log(req.session.data.updateType);
-//    res.redirect('/update/sex/check')
-//  } else {
-//    req.session.data.updateType = "updateGender";
-//    console.log(req.session.data.updateType);
-//    res.redirect('/update/sex/update-sex')
-//  }
-//})
-
 router.get(/check-sex-handler/, function (req, res) {
   if(req.session.data.updateType === "correctSex") {
     req.session.data.sexCorrected = true;
@@ -504,7 +529,6 @@ router.get(/check-sex-handler/, function (req, res) {
 
 //change-type-handler
 router.get(/change-type-handler/, function (req, res) {
-  console.log(req.query.name);
   if (req.query.name === "one") {
     req.session.data.updateType = "changeNameOne";  
   } else if (req.query.name === "two") {
@@ -599,7 +623,6 @@ router.get(/check-name-handler/, function (req, res) {
     req.session.data.hasRequestedName = false;
     req.session.data.requestedNameRemoved = true;
   }
-  console.log(req.session.data);
   res.redirect('../../account2/account')
 })
 
@@ -1045,7 +1068,6 @@ router.get(/add-interest-handler/, function (req, res) {
   tempInterest.live = true;
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
-  console.log(tempInterest.title);
   if(tempInterest.title === "Carers Credit") {
     tempInterest.system = "sys";
     res.redirect("add-party");
@@ -1061,7 +1083,6 @@ router.get(/add-interest-handler/, function (req, res) {
 })
 
 router.get(/interest-check-handler/, function (req, res) {
-  console.log("\n" + interests + "\n");
   if (req.session.data.updateType === "addInterest") {
     addInterest(tempInterest);
     dataState.interestAdded = true;   
@@ -1070,7 +1091,6 @@ router.get(/interest-check-handler/, function (req, res) {
   if (req.session.data.updateType === "transferInterest") {
     dataState.interestTransfered = true;
   }
-  console.log("\n" + interests + "\n");
   res.redirect("../account");
 })
 

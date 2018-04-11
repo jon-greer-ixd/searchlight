@@ -11,11 +11,11 @@
       <tr>
         <td><span class="strong">Interests</span></td>
           <td>
-            {% if data.authority.taxReduction === "on" %}
+            {% if data.authority.editTax === true %}
               Council Tax reduction
             {% endif %}
 
-            {% if data.authority.housingBenefit === "on" %}
+            {% if data.authority.editHousing === true %}
               Housing Benefit
             {% endif %}
           </td>
@@ -30,7 +30,7 @@
   </div>
   <br>
   <div>
-    <form method="get" action="authority-account">
+    <form method="get" action="authority-check-handler">
       <div class="form-group">
         <input class="button" type="submit" value="Submit">
       </div>
