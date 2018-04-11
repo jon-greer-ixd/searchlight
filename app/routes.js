@@ -406,52 +406,90 @@ router.get('/search-v1', function (req, res) {
 /** authority **/
 /***************/
 
-router.get(/authority-add-handler/, function (req, res) {
+router.get(/authority-select-handler/, function (req, res) {
   if (req.query.ctr[0] === "true" ) {
-    req.session.data.authority.taxReduction = "on";
+    req.session.data.authority.editTax = true;
   } else {
-    req.session.data.authority.taxReduction = null;
+    req.session.data.authority.editTax = false;
   }
   if (req.query.hb[0] === "true" ) {
-    req.session.data.authority.housingBenefit = "on";
+    req.session.data.authority.editHousing = true;
   } else {
-    req.session.data.authority.housingBenefit = null;
+    req.session.data.authority.editHousing = false;
   }
-  console.log(req.query);
-  console.log("ctr = " + req.session.data.authority.taxReduction + "\n");
-  console.log("hb = " + req.session.data.authority.housingBenefit + "\n");
   res.redirect('check')
 })
 
+router.get(/authority-check-handler/, function (req, res) {
+  if ( req.session.data.authority.editTax === true ) {
+    req.session.data.authority.taxReduction = "on";
+  }
+  if ( req.session.data.authority.editHousing === true ) {
+    req.session.data.authority.housingBenefit = "on";
+  }
+  req.session.data.authority.added = true;
+  req.session.data.authority.removed = false;
+  req.session.data.authority.editTax = false;
+  req.session.data.authority.editHousing = false;
+  res.redirect('authority-account')
+})
+
 router.get(/authority-end-handler/, function (req, res) {
-  if( req.session.data.authority.housingBenefit  === "on" && req.session.data.authority.taxReduction === "on") {
-    //both
+  if( req.session.data.authority.housingBenefit === "on" && req.session.data.authority.taxReduction === "on") {
     res.redirect('end-interest')
-  } else {
+  } else if(req.session.data.authority.housingBenefit === "on") {
+    req.session.data.authority.editHousing = true
+    res.redirect('check-end')
+  } else if(req.session.data.authority.taxReduction === "on") {
+    req.session.data.authority.editTax = true
     res.redirect('check-end')
   }
 })
 
+//router.get(/authority-end-handler/, function (req, res) {
+//  req.session.data.authority.added = false;
+//  req.session.data.authority.removed = true;
+//  if( req.session.data.authority.housingBenefit  === "on" && req.session.data.authority.taxReduction === "on") {
+//    res.redirect('end-interest')
+//  } else {
+//    res.redirect('check-end')
+//  }
+//})
+
 router.get(/authority-switch-handler/, function (req, res) {
   if (req.query.ctr[0] === "true" ) {
-    req.session.data.authority.taxReduction = "off";
+    req.session.data.authority.editTax = true;
+  } else {
+    req.session.data.authority.editTax = false;
   }
   if (req.query.hb[0] === "true" ) {
-    req.session.data.authority.housingBenefit = "off";
+    req.session.data.authority.editHousing = true;
+  } else {
+    req.session.data.authority.editHousing = false;
   }
   res.redirect('check-end')
 })
 
 router.get(/authority-stop-handler/, function (req, res) {
-  if (req.session.data.authority.housingBenefit === "off" && req.session.data.authority.taxReduction === "off") {
+  if (req.session.data.authority.editHousing === true && req.session.data.authority.editTax === true) {
+    req.session.data.authority.taxReduction = "off";
+    req.session.data.authority.housingBenefit = "off";
+      req.session.data.authority.removed = true;
+      req.session.data.authority.added = false;
+      req.session.data.authority.editTax = false;
+      req.session.data.authority.editHousing = false;
     res.redirect('authority-account')
   } else {
-    if(req.session.data.authority.housingBenefit === "on") {
+    if(req.session.data.authority.editHousing === true) {
       req.session.data.authority.housingBenefit = "off"
     }
-    if(req.session.data.authority.taxReduction === "on") {
-      req.session.data.authority.taxReduction = "off"
+    if(req.session.data.authority.editTax === true) {
+      req.session.data.authority.taxReduction = "off";
     }
+      req.session.data.authority.removed = true;
+      req.session.data.authority.added = false;
+      req.session.data.authority.editTax = false;
+      req.session.data.authority.editHousing = false;
     res.redirect('authority-account')
   }
 })
