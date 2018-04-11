@@ -10,9 +10,15 @@
       </tr>
       <tr>
         <td><span class="strong">Interests</span></td>
-          <td>Council Tax reduction<br>
+          <td>
+            {% if data.authority.taxReduction === "on" %}
+              Council Tax reduction
+            {% endif %}
+
+            {% if data.authority.housingBenefit === "on" %}
               Housing Benefit
-        </td>
+            {% endif %}
+          </td>
         <td><a href="add-interest">Change</a></td>
       </tr>
       <tr>
@@ -24,7 +30,7 @@
   </div>
   <br>
   <div>
-    <form method="get" action="ac-two">
+    <form method="get" action="authority-account">
       <div class="form-group">
         <input class="button" type="submit" value="Submit">
       </div>

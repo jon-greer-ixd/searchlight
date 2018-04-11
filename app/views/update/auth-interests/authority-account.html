@@ -699,6 +699,67 @@
     </div>
   
     <hr>
+  
+      <!-- Housing benefit -->
+      {% if data.authority.housingBenefit === "on" %}
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>{{data.prepopulatedString}}</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>HOUSING BENEFIT</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <a href="authority-end-handler" class="under-link">End this interest</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+      <hr class="light">
+      {% endif %}
+  
+      {% if data.authority.taxReduction === "on" %}
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>{{data.prepopulatedString}}</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>COUNCIL TAX REDUCTION</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <a href="authority-end-handler" class="under-link">End this interest</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+      <hr class="light">
+      {% endif %}
 
       <div class="grid-row interest">
         <div class="column-one-third">
