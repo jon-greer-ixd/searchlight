@@ -12,6 +12,8 @@ var Interest = require('./interest.js');
 
 var defaults = require('./defaults.js').defaults;
 
+var authority = require('./authority.js').authority;
+
 
 //***********
 // INTERESTS 
@@ -324,7 +326,6 @@ router.get('/search-v2', function (req, res) {
 
 var tempInterest;
 
-
 router.use('/', main);
   // Route index page
   router.get('/', function (req, res) { 
@@ -334,6 +335,10 @@ router.use('/', main);
       req.session.data[key] = defaults[key];
     }
   }
+    
+  //AUTHORITY ACCOUNT
+  req.session.data.authority = authority;
+  req.session.data.authority.reset();
     
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
@@ -396,6 +401,60 @@ router.get('/search-v1', function (req, res) {
 /************/
 /** UPDATE **/
 /************/
+
+/***************/
+/** authority **/
+/***************/
+
+router.get(/authority-add-handler/, function (req, res) {
+  if (req.query.ctr[0] === "true" ) {
+    req.session.data.authority.taxReduction = "on";
+  } else {
+    req.session.data.authority.taxReduction = null;
+  }
+  if (req.query.hb[0] === "true" ) {
+    req.session.data.authority.housingBenefit = "on";
+  } else {
+    req.session.data.authority.housingBenefit = null;
+  }
+  console.log(req.query);
+  console.log("ctr = " + req.session.data.authority.taxReduction + "\n");
+  console.log("hb = " + req.session.data.authority.housingBenefit + "\n");
+  res.redirect('check')
+})
+
+router.get(/authority-end-handler/, function (req, res) {
+  if( req.session.data.authority.housingBenefit  === "on" && req.session.data.authority.taxReduction === "on") {
+    //both
+    res.redirect('end-interest')
+  } else {
+    res.redirect('check-end')
+  }
+})
+
+router.get(/authority-switch-handler/, function (req, res) {
+  if (req.query.ctr[0] === "true" ) {
+    req.session.data.authority.taxReduction = "off";
+  }
+  if (req.query.hb[0] === "true" ) {
+    req.session.data.authority.housingBenefit = "off";
+  }
+  res.redirect('check-end')
+})
+
+router.get(/authority-stop-handler/, function (req, res) {
+  if (req.session.data.authority.housingBenefit === "off" && req.session.data.authority.taxReduction === "off") {
+    res.redirect('authority-account')
+  } else {
+    if(req.session.data.authority.housingBenefit === "on") {
+      req.session.data.authority.housingBenefit = "off"
+    }
+    if(req.session.data.authority.taxReduction === "on") {
+      req.session.data.authority.taxReduction = "off"
+    }
+    res.redirect('authority-account')
+  }
+})
 
 /*********/
 /** SEX **/
