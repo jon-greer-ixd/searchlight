@@ -402,8 +402,19 @@ router.get('/search-v1', function (req, res) {
 /************/
 
 /***************/
-/** authority **/
+/** AUTHORITY **/
 /***************/
+
+//hb-handler
+router.get(/hb-handler/, function (req, res) {
+  req.session.data.authority.editHousing = true;
+  res.redirect('check')
+})
+
+router.get(/ctax-handler/, function (req, res) {
+  req.session.data.authority.editTax = true;
+  res.redirect('check')
+})
 
 router.get(/authority-select-handler/, function (req, res) {
   if (req.query.ctr[0] === "true" ) {
