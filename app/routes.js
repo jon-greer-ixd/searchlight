@@ -361,7 +361,6 @@ router.use('/', main);
   req.session.data.createJourney = null;
   req.session.data.prepopulatedDate = dates.todayAsFigure("/");    
   req.session.data.prepopulatedString = ( dates.convertDayToString( req.session.data.prepopulatedDate ) );    
-  console.log(req.session.data.prepopulatedString);
   req.session.data.tests = "foo";    
     
   resetAll();
@@ -513,18 +512,6 @@ router.get('/sex/update', function (req, res) {
   res.render('update/sex/update')
 })
 
-//router.get(/update-sex-handler/, function (req, res) {
-//  if (req.query.data === "correct") {
-//    req.session.data.updateType = "correctSex";
-//    console.log(req.session.data.updateType);
-//    res.redirect('/update/sex/check')
-//  } else {
-//    req.session.data.updateType = "updateGender";
-//    console.log(req.session.data.updateType);
-//    res.redirect('/update/sex/update-sex')
-//  }
-//})
-
 router.get(/check-sex-handler/, function (req, res) {
   if(req.session.data.updateType === "correctSex") {
     req.session.data.sexCorrected = true;
@@ -542,7 +529,6 @@ router.get(/check-sex-handler/, function (req, res) {
 
 //change-type-handler
 router.get(/change-type-handler/, function (req, res) {
-  console.log(req.query.name);
   if (req.query.name === "one") {
     req.session.data.updateType = "changeNameOne";  
   } else if (req.query.name === "two") {
@@ -637,7 +623,6 @@ router.get(/check-name-handler/, function (req, res) {
     req.session.data.hasRequestedName = false;
     req.session.data.requestedNameRemoved = true;
   }
-  console.log(req.session.data);
   res.redirect('../../account2/account')
 })
 
@@ -1083,7 +1068,6 @@ router.get(/add-interest-handler/, function (req, res) {
   tempInterest.live = true;
   tempInterest.title = req.query.title;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
-  console.log(tempInterest.title);
   if(tempInterest.title === "Carers Credit") {
     tempInterest.system = "sys";
     res.redirect("add-party");
@@ -1099,7 +1083,6 @@ router.get(/add-interest-handler/, function (req, res) {
 })
 
 router.get(/interest-check-handler/, function (req, res) {
-  console.log("\n" + interests + "\n");
   if (req.session.data.updateType === "addInterest") {
     addInterest(tempInterest);
     dataState.interestAdded = true;   
@@ -1108,7 +1091,6 @@ router.get(/interest-check-handler/, function (req, res) {
   if (req.session.data.updateType === "transferInterest") {
     dataState.interestTransfered = true;
   }
-  console.log("\n" + interests + "\n");
   res.redirect("../account");
 })
 
