@@ -52,7 +52,6 @@ var dates = {
       m = parseInt(parts[1]);
       y = parseInt(parts[2]);
     date = d + " " + this.months[m - 1] + " " + y;
-    console.log(date);
     return (date);
   },
   todayAsString : function() {
@@ -66,8 +65,6 @@ var dates = {
     }
   },
   logToday : function() {
-    console.log( this.todayAsString() );
-    console.log( this.todayAsFigure() );
   }
 };
 
