@@ -1348,7 +1348,7 @@ router.get(/mauual-previous-handler/, function (req, res) {
 //search-previous-handler
 router.get(/s-previous-handler/, function (req, res) {
   if (req.query.uk === "no") {
-    res.redirect('address-question')
+    res.redirect('contact-question')
   } else {
     res.redirect('previous-results')
   }
