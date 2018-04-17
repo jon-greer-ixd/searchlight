@@ -23,6 +23,8 @@ var defaults = {
   //sex
   sex : "Male",
   sexCorrected : false,
+  graAdded : false,
+  preGraAdded : false,
   genderUpdated : false
 };
 
