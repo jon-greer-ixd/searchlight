@@ -1,32 +1,3 @@
-  {% if data.hasNameTwo === true and data.hasRequestedName === true %}
-  {% else %}
-    <div class="grid-row">
-      <div class="column-one-third">
-        <ul>
-          {% if data.hasNameTwo === false and data.hasRequestedName === false %}
-            <li>Other names</li>
-          {% elif data.hasNameTwo === true and data.hasRequestedName === false  %}
-            <li>Requested name</li>
-          {% elif data.hasNameTwo === false and data.hasRequestedName === true  %}
-            <li>Name type 2</li>
-          {% endif %}
-        </ul>
-      </div>
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="sub-menu">
-          <li style="font-size:17px;">
-            <form class="dumbform" method="get" action="add-handler">
-              <input type="submit" class="under-link" value="Add a name">
-            </form>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <hr class="light">
-  {% endif %}
 
   <!-- REQUESTED NAME-->
   {% if data.hasRequestedName == true %}
@@ -161,5 +132,56 @@
       </ul>
     </div>
   </div>
+
+<!--
+    <div class="grid-row">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-two-thirds">
+        <hr class="light">
+      </div>
+    </div>
+-->
+
+  {% if data.hasNameTwo === true and data.hasRequestedName === true %}
+  {% else %}
+    <div class="grid-row" style="margin-bottom: 0;">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-two-thirds">
+        <hr class="light">
+      </div>
+    </div>
+    <div class="grid-row" style="margin-bottom: 0;">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="sl-secondary-text-color sl-metadata">
+            {% if data.hasNameTwo === false and data.hasRequestedName === false %}
+              Add another name
+            {% elif data.hasNameTwo === true and data.hasRequestedName === false  %}
+              Add a requested name
+            {% elif data.hasNameTwo === false and data.hasRequestedName === true  %}
+              Add a name type 2
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="sub-menu">
+          <li style="font-size:17px;">
+            <form class="dumbform" method="get" action="add-handler">
+              <input type="submit" class="under-link" value="Add">
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+
 
       {% include "components/account2/previous-names.html" %}
