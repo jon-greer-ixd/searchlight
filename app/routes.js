@@ -504,9 +504,43 @@ router.get(/authority-stop-handler/, function (req, res) {
   }
 })
 
+/************/
+/** GENDER **/
+/************/
+
+router.get(/update-gender-handler/, function (req, res) {
+  console.log(req.query.data);
+  if (req.query.data === "gra") {
+    req.session.data.updateType = "addGra";
+  } else {
+    req.session.data.updateType = "addPreGra";
+  }
+  res.redirect('/update/gender/update-gender')
+})
+
+router.get(/add-gender-handler/, function (req, res) {
+  if(req.session.data.preGraAdded === true && req.session.data.graAdded === false) {
+    req.session.data.updateType = "addGra";
+  } else {
+    req.session.data.updateType = "addPreGra";
+  }
+  res.redirect('/update/gender/update-gender')
+})
+
+
 /*********/
 /** SEX **/
 /*********/
+
+
+router.get(/update-sex-handler/, function (req, res) {
+  if (req.query.data === "gra") {
+    req.session.data.updateType = "addGra";
+  } else {
+    req.session.data.updateType = "addPreGra";
+  }
+  res.redirect('/update/gender/update-gender')
+})
 
 router.get(/sex-adv-handler/, function (req, res) {
   req.session.data.updateType = "updateGender";
@@ -521,6 +555,17 @@ router.get(/sex-simple-handler/, function (req, res) {
 router.get('/sex/update', function (req, res) {
   req.session.data.updateType = "updateGender";
   res.render('update/sex/update')
+})
+
+router.get(/check-gender-handler/, function (req, res) {
+  if(req.session.data.updateType === "addPreGra") {
+    req.session.data.preGraAdded = true;
+  } else {
+    req.session.data.graAdded = true;
+  }
+  req.session.data.genderUpdated = true;
+  req.session.data.sex = "Female";
+  res.redirect('../../account2/account')
 })
 
 router.get(/check-sex-handler/, function (req, res) {

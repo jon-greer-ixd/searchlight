@@ -11,12 +11,12 @@
             Council Tax reduction<br>
             Housing Benefit
           </td>
-          <td><a href="">Cancel</a></td>
+          <td><a href="">change</a></td>
         </tr>
         <tr>
           <td><span class="strong">End date</span></td>
             <td>{{data['prepopulatedDate']}}</td>
-          <td><a href="">Cancel</a></td>
+          <td>&nbsp;</td>
         </tr>
       </table>
     </div>
@@ -32,19 +32,19 @@
         <tr>
           <td><span class="strong">Interest</span></td>
             <td>Housing Benefit</td>
-          <td><a href="">Cancel</a></td>
+          <td><a href="">Change</a></td>
         </tr>
         {% elseif data.authority.editTax === true %}
         <tr>
           <td><span class="strong">Interest</span></td>
             <td>Council Tax reduction</td>
-          <td><a href="">Cancel</a></td>
+          <td>&nbsp;</td>
         </tr>
         {% endif %}
         <tr>
           <td><span class="strong">End date</span></td>
             <td>{{data['prepopulatedDate']}}</td>
-          <td><a href="">Cancel</a></td>
+          <td>&nbsp;</td>
         </tr>
       </table>
     </div>
