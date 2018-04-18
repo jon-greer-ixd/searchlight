@@ -1,0 +1,116 @@
+<p>What do you need to add?</p>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="edit-person-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+<!--
+  // Potentially violent
+  // Nationality 
+  // NIFU_Interest 
+  // Needs_Type (Special Needs) 
+  // Disability_Indicator 
+  // Preferred Lang_Type 
+  // Spoken_Lang_Type 
+  // Marital Status
+  // Death_Date & Verification 
+  // IND_Interest
+  // Immigration_Reference_Number  & Immigration_Status_Type 
+-->
+
+      <div class="form-group">
+      <fieldset>
+        
+        {% if data.deathUpdated === false %}
+          <div class="multiple-choice">
+            <input id="death" name="data" type="checkbox" value="death" >
+            <label for="death">Add date of death information</label>
+          </div>
+        {% endif %}
+        
+        {% if data.pvUpdated === false %}
+          <div class="multiple-choice">
+            <input id="pv" name="data" type="checkbox" value="pv" >
+            <label for="pv">Add potentially violent information</label>
+          </div>
+        {% endif %}
+        
+        {% if data.genderUpdated === false %}
+          <div class="multiple-choice">
+            <input id="gender" name="data" type="checkbox" value="gender" >
+            <label for="gender">Add gender information</label>
+          </div>
+        {% endif %}
+        
+        {% if data.nationalityUpdated === false %}
+          <div class="multiple-choice">
+            <input id="nationality" name="data" type="checkbox" value="nationality" >
+            <label for="nationality">Add nationality</label>
+          </div>
+        {% endif %}
+        
+        {% if data.nifuUpdated === false %}
+          <div class="multiple-choice">
+            <input id="nifu" name="data" type="checkbox" value="nifu" >
+            <label for="nifu">Add national fraud interest</label>
+          </div>
+        {% endif %}
+        
+        {% if data.needsUpdated === false %}
+          <div class="multiple-choice">
+            <input id="needs" name="data" type="checkbox" value="needs" >
+            <label for="needs">Add special needs information</label>
+          </div>
+        {% endif %}
+        
+        {% if data.disabilityUpdated === false %}
+          <div class="multiple-choice">
+            <input id="disability" name="data" type="checkbox" value="disability" >
+            <label for="disability">Add disability information</label>
+          </div>
+        {% endif %}
+        
+        {% if data.planguageUpdated === false %}
+          <div class="multiple-choice">
+            <input id="planguage" name="data" type="checkbox" value="planguage" >
+            <label for="planguage">Set preferred language</label>
+          </div>
+        {% endif %}
+        
+        {% if data.spokenlanguageUpdated === false %}
+          <div class="multiple-choice">
+            <input id="spokenlanguage" name="data" type="checkbox" value="spokenlanguage" >
+            <label for="spokenlanguage">Set spoken language</label>
+          </div>
+        {% endif %}
+        
+        {% if data.maritalUpdated === false %}
+          <div class="multiple-choice">
+            <input id="marital" name="data" type="checkbox" value="marital" >
+            <label for="marital">Add marital or civil partnership status</label>
+          </div>
+        {% endif %}
+        
+        {% if data.immigrationUpdated === false %}
+          <div class="multiple-choice">
+            <input id="immigration" name="data" type="checkbox" value="immigration" >
+            <label for="immigration">Add immigration information</label>
+          </div>
+        {% endif %}
+        
+        </fieldset>        
+      </div> 
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>
