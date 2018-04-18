@@ -1,0 +1,43 @@
+<p>What do you need to add?</p>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="../gender/update">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+      <div class="form-group">
+      <fieldset>
+        {% if data.genderUpdated === false %}
+          <div class="multiple-choice">
+            <input id="one" name="data" type="checkbox" value="one" >
+            <label for="one">Add gender information</label>
+          </div>
+        {% endif %}
+          <div class="multiple-choice">
+            <input id="two" name="data" type="checkbox" value="two" >
+            <label for="two">Add disability information</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="three" name="data" type="checkbox" value="three" >
+            <label for="three">Add immigration information</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="four" name="data" type="checkbox" value="four" >
+            <label for="four">Add potentially violent information</label>
+          </div>
+
+        </fieldset>        
+      </div> 
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>
