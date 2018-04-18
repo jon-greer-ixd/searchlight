@@ -4,11 +4,17 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-            <h2>Add gender information</h2>
+          
+          {% if data.updateType === "addGra" %}
+            <h2>Add acquired gender - GRA information</h2>
+          {% elif data.updateType === "addPreGra" %}
+            <h2>Add acquired gender - pre GRA information</h2>
+          {% endif %}
+          
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               
-                {% include "components/update/gender/update-content.html" %}
+                {% include "components/update/person/gender/check-content.html" %}
               
           </div>
         </div>

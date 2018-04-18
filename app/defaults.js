@@ -1,4 +1,6 @@
 var defaults = {
+  //updater
+  updateType : null,
   //names
   title : "LORD",
   nameOneFirst : "JAMES",
@@ -8,8 +10,6 @@ var defaults = {
   hasNameTwo : false,
   hasRequestedName : false,
   requestedName : "JIMBOB",
-  //updaters
-  updateType : null,
   nameOneUpdated : false,
   nameOneCorrected : false,
   nameTwoAdded : false,
@@ -23,9 +23,41 @@ var defaults = {
   //sex
   sex : "Male",
   sexCorrected : false,
+  //gender
+  editGender : false,
   graAdded : false,
   preGraAdded : false,
-  genderUpdated : false
+  genderUpdated : false,
+  //death
+  editDeath : false,
+  deathUpdated : false,
+  //pv
+  editPv : false,
+  pvUpdated : false,
+  //nationality
+  editNationality : false,
+  nationalityUpdated : false,
+  //nifu
+  editNifu : false,
+  nifuUpdated : false,
+  //special needs
+  editNeeds : false,
+  needsUpdated : false,
+  //disability
+  editDisability : false,
+  disabilityUpdated : false,
+  //prefered language
+  editPreferedLanguage : false,
+  preferedLanguageUpdated : false,
+  //spoken language
+  editSpokenLanguage : false,
+  spokenLanguageUpdated : false,
+  // marital status
+  editMarital : false,
+  maritalUpdated : false,
+  //immigration status
+  editImmigration : false,
+  ImmigrationUpdated : false
 };
 
 module.exports.defaults = defaults;

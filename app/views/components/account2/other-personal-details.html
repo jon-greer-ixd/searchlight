@@ -4,151 +4,170 @@
   </summary>
   
   <div class="personal-details">
+
     <hr class="light">
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Nationality</p>
+    
+    <!-- nationality -->
+    {% if data.nationalityUpdated == true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          <p>Nationality</p>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">British</li>
+          </ul>
+        </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+  <!--
+              <li>
+                <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+              </li>
+  -->
+  <!--
+              <li>
+                <a class="secondary-link" href="">Change</a>
+              </li>
+  -->
+            </ul>
+        </div>
       </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="strong">British</li>
-        </ul>
-      </div>
+      <hr class="light">
+    {% endif %}
+
+    
+    <!-- nationality -->
+    {% if data.genderUpdated == true %}
+      {% include "components/account2/gender.html" %}
+      <hr class="light">
+    {% endif %}
+
+    
+    <!-- sex -->
+    {% include "components/account2/sex.html" %}
+    <hr class="light">
+    
+    
+    <!-- Spoken language -->
+    {% if data.spokenLanguageUpdated == true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          <p>Spoken language</p>
+        </div>
+        <div class="column-one-third">
+          <p class="strong">English</p>
+        </div>
         <div class="column-one-third last-col">
           <ul class="edit-menu">
-<!--
+  <!--
             <li>
-              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
             </li>
--->
-<!--
+  -->
+  <!--
             <li>
               <a class="secondary-link" href="">Change</a>
             </li>
--->
+  -->
           </ul>
+        </div>
       </div>
-    </div>
-    
-    <hr class="light">
-    
-      {% include "components/account2/gender.html" %}
-    
       <hr class="light">
+    {% endif %}
     
-      {% include "components/account2/sex.html" %}
     
-    <hr class="light">
-        
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Spoken language</p>
+    <!-- Preferred language -->
+    {% if data.pLanguageUpdated == true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          <p>Preferred language</p>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">English</li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Since 5 Jun 2010
+            </li>
+          </ul>      
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
+              <span class="pipe"> | </span> 
+              <a href="language-pref-history" class="under-link">View history</a>
+            </li>
+  <!--
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+  -->
+          </ul>
+        </div>
       </div>
-      <div class="column-one-third">
-        <p class="strong">English</p>
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-<!--
-          <li>
-            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
-          </li>
--->
-<!--
-          <li>
-            <a class="secondary-link" href="">Change</a>
-          </li>
--->
-        </ul>
-      </div>
-    </div>
-    
-    <hr class="light">
-    
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Preferred language</p>
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="strong">English</li>
-          <li class="sl-secondary-text-color sl-metadata">
-            Since 5 Jun 2010
-          </li>
-        </ul>      
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
-            <span class="pipe"> | </span> 
-            <a href="language-pref-history" class="under-link">View history</a>
-          </li>
-<!--
-          <li>
-            <a class="secondary-link" href="">Change</a>
-          </li>
--->
-        </ul>
-      </div>
-    </div>
-    
-    <hr class="light">
-    
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>National identity fraud unit</p>
-      </div>
-      <div class="column-one-third">
-        <p class="strong">Yes</p>
-      </div>
-      <div class="column-one-third last-col">
-<!--
-        <ul class="edit-menu">
-          <li>
-            <a class="under-link">View maintenance</a> 
-          </li>
-          <li>
-            <a class="secondary-link" href="">Change</a>
-          </li>
-        </ul>
--->
-      </div>
-    </div>
-
-    <hr class="light">
-    
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Civil status</p>
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="strong">Married</li>
-        </ul>
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-<!--
-          <li>
-            <a class="under-link">View history</a> 
-          </li>
--->
-<!--
-          <li>
-            <a class="secondary-link" href="">Change</a>
-          </li>
--->
-        </ul>
-      </div>
-    </div>
-
-</div>
-  
       <hr class="light">
+    {% endif %}
+    
+    
+    <!-- NIFU -->
+    {% if data.nifuUpdated == true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          <p>National identity fraud unit</p>
+        </div>
+        <div class="column-one-third">
+          <p class="strong">Yes</p>
+        </div>
+        <div class="column-one-third last-col">
+  <!--
+          <ul class="edit-menu">
+            <li>
+              <a class="under-link">View maintenance</a> 
+            </li>
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+          </ul>
+  -->
+        </div>
+      </div>
+      <hr class="light">
+    {% endif %}
+
+    
+    <!-- Civil status -->
+    {% if data.maritalUpdated == true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          <p>Civil status</p>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">Married</li>
+          </ul>
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+  <!--
+            <li>
+              <a class="under-link">View history</a> 
+            </li>
+  -->
+  <!--
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+  -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr class="light">
+  {% endif %}
 
   
-    <div class="grid-row" style="margin-bottom: 0;">
+  <div class="grid-row" style="margin-bottom: 0;">
     <div class="column-one-third">
       <ul>
         &nbsp;
@@ -166,95 +185,4 @@
     </div>
   </div>
 
-
-  
 </details>
-
-<!--
-<hr>
-<details>
-  <summary>
-    <span class="summary">Previous personal details</span>
-  </summary>
-  
-  <div class="personal-details">
-    
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Nationality</p>
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="strong">British</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Civil status</p>
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="strong">Married</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Sex</p>
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="strong">Male</li>
-        </ul>
-      </div>
-    </div>
-    
-</div>
-</details>
-    <details>
-      <summary>
-        <span class="summary">Other personal details</span>
-      </summary>
-    
-        <div class="personal-details">
-          
-          <div class="grid-row">
-            <div class="column-one-third">
-              <p>Nationality</p>
-            </div>
-            <div class="column-one-third">
-              <ul>
-                <li class="strong">British</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="grid-row">
-            <div class="column-one-third">
-              <p>Civil status</p>
-            </div>
-            <div class="column-one-third">
-              <ul>
-                <li class="strong">Married</li>
-              </ul>
-            </div>
-          </div>
-        
-          <div class="grid-row">
-            <div class="column-one-third">
-              <p>Sex</p>
-            </div>
-            <div class="column-one-third">
-              <ul>
-                <li class="strong">Male</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-  </details>
--->
-
-
