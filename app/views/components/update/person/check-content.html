@@ -1,0 +1,40 @@
+  <h2 class="heading-medium question">Check your answers</h2>
+    <div class="grid-row">
+      <div class="column-one-half">
+        <table class="table"> 
+          
+          <!-- add marital -->
+          {% if data.addMarital === true %}
+            <tr>
+              <td><span class="strong">Marital or civil status</span></td>
+              <td>{{data.maritalStatus}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          {% if data.addNationality === true %}
+            <tr>
+              <td><span class="strong">Nationality</span></td>
+              <td>{{data.nationality}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+<!--
+          <tr>
+            <td><span class="strong">Notified or decision date</span></td>
+            <td>{{data['prepopulatedDate']}}</td>
+            <td><a>Change</a></td>
+          </tr>
+-->
+          
+        </table>
+      <br>
+      <form method="get" action="check-person-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="/account2/account">Cancel</a>
+    </div>
+  </div>

@@ -24,39 +24,45 @@ var defaults = {
   sex : "Male",
   sexCorrected : false,
   //gender
-  editGender : false,
+  showGra : false,
+  showPreGra : false,
+  graState : null,     // adding // updating // removing // added // removed // updated
+  preGraState : null, 
+  
+  addGender : false,
   graAdded : false,
   preGraAdded : false,
   genderUpdated : false,
   //death
-  editDeath : false,
+  addDeath : false,
   deathUpdated : false,
   //pv
-  editPv : false,
+  addPv : false,
   pvUpdated : false,
   //nationality
-  editNationality : false,
-  nationalityUpdated : false,
+  addNationality : false,
+  nationalityAdded : false,
   //nifu
-  editNifu : false,
+  addNifu : false,
   nifuUpdated : false,
   //special needs
-  editNeeds : false,
+  addNeeds : false,
   needsUpdated : false,
   //disability
-  editDisability : false,
+  addDisability : false,
   disabilityUpdated : false,
   //prefered language
-  editPreferedLanguage : false,
+  addPreferedLanguage : false,
   preferedLanguageUpdated : false,
   //spoken language
-  editSpokenLanguage : false,
+  addSpokenLanguage : false,
   spokenLanguageUpdated : false,
   // marital status
-  editMarital : false,
-  maritalUpdated : false,
+  maritalStatus : null,
+  addMarital : false,
+  maritalAdded : false,
   //immigration status
-  editImmigration : false,
+  addImmigration : false,
   ImmigrationUpdated : false
 };
 
