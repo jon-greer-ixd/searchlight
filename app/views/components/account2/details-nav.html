@@ -35,7 +35,20 @@
       {% include "components/update/toasters/sex-corrected.html" %}
     {% endif %}
     
-    {% if data.genderUpdated === true %}
+    <!-- gender -->
+    {% if data.graState == "added" %}
+      {% include "components/update/toasters/gender-added.html" %}
+    {% endif %}
+    
+    {% if data.preGraState == "added" %}
+      {% include "components/update/toasters/gender-added.html" %}
+    {% endif %}
+    
+    {% if data.graState === "updated" %}
+      {% include "components/update/toasters/gender-updated.html" %}
+    {% endif %}
+    
+    {% if data.preGraState === "updated" %}
       {% include "components/update/toasters/gender-updated.html" %}
     {% endif %}
     
@@ -78,6 +91,14 @@
 
     {% if data.requestedNameRemoved === true %}
       {% include "components/update/toasters/requested-name-removed.html" %}
+    {% endif %}
+
+    {% if data.maritalAdded === true %}
+      {% include "components/update/toasters/marital-added.html" %}
+    {% endif %}
+
+    {% if data.nationalityAdded === true %}
+      {% include "components/update/toasters/nationality-added.html" %}
     {% endif %}
 
     

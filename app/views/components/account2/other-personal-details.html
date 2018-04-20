@@ -8,28 +8,24 @@
     <hr class="light">
     
     <!-- nationality -->
-    {% if data.nationalityUpdated == true %}
+    {% if data.nationalityAdded == true %}
       <div class="grid-row">
         <div class="column-one-third">
-          <p>Nationality</p>
+          Nationality
         </div>
         <div class="column-one-third">
           <ul>
-            <li class="strong">British</li>
+            <li class="strong">{{data.nationality}}</li>
           </ul>
         </div>
           <div class="column-one-third last-col">
             <ul class="edit-menu">
-  <!--
               <li>
                 <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
               </li>
-  -->
-  <!--
               <li>
-                <a class="secondary-link" href="">Change</a>
+                <a class="secondary-link" href="/update/person/nationality/update">Change</a>
               </li>
-  -->
             </ul>
         </div>
       </div>
@@ -37,8 +33,8 @@
     {% endif %}
 
     
-    <!-- nationality -->
-    {% if data.genderUpdated == true %}
+    <!-- gender -->
+    {% if data.showPreGra == true or data.showGra == true %}
       {% include "components/account2/gender.html" %}
       <hr class="light">
     {% endif %}
@@ -137,28 +133,20 @@
 
     
     <!-- Civil status -->
-    {% if data.maritalUpdated == true %}
+    {% if data.maritalAdded === true %}
       <div class="grid-row">
         <div class="column-one-third">
-          <p>Civil status</p>
+          Marital or civil status
         </div>
         <div class="column-one-third">
           <ul>
-            <li class="strong">Married</li>
+            <li class="strong">{{data.maritalStatus}}</li>
           </ul>
         </div>
         <div class="column-one-third last-col">
           <ul class="edit-menu">
-  <!--
-            <li>
-              <a class="under-link">View history</a> 
-            </li>
-  -->
-  <!--
-            <li>
-              <a class="secondary-link" href="">Change</a>
-            </li>
-  -->
+<!--            <li><a class="under-link">View history</a></li>-->
+            <li><a class="secondary-link" href="/update/person/marital/update">Change</a></li>
           </ul>
         </div>
       </div>
