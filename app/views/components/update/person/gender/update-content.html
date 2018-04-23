@@ -1,33 +1,59 @@
-<h2 class="heading-medium question">What kind of change do you need to make?</h2>
 <div class="grid-row">
+  
   <div class="column-one-half">
     
-    <form method="get" action="add-gender-handler">
+    <form method="get" action="update-gender-handler">
       
-        <legend class="visually-hidden">
-          <p>
-            What kind of change do you need to make?
-          </p>
-        </legend>
+      <legend class="visually-hidden">
+        <p class="">
+          What do you need to add?
+        </p>
+      </legend>
       
+      {% if data.graState != null and data.preGraState != null %}
         <div class="form-group">
-          <div class="multiple-choice">
-            <input id="correct" type="radio" name="data" value="pre">
-            <label for="correct">Add acquired gender - pre GRA information</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="update" type="radio" name="data" value="gra">
-            <label for="update">Add acquired gender - GRA information</label>
-          </div>
-                    
-        </div> 
-      
-        <div class="form-group">
-          <input class="button" type="submit" value="Next">
+          <fieldset>
+            <legend>
+              <p class="radio-header">Sex</p>
+            </legend>
+
+            <div class="multiple-choice">
+              <input id="radio-1" type="radio" name="radio-group" value="Male" {% if data.sex == "Male" %} checked="checked" {% endif %}>
+              <label for="radio-1">Male</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="radio-2" type="radio" name="radio-group" value="Female" {% if data.sex == "Female" %} checked="checked" {% endif %}>
+              <label for="radio-2">Female</label>
+            </div>
+          </fieldset>
         </div>
-            
+      {% endif %}
+      
+      <fieldset class="form-group">
+        <label class="form-label" for="postcode">
+          Effective date of gender change
+          <span class="form-hint">
+            For example 31/8/1979
+          </span>
+        </label>
+        <input {% if data.graState != "updating" or data.preGraState == "updating" or data.graState == "correcting" or data.preGraState == "correcting" %} value={{data['prepopulatedDate']}} {% endif %} class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+      </fieldset>
+      
+      <fieldset class="form-group">
+        <label class="form-label" for="postcode">
+          Notified or decision date
+        </label>
+        <input {% if data.graState != "updating" or data.preGraState == "updating" or data.graState == "correcting" or data.preGraState == "correcting" %} value={{data['prepopulatedDate']}} {% endif %} class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+      </fieldset>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
     </form>
     
     <p><a href="account">Cancel</a></p>
+    
   </div>
+  
 </div>

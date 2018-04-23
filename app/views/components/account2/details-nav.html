@@ -92,9 +92,18 @@
     {% if data.requestedNameRemoved === true %}
       {% include "components/update/toasters/requested-name-removed.html" %}
     {% endif %}
-
-    {% if data.maritalAdded === true %}
+    
+    <!-- marital -->
+    {% if data.maritalState === "added" %}
       {% include "components/update/toasters/marital-added.html" %}
+    {% endif %}
+
+    {% if data.maritalState === "updated" %}
+      {% include "components/update/toasters/marital-updated.html" %}
+    {% endif %}
+
+    {% if data.maritalState === "corrected" %}
+      {% include "components/update/toasters/marital-corrected.html" %}
     {% endif %}
 
     <!-- nationality -->
@@ -102,7 +111,6 @@
       {% include "components/update/toasters/nationality-added.html" %}
     {% endif %}
 
-    <!-- nationality -->
     {% if data.nationalityState === "updated" %}
       {% include "components/update/toasters/nationality-updated.html" %}
     {% endif %}

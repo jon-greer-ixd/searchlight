@@ -4,16 +4,22 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.graState == "adding" or data.preGraState == "adding" %}
-            <h2>Add gender information</h2>
-          {% else %}
-            <h2>Update gender information</h2>
-          {% endif %}
+            {% if data.graState == "adding" %}
+              <h2>Add acquired gender - GRA information</h2>
+            {% elif data.preGraState == "adding" %}
+              <h2>Add acquired gender - pre GRA information</h2>
+            {% elif data.graState == "updating" %}
+              <h2>Update acquired gender - GRA information</h2>
+            {% elif data.preGraState == "updating" %}
+              <h2>Update acquired gender - pre GRA  information</h2>
+            {% elif data.graState == "correcting" %}
+              <h2>Correct acquired gender - GRA information</h2>
+            {% elif data.preGraState == "correcting" %}
+              <h2>Correct acquired gender - pre GRA  information</h2>
+            {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
-              
-                {% include "components/update/person/gender/update-content.html" %}
-              
+              {% include "components/update/person/gender/update-content.html" %}
           </div>
         </div>
       </div>

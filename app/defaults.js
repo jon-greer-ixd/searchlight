@@ -25,6 +25,7 @@ var defaults = {
   //sex
   sex : "Male",
   sexCorrected : false,
+  sexChanged : null,
   
   //gender
   showGra : false,
