@@ -3,8 +3,8 @@
       <div class="column-one-half">
         <table class="table"> 
           
-          <!-- add marital -->
-          {% if data.addMarital === true %}
+          <!-- marital -->
+          {% if data.maritalState === "adding" or data.maritalState === "updating" %}
             <tr>
               <td><span class="strong">Marital or civil status</span></td>
               <td>{{data.maritalStatus}}</td>
@@ -12,14 +12,24 @@
             </tr>
           {% endif %}
           
-          {% if data.addNationality === true %}
+          <!-- nationality -->
+          {% if data.nationalityState === "adding" or data.nationalityState === "updating" or data.nationalityState === "correcting" %}
             <tr>
               <td><span class="strong">Nationality</span></td>
               <td>{{data.nationality}}</td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
-          
+                    
+          <!-- disability -->
+          {% if data.disabilityState === "adding" or data.disabilityState === "updating" %}
+            <tr>
+              <td><span class="strong">Disability</span></td>
+              <td>{{data.nationality}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+                    
 <!--
           <tr>
             <td><span class="strong">Notified or decision date</span></td>

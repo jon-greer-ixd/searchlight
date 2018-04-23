@@ -1,6 +1,7 @@
 var defaults = {
   //updater
   updateType : null,
+  
   //names
   title : "LORD",
   nameOneFirst : "JAMES",
@@ -20,47 +21,57 @@ var defaults = {
   requestedNameUpdated : false,
   requestedNameCorrected : false,
   requestedNameRemoved : false,
+  
   //sex
   sex : "Male",
   sexCorrected : false,
+  
   //gender
   showGra : false,
   showPreGra : false,
-  graState : null,     // adding // updating // removing // added // removed // updated
+  graState : null,     // adding // updating // correcting // removing // added // removed // updated
   preGraState : null, 
   
-  addGender : false,
-  graAdded : false,
-  preGraAdded : false,
-  genderUpdated : false,
   //death
   addDeath : false,
   deathUpdated : false,
+  
   //pv
   addPv : false,
   pvUpdated : false,
+  
   //nationality
-  addNationality : false,
-  nationalityAdded : false,
+  showNationality : false,
+  nationalityState : null,
+  
   //nifu
   addNifu : false,
   nifuUpdated : false,
+  
   //special needs
   addNeeds : false,
   needsUpdated : false,
+  
   //disability
-  addDisability : false,
-  disabilityUpdated : false,
+  disability: false,
+  showDisability : false,
+  disabilityStatus : null,
+
   //prefered language
   addPreferedLanguage : false,
   preferedLanguageUpdated : false,
+  
   //spoken language
   addSpokenLanguage : false,
   spokenLanguageUpdated : false,
-  // marital status
+  
+  //marital status
   maritalStatus : null,
-  addMarital : false,
-  maritalAdded : false,
+  maritalState : null,
+  showMarital : false,
+//  addMarital : false,
+//  maritalAdded : false,
+  
   //immigration status
   addImmigration : false,
   ImmigrationUpdated : false

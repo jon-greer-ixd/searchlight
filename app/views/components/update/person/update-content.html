@@ -40,14 +40,14 @@
           </div>
         {% endif %}
         
-        {% if data.genderUpdated === false %}
+        {% if data.showGra === false and data.showPreGra === false %}
           <div class="multiple-choice">
             <input id="gender" name="data" type="checkbox" value="gender" >
             <label for="gender">Add gender information</label>
           </div>
         {% endif %}
         
-        {% if data.nationalityAdded === false %}
+        {% if data.showNationality === false %}
           <div class="multiple-choice">
             <input id="nationality" name="data" type="checkbox" value="nationality" >
             <label for="nationality">Add nationality</label>
@@ -68,7 +68,7 @@
           </div>
         {% endif %}
         
-        {% if data.disabilityUpdated === false %}
+        {% if data.showDisability === false %}
           <div class="multiple-choice">
             <input id="disability" name="data" type="checkbox" value="disability" >
             <label for="disability">Add disability information</label>
@@ -89,7 +89,7 @@
           </div>
         {% endif %}
         
-        {% if data.maritalAdded === false %}
+        {% if data.showMarital === false %}
           <div class="multiple-choice">
             <input id="marital" name="data" type="checkbox" value="marital" >
             <label for="marital">Add marital or civil partnership status</label>

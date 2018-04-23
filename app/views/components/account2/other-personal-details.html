@@ -8,7 +8,7 @@
     <hr class="light">
     
     <!-- nationality -->
-    {% if data.nationalityAdded == true %}
+    {% if data.showNationality == true %}
       <div class="grid-row">
         <div class="column-one-third">
           Nationality
@@ -24,7 +24,7 @@
                 <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
               </li>
               <li>
-                <a class="secondary-link" href="/update/person/nationality/update">Change</a>
+                <a href="../update/person/nationality/type" class="under-link" style="font-size:17px;">Change</a>
               </li>
             </ul>
         </div>
@@ -133,7 +133,7 @@
 
     
     <!-- Civil status -->
-    {% if data.maritalAdded === true %}
+    {% if data.showMarital === true %}
       <div class="grid-row">
         <div class="column-one-third">
           Marital or civil status
@@ -146,11 +146,36 @@
         <div class="column-one-third last-col">
           <ul class="edit-menu">
 <!--            <li><a class="under-link">View history</a></li>-->
-            <li><a class="secondary-link" href="/update/person/marital/update">Change</a></li>
+            <li>                
+              <a href="update-gender-handler/?feature=marital&state=updating" class="under-link" style="font-size:17px;">Change</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
+    <hr class="light">
+  {% endif %}
+
+    <!-- Disability -->
+    {% if data.showDisability === true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          Disability
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong"> {{data.disability}} </li>
+          </ul>
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+<!--            <li><a class="under-link">View history</a></li>-->
+            <li>                
+              <a href="update-gender-handler/?feature=disability&state=updating" class="under-link" style="font-size:17px;">Change</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     <hr class="light">
   {% endif %}
 
