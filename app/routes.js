@@ -704,7 +704,7 @@ router.get('/sex/update', function (req, res) {
 
 router.get(/check-sex-handler/, function (req, res) {
   if(req.session.data.updateType === "correctSex") {
-    req.session.data.sexCorrected = true;
+    req.session.data.sexChanged = true;
   } else {
     req.session.data.genderUpdated = true;
   }
