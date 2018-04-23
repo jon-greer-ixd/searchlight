@@ -5,7 +5,7 @@
   <div class="column-one-third">
     <ul>
       <li class="strong">{{data.sex}}</li>
-      {% if data.genderUpdated === true or data.sexCorrected === true %}
+      {% if data.genderUpdated === true or data.sexChanged === true %}
       <li class="sl-secondary-text-color sl-metadata">
         Since today
       </li>
@@ -23,9 +23,11 @@
         <span class="pipe"> | </span> 
         <a href="../history/sex-history" class="under-link">View history</a>
       </li>
-      <li>
-        <a href="sex-simple-handler" class="under-link" style="font-size:17px;">Change</a>
-      </li>
+      {% if data.genderUpdated === true or data.sexChanged === true %}
+        <li>
+          <a href="sex-simple-handler" class="under-link" style="font-size:17px;">Change</a>
+        </li>
+      {% endif %}
     </ul>
   </div>
 </div>
