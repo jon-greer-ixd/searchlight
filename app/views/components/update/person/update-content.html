@@ -1,4 +1,4 @@
-<p>What do you need to add?</p>
+<h2 class="heading-medium question">What personal information do you need to add?</h2>
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="edit-person-handler">
@@ -29,77 +29,77 @@
         {% if data.deathUpdated === false %}
           <div class="multiple-choice">
             <input id="death" name="data" type="checkbox" value="death" >
-            <label for="death">Add date of death information</label>
+            <label for="death">Date of death information</label>
           </div>
         {% endif %}
         
         {% if data.pvUpdated === false %}
           <div class="multiple-choice">
             <input id="pv" name="data" type="checkbox" value="pv" >
-            <label for="pv">Add potentially violent information</label>
+            <label for="pv">Potentially violent information</label>
           </div>
         {% endif %}
         
         {% if data.showGra === false and data.showPreGra === false %}
           <div class="multiple-choice">
             <input id="gender" name="data" type="checkbox" value="gender" >
-            <label for="gender">Add gender information</label>
+            <label for="gender">Gender information</label>
           </div>
         {% endif %}
         
         {% if data.showNationality === false %}
           <div class="multiple-choice">
             <input id="nationality" name="data" type="checkbox" value="nationality" >
-            <label for="nationality">Add nationality</label>
+            <label for="nationality">Nationality</label>
           </div>
         {% endif %}
         
         {% if data.nifuUpdated === false %}
           <div class="multiple-choice">
             <input id="nifu" name="data" type="checkbox" value="nifu" >
-            <label for="nifu">Add national fraud interest</label>
+            <label for="nifu">National fraud interest</label>
           </div>
         {% endif %}
         
         {% if data.needsUpdated === false %}
           <div class="multiple-choice">
             <input id="needs" name="data" type="checkbox" value="needs" >
-            <label for="needs">Add special needs information</label>
+            <label for="needs">Special needs information</label>
           </div>
         {% endif %}
         
         {% if data.showDisability === false %}
           <div class="multiple-choice">
             <input id="disability" name="data" type="checkbox" value="disability" >
-            <label for="disability">Add disability information</label>
+            <label for="disability">Disability information</label>
           </div>
         {% endif %}
         
         {% if data.planguageUpdated === false %}
           <div class="multiple-choice">
             <input id="planguage" name="data" type="checkbox" value="planguage" >
-            <label for="planguage">Set preferred language</label>
+            <label for="planguage">Preferred language</label>
           </div>
         {% endif %}
         
         {% if data.spokenlanguageUpdated === false %}
           <div class="multiple-choice">
             <input id="spokenlanguage" name="data" type="checkbox" value="spokenlanguage" >
-            <label for="spokenlanguage">Set spoken language</label>
+            <label for="spokenlanguage">Spoken language</label>
           </div>
         {% endif %}
         
         {% if data.showMarital === false %}
           <div class="multiple-choice">
             <input id="marital" name="data" type="checkbox" value="marital" >
-            <label for="marital">Add marital or civil partnership status</label>
+            <label for="marital">Marital or civil partnership status</label>
           </div>
         {% endif %}
         
         {% if data.immigrationUpdated === false %}
           <div class="multiple-choice">
             <input id="immigration" name="data" type="checkbox" value="immigration" >
-            <label for="immigration">Add immigration information</label>
+            <label for="immigration">Immigration information</label>
           </div>
         {% endif %}
         

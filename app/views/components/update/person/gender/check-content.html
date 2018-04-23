@@ -3,6 +3,19 @@
       <div class="column-one-half">
         <table class="table"> 
           <tr>
+            <td><span class="strong">Sex</span></td>
+            <td>
+              {% if data.sex == "Male" %}
+                Female
+              {% else %}
+                Male
+              {% endif %}
+            </td>
+            <td>
+              <a>&nbsp;</a>
+            </td>
+          </tr>
+          <tr>
             <td><span class="strong">Effective date of gender change</span></td>
             <td>{{data['prepopulatedDate']}}</td>
             <td><a>Change</a></td>

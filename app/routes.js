@@ -514,8 +514,8 @@ router.get(/edit-person-handler/, function (req, res) {
   for (x in req.query.data) {
     item = req.query.data[x];
     if (item === "gender" ) {
-      req.session.data.adddGender = true;
-      next = "gender/update";
+      req.session.data.genderState = "adding";
+      next = "gender/add";
     } else if (item ===  "death") {
       req.session.data.adddDeath = true;
       next = "death/update";
@@ -566,6 +566,10 @@ router.get(/check-person-handler/, function (req, res) {
   } else if (req.session.data.maritalState === "adding") {
     req.session.data.maritalState = "added";
     req.session.data.showMarital = true;
+  } else if (req.session.data.maritalState === "updating") {
+    req.session.data.maritalState = "updated";
+  } else if (req.session.data.maritalState === "correcting") {
+    req.session.data.maritalState = "corrected";
   //disability
   } else if (req.session.data.disabilityState === "adding") {
     req.session.data.maritalState = "added";
@@ -583,7 +587,29 @@ router.get(/nationality-type-handler/, function (req, res) {
   res.redirect('/update/person/nationality/update')
 })
 
+
+//MARITAL
+
+router.get(/marital-type-handler/, function (req, res) {
+  req.session.data.maritalState = req.query.data;
+  console.log("here "+req.session.data.nationalityState);
+  res.redirect('/update/person/marital/update')
+})
+
+
 //GENDER
+
+router.get(/gender-type-handler/, function (req, res) {
+  console.log(req.query.data);
+  if (req.session.data.graState === "updating") {
+    req.session.data.graState = req.query.data;
+    console.log(req.session.data.graState);
+  } else {
+    req.session.data.preGraState = req.query.data;
+    console.log(req.session.data.graState);
+  }
+  res.redirect('/update/person/gender/update')
+})
 
 router.get(/add-gender-handler/, function (req, res) {
   console.log("here "+req.query.data);
@@ -592,20 +618,32 @@ router.get(/add-gender-handler/, function (req, res) {
   } else {
     req.session.data.preGraState = "adding";
   }
-  res.redirect('/update/person/gender/update-gender')
+  res.redirect('/update/person/gender/update')
 })
 
-router.get(/update-gender-handler/, function (req, res) {
+router.get(/updating-handler/, function (req, res) {
   var feature = req.query.feature;
   var featureState = feature+"State";
   req.session.data[featureState] = req.query.state;
   if(req.query.feature === "preGra" || req.query.feature === "gra") {
-    res.redirect('/update/person/gender/update-gender')
+    if (req.query.state == "adding") {
+      res.redirect('/update/person/gender/update')
+    } else {
+      res.redirect('/update/person/gender/type')
+    }
   } else {
     // var toPage = '/update/person/' + req.query.feature + '/update';
     res.redirect('/update/person/' + feature + '/update')
   }
 })
+
+router.get(/update-gender-handler/, function (req, res) {
+  if (req.query.data != req.session.sex) {
+    req.session.sexChanged = true;
+  }
+  res.redirect('/update/person/gender/check')
+})
+
 
 router.get(/check-gender-handler/, function (req, res) {
   if (req.session.data.preGraState === "adding") {

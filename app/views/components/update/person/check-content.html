@@ -4,7 +4,7 @@
         <table class="table"> 
           
           <!-- marital -->
-          {% if data.maritalState === "adding" or data.maritalState === "updating" %}
+          {% if data.maritalState === "adding" or data.maritalState === "updating" or data.maritalState === "correcting" %}
             <tr>
               <td><span class="strong">Marital or civil status</span></td>
               <td>{{data.maritalStatus}}</td>
@@ -22,7 +22,7 @@
           {% endif %}
                     
           <!-- disability -->
-          {% if data.disabilityState === "adding" or data.disabilityState === "updating" %}
+          {% if data.disabilityState === "adding" or data.disabilityState === "updating" or data.disabilityState === "correcting" %}
             <tr>
               <td><span class="strong">Disability</span></td>
               <td>{{data.nationality}}</td>
