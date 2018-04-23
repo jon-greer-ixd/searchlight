@@ -97,8 +97,19 @@
       {% include "components/update/toasters/marital-added.html" %}
     {% endif %}
 
-    {% if data.nationalityAdded === true %}
+    <!-- nationality -->
+    {% if data.nationalityState === "added" %}
       {% include "components/update/toasters/nationality-added.html" %}
+    {% endif %}
+
+    <!-- nationality -->
+    {% if data.nationalityState === "updated" %}
+      {% include "components/update/toasters/nationality-updated.html" %}
+    {% endif %}
+
+    <!-- nationality -->
+    {% if data.nationalityState === "corrected" %}
+      {% include "components/update/toasters/nationality-corrected.html" %}
     {% endif %}
 
     

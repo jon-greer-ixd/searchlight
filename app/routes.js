@@ -505,9 +505,7 @@ router.get(/authority-stop-handler/, function (req, res) {
 })
 
 
-/************/
-/** PERSON **/
-/************/
+//PERSON
 
 router.get(/edit-person-handler/, function (req, res) {
   var next = "gender/update";
@@ -525,7 +523,7 @@ router.get(/edit-person-handler/, function (req, res) {
       req.session.data.adddPv = true;
       next = "pv/update";
     } else if (item === "nationality") {
-      req.session.data.addNationality = true;
+      req.session.data.nationalityState = "adding";
       next = "nationality/update";
     } else if (item === "nifu") {
       req.session.data.adddNifu = true;
@@ -534,7 +532,7 @@ router.get(/edit-person-handler/, function (req, res) {
       req.session.data.adddNeeds = true;
       next = "needs/update";
     } else if (item === "disability") {
-      req.session.data.adddDisability = true;
+      req.session.data.disabilityState = "adding";
       next = "disability/update";
     } else if (item === "planguage") {
       req.session.data.adddPreferedLanguage = true;
@@ -543,7 +541,7 @@ router.get(/edit-person-handler/, function (req, res) {
       req.session.data.adddSpokenLanguage = true;
       next = "spoken/update";
     } else if (item === "marital") {
-      req.session.data.addMarital = true;
+      req.session.data.maritalState = "adding";
       next = "marital/update";
    } else if (item === "immigration") {
       req.session.data.adddImmigration = true;
@@ -556,18 +554,36 @@ router.get(/edit-person-handler/, function (req, res) {
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
-  if (req.session.data.addMarital == true) {
-    req.session.data.maritalAdded = true;
-  } else if (req.session.data.addNationality == true) {
-    req.session.data.nationalityAdded = true;
+  //nationality
+  if (req.session.data.nationalityState === "adding") {
+    req.session.data.nationalityState = "added";
+    req.session.data.showNationality = true;
+  } else if (req.session.data.nationalityState === "updating") {
+    req.session.data.nationalityState = "updated";
+  } else if (req.session.data.nationalityState === "correcting") {
+    req.session.data.nationalityState = "corrected";
+  //marital
+  } else if (req.session.data.maritalState === "adding") {
+    req.session.data.maritalState = "added";
+    req.session.data.showMarital = true;
+  //disability
+  } else if (req.session.data.disabilityState === "adding") {
+    req.session.data.maritalState = "added";
+    req.session.data.showDisability = true;
   }
   res.redirect('/account2/account')
 })
 
 
-/************/
-/** GENDER **/
-/************/
+//NATIONALITY
+
+router.get(/nationality-type-handler/, function (req, res) {
+  req.session.data.nationalityState = req.query.data;
+  console.log("here "+req.session.data.nationalityState);
+  res.redirect('/update/person/nationality/update')
+})
+
+//GENDER
 
 router.get(/add-gender-handler/, function (req, res) {
   console.log("here "+req.query.data);
@@ -580,11 +596,15 @@ router.get(/add-gender-handler/, function (req, res) {
 })
 
 router.get(/update-gender-handler/, function (req, res) {
-  console.log("feature " + req.query.feature + " state "+ req.query.state);
-  console.log("pre gra = " + req.session.data.preGraState);
-  req.session.data[req.query.feature] = req.query.state;
-  console.log("pre gra = " + req.session.data.preGraState);
-  res.redirect('/update/person/gender/update-gender')
+  var feature = req.query.feature;
+  var featureState = feature+"State";
+  req.session.data[featureState] = req.query.state;
+  if(req.query.feature === "preGra" || req.query.feature === "gra") {
+    res.redirect('/update/person/gender/update-gender')
+  } else {
+    // var toPage = '/update/person/' + req.query.feature + '/update';
+    res.redirect('/update/person/' + feature + '/update')
+  }
 })
 
 router.get(/check-gender-handler/, function (req, res) {
