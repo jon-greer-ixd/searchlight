@@ -24,13 +24,17 @@ var defaults = {
   
   //sex
   sex : "Male",
-  sexCorrected : false,
   sexChanged : null,
   
   //gender
+  genderState : null,
+  
+  //gender-gra
   showGra : false,
-  showPreGra : false,
   graState : null,     // adding // updating // correcting // removing // added // removed // updated
+  
+  //gender-pre-gra
+  showPreGra : false,
   preGraState : null, 
   
   //death
