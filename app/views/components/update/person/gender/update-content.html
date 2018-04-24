@@ -10,23 +10,25 @@
         </p>
       </legend>
       
-      {% if data.graState != null and data.preGraState != null %}
-        <div class="form-group">
-          <fieldset>
-            <legend>
-              <p class="radio-header">Sex</p>
-            </legend>
+      {% if data.sexChanged == true %}
+        {% if data.graState != "correcting" and data.preGraState != "correcting" %}
+          <div class="form-group">
+            <fieldset>
+              <legend>
+                <p class="radio-header">Sex</p>
+              </legend>
 
-            <div class="multiple-choice">
-              <input id="radio-1" type="radio" name="radio-group" value="Male" {% if data.sex == "Male" %} checked="checked" {% endif %}>
-              <label for="radio-1">Male</label>
-            </div>
-            <div class="multiple-choice">
-              <input id="radio-2" type="radio" name="radio-group" value="Female" {% if data.sex == "Female" %} checked="checked" {% endif %}>
-              <label for="radio-2">Female</label>
-            </div>
-          </fieldset>
-        </div>
+              <div class="multiple-choice">
+                <input id="radio-1" type="radio" value="Male" name="data" {% if data.sex == "Male" %} checked="checked" {% endif %}>
+                <label for="radio-1">Male</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="radio-2" type="radio" value="Female" name="data" {% if data.sex == "Female" %} checked="checked" {% endif %}>
+                <label for="radio-2">Female</label>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
       {% endif %}
       
       <fieldset class="form-group">

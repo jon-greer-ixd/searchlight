@@ -23,7 +23,7 @@
         <span class="pipe"> | </span> 
         <a href="../history/sex-history" class="under-link">View history</a>
       </li>
-      {% if data.genderUpdated === true or data.sexChanged === true %}
+      {% if data.sexChanged != true %}
         <li>
           <a href="sex-simple-handler" class="under-link" style="font-size:17px;">Change</a>
         </li>
