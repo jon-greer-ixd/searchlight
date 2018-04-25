@@ -647,6 +647,7 @@ router.get(/updating-handler/, function (req, res) {
 })
 
 router.get(/update-gender-handler/, function (req, res) {
+  //update
   if (req.session.data.preGraState === "updating" || req.session.data.graState === "updating") {
     if (req.query.data != req.session.data.sex) {
       if (req.session.data.preGraState === "updating") {
@@ -654,11 +655,34 @@ router.get(/update-gender-handler/, function (req, res) {
         req.session.data.showPreGra = true;
         req.session.data.showGra = false;
         req.session.data.sex = changeSex(req.session.data.sex);
+        console.log(req.session.data.sex);
       } else if (req.session.data.graState === "updating") {
         console.log("here2");
         req.session.data.showGra = true;
         req.session.data.showPreGra = false;
         req.session.data.sex = changeSex(req.session.data.sex);
+        console.log(req.session.data.sex);
+      }
+    }
+  }
+  //add
+  if (req.session.data.preGraState === "adding" || req.session.data.graState === "adding") {
+    if (req.session.data.genderState != "added") {
+      req.session.data.sex = changeSex(req.session.data.sex);
+      req.session.data.genderState = "added";
+    } else {
+      if (req.query.data != req.session.data.sex) {
+        if (req.session.data.preGraState === "adding") {
+        console.log("here3");
+        req.session.data.showPreGra = true;
+        req.session.data.showGra = false;
+        req.session.data.sex = changeSex(req.session.data.sex);
+        } else if (req.session.data.graState === "adding") {
+          console.log("here2");
+          req.session.data.showGra = true;
+          req.session.data.showPreGra = false;
+          req.session.data.sex = changeSex(req.session.data.sex);
+        }
       }
     }
   }
@@ -683,7 +707,7 @@ router.get(/check-gender-handler/, function (req, res) {
   } else if (req.session.data.preGraState === "correcting") {
     req.session.data.preGraState = "corrected";
   }
-  req.session.data.sex = "Female";
+  console.log(req.session.data.sex);
   res.redirect('/account2/account')
 })
 
