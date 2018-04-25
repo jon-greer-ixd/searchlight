@@ -58,9 +58,9 @@ var defaults = {
   needsUpdated : false,
   
   //disability
-  disability: false,
+  disabilityState: false,
   showDisability : false,
-  disabilityStatus : null,
+  disability : null,
 
   //prefered language
   addPreferedLanguage : false,

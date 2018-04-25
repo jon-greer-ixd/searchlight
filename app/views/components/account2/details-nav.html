@@ -123,9 +123,21 @@
       {% include "components/update/toasters/nationality-updated.html" %}
     {% endif %}
 
-    <!-- nationality -->
     {% if data.nationalityState === "corrected" %}
       {% include "components/update/toasters/nationality-corrected.html" %}
+    {% endif %}
+    
+    <!-- disability -->
+    {% if data.disabilityState === "added" %}
+      {% include "components/update/toasters/disability-added.html" %}
+    {% endif %}
+
+    {% if data.disabilityState === "removed" %}
+      {% include "components/update/toasters/disability-removed.html" %}
+    {% endif %}
+
+    {% if data.disabilityState === "corrected" %}
+      {% include "components/update/toasters/disability-corrected.html" %}
     {% endif %}
 
     

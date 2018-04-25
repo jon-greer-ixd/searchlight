@@ -24,8 +24,21 @@
           <!-- disability -->
           {% if data.disabilityState === "adding" or data.disabilityState === "updating" or data.disabilityState === "correcting" %}
             <tr>
-              <td><span class="strong">Disability</span></td>
-              <td>{{data.nationality}}</td>
+              <td><span class="strong">Is this person disabled?</span></td>
+              <td>
+                {% if data.disability == true or data.disability === "true" %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+                    
+          {% if data.disabilityState === "removing" %}
+            <tr>
+              <td><span class="strong">Remove disability status </span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
