@@ -5,26 +5,14 @@
       <fieldset class="form-group">
         <legend class="visually-hidden">Is this person disabled?</legend>
         <div class="multiple-choice">
-          <input id="yes" type="radio" name="disability" value="Yes">
+          <input id="yes" type="radio" name="disability" {% if data.disability == "true" %} checked="checked" {% endif %} value=true>
           <label for="yes">Yes</label>
         </div>
         <div class="multiple-choice">
-          <input id="no" type="radio" name="disability" value="No">
+          <input id="no" type="radio" name="disability" {% if data.disability == "false" %} checked="checked" {% endif %} value=false>
           <label for="no">No</label>
         </div>
       </fieldset>
-<!--
-      <fieldset class="form-group">
-        <legend class="visuallyhidden">Disability start date</legend>
-        <label class="form-label" for="postcode">
-          Disability start date
-          <span class="form-hint">
-            For example 31/8/1979
-          </span>
-        </label>
-        <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">
-      </fieldset>
--->
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>

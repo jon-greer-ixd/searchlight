@@ -161,11 +161,17 @@
     {% if data.showDisability === true %}
       <div class="grid-row">
         <div class="column-one-third">
-          Disability
+          Disability status
         </div>
         <div class="column-one-third">
           <ul>
-            <li class="strong"> {{data.disability}} </li>
+            <li class="strong"> 
+              {% if data.disability === true or data.disability === "true" %}
+                This person is disabled
+              {% else %}
+                This person is not disabled
+              {% endif %}
+            </li>
           </ul>
         </div>
         <div class="column-one-third last-col">

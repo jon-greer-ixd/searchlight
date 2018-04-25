@@ -571,12 +571,31 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.maritalState = "corrected";
   //disability
   } else if (req.session.data.disabilityState === "adding") {
-    req.session.data.maritalState = "added";
+    req.session.data.disabilityState = "added";
     req.session.data.showDisability = true;
+  } else if (req.session.data.disabilityState === "removing") {
+    req.session.data.disabilityState = "removed";
+    req.session.data.showDisability = false;
+  } else if (req.session.data.disabilityState === "correcting") {
+    req.session.data.disabilityState = "corrected";
+  } else if (req.session.data.disabilityState === "updating") {
+    req.session.data.disabilityState = "updated";
   }
   res.redirect('/account2/account')
 })
 
+
+//DISABILITY
+
+router.get(/disability-type-handler/, function (req, res) {
+  req.session.data.disabilityState = req.query.data;
+  console.log(req.session.data.disabilityState);
+  if (req.session.data.disabilityState === "removing") {
+    res.redirect('/update/person/check')
+  } else {
+    res.redirect('/update/person/disability/update')
+  }
+})
 
 //NATIONALITY
 
@@ -640,6 +659,8 @@ router.get(/updating-handler/, function (req, res) {
     } else {
       res.redirect('/update/person/gender/type')
     }
+  } else if (req.query.feature == "disability") {
+    res.redirect('/update/person/' + feature + '/type')
   } else {
     // var toPage = '/update/person/' + req.query.feature + '/update';
     res.redirect('/update/person/' + feature + '/update')
