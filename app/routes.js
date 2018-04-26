@@ -529,7 +529,8 @@ router.get(/edit-person-handler/, function (req, res) {
       req.session.data.adddNifu = true;
       next = "nifu/update";
     } else if (item === "needs") {
-      req.session.data.adddNeeds = true;
+      req.session.data.needsState = "adding";
+      console.log("needs");
       next = "needs/update";
     } else if (item === "disability") {
       req.session.data.disabilityState = "adding";
@@ -569,6 +570,14 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.maritalState = "updated";
   } else if (req.session.data.maritalState === "correcting") {
     req.session.data.maritalState = "corrected";
+  //needs
+  } else if (req.session.data.needsState === "adding") {
+    req.session.data.needsState = "added";
+    req.session.data.showNeeds = true;
+  } else if (req.session.data.needsState === "correcting") {
+    req.session.data.needsState = "corrected";
+  } else if (req.session.data.needsState === "updating") {
+    req.session.data.needsState = "updated";
   //disability
   } else if (req.session.data.disabilityState === "adding") {
     req.session.data.disabilityState = "added";
@@ -586,7 +595,6 @@ router.get(/check-person-handler/, function (req, res) {
 
 
 //DISABILITY
-
 router.get(/disability-type-handler/, function (req, res) {
   req.session.data.disabilityState = req.query.data;
   console.log(req.session.data.disabilityState);
@@ -598,7 +606,6 @@ router.get(/disability-type-handler/, function (req, res) {
 })
 
 //NATIONALITY
-
 router.get(/nationality-type-handler/, function (req, res) {
   req.session.data.nationalityState = req.query.data;
   res.redirect('/update/person/nationality/update')
@@ -606,15 +613,18 @@ router.get(/nationality-type-handler/, function (req, res) {
 
 
 //MARITAL
-
 router.get(/marital-type-handler/, function (req, res) {
   req.session.data.maritalState = req.query.data;
   res.redirect('/update/person/marital/update')
 })
 
+//NEEDS
+router.get(/sneeds-handler/, function (req, res) {
+  console.log(req.session.data.needs);
+  res.redirect('/update/person/check')
+})
 
 //GENDER
-
 function changeSex(sex) {
   // req.session.data.sex = changeSex(req.session.data.sex);
   if(sex === "Male") {

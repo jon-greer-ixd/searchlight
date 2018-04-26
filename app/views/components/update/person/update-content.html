@@ -10,17 +10,18 @@
       </legend>
       
 <!--
+  // Death_Date Verification 
   // Potentially violent
-  // Nationality 
-  // NIFU_Interest 
-  // Needs_Type (Special Needs) 
-  // Disability_Indicator 
-  // Preferred Lang_Type 
-  // Spoken_Lang_Type 
-  // Marital Status
-  // Death_Date & Verification 
+  // NIFU 
+  // Special Needs
+  // Disability_ 
+  // gender
+  // Preferred Lang
+  // Spoken Lang
   // IND_Interest
-  // Immigration_Reference_Number  & Immigration_Status_Type 
+  // Marital Status
+  // Nationality 
+  // Immigration_Status 
 -->
 
       <div class="form-group">
@@ -40,20 +41,6 @@
           </div>
         {% endif %}
         
-        {% if data.showGra === false and data.showPreGra === false %}
-          <div class="multiple-choice">
-            <input id="gender" name="data" type="checkbox" value="gender" >
-            <label for="gender">Gender information</label>
-          </div>
-        {% endif %}
-        
-        {% if data.showNationality === false %}
-          <div class="multiple-choice">
-            <input id="nationality" name="data" type="checkbox" value="nationality" >
-            <label for="nationality">Nationality</label>
-          </div>
-        {% endif %}
-        
         {% if data.nifuUpdated === false %}
           <div class="multiple-choice">
             <input id="nifu" name="data" type="checkbox" value="nifu" >
@@ -61,7 +48,7 @@
           </div>
         {% endif %}
         
-        {% if data.needsUpdated === false %}
+        {% if data.showNeeds === false %}
           <div class="multiple-choice">
             <input id="needs" name="data" type="checkbox" value="needs" >
             <label for="needs">Special needs information</label>
@@ -75,14 +62,28 @@
           </div>
         {% endif %}
         
-        {% if data.planguageUpdated === false %}
+        {% if data.showGra === false and data.showPreGra === false %}
+          <div class="multiple-choice">
+            <input id="gender" name="data" type="checkbox" value="gender" >
+            <label for="gender">Gender information</label>
+          </div>
+        {% endif %}
+        
+        {% if data.showPreferedLanguage === false %}
           <div class="multiple-choice">
             <input id="planguage" name="data" type="checkbox" value="planguage" >
             <label for="planguage">Preferred language</label>
           </div>
         {% endif %}
         
-        {% if data.spokenlanguageUpdated === false %}
+        {% if data.showNationality === false %}
+          <div class="multiple-choice">
+            <input id="nationality" name="data" type="checkbox" value="nationality" >
+            <label for="nationality">Nationality</label>
+          </div>
+        {% endif %}
+        
+        {% if data.showSpokenLanguage === false %}
           <div class="multiple-choice">
             <input id="spokenlanguage" name="data" type="checkbox" value="spokenlanguage" >
             <label for="spokenlanguage">Spoken language</label>
@@ -96,7 +97,7 @@
           </div>
         {% endif %}
         
-        {% if data.immigrationUpdated === false %}
+        {% if data.showImmigration === false %}
           <div class="multiple-choice">
             <input id="immigration" name="data" type="checkbox" value="immigration" >
             <label for="immigration">Immigration information</label>

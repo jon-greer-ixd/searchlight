@@ -35,13 +35,26 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
-                    
           {% if data.disabilityState === "removing" %}
             <tr>
               <td><span class="strong">Remove disability status </span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
+          
+          <!-- special needs -->
+          {% if data.needsState === "adding" or data.needsState === "updating" or data.needsState === "correcting" %}
+            <tr>
+              <td><span class="strong">Which special needs does this person have?</span></td>
+              <td>
+                {% for need in data.needs %}
+                <p>{{need}}</p>
+                {% endfor %}
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+
                     
 <!--
           <tr>

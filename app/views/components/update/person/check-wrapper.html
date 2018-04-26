@@ -25,6 +25,15 @@
             <h2>Correct disability status</h2>
           {% elif data.disabilityState == "removing" %}
             <h2>Remove disability status</h2>
+          <!-- needs -->
+          {% elif data.needsState == "adding" %}
+            <h2>Add special needs information</h2>
+          {% elif data.needsState == "updating" %}
+            <h2>Update special needs information</h2>
+          {% elif data.needsState == "correcting" %}
+            <h2>Correct special needs information</h2>
+          {% elif data.needsState == "removing" %}
+            <h2>Remove special needs information</h2>
           {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
