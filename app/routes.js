@@ -1120,7 +1120,7 @@ router.get(/update-type-handler/, function (req, res) {
     req.session.data.updateType = "correctStatusLive";
     content.setPageTitle(req.session.data.updateType);
     dataState.newStatus = "live";
-    res.redirect('check')
+    res.redirect('/update/check')
     //date
   } else if (req.query.data === 'correct_date') {
     req.session.data.updateType = "correctDate";
