@@ -1110,61 +1110,61 @@ router.get(/update-type-handler/, function (req, res) {
   } else if (req.query.data === 'correct_status') {
     req.session.data.updateType = "correctStatus";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('status')
+    res.redirect('/update/status')
   } else if (req.query.data === 'correct_dlo') {
     req.session.data.updateType = "correctStatusDlo";
     content.setPageTitle(req.session.data.updateType);
     dataState.newStatus = "dlo";
-    res.redirect('check')
+    res.redirect('/update/check')
   } else if (req.query.data === 'correct_live') {
     req.session.data.updateType = "correctStatusLive";
     content.setPageTitle(req.session.data.updateType);
     dataState.newStatus = "live";
-    res.redirect('check')
+    res.redirect('/update/check')
     //date
   } else if (req.query.data === 'correct_date') {
     req.session.data.updateType = "correctDate";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('dates')
+    res.redirect('/update/dates')
   } else if (req.query.data === 'correct_date_notified') {
     req.session.data.updateType = "correctDateNotified";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('dates')
+    res.redirect('/update/dates')
     //cherish
   } else if (req.query.data === 'update_add_cherish') {
     req.session.data.updateType = "updateAddCherish";
     dataState.cherished = true;
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('cherish-line')
+    res.redirect('/update/cherish-line')
   } else if (req.query.data === 'update_cherish') {
     req.session.data.updateType = "updateCherish";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('cherish-line')
+    res.redirect('/update/cherish-line')
   } else if (req.query.data === 'correct_cherish') {
     req.session.data.updateType = "correctCherish";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('cherish-line')
+    res.redirect('/update/cherish-line')
   } else if (req.query.data === 'correct_add_cherish') {
     req.session.data.updateType = "correctAddCherish";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('cherish-line')
+    res.redirect('/update/cherish-line')
   } else if (req.query.data === 'update_remove_cherish') {
     req.session.data.updateType = "updateRemoveCherish";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('dates')
+    res.redirect('/update/dates')
     //end
   } else if (req.query.data === 'end') {
     req.session.data.updateType = "end";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('dates')
+    res.redirect('/update/dates')
   }
 })
 
 router.get('/update/search-results-handler', function (req, res) {
   if (req.session.data.updateType === "correctNew") {
-    res.redirect('check')
+    res.redirect('/update/check')
   } else {
-    res.redirect('dates')
+    res.redirect('/update/dates')
   }
 })
 
