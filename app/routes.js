@@ -1077,7 +1077,7 @@ router.get(/update-type-handler/, function (req, res) {
   if (req.query.data == 'add_correspondence') {
     req.session.data.updateType = "addCorrespondence";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('address-search')
+    res.redirect('/update/address-search')
     //status
   } else if (req.query.data === 'update_status') {
     req.session.data.updateType = "updateStatus";
@@ -1093,19 +1093,19 @@ router.get(/update-type-handler/, function (req, res) {
     content.setPageTitle(req.session.data.updateType);
     dataState.newStatus = "live";
     if (dataState.currentStatus == "nfa" || dataState.currentStatus == "pwa") {
-      res.redirect('address-search')
+      res.redirect('/update/address-search')
     } else {
-      res.redirect('dates')
+      res.redirect('/update/dates')
     }
   } else if (req.query.data === 'update_new') {
     req.session.data.updateType = "updateNew";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('address-search')
+    res.redirect('/update/address-search')
     //corrections
   } else if (req.query.data === 'correct_new') {
     req.session.data.updateType = "correctNew";
     content.setPageTitle(req.session.data.updateType);
-    res.redirect('address-search')
+    res.redirect('/update/address-search')
     //status
   } else if (req.query.data === 'correct_status') {
     req.session.data.updateType = "correctStatus";
