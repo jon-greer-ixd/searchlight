@@ -92,7 +92,7 @@
             <li>
               <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
               <span class="pipe"> | </span> 
-              <a href="language-pref-history" class="under-link">View history</a>
+              <a href="/historylanguage-pref-history" class="under-link">View history</a>
             </li>
   <!--
             <li>
@@ -179,6 +179,32 @@
 <!--            <li><a class="under-link">View history</a></li>-->
             <li>                
               <a href="updating-handler/?feature=disability&state=updating" class="under-link" style="font-size:17px;">Change</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <hr class="light">
+  {% endif %}
+
+    <!-- Special needs -->
+    {% if data.showNeeds === true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          Special needs
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong"> 
+              {% for need in data.needs %}
+                {{need}}
+              {% endfor %}
+             </li>
+          </ul>
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>                
+              <a href="updating-handler/?feature=needs&state=updating" class="under-link" style="font-size:17px;">Change</a>
             </li>
           </ul>
         </div>

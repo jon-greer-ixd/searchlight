@@ -140,6 +140,27 @@
       {% include "components/update/toasters/disability-corrected.html" %}
     {% endif %}
 
+    {% if data.disabilityState === "updated" %}
+      {% include "components/update/toasters/disability-updated.html" %}
+    {% endif %}
+
+    <!-- needs -->
+    {% if data.needsState === "added" %}
+      {% include "components/update/toasters/needs-added.html" %}
+    {% endif %}
+
+    {% if data.needsState === "removed" %}
+      {% include "components/update/toasters/needs-removed.html" %}
+    {% endif %}
+
+    {% if data.needsState === "corrected" %}
+      {% include "components/update/toasters/needs-corrected.html" %}
+    {% endif %}
+
+    {% if data.needsState === "updated" %}
+      {% include "components/update/toasters/needs-updated.html" %}
+    {% endif %}
+
     
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" id="live" class="sl-primary-name-container-placeholder ng-scope">

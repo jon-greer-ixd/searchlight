@@ -38,12 +38,14 @@ var defaults = {
   preGraState : null, 
   
   //death
-  addDeath : false,
-  deathUpdated : false,
+  dead : false,
+  deathState : null,
+  showDeath : false,
   
   //pv
-  addPv : false,
-  pvUpdated : false,
+  potentiallyViolent : null,
+  pvState : null,
+  showPv : false,
   
   //nationality
   showNationality : false,
@@ -54,8 +56,8 @@ var defaults = {
   nifuUpdated : false,
   
   //special needs
-  addNeeds : false,
-  needsUpdated : false,
+  needsState : null,
+  showNeeds : false,
   
   //disability
   disabilityState: false,
