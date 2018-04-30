@@ -12,6 +12,15 @@
             </tr>
           {% endif %}
           
+          <!-- nifu -->
+          {% if data.nifu.state == "adding" or data.nifu.state == "updating" or data.nifu.state == "correcting" %}
+            <tr>
+              <td><span class="strong">National fraud interest</span></td>
+              <td>{{data.nifu.value}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
           <!-- nationality -->
           {% if data.nationalityState === "adding" or data.nationalityState === "updating" or data.nationalityState === "correcting" %}
             <tr>
@@ -45,10 +54,10 @@
           <!-- special needs -->
           {% if data.needsState === "adding" or data.needsState === "updating" or data.needsState === "correcting" %}
             <tr>
-              <td><span class="strong">Which special needs does this person have?</span></td>
+              <td><span class="strong">What does this person need?</span></td>
               <td>
                 {% for need in data.needs %}
-                <p>{{need}}</p>
+                {{need}}<br>
                 {% endfor %}
               </td>
               <td><a>Change</a></td>

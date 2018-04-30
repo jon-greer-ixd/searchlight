@@ -22,6 +22,12 @@ var defaults = {
   requestedNameCorrected : false,
   requestedNameRemoved : false,
   
+  //nifu
+  nifu : { value : null, state : null, show : false },
+//  nifuValue : null,
+//  nifuState : null,
+//  nifuShow : false,
+
   //sex
   sex : "Male",
   sexChanged : null,
@@ -50,11 +56,7 @@ var defaults = {
   //nationality
   showNationality : false,
   nationalityState : null,
-  
-  //nifu
-  addNifu : false,
-  nifuUpdated : false,
-  
+    
   //special needs
   needsState : null,
   showNeeds : false,
@@ -84,4 +86,14 @@ var defaults = {
   ImmigrationUpdated : false
 };
 
+function flip(value) {
+  if (value === "Yes" || value === "yes" ) {
+    return "No";
+  } else if (value === "No" || value === "no" ) {
+    return "Yes";
+  }
+}
+
+
+module.exports.flip = flip;
 module.exports.defaults = defaults;

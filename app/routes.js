@@ -12,8 +12,9 @@ var Interest = require('./interest.js');
 
 var defaults = require('./defaults.js').defaults;
 
-var authority = require('./authority.js').authority;
+var flip = require('./defaults.js').flip;
 
+var authority = require('./authority.js').authority;
 
 //***********
 // INTERESTS 
@@ -335,7 +336,7 @@ router.use('/', main);
       req.session.data[key] = defaults[key];
     }
   }
-    
+      
   //AUTHORITY ACCOUNT
   req.session.data.authority = authority;
   req.session.data.authority.reset();
@@ -526,8 +527,9 @@ router.get(/edit-person-handler/, function (req, res) {
       req.session.data.nationalityState = "adding";
       next = "nationality/update";
     } else if (item === "nifu") {
-      req.session.data.adddNifu = true;
-      next = "nifu/update";
+      req.session.data.nifu.state = "adding";
+      req.session.data.nifu.value = "Yes";
+      next = "check";
     } else if (item === "needs") {
       req.session.data.needsState = "adding";
       console.log("needs");
@@ -589,7 +591,18 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.disabilityState = "corrected";
   } else if (req.session.data.disabilityState === "updating") {
     req.session.data.disabilityState = "updated";
+  //nifu
+  } else if (req.session.data.nifu.state === "adding") {
+    req.session.data.nifu.state = "added";
+    req.session.data.nifu.show = true;
+  } else if (req.session.data.nifu.state === "updating") {
+    req.session.data.nifu.state = "updated";
+    req.session.data.nifu.show = false;
+  } else if (req.session.data.nifu.state === "correcting") {
+    req.session.data.nifu.state = "corrected";
+    req.session.data.nifu.show = false;
   }
+  
   res.redirect('/account2/account')
 })
 
@@ -611,17 +624,23 @@ router.get(/nationality-type-handler/, function (req, res) {
   res.redirect('/update/person/nationality/update')
 })
 
-
 //MARITAL
 router.get(/marital-type-handler/, function (req, res) {
   req.session.data.maritalState = req.query.data;
   res.redirect('/update/person/marital/update')
 })
 
+//nifu
+router.get(/nifu-type-handler/, function (req, res) {
+  req.session.data.nifu.state = req.query.data;
+  console.log(req.session.data.nifu.state);
+  req.session.data.nifu.value = flip(req.session.data.nifu.value);
+  res.redirect('/update/person/check')
+})
+
 //NEEDS
 router.get(/sneeds-handler/, function (req, res) {
-  console.log(req.session.data.needs);
-  res.redirect('/update/person/check')
+  res.redirect('/update/person/needs/update')
 })
 
 //GENDER
@@ -669,8 +688,9 @@ router.get(/updating-handler/, function (req, res) {
     } else {
       res.redirect('/update/person/gender/type')
     }
-  } else if (req.query.feature == "disability") {
+  } else if (req.query.feature == "disability" || req.query.feature == "needs" || req.query.feature == "nifu") {
     res.redirect('/update/person/' + feature + '/type')
+    console.log('/update/person/' + feature + '/type');
   } else {
     // var toPage = '/update/person/' + req.query.feature + '/update';
     res.redirect('/update/person/' + feature + '/update')
