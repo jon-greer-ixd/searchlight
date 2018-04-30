@@ -194,17 +194,41 @@
         </div>
         <div class="column-one-third">
           <ul>
-            <li class="strong"> 
-              {% for need in data.needs %}
+            {% for need in data.needs %}
+              <li class="strong"> 
                 {{need}}
-              {% endfor %}
-             </li>
+              </li>
+            {% endfor %}
           </ul>
         </div>
         <div class="column-one-third last-col">
           <ul class="edit-menu">
             <li>                
               <a href="updating-handler/?feature=needs&state=updating" class="under-link" style="font-size:17px;">Change</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <hr class="light">
+  {% endif %}
+  
+    <!-- nifu -->
+    {% if data.nifu.show === true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          National fraud interest
+        </div>
+        <div class="column-one-third">
+          <ul>
+              <li class="strong"> 
+                {{data.nifu.value}}
+              </li>
+          </ul>
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>                
+              <a href="updating-handler/?feature=nifu&state=updating" class="under-link" style="font-size:17px;">Change</a>
             </li>
           </ul>
         </div>

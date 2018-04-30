@@ -4,16 +4,12 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.needsState == "adding" %}
-            <h2>Add special needs</h2>
-          {% elseif data.needsState == "correcting" %}
-            <h2>Correct special needs</h2>
-          {% else %}
-            <h2>Update special needs</h2>
-          {% endif  %}
+          <h2>Change national fraud interest</h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
-              {% include "components/update/person/needs/update-content.html" %}
+              
+                {% include "components/update/person/nifu/type-content.html" %}
+              
           </div>
         </div>
       </div>

@@ -161,6 +161,19 @@
       {% include "components/update/toasters/needs-updated.html" %}
     {% endif %}
 
+    <!-- nifu -->
+    {% if data.nifu.state === "added" %}
+      {% include "components/update/toasters/nifu-added.html" %}
+    {% endif %}
+
+    {% if data.nifu.state === "updated" %}
+      {% include "components/update/toasters/nifu-updated.html" %}
+    {% endif %}
+
+    {% if data.nifu.state === "corrected" %}
+      {% include "components/update/toasters/nifu-corrected.html" %}
+    {% endif %}
+
     
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" id="live" class="sl-primary-name-container-placeholder ng-scope">
