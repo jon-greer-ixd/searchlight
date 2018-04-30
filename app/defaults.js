@@ -24,9 +24,6 @@ var defaults = {
   
   //nifu
   nifu : { value : null, state : null, show : false },
-//  nifuValue : null,
-//  nifuState : null,
-//  nifuShow : false,
 
   //sex
   sex : "Male",
