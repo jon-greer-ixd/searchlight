@@ -6,8 +6,17 @@
           <!-- marital -->
           {% if data.maritalState === "adding" or data.maritalState === "updating" or data.maritalState === "correcting" %}
             <tr>
-              <td><span class="strong">Marital or civil status</span></td>
+              <td><span class="strong">Marital or civil partnership status</span></td>
               <td>{{data.maritalStatus}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          <!-- nathan -->
+          {% if data.nathan.state === "adding" or data.nathan.state === "updating" or data.nathan.state === "correcting" %}
+            <tr>
+              <td><span class="strong">Nationaly sensitive record level</span></td>
+              <td>{{data.nathanvalue}}</td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
@@ -29,13 +38,13 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
-                    
+          
           <!-- disability -->
-          {% if data.disabilityState === "adding" or data.disabilityState === "updating" or data.disabilityState === "correcting" %}
+          {% if data.disability.state === "adding" or data.disability.state === "updating" or data.disability.state === "correcting" %}
             <tr>
               <td><span class="strong">Is this person disabled?</span></td>
               <td>
-                {% if data.disability == true or data.disability === "true" %}
+                {% if data.disabilityValue == "true" or data.disabilityValue == true %}
                   Yes
                 {% else %}
                   No
@@ -44,9 +53,9 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
-          {% if data.disabilityState === "removing" %}
+          {% if data.disability.state === "removing" %}
             <tr>
-              <td><span class="strong">Remove disability status </span></td>
+              <td><span class="strong">Remove disability status</span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}

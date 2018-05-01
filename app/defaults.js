@@ -24,9 +24,13 @@ var defaults = {
   
   //nifu
   nifu : { value : null, state : null, show : false },
-//  nifuValue : null,
-//  nifuState : null,
-//  nifuShow : false,
+
+  //nathan
+  nathan : { value : null, state : null, show : false },
+  
+  //disability
+  disability : {state : null, show : false},
+  disabilityValue : null,
 
   //sex
   sex : "Male",
@@ -61,11 +65,6 @@ var defaults = {
   needsState : null,
   showNeeds : false,
   
-  //disability
-  disabilityState: false,
-  showDisability : false,
-  disability : null,
-
   //prefered language
   addPreferedLanguage : false,
   preferedLanguageUpdated : false,
@@ -91,6 +90,10 @@ function flip(value) {
     return "No";
   } else if (value === "No" || value === "no" ) {
     return "Yes";
+  } else if (value === "true" || value === true ) {
+    return false;
+  } else if (value === "false" || value === false ) {
+    return true;
   }
 }
 

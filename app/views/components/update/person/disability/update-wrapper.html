@@ -4,9 +4,9 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.disabilityState == "adding" %}
+          {% if data.disability.state == "adding" %}
             <h2>Add disability status</h2>
-          {% elseif data.disabilityState == "correcting" %}
+          {% elseif data.disability.state == "correcting" %}
             <h2>Correct disability status</h2>
           {% else %}
             <h2>Update disability status</h2>
