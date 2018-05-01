@@ -11,7 +11,7 @@
       </legend>
       
       {% if data.sexChanged == true %}
-        {% if data.graState != "correcting" and data.preGraState != "correcting" %}
+        {% if data.gra.state != "correcting" and data.preGra.state != "correcting" %}
           <div class="form-group">
             <fieldset>
               <legend>
@@ -38,14 +38,14 @@
             For example 31/8/1979
           </span>
         </label>
-        <input {% if data.graState != "adding" and data.preGraState != "adding" %} value={{data['prepopulatedDate']}} {% endif %} class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+        <input {% if data.gra.state != "adding" and data.preGra.state != "adding" %} value={{data['prepopulatedDate']}} {% endif %} class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
       </fieldset>
       
       <fieldset class="form-group">
         <label class="form-label" for="postcode">
           Notified or decision date
         </label>
-        <input {% if data.graState != "adding" and data.preGraState != "adding" %} value={{data['prepopulatedDate']}} {% endif %} class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+        <input {% if data.gra.state != "adding" and data.preGra.state != "adding" %} value={{data['prepopulatedDate']}} {% endif %} class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
       </fieldset>
       
       <div class="form-group">

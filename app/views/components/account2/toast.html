@@ -32,27 +32,27 @@
     {% endif %}
     
     <!-- gender -->
-    {% if data.graState == "added" %}
+    {% if data.gra.state == "added" %}
       {% include "components/update/toasters/gender-added.html" %}
     {% endif %}
     
-    {% if data.preGraState == "added" %}
+    {% if data.preGra.state == "added" %}
       {% include "components/update/toasters/gender-added.html" %}
     {% endif %}
     
-    {% if data.graState === "updated" %}
+    {% if data.gra.state === "updated" %}
       {% include "components/update/toasters/gender-updated.html" %}
     {% endif %}
     
-    {% if data.preGraState === "updated" %}
+    {% if data.preGra.state === "updated" %}
       {% include "components/update/toasters/gender-updated.html" %}
     {% endif %}
     
-    {% if data.graState === "corrected" %}
+    {% if data.gra.state === "corrected" %}
       {% include "components/update/toasters/gender-corrected.html" %}
     {% endif %}
     
-    {% if data.preGraState === "corrected" %}
+    {% if data.preGra.state === "corrected" %}
       {% include "components/update/toasters/gender-corrected.html" %}
     {% endif %}
     

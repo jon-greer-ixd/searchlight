@@ -678,28 +678,28 @@ function updateGender(show, hide) {
 
 router.get(/add-gender-handler/, function (req, res) {
   if (req.query.data === "gra") {
-    req.session.data.graState = "adding";
+    req.session.data.gra.state = "adding";
   } else {
-    req.session.data.preGraState = "adding";
+    req.session.data.preGra.state = "adding";
   }
   res.redirect('/update/person/gender/update')
 })
 
 router.get(/gender-type-handler/, function (req, res) {
-  if (req.session.data.graState === "updating") {
-    req.session.data.graState = req.query.data;
-    console.log("graState = " + req.session.data.graState);
+  if (req.session.data.gra.state === "updating") {
+    req.session.data.gra.state = req.query.data;
+    console.log("gra.state = " + req.session.data.gra.state);
   } else {
-    req.session.data.preGraState = req.query.data;
-    console.log("preGraState = " + req.session.data.preGraState);
+    req.session.data.preGra.state = req.query.data;
+    console.log("preGra.state = " + req.session.data.preGra.state);
   }
   res.redirect('/update/person/gender/update')
 })
 
 router.get(/updating-handler/, function (req, res) {
   var feature = req.query.feature;
-  var featureState = feature+"State";
-  req.session.data[featureState] = req.query.state;
+//  var featureState = feature+"State";
+  req.session.data[feature].state = req.query.state;
   if(req.query.feature === "preGra" || req.query.feature === "gra") {
     if (req.query.state == "adding") {
       res.redirect('/update/person/gender/update')
@@ -737,39 +737,39 @@ router.get(/newupdate-handler/, function (req, res) {
 
 router.get(/update-gender-handler/, function (req, res) {
   //update
-  if (req.session.data.preGraState === "updating" || req.session.data.graState === "updating") {
+  if (req.session.data.preGra.state === "updating" || req.session.data.gra.state === "updating") {
     if (req.query.data != req.session.data.sex) {
-      if (req.session.data.preGraState === "updating") {
+      if (req.session.data.preGra.state === "updating") {
         console.log("here1");
-        req.session.data.showPreGra = true;
-        req.session.data.showGra = false;
+        req.session.data.preGra.show = true;
+        req.session.data.gra.show = false;
         req.session.data.sex = changeSex(req.session.data.sex);
         console.log(req.session.data.sex);
-      } else if (req.session.data.graState === "updating") {
+      } else if (req.session.data.gra.state === "updating") {
         console.log("here2");
-        req.session.data.showGra = true;
-        req.session.data.showPreGra = false;
+        req.session.data.gra.show = true;
+        req.session.data.preGra.show = false;
         req.session.data.sex = changeSex(req.session.data.sex);
         console.log(req.session.data.sex);
       }
     }
   }
   //add
-  if (req.session.data.preGraState === "adding" || req.session.data.graState === "adding") {
+  if (req.session.data.preGra.state === "adding" || req.session.data.gra.state === "adding") {
     if (req.session.data.gender.state != "added") {
       req.session.data.sex = changeSex(req.session.data.sex);
       req.session.data.gender.state = "added";
     } else {
       if (req.query.data != req.session.data.sex) {
-        if (req.session.data.preGraState === "adding") {
+        if (req.session.data.preGra.state === "adding") {
         console.log("here3");
-        req.session.data.showPreGra = true;
-        req.session.data.showGra = false;
+        req.session.data.preGra.show = true;
+        req.session.data.gra.show = false;
         req.session.data.sex = changeSex(req.session.data.sex);
-        } else if (req.session.data.graState === "adding") {
+        } else if (req.session.data.gra.state === "adding") {
           console.log("here2");
-          req.session.data.showGra = true;
-          req.session.data.showPreGra = false;
+          req.session.data.gra.show = true;
+          req.session.data.preGra.show = false;
           req.session.data.sex = changeSex(req.session.data.sex);
         }
       }
@@ -779,22 +779,22 @@ router.get(/update-gender-handler/, function (req, res) {
 })
 
 router.get(/check-gender-handler/, function (req, res) {
-  if (req.session.data.preGraState === "adding") {
-    req.session.data.preGraState = "added"
-    req.session.data.showPreGra = true;
+  if (req.session.data.preGra.state === "adding") {
+    req.session.data.preGra.state = "added"
+    req.session.data.preGra.show = true;
     req.session.data.sexChanged = true;
-  } else if (req.session.data.graState === "adding") {
-    req.session.data.graState = "added"
-    req.session.data.showGra = true;
+  } else if (req.session.data.gra.state === "adding") {
+    req.session.data.gra.state = "added"
+    req.session.data.gra.show = true;
     req.session.data.sexChanged = true;
-  } else if (req.session.data.preGraState === "updating") {
-    req.session.data.preGraState = "updated"
-  } else if (req.session.data.graState === "updating") {
-    req.session.data.graState = "updated";
-  } else if (req.session.data.graState === "correcting") {
-    req.session.data.graState = "corrected";
-  } else if (req.session.data.preGraState === "correcting") {
-    req.session.data.preGraState = "corrected";
+  } else if (req.session.data.preGra.state === "updating") {
+    req.session.data.preGra.state = "updated"
+  } else if (req.session.data.gra.state === "updating") {
+    req.session.data.gra.state = "updated";
+  } else if (req.session.data.gra.state === "correcting") {
+    req.session.data.gra.state = "corrected";
+  } else if (req.session.data.preGra.state === "correcting") {
+    req.session.data.preGra.state = "corrected";
   }
   console.log(req.session.data.sex);
   req.session.data.gender.show = true;

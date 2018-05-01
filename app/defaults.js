@@ -40,12 +40,10 @@ var defaults = {
   gender : {state : null, show : false },
   
   //gender-gra
-  showGra : false,
-  graState : null,     // adding // updating // correcting // removing // added // removed // updated
+  gra : {state : null, show : false},
   
   //gender-pre-gra
-  showPreGra : false,
-  preGraState : null, 
+  preGra : { state : null, show : false },
   
   //death
   dead : false,

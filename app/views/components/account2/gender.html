@@ -1,4 +1,4 @@
-{% if data.showGra === true and data.showPreGra === true %}
+{% if data.gra.show === true and data.preGra.show === true %}
   <div class="grid-row" style="margin-bottom:0;">
     <div class="column-one-third">
       <p>Gender</p>
@@ -58,7 +58,7 @@
 
 {% endif %}
 
-{% if data.showGra === true and data.showPreGra === false %}
+{% if data.gra.show === true and data.preGra.show === false %}
   <div class="grid-row" style="margin-bottom:0;">
     <div class="column-one-third">
       <p>Gender</p>
@@ -112,7 +112,7 @@
 
 {% endif %}
 
-{% if data.showGra === false and data.showPreGra === true %}
+{% if data.gra.show === false and data.preGra.show === true %}
   <div class="grid-row" style="margin-bottom:0;">
     <div class="column-one-third">
       <p>Gender</p>

@@ -4,17 +4,17 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-            {% if data.graState == "adding" %}
+            {% if data.gra.state == "adding" %}
               <h2>Add acquired gender - GRA information</h2>
-            {% elif data.preGraState == "adding" %}
+            {% elif data.preGra.state == "adding" %}
               <h2>Add acquired gender - pre GRA information</h2>
-            {% elif data.graState == "updating" %}
+            {% elif data.gra.state == "updating" %}
               <h2>Update acquired gender - GRA information</h2>
-            {% elif data.preGraState == "updating" %}
+            {% elif data.preGra.state == "updating" %}
               <h2>Update acquired gender - pre GRA  information</h2>
-            {% elif data.graState == "correcting" %}
+            {% elif data.gra.state == "correcting" %}
               <h2>Correct acquired gender - GRA information</h2>
-            {% elif data.preGraState == "correcting" %}
+            {% elif data.preGra.state == "correcting" %}
               <h2>Correct acquired gender - pre GRA  information</h2>
             {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
