@@ -515,7 +515,7 @@ router.get(/edit-person-handler/, function (req, res) {
   for (x in req.query.data) {
     item = req.query.data[x];
     if (item === "gender" ) {
-      req.session.data.genderState = "adding";
+      req.session.data.gender.state = "adding";
       next = "gender/add";
     } else if (item ===  "death") {
       req.session.data.adddDeath = true;
@@ -756,9 +756,9 @@ router.get(/update-gender-handler/, function (req, res) {
   }
   //add
   if (req.session.data.preGraState === "adding" || req.session.data.graState === "adding") {
-    if (req.session.data.genderState != "added") {
+    if (req.session.data.gender.state != "added") {
       req.session.data.sex = changeSex(req.session.data.sex);
-      req.session.data.genderState = "added";
+      req.session.data.gender.state = "added";
     } else {
       if (req.query.data != req.session.data.sex) {
         if (req.session.data.preGraState === "adding") {
