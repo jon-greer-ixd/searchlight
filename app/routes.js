@@ -797,6 +797,7 @@ router.get(/check-gender-handler/, function (req, res) {
     req.session.data.preGraState = "corrected";
   }
   console.log(req.session.data.sex);
+  req.session.data.gender.show = true;
   res.redirect('/account2/account')
 })
 

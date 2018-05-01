@@ -37,7 +37,7 @@ var defaults = {
   sexChanged : null,
   
   //gender
-  gender : {state : null},
+  gender : {state : null, show : false },
   
   //gender-gra
   showGra : false,
