@@ -1,0 +1,84 @@
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Account information</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    <div id="creation-pane"> 
+      {% if data.nathan.show == true %}
+        <div class="grid-row">
+          <div class="column-one-third">
+            <ul>
+              <li class="">Nationaly sensitive record level
+              </li>
+            </ul>
+          </div>
+          <div class="column-one-third">
+            <ul>
+              <li class="bold">
+                {% if data.nathan.value == 5 %}
+                  5 - Special monitoring
+                {% elif data.nathan.value == 4 %}
+                  4 - Nationally sensitive other
+                {% elif data.nathan.value == 3 %}
+                  3 - Nationally sensitive VIP
+                {% elif data.nathan.value == 2 %}
+                  2 - Nationally sensitive transsexual
+                {% elif data.nathan.value == 1 %}
+                  1 - Unrestricted access
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a class="secondary-link" href="newupdate-handler/?feature=nathan&state=updating">Change</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="light">
+      {% endif %}
+      
+      <div class="grid-row ac-info">
+        <div class="column-one-third">
+          <ul>
+            <li>Date created</li>
+            <li>System</li>
+            <li>Office</li>
+            <li>Telephone</li>
+          </ul>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">11 Jan 1990</li>
+            <li class="strong">DCI</li>
+            <li class="">Not available</li>
+            <li class="">Not available</li>
+          </ul>
+        </div>
+        <div class="column-one-third">
+          <ul>
+          </ul>
+        </div>
+      </div>
+      {% if data.nathan.show == false %}
+        <hr class="light">
+
+        <div class="grid-row">
+          <div class="column-one-third">
+            &nbsp;        
+          </div>
+          <div class="column-one-third">
+            &nbsp;        
+          </div>
+          <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="newupdate-handler/?feature=nathan&state=adding">Add nationaly sensitive record level</a>
+            </li>
+          </ul>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>

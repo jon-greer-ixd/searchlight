@@ -18,13 +18,13 @@
           {% elif data.nationalityState === "correcting" %}
             <h2>Correct nationality</h2>
           <!-- disability -->
-          {% elif data.disabilityState == "adding" %}
+          {% elif data.disability.state == "adding" %}
             <h2>Add disability status</h2>
-          {% elif data.disabilityState == "updating" %}
+          {% elif data.disability.state == "updating" %}
             <h2>Update disability status</h2>
-          {% elif data.disabilityState == "correcting" %}
+          {% elif data.disability.state == "correcting" %}
             <h2>Correct disability status</h2>
-          {% elif data.disabilityState == "removing" %}
+          {% elif data.disability.state == "removing" %}
             <h2>Remove disability status</h2>
           <!-- needs -->
           {% elif data.needsState == "adding" %}
@@ -42,6 +42,11 @@
             <h2>Correct national fraud interest</h2>
           {% elif data.nifu.state == "updating" %}
             <h2>Update national fraud interest</h2>
+          <!-- Nathan -->
+          {% elif data.nathan.state == "adding" %}
+            <h2>Add nationaly sensitive record level</h2>
+          {% elif data.nathan.state == "updating" %}
+            <h2>Update nationaly sensitive record level</h2>
           {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

@@ -158,7 +158,7 @@
   {% endif %}
 
     <!-- Disability -->
-    {% if data.showDisability === true %}
+    {% if data.disability.show === true %}
       <div class="grid-row">
         <div class="column-one-third">
           Disability status
@@ -166,7 +166,7 @@
         <div class="column-one-third">
           <ul>
             <li class="strong"> 
-              {% if data.disability === true or data.disability === "true" %}
+              {% if data.disabilityValue === true or data.disabilityValue === "true" %}
                 This person is disabled
               {% else %}
                 This person is not disabled

@@ -1,0 +1,34 @@
+<h2 class="heading-medium question">What is the nationaly sensitive record level?</h2>
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <form class="form" method="get" action="../check">
+      <fieldset class="form-group">
+        <legend class="visually-hidden">Is this person disabled?</legend>
+        <div class="multiple-choice">
+          <input id="1" type="radio" name="nathanvalue" {% if data.nathan.value == 1 %} checked="checked" disabled{% endif %} value=1>
+          <label for="1">1 - Unrestricted access</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="2" type="radio" name="nathanvalue" {% if data.nathan.value == 2 %} checked="checked" disabled{% endif %} value=2>
+          <label for="2">2 - Nationally sensitive transsexual</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="3" type="radio" name="nathanvalue" {% if data.nathan.value == 3 %} checked="checked" disabled{% endif %} value=3>
+          <label for="3">3 - Nationally sensitive VIP</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="4" type="radio" name="nathanvalue" {% if data.nathan.value == 4 %} checked="checked" disabled{% endif %} value=4>
+          <label for="4">4 - Nationally sensitive other</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="5" type="radio" name="nathanvalue" {% if data.nathan.value == 5 %} checked="checked" disabled{% endif %} value=5>
+          <label for="5">5 - Special monitoring</label>
+        </div>
+      </fieldset>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+</div>
