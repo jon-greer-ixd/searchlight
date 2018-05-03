@@ -527,7 +527,7 @@ router.get(/edit-person-handler/, function (req, res) {
       req.session.data.adddPv = true;
       next = "pv/update";
     } else if (item === "nationality") {
-      req.session.data.nationalityState = "adding";
+      req.session.data.nationality.state = "adding";
       next = "nationality/update";
     } else if (item === "nifu") {
       req.session.data.nifu.state = "adding";
@@ -560,13 +560,13 @@ router.get(/edit-person-handler/, function (req, res) {
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   //nationality
-  if (req.session.data.nationalityState === "adding") {
-    req.session.data.nationalityState = "added";
-    req.session.data.showNationality = true;
-  } else if (req.session.data.nationalityState === "updating") {
-    req.session.data.nationalityState = "updated";
-  } else if (req.session.data.nationalityState === "correcting") {
-    req.session.data.nationalityState = "corrected";
+  if (req.session.data.nationality.state === "adding") {
+    req.session.data.nationality.state = "added";
+    req.session.data.nationality.show = true;
+  } else if (req.session.data.nationality.state === "updating") {
+    req.session.data.nationality.state = "updated";
+  } else if (req.session.data.nationality.state === "correcting") {
+    req.session.data.nationality.state = "corrected";
   //marital
   } else if (req.session.data.maritalState === "adding") {
     req.session.data.maritalState = "added";
@@ -646,7 +646,7 @@ router.get(/disability-type-handler/, function (req, res) {
 
 //NATIONALITY
 router.get(/nationality-type-handler/, function (req, res) {
-  req.session.data.nationalityState = req.query.data;
+  req.session.data.nationality.state = req.query.data;
   res.redirect('/update/person/nationality/update')
 })
 

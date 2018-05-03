@@ -111,15 +111,15 @@
     {% endif %}
 
     <!-- nationality -->
-    {% if data.nationalityState === "added" %}
+    {% if data.nationality.state === "added" %}
       {% include "components/update/toasters/nationality-added.html" %}
     {% endif %}
 
-    {% if data.nationalityState === "updated" %}
+    {% if data.nationality.state === "updated" %}
       {% include "components/update/toasters/nationality-updated.html" %}
     {% endif %}
 
-    {% if data.nationalityState === "corrected" %}
+    {% if data.nationality.state === "corrected" %}
       {% include "components/update/toasters/nationality-corrected.html" %}
     {% endif %}
     

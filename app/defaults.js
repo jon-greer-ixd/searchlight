@@ -22,19 +22,16 @@ var defaults = {
   requestedNameCorrected : false,
   requestedNameRemoved : false,
   
-  //nifu
-  nifu : { value : null, state : null, show : false },
 
   //nathan
   nathan : { value : null, state : null, show : false },
   
+  //nifu
+  nifu : { value : null, state : null, show : false },
+
   //disability
   disability : {state : null, show : false},
   disabilityValue : null,
-
-  //sex
-  sex : "Male",
-  sexChanged : null,
   
   //gender
   gender : {state : null, show : false },
@@ -44,6 +41,21 @@ var defaults = {
   
   //gender-pre-gra
   preGra : { state : null, show : false },
+  
+  //nationality
+  nationality : {state : null, show : false},
+  nationalityValue : null,
+  
+  //marital status
+  maritalStatus : null,
+  maritalState : null,
+  showMarital : false,
+//  addMarital : false,
+//  maritalAdded : false,
+
+  //sex
+  sex : "Male",
+  sexChanged : null,
   
   //death
   dead : false,
@@ -55,10 +67,6 @@ var defaults = {
   pvState : null,
   showPv : false,
   
-  //nationality
-  showNationality : false,
-  nationalityState : null,
-    
   //special needs
   needsState : null,
   showNeeds : false,
@@ -70,13 +78,6 @@ var defaults = {
   //spoken language
   addSpokenLanguage : false,
   spokenLanguageUpdated : false,
-  
-  //marital status
-  maritalStatus : null,
-  maritalState : null,
-  showMarital : false,
-//  addMarital : false,
-//  maritalAdded : false,
   
   //immigration status
   addImmigration : false,
