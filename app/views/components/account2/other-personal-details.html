@@ -7,32 +7,6 @@
 
     <hr class="light">
     
-    <!-- nationality -->
-    {% if data.nationality.show == true %}
-      <div class="grid-row">
-        <div class="column-one-third">
-          Nationality
-        </div>
-        <div class="column-one-third">
-          <ul>
-            <li class="strong">{{data.nationalityValue}}</li>
-          </ul>
-        </div>
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-              <li>
-                <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-              </li>
-              <li>
-                <a href="../update/person/nationality/type" class="under-link" style="font-size:17px;">Change</a>
-              </li>
-            </ul>
-        </div>
-      </div>
-      <hr class="light">
-    {% endif %}
-
-    
     <!-- gender -->
     {% if data.gender.show == true %}
       {% include "components/account2/gender.html" %}
@@ -42,15 +16,42 @@
     <!-- sex -->
     {% include "components/account2/sex.html" %}
     <hr class="light">
-    
+
     <!-- nathan -->
     {% if data.nathan.show == true %}
       {% include "components/account2/nathan.html" %}
       <hr class="light">
     {% endif %}
+    
+    <!-- nifu -->
+    {% if data.nifu.show === true %}
+      {% include "components/account2/nifu.html" %}
+      <hr class="light">
+    {% endif %}
+            
+    <!-- disability -->
+    {% if data.disability.show === true %}
+      {% include "components/account2/disability.html" %}
+      <hr class="light">
+    {% endif %}
+    
+    <!-- special needs -->
+    
+    <!-- nationality -->
+    {% if data.nationality.show == true %}
+      {% include "components/account2/nationality.html" %}
+      <hr class="light">
+    {% endif %}
 
-    
-    
+    <!-- marital status -->
+    {% if data.showMarital === true %}
+      {% include "components/account2/marital.html" %}
+      <hr class="light">
+    {% endif %}
+
+    <!-- Spoken language -->
+    <!-- prefered language -->
+    <!-- PO -->    
     
     <!-- Spoken language -->
     {% if data.spokenLanguageUpdated == true %}
@@ -111,83 +112,7 @@
       </div>
       <hr class="light">
     {% endif %}
-    
-    
-    <!-- NIFU -->
-    {% if data.nifuUpdated == true %}
-      <div class="grid-row">
-        <div class="column-one-third">
-          <p>National identity fraud unit</p>
-        </div>
-        <div class="column-one-third">
-          <p class="strong">Yes</p>
-        </div>
-        <div class="column-one-third last-col">
-  <!--
-          <ul class="edit-menu">
-            <li>
-              <a class="under-link">View maintenance</a> 
-            </li>
-            <li>
-              <a class="secondary-link" href="">Change</a>
-            </li>
-          </ul>
-  -->
-        </div>
-      </div>
-      <hr class="light">
-    {% endif %}
 
-    
-    <!-- Civil status -->
-    {% if data.showMarital === true %}
-      <div class="grid-row">
-        <div class="column-one-third">
-          Marital or civil status
-        </div>
-        <div class="column-one-third">
-          <ul>
-            <li class="strong">{{data.maritalStatus}}</li>
-          </ul>
-        </div>
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-<!--            <li><a class="under-link">View history</a></li>-->
-            <li>                
-<!--              <a href="updating-handler/?feature=marital&state=updating" class="under-link" style="font-size:17px;">Change</a>-->
-              <a href="../update/person/marital/type" class="under-link" style="font-size:17px;">Change</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <hr class="light">
-  {% endif %}
-
-    <!-- Disability -->
-    {% if data.disability.show === true %}
-      <div class="grid-row">
-        <div class="column-one-third">
-          Disability status
-        </div>
-        <div class="column-one-third">
-          <ul>
-            <li class="strong"> 
-              This person is disabled
-            </li>
-          </ul>
-        </div>
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-<!--            <li><a class="under-link">View history</a></li>-->
-            <li>                
-              <a href="updating-handler/?feature=disability&state=updating" class="under-link" style="font-size:17px;">Change</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    <hr class="light">
-  {% endif %}
 
     <!-- Special needs -->
     {% if data.showNeeds === true %}
@@ -214,31 +139,6 @@
       </div>
     <hr class="light">
   {% endif %}
-  
-    <!-- nifu -->
-    {% if data.nifu.show === true %}
-      <div class="grid-row">
-        <div class="column-one-third">
-          National fraud interest
-        </div>
-        <div class="column-one-third">
-          <ul>
-              <li class="strong"> 
-                {{data.nifu.value}}
-              </li>
-          </ul>
-        </div>
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-            <li>                
-              <a href="updating-handler/?feature=nifu&state=updating" class="under-link" style="font-size:17px;">Change</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    <hr class="light">
-  {% endif %}
-
   
   <div class="grid-row" style="margin-bottom: 0;">
     <div class="column-one-third">
