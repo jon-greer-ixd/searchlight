@@ -38,11 +38,18 @@
       {% include "components/account2/gender.html" %}
       <hr class="light">
     {% endif %}
-
     
     <!-- sex -->
     {% include "components/account2/sex.html" %}
     <hr class="light">
+    
+    <!-- nathan -->
+    {% if data.nathan.show == true %}
+      {% include "components/account2/nathan.html" %}
+      <hr class="light">
+    {% endif %}
+
+    
     
     
     <!-- Spoken language -->
@@ -166,11 +173,7 @@
         <div class="column-one-third">
           <ul>
             <li class="strong"> 
-              {% if data.disabilityValue === true or data.disabilityValue === "true" %}
-                This person is disabled
-              {% else %}
-                This person is not disabled
-              {% endif %}
+              This person is disabled
             </li>
           </ul>
         </div>

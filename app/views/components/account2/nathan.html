@@ -1,0 +1,30 @@
+<div class="grid-row">
+  <div class="column-one-third">
+    <ul>
+      <li class="">Special customer record level
+      </li>
+    </ul>
+  </div>
+  <div class="column-one-third">
+    <ul>
+      <li class="bold">
+        {% if data.nathan.value == 4 %}
+          4 - other
+        {% elif data.nathan.value == 3 %}
+          3 -VIP
+        {% elif data.nathan.value == 2 %}
+          2 - Transgender
+        {% elif data.nathan.value == 1 %}
+          1 - Unrestricted access
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a class="secondary-link" href="newupdate-handler/?feature=nathan&state=updating">Change</a>
+      </li>
+    </ul>
+  </div>
+</div>

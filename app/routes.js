@@ -520,6 +520,9 @@ router.get(/edit-person-handler/, function (req, res) {
     } else if (item ===  "death") {
       req.session.data.adddDeath = true;
       next = "death/update";
+    } else if (item ===  "nathan") {
+      req.session.data.nathan.state = "adding";
+      next = "nathan/update";
     } else if (item ===  "pv") {
       req.session.data.adddPv = true;
       next = "pv/update";
@@ -536,7 +539,7 @@ router.get(/edit-person-handler/, function (req, res) {
       next = "needs/update";
     } else if (item === "disability") {
       req.session.data.disability.state = "adding";
-      next = "disability/update";
+      next = "check";
     } else if (item === "planguage") {
       req.session.data.adddPreferedLanguage = true;
       next = "prefered/update";
@@ -590,6 +593,8 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.disability.value = false;
   } else if (req.session.data.disability.state === "correcting") {
     req.session.data.disability.state = "corrected";
+    req.session.data.disability.show = false;
+    req.session.data.disability.value = false;
   } else if (req.session.data.disability.state === "updating") {
     req.session.data.disability.state = "updated";
     req.session.data.disability.value = req.session.data.disabilityvalue;
@@ -611,6 +616,10 @@ router.get(/check-person-handler/, function (req, res) {
   } else if (req.session.data.nathan.state === "updating") {
     req.session.data.nathan.value = req.session.data.nathanvalue;
     req.session.data.nathan.state = "updated";
+  } else if (req.session.data.nathan.state === "removing") {
+    req.session.data.nathan.value = 1;
+    req.session.data.nathan.state = "removed";
+    req.session.data.nathan.show = false;
   }
   
   res.redirect('/account2/account')
@@ -646,6 +655,17 @@ router.get(/marital-type-handler/, function (req, res) {
   console.log(req.query);
   req.session.data.maritalState = req.query.data;
   res.redirect('/update/person/marital/update')
+})
+
+//NATHAN
+router.get(/nathan-type-handler/, function (req, res) {
+  console.log(req.query);
+  req.session.data.nathan.state = req.query.data;
+  if(req.session.data.nathan.state == "removing") {
+    res.redirect('/update/person/check')
+  } else {
+    res.redirect('/update/person/nathan/update')
+  }
 })
 
 //nifu
@@ -726,7 +746,7 @@ router.get(/newupdate-handler/, function (req, res) {
     } else {
       res.redirect('/update/person/gender/type')
     }
-  } else if (req.query.feature == "disability" || req.query.feature == "needs" || req.query.feature == "nifu") {
+  } else if (req.query.feature == "disability" || req.query.feature == "needs" || req.query.feature == "nifu" || req.query.feature == "nathan") {
     res.redirect('/update/person/' + feature + '/type')
     console.log('/update/person/' + feature + '/type');
   } else {

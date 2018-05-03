@@ -2,18 +2,22 @@
     <div class="grid-row">
       <div class="column-one-half">
         <table class="table"> 
-          {% if data.preGra.state != "correcting" and data.gra.state != "correcting" %}
+          {% if data.preGra.state == "adding" and data.gra.state != "added" %}
             <tr>
               <td><span class="strong">Sex</span></td>
               <td>
                 {{data.sex}}
-<!--
-                {% if data.sex == "Male" %}
-                  Female
-                {% else %}
-                  Male
-                {% endif %}
--->
+              </td>
+              <td>
+                <a>&nbsp;</a>
+              </td>
+            </tr>
+          {% endif %}
+          {% if data.gra.state == "adding" and data.preGra.state != "added" %}
+            <tr>
+              <td><span class="strong">Sex</span></td>
+              <td>
+                {{data.sex}}
               </td>
               <td>
                 <a>&nbsp;</a>

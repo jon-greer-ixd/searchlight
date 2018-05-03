@@ -27,6 +27,13 @@
       <div class="form-group">
       <fieldset>
         
+        {% if data.nathan.show === false %}
+          <div class="multiple-choice">
+            <input id="nathan" name="data" type="checkbox" value="nathan" >
+            <label for="nathan">Special customer record level</label>
+          </div>
+        {% endif %}
+        
         {% if data.deathUpdated === false %}
           <div class="multiple-choice">
             <input id="death" name="data" type="checkbox" value="death" >

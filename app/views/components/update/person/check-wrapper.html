@@ -44,9 +44,11 @@
             <h2>Update national fraud interest</h2>
           <!-- Nathan -->
           {% elif data.nathan.state == "adding" %}
-            <h2>Add nationaly sensitive record level</h2>
+            <h2>Add a special customer record level</h2>
           {% elif data.nathan.state == "updating" %}
-            <h2>Update nationaly sensitive record level</h2>
+            <h2>Update the special customer record level</h2>
+          {% elif data.nathan.state == "removing" %}
+            <h2>Remove the special customer record level</h2>
           {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

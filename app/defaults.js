@@ -40,7 +40,7 @@ var defaults = {
   gender : {state : null, show : false },
   
   //gender-gra
-  gra : {state : null, show : false},
+  gra : { state : null, show : false },
   
   //gender-pre-gra
   preGra : { state : null, show : false },

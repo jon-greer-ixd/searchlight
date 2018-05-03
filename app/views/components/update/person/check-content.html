@@ -15,8 +15,26 @@
           <!-- nathan -->
           {% if data.nathan.state === "adding" or data.nathan.state === "updating" or data.nathan.state === "correcting" %}
             <tr>
-              <td><span class="strong">Nationaly sensitive record level</span></td>
-              <td>{{data.nathanvalue}}</td>
+              <td><span class="strong">Special customer record level</span></td>
+              <td>
+                
+                {% if data.nathanvalue == "4" %}
+                  4 - Other
+                {% elif data.nathanvalue == "3" %}
+                  3 - VIP
+                {% elif data.nathanvalue == "2" %}
+                  2 - Transgender
+                {% endif %}
+                
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          {% if data.nathan.state === "removing" %}
+            <tr>
+              <td><span class="strong">Remove the special customer record level</span></td>
+              <td>&nbsp;</td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
@@ -40,17 +58,22 @@
           {% endif %}
           
           <!-- disability -->
-          {% if data.disability.state === "adding" or data.disability.state === "updating" or data.disability.state === "correcting" %}
+          {% if data.disability.state === "adding" %}
             <tr>
-              <td><span class="strong">Is this person disabled?</span></td>
+              <td><span class="strong">Disability status</span></td>
               <td>
-                {% if data.disabilityValue == "true" or data.disabilityValue == true %}
-                  Yes
-                {% else %}
-                  No
-                {% endif %}
+                  This person is disabled
               </td>
               <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          {% if data.disability.state === "correcting" %}
+            <tr>
+              <td><span class="strong">Disability status</span></td>
+              <td>
+                  This person is not disabled
+              </td>
+              <td><a>&nbsp;</a></td>
             </tr>
           {% endif %}
           {% if data.disability.state === "removing" %}
