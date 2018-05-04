@@ -4,8 +4,8 @@
   </div>
   <div class="column-one-third">
     <ul>
-      <li class="strong">{{data.sex}}</li>
-      {% if data.genderUpdated === true or data.sexChanged === true %}
+      <li class="strong">{{data.sexValue}}</li>
+      {% if data.gender.state === added or data.sex.status === "corrected" %}
       <li class="sl-secondary-text-color sl-metadata">
         Since today
       </li>
@@ -23,9 +23,9 @@
         <span class="pipe"> | </span> 
         <a href="../history/sex-history" class="under-link">View history</a>
       </li>
-      {% if data.sexChanged != true %}
+      {% if data.gender.show != true %}
         <li>
-          <a href="sex-simple-handler" class="under-link" style="font-size:17px;">Change</a>
+          <a class="secondary-link" href="newupdate-handler/?feature=sex&state=correcting">Change</a>
         </li>
       {% endif %}
     </ul>

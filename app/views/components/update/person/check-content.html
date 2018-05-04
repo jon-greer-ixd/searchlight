@@ -12,6 +12,15 @@
             </tr>
           {% endif %}
           
+          <!-- sex -->
+          {% if data.sex.state === "correcting" %}
+            <tr>
+              <td><span class="strong">Sex</span></td>
+              <td>{{data.sexValue}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
           <!-- nathan -->
           {% if data.nathan.state === "adding" or data.nathan.state === "updating" or data.nathan.state === "correcting" %}
             <tr>

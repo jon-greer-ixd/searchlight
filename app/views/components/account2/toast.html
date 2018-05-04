@@ -27,7 +27,7 @@
     {% endif %}
     
     <!-- sex -->
-    {% if data.sexChanged === true %}
+    {% if data.sex.state === "corrected" %}
       {% include "components/update/toasters/sex-corrected.html" %}
     {% endif %}
     

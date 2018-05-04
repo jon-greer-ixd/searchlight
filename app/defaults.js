@@ -22,7 +22,10 @@ var defaults = {
   requestedNameCorrected : false,
   requestedNameRemoved : false,
   
-
+  //sex
+  sex : { state : null, show : true },
+  sexValue : "Male",
+  
   //nathan
   nathan : { value : null, state : null, show : false },
   
@@ -58,10 +61,6 @@ var defaults = {
   showMarital : false,
 //  addMarital : false,
 //  maritalAdded : false,
-
-  //sex
-  sex : "Male",
-  sexChanged : null,
   
   //death
   dead : false,

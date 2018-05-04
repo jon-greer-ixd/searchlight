@@ -609,6 +609,9 @@ router.get(/check-person-handler/, function (req, res) {
   } else if (req.session.data.nifu.state === "correcting") {
     req.session.data.nifu.state = "corrected";
     req.session.data.nifu.show = false;
+  //sex
+  } else if (req.session.data.sex.state === "correcting") {
+    req.session.data.sex.state = "corrected";
   //nathan
   } else if (req.session.data.nathan.state === "adding") {
     req.session.data.nathan.value = req.session.data.nathanvalue;
@@ -754,6 +757,9 @@ router.get(/newupdate-handler/, function (req, res) {
   } else if (req.query.feature == "disability" || req.query.feature == "needs" || req.query.feature == "nifu" || req.query.feature == "nathan") {
     res.redirect('/update/person/' + feature + '/type')
     console.log('/update/person/' + feature + '/type');
+  } else if (req.query.feature == "sex") {
+    req.session.data.sexValue = changeSex(req.session.data.sexValue);
+    res.redirect('/update/person/check')
   } else {
     // var toPage = '/update/person/' + req.query.feature + '/update';
     res.redirect('/update/person/' + feature + '/update')
