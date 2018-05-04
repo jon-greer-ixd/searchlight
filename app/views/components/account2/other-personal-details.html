@@ -36,6 +36,10 @@
     {% endif %}
     
     <!-- special needs -->
+    {% if data.specialNeeds.show === true %}
+      {% include "components/account2/special-needs.html" %}
+      <hr class="light">
+    {% endif %}
     
     <!-- nationality -->
     {% if data.nationality.show == true %}
@@ -114,31 +118,6 @@
     {% endif %}
 
 
-    <!-- Special needs -->
-    {% if data.showNeeds === true %}
-      <div class="grid-row">
-        <div class="column-one-third">
-          Special needs
-        </div>
-        <div class="column-one-third">
-          <ul>
-            {% for need in data.needs %}
-              <li class="strong"> 
-                {{need}}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-            <li>                
-              <a href="updating-handler/?feature=needs&state=updating" class="under-link" style="font-size:17px;">Change</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    <hr class="light">
-  {% endif %}
   
   <div class="grid-row" style="margin-bottom: 0;">
     <div class="column-one-third">

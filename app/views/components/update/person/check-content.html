@@ -84,7 +84,7 @@
           {% endif %}
           
           <!-- special needs -->
-          {% if data.needsState === "adding" or data.needsState === "updating" or data.needsState === "correcting" %}
+          {% if data.specialNeeds.state === "adding" or data.specialNeeds.state === "updating" or data.specialNeeds.state === "correcting" %}
             <tr>
               <td><span class="strong">What does this person need?</span></td>
               <td>

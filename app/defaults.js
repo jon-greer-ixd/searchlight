@@ -46,6 +46,12 @@ var defaults = {
   nationality : {state : null, show : false},
   nationalityValue : null,
   
+  //special needs
+  specialNeeds : {state : null, show : false},
+//  needsState : null,
+//  showNeeds : false,
+
+  
   //marital status
   maritalStatus : null,
   maritalState : null,
@@ -66,11 +72,7 @@ var defaults = {
   potentiallyViolent : null,
   pvState : null,
   showPv : false,
-  
-  //special needs
-  needsState : null,
-  showNeeds : false,
-  
+    
   //prefered language
   addPreferedLanguage : false,
   preferedLanguageUpdated : false,
@@ -96,6 +98,15 @@ function flip(value) {
   }
 }
 
+function changeSex(sex) {
+  if(sex === "Male") {
+   return "Female";
+  } else if (sex === "Female") {
+    return "Male";
+  }
+}
 
+
+module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;
