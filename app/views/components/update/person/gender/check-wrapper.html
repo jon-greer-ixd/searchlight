@@ -6,17 +6,9 @@
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           
             {% if data.gra.state == "adding" %}
-              <h2>Add acquired gender - GRA information</h2>
+              <h2>Add gender recognition details</h2>
             {% elif data.preGra.state == "adding" %}
-              <h2>Add acquired gender - pre GRA information</h2>
-            {% elif data.gra.state == "updating" %}
-              <h2>Update acquired gender - GRA information</h2>
-            {% elif data.preGra.state == "updating" %}
-              <h2>Update acquired gender - pre GRA  information</h2>
-            {% elif data.gra.state == "correcting" %}
-              <h2>Correct acquired gender - GRA information</h2>
-            {% elif data.preGra.state == "correcting" %}
-              <h2>Correct acquired gender - pre GRA  information</h2>
+              <h2>Add pre gender recognition details</h2>
             {% endif %}
           
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
