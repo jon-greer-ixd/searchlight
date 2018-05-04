@@ -1,4 +1,4 @@
-<h2 class="heading-medium question">What personal information do you need to add?</h2>
+<h2 class="heading-medium question">Which personal details do you need to add?</h2>
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="edit-person-handler">
@@ -37,14 +37,14 @@
         {% if data.deathUpdated === false %}
           <div class="multiple-choice">
             <input id="death" name="data" type="checkbox" value="death" >
-            <label for="death">Date of death information</label>
+            <label for="death">Date of death details</label>
           </div>
         {% endif %}
         
         {% if data.pvUpdated === false %}
           <div class="multiple-choice">
             <input id="pv" name="data" type="checkbox" value="pv" >
-            <label for="pv">Potentially violent information</label>
+            <label for="pv">Potentially violent details</label>
           </div>
         {% endif %}
         
@@ -58,7 +58,7 @@
         {% if data.specialNeeds.show === false %}
           <div class="multiple-choice">
             <input id="needs" name="data" type="checkbox" value="needs" >
-            <label for="needs">Special needs information</label>
+            <label for="needs">Special needs</label>
           </div>
         {% endif %}
         
@@ -72,7 +72,7 @@
         {% if data.gender.show === false %}
           <div class="multiple-choice">
             <input id="gender" name="data" type="checkbox" value="gender" >
-            <label for="gender">Gender information</label>
+            <label for="gender">Gender recognition</label>
           </div>
         {% endif %}
                 
