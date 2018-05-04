@@ -49,10 +49,10 @@
           {% endif %}
           
           <!-- nationality -->
-          {% if data.nationalityState === "adding" or data.nationalityState === "updating" or data.nationalityState === "correcting" %}
+          {% if data.nationality.state === "adding" or data.nationality.state === "updating" or data.nationality.state === "correcting" %}
             <tr>
               <td><span class="strong">Nationality</span></td>
-              <td>{{data.nationality}}</td>
+              <td>{{data.nationalityValue}}</td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
@@ -84,7 +84,7 @@
           {% endif %}
           
           <!-- special needs -->
-          {% if data.needsState === "adding" or data.needsState === "updating" or data.needsState === "correcting" %}
+          {% if data.specialNeeds.state === "adding" or data.specialNeeds.state === "updating" or data.specialNeeds.state === "correcting" %}
             <tr>
               <td><span class="strong">What does this person need?</span></td>
               <td>

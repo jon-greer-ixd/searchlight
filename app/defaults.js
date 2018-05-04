@@ -22,19 +22,16 @@ var defaults = {
   requestedNameCorrected : false,
   requestedNameRemoved : false,
   
-  //nifu
-  nifu : { value : null, state : null, show : false },
 
   //nathan
   nathan : { value : null, state : null, show : false },
   
+  //nifu
+  nifu : { value : null, state : null, show : false },
+
   //disability
   disability : {state : null, show : false},
   disabilityValue : null,
-
-  //sex
-  sex : "Male",
-  sexChanged : null,
   
   //gender
   gender : {state : null, show : false },
@@ -45,6 +42,27 @@ var defaults = {
   //gender-pre-gra
   preGra : { state : null, show : false },
   
+  //nationality
+  nationality : {state : null, show : false},
+  nationalityValue : null,
+  
+  //special needs
+  specialNeeds : {state : null, show : false},
+//  needsState : null,
+//  showNeeds : false,
+
+  
+  //marital status
+  maritalStatus : null,
+  maritalState : null,
+  showMarital : false,
+//  addMarital : false,
+//  maritalAdded : false,
+
+  //sex
+  sex : "Male",
+  sexChanged : null,
+  
   //death
   dead : false,
   deathState : null,
@@ -54,15 +72,7 @@ var defaults = {
   potentiallyViolent : null,
   pvState : null,
   showPv : false,
-  
-  //nationality
-  showNationality : false,
-  nationalityState : null,
     
-  //special needs
-  needsState : null,
-  showNeeds : false,
-  
   //prefered language
   addPreferedLanguage : false,
   preferedLanguageUpdated : false,
@@ -70,13 +80,6 @@ var defaults = {
   //spoken language
   addSpokenLanguage : false,
   spokenLanguageUpdated : false,
-  
-  //marital status
-  maritalStatus : null,
-  maritalState : null,
-  showMarital : false,
-//  addMarital : false,
-//  maritalAdded : false,
   
   //immigration status
   addImmigration : false,
@@ -95,6 +98,15 @@ function flip(value) {
   }
 }
 
+function changeSex(sex) {
+  if(sex === "Male") {
+   return "Female";
+  } else if (sex === "Female") {
+    return "Male";
+  }
+}
 
+
+module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;

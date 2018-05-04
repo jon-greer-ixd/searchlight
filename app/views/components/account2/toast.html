@@ -111,15 +111,15 @@
     {% endif %}
 
     <!-- nationality -->
-    {% if data.nationalityState === "added" %}
+    {% if data.nationality.state === "added" %}
       {% include "components/update/toasters/nationality-added.html" %}
     {% endif %}
 
-    {% if data.nationalityState === "updated" %}
+    {% if data.nationality.state === "updated" %}
       {% include "components/update/toasters/nationality-updated.html" %}
     {% endif %}
 
-    {% if data.nationalityState === "corrected" %}
+    {% if data.nationality.state === "corrected" %}
       {% include "components/update/toasters/nationality-corrected.html" %}
     {% endif %}
     
@@ -141,19 +141,19 @@
     {% endif %}
 
     <!-- needs -->
-    {% if data.needsState === "added" %}
+    {% if data.specialNeeds.state === "added" %}
       {% include "components/update/toasters/needs-added.html" %}
     {% endif %}
 
-    {% if data.needsState === "removed" %}
+    {% if data.specialNeeds.state === "removed" %}
       {% include "components/update/toasters/needs-removed.html" %}
     {% endif %}
 
-    {% if data.needsState === "corrected" %}
+    {% if data.specialNeeds.state === "corrected" %}
       {% include "components/update/toasters/needs-corrected.html" %}
     {% endif %}
 
-    {% if data.needsState === "updated" %}
+    {% if data.specialNeeds.state === "updated" %}
       {% include "components/update/toasters/needs-updated.html" %}
     {% endif %}
 

@@ -11,11 +11,12 @@
             <h2>Update marital or civil partnership status</h2>
           {% elif data.maritalState == "correcting" %}
             <h2>Correct marital or civil partnership status</h2>
-          {% elif data.nationalityState == "adding" %}
+          <!-- nationality -->
+          {% elif data.nationality.state == "adding" %}
             <h2>Add nationality</h2>
-          {% elif data.nationalityState == "updating" %}
+          {% elif data.nationality.state == "updating" %}
             <h2>Update nationality</h2>
-          {% elif data.nationalityState === "correcting" %}
+          {% elif data.nationality.state === "correcting" %}
             <h2>Correct nationality</h2>
           <!-- disability -->
           {% elif data.disability.state == "adding" %}
@@ -27,13 +28,13 @@
           {% elif data.disability.state == "removing" %}
             <h2>Remove disability status</h2>
           <!-- needs -->
-          {% elif data.needsState == "adding" %}
+          {% elif data.specialNeeds.state == "adding" %}
             <h2>Add special needs information</h2>
           {% elif data.needsState == "updating" %}
             <h2>Update special needs information</h2>
-          {% elif data.needsState == "correcting" %}
+          {% elif data.specialNeeds.state == "correcting" %}
             <h2>Correct special needs information</h2>
-          {% elif data.needsState == "removing" %}
+          {% elif data.specialNeeds.state == "removing" %}
             <h2>Remove special needs information</h2>
           <!-- NIFU -->
           {% elif data.nifu.state == "adding" %}

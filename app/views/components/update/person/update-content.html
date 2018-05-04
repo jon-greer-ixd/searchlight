@@ -55,14 +55,12 @@
           </div>
         {% endif %}
         
-<!--
-        {% if data.showNeeds === false %}
+        {% if data.specialNeeds.show === false %}
           <div class="multiple-choice">
             <input id="needs" name="data" type="checkbox" value="needs" >
             <label for="needs">Special needs information</label>
           </div>
         {% endif %}
--->
         
         {% if data.disability.show === false %}
           <div class="multiple-choice">
@@ -85,7 +83,7 @@
           </div>
         {% endif %}
         
-        {% if data.showNationality === false %}
+        {% if data.nationality.show === false %}
           <div class="multiple-choice">
             <input id="nationality" name="data" type="checkbox" value="nationality" >
             <label for="nationality">Nationality</label>

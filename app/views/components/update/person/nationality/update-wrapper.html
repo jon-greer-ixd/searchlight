@@ -4,9 +4,9 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.nationalityState === "adding" %}
+          {% if data.nationality.state === "adding" %}
             <h2>Add nationality</h2>
-          {% elif data.nationalityState === "correcting" %}
+          {% elif data.nationality.state === "correcting" %}
             <h2>Correct nationality</h2>
           {% else %}
             <h2>Update nationality</h2>

@@ -2,7 +2,7 @@
     <div class="grid-row">
       <div class="column-one-half">
         <table class="table"> 
-          {% if data.preGra.state == "adding" and data.gra.state != "added" %}
+          {% if data.preGra.state == "adding" and data.gra.state == null %}
             <tr>
               <td><span class="strong">Sex</span></td>
               <td>
@@ -13,7 +13,7 @@
               </td>
             </tr>
           {% endif %}
-          {% if data.gra.state == "adding" and data.preGra.state != "added" %}
+          {% if data.gra.state == "adding" and data.preGra.state == null %}
             <tr>
               <td><span class="strong">Sex</span></td>
               <td>
