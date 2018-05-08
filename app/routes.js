@@ -508,6 +508,27 @@ router.get(/authority-stop-handler/, function (req, res) {
 })
 
 
+//CONTACT
+
+router.get(/contact-type-handler/, function (req, res) {
+  var method = req.query.data;
+  req.session.data[method].state = "adding";
+  console.log(req.session.data[method].state);
+  res.redirect(method)
+})
+
+//check-contact-handler
+router.get(/check-contact-handler/, function (req, res) {
+  //nationality
+  if (req.session.data.home_telephone.state === "adding") {
+    req.session.data.home_telephone.state = "added";
+    req.session.data.showContact = true;
+    req.session.data.home_telephone.show = true;
+  }
+  res.redirect('/account2/account')
+})
+
+
 //PERSON
 
 router.get(/edit-person-handler/, function (req, res) {
@@ -627,7 +648,6 @@ router.get(/check-person-handler/, function (req, res) {
   }
   res.redirect('/account2/account')
 })
-
 
 //DISABILITY
 router.get(/disability-type-handler/, function (req, res) {
@@ -764,6 +784,14 @@ router.get(/newupdate-handler/, function (req, res) {
     // var toPage = '/update/person/' + req.query.feature + '/update';
     res.redirect('/update/person/' + feature + '/update')
   }
+})
+
+router.get(/updatecontact-handler/, function (req, res) {
+  console.log(req.query);
+  var feature = req.query.feature;
+  var state = req.query.state;
+  req.session.data[feature].state = state;
+  res.redirect('/update/person/contact/' + feature)
 })
 
 
@@ -1841,6 +1869,19 @@ router.get(/v3-type-handler/, function (req, res) {
   res.redirect('../../search')
 })
 
+router.get(/v4-type-handler/, function (req, res) {
+  ninoVersion = 4;
+  if(req.query.trace[0] === "true") {
+    trace = true;
+  }
+  if(req.query.data === "create") {
+    req.session.data.createJourney = true;
+  } else {
+    req.session.data.createJourney = false;
+  }
+  res.redirect('../../search')
+})
+
 //contact-handler
 router.get(/contact-question-handler/, function (req, res) {
   if(req.query.data === "yes") {
@@ -1858,6 +1899,177 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
     res.redirect('check')
   }
 })
+
+
+
+//*********
+//Version 4
+//*********
+
+//contact-group-handler
+router.get(/contact-group-handler/, function (req, res) {
+  console.log(req.query.contactType);
+  if (req.query.contactType == "telephone" || req.query.contactType == "email" || req.query.contactType == "fax") {
+    res.redirect('contact-type')
+  } else {
+    res.redirect('contact-details')
+  }
+})
+
+//current-name
+router.get('/nino/6/name-current/', function (req, res) {
+  res.render('nino/6/name-current', {
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//address-alternative
+router.get('/nino/6/name-alternative/', function (req, res) {
+  res.render('nino/6/name-alternative', {
+    person : person
+  })
+})
+
+//name-previous
+router.get('/nino/6/name-previous/', function (req, res) {
+  res.render('nino/6/name-previous', {
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//address-search
+router.get('/nino/6/address-search/', function (req, res) {
+  res.render('nino/6/address-search', {
+    person : person
+  })
+})
+
+//search-results
+router.get('/nino/6/search-results/', function (req, res) {
+  res.render('nino/6/search-results', {
+    person : person
+  })
+})
+
+//search-previous
+router.get('/nino/6/search-previous/', function (req, res) {
+  res.render('nino/6/search-previous', {
+    previous_name : person.previous_name
+  })
+})
+
+//previous-results
+router.get('/nino/6/previous-results/', function (req, res) {
+  res.render('nino/6/previous-results', {
+    person : person
+  })
+})
+
+//search-correspondence
+router.get('/nino/6/search-correspondence/', function (req, res) {
+  res.render('nino/6/search-correspondence', {
+    person : person
+  })
+})
+
+//correspondence-results
+router.get('/nino/6/correspondence-results/', function (req, res) {
+  res.render('nino/6/correspondence-results', {
+    person : person
+  })
+})
+
+//current-name
+router.get('/nino/6/search-previous/', function (req, res) {
+  res.render('nino/6/search-previous', {
+    previous_name : person.previous_name,
+  })
+})
+
+//requested-name
+router.get('/nino/6/name-requested/', function (req, res) {
+  res.render('nino/6/name-requested', {
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/6/requested-name/', function (req, res) {
+  res.render('nino/6/requested-name', {
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//requested-name
+router.get('/nino/6/requested-name/', function (req, res) {
+  res.render('nino/6/requested-name', {
+    previous_name : person.previous_name,
+    requested_name : person.requested_name
+  })
+})
+
+//previous-name
+router.get('/nino/6/previous-name/', function (req, res) {
+  res.render('nino/6/previous-name', {
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/6/manual-correspondence/', function (req, res) {
+  res.render('nino/6/manual-correspondence', {
+    person : person
+  })
+})
+
+//manual-correspondence
+router.get('/nino/6/manual-previous/', function (req, res) {
+  res.render('nino/6/manual-previous', {
+    person : person
+  })
+})
+
+
+//address-search
+router.get('/nino/6/previous-names/', function (req, res) {
+  res.render('nino/6/previous-names', {
+    person : person
+  })
+})
+
+//address-question
+router.get('/nino/6/address-question/', function (req, res) {
+  res.render('nino/6/address-question', {
+    person : person
+  })
+})
+
+//check
+router.get('/nino/6/check/', function (req, res) {
+  res.render('nino/6/check', {
+    today : dates.todayAsString(),
+    underSixteen : underSixteen
+  })
+})
+
+//check
+router.get('/nino/6/check-v2/', function (req, res) {
+  res.render('nino/6/check-v2', {
+    today : dates.todayAsString()
+  })
+})
+
+//task-list
+router.get('/nino/6/task-list/', function (req, res) {
+  res.render('nino/6/task-list', {
+    person : person
+  })
+})
+
 
 
 //*********

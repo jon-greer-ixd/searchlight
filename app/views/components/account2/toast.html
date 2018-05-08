@@ -184,6 +184,13 @@
     {% endif %}
 
 
+    <!-- contact -->
+
+    <!-- home telephone -->
+    {% if data.home_telephone.state === "added" %}
+      {% include "components/update/toasters/contact/home-telephone-added.html" %}
+    {% endif %}
+
 
 
 

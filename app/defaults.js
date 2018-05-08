@@ -1,4 +1,6 @@
 var defaults = {
+  //contact
+  contactType : null,
   //updater
   updateType : null,
   
@@ -21,6 +23,22 @@ var defaults = {
   requestedNameUpdated : false,
   requestedNameCorrected : false,
   requestedNameRemoved : false,
+  
+  //CONTACT  
+  
+  showContact : false,
+  
+  home_telephone : { state : null, show : false, pref : false },
+  homeTelephoneValue : "0113 287 6365",
+
+  email : { state : null, show : false, pref : false },
+  emailValue : "tom.smith@gmail.com",
+
+  mobile : { state : null, show : false, pref : false },
+  mobileValue : "07712 345 678",
+
+
+  //PERSONAL DETAILS  
   
   //sex
   sex : { state : null, show : true },
@@ -51,16 +69,11 @@ var defaults = {
   
   //special needs
   specialNeeds : {state : null, show : false},
-//  needsState : null,
-//  showNeeds : false,
 
-  
   //marital status
   maritalStatus : null,
   maritalState : null,
   showMarital : false,
-//  addMarital : false,
-//  maritalAdded : false,
   
   //death
   dead : false,

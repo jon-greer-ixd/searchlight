@@ -1,0 +1,32 @@
+<h2 class="heading-medium question">Check your answers</h2>
+
+  <div class="grid-row">
+
+    <div class="column-one-half">
+
+      <table class="table"> 
+        <!-- marital -->
+        {% if data.home_telephone.state === "adding" %}
+          <tr>
+            <td><span class="strong">Home telephone number</span></td>
+            <td>111111111</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+      </table>
+
+    <br>
+
+    <form method="get" action="check-contact-handler">
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Submit">
+      </div>
+
+    </form>
+
+    <a href="/account2/account">Cancel</a>
+
+  </div>
+
+</div>
