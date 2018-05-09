@@ -88,17 +88,17 @@
           <input class="form-control" id="postcode" type="text" name="postcode">
         </fieldset>
         
-        <fieldset class="form-group">
-          <legend class="visuallyhidden">Start date</legend>
-          <label class="form-label" for="postcode">
+        <div class="form-group prepop">
+          <label class="form-label" for="date">
             Start date
             <span class="form-hint">
-              For example 31/8/1979
+              For example 31/8/197
             </span>
           </label>
-          <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode" ><span class="today"></span>
-        </fieldset>
-        
+          <input class="form-control box-one" id="date" name="date" type="text">
+          <a class="populate-link-one">Use today's date</a>
+        </div>
+      
         <!--
         {% if data['createJourney'] === false %}
           <fieldset class="form-group">

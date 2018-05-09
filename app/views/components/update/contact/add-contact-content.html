@@ -1,0 +1,62 @@
+<h2 class="heading-medium question">What kind of contact method do you need to add?</h2>
+
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="contact-group-handler">
+        <div class="form-group">
+          <fieldset>
+
+            <legend>
+              <p class="visually-hidden">
+                What kind of contact type is it?
+              </p>
+            </legend>
+
+            <div class="multiple-choice">
+              <input id="telephone" type="radio" name="contactType" value="telephone">
+              <label for="telephone">Telephone number</label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="email" type="radio" name="contactType" value="email">
+              <label for="email">Email</label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="textphone" type="radio" name="contactType" value="textPhone">
+              <label for="textphone">TextPhone</label>
+            </div>
+            
+            <div class="multiple-choice">
+              <input id="typetalk" type="radio" name="contactType" value="typeTalk">
+              <label for="typetalk">TypeTalk</label>
+            </div>
+            
+            <div class="multiple-choice">
+              <input id="fax" type="radio" name="contactType" value="fax">
+              <label for="fax">Fax</label>
+            </div>
+            
+            <div class="multiple-choice">
+              <input id="otherContact" type="radio" name="contactType" value="otherContact">
+              <label for="otherContact">Another contact method</label>
+            </div>
+            
+<!--
+            <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+            </div>
+-->
+
+          </fieldset>
+        </div>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+     </form>
+    <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>

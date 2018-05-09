@@ -15,22 +15,26 @@
         <label class="form-label" for="date">Creation office</label>
         <input class="form-control" id="date" type="text" name="date">
       </fieldset>
-
-      <fieldset class="form-group">
-        <legend class="visuallyhidden">Creation date</legend>
-
+      
+      <div class="form-group prepop">
         <label class="form-label" for="date">
           Creation date
+          <span class="form-hint">
+            For example 31/8/197
+          </span>
         </label>
-        <input class="form-control" id="date" type="text" name="date" value="{{data['prepopulatedDate']}}">
-      </fieldset>
-
-      <fieldset class="form-group">
-        <legend class="visuallyhidden">Notified date</legend>
-        <label class="form-label" for="date">Notified date</label>
-        <input class="form-control" id="date" type="text" name="date" value="{{data['prepopulatedDate']}}">
-      </fieldset>
-
+        <input class="form-control box-one" id="date" name="date" type="text">
+        <a class="populate-link-one">Use today's date</a>
+      </div>
+      
+      <div class="form-group prepop">
+        <label class="form-label" for="date">
+          Notified date
+        </label>
+        <input class="form-control box-two" id="date" name="date" type="text">
+        <a class="populate-link-two">Use today's date</a>
+      </div>
+      
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>

@@ -28,14 +28,49 @@ var defaults = {
   
   showContact : false,
   
-  home_telephone : { state : null, show : false, pref : false },
-  homeTelephoneValue : "0113 287 6365",
+//  homeTelephone 
+//  personalMobile 
+//  daytimeTelephone 
+//  eveningTelephone 
+//  businessMobile 
+//  businessTelephone 
+//  thirdParty 
+//  homeEmail 
+//  businessEmail 
+//  homeFax 
+//  businessFax 
+//  textPhone 
+//  typeTalk 
+//  otherContact 
 
-  email : { state : null, show : false, pref : false },
-  emailValue : "tom.smith@gmail.com",
+  
+  homeTelephone : {state : null, show : false, pref : false},
+  
+  personalMobile : {state : null, show : false, pref : false},
 
-  mobile : { state : null, show : false, pref : false },
-  mobileValue : "07712 345 678",
+  daytimeTelephone : {state : null, show : false, pref : false},
+
+  eveningTelephone : {state : null, show : false, pref : false},
+
+  businessMobile : {state : null, show : false, pref : false},
+
+  businessTelephone : {state : null, show : false, pref : false},
+
+  thirdParty : {state : null, show : false, pref : false},
+
+  homeEmail : {state : null, show : false, pref : false},
+
+  businessEmail : {state : null, show : false, pref : false},
+
+  homeFax : {state : null, show : false, pref : false},
+  
+  businessFax : {state : null, show : false, pref : false},
+
+  textPhone : {state : null, show : false, pref : false},
+
+  typeTalk : {state : null, show : false, pref : false},
+
+  otherContact : {state : null, show : false, pref : false},
 
 
   //PERSONAL DETAILS  

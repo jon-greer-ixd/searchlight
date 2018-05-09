@@ -6,20 +6,76 @@
     <div id="sl-address-primary-card" class="sl-primary-card">
 
       <div id="address-pane">
+        
       {% if data.showContact == true %}
+        
+        {% if data.personalMobile.show == true %}
+          {% include "components/account2/contact/personal-mobile.html" %}
+          <hr class="light">
+        {% endif %}
 
         {% if data.homeTelephone.show == true %}
           {% include "components/account2/contact/home-telephone.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.mobile.show == true %}
-          {% include "components/account2/contact/mobile.html" %}
+        {% if data.daytimeTelephone.show == true %}
+          {% include "components/account2/contact/daytime-telephone.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.email.show == true %}
-          {% include "components/account2/contact/email.html" %}
+        {% if data.eveningTelephone.show == true %}
+          {% include "components/account2/contact/evening-telephone.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.businessMobile.show == true %}
+          {% include "components/account2/contact/business-mobile.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.businessTelephone.show == true %}
+          {% include "components/account2/contact/business-telephone.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.thirdParty.show == true %}
+          {% include "components/account2/contact/third-party.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.homeEmail.show == true %}
+          {% include "components/account2/contact/home-email.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.businessEmail.show == true %}
+          {% include "components/account2/contact/business-email.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.homeFax.show == true %}
+          {% include "components/account2/contact/home-fax.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.businessFax.show == true %}
+          {% include "components/account2/contact/business-fax.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.textPhone.show == true %}
+          {% include "components/account2/contact/text-phone.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.typeTalk.show == true %}
+          {% include "components/account2/contact/type-talk.html" %}
+          <hr class="light">
+        {% endif %}
+
+        {% if data.otherContact.show == true %}
+          {% include "components/account2/contact/other-contact.html" %}
           <hr class="light">
         {% endif %}
 
@@ -34,7 +90,7 @@
           <div class="column-one-third">
             <ul class="edit-menu">
               <li>
-                <a class="secondary-link" href="">Add a contact method</a>
+                <a class="secondary-link" href="../update/contact/add-contact">Add a contact method</a>
               </li>
             </ul>    
           </div>
@@ -50,7 +106,7 @@
           <div class="column-one-third last-col">
             <ul class="edit-menu">
               <li>
-                <a class="secondary-link" href="../update/contact/type">Add a contact method</a>
+                <a class="secondary-link" href="../update/contact/add-contact">Add a contact method</a>
               </li>
             </ul>    
           </div>

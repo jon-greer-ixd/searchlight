@@ -517,14 +517,17 @@ router.get(/contact-type-handler/, function (req, res) {
   res.redirect(method)
 })
 
-//check-contact-handler
+//** check-contact-handler **
 router.get(/check-contact-handler/, function (req, res) {
-  //nationality
-  if (req.session.data.home_telephone.state === "adding") {
-    req.session.data.home_telephone.state = "added";
-    req.session.data.showContact = true;
-    req.session.data.home_telephone.show = true;
-  }
+//  //reset all added states to "existing"
+//  for (itemTitle in items) {
+//    if (req.session.data.[itemTitle].state = "adding") {
+//      req.session.data.[item].state = "existing"
+//    }
+//  }
+  req.session.data.showContact = true;
+  req.session.data[req.session.data.contactType].show = true;
+  req.session.data[req.session.data.contactType].state = "added";
   res.redirect('/account2/account')
 })
 

@@ -37,15 +37,17 @@
           </ul>
         </div>
         
-        <div class="form-group">
-          <label class="form-label" for="postcode">
+        <div class="form-group prepop">
+          <label class="form-label" for="date">
             Start date
             <span class="form-hint">
-              For example 31/8/1979
+              For example 31/8/197
             </span>
-            </label>
-          <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="fpostcode">      
+          </label>
+          <input class="form-control box-one" id="date" name="date" type="text">
+          <a class="populate-link-one">Use today's date</a>
         </div>
+      
 <!--
         {% if data['createJourney'] === false %}
         <div class="form-group">

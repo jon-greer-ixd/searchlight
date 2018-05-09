@@ -10,16 +10,17 @@
           <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
         </fieldset>
         
-        <fieldset class="form-group">
-          <legend class="visuallyhidden">Start date</legend>
+        <div class="form-group prepop">
           <label class="form-label" for="date">
             Start date
             <span class="form-hint">
-              For example 31/8/1979
+              For example 31/8/197
             </span>
           </label>
-          <input value="{{data['prepopulatedDate']}}" class="form-control" id="date" type="text" name="date" ><span class="today"></span>
-        </fieldset>
+          <input class="form-control box-one" id="date" name="date" type="text">
+          <a class="populate-link-one">Use today's date</a>
+        </div>
+      
         
         <div class="form-group">
           <input class="button" type="submit" value="Next">
