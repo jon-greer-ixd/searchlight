@@ -131,6 +131,7 @@ var defaults = {
   //immigration status
   addImmigration : false,
   ImmigrationUpdated : false
+  
 };
 
 function flip(value) {
@@ -152,7 +153,6 @@ function changeSex(sex) {
     return "Male";
   }
 }
-
 
 module.exports.changeSex = changeSex;
 module.exports.flip = flip;

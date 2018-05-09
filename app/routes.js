@@ -517,14 +517,16 @@ router.get(/contact-type-handler/, function (req, res) {
   res.redirect(method)
 })
 
+
+var listOfContacts = ["homeTelephone", "personalMobile", "daytimeTelephone", "eveningTelephone", "businessMobile", "businessTelephone", "thirdParty", "homeEmail", "businessEmail", "homeFax", "businessFax", "textPhone", "typeTalk", "otherContact"]
+
 //** check-contact-handler **
 router.get(/check-contact-handler/, function (req, res) {
-//  //reset all added states to "existing"
-//  for (itemTitle in items) {
-//    if (req.session.data.[itemTitle].state = "adding") {
-//      req.session.data.[item].state = "existing"
-//    }
-//  }
+  for (var item in listOfContacts) {
+    if(req.session.data[listOfContacts[item]].state === "added") {
+      req.session.data[listOfContacts[item]].state = "existing";
+    }
+  }
   req.session.data.showContact = true;
   req.session.data[req.session.data.contactType].show = true;
   req.session.data[req.session.data.contactType].state = "added";

@@ -26,6 +26,10 @@
       {% include "components/update/toasters/home-email-added.html" %}
     {% endif %}
 
+    {% if data.homeTelephone.state === "added" %}
+      {% include "components/update/toasters/home-telephone-added.html" %}
+    {% endif %}
+
     {% if data.homeFax.state === "added" %}
       {% include "components/update/toasters/home-fax-added.html" %}
     {% endif %}
