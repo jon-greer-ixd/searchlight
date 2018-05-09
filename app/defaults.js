@@ -27,51 +27,6 @@ var defaults = {
   //CONTACT  
   
   showContact : false,
-  
-//  homeTelephone 
-//  personalMobile 
-//  daytimeTelephone 
-//  eveningTelephone 
-//  businessMobile 
-//  businessTelephone 
-//  thirdParty 
-//  homeEmail 
-//  businessEmail 
-//  homeFax 
-//  businessFax 
-//  textPhone 
-//  typeTalk 
-//  otherContact 
-
-  
-  homeTelephone : {state : null, show : false, pref : false},
-  
-  personalMobile : {state : null, show : false, pref : false},
-
-  daytimeTelephone : {state : null, show : false, pref : false},
-
-  eveningTelephone : {state : null, show : false, pref : false},
-
-  businessMobile : {state : null, show : false, pref : false},
-
-  businessTelephone : {state : null, show : false, pref : false},
-
-  thirdParty : {state : null, show : false, pref : false},
-
-  homeEmail : {state : null, show : false, pref : false},
-
-  businessEmail : {state : null, show : false, pref : false},
-
-  homeFax : {state : null, show : false, pref : false},
-  
-  businessFax : {state : null, show : false, pref : false},
-
-  textPhone : {state : null, show : false, pref : false},
-
-  typeTalk : {state : null, show : false, pref : false},
-
-  otherContact : {state : null, show : false, pref : false},
-
 
   //PERSONAL DETAILS  
   
@@ -134,6 +89,39 @@ var defaults = {
   
 };
 
+var contacts = {
+
+//  homeTelephone 
+//  personalMobile 
+//  daytimeTelephone 
+//  eveningTelephone 
+//  businessMobile 
+//  businessTelephone 
+//  thirdParty 
+//  homeEmail 
+//  businessEmail 
+//  homeFax 
+//  businessFax 
+//  textPhone 
+//  typeTalk 
+//  otherContact 
+
+  homeTelephone : {state : null, show : false, pref : false},
+  personalMobile : {state : null, show : false, pref : false},
+  daytimeTelephone : {state : null, show : false, pref : false},
+  eveningTelephone : {state : null, show : false, pref : false},
+  businessMobile : {state : null, show : false, pref : false},
+  businessTelephone : {state : null, show : false, pref : false},
+  thirdParty : {state : null, show : false, pref : false},
+  homeEmail : {state : null, show : false, pref : false},
+  businessEmail : {state : null, show : false, pref : false},
+  homeFax : {state : null, show : false, pref : false},
+  businessFax : {state : null, show : false, pref : false},
+  textPhone : {state : null, show : false, pref : false},
+  typeTalk : {state : null, show : false, pref : false},
+  otherContact : {state : null, show : false, pref : false}
+}
+
 function flip(value) {
   if (value === "Yes" || value === "yes" ) {
     return "No";
@@ -157,3 +145,4 @@ function changeSex(sex) {
 module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;
+module.exports.contacts = contacts;

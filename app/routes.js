@@ -12,6 +12,8 @@ var Interest = require('./interest.js');
 
 var defaults = require('./defaults.js').defaults;
 
+var contacts = require('./defaults.js').contacts;
+
 var flip = require('./defaults.js').flip;
 
 var changeSex = require('./defaults.js').changeSex;
@@ -336,6 +338,12 @@ router.use('/', main);
   for (var key in defaults) {
     if (defaults.hasOwnProperty(key)) {
       req.session.data[key] = defaults[key];
+    }
+  }
+      
+  for (var item in contacts) {
+    if (contacts.hasOwnProperty(item)) {
+      req.session.data[item] = contacts[item];
     }
   }
       

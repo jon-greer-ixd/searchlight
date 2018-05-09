@@ -4,7 +4,7 @@
     telephone number
   {% elif data.contactType === "email" %}
     email address 
-  {% elif data.contactType === "email" %}
+  {% elif data.contactType === "fax" %}
     fax number 
   {% endif %}
   do you need to add?
@@ -23,43 +23,56 @@
               What kind of telephone number is it?
             </p>
           </legend>
-
-          <div class="multiple-choice">
-            <input id="personalMobile" type="radio" name="contactType" value="personalMobile">
-            <label for="personalMobile">Personal mobile</label>
-          </div>
-
-          <div class="multiple-choice">
-            <input id="homeTelephone" type="radio" name="contactType" value="homeTelephone">
-            <label for="homeTelephone">Home telephone</label>
-          </div>
-
-          <div class="multiple-choice">
-            <input id="daytimeTelephone" type="radio" name="contactType" value="daytimeTelephone">
-            <label for="daytimeTelephone">Daytime telephone</label>
-          </div>
-
-          <div class="multiple-choice">
-            <input id="eveningTelephone" type="radio" name="contactType" value="eveningTelephone">
-            <label for="eveningTelephone">Evening telephone</label>
-          </div>
-
-          <div class="multiple-choice">
-            <input id="businessMobile" type="radio" name="contactType" value="businessMobile">
-            <label for="businessMobile">Business mobile</label>
-          </div>
-
-          <div class="multiple-choice">
-            <input id="businessTelephone" type="radio" name="contactType" value="businessTelephone">
-            <label for="businessTelephone">Business telephone</label>
-          </div>
-
-          <div class="multiple-choice">
-            <input id="thirdParty" type="radio" name="contactType" value="thirdParty">
-            <label for="thirdParty">Third party telephone</label>
-          </div>
               
-
+          {% if data.personalMobile.show == false %}
+            <div class="multiple-choice">
+              <input id="personalMobile" type="radio" name="contactType" value="personalMobile">
+              <label for="personalMobile">Personal mobile</label>
+            </div>
+          {% endif %}
+              
+          {% if data.homeTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="homeTelephone" type="radio" name="contactType" value="homeTelephone">
+              <label for="homeTelephone">Home telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.daytimeTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="daytimeTelephone" type="radio" name="contactType" value="daytimeTelephone">
+              <label for="daytimeTelephone">Daytime telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.eveningTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="eveningTelephone" type="radio" name="contactType" value="eveningTelephone">
+              <label for="eveningTelephone">Evening telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.businessMobile.show == false %}
+            <div class="multiple-choice">
+              <input id="businessMobile" type="radio" name="contactType" value="businessMobile">
+              <label for="businessMobile">Business mobile</label>
+            </div>
+          {% endif %}
+              
+          {% if data.businessTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="businessTelephone" type="radio" name="contactType" value="businessTelephone">
+              <label for="businessTelephone">Business telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.thirdParty.show == false %}
+            <div class="multiple-choice">
+              <input id="thirdParty" type="radio" name="contactType" value="thirdParty">
+              <label for="thirdParty">Third party telephone</label>
+            </div>
+          {% endif %}
+              
         {% elif data.contactType === "email" %}
           <div class="multiple-choice">
             <input id="homeEmail" type="radio" name="contactType" value="homeEmail">
@@ -81,7 +94,7 @@
             <input id="businessFax" type="radio" name="contactType" value="businessFax">
             <label for="businessFax">Business fax</label>
           </div>
-        
+              
         {% endif %}
               
             </fieldset>
