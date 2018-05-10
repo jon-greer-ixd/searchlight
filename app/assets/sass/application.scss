@@ -688,8 +688,20 @@ h1.question-title {
   }
 }
 
+details summary:hover, a:hover {  
+  color: #3A9CD4;
+}
+
 input.short-field {
   width :30%;
+}
+
+#sl-header .sl-link:hover {
+  text-decoration: none!important;
+}
+
+#sl-header a.sl-main-heading:hover {
+  text-decoration: underline!important;
 }
 
 .under-link, .sl-link .under-link, .edit-menu a {
@@ -698,8 +710,8 @@ input.short-field {
   color: #005ea5;
   cursor: pointer;
   &:hover {
-  color: #2b8cc4;
-    text-decoration: none!important;
+  text-decoration: underline!important;
+  color: #3A9CD4;
   }
 }
 
