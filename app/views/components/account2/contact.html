@@ -9,72 +9,72 @@
         
       {% if data.showContact == true %}
         
-        {% if data.personalMobile.show == true %}
+        {% if data.contactTypes.personalMobile.show == true %}
           {% include "components/account2/contact/personal-mobile.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.homeTelephone.show == true %}
+        {% if data.contactTypes.homeTelephone.show == true %}
           {% include "components/account2/contact/home-telephone.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.daytimeTelephone.show == true %}
+        {% if data.contactTypes.daytimeTelephone.show == true %}
           {% include "components/account2/contact/daytime-telephone.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.eveningTelephone.show == true %}
+        {% if data.contactTypes.eveningTelephone.show == true %}
           {% include "components/account2/contact/evening-telephone.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.businessMobile.show == true %}
+        {% if data.contactTypes.businessMobile.show == true %}
           {% include "components/account2/contact/business-mobile.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.businessTelephone.show == true %}
+        {% if data.contactTypes.businessTelephone.show == true %}
           {% include "components/account2/contact/business-telephone.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.thirdParty.show == true %}
+        {% if data.contactTypes.thirdParty.show == true %}
           {% include "components/account2/contact/third-party.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.homeEmail.show == true %}
+        {% if data.contactTypes.homeEmail.show == true %}
           {% include "components/account2/contact/home-email.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.businessEmail.show == true %}
+        {% if data.contactTypes.businessEmail.show == true %}
           {% include "components/account2/contact/business-email.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.homeFax.show == true %}
+        {% if data.contactTypes.homeFax.show == true %}
           {% include "components/account2/contact/home-fax.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.businessFax.show == true %}
+        {% if data.contactTypes.businessFax.show == true %}
           {% include "components/account2/contact/business-fax.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.textPhone.show == true %}
+        {% if data.contactTypes.textPhone.show == true %}
           {% include "components/account2/contact/text-phone.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.typeTalk.show == true %}
+        {% if data.contactTypes.typeTalk.show == true %}
           {% include "components/account2/contact/type-talk.html" %}
           <hr class="light">
         {% endif %}
 
-        {% if data.otherContact.show == true %}
+        {% if data.contactTypes.otherContact.show == true %}
           {% include "components/account2/contact/other-contact.html" %}
           <hr class="light">
         {% endif %}

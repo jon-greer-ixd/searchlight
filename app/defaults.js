@@ -86,45 +86,36 @@ var defaults = {
   //immigration status
   addImmigration : false,
   ImmigrationUpdated : false
-  
 };
 
-//var contacts = {
-//  "homeTelephone" : {"state" : null, "show" : false, "pref" : false},
-//}
-
-var contacts = {
-
-//  homeTelephone 
-//  personalMobile 
-//  daytimeTelephone 
-//  eveningTelephone 
-//  businessMobile 
-//  businessTelephone 
-//  thirdParty 
-//  homeEmail 
-//  businessEmail 
-//  homeFax 
-//  businessFax 
-//  textPhone 
-//  typeTalk 
-//  otherContact 
-
-  homeTelephone : {state : null, show : false, pref : false},
-  personalMobile : {state : null, show : false, pref : false},
-  daytimeTelephone : {state : null, show : false, pref : false},
-  eveningTelephone : {state : null, show : false, pref : false},
-  businessMobile : {state : null, show : false, pref : false},
-  businessTelephone : {state : null, show : false, pref : false},
-  thirdParty : {state : null, show : false, pref : false},
-  homeEmail : {state : null, show : false, pref : false},
-  businessEmail : {state : null, show : false, pref : false},
-  homeFax : {state : null, show : false, pref : false},
-  businessFax : {state : null, show : false, pref : false},
-  textPhone : {state : null, show : false, pref : false},
-  typeTalk : {state : null, show : false, pref : false},
-  otherContact : {state : null, show : false, pref : false}
+var contactTypes = {
+  "homeTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Home telephone"},
+  "personalMobile" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Personal mobile"},
+  "daytimeTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Daytime telephone"},
+  "eveningTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Evening telephone"},
+  "businessMobile" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Business mobile"},
+  "businessTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Business telephone"},
+  "thirdParty" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Third party telephone number"},
+  "homeEmail" : {"state" : null, "show" : false, "pref" : false, "type" : "email", display : "Home email"},
+  "businessEmail" : {"state" : null, "show" : false, "pref" : false, "type" : "email", display : "Business email"},
+  "homeFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Home fax"},
+  "businessFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Business fax"},
+  "textPhone" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Text phone"},
+  "typeTalk" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "TypeTalk"},
+  "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Another contact method"}
 }
+
+//  prints all the items
+//  Object.keys(contactTypes).map(e => {
+//    console.log(`key = ${e} state = ${contactTypes[e].state}`)
+//  });
+
+//contactTypes.thirdParty.show = false;
+//console.log(`thirdParty show = ${contactTypes.thirdParty.show}`);
+
+
+////access the properties
+//contactTypes.homeTelephone.state = "adding";
 
 function flip(value) {
   if (value === "Yes" || value === "yes" ) {
@@ -149,4 +140,4 @@ function changeSex(sex) {
 module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;
-module.exports.contacts = contacts;
+module.exports.contactTypes = contactTypes;

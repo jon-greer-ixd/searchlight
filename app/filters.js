@@ -35,11 +35,28 @@ module.exports = function (env) {
 
     For more on filters and how to write them see the Nunjucks
     documentation.
+    
 
   ------------------------------------------------------------------ */
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
+  
+  filters.lastTelephoneCheck = function(contact_types) {
+      var counter = 0;
+      var returnItem;
+      for (var y in contact_types) {
+        if (contact_types[y].type === "phone") {
+          if (contact_types[y].show === false) {
+            counter++;
+            returnItem = y;
+          }
+        }
+      }
+    return (counter === 1 ? returnItem : 'none')
+    }
+
+  
   return filters
 }

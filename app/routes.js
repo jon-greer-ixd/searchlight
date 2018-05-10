@@ -12,13 +12,14 @@ var Interest = require('./interest.js');
 
 var defaults = require('./defaults.js').defaults;
 
-var contacts = require('./defaults.js').contacts;
+var contactTypes = require('./defaults.js').contactTypes;
 
 var flip = require('./defaults.js').flip;
 
 var changeSex = require('./defaults.js').changeSex;
 
 var authority = require('./authority.js').authority;
+
 
 //***********
 // INTERESTS 
@@ -340,12 +341,14 @@ router.use('/', main);
       req.session.data[key] = defaults[key];
     }
   }
+    
+  req.session.data.contactTypes = contactTypes;
       
-  for (var item in contacts) {
-    if (contacts.hasOwnProperty(item)) {
-      req.session.data[item] = contacts[item];
-    }
-  }
+//  for (var item in contactTypes) {
+//    if (contactTypes.hasOwnProperty(item)) {
+//      req.session.data[item] = contactTypes[item];
+//    }
+//  }
       
   //AUTHORITY ACCOUNT
   req.session.data.authority = authority;
@@ -521,23 +524,19 @@ router.get(/authority-stop-handler/, function (req, res) {
 router.get(/contact-type-handler/, function (req, res) {
   var method = req.query.data;
   req.session.data[method].state = "adding";
-  console.log(req.session.data[method].state);
   res.redirect(method)
 })
 
-
-var listOfContacts = ["homeTelephone", "personalMobile", "daytimeTelephone", "eveningTelephone", "businessMobile", "businessTelephone", "thirdParty", "homeEmail", "businessEmail", "homeFax", "businessFax", "textPhone", "typeTalk", "otherContact"]
-
 //** check-contact-handler **
-router.get(/check-contact-handler/, function (req, res) {
-  for (var item in listOfContacts) {
-    if(req.session.data[listOfContacts[item]].state === "added") {
-      req.session.data[listOfContacts[item]].state = "existing";
+router.get(/check-contact-handler/, function (req, res) {  
+  for (var y in req.session.data.contactTypes) {
+    if ( req.session.data.contactTypes[y].state == "added" ) {
+      req.session.data.contactTypes[y].state = "existing";
     }
   }
   req.session.data.showContact = true;
-  req.session.data[req.session.data.contactType].show = true;
-  req.session.data[req.session.data.contactType].state = "added";
+  req.session.data.contactTypes[req.session.data.contactType].show = true;
+  req.session.data.contactTypes[req.session.data.contactType].state = "added";
   res.redirect('/account2/account')
 })
 
