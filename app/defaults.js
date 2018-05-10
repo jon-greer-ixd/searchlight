@@ -89,6 +89,10 @@ var defaults = {
   
 };
 
+//var contacts = {
+//  "homeTelephone" : {"state" : null, "show" : false, "pref" : false},
+//}
+
 var contacts = {
 
 //  homeTelephone 
