@@ -101,7 +101,7 @@ var contactTypes = {
   "homeFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Home fax"},
   "businessFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Business fax"},
   "textPhone" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Text phone"},
-  "typeTalk" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "TypeTalk"},
+  "typeTalk" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "TypeTalk"},
   "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Another contact method"}
 }
 

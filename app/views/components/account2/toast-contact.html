@@ -1,64 +1,21 @@
-    {% if data.contactTypes.businessEmail.state === "added" %}
-      {% include "components/update/toasters/business-email-added.html" %}
-    {% endif %}
+{% set y = " " %}
+{% set x = " " %}
 
-    {% if data.contactTypes.businessFax.state === "added" %}
-      {% include "components/update/toasters/business-fax-added.html" %}
-    {% endif %}
+{% for someId, item in data.contactTypes %}
+  {% if item.state == "added" or item.state == "updated" or item.state == "corrected" or item.state == "removed" %}
+    {% extends "components/update/toasters/toast.html" %}
+    {% set y = item.display %}
+    {% set x = item.type %}
+    {% block message %}
+      {{y}} 
 
-    {% if data.contactTypes.businessMobile.state === "added" %}
-      {% include "components/update/toasters/business-mobile-added.html" %}
-    {% endif %}
+      {% if x == "phone" or x == "fax" or x == "other-phone" %}
+        number 
+      {% elif x == "email" %}
+        address 
+      {% endif %}
 
-    {% if data.contactTypes.businessTelephone.state === "added" %}
-      {% include "components/update/toasters/business-telephone-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.daytimeTelephone.state === "added" %}
-      {% include "components/update/toasters/daytime-telephone-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.eveningTelephone.state === "added" %}
-      {% include "components/update/toasters/evening-telephone-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.homeEmail.state === "added" %}
-      {% include "components/update/toasters/home-email-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.homeTelephone.state === "added" %}
-      {% include "components/update/toasters/home-telephone-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.homeFax.state === "added" %}
-      {% include "components/update/toasters/home-fax-added.html" %}
-    {% endif %}
-
-    <!-- mobile-->
-    {% if data.contactTypes.personalMobile.state === "added" %}
-      {% include "components/update/toasters/personal-mobile-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.personalMobile.state === "updated" %}
-      {% include "components/update/toasters/personal-mobile-updated.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.personalMobile.state === "removed" %}
-      {% include "components/update/toasters/personal-mobile-removed.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.textPhone.state === "added" %}
-      {% include "components/update/toasters/text-phone-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.thirdParty.state === "added" %}
-      {% include "components/update/toasters/third-party-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.typeTalk.state === "added" %}
-      {% include "components/update/toasters/type-talk-added.html" %}
-    {% endif %}
-
-    {% if data.contactTypes.otherContact.state === "added" %}
-      {% include "components/update/toasters/other-contact-added.html" %}
-    {% endif %}
+      added
+    {% endblock %}
+  {% endif %}
+{% endfor %}
