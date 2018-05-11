@@ -521,6 +521,20 @@ router.get(/authority-stop-handler/, function (req, res) {
 
 //CONTACT
 
+router.get(/contact-change-handler/, function (req, res) {
+  req.session.data.contactType = req.query.contactType;
+  res.redirect('/update/contact/update-type')
+})
+
+router.get(/update-contact-handler/, function (req, res) {
+  req.session.data.contactState = req.query.data;
+  if(req.session.data.contactState != "removing") {
+    res.redirect('/update/contact/contact-details')
+  } else {
+    res.redirect('check')
+  }
+})
+
 router.get(/contact-type-handler/, function (req, res) {
   var method = req.query.data;
   req.session.data[method].state = "adding";
@@ -534,9 +548,21 @@ router.get(/check-contact-handler/, function (req, res) {
       req.session.data.contactTypes[y].state = "existing";
     }
   }
-  req.session.data.showContact = true;
-  req.session.data.contactTypes[req.session.data.contactType].show = true;
-  req.session.data.contactTypes[req.session.data.contactType].state = "added";
+  if(req.session.data.contactState == "adding" ) {
+    req.session.data.showContact = true;
+    req.session.data.contactTypes[req.session.data.contactType].show = true;
+    req.session.data.contactTypes[req.session.data.contactType].state = "added";
+  }
+  if(req.session.data.contactState == "updating" ) {
+    req.session.data.contactTypes[req.session.data.contactType].state = "updated";
+  }
+  if(req.session.data.contactState == "removing" ) {
+    req.session.data.contactTypes[req.session.data.contactType].state = "removed";
+    req.session.data.contactTypes[req.session.data.contactType].show = false;
+    console.log(req.session.data.contactTypes[req.session.data.contactType]);
+    req.session.data.contactType;
+  }
+  req.session.data.contactState = null;
   res.redirect('/account2/account')
 })
 
@@ -1920,6 +1946,7 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
 
 //contact-group-handler
 router.get(/contact-group-handler/, function (req, res) {
+  req.session.data.contactState = "adding";
   console.log(req.query.contactType);
   if (req.query.contactType == "telephone" || req.query.contactType == "email" || req.query.contactType == "fax") {
     res.redirect('contact-type')

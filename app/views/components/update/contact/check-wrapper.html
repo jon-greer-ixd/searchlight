@@ -5,7 +5,18 @@
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           
           <h2>
-            Add
+            
+            {% if data.contactState == "adding" %}
+              Add
+            {% elif data.contactState == "updating" %}
+              Update
+            {% elif data.contactState == "correcting" %}
+              Correct
+            {% elif data.contactState == "removing" %}
+              Remove
+            {% endif %}
+            
+            <!-- telephone -->
             {% if data.contactType === "personalMobile" %}
               a personal mobile number
             {% elif data.contactType === "homeTelephone" %}

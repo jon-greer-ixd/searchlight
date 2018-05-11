@@ -34,8 +34,17 @@
       {% include "components/update/toasters/home-fax-added.html" %}
     {% endif %}
 
+    <!-- mobile-->
     {% if data.contactTypes.personalMobile.state === "added" %}
       {% include "components/update/toasters/personal-mobile-added.html" %}
+    {% endif %}
+
+    {% if data.contactTypes.personalMobile.state === "updated" %}
+      {% include "components/update/toasters/personal-mobile-updated.html" %}
+    {% endif %}
+
+    {% if data.contactTypes.personalMobile.state === "removed" %}
+      {% include "components/update/toasters/personal-mobile-removed.html" %}
     {% endif %}
 
     {% if data.contactTypes.textPhone.state === "added" %}

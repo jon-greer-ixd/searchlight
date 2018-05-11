@@ -9,7 +9,7 @@
         
       {% if data.showContact == true %}
         
-        {% if data.contactTypes.personalMobile.show == true %}
+        {% if data.contactTypes.personalMobile.show === true %}
           {% include "components/account2/contact/personal-mobile.html" %}
           <hr class="light">
         {% endif %}

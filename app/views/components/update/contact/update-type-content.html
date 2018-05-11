@@ -1,0 +1,44 @@
+<h2 class="heading-medium question">
+  What kind of change
+  do you need to make?
+</h2>
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="update-contact-handler">
+          <div class="form-group">
+            <fieldset>
+        <!-- telephone -->
+          <legend>
+            <p class="visually-hidden">
+              What kind of telephone number is it?
+            </p>
+          </legend>
+              
+            <div class="multiple-choice">
+              <input id="update" type="radio" name="data" value="updating">
+              <label for="update">Update</label>
+            </div>
+              
+            <div class="multiple-choice">
+              <input id="correct" type="radio" name="data" value="correcting">
+              <label for="correct">Correct a mistake</label>
+            </div>
+              
+            <div class="multiple-choice">
+              <input id="remove" type="radio" name="data" value="removing">
+              <label for="remove">Remove</label>
+            </div>
+                        
+            </fieldset>
+          </div>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+     </form>
+    <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>
