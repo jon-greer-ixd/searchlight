@@ -44,18 +44,29 @@ module.exports = function (env) {
   ------------------------------------------------------------------ */
   
   filters.lastTelephoneCheck = function(contact_types) {
-      var counter = 0;
-      var returnItem;
-      for (var y in contact_types) {
-        if (contact_types[y].type === "phone") {
-          if (contact_types[y].show === false) {
-            counter++;
-            returnItem = y;
-          }
+    var counter = 0;
+    var returnItem;
+    for (var y in contact_types) {
+      if (contact_types[y].type === "phone") {
+        if (contact_types[y].show === false) {
+          counter++;
+          returnItem = y;
         }
       }
-    return (counter === 1 ? returnItem : 'none')
     }
+    return (counter === 1 ? returnItem : 'none')
+  }
+  
+  filters.checkForContacts = function(items) {
+    var y = false;
+    for (var item in items ) {
+      if (items[item].show == true) {
+        y = true
+      }
+    }
+    return y;
+  }
+
 
   
   return filters

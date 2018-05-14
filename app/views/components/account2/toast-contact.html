@@ -1,11 +1,15 @@
 {% set y = " " %}
 {% set x = " " %}
+{% set z = " " %}
 
 {% for someId, item in data.contactTypes %}
   {% if item.state == "added" or item.state == "updated" or item.state == "corrected" or item.state == "removed" %}
     {% extends "components/update/toasters/toast.html" %}
+
     {% set y = item.display %}
     {% set x = item.type %}
+    {% set z = item.state %}
+
     {% block message %}
       {{y}} 
 
@@ -15,7 +19,8 @@
         address 
       {% endif %}
 
-      added
+      {{z}}
+
     {% endblock %}
   {% endif %}
 {% endfor %}
