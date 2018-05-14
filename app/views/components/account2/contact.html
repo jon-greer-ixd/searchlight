@@ -92,9 +92,11 @@
           <div class="column-one-third last-col">
             
             <ul class="edit-menu">
+              {% if (data.contactTypes | allContactsAdded) == false %}
               <li>
                 <a class="secondary-link" href="../update/contact/add-contact">Add a contact method</a>
               </li>
+              {% endif %}
             </ul>
             
           </div>

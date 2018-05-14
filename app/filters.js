@@ -57,6 +57,21 @@ module.exports = function (env) {
     return (counter === 1 ? returnItem : 'none')
   }
   
+  //should be able to pass type "all" into this function and replace the one below ±
+  //have all telephone numbers been added?
+  filters.allPhonesAdded = function(contact_types) {
+    var counter = 0;
+    for (var y in contact_types) {
+      if (contact_types[y].type === "phone") {
+        if (contact_types[y].state == null) {
+          counter++;
+        }
+      }
+    }
+    return (counter != 0 ? false : true)
+  }
+  
+  //have ANY contact details been added?
   filters.checkForContacts = function(items) {
     var y = false;
     for (var item in items ) {
@@ -67,7 +82,24 @@ module.exports = function (env) {
     return y;
   }
 
+  //have ALL contact details been added?
+  filters.allContactsAdded = function(items) {
+    var counter;
+    for (var item in items ) {
+      if (items[item].state == null || items[item].state == "removed")  {
+        counter++
+      }
+    } if (counter == 0 || counter === items.length ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   
   return filters
 }
+
+
+// if no contacts set to show - show no contacts
+// if any contact set to not show - hide the link

@@ -95,7 +95,7 @@ var contactTypes = {
   "eveningTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Evening telephone"},
   "businessMobile" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Business mobile"},
   "businessTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Business telephone"},
-  "thirdParty" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Third party telephone number"},
+  "thirdParty" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Third party telephone"},
   "homeEmail" : {"state" : null, "show" : false, "pref" : false, "type" : "email", display : "Home email"},
   "businessEmail" : {"state" : null, "show" : false, "pref" : false, "type" : "email", display : "Business email"},
   "homeFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Home fax"},

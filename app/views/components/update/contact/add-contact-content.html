@@ -14,16 +14,18 @@
               </p>
             </legend>
             
-            {% if (data.contactTypes | lastTelephoneCheck) == "none" %}
-              <div class="multiple-choice">
-                <input id="telephone" type="radio" name="contactType" value="telephone">
-                <label for="telephone">Telephone number</label>
-              </div>
-            {% else %}
-              <div class="multiple-choice">
-                <input id={{data.contactTypes | lastTelephoneCheck}} type="radio" name="contactType" value={{data.contactTypes | lastTelephoneCheck}}>
-                <label for={{data.contactTypes | lastTelephoneCheck}}> {{data.contactTypes[(data.contactTypes | lastTelephoneCheck)].display}} number</label>
-              </div>
+            {% if (data.contactTypes | allPhonesAdded == false) %}
+              {% if (data.contactTypes | lastTelephoneCheck) == "none" %}
+                <div class="multiple-choice">
+                  <input id="telephone" type="radio" name="contactType" value="telephone">
+                  <label for="telephone">Telephone number</label>
+                </div>
+              {% else %}
+                <div class="multiple-choice">
+                  <input id={{data.contactTypes | lastTelephoneCheck}} type="radio" name="contactType" value={{data.contactTypes | lastTelephoneCheck}}>
+                  <label for={{data.contactTypes | lastTelephoneCheck}}> {{data.contactTypes[(data.contactTypes | lastTelephoneCheck)].display}} number</label>
+                </div>
+              {% endif %}
             {% endif %}
             
             {% if data.contactTypes.homeEmail.show == false and data.contactTypes.businessEmail.show == false %}
