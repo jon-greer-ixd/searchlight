@@ -16,12 +16,16 @@
               End a contact method
             {% endif %}
             
-            {% if data.contactType != "otherContact" and data.contactState != "removing" %}
-              a
-            {% endif %}
-            
-            {% if data.contactState != "removing" %}
-              {{ data.contactTypes[data.contactType].display | lower }} {{ data.contactTypes[data.contactType].type | contactIs }}
+            {% if data.contactState != "removing"  %}
+              {% if data.contactType == "eveningTelephone" %}
+                an
+              {% elif data.contactType != "otherContact"%}
+                a
+              {% endif %}
+
+              {% if data.contactState != "removing" %}
+                {{ data.contactTypes[data.contactType].display | lower }} {{ data.contactTypes[data.contactType].type | contactIs }}
+              {% endif %}
             {% endif %}
             
           </h2>

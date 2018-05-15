@@ -3,15 +3,26 @@
     <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
       <div class="sl-account-canvas-width">
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
           <h2 class="question-title">
-            Change a 
+            
+            Change 
+            
+            {% if data.contactType == "eveningTelephone" %}
+              an
+            {% elif data.contactType != "otherContact"%}
+              a
+            {% endif %}
+
             {{ data.contactTypes[data.contactType].display | lower}} 
             {% if data.contactTypes[data.contactType].type == "phone" or  data.contactTypes[data.contactType].type == "fax" or  data.contactTypes[data.contactType].type == "other-phone" %}
               number
             {% elif  data.contactTypes[data.contactType].type == "email" %}
               address
             {% endif%}
+            
           </h2>
+          
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
                 {% include "components/update/contact/update-type-content.html" %}
