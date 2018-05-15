@@ -531,7 +531,7 @@ router.get(/update-contact-handler/, function (req, res) {
   if(req.session.data.contactState != "removing") {
     res.redirect('/update/contact/contact-details')
   } else {
-    res.redirect('check')
+    res.redirect('end')
   }
 })
 
