@@ -100,10 +100,7 @@
           <tr>
             <td><span class="strong">Contact method</span></td>
             <td>
-              {{ data.contactTypes[data.contactType].display }}
-              {% if data.contactTypes[data.contactType].type == "phone" or data.contactTypes[data.contactType].type == "fax" or data.contactTypes[data.contactType].type == "other-phone" %}
-                number
-              {% endif %}
+              {{ data.contactTypes[data.contactType].display }} {{ data.contactTypes[data.contactType].type | contactIs }}
             </td>
             <td><a>Change</a></td>
           </tr>
