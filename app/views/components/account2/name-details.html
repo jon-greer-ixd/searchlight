@@ -11,9 +11,9 @@
               {% if data.hasRequestedName %}
                 {{data.requestedName | upper}}
               {% elif data.hasNameTwo %}
-                {{data.title | upper}} {{data.nameTwoFirst | upper}} {{data.nameTwoLast | upper}}
+              {{data.title | upper}} <span class="namespace"> </span> {{data.nameTwoFirst | upper}} <span class="namespace"> </span> {{data.nameTwoLast | upper}}
               {% else %}
-                {{data.title | upper}} {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
+                {{data.title | upper}} <span class="namespace"> </span> {{data.nameOneFirst | upper}} <span class="namespace"> </span> {{data.nameOneLast | upper}}
               {% endif %}
               
             </h1><!-- end ngIf: data.name.primaryName -->

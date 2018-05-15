@@ -5,9 +5,9 @@ var defaults = {
   updateType : null,
   
   //names
-  title : "LORD",
-  nameOneFirst : "JAMES",
-  nameOneLast : "SMITH",
+  title : "MR",
+  nameOneFirst : "IBRAHIM BOUBACAR",
+  nameOneLast : "KEITA",
   nameTwoFirst : "MICHAEL",
   nameTwoLast : "SMITH JONES BOOTH",
   hasNameTwo : false,
@@ -100,7 +100,7 @@ var contactTypes = {
   "businessEmail" : {"state" : null, "show" : false, "pref" : false, "type" : "email", display : "Business email"},
   "homeFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Home fax"},
   "businessFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Business fax"},
-  "textPhone" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Text phone"},
+  "textPhone" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "Text phone"},
   "typeTalk" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "TypeTalk"},
   "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Another contact method"}
 }

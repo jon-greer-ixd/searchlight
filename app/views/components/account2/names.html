@@ -56,7 +56,7 @@
       <div class="column-one-third">
         <ul class="">
           <li class="strong">
-            {{data.title | upper}} {{data.nameTwoFirst | upper}} {{data.nameTwoLast | upper}}
+            {{data.title | upper}} <span class="namespace"> </span> {{data.nameTwoFirst | upper}} <span class="namespace"> </span> {{data.nameTwoLast | upper}}
           </li>
           <li class="sl-secondary-text-color sl-metadata">
             Name type 2&nbsp; · &nbsp;since today
@@ -101,7 +101,7 @@
     <div class="column-one-third">
       <ul>
         <li class="strong">
-          {{data.title | upper}} {{data.nameOneFirst | upper}} {{data.nameOneLast | upper}}
+          {{data.title | upper}} <span class="namespace"> </span> {{data.nameOneFirst | upper}} <span class="namespace"> </span> {{data.nameOneLast | upper}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
           {% if data.hasNameTwo == true or data.hasRequestedName == true %}

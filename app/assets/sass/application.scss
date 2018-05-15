@@ -460,6 +460,14 @@ p.address {
       }
     }
   }
+  &.immigration-history {
+    ul {
+      width: auto;
+      li {
+        padding-right: 74px;
+      }
+    }
+  }
   &.language {
     ul {
       width: auto;
@@ -1144,4 +1152,9 @@ summary {
   &:hover {
     text-decoration: none;
   }
+}
+
+.namespace {
+  width: 8px;
+  display: inline-block;
 }

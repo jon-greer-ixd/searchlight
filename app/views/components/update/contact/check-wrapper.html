@@ -13,9 +13,10 @@
             {% elif data.contactState == "correcting" %}
               Correct
             {% elif data.contactState == "removing" %}
-              Remove
+              End a contact method
             {% endif %}
             
+            {% if data.contactState != "removing" %}
             <!-- telephone -->
             {% if data.contactType === "personalMobile" %}
               a personal mobile number
@@ -50,6 +51,7 @@
             {% else %}
              another contact method
             {% endif %}
+          {% endif %}
           </h2>
           
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
