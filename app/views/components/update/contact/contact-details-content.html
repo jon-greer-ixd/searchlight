@@ -40,7 +40,7 @@
       {% else %}
         <fieldset class="form-group">
           <label class="form-label" for="contact-text-message">Telephone number</label>
-          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message"  {% if contactState = "correcting" %} value="111 111 111" {% endif %}>
         </fieldset>
 
       {% endif %}
