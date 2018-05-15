@@ -13,20 +13,18 @@
             {% elif data.contactState == "correcting" %}
               Correct
             {% elif data.contactState == "removing" %}
-              End a contact method
+              End
             {% endif %}
             
-            {% if data.contactState != "removing"  %}
-              {% if data.contactType == "eveningTelephone" %}
-                an
-              {% elif data.contactType != "otherContact"%}
-                a
-              {% endif %}
-
-              {% if data.contactState != "removing" %}
-                {{ data.contactTypes[data.contactType].display | lower }} {{ data.contactTypes[data.contactType].type | contactIs }}
-              {% endif %}
+            {% if data.contactType == "eveningTelephone" %}
+              an
+            {% elif data.contactType != "otherContact"%}
+              a
             {% endif %}
+
+            {{ data.contactTypes[data.contactType].display | lower }} 
+            {{ data.contactTypes[data.contactType].type | contactIs }}
+            
             
           </h2>
           
