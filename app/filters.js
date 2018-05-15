@@ -96,6 +96,17 @@ module.exports = function (env) {
     }
   }
 
+  //show the correct noun
+  filters.contactIs = function(contact) {
+    if (contact == "phone" || contact == "other-phone"  || contact == "fax" ) {
+      return "number";
+    } else if (contact == "email") {
+      return "address";
+    } else {
+      return "";
+    }
+  }
+
   
   return filters
 }

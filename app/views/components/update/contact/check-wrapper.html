@@ -16,42 +16,14 @@
               End a contact method
             {% endif %}
             
-            {% if data.contactState != "removing" %}
-            <!-- telephone -->
-            {% if data.contactType === "personalMobile" %}
-              a personal mobile number
-            {% elif data.contactType === "homeTelephone" %}
-              a home telephone number
-            {% elif data.contactType === "daytimeTelephone" %}
-              a daytime telephone number
-            {% elif data.contactType === "eveningTelephone" %}
-              an evening telephone number
-            {% elif data.contactType === "businessMobile" %}
-              a business mobile number
-            {% elif data.contactType === "businessTelephone" %}
-              a business telephone number
-            {% elif data.contactType === "thirdParty" %}
-              a third party telephone number
-            <!-- email -->
-            {% elif data.contactType === "homeEmail" %}
-              a home email address
-            {% elif data.contactType === "businessEmail" %}
-              a business email address
-            <!-- fax -->
-            {% elif data.contactType === "homeFax" %}
-              a home fax number
-            {% elif data.contactType === "businessFax" %}
-              a business fax number
-            <!-- TextPhone -->
-            {% elif data.contactType === "textPhone" %}
-              a textPhone number
-            {% elif data.contactType === "typeTalk" %}
-              a typeTalk number //text relay
-            <!-- other -->
-            {% else %}
-             another contact method
+            {% if data.contactType != "otherContact" and data.contactState != "removing" %}
+              a
             {% endif %}
-          {% endif %}
+            
+            {% if data.contactState != "removing" %}
+              {{ data.contactTypes[data.contactType].display | lower }} {{ data.contactTypes[data.contactType].type | contactIs }}
+            {% endif %}
+            
           </h2>
           
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
