@@ -285,6 +285,20 @@
           <option value="Zimbabwean">Zimbabwean</option>
         </select>
       </fieldset>
+      
+      {% if data.nationality.state != "adding" %}
+      
+        <p class="form-block" style="margin-top:-15px;">or</p>
+
+        <div class="form-group">
+          <div class="multiple-choice">
+            <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+            <label for="checkbox-telephone-number">Remove nationality</label>
+          </div>
+        </div>
+      
+      {% endif %}
+
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
