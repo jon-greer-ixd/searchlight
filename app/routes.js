@@ -1947,6 +1947,14 @@ router.get(/v2-non-mandatory-handler/, function (req, res) {
 //Version 4
 //*********
 
+//nino-contacts-handler
+router.get(/nino-contacts-handler/, function (req, res) {
+  req.session.data.contactTypes[req.session.data.contactType].show = true;
+  req.session.data.contactTypes[req.session.data.contactType].state = "added";
+  res.redirect('another-contact')
+})
+
+
 //contact-group-handler
 router.get(/contact-group-handler/, function (req, res) {
   req.session.data.contactState = "adding";
