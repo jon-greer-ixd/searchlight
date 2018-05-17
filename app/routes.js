@@ -330,6 +330,13 @@ router.get('/search-v2', function (req, res) {
   })
 })
 
+// simple search page for interests
+router.get('/search-v3', function (req, res) {
+  res.render('pages/search-v3.njk', {
+    ninoversion : ninoVersion
+  })
+})
+
 var tempInterest;
 
 router.use('/', main);
@@ -1700,6 +1707,15 @@ router.get(/address-stat-handler/, function (req, res) {
   } else {
     res.redirect('search-correspondence')
   }  
+})
+
+//search-handler
+router.get(/add-man-handler/, function (req, res) {
+  if (req.query.uk === "no") {
+    res.redirect('dates')
+  } else {
+    res.redirect('search-results')
+  }
 })
 
 //search-handler
