@@ -18,8 +18,6 @@ var flip = require('./defaults.js').flip;
 
 var changeSex = require('./defaults.js').changeSex;
 
-var authority = require('./authority.js').authority;
-
 
 //***********
 // INTERESTS 
@@ -350,6 +348,7 @@ router.use('/', main);
   }
     
   req.session.data.contactTypes = contactTypes;
+  req.session.data.authority = require('./defaults.js').authority;
       
 //  for (var item in contactTypes) {
 //    if (contactTypes.hasOwnProperty(item)) {
