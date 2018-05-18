@@ -142,6 +142,7 @@ function changeSex(sex) {
   }
 }
 
+module.exports.authority = authority;
 module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;

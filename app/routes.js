@@ -355,11 +355,7 @@ router.use('/', main);
 //      req.session.data[item] = contactTypes[item];
 //    }
 //  }
-      
-  //AUTHORITY ACCOUNT
-  req.session.data.authority = authority;
-  req.session.data.authority.reset();
-    
+          
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
   req.session.data.interests = interests;
@@ -438,6 +434,7 @@ router.get(/authority-handler/, function (req, res) {
   for (var y in req.session.data.authority) {
     if ( req.session.data.authority[y].state == "added" ) {
       req.session.data.authority[y].state = "existing";
+      console.log(req.session.data.authority[y]);
     }
   }
   //adding
@@ -452,7 +449,7 @@ router.get(/authority-handler/, function (req, res) {
     }
   //updating
   } else if (req.session.data.interestState == "updating") {
-    req.session.data.authority[req.session.data.tempInterest].state = "updated";
+    req.session.data.authority[req.session.data.tempInterest].state = "added";
     req.session.data.authority[req.session.data.tempInterest].show = true;
   //ending
   } else {
