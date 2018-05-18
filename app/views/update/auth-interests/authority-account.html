@@ -10,13 +10,28 @@
 
   <div class="sl-account-header row">
       
-        {% if data.authority.added === true %}
-          {% include "components/update/toasters/interest-added.html" %}
-        {% endif %}
-        
-        {% if data.authority.removed === true %}
-          {% include "components/update/toasters/interest-removed.html" %}
-        {% endif %}
+      {% if data.authority.councilTaxReduction.state == "added" and data.authority.housingBenefit.state != "added" %}
+        {% include "components/update/toasters/ctr-interest-added.html" %}
+      {% endif %}
+
+      {% if data.authority.councilTaxReduction.state == "ended" %}
+        {% include "components/update/toasters/ctr-interest-ended.html" %}
+      {% endif %}
+
+      {% if data.authority.housingBenefit.state == "added" and data.authority.councilTaxReduction.state != "added" %}
+        {% include "components/update/toasters/hb-interest-added.html" %}
+      {% endif %}
+      {% if data.authority.housingBenefit.state == "ended" %}
+        {% include "components/update/toasters/hb-interest-ended.html" %}
+      {% endif %}
+
+      {% if data.authority.councilTaxReduction.state == "added" and data.authority.housingBenefit.state == "added" %}
+        {% include "components/update/toasters/interests-added.html" %}
+      {% endif %}
+
+      {% if data.authority.councilTaxReduction.state == "ended" and data.authority.housingBenefit.state == "ended" %}
+        {% include "components/update/toasters/interests-removed.html" %}
+      {% endif %}
         
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder blue-header ng-scope">
@@ -697,14 +712,15 @@
       <div class="column-one-third last-col">
         <ul class="edit-menu">
           <li>
-            {% if data.authority.housingBenefit === "on" and data.authority.taxReduction === "on"  %}
+            {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true  %}
               &nbsp;
-            {% elif data.authority.housingBenefit === "on" %}
-              <a href="ctax-handler" class="under-link">Add a Council tax reduction interest</a>
-            {% elif data.authority.taxReduction === "on" %}
-              <a href="hb-handler" class="under-link">Add a Housing Benefit interest</a>
+            {% elif data.authority.housingBenefit.show == true %}
+              <a href="interest-change-handler/?interest=councilTaxReduction&state=updating" class="under-link">Add a Council tax reduction interest</a>
+            {% elif data.authority.councilTaxReduction.show == true %}
+              <a href="interest-change-handler/?interest=housingBenefit&state=updating" class="under-link">Add a Housing Benefit interest</a>
+<!--            "contact-change-handler/?contactType=personalMobile"-->
             {% else %}
-              <a href="add-interest" class="under-link">Add an interest</a>
+              <a href="interest-change-handler/?interest=both&state=adding" class="under-link">Add an interest</a>
             {% endif %}
           </li>
         </ul>
@@ -714,7 +730,7 @@
     <hr>
   
       <!-- Housing benefit -->
-      {% if data.authority.housingBenefit === "on" %}
+      {% if data.authority.housingBenefit.show == true %}
       <div class="grid-row interest">
         <div class="column-one-third">
           <ul>
@@ -736,10 +752,10 @@
               <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
             </li>
             <li>
-              {% if data.authority.housingBenefit === "on" and data.authority.housingBenefit === "on" %}
-                <a href="authority-end-handler" class="under-link">End an interest</a>
+              {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true %}
+                <a href="interest-change-handler/?interest=both&state=ending" class="under-link">End an interest</a>
               {% else %}
-                <a href="authority-end-handler" class="under-link">End this interest</a>
+                <a href="interest-change-handler/?interest=councilTaxReduction&state=ending" class="under-link">End this interest</a>
               {% endif %}
             </li>
           </ul>
@@ -748,7 +764,7 @@
       <hr class="light">
       {% endif %}
   
-      {% if data.authority.taxReduction === "on" %}
+      {% if data.authority.councilTaxReduction.show == true %}
       <div class="grid-row interest">
         <div class="column-one-third">
           <ul>
@@ -770,10 +786,10 @@
               <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
             </li>
             <li>
-              {% if data.authority.housingBenefit === "on" and data.authority.housingBenefit === "on" %}
-                <a href="authority-end-handler" class="under-link">End an interest</a>
+              {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true %}
+                <a href="interest-change-handler/?interest=both&state=ending" class="under-link">End an interest</a>
               {% else %}
-                <a href="authority-end-handler" class="under-link">End this interest</a>
+                <a href="interest-change-handler/?interest=housingBenefit&state=ending" class="under-link">End this interest</a>
               {% endif %}
             </li>
           </ul>
@@ -886,7 +902,7 @@
       <hr class="light">
       {% endif %}
   
-      {% if data.authority.taxReduction === "off" %}
+      {% if data.authority.councilTaxReduction === "off" %}
       <div class="grid-row interest">
         <div class="column-one-third">
           <ul>

@@ -2,35 +2,73 @@
 <div class="grid-row">
   <div class="column-one-half">
     <div>
+      
     <table class="table">
+      
       <tr>
         <td><span class="strong">Office code</span></td>
-          <td>100017</td>
+          <td>{{data.officecode}}</td>
         <td><a href="add-interest">Change</a></td>
       </tr>
-      <tr>
-        <td><span class="strong">Interests</span></td>
-          <td>
-            {% if data.authority.editTax === true %}
-              Council Tax reduction
+      
+      {% if data.interestState == "adding" %}
+        <tr>
+          <td><span class="strong">
+            {% if data.ctr == "true" and data.hb == "true" %}
+              Interests
+            {% else %}
+              Interest
             {% endif %}
+            </span></td>
+            <td>
+              {% if data.ctr == "true" %}
+                Council Tax reduction
+              {% endif %}
 
-            {% if data.authority.editHousing === true %}
-              Housing Benefit
-            {% endif %}
-          </td>
-        <td><a href="add-interest">Change</a></td>
-      </tr>
+              {% if data.hb == "true" %}
+                Housing Benefit
+              {% endif %}
+            </td>
+          <td><a href="add-interest">Change</a></td>
+        </tr>
+      {% endif %}
+      
+      {% if data.interestState == "ending" %}
+        {% if data.tempInterest == "both" %}
+          <tr>
+            <td><span class="strong">
+              {% if data.ctr == "true" and data.hb == "true" %}
+                Interests
+              {% else %}
+                Interest
+              {% endif %}
+              </span></td>
+              <td>
+                {% if data.ctr == "true" %}
+                  Council Tax reduction
+                {% endif %}
+
+                {% if data.hb == "true" %}
+                  Housing Benefit
+                {% endif %}
+              </td>
+            <td><a href="add-interest">Change</a></td>
+          </tr>
+        {% endif %}
+      {% endif %}
+      
       <tr>
         <td><span class="strong">Start date</span></td>
           <td>{{data['prepopulatedString']}}</td>
           <td><a href="add-interest">Change</a></td>
       </tr>
+      
     </table>
+      
   </div>
   <br>
   <div>
-    <form method="get" action="authority-check-handler">
+    <form method="get" action="authority-handler">
       <div class="form-group">
         <input class="button" type="submit" value="Submit">
       </div>

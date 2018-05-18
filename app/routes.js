@@ -426,105 +426,50 @@ router.get('/search-v1', function (req, res) {
 /** AUTHORITY **/
 /***************/
 
-//hb-handler
-router.get(/hb-handler/, function (req, res) {
-  req.session.data.authority.editHousing = true;
-  res.redirect('end-interest')
+//add
+router.get(/interest-change-handler/, function (req, res) {
+  req.session.data.tempInterest = req.query.interest;
+  req.session.data.interestState = req.query.state;
+  console.log(req.session.data.tempInterest);
+  res.redirect('/update/auth-interests/interest-detail')
 })
 
-router.get(/ctax-handler/, function (req, res) {
-  req.session.data.authority.editTax = true;
-  res.redirect('end-interest')
-})
-
-router.get(/authority-select-handler/, function (req, res) {
-  if (req.query.ctr[0] === "true" ) {
-    req.session.data.authority.editTax = true;
+//check
+router.get(/authority-handler/, function (req, res) {
+  for (var y in req.session.data.authority) {
+    if ( req.session.data.authority[y].state == "added" ) {
+      req.session.data.authority[y].state = "existing";
+    }
+  }
+  //adding
+  if(req.session.data.interestState == "adding") {
+    if (req.session.data.ctr == "true" ) {
+      req.session.data.authority.councilTaxReduction.state = "added";
+      req.session.data.authority.councilTaxReduction.show = true;
+    }
+    if (req.session.data.hb == "true" ) {
+      req.session.data.authority.housingBenefit.state = "added";
+      req.session.data.authority.housingBenefit.show = true;
+    }
+  //updating
+  } else if (req.session.data.interestState == "updating") {
+    req.session.data.authority[req.session.data.tempInterest].state = "updated";
+    req.session.data.authority[req.session.data.tempInterest].show = true;
+  //ending
   } else {
-    req.session.data.authority.editTax = false;
+    if (req.session.data.ctr == "true" ) {
+      req.session.data.authority.councilTaxReduction.state = "ended";
+      req.session.data.authority.councilTaxReduction.show = false;
+    }
+    if (req.session.data.hb == "true" ) {
+      req.session.data.authority.housingBenefit.state = "ended";
+      req.session.data.authority.housingBenefit.show = false;
+    }
   }
-  if (req.query.hb[0] === "true" ) {
-    req.session.data.authority.editHousing = true;
-  } else {
-    req.session.data.authority.editHousing = false;
-  }
-  res.redirect('check')
-})
-
-router.get(/authority-check-handler/, function (req, res) {
-  if ( req.session.data.authority.editTax === true ) {
-    req.session.data.authority.taxReduction = "on";
-  }
-  if ( req.session.data.authority.editHousing === true ) {
-    req.session.data.authority.housingBenefit = "on";
-  }
-  req.session.data.authority.added = true;
-  req.session.data.authority.removed = false;
-  req.session.data.authority.editTax = false;
-  req.session.data.authority.editHousing = false;
+  req.session.data.ctr = null;
+  req.session.data.hb = null;
   res.redirect('authority-account')
 })
-
-router.get(/authority-end-handler/, function (req, res) {
-  if( req.session.data.authority.housingBenefit === "on" && req.session.data.authority.taxReduction === "on") {
-    res.redirect('end-interest')
-  } else if(req.session.data.authority.housingBenefit === "on") {
-    req.session.data.authority.editHousing = true
-    res.redirect('end-interest')
-  } else if(req.session.data.authority.taxReduction === "on") {
-    req.session.data.authority.editTax = true
-    res.redirect('end-interest')
-  }
-})
-
-//router.get(/authority-end-handler/, function (req, res) {
-//  req.session.data.authority.added = false;
-//  req.session.data.authority.removed = true;
-//  if( req.session.data.authority.housingBenefit  === "on" && req.session.data.authority.taxReduction === "on") {
-//    res.redirect('end-interest')
-//  } else {
-//    res.redirect('check-end')
-//  }
-//})
-
-router.get(/authority-switch-handler/, function (req, res) {
-  if (req.query.ctr[0] === "true" ) {
-    req.session.data.authority.editTax = true;
-  } else {
-    req.session.data.authority.editTax = false;
-  }
-  if (req.query.hb[0] === "true" ) {
-    req.session.data.authority.editHousing = true;
-  } else {
-    req.session.data.authority.editHousing = false;
-  }
-  res.redirect('check-end')
-})
-
-router.get(/authority-stop-handler/, function (req, res) {
-  if (req.session.data.authority.editHousing === true && req.session.data.authority.editTax === true) {
-    req.session.data.authority.taxReduction = "off";
-    req.session.data.authority.housingBenefit = "off";
-      req.session.data.authority.removed = true;
-      req.session.data.authority.added = false;
-      req.session.data.authority.editTax = false;
-      req.session.data.authority.editHousing = false;
-    res.redirect('authority-account')
-  } else {
-    if(req.session.data.authority.editHousing === true) {
-      req.session.data.authority.housingBenefit = "off"
-    }
-    if(req.session.data.authority.editTax === true) {
-      req.session.data.authority.taxReduction = "off";
-    }
-      req.session.data.authority.removed = true;
-      req.session.data.authority.added = false;
-      req.session.data.authority.editTax = false;
-      req.session.data.authority.editHousing = false;
-    res.redirect('authority-account')
-  }
-})
-
 
 //CONTACT
 
