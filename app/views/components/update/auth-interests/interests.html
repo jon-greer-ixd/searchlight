@@ -1,0 +1,145 @@
+<h2>Interests</h2>
+<div id="sl-address-primary-card" class="sl-primary-card">      
+  
+  <div id="interests">
+    <div class="grid-row nav">
+      <div class="column-one-third">
+        Start date
+      </div>
+      <div class="column-one-third expanded">
+        Interest
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true  %}
+              &nbsp;
+            {% elif data.authority.housingBenefit.show == true %}
+              <a href="interest-change-handler/?interest=councilTaxReduction&state=updating" class="under-link">Add a Council tax reduction interest</a>
+            {% elif data.authority.councilTaxReduction.show == true %}
+              <a href="interest-change-handler/?interest=housingBenefit&state=updating" class="under-link">Add a Housing Benefit interest</a>
+            {% else %}
+              <a href="interest-change-handler/?interest=both&state=adding" class="under-link">Add an interest</a>
+            {% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <hr>
+  
+    {% if data.authority.housingBenefit.show == true %}
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>{{data.prepopulatedString}}</li>
+          </ul>
+        </div>
+
+          <div class="column-one-third expanded">
+            <ul>
+              <li><span class="strong"><span class="interest-type">System</span>HOUSING BENEFIT</span></li>
+              <li class="sl-secondary-text-color sl-metadata">
+                Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+            </ul>
+          </div>
+
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+              </li>
+              <li>
+                {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true %}
+                  <a href="interest-change-handler/?interest=both&state=ending" class="under-link">End an interest</a>
+                {% else %}
+                  <a href="interest-change-handler/?interest=housingBenefit&state=ending" class="under-link">End this interest</a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div> 
+        <hr class="light">
+      {% endif %}
+
+    
+      {% if data.authority.councilTaxReduction.show == true %}
+        <div class="grid-row interest">
+          <div class="column-one-third">
+            <ul>
+              <li>{{data.prepopulatedString}}</li>
+            </ul>
+          </div>
+
+          <div class="column-one-third expanded">
+            <ul>
+              <li><span class="strong"><span class="interest-type">System</span>COUNCIL TAX REDUCTION</span></li>
+              <li class="sl-secondary-text-color sl-metadata">
+                Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+            </ul>
+          </div>
+
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+              </li>
+              <li>
+                {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true %}
+                  <a href="interest-change-handler/?interest=both&state=ending" class="under-link">End an interest</a>
+                {% else %}
+                  <a href="interest-change-handler/?interest=councilTaxReduction&state=ending" class="under-link">End this interest</a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div> 
+        <hr class="light">
+      {% endif %}
+
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 2010</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>State Pension</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+        </div>
+      </div> 
+
+      <hr class="light">
+  
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 2010</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type crl">CRL</span>State Pension</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+        </div>
+      </div> 
+  
+      <hr>
+  
+      {% include "components/update/auth-interests/previous-interests.html" %}
+    
+  </div>
+</div>

@@ -88,6 +88,11 @@ var defaults = {
   ImmigrationUpdated : false
 };
 
+var authority = {
+  "housingBenefit" : {"state" : null, "show" : false},
+  "councilTaxReduction" : {"state" : null, "show" : false}
+};
+
 var contactTypes = {
   "personalMobile" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Personal mobile", value : "07761 111 111"},
   "homeTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Home telephone", value : "0191 111 111"},
@@ -137,6 +142,7 @@ function changeSex(sex) {
   }
 }
 
+module.exports.authority = authority;
 module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;
