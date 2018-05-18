@@ -1,0 +1,90 @@
+    <details>
+      <summary>Previous interests</summary>
+      
+      <hr>
+      
+      <!-- Housing benefit -->
+      {% if data.authority.housingBenefit.state == "ended" or data.authority.housingBenefit.state == "old" %}
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>{{data.prepopulatedString}}</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>HOUSING BENEFIT</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+      <hr class="light">
+      {% endif %}
+  
+      {% if data.authority.councilTaxReduction.state == "ended" or data.authority.councilTaxReduction.state == "old" %}
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>{{data.prepopulatedString}}</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type">System</span>COUNCIL TAX REDUCTION</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+          </ul>
+        </div>
+      </div> 
+      <hr class="light">
+      {% endif %}      
+      <div class="grid-row interest">
+        <div class="column-one-third">
+          <ul>
+            <li>01 Jan 2010</li>
+          </ul>
+        </div>
+        
+        <div class="column-one-third expanded">
+          <ul>
+            <li><span class="strong"><span class="interest-type crl">CRL</span>Incapacity Benefit</span></li>
+            <li class="sl-secondary-text-color sl-metadata">
+              No interested parties
+          </ul>
+        </div>
+        
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+            </li>
+            <li>
+              <form class="dumbform" method="get" action="interests/update-interest">
+                <div class="form-group">
+                   <input class="visually-hidden" name="tempPos" value="{{ data['interests'].indexOf(interest) }}">
+                </div>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div> 
+    </details>

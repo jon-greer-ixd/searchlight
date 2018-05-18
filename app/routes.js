@@ -434,7 +434,9 @@ router.get(/authority-handler/, function (req, res) {
   for (var y in req.session.data.authority) {
     if ( req.session.data.authority[y].state == "added" ) {
       req.session.data.authority[y].state = "existing";
-      console.log(req.session.data.authority[y]);
+    }
+    if ( req.session.data.authority[y].state == "ended" ) {
+      req.session.data.authority[y].state = "old";
     }
   }
   //adding
@@ -452,7 +454,7 @@ router.get(/authority-handler/, function (req, res) {
     req.session.data.authority[req.session.data.tempInterest].state = "added";
     req.session.data.authority[req.session.data.tempInterest].show = true;
   //ending
-  } else {
+  } else { //ending
     if (req.session.data.ctr == "true" ) {
       req.session.data.authority.councilTaxReduction.state = "ended";
       req.session.data.authority.councilTaxReduction.show = false;
@@ -460,6 +462,10 @@ router.get(/authority-handler/, function (req, res) {
     if (req.session.data.hb == "true" ) {
       req.session.data.authority.housingBenefit.state = "ended";
       req.session.data.authority.housingBenefit.show = false;
+    }
+    if (req.session.data.tempInterest != "both") {
+      req.session.data.authority[req.session.data.tempInterest].state = "ended";
+      req.session.data.authority[req.session.data.tempInterest].show = false;
     }
   }
   req.session.data.ctr = null;
