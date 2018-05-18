@@ -429,12 +429,12 @@ router.get('/search-v1', function (req, res) {
 //hb-handler
 router.get(/hb-handler/, function (req, res) {
   req.session.data.authority.editHousing = true;
-  res.redirect('check')
+  res.redirect('end-interest')
 })
 
 router.get(/ctax-handler/, function (req, res) {
   req.session.data.authority.editTax = true;
-  res.redirect('check')
+  res.redirect('end-interest')
 })
 
 router.get(/authority-select-handler/, function (req, res) {
@@ -470,10 +470,10 @@ router.get(/authority-end-handler/, function (req, res) {
     res.redirect('end-interest')
   } else if(req.session.data.authority.housingBenefit === "on") {
     req.session.data.authority.editHousing = true
-    res.redirect('check-end')
+    res.redirect('end-interest')
   } else if(req.session.data.authority.taxReduction === "on") {
     req.session.data.authority.editTax = true
-    res.redirect('check-end')
+    res.redirect('end-interest')
   }
 })
 
