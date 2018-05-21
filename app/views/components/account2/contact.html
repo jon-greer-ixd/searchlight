@@ -6,9 +6,25 @@
 
       <div id="address-pane">
         
-        {% for item in req.session.data.contactTypes %}
-          <p> {{ item.display }} <p>
+<!--
+        {% for data, item in data.contactTypes %}
+
+          {% extends "contact/contact-template.html" %}
+
+          {% block title %}
+            Personal mobile number
+          {% endblock %}
+
+          {% block value %}
+            07751 111 111
+          {% endblock %}
+
+          {% block url %}
+            "contact-change-handler/?contactType=personalMobile"
+          {% endblock %}
+
         {% endfor %}
+-->
         
                 
         {% if data.contactTypes.personalMobile.show === true %}
