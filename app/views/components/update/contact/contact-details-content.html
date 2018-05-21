@@ -24,15 +24,17 @@
 
       <fieldset class="form-group">
         <div class="multiple-choice">
-          <input id="nationalities-british" name="pref" type="checkbox" value="British">
-          <label for="nationalities-british">It's their prefered method of contact  (optional)</label>
+          <input id="pref" name="pref" type="checkbox" value="true">
+          <label for="pref">It's their prefered method of contact  (optional)</label>
         </div>
+        
         {% if data.contactType == "homeTelephone" %}
           <div class="multiple-choice">
             <input id="nationalities-irish" name="ex-der" type="checkbox" value="Irish">
             <label for="nationalities-irish">It's an ex-directory number (optional)</label>
           </div>
         {% endif %}
+        
       </fieldset>
 
       <div class="form-group">
