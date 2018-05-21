@@ -20,14 +20,10 @@
               {% else %}
                Add a Housing Benefit interest
               {% endif %}
+            
             {% elif data.interestState == "ending" %}
-              {% if data.tempInterest == "both" %}
                 End interests
-              {% elif data.tempInterest == "councilTaxReduction" %}
-                End a Council Tax reduction interest
-              {% else %}
-                End a Housing Benefit interest
-              {% endif %}
+            
             {% endif %}
           </h2>
 

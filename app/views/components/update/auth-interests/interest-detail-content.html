@@ -48,11 +48,13 @@
         {% endif %}
       {% endif %}
       
-      <div class="form-group">
-        <label class="form-label" for="officecode">Office code</label>
-        <input class="form-control" id="officecode" name="officecode" type="text">
-      </div>
-            
+      {% if data.interestState != "ending" %}              
+        <div class="form-group">
+          <label class="form-label" for="officecode">Office code</label>
+          <input class="form-control" id="officecode" name="officecode" type="text">
+        </div>
+      {% endif %}
+      
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>

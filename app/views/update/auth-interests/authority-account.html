@@ -22,11 +22,11 @@
         {% include "components/update/toasters/hb-interest-added.html" %}
       {% endif %}
       
-      {% if data.authority.councilTaxReduction.state == "ended" and data.authority.housingBenefit.state != "ended" %}
+      {% if data.authority.councilTaxReduction.state == "ended" %}
         {% include "components/update/toasters/ctr-interest-ended.html" %}
       {% endif %}
     
-      {% if data.authority.housingBenefit.state == "ended" and data.authority.housingBenefit.state != "ended" %}
+      {% if data.authority.housingBenefit.state == "ended" %}
         {% include "components/update/toasters/hb-interest-ended.html" %}
       {% endif %}
 
