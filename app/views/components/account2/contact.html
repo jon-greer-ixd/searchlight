@@ -5,6 +5,11 @@
     <div id="sl-address-primary-card" class="sl-primary-card">
 
       <div id="address-pane">
+        
+        {% for item in req.session.data.contactTypes %}
+          <p> {{ item.display }} <p>
+        {% endfor %}
+        
                 
         {% if data.contactTypes.personalMobile.show === true %}
           {% include "components/account2/contact/personal-mobile.html" %}
