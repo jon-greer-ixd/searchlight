@@ -4,13 +4,7 @@
     <div>
       
     <table class="table">
-      
-      <tr>
-        <td><span class="strong">Office code</span></td>
-          <td>{{data.officecode}}</td>
-        <td><a href="add-interest">Change</a></td>
-      </tr>
-      
+            
       {% if data.interestState == "adding" %}
         <tr>
           <td><span class="strong">
@@ -34,34 +28,47 @@
       {% endif %}
       
       {% if data.interestState == "ending" %}
-        {% if data.tempInterest == "both" %}
-          <tr>
-            <td><span class="strong">
-              {% if data.ctr == "true" and data.hb == "true" %}
-                Interests
-              {% else %}
-                Interest
+        <tr>
+          <td><span class="strong">
+            {% if data.ctr == "true" and data.hb == "true" %}
+              Interests
+            {% else %}
+              Interest
+            {% endif %}
+            </span></td>
+            <td>
+              {% if data.ctr == "true" or data.tempInterest == "councilTaxReduction" %}
+                Council Tax reduction
               {% endif %}
-              </span></td>
-              <td>
-                {% if data.ctr == "true" %}
-                  Council Tax reduction
-                {% endif %}
 
-                {% if data.hb == "true" %}
-                  Housing Benefit
-                {% endif %}
-              </td>
-            <td><a href="add-interest">Change</a></td>
-          </tr>
-        {% endif %}
+              {% if data.hb == "true" or data.tempInterest == "housingBenefit" %}
+                Housing Benefit
+              {% endif %}
+            </td>
+          <td><a href="add-interest">Change</a></td>
+        </tr>
       {% endif %}
       
+      {% if data.interestState != "ending" %}
+      <tr>
+        <td><span class="strong">Office code</span></td>
+          <td>{{data.officecode}}</td>
+        <td><a href="add-interest">Change</a></td>
+      </tr>
       <tr>
         <td><span class="strong">Start date</span></td>
           <td>{{data['prepopulatedString']}}</td>
           <td><a href="add-interest">Change</a></td>
       </tr>
+      
+      {% elif data.interestState == "ending" %}
+      <tr>
+        <td><span class="strong">End date</span></td>
+          <td>{{data['prepopulatedString']}}</td>
+          <td><a href="add-interest">Change</a></td>
+      </tr>
+      {% endif %}
+      
       
     </table>
       

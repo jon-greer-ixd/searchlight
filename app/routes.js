@@ -425,8 +425,11 @@ router.get('/search-v1', function (req, res) {
 router.get(/interest-change-handler/, function (req, res) {
   req.session.data.tempInterest = req.query.interest;
   req.session.data.interestState = req.query.state;
-  console.log(req.session.data.tempInterest);
-  res.redirect('/update/auth-interests/interest-detail')
+  if (req.query.state == "ending" && req.query.interest != "both") {
+    res.redirect('/update/auth-interests/check')
+  } else {
+    res.redirect('/update/auth-interests/interest-detail')
+  }
 })
 
 //check
@@ -465,6 +468,8 @@ router.get(/authority-handler/, function (req, res) {
     }
     if (req.session.data.tempInterest != "both") {
       req.session.data.authority[req.session.data.tempInterest].state = "ended";
+      console.log(req.session.data.tempInterest);
+      console.log(req.session.data.authority[req.session.data.tempInterest]);
       req.session.data.authority[req.session.data.tempInterest].show = false;
     }
   }
