@@ -524,6 +524,10 @@ router.get(/check-contact-handler/, function (req, res) {
   if(req.session.data.contactState == "correcting" ) {
     req.session.data.contactTypes[req.session.data.contactType].state = "corrected";
   }
+  if (req.session.data.pref == "true") {
+    req.session.data.contactTypes[req.session.data.contactType].pref = true;
+    console.log("PREF SET");
+  }
   req.session.data.contactState = null;
   res.redirect('/account2/account')
 })

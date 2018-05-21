@@ -13,15 +13,6 @@
             <td><a>Change</a></td>
           </tr>
         {% else %}
-<!--
-          <tr>
-            <td><span class="strong">Contact method</span></td>
-            <td>
-              {{ data.contactTypes[data.contactType].display }} {{ data.contactTypes[data.contactType].type | contactIs }}
-            </td>
-            <td><a>Change</a></td>
-          </tr>
--->
           <tr>
             <td><span class="strong">End date</span></td>
             <td>
@@ -31,19 +22,26 @@
           </tr>
         {% endif %}
         
+        {% if data.contactState != "removing" %}
+          <tr>
+            <td><span class="strong">Prefered method of contact</span></td>
+            <td>
+              Yes
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+        
       </table>
+      <br>
 
-    <br>
+      <form method="get" action="check-contact-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
 
-    <form method="get" action="check-contact-handler">
-
-      <div class="form-group">
-        <input class="button" type="submit" value="Submit">
-      </div>
-
-    </form>
-
-    <a href="/account2/account">Cancel</a>
+      <a href="/account2/account">Cancel</a>
 
   </div>
 
