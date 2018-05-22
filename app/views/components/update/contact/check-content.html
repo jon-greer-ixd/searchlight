@@ -6,13 +6,24 @@
 
       <table class="table"> 
         
-        {% if data.contactState != "removing" %}
+        {% if data.contactState == "adding" or data.contactState == "updating" or data.contactState == "correcting" %}
           <tr>
             <td><span class="strong">{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</span></td>
             <td>{{ data.contactTypes[data.contactType].value }}</td>
             <td><a>Change</a></td>
           </tr>
-        {% else %}
+          {% if data.pref == "true" %}
+            <tr>
+              <td><span class="strong">Prefered method of contact</span></td>
+              <td>
+                Yes
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+        {% endif %}
+        
+        {% if data.contactState == "removing" %}
           <tr>
             <td><span class="strong">End date</span></td>
             <td>
@@ -22,17 +33,16 @@
           </tr>
         {% endif %}
         
-        {% if data.contactState != "removing" %}
+        {% if data.contactState == "settingPref" %}
           <tr>
-            <td><span class="strong">Prefered method of contact</span></td>
-            <td>
-              Yes
-            </td>
+            <td><span class="strong">Contact method</span></td>
+            <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
             <td><a>Change</a></td>
           </tr>
         {% endif %}
-        
+                
       </table>
+      
       <br>
 
       <form method="get" action="check-contact-handler">

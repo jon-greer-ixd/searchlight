@@ -24,7 +24,7 @@
 
       <fieldset class="form-group">
         <div class="multiple-choice">
-          <input id="pref" name="pref" type="checkbox" value="true">
+          <input id="pref" name="pref" type="checkbox" value="true"  {% if data.contactState == "correcting" and data.contactTypes[data.contactType].pref == true %} checked="checked" {% endif %}>
           <label for="pref">It's their prefered method of contact  (optional)</label>
         </div>
         

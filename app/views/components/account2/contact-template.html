@@ -1,17 +1,15 @@
 <div class="grid-row">
   <div class="column-one-third">
     <ul>
-      <li>{% block title %} {% endblock %}</li>
+      <li>{{item.display}}</li>
     </ul>
   </div>
   <div class="column-one-third">
     <ul>
-      <li><span class="strong">{% block value %} {% endblock %}</span></li>
-<!--
-      <li class="sl-secondary-text-color sl-metadata">
-          Since 5 Jun 2010
-      </li>
--->
+      <li><span class="strong">{{item.value}}</span></li>
+      {% if item.pref == true %}
+        <li class="sl-secondary-text-color sl-metadata">Prefered method of contact</li>
+      {% endif %}
     </ul>
   </div>
   <div class="column-one-third">
@@ -20,7 +18,7 @@
         <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
       </li>
       <li>
-        <a class="secondary-link" href={% block url %} {% endblock %}>Change</a>
+        <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
       </li>
     </ul>
   </div>
