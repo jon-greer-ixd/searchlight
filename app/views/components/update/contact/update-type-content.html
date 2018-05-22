@@ -16,21 +16,27 @@
           </legend>
               
             <div class="multiple-choice">
-              <input id="update" type="radio" name="data" value="updating">
-              <label for="update">Update</label>
+              <input id="update" type="radio" name="contactState" value="updating">
+              <label for="update">Update to a new {{ data.contactTypes[data.contactType].type | contactIs }}</label>
             </div>
               
             <div class="multiple-choice">
-              <input id="correct" type="radio" name="data" value="correcting">
+              <input id="settingPref" type="radio" name="contactState" value="settingPref">
+              <label for="settingPref">Its their prefered method of contact
+              </label>
+            </div>
+              
+            <div class="multiple-choice">
+              <input id="correct" type="radio" name="contactState" value="correcting">
               <label for="correct">Correct a mistake</label>
             </div>
               
             <div class="multiple-choice">
-              <input id="remove" type="radio" name="data" value="removing">
+              <input id="remove" type="radio" name="contactState" value="removing">
               <label for="remove">End the contact method
               </label>
             </div>
-                        
+                            
             </fieldset>
           </div>
         <div class="form-group">

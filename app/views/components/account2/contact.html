@@ -5,80 +5,32 @@
     <div id="sl-address-primary-card" class="sl-primary-card">
 
       <div id="address-pane">
-                
-        {% if data.contactTypes.personalMobile.show === true %}
-          {% include "components/account2/contact/personal-mobile.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.homeTelephone.show == true %}
-          {% include "components/account2/contact/home-telephone.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.daytimeTelephone.show == true %}
-          {% include "components/account2/contact/daytime-telephone.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.eveningTelephone.show == true %}
-          {% include "components/account2/contact/evening-telephone.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.businessMobile.show == true %}
-          {% include "components/account2/contact/business-mobile.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.businessTelephone.show == true %}
-          {% include "components/account2/contact/business-telephone.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.thirdParty.show == true %}
-          {% include "components/account2/contact/third-party.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.homeEmail.show == true %}
-          {% include "components/account2/contact/home-email.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.businessEmail.show == true %}
-          {% include "components/account2/contact/business-email.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.homeFax.show == true %}
-          {% include "components/account2/contact/home-fax.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.businessFax.show == true %}
-          {% include "components/account2/contact/business-fax.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.textPhone.show == true %}
-          {% include "components/account2/contact/text-phone.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.typeTalk.show == true %}
-          {% include "components/account2/contact/type-talk.html" %}
-          <hr class="light">
-        {% endif %}
-
-        {% if data.contactTypes.otherContact.show == true %}
-          {% include "components/account2/contact/other-contact.html" %}
-          <hr class="light">
-        {% endif %}
-
+        
+        {# go through and find the pref #}
+        {% for list, item in data.contactTypes %}
+          {% if item.pref == true %}
+            {% if item.show == true %}
+              {% include "components/account2/contact-template.html" %}
+              <hr class="light">
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        
+        {# go through show everything else #}
+        
+        {{counter}}
+        {% set counter = 0 %}
+        {% for list, item in data.contactTypes %}
+          {% if item.show == true and item.pref == false %}
+            {% set counter = counter + 1 %}
+            {% include "components/account2/contact-template.html" %}
+            <hr class="light">
+          {% endif %}
+        {% endfor %}
+        
         <div class="grid-row">
           <div class="column-one-third">
-            {% if (data.contactTypes | checkForContacts) == false %}
+            {% if counter == 0 %}
               No contact details held for this customer.
             {% else %}
               &nbsp;
@@ -106,4 +58,3 @@
       </div>
 
     </div>
-    

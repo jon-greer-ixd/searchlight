@@ -486,8 +486,9 @@ router.get(/contact-change-handler/, function (req, res) {
 })
 
 router.get(/update-contact-handler/, function (req, res) {
-  req.session.data.contactState = req.query.data;
-  if(req.session.data.contactState != "removing") {
+  if(req.session.data.contactState == "settingPref") {
+    res.redirect('/update/contact/check')
+  } else if(req.session.data.contactState != "removing") {
     res.redirect('/update/contact/contact-details')
   } else {
     res.redirect('end')
@@ -524,10 +525,16 @@ router.get(/check-contact-handler/, function (req, res) {
   if(req.session.data.contactState == "correcting" ) {
     req.session.data.contactTypes[req.session.data.contactType].state = "corrected";
   }
-  if (req.session.data.pref == "true") {
+  if (req.session.data.pref == "true" || req.session.data.contactState == "settingPref") {
+    for (var x in req.session.data.contactTypes) {
+      req.session.data.contactTypes[x].pref = false;
+    }
     req.session.data.contactTypes[req.session.data.contactType].pref = true;
-    console.log("PREF SET");
+  } else {
+    req.session.data.contactTypes[req.session.data.contactType].pref = false;
   }
+  console.log(`item ${req.session.data.contactTypes[req.session.data.contactType].display} pref ${req.session.data.contactTypes[req.session.data.contactType].pref}`);
+  req.session.data.pref = false;
   req.session.data.contactState = null;
   res.redirect('/account2/account')
 })

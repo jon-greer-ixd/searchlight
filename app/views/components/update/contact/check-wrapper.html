@@ -6,25 +6,29 @@
           
           <h2>
             
-            {% if data.contactState == "adding" %}
-              Add
-            {% elif data.contactState == "updating" %}
-              Update
-            {% elif data.contactState == "correcting" %}
-              Correct
-            {% elif data.contactState == "removing" %}
-              End
-            {% endif %}
-            
-            {% if data.contactType == "eveningTelephone" %}
-              an
-            {% elif data.contactType != "otherContact"%}
-              a
-            {% endif %}
+            {% if data.contactState != "settingPref" %}
+              {% if data.contactState == "adding" %}
+                Add
+              {% elif data.contactState == "updating" %}
+                Update
+              {% elif data.contactState == "correcting" %}
+                Correct
+              {% elif data.contactState == "removing" %}
+                End
+              {% endif %}
 
-            {{ data.contactTypes[data.contactType].display | lower }} 
-            {{ data.contactTypes[data.contactType].type | contactIs }}
+              {% if data.contactType == "eveningTelephone" %}
+                an
+              {% elif data.contactType != "otherContact"%}
+                a
+              {% endif %}
+
+              {{ data.contactTypes[data.contactType].display | lower }} 
+              {{ data.contactTypes[data.contactType].type | contactIs }}
             
+            {% else %}
+              Set a prefered contact method
+            {% endif %}
             
           </h2>
           
