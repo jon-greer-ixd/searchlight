@@ -1158,3 +1158,12 @@ summary {
   width: 8px;
   display: inline-block;
 }
+
+#create-title {
+  margin-left: 408px;
+  font-weight: 700;
+}
+
+#sl-header a.sl-main-heading#create-title:hover {
+  text-decoration: none!important;
+}
