@@ -5,17 +5,18 @@
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           
           <h2>
-            
-            {% if data.contactState != "settingPref" %}
-              {% if data.contactState == "adding" %}
-                Add
-              {% elif data.contactState == "updating" %}
-                Update
-              {% elif data.contactState == "correcting" %}
-                Correct
-              {% elif data.contactState == "removing" %}
-                End
-              {% endif %}
+                        
+            {% if data.contactState == "adding" %}
+              Add
+            {% elif data.contactState == "updating" %}
+              Update
+            {% elif data.contactState == "correcting" %}
+              Correct
+            {% elif data.contactState == "removing" %}
+              End
+            {% endif %}
+
+            {% if data.contactState == "adding" or data.contactState == "updating" or data.contactState == "correcting" or data.contactState == "removing" %}
 
               {% if data.contactType == "eveningTelephone" %}
                 an
@@ -26,7 +27,13 @@
               {{ data.contactTypes[data.contactType].display | lower }} 
               {{ data.contactTypes[data.contactType].type | contactIs }}
             
-            {% else %}
+            {% endif %}
+            
+            {% if data.contactState == "removePref" %}
+              Remove the prefered method of contact status
+            {% endif %}
+            
+            {% if data.contactState == "settingPref" %}
               Set a prefered contact method
             {% endif %}
             

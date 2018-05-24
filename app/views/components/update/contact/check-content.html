@@ -6,10 +6,17 @@
 
       <table class="table"> 
         
-        {% if data.contactState == "adding" or data.contactState == "updating" or data.contactState == "correcting" %}
+        {% if data.contactState == "adding" or data.contactState == "updating" %}
           <tr>
             <td><span class="strong">{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</span></td>
             <td>{{ data.contactTypes[data.contactType].value }}</td>
+            <td><a>Change</a></td>
+          </tr>     
+          <tr>
+            <td><span class="strong">Start date</span></td>
+            <td>
+              {{ data.prepopulatedDate }}
+            </td>
             <td><a>Change</a></td>
           </tr>
           {% if data.pref == "true" %}
@@ -23,6 +30,32 @@
           {% endif %}
         {% endif %}
         
+        {% if data.contactState == "correcting" %}
+          <tr>
+            <td><span class="strong">{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</span></td>
+            <td>{{ data.contactTypes[data.contactType].value }}</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Start date</span></td>
+            <td>
+              {{ data.prepopulatedDate }}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+        
+          <!-- If this contactType is the current prefered method of contact and its now corrected show Prefered contact = No -->
+          <tr>
+            <td><span class="strong">Prefered method of contact</span></td>
+            {% if (data.contactTypes[data.contactType].pref == true and data.pref == false) %}
+              <td>No</td>
+            {% else %}
+              <td>Yes</td>
+            {% endif %}
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+        
         {% if data.contactState == "removing" %}
           <tr>
             <td><span class="strong">End date</span></td>
@@ -34,6 +67,14 @@
         {% endif %}
         
         {% if data.contactState == "settingPref" %}
+          <tr>
+            <td><span class="strong">Contact method</span></td>
+            <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+        
+        {% if data.contactState == "removePref" %}
           <tr>
             <td><span class="strong">Contact method</span></td>
             <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>

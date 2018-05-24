@@ -6,20 +6,21 @@
 
       <div id="address-pane">
         
-        {# go through and find the pref #}
+        {{counter}}
+        {% set counter = 0 %}
+        
+        <!-- find the pref -->
         {% for list, item in data.contactTypes %}
           {% if item.pref == true %}
             {% if item.show == true %}
+            {% set counter = counter + 1 %}
               {% include "components/account2/contact-template.html" %}
               <hr class="light">
             {% endif %}
           {% endif %}
         {% endfor %}
         
-        {# go through show everything else #}
-        
-        {{counter}}
-        {% set counter = 0 %}
+        <!-- show everything else -->
         {% for list, item in data.contactTypes %}
           {% if item.show == true and item.pref == false %}
             {% set counter = counter + 1 %}

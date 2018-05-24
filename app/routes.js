@@ -486,7 +486,7 @@ router.get(/contact-change-handler/, function (req, res) {
 })
 
 router.get(/update-contact-handler/, function (req, res) {
-  if(req.session.data.contactState == "settingPref") {
+  if(req.session.data.contactState == "settingPref" || req.session.data.contactState == "removePref") {
     res.redirect('/update/contact/check')
   } else if(req.session.data.contactState != "removing") {
     res.redirect('/update/contact/contact-details')
@@ -495,10 +495,33 @@ router.get(/update-contact-handler/, function (req, res) {
   }
 })
 
+//router.get(/update-contact-handler/, function (req, res) {
+//  var next = "check";
+//  if (req.session.data == "updating" || req.session.data == "correcting") {
+//    req.session.data.contactState = req.session.data;
+//    next = "contact-details";
+//  } else if (req.session.data == "removing") {
+//    req.session.data.contactState = req.session.data;
+//    next = "end";
+//  } else if (req.session.data == "removePref") {
+//     req.session.data.preferedContactState = "removing";
+//  } else if (req.session.data == "setPref") {
+//     req.session.data.preferedContactState = "updating";
+//  }
+//  res.redirect(next);
+//})
+
 router.get(/contact-type-handler/, function (req, res) {
   var method = req.query.data;
   req.session.data[method].state = "adding";
   res.redirect(method)
+})
+
+router.get(/pref-handler/, function (req, res) {
+  if (req.query.pref != "true") {
+    req.session.data.pref = false;
+  }
+  res.redirect('check')
 })
 
 //** check-contact-handler **
@@ -532,6 +555,12 @@ router.get(/check-contact-handler/, function (req, res) {
     req.session.data.contactTypes[req.session.data.contactType].pref = true;
   } else {
     req.session.data.contactTypes[req.session.data.contactType].pref = false;
+  }
+  if (req.session.data.contactState == "settingPref") {
+    req.session.data.contactState = "prefSet";
+  }
+  if (req.session.data.contactState == "removePref") {
+    req.session.data.contactState = "prefRemoved";
   }
   console.log(`item ${req.session.data.contactTypes[req.session.data.contactType].display} pref ${req.session.data.contactTypes[req.session.data.contactType].pref}`);
   req.session.data.pref = false;

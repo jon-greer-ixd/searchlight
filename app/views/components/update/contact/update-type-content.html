@@ -20,11 +20,17 @@
               <label for="update">Update to a new {{ data.contactTypes[data.contactType].type | contactIs }}</label>
             </div>
               
-            <div class="multiple-choice">
-              <input id="settingPref" type="radio" name="contactState" value="settingPref">
-              <label for="settingPref">Its their prefered method of contact
-              </label>
-            </div>
+            {% if data.contactTypes[data.contactType].pref == true %}
+              <div class="multiple-choice">
+                <input id="removePref" type="radio" name="contactState" value="removePref">
+                  <label for="removePref">Remove the prefered method of contact status</label>
+              </div>
+            {% else %}
+              <div class="multiple-choice">
+                <input id="settingPref" type="radio" name="contactState" value="settingPref">
+                  <label for="settingPref">Its their prefered method of contact</label>
+              </div>
+            {% endif %}
               
             <div class="multiple-choice">
               <input id="correct" type="radio" name="contactState" value="correcting">
