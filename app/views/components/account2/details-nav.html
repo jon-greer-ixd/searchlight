@@ -3,7 +3,7 @@
   <div class="sl-account-header row">
     
     {% include "components/account2/toast.html" %}
-    {% include "components/account2/toast-contact.html" %}
+    {% include "components/account2/toast-contact.njk" %}
     
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" id="live" class="sl-primary-name-container-placeholder ng-scope">

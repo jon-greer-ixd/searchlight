@@ -29,11 +29,11 @@
             
             {% endif %}
             
-            {% if data.contactState == "removePref" %}
+            {% if data.preferedContactState == "removing" %}
               Remove the prefered method of contact status
             {% endif %}
             
-            {% if data.contactState == "settingPref" %}
+            {% if data.preferedContactState == "updating" %}
               Set a prefered contact method
             {% endif %}
             

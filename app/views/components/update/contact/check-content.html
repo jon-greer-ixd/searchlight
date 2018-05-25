@@ -66,7 +66,7 @@
           </tr>
         {% endif %}
         
-        {% if data.contactState == "settingPref" %}
+        {% if data.preferedContactState == "updating" %}
           <tr>
             <td><span class="strong">Contact method</span></td>
             <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
@@ -74,7 +74,7 @@
           </tr>
         {% endif %}
         
-        {% if data.contactState == "removePref" %}
+        {% if data.preferedContactState == "removing" %}
           <tr>
             <td><span class="strong">Contact method</span></td>
             <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
