@@ -27,6 +27,8 @@ var defaults = {
   //CONTACT  
   
   showContact : false,
+  preferedContactState : null,
+
 
   //PERSONAL DETAILS  
   

@@ -486,13 +486,20 @@ router.get(/contact-change-handler/, function (req, res) {
 })
 
 router.get(/update-contact-handler/, function (req, res) {
-  if(req.session.data.contactState == "settingPref") {
-    res.redirect('/update/contact/check')
-  } else if(req.session.data.contactState != "removing") {
-    res.redirect('/update/contact/contact-details')
-  } else {
-    res.redirect('end')
+  var next = "check";
+  if (req.query.data == "updating" || req.query.data == "correcting") {
+    req.session.data.contactState = req.query.data;
+    next = "contact-details";
+  } else if (req.query.data == "removing") {
+    req.session.data.contactState = req.query.data;
+    next = "end";
+  } else if (req.query.data == "removePref") {
+     req.session.data.preferedContactState = "removing";
+  } else if (req.query.data == "setPref") {
+     req.session.data.preferedContactState = "updating";
   }
+  console.log(`preferedContactState = ${req.session.data.preferedContactState}`);
+  res.redirect(next);
 })
 
 router.get(/contact-type-handler/, function (req, res) {
@@ -501,31 +508,48 @@ router.get(/contact-type-handler/, function (req, res) {
   res.redirect(method)
 })
 
+router.get(/pref-handler/, function (req, res) {
+  if (req.query.pref != "true") {
+    req.session.data.pref = false;
+  }
+  res.redirect('check')
+})
+
 //** check-contact-handler **
 router.get(/check-contact-handler/, function (req, res) {  
+  function setSelectedContactState(newState) {
+    req.session.data.contactTypes[req.session.data.contactType].state = newState;
+  }
+  function setSelectedContactToShow(show) {
+    req.session.data.contactTypes[req.session.data.contactType].show = show;
+  }
+  //reset the states to existing
   for (var y in req.session.data.contactTypes) {
-    if ( req.session.data.contactTypes[y].state == "added" ) {
+    if (req.session.data.contactTypes[y].state == "added" ) {
       req.session.data.contactTypes[y].state = "existing";
     }
   }
+  //adding new
   if(req.session.data.contactState == "adding" ) {
     req.session.data.showContact = true;
-    req.session.data.contactTypes[req.session.data.contactType].show = true;
-    req.session.data.contactTypes[req.session.data.contactType].state = "added";
+    setSelectedContactToShow(true);
+    setSelectedContactState("added");
   }
+  //updating
   if(req.session.data.contactState == "updating" ) {
-    req.session.data.contactTypes[req.session.data.contactType].state = "updated";
+    setSelectedContactState("updated");
   }
+  //removing
   if(req.session.data.contactState == "removing" ) {
-    req.session.data.contactTypes[req.session.data.contactType].state = "removed";
-    req.session.data.contactTypes[req.session.data.contactType].show = false;
-    console.log(req.session.data.contactTypes[req.session.data.contactType]);
-    req.session.data.contactType;
+    setSelectedContactState("removed");
+    setSelectedContactToShow(false);
   }
+  //correcting
   if(req.session.data.contactState == "correcting" ) {
-    req.session.data.contactTypes[req.session.data.contactType].state = "corrected";
+    setSelectedContactState("corrected");
   }
-  if (req.session.data.pref == "true" || req.session.data.contactState == "settingPref") {
+  //update preference
+  if (req.session.data.pref == "true" || req.session.data.preferedContactState == "updating") {
     for (var x in req.session.data.contactTypes) {
       req.session.data.contactTypes[x].pref = false;
     }
@@ -533,9 +557,18 @@ router.get(/check-contact-handler/, function (req, res) {
   } else {
     req.session.data.contactTypes[req.session.data.contactType].pref = false;
   }
-  console.log(`item ${req.session.data.contactTypes[req.session.data.contactType].display} pref ${req.session.data.contactTypes[req.session.data.contactType].pref}`);
+  if (req.session.data.preferedContactState == "updating") {
+    req.session.data.preferedContactState = "updated";
+  }
+  //remove preference
+  if ( req.session.data.preferedContactState == "removing") {
+    req.session.data.preferedContactState = "removed";
+    console.log(`here preferedContactState ${req.session.data.preferedContactState}`);
+  }
+  //reset
   req.session.data.pref = false;
   req.session.data.contactState = null;
+  //redirect
   res.redirect('/account2/account')
 })
 

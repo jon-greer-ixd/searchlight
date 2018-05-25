@@ -16,23 +16,29 @@
           </legend>
               
             <div class="multiple-choice">
-              <input id="update" type="radio" name="contactState" value="updating">
+              <input id="update" type="radio" name="data" value="updating">
               <label for="update">Update to a new {{ data.contactTypes[data.contactType].type | contactIs }}</label>
             </div>
               
-            <div class="multiple-choice">
-              <input id="settingPref" type="radio" name="contactState" value="settingPref">
-              <label for="settingPref">Its their prefered method of contact
-              </label>
-            </div>
+            {% if data.contactTypes[data.contactType].pref == true %}
+              <div class="multiple-choice">
+                <input id="removePref" type="radio" name="data" value="removePref">
+                  <label for="removePref">Remove the prefered method of contact status</label>
+              </div>
+            {% else %}
+              <div class="multiple-choice">
+                <input id="settingPref" type="radio" name="data" value="setPref">
+                  <label for="settingPref">Set as their prefered method of contact</label>
+              </div>
+            {% endif %}
               
             <div class="multiple-choice">
-              <input id="correct" type="radio" name="contactState" value="correcting">
+              <input id="correct" type="radio" name="data" value="correcting">
               <label for="correct">Correct a mistake</label>
             </div>
               
             <div class="multiple-choice">
-              <input id="remove" type="radio" name="contactState" value="removing">
+              <input id="remove" type="radio" name="data" value="removing">
               <label for="remove">End the contact method
               </label>
             </div>

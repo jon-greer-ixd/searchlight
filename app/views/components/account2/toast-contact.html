@@ -2,6 +2,18 @@
 {% set x = " " %}
 {% set z = " " %}
 
+{% set main_message =     
+  {{ block message }}
+    {{y}} 
+      {% if x == "phone" or x == "fax" or x == "other-phone" %}
+        number 
+      {% elif x == "email" %}
+        address 
+      {% endif %}
+      {{z}}
+    {% endblock %}
+%}
+
 {% for someId, item in data.contactTypes %}
   {% if item.state == "added" or item.state == "updated" or item.state == "corrected" or item.state == "removed" %}
     {% extends "components/update/toasters/toast.html" %}
@@ -10,17 +22,14 @@
     {% set x = item.type %}
     {% set z = item.state %}
 
-    {% block message %}
-      {{y}} 
+    {% main_message %}
 
-      {% if x == "phone" or x == "fax" or x == "other-phone" %}
-        number 
-      {% elif x == "email" %}
-        address 
-      {% endif %}
-
-      {{z}}
-
-    {% endblock %}
   {% endif %}
 {% endfor %}
+
+{% if data.preferedContactState == "removed" %}
+    {% extends "components/update/toasters/toast.html" %}
+      {% main_message %}
+        Prefered contact state removed
+      {% endblock %}
+{% endif %}
