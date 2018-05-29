@@ -1212,6 +1212,7 @@ router.get(/update-type-handler/, function (req, res) {
   if (req.query.data == 'add_correspondence') {
     req.session.data.updateType = "addCorrespondence";
     content.setPageTitle(req.session.data.updateType);
+    req.session.data.toaster = messageCentre("Correspondence address", null, "added");
     res.redirect('/update/address-search')
     //status
   } else if (req.query.data === 'update_status') {
@@ -1349,6 +1350,7 @@ router.get(/check-answers-handler/, function (req, res) {
     dataState.cherishedLineCorrected = true;   
   }
   if (req.session.data.updateType === "end") {
+    req.session.data.toaster = messageCentre("Correspondence address", null, "ended");
     dataState.correspondenceAdded = false;   
     dataState.correspondenceRemoved = true;   
   }
