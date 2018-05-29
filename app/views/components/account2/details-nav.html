@@ -6,6 +6,8 @@
       {% include "components/account2/new-toaster.njk" %}
     {% endif %}
     
+    {% include "components/account2/toast.html" %}
+    
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" id="live" class="sl-primary-name-container-placeholder ng-scope">
       <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">
