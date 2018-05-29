@@ -18,6 +18,8 @@ var flip = require('./defaults.js').flip;
 
 var changeSex = require('./defaults.js').changeSex;
 
+var messageCentre = require('./defaults.js').messageCentre;
+
 
 //***********
 // INTERESTS 
@@ -481,11 +483,14 @@ router.get(/authority-handler/, function (req, res) {
 //CONTACT
 
 router.get(/contact-change-handler/, function (req, res) {
+  console.log("here");
+  req.session.data.toaster = null;
   req.session.data.contactType = req.query.contactType;
   res.redirect('/update/contact/update-type')
 })
 
 router.get(/update-contact-handler/, function (req, res) {
+  req.session.data.preferedContactState = null;
   var next = "check";
   if (req.query.data == "updating" || req.query.data == "correcting") {
     req.session.data.contactState = req.query.data;
@@ -498,7 +503,7 @@ router.get(/update-contact-handler/, function (req, res) {
   } else if (req.query.data == "setPref") {
      req.session.data.preferedContactState = "updating";
   }
-  console.log(`preferedContactState = ${req.session.data.preferedContactState}`);
+    console.log(`preferedContactState = ${req.session.data.preferedContactState}`);
   res.redirect(next);
 })
 
@@ -519,6 +524,10 @@ router.get(/pref-handler/, function (req, res) {
 router.get(/check-contact-handler/, function (req, res) {  
   function setSelectedContactState(newState) {
     req.session.data.contactTypes[req.session.data.contactType].state = newState;
+    req.session.data.toaster = messageCentre(
+      req.session.data.contactTypes[req.session.data.contactType].display, 
+      req.session.data.contactTypes[req.session.data.contactType].type, 
+      req.session.data.contactState);
   }
   function setSelectedContactToShow(show) {
     req.session.data.contactTypes[req.session.data.contactType].show = show;
@@ -559,9 +568,11 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   if (req.session.data.preferedContactState == "updating") {
     req.session.data.preferedContactState = "updated";
+    req.session.data.toaster = messageCentre("Prefered method of contact", null, "set");
   }
   //remove preference
   if ( req.session.data.preferedContactState == "removing") {
+    req.session.data.toaster = messageCentre("Prefered contact state", null, "removed");
     req.session.data.preferedContactState = "removed";
     console.log(`here preferedContactState ${req.session.data.preferedContactState}`);
   }
@@ -572,6 +583,7 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   //reset
   req.session.data.pref = false;
+  req.session.data.exdirectory = false;
   req.session.data.contactState = null;
   //redirect
   res.redirect('/account2/account')
@@ -911,7 +923,7 @@ router.get(/check-sex-handler/, function (req, res) {
     req.session.data.genderUpdated = true;
   }
   req.session.data.sex = "Female";
-  res.redirect('../../account2/account')
+  res.redirect('/account2/account')
 })
 
 
@@ -1196,9 +1208,11 @@ router.get(/dates-handler/, function (req, res) {
 })
 
 router.get(/update-type-handler/, function (req, res) {
+  req.session.data.toaster = null;
   if (req.query.data == 'add_correspondence') {
     req.session.data.updateType = "addCorrespondence";
     content.setPageTitle(req.session.data.updateType);
+    req.session.data.toaster = messageCentre("Correspondence address", null, "added");
     res.redirect('/update/address-search')
     //status
   } else if (req.query.data === 'update_status') {
@@ -1336,6 +1350,7 @@ router.get(/check-answers-handler/, function (req, res) {
     dataState.cherishedLineCorrected = true;   
   }
   if (req.session.data.updateType === "end") {
+    req.session.data.toaster = messageCentre("Correspondence address", null, "ended");
     dataState.correspondenceAdded = false;   
     dataState.correspondenceRemoved = true;   
   }
@@ -1474,7 +1489,7 @@ router.get(/add-interest-handler/, function (req, res) {
 })
 
 router.get(/interest-check-handler/, function (req, res) {
-  if (req.session.data.updateType === "addInterest") {
+  if (req.session.data.updateType == "addInterest") {
     addInterest(tempInterest);
     dataState.interestAdded = true;   
   }
@@ -1482,7 +1497,7 @@ router.get(/interest-check-handler/, function (req, res) {
   if (req.session.data.updateType === "transferInterest") {
     dataState.interestTransfered = true;
   }
-  res.redirect("../account");
+  res.redirect("/account2/account");
 })
 
 router.get(/change-interest-handler/, function (req, res) {
@@ -1974,6 +1989,8 @@ router.get(/nino-contacts-handler/, function (req, res) {
 
 //contact-group-handler
 router.get(/contact-group-handler/, function (req, res) {
+  req.session.data.toaster = null;
+  req.session.data.preferedContactState = null;
   req.session.data.contactState = "adding";
   console.log(req.query.contactType);
   if (req.query.contactType == "telephone" || req.query.contactType == "email" || req.query.contactType == "fax") {

@@ -87,7 +87,10 @@ var defaults = {
   
   //immigration status
   addImmigration : false,
-  ImmigrationUpdated : false
+  ImmigrationUpdated : false,
+  
+//messagecentre
+  toaster : null
 };
 
 var authority = {
@@ -144,6 +147,40 @@ function changeSex(sex) {
   }
 }
 
+//data.toaster = messageCentre(item, state);
+function messageCentre(item, type, state) {
+  var message;
+  if (state == "adding") {
+    state = "added";
+  }
+  if (type == "phone" || type == "fax" || type == "textPhone" || type == "typeTalk" || type == "other-phone") {
+    type = "number";
+  }
+  if (type == "email") {
+    type = "address";
+  }
+  if (type == "other") {
+    type = "";
+  }
+  if (state == "updating") {
+    state = "updated";
+  }
+  if (state == "correcting") {
+    state = "corrected";
+  }
+  if (state == "removing") {
+    state = "ended";
+  }
+  if (type == null) {
+    message = `${item} ${state}`;
+  } else {
+    message = `${item} ${type} ${state}`;
+  }
+  console.log(`message = ${message}`);
+  return message
+}
+
+module.exports.messageCentre = messageCentre;
 module.exports.authority = authority;
 module.exports.changeSex = changeSex;
 module.exports.flip = flip;

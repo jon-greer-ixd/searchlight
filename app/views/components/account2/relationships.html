@@ -1,0 +1,12 @@
+        <div name="Relationships" id="relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Relationships</h2>
+          <div ng-class="{'sl-primary-card': data.relationships.empty || !data.relationships}" class="sl-primary-card">
+            <!-- ngIf: !data.relationships && relationshipsTimeout -->
+            <!-- ngIf: !data.relationships && !relationshipsTimeout -->
+            <!-- ngIf: data.relationships.empty --><div class="row ng-scope" ng-if="data.relationships.empty">
+              <div class="col-xs-12">No relationships held for this customer.
+              </div>
+            </div><!-- end ngIf: data.relationships.empty -->
+            <!-- ngIf: data.relationships && !data.relationships.empty -->
+          </div>
+        </div>
