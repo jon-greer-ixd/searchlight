@@ -14,6 +14,8 @@ var defaults = require('./defaults.js').defaults;
 
 var contactTypes = require('./defaults.js').contactTypes;
 
+var personalDetails = require('./defaults.js').personalDetails;
+
 var flip = require('./defaults.js').flip;
 
 var changeSex = require('./defaults.js').changeSex;
@@ -349,6 +351,7 @@ router.use('/', main);
     }
   }
     
+  req.session.data.personalDetails = personalDetails;
   req.session.data.contactTypes = contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
       
@@ -596,6 +599,7 @@ router.get(/edit-person-handler/, function (req, res) {
   var next = "gender/update";
   var item;
   var x;
+  
   for (x in req.query.data) {
     item = req.query.data[x];
     if (item === "gender" ) {

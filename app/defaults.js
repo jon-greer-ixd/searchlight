@@ -115,6 +115,11 @@ var contactTypes = {
   "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Other contact method", value : "Fred the Pigeon"}
 }
 
+var personalDetails = {
+  "nationality" : {state : null, show : false, display : "Nationality", value : null}
+}
+
+
 //  prints all the items
 //  Object.keys(contactTypes).map(e => {
 //    console.log(`key = ${e} state = ${contactTypes[e].state}`)
@@ -186,3 +191,4 @@ module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;
 module.exports.contactTypes = contactTypes;
+module.exports.personalDetails = personalDetails;
