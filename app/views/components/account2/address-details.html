@@ -1,0 +1,171 @@
+<div id="address-pane">
+  
+  <div class="previous-addresses">
+    
+    <div class="grid-row" id="correspondence">
+    
+      <div class="column-one-third" >
+        <ul>
+          <li>Correspondence address</li>
+          {% if correspondence == true %}
+            <li class="sl-secondary-text-color sl-metadata">
+              {{editDate}} - present
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      {% if correspondence === true %}
+        {% include "components/account2/correspondence.html" %}
+      {% else %}
+        <div class="column-one-third">
+        </div>
+        <div class="column-two-thirds column-last">
+          <ul class="edit-menu">
+<!--
+            <li>
+              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a>
+            </li>
+-->
+            <li>
+              <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add a correspondence address</a>
+            </li>
+            {% if data['updateType'] === 'end' %}
+              <li>
+                <a data-toggle="modal" data-target="#correspondence_modal" class="under-link">View maintenance</a> 
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% endif %}
+      
+    </div>
+    
+  </div>
+  
+  <hr class="light">
+  
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      <ul>
+        <li>Residential address</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          
+            {% if residentialaddress.updated === true %} 
+              {% if data['updateType'] === "correctDate" or data['updateType'] === "correctToNew" or data['updateType'] === "correctNew" or data['updateType'] === "correctStatusDlo" or data['updateType'] === "correctChangeCherish" or data['updateType'] === "correctAddCherish" or data['updateType'] === "correctRemoveCherish" %}
+                {{startdate}} 
+              {% else %}
+                {{editDate}}
+              {% endif %}
+            {% else %}
+              {{startdate}}
+            {% endif %}
+          – present
+         
+        </li>
+      </ul>
+    </div>
+  
+    <div class="column-one-third">
+      <p class="address">
+        {% if residentialaddress.cherish != false %}
+          {{residentialaddress.cherish}}<br>
+        {% endif %}
+        {% if residentialaddress.status === "live" or residentialaddress.status === "dlo" %}
+          {{residentialaddress.line}}<br>
+          Gateshead<br>
+          Tyne and wear<br>
+          NE1 1HH<br>
+          England
+      </p>
+        {% endif %}
+      <ul>
+        <li class="status-item">
+        {% if residentialaddress.status === "live" %}
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">Live</span>
+        {% elif residentialaddress.status === "dlo" %}
+          <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">Dead letter office</span>
+        {% elif residentialaddress.status === "pwa" %}
+          <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">Person without address</span>
+        {% elif residentialaddress.status === "nfa" %}
+          <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">No fixed abode</span>
+        {% endif %}
+        </li>
+      </ul>
+<!--
+      <details>
+        
+          {% if residentialaddress.updated %}
+            <summary class="update-summary recent">
+              <span class="summary">
+                Updated just now - show details
+              </span>
+            </summary>
+          {% else %}
+            <summary class="update-summary old">
+              <span class="summary">
+                Updated about 5 years ago - show details
+              </span>
+            </summary>
+          {% endif %}
+        
+        <div class="panel panel-border-wide maintenance">
+          <p>View maintenance information</p>
+          <ul>
+            <li>Business system</li>
+            <li>PSCS</li>
+          </ul>
+          <ul>
+            <li>Office name</li>
+            <li>Glasgow South DO</li>
+          </ul>
+          <ul>
+            <li>Office code</li>
+            <li>1234</li>
+          </ul>
+          <ul>
+            <li>Telephone number</li>
+            <li>0191 123 456</li>
+          </ul>
+          <ul>
+            <li>Date changed</li>
+            <li>{{editDate}}</li>
+          </ul>
+        </div>
+      </details>
+-->
+<!--
+      {% if residentialaddress.updated %}
+      <p class="date-updated recent">Updated just now</p>
+      {% else %}
+      <p class="date-updated old">Updated about 5 years ago</p>
+      {% endif %}
+-->
+
+    </div>
+  
+    <div class="column-one-third">
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a> 
+<!--
+          <span class="pipe"> | </span>
+          <a href="previous-names" class="under-link">View history</a>
+-->
+        </li>
+        <li>
+          <a class="secondary-link" href="../update/update-V2">Change</a>
+        </li>
+      </ul>
+    </div>
+    
+  </div> 
+
+</div> 
+
+<hr class="light">
+  {% include "components/previous-address.html" %}

@@ -5,42 +5,15 @@
 
         {% include "components/account2/personal.html" %}
         
-        {% include "components/address.html" %}
+        {% include "components/account2/address.html" %}
         
         {% include "components/account2/contact.html" %}
         
         {% include "components/interest.html" %}
-
-
-        <div name="Benefits" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          <h2>Benefits</h2>
-
-          <!-- ngIf: !data.fullAwardHistory || data.fullAwardHistory.empty --><div class="sl-primary-card ng-scope" ng-if="!data.fullAwardHistory || data.fullAwardHistory.empty">
-            <!-- ngIf: !data.fullAwardHistory && benefitsTimeout -->
-
-            <!-- ngIf: !data.fullAwardHistory && !benefitsTimeout -->
-            <!-- ngIf: data.fullAwardHistory.empty --><div class="row ng-scope" ng-if="data.fullAwardHistory.empty">
-
-              <div class="col-xs-12">No benefits held for this customer.
-
-              </div>
-            </div><!-- end ngIf: data.fullAwardHistory.empty -->
-          </div><!-- end ngIf: !data.fullAwardHistory || data.fullAwardHistory.empty -->
-          <!-- ngIf: (data.fullAwardHistory.benefitsSummary.currentBenefits || data.fullAwardHistory.benefitsSummary.previousBenefits) && !data.fullAwardHistory.empty -->
-        </div>
-
-        <div name="Relationships" id="relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          <h2>Relationships</h2>
-          <div ng-class="{'sl-primary-card': data.relationships.empty || !data.relationships}" class="sl-primary-card">
-            <!-- ngIf: !data.relationships && relationshipsTimeout -->
-            <!-- ngIf: !data.relationships && !relationshipsTimeout -->
-            <!-- ngIf: data.relationships.empty --><div class="row ng-scope" ng-if="data.relationships.empty">
-              <div class="col-xs-12">No relationships held for this customer.
-              </div>
-            </div><!-- end ngIf: data.relationships.empty -->
-            <!-- ngIf: data.relationships && !data.relationships.empty -->
-          </div>
-        </div>
+        
+        {% include "components/account2/benefits.html" %}
+        
+        {% include "components/account2/relationships.html" %}
 
         <div class="last-card">
         {% include "components/account2/creation.html" %}

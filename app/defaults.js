@@ -153,7 +153,7 @@ function messageCentre(item, type, state) {
   if (state == "adding") {
     state = "added";
   }
-  if (type == "phone" || type == "fax" || type == "textPhone" || type == "typeTalk" || type == "other-number") {
+  if (type == "phone" || type == "fax" || type == "textPhone" || type == "typeTalk" || type == "other-phone") {
     type = "number";
   }
   if (type == "email") {

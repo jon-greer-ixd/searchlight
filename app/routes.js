@@ -483,6 +483,7 @@ router.get(/authority-handler/, function (req, res) {
 //CONTACT
 
 router.get(/contact-change-handler/, function (req, res) {
+  console.log("here");
   req.session.data.toaster = null;
   req.session.data.contactType = req.query.contactType;
   res.redirect('/update/contact/update-type')
@@ -558,7 +559,6 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   //update preference
   if (req.session.data.pref == "true" || req.session.data.preferedContactState == "updating") {
-    req.session.data.toaster = messageCentre("Prefered contact type", null, "set");
     for (var x in req.session.data.contactTypes) {
       req.session.data.contactTypes[x].pref = false;
     }
@@ -568,6 +568,7 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   if (req.session.data.preferedContactState == "updating") {
     req.session.data.preferedContactState = "updated";
+    req.session.data.toaster = messageCentre("Prefered method of contact", null, "set");
   }
   //remove preference
   if ( req.session.data.preferedContactState == "removing") {
@@ -1207,6 +1208,7 @@ router.get(/dates-handler/, function (req, res) {
 })
 
 router.get(/update-type-handler/, function (req, res) {
+  req.session.data.toaster = null;
   if (req.query.data == 'add_correspondence') {
     req.session.data.updateType = "addCorrespondence";
     content.setPageTitle(req.session.data.updateType);
