@@ -7,9 +7,15 @@
   <div class="column-one-third">
     <ul>
       <li><span class="strong">{{item.value}}</span></li>
+      
+      {% if item.display == "Home telephone" and item.exD == true %}
+        <li class="sl-secondary-text-color sl-metadata">Ex-directory</li>
+      {% endif %}
+      
       {% if item.pref == true %}
         <li class="sl-secondary-text-color sl-metadata">Prefered method of contact</li>
       {% endif %}
+      
     </ul>
   </div>
   <div class="column-one-third">
