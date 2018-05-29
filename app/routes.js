@@ -923,7 +923,7 @@ router.get(/check-sex-handler/, function (req, res) {
     req.session.data.genderUpdated = true;
   }
   req.session.data.sex = "Female";
-  res.redirect('../../account2/account')
+  res.redirect('/account2/account')
 })
 
 
@@ -1489,7 +1489,7 @@ router.get(/add-interest-handler/, function (req, res) {
 })
 
 router.get(/interest-check-handler/, function (req, res) {
-  if (req.session.data.updateType === "addInterest") {
+  if (req.session.data.updateType == "addInterest") {
     addInterest(tempInterest);
     dataState.interestAdded = true;   
   }
@@ -1497,7 +1497,7 @@ router.get(/interest-check-handler/, function (req, res) {
   if (req.session.data.updateType === "transferInterest") {
     dataState.interestTransfered = true;
   }
-  res.redirect("../account");
+  res.redirect("/account2/account");
 })
 
 router.get(/change-interest-handler/, function (req, res) {
