@@ -594,54 +594,50 @@ router.get(/check-contact-handler/, function (req, res) {
 
 
 //PERSON
-
 router.get(/edit-person-handler/, function (req, res) {
   var next = "gender/update";
-  var item;
-  var x;
+  var item = req.query.data;
+  req.session.data.editState = "adding";
+  res.redirect(req.session.data.personalDetail + "/update");
   
-  for (x in req.query.data) {
-    item = req.query.data[x];
-    if (item === "gender" ) {
-      req.session.data.gender.state = "adding";
-      next = "gender/add";
-    } else if (item ===  "death") {
-      req.session.data.adddDeath = true;
-      next = "death/update";
-    } else if (item ===  "nathan") {
-      req.session.data.nathan.state = "adding";
-      next = "nathan/update";
-    } else if (item ===  "pv") {
-      req.session.data.adddPv = true;
-      next = "pv/update";
-    } else if (item === "nationality") {
-      req.session.data.nationality.state = "adding";
-      next = "nationality/update";
-    } else if (item === "nifu") {
-      req.session.data.nifu.state = "adding";
-      req.session.data.nifu.value = "Yes";
-      next = "check";
-    } else if (item === "needs") {
-      req.session.data.specialNeeds.state = "adding";
-      next = "needs/update";
-    } else if (item === "disability") {
-      req.session.data.disability.state = "adding";
-      next = "check";
-    } else if (item === "planguage") {
-      req.session.data.adddPreferedLanguage = true;
-      next = "prefered/update";
-   } else if (item === "spokenlanguage") {
-      req.session.data.adddSpokenLanguage = true;
-      next = "spoken/update";
-    } else if (item === "marital") {
-      req.session.data.maritalState = "adding";
-      next = "marital/update";
-   } else if (item === "immigration") {
-      req.session.data.adddImmigration = true;
-      next = "immigration/update";
-   }
+  if (item === "gender" ) {
+    req.session.data.gender.state = "adding";
+    next = "gender/add";
+  } else if (item ===  "death") {
+    req.session.data.adddDeath = true;
+    next = "death/update";
+  } else if (item ===  "nathan") {
+    req.session.data.nathan.state = "adding";
+    next = "nathan/update";
+  } else if (item ===  "pv") {
+    req.session.data.adddPv = true;
+    next = "pv/update";
+//  } else if (item === "nationality") {
+//    req.session.data.nationality.state = "adding";
+//    next = "nationality/update";
+  } else if (item === "nifu") {
+    req.session.data.nifu.state = "adding";
+    req.session.data.nifu.value = "Yes";
+    next = "check";
+  } else if (item === "needs") {
+    req.session.data.specialNeeds.state = "adding";
+    next = "needs/update";
+  } else if (item === "disability") {
+    req.session.data.disability.state = "adding";
+    next = "check";
+  } else if (item === "planguage") {
+    req.session.data.adddPreferedLanguage = true;
+    next = "prefered/update";
+  } else if (item === "spokenlanguage") {
+    req.session.data.adddSpokenLanguage = true;
+    next = "spoken/update";
+  } else if (item === "marital") {
+    req.session.data.maritalState = "adding";
+    next = "marital/update";
+  } else if (item === "immigration") {
+    req.session.data.adddImmigration = true;
+    next = "immigration/update";
   }
-  res.redirect(next)
 })
 
 //check-person-handler
