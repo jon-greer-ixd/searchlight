@@ -558,6 +558,7 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   //update preference
   if (req.session.data.pref == "true" || req.session.data.preferedContactState == "updating") {
+    req.session.data.toaster = messageCentre("Prefered contact type", null, "set");
     for (var x in req.session.data.contactTypes) {
       req.session.data.contactTypes[x].pref = false;
     }
@@ -570,6 +571,7 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   //remove preference
   if ( req.session.data.preferedContactState == "removing") {
+    req.session.data.toaster = messageCentre("Prefered contact state", null, "removed");
     req.session.data.preferedContactState = "removed";
     console.log(`here preferedContactState ${req.session.data.preferedContactState}`);
   }
