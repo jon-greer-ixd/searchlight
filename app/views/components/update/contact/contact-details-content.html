@@ -30,8 +30,8 @@
         
         {% if data.contactType == "homeTelephone" %}
           <div class="multiple-choice">
-            <input id="nationalities-irish" name="ex-der" type="checkbox" value="Irish">
-            <label for="nationalities-irish">It's an ex-directory number (optional)</label>
+            <input id="exdirectory" name="exdirectory" type="checkbox" value="true" {% if data.contactState == "correcting" and data.contactTypes.homeTelephone.exD == true %} checked="checked" {% endif %}>
+            <label for="exdirectory">It's an ex-directory number (optional)</label>
           </div>
         {% endif %}
         

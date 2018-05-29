@@ -565,6 +565,11 @@ router.get(/check-contact-handler/, function (req, res) {
     req.session.data.preferedContactState = "removed";
     console.log(`here preferedContactState ${req.session.data.preferedContactState}`);
   }
+  if (req.session.data.exdirectory == "true") {
+    req.session.data.contactTypes.homeTelephone.exD = true;
+  } else {
+    req.session.data.contactTypes.homeTelephone.exD = false;
+  }
   //reset
   req.session.data.pref = false;
   req.session.data.contactState = null;

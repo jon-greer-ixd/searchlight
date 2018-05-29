@@ -81,6 +81,35 @@
             <td><a>Change</a></td>
           </tr>
         {% endif %}
+        
+        {% if data.contactType == "homeTelephone" %}
+          {% if data.contactState == "correcting" %}
+            {% if data.exdirectory != "true" and data.contactTypes.homeTelephone.exD == true  %}
+              <tr>
+                <td><span class="strong">Ex-directory number</span></td>
+                <td>No</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% else %}
+            {% if data.exdirectory == "true" %}
+              <tr>
+                <td><span class="strong">Ex-directory number</span></td>
+                <td>Yes</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% endif %}
+        {% endif %}
+        
+<!-- 
+GIVEN   the ex-directory has previously been set to TRUE
+WHEN    user is correcting
+THEN    the check your answers page should show prefered method of contact : No
+
+if exdirectory
+-->
+
                 
       </table>
       
