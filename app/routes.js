@@ -18,6 +18,8 @@ var flip = require('./defaults.js').flip;
 
 var changeSex = require('./defaults.js').changeSex;
 
+var messageCentre = require('./defaults.js').messageCentre;
+
 
 //***********
 // INTERESTS 
@@ -481,11 +483,13 @@ router.get(/authority-handler/, function (req, res) {
 //CONTACT
 
 router.get(/contact-change-handler/, function (req, res) {
+  req.session.data.toaster = null;
   req.session.data.contactType = req.query.contactType;
   res.redirect('/update/contact/update-type')
 })
 
 router.get(/update-contact-handler/, function (req, res) {
+  req.session.data.preferedContactState = null;
   var next = "check";
   if (req.query.data == "updating" || req.query.data == "correcting") {
     req.session.data.contactState = req.query.data;
@@ -498,7 +502,7 @@ router.get(/update-contact-handler/, function (req, res) {
   } else if (req.query.data == "setPref") {
      req.session.data.preferedContactState = "updating";
   }
-  console.log(`preferedContactState = ${req.session.data.preferedContactState}`);
+    console.log(`preferedContactState = ${req.session.data.preferedContactState}`);
   res.redirect(next);
 })
 
@@ -519,6 +523,10 @@ router.get(/pref-handler/, function (req, res) {
 router.get(/check-contact-handler/, function (req, res) {  
   function setSelectedContactState(newState) {
     req.session.data.contactTypes[req.session.data.contactType].state = newState;
+    req.session.data.toaster = messageCentre(
+      req.session.data.contactTypes[req.session.data.contactType].display, 
+      req.session.data.contactTypes[req.session.data.contactType].type, 
+      req.session.data.contactState);
   }
   function setSelectedContactToShow(show) {
     req.session.data.contactTypes[req.session.data.contactType].show = show;
@@ -572,6 +580,7 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   //reset
   req.session.data.pref = false;
+  req.session.data.exdirectory = false;
   req.session.data.contactState = null;
   //redirect
   res.redirect('/account2/account')
@@ -1974,6 +1983,8 @@ router.get(/nino-contacts-handler/, function (req, res) {
 
 //contact-group-handler
 router.get(/contact-group-handler/, function (req, res) {
+  req.session.data.toaster = null;
+  req.session.data.preferedContactState = null;
   req.session.data.contactState = "adding";
   console.log(req.query.contactType);
   if (req.query.contactType == "telephone" || req.query.contactType == "email" || req.query.contactType == "fax") {
