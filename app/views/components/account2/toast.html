@@ -7,7 +7,11 @@
     {% endif %}
     
     {% if interestRemoved === true %}
-      {% include "components/update/toasters/interest-removed.html" %}
+      {% include "components/update/toasters/interests-removed.html" %}
+    {% endif %}
+
+    {% if interestAdded === true %}
+      {% include "components/update/toasters/interests-added.html" %}
     {% endif %}
 
     {% if interestTransfered === true %}
