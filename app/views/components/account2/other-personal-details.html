@@ -8,10 +8,12 @@
     <hr class="light">
     
     <!-- gender -->
-    {% if data.gender.show == true %}
-      {% include "components/account2/gender.html" %}
-      <hr class="light">
-    {% endif %}
+    {% for items, item in data.personalDetails %}
+      {% if item.show == true %}
+        {% include "components/account2/nationality.html" %}
+        <hr class="light">
+      {% endif %}
+    {% endfor %}
     
     <!-- sex -->
     {% include "components/account2/sex.html" %}
@@ -41,12 +43,6 @@
       <hr class="light">
     {% endif %}
     
-    <!-- nationality -->
-    {% if data.nationality.show == true %}
-      {% include "components/account2/nationality.html" %}
-      <hr class="light">
-    {% endif %}
-
     <!-- marital status -->
     {% if data.showMarital === true %}
       {% include "components/account2/marital.html" %}

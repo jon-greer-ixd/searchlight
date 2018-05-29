@@ -4,21 +4,33 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          
+          <h2>
+            {% if data.editState == "adding" %}
+              Add
+            {% elif data.editState == "correcting" %}
+              Correct
+            {% else %}
+              Update
+            {% endif %}
+
+            {{ data.personalDetails[data.personalDetail].display | lower }}
+          </h2>
+
+<!--
           {% if data.maritalState == "adding" %}
             <h2>Add marital or civil partnership status</h2>
           {% elif data.maritalState == "updating" %}
             <h2>Update marital or civil partnership status</h2>
           {% elif data.maritalState == "correcting" %}
             <h2>Correct marital or civil partnership status</h2>
-          <!-- nationality -->
+          <!-- nationality
           {% elif data.nationality.state == "adding" %}
             <h2>Add nationality</h2>
           {% elif data.nationality.state == "updating" %}
             <h2>Update nationality</h2>
           {% elif data.nationality.state === "correcting" %}
             <h2>Correct nationality</h2>
-          <!-- disability -->
+          <!-- disability
           {% elif data.disability.state == "adding" %}
             <h2>Add disability status</h2>
           {% elif data.disability.state == "updating" %}
@@ -27,7 +39,7 @@
             <h2>Correct disability status</h2>
           {% elif data.disability.state == "removing" %}
             <h2>End disability status</h2>
-          <!-- needs -->
+          <!-- needs
           {% elif data.specialNeeds.state == "adding" %}
             <h2>Add special needs information</h2>
           {% elif data.needsState == "updating" %}
@@ -36,24 +48,26 @@
             <h2>Correct special needs information</h2>
           {% elif data.specialNeeds.state == "removing" %}
             <h2>Remove special needs information</h2>
-          <!-- NIFU -->
+          <!-- NIFU
           {% elif data.nifu.state == "adding" %}
             <h2>Add national fraud interest</h2>
           {% elif data.nifu.state == "correcting" %}
             <h2>Correct national fraud interest</h2>
           {% elif data.nifu.state == "updating" %}
             <h2>Update national fraud interest</h2>
-          <!-- Nathan -->
+          <!-- Nathan
           {% elif data.nathan.state == "adding" %}
             <h2>Add a special customer record level</h2>
           {% elif data.nathan.state == "updating" %}
             <h2>Update the special customer record level</h2>
           {% elif data.nathan.state == "removing" %}
             <h2>End the special customer record level</h2>
-          <!-- Sex -->
+          <!-- Sex
           {% elif data.sex.state == "correcting" %}
             <h2>Correct sex</h2>
           {% endif %}
+
+-->          
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               

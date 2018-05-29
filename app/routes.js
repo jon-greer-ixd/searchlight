@@ -14,8 +14,6 @@ var defaults = require('./defaults.js').defaults;
 
 var contactTypes = require('./defaults.js').contactTypes;
 
-var personalDetails = require('./defaults.js').personalDetails;
-
 var flip = require('./defaults.js').flip;
 
 var changeSex = require('./defaults.js').changeSex;
@@ -351,7 +349,7 @@ router.use('/', main);
     }
   }
     
-  req.session.data.personalDetails = personalDetails;
+  req.session.data.personalDetails = require('./defaults.js').personalDetails;
   req.session.data.contactTypes = contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
       
@@ -600,112 +598,58 @@ router.get(/edit-person-handler/, function (req, res) {
   req.session.data.editState = "adding";
   res.redirect(req.session.data.personalDetail + "/update");
   
-  if (item === "gender" ) {
-    req.session.data.gender.state = "adding";
-    next = "gender/add";
-  } else if (item ===  "death") {
-    req.session.data.adddDeath = true;
-    next = "death/update";
-  } else if (item ===  "nathan") {
-    req.session.data.nathan.state = "adding";
-    next = "nathan/update";
-  } else if (item ===  "pv") {
-    req.session.data.adddPv = true;
-    next = "pv/update";
-//  } else if (item === "nationality") {
-//    req.session.data.nationality.state = "adding";
-//    next = "nationality/update";
-  } else if (item === "nifu") {
-    req.session.data.nifu.state = "adding";
-    req.session.data.nifu.value = "Yes";
-    next = "check";
-  } else if (item === "needs") {
-    req.session.data.specialNeeds.state = "adding";
-    next = "needs/update";
-  } else if (item === "disability") {
-    req.session.data.disability.state = "adding";
-    next = "check";
-  } else if (item === "planguage") {
-    req.session.data.adddPreferedLanguage = true;
-    next = "prefered/update";
-  } else if (item === "spokenlanguage") {
-    req.session.data.adddSpokenLanguage = true;
-    next = "spoken/update";
-  } else if (item === "marital") {
-    req.session.data.maritalState = "adding";
-    next = "marital/update";
-  } else if (item === "immigration") {
-    req.session.data.adddImmigration = true;
-    next = "immigration/update";
-  }
+//  if (item === "gender" ) {
+//    req.session.data.gender.state = "adding";
+//    next = "gender/add";
+//  } else if (item ===  "death") {
+//    req.session.data.adddDeath = true;
+//    next = "death/update";
+//  } else if (item ===  "nathan") {
+//    req.session.data.nathan.state = "adding";
+//    next = "nathan/update";
+//  } else if (item ===  "pv") {
+//    req.session.data.adddPv = true;
+//    next = "pv/update";
+////  } else if (item === "nationality") {
+////    req.session.data.nationality.state = "adding";
+////    next = "nationality/update";
+//  } else if (item === "nifu") {
+//    req.session.data.nifu.state = "adding";
+//    req.session.data.nifu.value = "Yes";
+//    next = "check";
+//  } else if (item === "needs") {
+//    req.session.data.specialNeeds.state = "adding";
+//    next = "needs/update";
+//  } else if (item === "disability") {
+//    req.session.data.disability.state = "adding";
+//    next = "check";
+//  } else if (item === "planguage") {
+//    req.session.data.adddPreferedLanguage = true;
+//    next = "prefered/update";
+//  } else if (item === "spokenlanguage") {
+//    req.session.data.adddSpokenLanguage = true;
+//    next = "spoken/update";
+//  } else if (item === "marital") {
+//    req.session.data.maritalState = "adding";
+//    next = "marital/update";
+//  } else if (item === "immigration") {
+//    req.session.data.adddImmigration = true;
+//    next = "immigration/update";
+//  }
 })
 
 //check-person-handler
-router.get(/check-person-handler/, function (req, res) {
-  //nationality
-  if (req.session.data.nationality.state === "adding") {
-    req.session.data.nationality.state = "added";
-    req.session.data.nationality.show = true;
-  } else if (req.session.data.nationality.state === "updating") {
-    req.session.data.nationality.state = "updated";
-  } else if (req.session.data.nationality.state === "correcting") {
-    req.session.data.nationality.state = "corrected";
-  //marital
-  } else if (req.session.data.maritalState === "adding") {
-    req.session.data.maritalState = "added";
-    req.session.data.showMarital = true;
-  } else if (req.session.data.maritalState === "updating") {
-    req.session.data.maritalState = "updated";
-  } else if (req.session.data.maritalState === "correcting") {
-    req.session.data.maritalState = "corrected";
-  //needs
-  } else if (req.session.data.specialNeeds.state === "adding") {
-    req.session.data.specialNeeds.state = "added";
-    req.session.data.specialNeeds.show = true;
-  } else if (req.session.data.specialNeeds.state === "correcting") {
-    req.session.data.specialNeeds.state = "corrected";
-  } else if (req.session.data.specialNeeds.state === "updating") {
-    req.session.data.specialNeeds.state = "updated";
-  //disability
-  } else if (req.session.data.disability.state === "adding") {
-    req.session.data.disability.state = "added";
-    req.session.data.disability.show = true;
-  } else if (req.session.data.disability.state === "removing") {
-    req.session.data.disability.state = "removed";
-    req.session.data.disability.show = false;
-    req.session.data.disability.value = false;
-  } else if (req.session.data.disability.state === "correcting") {
-    req.session.data.disability.state = "corrected";
-    req.session.data.disability.show = false;
-    req.session.data.disability.value = false;
-  } else if (req.session.data.disability.state === "updating") {
-    req.session.data.disability.state = "updated";
-    req.session.data.disability.value = req.session.data.disabilityvalue;
-  //nifu
-  } else if (req.session.data.nifu.state === "adding") {
-    req.session.data.nifu.state = "added";
-    req.session.data.nifu.show = true;
-  } else if (req.session.data.nifu.state === "updating") {
-    req.session.data.nifu.state = "updated";
-    req.session.data.nifu.show = false;
-  } else if (req.session.data.nifu.state === "correcting") {
-    req.session.data.nifu.state = "corrected";
-    req.session.data.nifu.show = false;
-  //sex
-  } else if (req.session.data.sex.state === "correcting") {
-    req.session.data.sex.state = "corrected";
-  //nathan
-  } else if (req.session.data.nathan.state === "adding") {
-    req.session.data.nathan.value = req.session.data.nathanvalue;
-    req.session.data.nathan.state = "added";
-    req.session.data.nathan.show = true;
-  } else if (req.session.data.nathan.state === "updating") {
-    req.session.data.nathan.value = req.session.data.nathanvalue;
-    req.session.data.nathan.state = "updated";
-  } else if (req.session.data.nathan.state === "removing") {
-    req.session.data.nathan.value = 1;
-    req.session.data.nathan.state = "removed";
-    req.session.data.nathan.show = false;
+router.get(/check-person-handler/, function (req, res) {  
+  if (req.session.data.editState == "adding") {
+    req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
+    req.session.data.personalDetails[req.session.data.personalDetail].show = true;
+  } else if (req.session.data.editState == "updating") {
+    req.session.data.personalDetails[req.session.data.personalDetail].state = "updated";
+  } else if (req.session.data.editState == "correcting") {
+    req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
+  } else if (req.session.data.editState == "ending") {
+    req.session.data.personalDetails[req.session.data.personalDetail].state = "ended";
+    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
   }
   res.redirect('/account2/account')
 })
@@ -754,9 +698,8 @@ router.get(/nathan-type-handler/, function (req, res) {
 
 //nifu
 router.get(/nifu-type-handler/, function (req, res) {
-  req.session.data.nifu.state = req.query.data;
-  console.log(req.session.data.nifu.state);
-  req.session.data.nifu.value = flip(req.session.data.nifu.value);
+  req.session.data.personalDetails.nifu.state = req.query.data;
+  req.session.data.personalDetails.nifu.value = flip(req.session.data.personalDetails.nifu.value);
   res.redirect('/update/person/check')
 })
 

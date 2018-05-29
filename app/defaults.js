@@ -36,12 +36,9 @@ var defaults = {
   sex : { state : null, show : true },
   sexValue : "Male",
   
-  //nathan
+  //nathan (sensitivity level)
   nathan : { value : null, state : null, show : false },
   
-  //nifu
-  nifu : { value : null, state : null, show : false },
-
   //disability
   disability : {state : null, show : false},
   disabilityValue : null,
@@ -116,6 +113,7 @@ var contactTypes = {
 }
 
 var personalDetails = {
+  "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null}
 }
 

@@ -4,13 +4,16 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.editState === "adding" %}
-            <h2>Add nationality</h2>
-          {% elif data.nationality.state === "correcting" %}
-            <h2>Correct nationality</h2>
+          <h2>
+          {% if data.editState == "adding" %}
+            Add
+          {% elif data.editState == "correcting" %}
+            Correct
           {% else %}
-            <h2>Update nationality</h2>
-          {% endif  %}
+            Update
+          {% endif %}
+            nationality
+          </h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               {% include "components/update/person/nationality/update-content.html" %}
