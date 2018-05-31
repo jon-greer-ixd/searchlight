@@ -3,7 +3,35 @@
       <div class="column-one-half">
         <table class="table"> 
           
-          <!-- marital -->
+          <!-- nifu -->
+          <!-- nationality -->
+          <tr>
+            <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
+            <td>
+              {% if data.personalDetail == "specialNeeds" %}
+                {% for item in data.personalDetailValue %}
+                  {{item}}, <br>
+                {% endfor %}
+              {% else %}
+                {{data.personalDetailValue}}
+              {% endif %}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+          
+        </table>
+      <br>
+      <form method="get" action="check-person-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="/account2/account">Cancel</a>
+    </div>
+  </div>
+
+
+          <!-- marital
 <!--
           {% if data.maritalState === "adding" or data.maritalState === "updating" or data.maritalState === "correcting" %}
             <tr>
@@ -14,7 +42,7 @@
           {% endif %}
 -->
           
-          <!-- sex -->
+          <!-- sex
 <!--
           {% if data.sex.state === "correcting" %}
             <tr>
@@ -25,7 +53,7 @@
           {% endif %}
 -->
           
-          <!-- nathan -->
+          <!-- nathan
 <!--
           {% if data.nathan.state === "adding" or data.nathan.state === "updating" or data.nathan.state === "correcting" %}
             <tr>
@@ -54,29 +82,9 @@
           {% endif %}
 -->
           
-          <!-- nifu -->
-<!--
-          {% if data.personalDetail == 'nifu" %}
-            <tr>
-              <td><span class="strong">National fraud interest</span></td>
-              <td>{{data.nifu.value}}</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
--->
           
-          <!-- nationality -->
-<!--
-          {% if data.personalDetail == "nationality" %}
-            <tr>
-              <td><span class="strong">Nationality</span></td>
-              <td>{{data.nationalityValue}}</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
--->
           
-          <!-- disability -->
+          <!-- disability
 <!--
           {% if data.disability.state === "adding" %}
             <tr>
@@ -110,7 +118,7 @@
           {% endif %}
 -->
           
-          <!-- special needs -->
+          <!-- special needs
 <!--
           {% if data.specialNeeds.state === "adding" or data.specialNeeds.state === "updating" or data.specialNeeds.state === "correcting" %}
             <tr>
@@ -124,14 +132,3 @@
             </tr>
           {% endif %}
 -->
-          
-        </table>
-      <br>
-      <form method="get" action="check-person-handler">
-        <div class="form-group">
-          <input class="button" type="submit" value="Submit">
-        </div>
-      </form>
-      <a href="/account2/account">Cancel</a>
-    </div>
-  </div>

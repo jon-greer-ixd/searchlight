@@ -593,10 +593,16 @@ router.get(/check-contact-handler/, function (req, res) {
 
 //PERSON
 router.get(/edit-person-handler/, function (req, res) {
+  console.log(req.session.data.personalDetail);
   var next = "gender/update";
   var item = req.query.data;
   req.session.data.editState = "adding";
-  res.redirect(req.session.data.personalDetail + "/update");
+  if (req.session.data.personalDetail == "nifu") {
+    req.session.data.personalDetailValue = "Yes";
+    res.redirect('/update/person/check');
+  } else {
+    res.redirect(req.session.data.personalDetail + "/update");
+  }
   
 //  if (item === "gender" ) {
 //    req.session.data.gender.state = "adding";
@@ -651,6 +657,9 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "ended";
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
   }
+  req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
+  req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
+  console.log(req.session.data.personalDetails[req.session.data.personalDetail].value);
   res.redirect('/account2/account')
 })
 

@@ -7,52 +7,33 @@
 
     <hr class="light">
     
-    <!-- gender -->
-    {% for items, item in data.personalDetails %}
-      {% if item.show == true %}
-        {% include "components/account2/nationality.html" %}
-        <hr class="light">
-      {% endif %}
-    {% endfor %}
-    
     <!-- sex -->
     {% include "components/account2/sex.html" %}
     <hr class="light">
+    
+    <!-- gender -->
+    {% for items, item in data.personalDetails %}
+      {% if item.show == true %}
+        {% if items == "nathan" %}
+          {% include "components/account2/nathan.html" %}
+        {% elif items == "nifu" %}
+          {% include "components/account2/nifu.html" %}
+        {% elif items == "disability" %}
+          {% include "components/account2/disability.html" %}
+        {% elif items == "specialNeeds" %}
+          {% include "components/account2/special-needs.html" %}
+        {% elif items == "nationality" %}
+          {% include "components/account2/nationality.html" %}
+        {% elif items == "marital" %}
+          {% include "components/account2/marital.html" %}
+        {% endif %}
+        <!-- Spoken language -->
+        <!-- prefered language -->
+        <!-- PO -->    
+        <hr class="light">
+      {% endif %}
+    {% endfor %}
 
-    <!-- nathan -->
-    {% if data.nathan.show == true %}
-      {% include "components/account2/nathan.html" %}
-      <hr class="light">
-    {% endif %}
-    
-    <!-- nifu -->
-    {% if data.nifu.show === true %}
-      {% include "components/account2/nifu.html" %}
-      <hr class="light">
-    {% endif %}
-            
-    <!-- disability -->
-    {% if data.disability.show === true %}
-      {% include "components/account2/disability.html" %}
-      <hr class="light">
-    {% endif %}
-    
-    <!-- special needs -->
-    {% if data.specialNeeds.show === true %}
-      {% include "components/account2/special-needs.html" %}
-      <hr class="light">
-    {% endif %}
-    
-    <!-- marital status -->
-    {% if data.showMarital === true %}
-      {% include "components/account2/marital.html" %}
-      <hr class="light">
-    {% endif %}
-
-    <!-- Spoken language -->
-    <!-- prefered language -->
-    <!-- PO -->    
-    
     <!-- Spoken language -->
     {% if data.spokenLanguageUpdated == true %}
       <div class="grid-row">

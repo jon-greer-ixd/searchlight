@@ -54,11 +54,7 @@ var defaults = {
   
   //nationality
   nationality : {state : null, show : false},
-  nationalityValue : null,
   
-  //special needs
-  specialNeeds : {state : null, show : false},
-
   //marital status
   maritalStatus : null,
   maritalState : null,
@@ -68,12 +64,7 @@ var defaults = {
   dead : false,
   deathState : null,
   showDeath : false,
-  
-  //pv
-  potentiallyViolent : null,
-  pvState : null,
-  showPv : false,
-    
+      
   //prefered language
   addPreferedLanguage : false,
   preferedLanguageUpdated : false,
@@ -114,9 +105,10 @@ var contactTypes = {
 
 var personalDetails = {
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
+//  "potentiallyViolent" : {state : null, show : false, display : "Potentially violent", value : null},
+  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null}
 }
-
 
 //  prints all the items
 //  Object.keys(contactTypes).map(e => {

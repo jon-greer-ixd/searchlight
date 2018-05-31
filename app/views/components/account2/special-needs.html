@@ -4,9 +4,9 @@
   </div>
   <div class="column-one-third">
     <ul>
-      {% for need in data.needs %}
+      {% for need in data.personalDetails.specialNeeds.value %}
         <li class="strong"> 
-          {{need}}
+          {{need}},
         </li>
       {% endfor %}
     </ul>

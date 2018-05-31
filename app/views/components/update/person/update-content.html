@@ -27,89 +27,96 @@
       <div class="form-group">
       <fieldset>
         
+<!--
         {% if data.nathan.show === false %}
           <div class="multiple-choice">
             <input id="nathan" name="personalDetail" type="radio" value="nathan" >
             <label for="nathan">Special customer record level</label>
           </div>
         {% endif %}
+-->
         
+<!--
         {% if data.deathUpdated === false %}
           <div class="multiple-choice">
             <input id="death" name="personalDetail" type="radio" value="death" >
             <label for="death">Date of death details</label>
           </div>
         {% endif %}
+-->
         
+<!--
         {% if data.pvUpdated === false %}
           <div class="multiple-choice">
             <input id="pv" name="personalDetail" type="radio" value="pv" >
             <label for="pv">Potentially violent details</label>
           </div>
         {% endif %}
+-->
         
-        {% if data.personalDetails.nifu.show == false %}
-          <div class="multiple-choice">
-            <input id="nifu" name="personalDetail" type="radio" value="nifu" >
-            <label for="nifu">National fraud interest</label>
-          </div>
-        {% endif %}
+        {% for items, item in data.personalDetails %}
+          {% if item.show == false %}
+            <div class="multiple-choice">
+              <input id={{items | lower}} name="personalDetail" type="radio" value={{items}} >
+              <label for={{items | lower}}>{{item.display}}</label>
+            </div>
+          {% endif %}
+        {% endfor %}
         
-        {% if data.specialNeeds.show === false %}
-          <div class="multiple-choice">
-            <input id="needs" name="personalDetail" type="radio" value="needs" >
-            <label for="needs">Special needs</label>
-          </div>
-        {% endif %}
         
+<!--
         {% if data.disability.show === false %}
           <div class="multiple-choice">
             <input id="disability" name="personalDetail" type="radio" value="disability" >
             <label for="disability">Disability status</label>
           </div>
         {% endif %}
+-->
         
+<!--
         {% if data.gender.show === false %}
           <div class="multiple-choice">
             <input id="gender" name="personalDetail" type="radio" value="gender" >
             <label for="gender">Gender recognition</label>
           </div>
         {% endif %}
+-->
                 
+<!--
         {% if data.showPreferedLanguage === false %}
           <div class="multiple-choice">
             <input id="planguage" name="personalDetail" type="radio" value="planguage" >
             <label for="planguage">Preferred language</label>
           </div>
         {% endif %}
-        
-        {% if data.nationality.show === false %}
-          <div class="multiple-choice">
-            <input id="nationality" name="personalDetail" type="radio" value="nationality" >
-            <label for="nationality">Nationality</label>
-          </div>
-        {% endif %}
-        
+-->
+                
+<!--
         {% if data.showSpokenLanguage === false %}
           <div class="multiple-choice">
             <input id="spokenlanguage" name="personalDetail" type="radio" value="spokenlanguage" >
             <label for="spokenlanguage">Spoken language</label>
           </div>
         {% endif %}
+-->
         
+<!--
         {% if data.showMarital === false %}
           <div class="multiple-choice">
             <input id="marital" name="personalDetail" type="radio" value="marital" >
             <label for="marital">Marital or civil partnership status</label>
           </div>
         {% endif %}
+-->
         
+<!--
         {% if data.showImmigration === false %}
           <div class="multiple-choice">
             <input id="immigration" name="personalDetail" type="radio" value="immigration" >
             <label for="immigration">Immigration information</label>
           </div>
         {% endif %}
+-->
         
         </fieldset>        
       </div> 
