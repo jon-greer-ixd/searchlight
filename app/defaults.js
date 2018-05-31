@@ -52,14 +52,6 @@ var defaults = {
   //gender-pre-gra
   preGra : { state : null, show : false },
   
-  //nationality
-  nationality : {state : null, show : false},
-  
-  //marital status
-  maritalStatus : null,
-  maritalState : null,
-  showMarital : false,
-  
   //death
   dead : false,
   deathState : null,
@@ -107,7 +99,8 @@ var personalDetails = {
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
 //  "potentiallyViolent" : {state : null, show : false, display : "Potentially violent", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
-  "nationality" : {state : null, show : false, display : "Nationality", value : null}
+  "nationality" : {state : null, show : false, display : "Nationality", value : null},
+  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
 
 //  prints all the items
