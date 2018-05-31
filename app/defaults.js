@@ -36,12 +36,9 @@ var defaults = {
   sex : { state : null, show : true },
   sexValue : "Male",
   
-  //nathan
+  //nathan (sensitivity level)
   nathan : { value : null, state : null, show : false },
   
-  //nifu
-  nifu : { value : null, state : null, show : false },
-
   //disability
   disability : {state : null, show : false},
   disabilityValue : null,
@@ -55,28 +52,11 @@ var defaults = {
   //gender-pre-gra
   preGra : { state : null, show : false },
   
-  //nationality
-  nationality : {state : null, show : false},
-  nationalityValue : null,
-  
-  //special needs
-  specialNeeds : {state : null, show : false},
-
-  //marital status
-  maritalStatus : null,
-  maritalState : null,
-  showMarital : false,
-  
   //death
   dead : false,
   deathState : null,
   showDeath : false,
-  
-  //pv
-  potentiallyViolent : null,
-  pvState : null,
-  showPv : false,
-    
+      
   //prefered language
   addPreferedLanguage : false,
   preferedLanguageUpdated : false,
@@ -113,6 +93,14 @@ var contactTypes = {
   "textPhone" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "Text phone", value : "0191 888 888"},
   "typeTalk" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "TypeTalk", value : "0191 999 999"},
   "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Other contact method", value : "Fred the Pigeon"}
+}
+
+var personalDetails = {
+  "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
+//  "potentiallyViolent" : {state : null, show : false, display : "Potentially violent", value : null},
+  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
+  "nationality" : {state : null, show : false, display : "Nationality", value : null},
+  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
 
 //  prints all the items
@@ -186,3 +174,4 @@ module.exports.changeSex = changeSex;
 module.exports.flip = flip;
 module.exports.defaults = defaults;
 module.exports.contactTypes = contactTypes;
+module.exports.personalDetails = personalDetails;

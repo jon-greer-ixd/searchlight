@@ -4,16 +4,19 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.maritalState == "adding" %}
-            <h2>Add marital or civil partnership status</h2>
-          {% elif data.maritalState == "correcting" %}
-            <h2>Correct marital or civil partnership status</h2>
+          <h2>
+          {% if data.editState == "adding" %}
+            Add
+          {% elseif data.editState == "correcting" %}
+            Correct
           {% else %}
-            <h2>Update marital or civil partnership status</h2>
-          {% endif  %}
+            Update
+          {% endif %}
+            {{data.personalDetails[data.personalDetail].display | lower}}
+          </h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
-              {% include "components/update/person/marital/update-content.html" %}
+              {% include "components/update/person/specialneeds/update-content.html" %}
           </div>
         </div>
       </div>

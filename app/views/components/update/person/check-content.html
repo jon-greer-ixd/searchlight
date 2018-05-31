@@ -3,7 +3,36 @@
       <div class="column-one-half">
         <table class="table"> 
           
-          <!-- marital -->
+          <!-- nifu -->
+          <!-- nationality -->
+          <tr>
+            <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
+            <td>
+              {% if data.personalDetail == "specialNeeds" %}
+                {% for item in data.personalDetailValue %}
+                  {{item}}, <br>
+                {% endfor %}
+              {% else %}
+                {{data.personalDetailValue}}
+              {% endif %}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+          
+        </table>
+      <br>
+      <form method="get" action="check-person-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="/account2/account">Cancel</a>
+    </div>
+  </div>
+
+
+          <!-- marital
+<!--
           {% if data.maritalState === "adding" or data.maritalState === "updating" or data.maritalState === "correcting" %}
             <tr>
               <td><span class="strong">Marital or civil partnership status</span></td>
@@ -11,8 +40,10 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
+-->
           
-          <!-- sex -->
+          <!-- sex
+<!--
           {% if data.sex.state === "correcting" %}
             <tr>
               <td><span class="strong">Sex</span></td>
@@ -20,8 +51,10 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
+-->
           
-          <!-- nathan -->
+          <!-- nathan
+<!--
           {% if data.nathan.state === "adding" or data.nathan.state === "updating" or data.nathan.state === "correcting" %}
             <tr>
               <td><span class="strong">Special customer record level</span></td>
@@ -47,26 +80,12 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
+-->
           
-          <!-- nifu -->
-          {% if data.nifu.state == "adding" or data.nifu.state == "updating" or data.nifu.state == "correcting" %}
-            <tr>
-              <td><span class="strong">National fraud interest</span></td>
-              <td>{{data.nifu.value}}</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
           
-          <!-- nationality -->
-          {% if data.nationality.state === "adding" or data.nationality.state === "updating" or data.nationality.state === "correcting" %}
-            <tr>
-              <td><span class="strong">Nationality</span></td>
-              <td>{{data.nationalityValue}}</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
           
-          <!-- disability -->
+          <!-- disability
+<!--
           {% if data.disability.state === "adding" %}
             <tr>
               <td><span class="strong">Disability status</span></td>
@@ -76,6 +95,9 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
+-->
+          
+<!--
           {% if data.disability.state === "correcting" %}
             <tr>
               <td><span class="strong">Disability status</span></td>
@@ -85,14 +107,19 @@
               <td><a>&nbsp;</a></td>
             </tr>
           {% endif %}
+-->
+          
+<!--
           {% if data.disability.state === "removing" %}
             <tr>
               <td><span class="strong">End disability status</span></td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
+-->
           
-          <!-- special needs -->
+          <!-- special needs
+<!--
           {% if data.specialNeeds.state === "adding" or data.specialNeeds.state === "updating" or data.specialNeeds.state === "correcting" %}
             <tr>
               <td><span class="strong">What does this person need?</span></td>
@@ -104,23 +131,4 @@
               <td><a>Change</a></td>
             </tr>
           {% endif %}
-
-                    
-<!--
-          <tr>
-            <td><span class="strong">Notified or decision date</span></td>
-            <td>{{data['prepopulatedDate']}}</td>
-            <td><a>Change</a></td>
-          </tr>
 -->
-          
-        </table>
-      <br>
-      <form method="get" action="check-person-handler">
-        <div class="form-group">
-          <input class="button" type="submit" value="Submit">
-        </div>
-      </form>
-      <a href="/account2/account">Cancel</a>
-    </div>
-  </div>
