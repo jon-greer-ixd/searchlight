@@ -32,26 +32,13 @@ var defaults = {
 
   //PERSONAL DETAILS  
   
-  //sex
-  sex : { state : null, show : true },
-  sexValue : "Male",
-  
   //nathan (sensitivity level)
   nathan : { value : null, state : null, show : false },
   
   //disability
   disability : {state : null, show : false},
   disabilityValue : null,
-  
-  //gender
-  gender : {state : null, show : false },
-  
-  //gender-gra
-  gra : { state : null, show : false },
-  
-  //gender-pre-gra
-  preGra : { state : null, show : false },
-  
+    
   //death
   dead : false,
   deathState : null,
@@ -96,12 +83,24 @@ var contactTypes = {
 }
 
 var personalDetails = {
+  "sex" : {state : null, show : true, display : "Sex", value : "Male"},
+  "gender" : {state : null, show : true, display : "Gender", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
 //  "potentiallyViolent" : {state : null, show : false, display : "Potentially violent", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
+
+//  //gender
+//  gender : {state : null, show : false },
+//  
+//  //gender-gra
+//  gra : { state : null, show : false },
+//  
+//  //gender-pre-gra
+//  preGra : { state : null, show : false },
+
 
 //  prints all the items
 //  Object.keys(contactTypes).map(e => {
