@@ -9,7 +9,9 @@
         
     {% for items, item in data.personalDetails %}
       {% if item.show == true %}
-        {% if items == "sex" %}
+        {% if items == "gender" %}
+          {% include "components/account2/gender.html" %}
+        {% elif items == "sex" %}
           {% include "components/account2/sex.html" %}
         {% elif items == "nathan" %}
           {% include "components/account2/nathan.html" %}

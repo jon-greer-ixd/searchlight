@@ -612,7 +612,7 @@ router.get(/add-person-handler/, function (req, res) {
 //  }
   
 //  if (item === "gender" ) {
-//    req.session.data.gender.state = "adding";
+//    req.session.data.personalDetails.gender.state = "adding";
 //    next = "gender/add";
 //  } else if (item ===  "death") {
 //    req.session.data.adddDeath = true;
@@ -781,20 +781,20 @@ function updateGender(show, hide) {
 router.get(/add-gender-handler/, function (req, res) {
   req.session.data.sex = changeSex(req.session.data.sex);
   if (req.query.data === "gra") {
-    req.session.data.gra.state = "adding";
+    req.session.data.personalDetails.gra.state = "adding";
   } else {
-    req.session.data.preGra.state = "adding";
+    req.session.data.personalDetails.preGra.state = "adding";
   }
   res.redirect('/update/person/gender/update')
 })
 
 router.get(/gender-type-handler/, function (req, res) {
-  if (req.session.data.gra.state === "updating") {
-    req.session.data.gra.state = req.query.data;
-    console.log("gra.state = " + req.session.data.gra.state);
+  if (req.session.data.personalDetails.gra.state === "updating") {
+    req.session.data.personalDetails.gra.state = req.query.data;
+    console.log("gra.state = " + req.session.data.personalDetails.gra.state);
   } else {
-    req.session.data.preGra.state = req.query.data;
-    console.log("preGra.state = " + req.session.data.preGra.state);
+    req.session.data.personalDetails.preGra.state = req.query.data;
+    console.log("preGra.state = " + req.session.data.personalDetails.preGra.state);
   }
   res.redirect('/update/person/gender/update')
 })
@@ -852,30 +852,30 @@ router.get(/updatecontact-handler/, function (req, res) {
 
 //here
 //router.get(/update-gender-handler/, function (req, res) {
-//  if (req.session.data.gra.state === "adding") {
-//    req.session.data.gra.show = true;
-//    if(req.session.data.preGra.show == null) {
-//      req.session.data.preGra.show = false;
+//  if (req.session.data.personalDetails.gra.state === "adding") {
+//    req.session.data.personalDetails.gra.show = true;
+//    if(req.session.data.personalDetails.preGra.show == null) {
+//      req.session.data.personalDetails.preGra.show = false;
 //    }
-//  } else if (req.session.data.preGra.state === "adding") {
-//    req.session.data.preGra.show = true;
+//  } else if (req.session.data.personalDetails.preGra.state === "adding") {
+//    req.session.data.personalDetails.preGra.show = true;
 //  }
 //  res.redirect('/update/person/gender/check')
 //})
 
 router.get(/check-gender-handler/, function (req, res) {
-  if (req.session.data.gra.state === "adding") {
-    req.session.data.gra.state = "added";
-    req.session.data.gender.show = true;
-    req.session.data.gra.show = true;
-    if (req.session.data.preGra.show === null) {
-      req.session.data.preGra.show = false;
+  if (req.session.data.personalDetails.gra.state === "adding") {
+    req.session.data.personalDetails.gra.state = "added";
+    req.session.data.personalDetails.gender.show = true;
+    req.session.data.personalDetails.gra.show = true;
+    if (req.session.data.personalDetails.preGra.show === null) {
+      req.session.data.personalDetails.preGra.show = false;
       req.session.data.sex
     }
-  } else if (req.session.data.preGra.state === "adding") {
-    req.session.data.preGra.state = "added"    
-    req.session.data.gender.show = true;
-    req.session.data.preGra.show = true;
+  } else if (req.session.data.personalDetails.preGra.state === "adding") {
+    req.session.data.personalDetails.preGra.state = "added"    
+    req.session.data.personalDetails.gender.show = true;
+    req.session.data.personalDetails.preGra.show = true;
   }
   res.redirect('/account2/account')
 })
@@ -914,7 +914,7 @@ router.get(/check-sex-handler/, function (req, res) {
   if(req.session.data.updateType === "correctSex") {
     req.session.data.sexChanged = true;
   } else {
-    req.session.data.genderUpdated = true;
+    req.session.data.personalDetails.genderUpdated = true;
   }
   req.session.data.sex = "Female";
   res.redirect('/account2/account')
