@@ -6,7 +6,7 @@
     <ul>
       {% for need in data.personalDetails.specialNeeds.value %}
         <li class="strong"> 
-          {{need}},
+          {{need}}
         </li>
       {% endfor %}
     </ul>
@@ -14,7 +14,7 @@
   <div class="column-one-third last-col">
     <ul class="edit-menu">
       <li>                
-        <a href="updating-handler/?feature=needs&state=updating" class="under-link" style="font-size:17px;">Change</a>
+        <a href="person-change-handler/?personalDetail=specialNeeds" class="under-link" style="font-size:17px;">Change</a>
       </li>
     </ul>
   </div>

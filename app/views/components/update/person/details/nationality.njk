@@ -1,6 +1,7 @@
+<h2 class="heading-medium question">What is the person's nationality?</h2>
 <div class="grid-row">
   <div class="column-two-thirds">
-    <form class="form" method="get" action="../check">
+    <form class="form" method="get" action="personal-detail-handler">
       <legend>
         <h1 class="visually-hidden">
           Do you know their nationality?
@@ -290,12 +291,16 @@
       
         <p class="form-block" style="margin-top:-15px;">or</p>
 
-        <div class="form-group">
-          <div class="multiple-choice">
-            <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
-            <label for="checkbox-telephone-number">Remove nationality</label>
+          <div class="form-group">
+            <div class="multiple-choice">
+              <input id="unknown" name="data" type="radio" value="unknown">
+              <label for="unknown">Nationality is unknown</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="none" name="data" type="radio" value="stateless">
+              <label for="none">The person is stateless</label>
+            </div>
           </div>
-        </div>
       
       {% endif %}
 
