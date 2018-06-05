@@ -595,7 +595,12 @@ router.get(/check-contact-handler/, function (req, res) {
 router.get(/add-person-handler/, function (req, res) {
   console.log(req.session.data.personalDetail);
   req.session.data.editState = "adding";
-  res.redirect("/update/person/update");
+  if (req.session.data.personalDetail == "nifu") {
+    req.session.data.personalDetailValue = "Yes";
+    res.redirect("/update/person/check");
+  } else {
+    res.redirect("/update/person/update");
+  }
 //  var next = "gender/update";
 //  var item = req.query.data;
 //  req.session.data.editState = "adding";
@@ -649,13 +654,24 @@ router.get(/add-person-handler/, function (req, res) {
 router.get(/person-change-handler/, function (req, res) {
   req.session.data.toaster = null;
   req.session.data.personalDetail = req.query.personalDetail;
-  res.redirect('/update/person/type')
+  if (req.session.data.personalDetail == "sex") {
+    req.session.data.editState = "correcting";
+    req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
+    res.redirect('/update/person/check')
+  } else {
+    res.redirect('/update/person/type')
+  }
 })
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
-  console.log(`here ${req.session.data.editState}`);
-  res.redirect('/update/person/update')
+  if (req.session.data.personalDetail == "nifu") {
+    req.session.data.personalDetailValue = "No";
+    req.session.data.personalDetails.nifu.show = false;
+    res.redirect('/update/person/check')
+  } else {
+    res.redirect('/update/person/update')
+  }
 })
 
 router.get(/personal-detail-handler/, function (req, res) {
@@ -685,6 +701,7 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
   }
+  req.session.data.personalDetail = null;
   res.redirect('/account2/account')
 })
 
@@ -816,7 +833,7 @@ router.get(/newupdate-handler/, function (req, res) {
     res.redirect('/update/person/' + feature + '/type')
     console.log('/update/person/' + feature + '/type');
   } else if (req.query.feature == "sex") {
-    req.session.data.sexValue = changeSex(req.session.data.sexValue);
+    req.session.data.personalDetails.sex = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
   } else {
     // var toPage = '/update/person/' + req.query.feature + '/update';
