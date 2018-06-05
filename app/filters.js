@@ -107,6 +107,18 @@ module.exports = function (env) {
     }
   }
 
+  //check for item
+  filters.checkForItem = function(list, thing) {
+    var toReturn = false
+    for (var item in list) {
+      if (item == thing) {
+        toReturn = true;
+        break;
+      }
+      return toReturn;
+    }
+  }
+
   
   return filters
 }

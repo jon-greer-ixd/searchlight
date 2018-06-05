@@ -654,7 +654,7 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
-  console.log(req.session.data.editState);
+  console.log(`here ${req.session.data.editState}`);
   res.redirect('/update/person/update')
 })
 

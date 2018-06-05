@@ -289,18 +289,18 @@
       
       {% if data.editState != "adding" %}
       
-      <p class="form-block" style="margin-top:-15px;">or</p>
+        <p class="form-block" style="margin-top:-15px;">or</p>
 
-        <div class="form-group">
-          <div class="multiple-choice">
-            <input id="unknown" name="data" type="radio" value="unknown">
-            <label for="unknown">Nationality is unknown</label>
+          <div class="form-group">
+            <div class="multiple-choice">
+              <input id="unknown" name="data" type="radio" value="unknown">
+              <label for="unknown">Nationality is unknown</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="none" name="data" type="radio" value="stateless">
+              <label for="none">The person is stateless</label>
+            </div>
           </div>
-          <div class="multiple-choice">
-            <input id="none" name="data" type="radio" value="stateless">
-            <label for="none">The person is stateless</label>
-          </div>
-        </div>
       
       {% endif %}
 

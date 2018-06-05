@@ -12,18 +12,18 @@
               {% set counter = data.personalDetailValue.length %}
 
               {% if data.personalDetail == "specialNeeds" %}
-                {% for item in data.personalDetailValue %}
-              
-                {% if counter != 1 %}
-                  {{item}}, <br>
+                {% if data.personalDetailValue != "Unknown" %}
+                  {% for item in data.personalDetailValue %}
+                    {% if counter != 1 %}
+                      {{item}}, <br>
+                    {% else %}
+                      {{item}}
+                    {% endif %}
+                    {% set counter = counter -1 %}
+                  {% endfor %}
                 {% else %}
-                  {{item}}
+                  {{data.personalDetailValue}}
                 {% endif %}
-
-                {% set counter = counter -1 %}
-                {% endfor %}
-              {% else %}
-                {{data.personalDetailValue}}
               {% endif %}
             </td>
             <td><a>Change</a></td>
