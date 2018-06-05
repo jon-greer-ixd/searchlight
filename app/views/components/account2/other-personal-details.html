@@ -11,25 +11,32 @@
       {% if item.show == true %}
         {% if items == "gender" %}
           {% include "components/account2/gender.html" %}
+          <hr class="light">
         {% elif items == "sex" %}
           {% include "components/account2/sex.html" %}
+          <hr class="light">
         {% elif items == "nathan" %}
           {% include "components/account2/nathan.html" %}
+          <hr class="light">
         {% elif items == "nifu" %}
           {% include "components/account2/nifu.html" %}
+          <hr class="light">
         {% elif items == "disability" %}
           {% include "components/account2/disability.html" %}
+          <hr class="light">
         {% elif items == "specialNeeds" %}
           {% include "components/account2/special-needs.html" %}
+          <hr class="light">
         {% elif items == "nationality" %}
           {% include "components/account2/nationality.html" %}
+          <hr class="light">
         {% elif items == "maritalStatus" %}
           {% include "components/account2/marital.html" %}
+          <hr class="light">
         {% endif %}
         <!-- Spoken language -->
         <!-- prefered language -->
         <!-- PO -->    
-        <hr class="light">
       {% endif %}
     {% endfor %}
 

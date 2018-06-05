@@ -779,11 +779,12 @@ function updateGender(show, hide) {
 
 //new
 router.get(/add-gender-handler/, function (req, res) {
-  req.session.data.sex = changeSex(req.session.data.sex);
-  if (req.query.data === "gra") {
-    req.session.data.personalDetails.gra.state = "adding";
+  req.session.data.personalDetails.sex.value = changeSex(req.session.data.personalDetails.sex.value);
+  req.session.data.editState = "adding";
+  if (req.query.data == "gra") {
+    req.session.data.personalDetail = "gra";
   } else {
-    req.session.data.personalDetails.preGra.state = "adding";
+    req.session.data.personalDetail = "preGra";
   }
   res.redirect('/update/person/gender/update')
 })
@@ -853,29 +854,21 @@ router.get(/updatecontact-handler/, function (req, res) {
 //here
 //router.get(/update-gender-handler/, function (req, res) {
 //  if (req.session.data.personalDetails.gra.state === "adding") {
-//    req.session.data.personalDetails.gra.show = true;
-//    if(req.session.data.personalDetails.preGra.show == null) {
-//      req.session.data.personalDetails.preGra.show = false;
+//    req.session.data.personalDetails.gender.gra = true;
+//    if(req.session.data.personalDetails.gender.preGra == null) {
+//      req.session.data.personalDetails.gender.preGra = false;
 //    }
 //  } else if (req.session.data.personalDetails.preGra.state === "adding") {
-//    req.session.data.personalDetails.preGra.show = true;
+//    req.session.data.personalDetails.gender.preGra = true;
 //  }
 //  res.redirect('/update/person/gender/check')
 //})
 
 router.get(/check-gender-handler/, function (req, res) {
-  if (req.session.data.personalDetails.gra.state === "adding") {
-    req.session.data.personalDetails.gra.state = "added";
-    req.session.data.personalDetails.gender.show = true;
-    req.session.data.personalDetails.gra.show = true;
-    if (req.session.data.personalDetails.preGra.show === null) {
-      req.session.data.personalDetails.preGra.show = false;
-      req.session.data.sex
-    }
-  } else if (req.session.data.personalDetails.preGra.state === "adding") {
-    req.session.data.personalDetails.preGra.state = "added"    
-    req.session.data.personalDetails.gender.show = true;
-    req.session.data.personalDetails.preGra.show = true;
+  if (req.session.data.personalDetail == "gra") {
+    req.session.data.personalDetails.gender.gra = true;
+  } else {    
+    req.session.data.personalDetails.gender.preGra = true;
   }
   res.redirect('/account2/account')
 })
