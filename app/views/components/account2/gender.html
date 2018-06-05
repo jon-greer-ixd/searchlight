@@ -1,28 +1,71 @@
-{% if data.personalDetails.gender.show == true %}
-    {% if data.personalDetails.gra.show == true %}
-      <div class="grid-row" style="margin-bottom:0;">
-        <div class="column-one-third">
-          Gender
-        </div>
-        <div class="column-one-third">
-          <ul>
-            <li class="strong">Acquired gender - GRA</li>
-            <li class="sl-secondary-text-color sl-metadata">Since today</li>
-          </ul>    
-        </div>
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-            <li>
-              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-              <span class="pipe"> | </span> 
-              <a href="../history/sex-history-adv" class="under-link">View history</a>
-            </li>
-          </ul>
-        </div>
+{% if data.gender.show == true %}
+  {% if data.gra.show == true %}
+    <div class="grid-row" style="margin-bottom:0;">
+      <div class="column-one-third">
+        Gender
       </div>
-    {% endif %}
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">Acquired gender - GRA</li>
+          <li class="sl-secondary-text-color sl-metadata">Since today</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/sex-history-adv" class="under-link">View history</a>
+          </li>
+  <!--
+          <li>
+            <a href="updating-handler/?feature=gra&state=updating" class="under-link" style="font-size:17px;">Change</a>
+          </li>
+  -->
+        </ul>
+      </div>
+    </div>
+  {% endif %}
 
-    {% if data.personalDetails.preGra.show == true and data.personalDetails.gra.show == true %}
+  {% if data.preGra.show == true and data.gra.show == true %}
+    <div class="grid-row" style="margin-bottom:0;">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-two-thirds">
+        <hr class="light">
+      </div>
+    </div>
+  {% endif %}
+
+  {% if data.preGra.show == true %}
+    <div class="grid-row" style="margin-bottom:0;">
+      <div class="column-one-third">
+        &nbsp;
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">Acquired gender - pre GRA</li>
+          <li class="sl-secondary-text-color sl-metadata">Since today</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/sex-history-adv" class="under-link">View history</a>
+          </li>
+<!--
+          <li>
+            <a href="updating-handler/?feature=preGra&state=updating" class="under-link" style="font-size:17px;">Change</a>
+          </li>
+-->
+        </ul>
+      </div>
+    </div>
+
+    {% if data.gra.show == false %}
       <div class="grid-row" style="margin-bottom:0;">
         <div class="column-one-third">
           &nbsp;
@@ -31,58 +74,25 @@
           <hr class="light">
         </div>
       </div>
-    {% endif %}
 
-    {% if data.personalDetails.preGra.show == true %}
       <div class="grid-row" style="margin-bottom:0;">
         <div class="column-one-third">
           &nbsp;
         </div>
         <div class="column-one-third">
           <ul>
-            <li class="strong">Acquired gender - pre GRA</li>
-            <li class="sl-secondary-text-color sl-metadata">Since today</li>
+            <li class="sl-secondary-text-color sl-metadata">Add acquired gender - GRA information</li>
           </ul>    
         </div>
         <div class="column-one-third last-col">
           <ul class="edit-menu">
             <li>
-              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
-              <span class="pipe"> | </span> 
-              <a href="../history/sex-history-adv" class="under-link">View history</a>
+              <a class="secondary-link" href="newupdate-handler/?feature=gra&state=adding">Add</a>
             </li>
           </ul>
         </div>
       </div>
-
-        {% if data.personalDetails.gra.show == false %}
-          <div class="grid-row" style="margin-bottom:0;">
-            <div class="column-one-third">
-              &nbsp;
-            </div>
-            <div class="column-two-thirds">
-              <hr class="light">
-            </div>
-          </div>
-
-          <div class="grid-row" style="margin-bottom:0;">
-            <div class="column-one-third">
-              &nbsp;
-            </div>
-            <div class="column-one-third">
-              <ul>
-                <li class="sl-secondary-text-color sl-metadata">Add acquired gender - GRA information</li>
-              </ul>    
-            </div>
-            <div class="column-one-third last-col">
-              <ul class="edit-menu">
-                <li>
-                  <a class="secondary-link" href="newupdate-handler/?feature=gra&state=adding">Add</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        {% endif %}
+    {% endif %}
 
   {% endif %}
 {% endif %}
