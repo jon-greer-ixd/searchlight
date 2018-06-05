@@ -84,7 +84,7 @@ var contactTypes = {
 
 var personalDetails = {
   "sex" : {state : null, show : true, display : "Sex", value : "Male"},
-  "gender" : {state : null, show : true, display : "Gender", value : "null"},
+  "gender" : {state : null, show : false, display : "Gender", value : "null"},
   "gra" : {state : null, show : false, display : "gra", value : "null"},
   "preGra" : {state : null, show : false, display : "pregra", value : "null"},
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
