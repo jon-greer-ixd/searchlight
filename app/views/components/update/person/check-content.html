@@ -8,9 +8,19 @@
           <tr>
             <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
             <td>
+            
+              {% set counter = data.personalDetailValue.length %}
+
               {% if data.personalDetail == "specialNeeds" %}
                 {% for item in data.personalDetailValue %}
+              
+                {% if counter != 1 %}
                   {{item}}, <br>
+                {% else %}
+                  {{item}}
+                {% endif %}
+
+                {% set counter = counter -1 %}
                 {% endfor %}
               {% else %}
                 {{data.personalDetailValue}}

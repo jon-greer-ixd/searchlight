@@ -592,17 +592,19 @@ router.get(/check-contact-handler/, function (req, res) {
 
 
 //PERSON
-router.get(/edit-person-handler/, function (req, res) {
+router.get(/add-person-handler/, function (req, res) {
   console.log(req.session.data.personalDetail);
-  var next = "gender/update";
-  var item = req.query.data;
   req.session.data.editState = "adding";
-  if (req.session.data.personalDetail == "nifu") {
-    req.session.data.personalDetailValue = "Yes";
-    res.redirect('/update/person/check');
-  } else {
-    res.redirect(req.session.data.personalDetail + "/update");
-  }
+  res.redirect("/update/person/update");
+//  var next = "gender/update";
+//  var item = req.query.data;
+//  req.session.data.editState = "adding";
+//  if (req.session.data.personalDetail == "nifu") {
+//    req.session.data.personalDetailValue = "Yes";
+//    res.redirect('/update/person/check');
+//  } else {
+//    res.redirect("/update/person/update");
+//  }
   
 //  if (item === "gender" ) {
 //    req.session.data.gender.state = "adding";
@@ -644,6 +646,27 @@ router.get(/edit-person-handler/, function (req, res) {
 //  }
 })
 
+router.get(/person-change-handler/, function (req, res) {
+  req.session.data.toaster = null;
+  req.session.data.personalDetail = req.query.personalDetail;
+  res.redirect('/update/person/type')
+})
+
+router.get(/change-person-type-handler/, function (req, res) {
+  req.session.data.editState = req.query.data;
+  console.log(req.session.data.editState);
+  res.redirect('/update/person/update')
+})
+
+router.get(/personal-detail-handler/, function (req, res) {
+  if (req.query.data == "stateless") {
+    req.session.data.personalDetailValue = "Stateless";
+  } else if (req.query.data == "unknown") {
+    req.session.data.personalDetailValue = "Unknown";
+  }
+  res.redirect('/update/person/check')
+})
+
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {  
   if (req.session.data.editState == "adding") {
@@ -659,7 +682,9 @@ router.get(/check-person-handler/, function (req, res) {
   }
   req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
   req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
-  console.log(req.session.data.personalDetails[req.session.data.personalDetail].value);
+  if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
+    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+  }
   res.redirect('/account2/account')
 })
 
