@@ -2,11 +2,11 @@
     <div class="grid-row">
       <div class="column-one-half">
         <table class="table"> 
-          {% if data.personalDetails.preGra.state == "adding" and data.personalDetails.gra.state == null %}
+          {% if data.personalDetails.gender.preGra == false and data.personalDetails.gender.gra == false %}
             <tr>
               <td><span class="strong">Sex</span></td>
               <td>
-                {{data.sexValue}}
+                {{data.personalDetails.sex.value}}
               </td>
               <td>
                 <a>&nbsp;</a>
