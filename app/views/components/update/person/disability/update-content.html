@@ -5,11 +5,11 @@
       <fieldset class="form-group">
         <legend class="visually-hidden">Is this person disabled?</legend>
         <div class="multiple-choice">
-          <input id="yes" type="radio" name="disabilityValue" {% if data.disabilityValue == "true" %} checked="checked" {% endif %} value=true>
+          <input id="yes" type="radio" name="personalDetailValue" {% if data.personalDetail.disability.value == "true" %} checked="checked" {% endif %} value=true>
           <label for="yes">Yes</label>
         </div>
         <div class="multiple-choice">
-          <input id="no" type="radio" name="disabilityValue" {% if data.disabilityValue == "false" %} checked="checked" {% endif %} value=false>
+          <input id="no" type="radio" name="personalDetailValue" {% if data.personalDetail.disability.value == "false" %} checked="checked" {% endif %} value=false>
           <label for="no">No</label>
         </div>
       </fieldset>

@@ -1,0 +1,36 @@
+<h2 class="heading-medium question">Is this person disabled?</h2>
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <form class="form" method="get" action="check">
+      <fieldset class="form-group">
+        <legend class="visually-hidden">Is this person disabled?</legend>
+        
+        {% if data.personalDetails.disability.value != "Yes" %}
+          <div class="multiple-choice">
+            <input id="yes" type="radio" name="personalDetailValue" value="Yes">
+            <label for="yes">Yes</label>
+          </div>
+        {% endif %}
+        
+        {% if data.personalDetails.disability.value != "No" %}        
+          <div class="multiple-choice">
+            <input id="no" type="radio" name="personalDetailValue" value="No">
+            <label for="no">No</label>
+          </div>
+        {% endif %}
+        
+        {% if data.personalDetails.disability.value != "Unknown" %}
+          <div class="multiple-choice">
+            <input id="unknown" type="radio" name="personalDetailValue" value="Unknown">
+            <label for="unknown">Unknown</label>
+          </div>
+        {% endif %}
+        
+      </fieldset>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+</div>

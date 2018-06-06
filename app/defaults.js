@@ -29,14 +29,8 @@ var defaults = {
   showContact : false,
   preferedContactState : null,
 
-
   //PERSONAL DETAILS  
-  
-  
-  //disability
-  disability : {state : null, show : false},
-  disabilityValue : null,
-    
+      
   //death
   dead : false,
   deathState : null,
@@ -86,10 +80,16 @@ var personalDetails = {
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
 //  "potentiallyViolent" : {state : null, show : false, display : "Potentially violent", value : null},
+  "disability" : {state : null, show : false, display : "Disability", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
+
+  //disability
+//  disability : {state : null, show : false},
+//  disabilityValue : null,
+
 
 //  prints all the items
 //  Object.keys(contactTypes).map(e => {
