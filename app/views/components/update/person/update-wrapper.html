@@ -20,6 +20,8 @@
                 {% include "components/update/person/details/nationality.njk" %}
               {% elif data.personalDetail == "specialNeeds" %}
                 {% include "components/update/person/details/specialneeds.njk" %}
+              {% elif data.personalDetail == "maritalStatus" %}
+                {% include "components/update/person/details/maritalstatus.njk" %}
               {% endif %}
           </div>
         </div>

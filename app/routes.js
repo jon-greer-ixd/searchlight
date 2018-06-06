@@ -853,20 +853,6 @@ router.get(/updatecontact-handler/, function (req, res) {
   res.redirect('/update/person/contact/' + feature)
 })
 
-
-//here
-//router.get(/update-gender-handler/, function (req, res) {
-//  if (req.session.data.personalDetails.gra.state === "adding") {
-//    req.session.data.personalDetails.gender.gra = true;
-//    if(req.session.data.personalDetails.gender.preGra == null) {
-//      req.session.data.personalDetails.gender.preGra = false;
-//    }
-//  } else if (req.session.data.personalDetails.preGra.state === "adding") {
-//    req.session.data.personalDetails.gender.preGra = true;
-//  }
-//  res.redirect('/update/person/gender/check')
-//})
-
 router.get(/check-gender-handler/, function (req, res) {
   if (req.session.data.personalDetail == "gra") {
     req.session.data.personalDetails.gender.gra = true;
@@ -874,7 +860,7 @@ router.get(/check-gender-handler/, function (req, res) {
     req.session.data.personalDetails.gender.preGra = true;
   }
   req.session.data.personalDetails.gender.show = true;
-  req.session.data.toaster = messageCentre("Gender details", null, "updated");
+  req.session.data.toaster = messageCentre("Gender details", null, "added");
   res.redirect('/account2/account')
 })
 
