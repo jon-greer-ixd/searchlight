@@ -779,9 +779,10 @@ function updateGender(show, hide) {
   hide = false;
 }
 
-//new
 router.get(/add-gender-handler/, function (req, res) {
-  req.session.data.personalDetails.sex.value = changeSex(req.session.data.personalDetails.sex.value);
+  if (req.session.data.personalDetails.gender.gra == false && req.session.data.personalDetails.gender.preGra == false) {
+    req.session.data.personalDetails.sex.value = changeSex(req.session.data.personalDetails.sex.value);
+  }
   req.session.data.editState = "adding";
   if (req.query.data == "gra") {
     req.session.data.personalDetail = "gra";
