@@ -4,16 +4,16 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          {% if data.nathan.state == "adding" %}
+          {% if data.recordLevel.state == "adding" %}
             <h2>Add a special customer record level</h2>
-          {% elseif data.nathan.state == "correcting" %}
+          {% elseif data.recordLevel.state == "correcting" %}
             <h2>Correct the special customer record level</h2>
           {% else %}
             <h2>Update the special customer record level</h2>
           {% endif  %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
-              {% include "components/update/person/nathan/update-content.html" %}
+              {% include "components/update/person/recordLevel/update-content.html" %}
           </div>
         </div>
       </div>

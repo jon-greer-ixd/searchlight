@@ -1,0 +1,46 @@
+<h2 class="heading-medium question">What is the special customer record level?</h2>
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <form class="form" method="get" action="check">
+      <fieldset class="form-group">
+        <legend class="visually-hidden">Is this person disabled?</legend>
+        
+        {% if data.editState != "adding" %}
+          {% if data.personalDetails.recordLevel.value != "1 - Unrestricted access" %}
+            <div class="multiple-choice">
+              <input id="1" type="radio" name="personalDetailValue" value="1 - Unrestricted access">
+              <label for="1">1 - Unrestricted access</label>
+            </div>
+          {% endif %}
+        {% endif %}
+        
+        {% if data.personalDetails.recordLevel.value != "2 - Transgender" %}
+          <div class="multiple-choice">
+            <input id="2" type="radio" name="personalDetailValue" value="2 - Transgender">
+            <label for="2">2 - Transgender</label>
+          </div>
+        {% endif %} 
+        
+        {% if data.personalDetails.recordLevel.value != "3 - VIP" %}
+          <div class="multiple-choice">
+            <input id="3" type="radio" name="personalDetailValue" value="3 - VIP">
+            <label for="3">3 - VIP</label>
+          </div>
+        {% endif %}
+        
+        {% if data.personalDetails.recordLevel.value != "4 - Other" %}
+          <div class="multiple-choice">
+            <input id="4" type="radio" name="personalDetailValue" value="4 - Other">
+            <label for="4">4 - Other</label>
+          </div>
+        {% endif %}
+        
+      </fieldset>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+</div>

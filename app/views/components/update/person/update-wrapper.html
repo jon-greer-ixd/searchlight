@@ -22,6 +22,8 @@
                 {% include "components/update/person/details/specialneeds.njk" %}
               {% elif data.personalDetail == "maritalStatus" %}
                 {% include "components/update/person/details/maritalstatus.njk" %}
+              {% elif data.personalDetail == "recordLevel" %}
+                {% include "components/update/person/details/recordlevel.njk" %}
               {% endif %}
           </div>
         </div>

@@ -32,8 +32,6 @@ var defaults = {
 
   //PERSONAL DETAILS  
   
-  //nathan (sensitivity level)
-  nathan : { value : null, state : null, show : false },
   
   //disability
   disability : {state : null, show : false},
@@ -83,6 +81,7 @@ var contactTypes = {
 }
 
 var personalDetails = {
+  "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
   "sex" : {state : null, show : true, display : "Sex", value : "Male"},
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
@@ -91,16 +90,6 @@ var personalDetails = {
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
-
-//  //gender
-//  gender : {state : null, show : false },
-//  
-//  //gender-gra
-//  gra : { state : null, show : false },
-//  
-//  //gender-pre-gra
-//  preGra : { state : null, show : false },
-
 
 //  prints all the items
 //  Object.keys(contactTypes).map(e => {
