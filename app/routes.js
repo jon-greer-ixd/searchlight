@@ -619,9 +619,9 @@ router.get(/add-person-handler/, function (req, res) {
 //  } else if (item ===  "death") {
 //    req.session.data.adddDeath = true;
 //    next = "death/update";
-//  } else if (item ===  "nathan") {
-//    req.session.data.nathan.state = "adding";
-//    next = "nathan/update";
+//  } else if (item ===  "recordLevel") {
+//    req.session.data.recordLevel.state = "adding";
+//    next = "recordLevel/update";
 //  } else if (item ===  "pv") {
 //    req.session.data.adddPv = true;
 //    next = "pv/update";
@@ -660,6 +660,9 @@ router.get(/person-change-handler/, function (req, res) {
     req.session.data.editState = "correcting";
     req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
+  } else if (req.session.data.personalDetail == "recordLevel") {
+    req.session.data.editState = "updating";
+    res.redirect('/update/person/update')
   } else {
     res.redirect('/update/person/type')
   }
@@ -703,6 +706,11 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
   }
+  if (req.session.data.personalDetail == "recordLevel") {
+    if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
+        req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    }
+  }
   req.session.data.personalDetail = null;
   res.redirect('/account2/account')
 })
@@ -738,14 +746,14 @@ router.get(/marital-type-handler/, function (req, res) {
   res.redirect('/update/person/marital/update')
 })
 
-//NATHAN
-router.get(/nathan-type-handler/, function (req, res) {
+//Special customer record level
+router.get(/recordLevel-type-handler/, function (req, res) {
   console.log(req.query);
-  req.session.data.nathan.state = req.query.data;
-  if(req.session.data.nathan.state == "removing") {
+  req.session.data.recordLevel.state = req.query.data;
+  if(req.session.data.recordLevel.state == "removing") {
     res.redirect('/update/person/check')
   } else {
-    res.redirect('/update/person/nathan/update')
+    res.redirect('/update/person/recordLevel/update')
   }
 })
 
@@ -833,7 +841,7 @@ router.get(/newupdate-handler/, function (req, res) {
     } else {
       res.redirect('/update/person/gender/type')
     }
-  } else if (req.query.feature == "disability" || req.query.feature == "needs" || req.query.feature == "nifu" || req.query.feature == "nathan") {
+  } else if (req.query.feature == "disability" || req.query.feature == "needs" || req.query.feature == "nifu" || req.query.feature == "recordLevel") {
     res.redirect('/update/person/' + feature + '/type')
     console.log('/update/person/' + feature + '/type');
   } else if (req.query.feature == "sex") {

@@ -5,28 +5,28 @@
       <fieldset class="form-group">
         <legend class="visually-hidden">Is this person disabled?</legend>
 <!--
-        {% if data.nathan.state != "adding" %}
+        {% if data.recordLevel.state != "adding" %}
           <div class="multiple-choice">
-            <input id="1" type="radio" name="nathanvalue" {% if data.nathan.value == 1 %} checked="checked" disabled{% endif %} value=1>
+            <input id="1" type="radio" name="recordLevel.value" {% if data.recordLevel.value == 1 %} checked="checked" disabled{% endif %} value=1>
             <label for="1">1 - Unrestricted access</label>
           </div>
         {% endif %}
 -->
         <div class="multiple-choice">
-          <input id="2" type="radio" name="nathanvalue" {% if data.nathan.value == 2 %} checked="checked" disabled{% endif %} value=2>
+          <input id="2" type="radio" name="personalDetailValue" {% if data.recordLevel.value == 2 %} checked="checked" disabled{% endif %} value=2>
           <label for="2">2 - Transgender</label>
         </div>
         <div class="multiple-choice">
-          <input id="3" type="radio" name="nathanvalue" {% if data.nathan.value == 3 %} checked="checked" disabled{% endif %} value=3>
+          <input id="3" type="radio" name="personalDetailValue" {% if data.recordLevel.value == 3 %} checked="checked" disabled{% endif %} value=3>
           <label for="3">3 - VIP</label>
         </div>
         <div class="multiple-choice">
-          <input id="4" type="radio" name="nathanvalue" {% if data.nathan.value == 4 %} checked="checked" disabled{% endif %} value=4>
+          <input id="4" type="radio" name="personalDetailValue" {% if data.recordLevel.value == 4 %} checked="checked" disabled{% endif %} value=4>
           <label for="4">4 - Other</label>
         </div>
 <!--
         <div class="multiple-choice">
-          <input id="5" type="radio" name="nathanvalue" {% if data.nathan.value == 5 %} checked="checked" disabled{% endif %} value=5>
+          <input id="5" type="radio" name="recordLevel.value" {% if data.recordLevel..value == 5 %} checked="checked" disabled{% endif %} value=5>
           <label for="5">5 - Special monitoring</label>
         </div>
 -->
