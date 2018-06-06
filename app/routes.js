@@ -598,6 +598,8 @@ router.get(/add-person-handler/, function (req, res) {
   if (req.session.data.personalDetail == "nifu") {
     req.session.data.personalDetailValue = "Yes";
     res.redirect("/update/person/check");
+  } else if (req.session.data.personalDetail == "gender") {
+    res.redirect("/update/person/gender/add");
   } else {
     res.redirect("/update/person/update");
   }
@@ -870,6 +872,8 @@ router.get(/check-gender-handler/, function (req, res) {
   } else {    
     req.session.data.personalDetails.gender.preGra = true;
   }
+  req.session.data.personalDetails.gender.show = true;
+  req.session.data.toaster = messageCentre("Gender details", null, "updated");
   res.redirect('/account2/account')
 })
 
