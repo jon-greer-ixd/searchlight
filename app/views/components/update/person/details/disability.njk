@@ -5,26 +5,20 @@
       <fieldset class="form-group">
         <legend class="visually-hidden">Is this person disabled?</legend>
         
-        {% if data.personalDetails.disability.value != "Yes" %}
-          <div class="multiple-choice">
-            <input id="yes" type="radio" name="personalDetailValue" value="Yes">
-            <label for="yes">Yes</label>
-          </div>
-        {% endif %}
+        <div class="multiple-choice">
+          <input id="yes" type="radio" name="personalDetailValue" {% if data.personalDetails.disability.value == "Yes" %} checked="checked" {% endif %} value="Yes">
+          <label for="yes">Yes</label>
+        </div>
         
-        {% if data.personalDetails.disability.value != "No" %}        
-          <div class="multiple-choice">
-            <input id="no" type="radio" name="personalDetailValue" value="No">
-            <label for="no">No</label>
-          </div>
-        {% endif %}
+        <div class="multiple-choice">
+          <input id="no" type="radio" name="personalDetailValue" {% if data.personalDetails.disability.value == "No" %} checked="checked" {% endif %} value="No">
+          <label for="no">No</label>
+        </div>
         
-        {% if data.personalDetails.disability.value != "Unknown" %}
-          <div class="multiple-choice">
-            <input id="unknown" type="radio" name="personalDetailValue" value="Unknown">
-            <label for="unknown">Unknown</label>
-          </div>
-        {% endif %}
+        <div class="multiple-choice">
+          <input id="no" type="radio" name="personalDetailValue" {% if data.personalDetails.disability.value == "Unknown" %} checked="checked" {% endif %} value="Unknown">
+          <label for="unknown">Unknown</label>
+        </div>
         
       </fieldset>
       <div class="form-group">

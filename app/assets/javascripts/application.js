@@ -91,6 +91,27 @@ if (document.getElementById("contact-boxes")) {
   }
 }
 
+//checkbox contact
+if (document.getElementById("cancel-boxes")) {
+  var boxOne = document.getElementById("person");
+  var boxTwo = document.getElementById("partner");
+  var boxThree = document.getElementById("member");
+  var clearBox = document.getElementById("none");
+  clearBox.addEventListener('change', cancelPrefs);
+  function cancelPrefs() {
+     boxOne.checked = false;
+     boxTwo.checked = false;
+     boxThree.checked = false;
+  }
+  boxOne.addEventListener('change', changePrefs);
+  boxTwo.addEventListener('change', changePrefs);
+  boxThree.addEventListener('change', changePrefs);
+  function changePrefs() {
+     clearBox.checked = false;
+  }
+}
+
+
 if (document.getElementById("work-number")) {
   console.log('start');
   var work = document.getElementById("work-number");

@@ -1,0 +1,40 @@
+    <div class="grid-row names">
+      <div class="column-two-thirds">
+        <span class="strong">          
+          
+          {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
+            This person, their partner and another member of the household are potentially violent.
+
+          {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
+            This person’s partner and another member of the household are potentially violent.
+
+          {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
+            This person and another member of the household are potentially violent.
+
+          {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
+            This person and their partner are potentially violent.
+
+          {% elif data.personalDetails.pv.member == true %}
+            A member of this person’s household is potentially violent.
+
+          {% elif data.personalDetails.pv.partner == true %}
+            This person’s partner is potentially violent.
+
+          {% elif data.personalDetails.pv.value == true %}
+            This person is potentially violent
+
+          {% endif %}
+          
+        </span>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#requested_name_modal" class="under-link">View maintenance</a> 
+          </li>
+          <li class="under-link">
+            <a href="person-change-handler/?personalDetail=pv" class="under-link">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>

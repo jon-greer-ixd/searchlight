@@ -6,28 +6,32 @@
           <!-- nifu -->
           <!-- nationality -->
           <tr>
-            <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
+            {% if data.personalDetail == "pv" %}
+              <td><span class="strong">Who in the household is potentially violent?</span></td>
+            {% else %}
+              <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
+            {% endif %}
             <td>
             
               {% set counter = data.personalDetailValue.length %}
-
-              {% if data.personalDetail == "specialNeeds" %}
               
-                  {% if data.personalDetailValue != "Unknown" %}
-                    {% for item in data.personalDetailValue %}
-                      {% if counter != 1 %}
-                        {{item}}, <br>
-                      {% else %}
-                        {{item}}
-                      {% endif %}
-                      {% set counter = counter -1 %}
-                    {% endfor %}
-                  {% else %}
-                    {{data.personalDetailValue}}
-                  {% endif %}
+              {% if data.personalDetail == "specialNeeds" or data.personalDetail == "pv" %}
+
+                {% if data.personalDetailValue != "Unknown" %}
+                  {% for item in data.personalDetailValue %}
+                    {% if counter != 1 %}
+                      {{item}}, <br>
+                    {% else %}
+                      {{item}}
+                    {% endif %}
+                    {% set counter = counter -1 %}
+                  {% endfor %}
                 {% else %}
                   {{data.personalDetailValue}}
-              {% endif %}
+                {% endif %}
+              {% else %}
+              {{data.personalDetailValue}}
+            {% endif %}
             </td>
             <td><a>Change</a></td>
           </tr>

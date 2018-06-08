@@ -26,6 +26,8 @@
                 {% include "components/update/person/details/recordlevel.njk" %}
               {% elif data.personalDetail == "disability" %}
                 {% include "components/update/person/details/disability.njk" %}
+              {% elif data.personalDetail == "pv" %}
+                {% include "components/update/person/details/pv.njk" %}
               {% endif %}
           </div>
         </div>

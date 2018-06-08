@@ -5,79 +5,59 @@
         <fieldset>
           <legend class="radio-header">Marital or civil partnership status</legend>
           
-          {% if data.personalDetails.maritalStatus.value != "Single" %}
             <div class="multiple-choice">
-              <input id="single" type="radio" name="personalDetailValue" value="Single">
+              <input id="single" type="radio" name="personalDetailValue" {% if data.personalDetails.maritalStatus.value == "Single" %} checked = "checked" {% endif %} value="Single">
               <label for="single">Single</label>
             </div>
-          {% endif %}
           
-          {% if data.personalDetails.maritalStatus.value != "Married" %}
             <div class="multiple-choice">
-              <input id="married" type="radio" name="personalDetailValue" value="Married">
+              <input id="married" type="radio" name="personalDetailValue" {% if data.personalDetails.maritalStatus.value == "Married" %} checked = "checked" {% endif %} value="Married">
               <label for="married">Married</label>
             </div>
-          {% endif %}
           
-          {% if data.personalDetails.maritalStatus.value != "Living together" %}
             <div class="multiple-choice">
-              <input id="living" type="radio" name="personalDetailValue" value="Living together">
+              <input id="living" type="radio" name="personalDetailValue" value="Living together" {% if data.personalDetails.maritalStatus.value == "Living together" %} checked = "checked" {% endif %}>
               <label for="living">Living together</label>
             </div>
-          {% endif %}
-          
-          {% if data.personalDetails.maritalStatus.value != "Separated" %}
+  
             <div class="multiple-choice">
-              <input id="separated" type="radio" name="personalDetailValue" value="Separated">
+              <input id="separated" type="radio" name="personalDetailValue" value="Separated" {% if data.personalDetails.maritalStatus.value == "Separated" %} checked = "checked" {% endif %}>
               <label for="separated">Separated</label>
             </div>
-          {% endif %}
-          
-          {% if data.personalDetails.maritalStatus.value != "Divorced or civil partnership dissolved" %}
+  
             <div class="multiple-choice">
-              <input id="divorced" type="radio" name="personalDetailValue" value="Divorced or civil partnership dissolved">
+              <input id="divorced" type="radio" name="personalDetailValue" value="Divorced or civil partnership dissolved" {% if data.personalDetails.maritalStatus.value == "Divorced or civil partnership dissolved" %} checked = "checked" {% endif %}>
               <label for="divorced">Divorced or civil partnership dissolved</label>
             </div>
-          {% endif %}
           
-          {% if data.personalDetails.maritalStatus.value != "Widowed or surviving civil partner" %}
             <div class="multiple-choice">
-              <input id="widowed" type="radio" name="personalDetailValue" value="Widowed or surviving civil partner">
+              <input id="widowed" type="radio" name="personalDetailValue" value="Widowed or surviving civil partner" {% if data.personalDetails.maritalStatus.value == "Widowed or surviving civil partner" %} checked = "checked" {% endif %}>
               <label for="widowed">Widowed or surviving civil partner</label>
             </div>
-          {% endif %}
           
-          {% if data.personalDetails.maritalStatus.value != "Annulled - voidable marriage or civil partnership" %}
             <div class="multiple-choice">
-              <input id="annulled" type="radio" name="personalDetailValue" value="Annulled - voidable marriage or civil partnership">
+              <input id="annulled" type="radio" name="personalDetailValue" value="Annulled - voidable marriage or civil partnership" {% if data.personalDetails.maritalStatus.value == "Annulled - voidable marriage or civil partnership" %} checked = "checked" {% endif %}>
               <label for="annulled">Annulled - voidable marriage or civil partnership</label>
             </div>
-          {% endif %}
           
-          {% if data.personalDetails.maritalStatus.value != "Annulled - void marriage or civil partnership" %}
             <div class="multiple-choice">
-              <input id="void" type="radio" name="personalDetailValue" value="Annulled - void marriage or civil partnership">
+              <input id="void" type="radio" name="personalDetailValue" value="Annulled - void marriage or civil partnership" {% if data.personalDetails.maritalStatus.value == "Annulled - void marriage or civil partnership" %} checked = "checked" {% endif %}>
               <label for="void">Annulled - void marriage or civil partnership</label>
             </div>
-          {% endif %}
-          
-          {% if data.editState == "correcting" %}
-            {% if data.personalDetails.maritalStatus.value != "Unknown" %}
+  
+            {% if data.editState == "correcting" %}
+              <p class="form-block" style="margin-top:-15px;">or</p>
               <div class="multiple-choice">
                 <input id="unknown" name="personalDetailValue" type="radio" value="Unknown">
-                <label for="unknown">Unknown</label>
+                <label for="unknown">Marital or civil partnership status is unknown</label>
               </div>
             {% endif %}
-          {% endif %}
-        
+          
         </fieldset>
-        
       </div>
-            
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
-      
     </form>
     <p><a href="task-list">Cancel</a></p>
   </div>

@@ -1,0 +1,48 @@
+<h2 class="heading-medium question">Who in the household is potentially violent?</h2>
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      <p class="form-label">Select all that apply</p>
+      <form class="form" method="get" action="check" id="cancel-boxes">
+
+        <fieldset class="form-group">
+
+          <legend>
+            <h3 class="visually-hidden">Who is potentially violent?</h3>
+          </legend>
+          
+          <div class="multiple-choice">
+            <input id="person" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+            <label for="person">The person</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="partner" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+            <label for="partner">The person's partner</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="member" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+            <label for="member">A member of the household</label>
+          </div>
+          
+          {% if data.editState == "correcting" %}
+            <p class="form-block" style="margin-top:-10px;">or</p>
+
+            <div class="multiple-choice">
+              <input id="none" name="personalDetailValue" type="checkbox" value="The potentially violent status is unknown" {% if data.personalDetails.nationality.value == "The potentially violent status is unknown" %} checked ="checked"{% endif %}>
+              <label for="none">The potentially violent status is unknown</label>
+            </div>
+          {% endif %}
+
+        </fieldset>
+                
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      
+      <p><a href="task-list">Cancel</a></p>
+      
+    </div>
+
+  </div>

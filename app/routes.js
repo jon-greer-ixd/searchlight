@@ -484,7 +484,6 @@ router.get(/authority-handler/, function (req, res) {
 //CONTACT
 
 router.get(/contact-change-handler/, function (req, res) {
-  console.log("here");
   req.session.data.toaster = null;
   req.session.data.contactType = req.query.contactType;
   res.redirect('/update/contact/update-type')
@@ -575,7 +574,6 @@ router.get(/check-contact-handler/, function (req, res) {
   if ( req.session.data.preferedContactState == "removing") {
     req.session.data.toaster = messageCentre("Prefered contact state", null, "removed");
     req.session.data.preferedContactState = "removed";
-    console.log(`here preferedContactState ${req.session.data.preferedContactState}`);
   }
   if (req.session.data.exdirectory == "true") {
     req.session.data.contactTypes.homeTelephone.exD = true;
@@ -717,6 +715,28 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetail == "recordLevel") {
     if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
         req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    }
+  }
+  if (req.session.data.personalDetail == "pv") {
+    req.session.data.personalDetails.pv.partner = false;
+    req.session.data.personalDetails.pv.member = false;
+    var temp;
+    if (req.session.data.personalDetails.pv.value != "The potentially violent status is unknown") {
+      for (var item in req.session.data.personalDetails.pv.value) {
+        if (req.session.data.personalDetails.pv.value[item] == "The person's partner") {
+          req.session.data.personalDetails.pv.partner = true
+        } else if (req.session.data.personalDetails.pv.value[item] == "Someone else in the household") {
+          req.session.data.personalDetails.pv.member = true
+        } else if (req.session.data.personalDetails.pv.value[item] == "The person") {
+          temp = true;        
+        }
+      }
+      if (temp == true) {
+        req.session.data.personalDetails.pv.value = true;
+      }
+    } else {
+      req.session.data.personalDetails.pv.show = false;
+      req.session.data.personalDetails.pv.value = false;
     }
   }
   req.session.data.personalDetail = null;

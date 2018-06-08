@@ -75,6 +75,7 @@ var contactTypes = {
 }
 
 var personalDetails = {
+  "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
   "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
   "sex" : {state : null, show : true, display : "Sex", value : "Male"},
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
@@ -85,10 +86,6 @@ var personalDetails = {
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
-
-  //disability
-//  disability : {state : null, show : false},
-//  disabilityValue : null,
 
 
 //  prints all the items
