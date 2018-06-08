@@ -27,6 +27,9 @@
         {% elif items == "specialNeeds" %}
           {% include "components/account2/special-needs.html" %}
           <hr class="light">
+        {% elif items == "preferedLanguage" %}
+          {% include "components/account2/prefered-language.html" %}
+          <hr class="light">
         {% elif items == "nationality" %}
           {% include "components/account2/nationality.html" %}
           <hr class="light">
@@ -35,12 +38,13 @@
           <hr class="light">
         {% endif %}
         <!-- Spoken language -->
-        <!-- prefered language -->
         <!-- PO -->    
       {% endif %}
     {% endfor %}
+    
+<!--
 
-    <!-- Spoken language -->
+     Spoken language 
     {% if data.spokenLanguageUpdated == true %}
       <div class="grid-row">
         <div class="column-one-third">
@@ -51,60 +55,26 @@
         </div>
         <div class="column-one-third last-col">
           <ul class="edit-menu">
-  <!--
-            <li>
-              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
-            </li>
-  -->
-  <!--
-            <li>
-              <a class="secondary-link" href="">Change</a>
-            </li>
-  -->
           </ul>
         </div>
       </div>
       <hr class="light">
     {% endif %}
-    
-    
-    <!-- Preferred language -->
-    {% if data.pLanguageUpdated == true %}
-      <div class="grid-row">
-        <div class="column-one-third">
-          <p>Preferred language</p>
-        </div>
-        <div class="column-one-third">
-          <ul>
-            <li class="strong">English</li>
-            <li class="sl-secondary-text-color sl-metadata">
-              Since 5 Jun 2010
-            </li>
-          </ul>      
-        </div>
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-            <li>
-              <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
-              <span class="pipe"> | </span> 
-              <a href="/historylanguage-pref-history" class="under-link">View history</a>
-            </li>
-  <!--
-            <li>
-              <a class="secondary-link" href="">Change</a>
-            </li>
-  -->
-          </ul>
-        </div>
-      </div>
-      <hr class="light">
-    {% endif %}
+-->
     
       {% include "components/account2/postoffice.html" %}
       <hr class="light">
-
-
-  <div class="grid-row no-margin">
+    {{counter}}
+    {% set counter = 0 %}
+    
+    {% for items, item in data.personalDetails %}
+      {% if item.show == false %}
+        {% set counter = counter + 1 %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if counter != 0 %}
+      <div class="grid-row no-margin">
     <div class="column-one-third">
       <ul>
         &nbsp;
@@ -120,6 +90,8 @@
         <li><a href="../update/person/add" class="under-link">Add personal details</a></li>
       </ul>
     </div>
+  </div>
+    {% endif %}
   </div>
 
 </details>

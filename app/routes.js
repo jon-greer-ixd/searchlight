@@ -601,35 +601,6 @@ router.get(/add-person-handler/, function (req, res) {
   } else {
     res.redirect("/update/person/update");
   }
-//  var next = "gender/update";
-//  var item = req.query.data;
-//  req.session.data.editState = "adding";
-//  if (req.session.data.personalDetail == "nifu") {
-//    req.session.data.personalDetailValue = "Yes";
-//    res.redirect('/update/person/check');
-//  } else {
-//    res.redirect("/update/person/update");
-//  }
-  
-//  if (item === "gender" ) {
-//    req.session.data.personalDetails.gender.state = "adding";
-//    next = "gender/add";
-//  } else if (item ===  "death") {
-//    req.session.data.adddDeath = true;
-//    next = "death/update";
-//  } else if (item ===  "recordLevel") {
-//    req.session.data.recordLevel.state = "adding";
-//    next = "recordLevel/update";
-//  } else if (item === "spokenlanguage") {
-//    req.session.data.adddSpokenLanguage = true;
-//    next = "spoken/update";
-//  } else if (item === "marital") {
-//    req.session.data.maritalState = "adding";
-//    next = "marital/update";
-//  } else if (item === "immigration") {
-//    req.session.data.adddImmigration = true;
-//    next = "immigration/update";
-//  }
 })
 
 router.get(/person-change-handler/, function (req, res) {
@@ -732,15 +703,6 @@ router.get(/disability-type-handler/, function (req, res) {
   }
   res.redirect('/update/person/check')
 })
-//router.get(/disability-type-handler/, function (req, res) {
-//  req.session.data.disability.state = req.query.data;
-//  console.log(req.session.data.disability.state);
-//  if (req.session.data.disability.state === "removing") {
-//    res.redirect('/update/person/check')
-//  } else {
-//    res.redirect('/update/person/disability/update')
-//  }
-//})
 
 //NATIONALITY
 router.get(/nationality-type-handler/, function (req, res) {
@@ -790,7 +752,6 @@ router.get(/sneeds-type-handler/, function (req, res) {
 })
 
 //GENDER
-
 function updateGender(show, hide) {
   show = true;
   hide = false;
