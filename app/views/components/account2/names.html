@@ -22,7 +22,7 @@
           <li>
             <a data-toggle="modal" data-target="#requested_name_modal" class="under-link">View maintenance</a> 
           </li>
-          <li style="font-size:17px;">
+          <li>
             <form class="dumbform" method="get" action="change-type-handler">
               <input class="visually-hidden" type="text" value="three" id="name" name="name">
               <input type="submit" class="under-link" value="Change">
@@ -68,7 +68,7 @@
           <li>
             <a data-toggle="modal" data-target="#name_two_modal" class="under-link">View maintenance</a> 
           </li>
-          <li style="font-size:17px;">
+          <li>
             <form class="dumbform" method="get" action="change-type-handler">
               <input class="visually-hidden" type="text" value="two" id="name" name="name">
               <input type="submit" class="under-link" value="Change">
@@ -123,7 +123,7 @@
         <li>
           <a data-toggle="modal" data-target="#name_one_modal" class="under-link">View maintenance</a> 
         </li>
-        <li style="font-size:17px;">
+        <li>
           <form class="dumbform" method="get" action="change-type-handler">
             <input class="visually-hidden" type="text" value="one" id="name" name="name">
             <input type="submit" class="under-link" value="Change">
@@ -146,7 +146,7 @@
 
   {% if data.hasNameTwo === true and data.hasRequestedName === true %}
   {% else %}
-    <div class="grid-row" style="margin-bottom: 0;">
+    <div class="grid-row no margin">
       <div class="column-one-third">
         &nbsp;
       </div>
@@ -154,7 +154,7 @@
         <hr class="light">
       </div>
     </div>
-    <div class="grid-row" style="margin-bottom: 0;">
+    <div class="grid-row no-margin">
       <div class="column-one-third">
         &nbsp;
       </div>
@@ -173,7 +173,7 @@
       </div>
       <div class="column-one-third last-col">
         <ul class="sub-menu">
-          <li style="font-size:17px;">
+          <li>
             <form class="dumbform" method="get" action="add-handler">
               <input type="submit" class="under-link" value="Add">
             </form>

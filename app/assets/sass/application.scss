@@ -1034,6 +1034,10 @@ hr.light {
   background: #e6e6e6;
 }
 
+hr.split {
+  margin-left :50px;
+}
+
 #sl-account .sl-primary-name-container-placeholder {
 //    background-color: #6f777a;
     background-color: #005ea5;
@@ -1166,4 +1170,12 @@ summary {
 
 #sl-header a.sl-main-heading#create-title:hover {
   text-decoration: none!important;
+}
+
+.personal-details {
+  .grid-row {
+    &.no-margin {
+      margin-bottom: 0;
+    }
+  }
 }
