@@ -35,11 +35,7 @@ var defaults = {
   dead : false,
   deathState : null,
   showDeath : false,
-      
-  //prefered language
-  addPreferedLanguage : false,
-  preferedLanguageUpdated : false,
-  
+        
   //spoken language
   addSpokenLanguage : false,
   spokenLanguageUpdated : false,
@@ -47,6 +43,10 @@ var defaults = {
   //immigration status
   addImmigration : false,
   ImmigrationUpdated : false,
+  
+    //prefered language
+  addPreferedLanguage : false,
+  preferedLanguageUpdated : false,
   
 //messagecentre
   toaster : null
@@ -80,12 +80,13 @@ var personalDetails = {
   "sex" : {state : null, show : true, display : "Sex", value : "Male"},
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
-//  "potentiallyViolent" : {state : null, show : false, display : "Potentially violent", value : null},
   "disability" : {state : null, show : false, display : "Disability", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
+  "preferedLanguage" : {state : null, show : false, display : "Prefered language", value : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
+
 
 
 //  prints all the items

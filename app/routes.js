@@ -620,25 +620,6 @@ router.get(/add-person-handler/, function (req, res) {
 //  } else if (item ===  "recordLevel") {
 //    req.session.data.recordLevel.state = "adding";
 //    next = "recordLevel/update";
-//  } else if (item ===  "pv") {
-//    req.session.data.adddPv = true;
-//    next = "pv/update";
-////  } else if (item === "nationality") {
-////    req.session.data.nationality.state = "adding";
-////    next = "nationality/update";
-//  } else if (item === "nifu") {
-//    req.session.data.nifu.state = "adding";
-//    req.session.data.nifu.value = "Yes";
-//    next = "check";
-//  } else if (item === "needs") {
-//    req.session.data.specialNeeds.state = "adding";
-//    next = "needs/update";
-//  } else if (item === "disability") {
-//    req.session.data.disability.state = "adding";
-//    next = "check";
-//  } else if (item === "planguage") {
-//    req.session.data.adddPreferedLanguage = true;
-//    next = "prefered/update";
 //  } else if (item === "spokenlanguage") {
 //    req.session.data.adddSpokenLanguage = true;
 //    next = "spoken/update";
@@ -1475,14 +1456,6 @@ router.get(/add-int-handler/, function (req, res) {
 var counter;
 
 router.get(/add-interest-handler/, function (req, res) {
-  
-//Child Support Reform - 1:24, 3:71, 3:72
-//Bereavement Allowance - 1:24, 2:24
-//Bereavement Benefit - 1:24, 2:24, 3:71, 3:72
-//Jobseeker's Allowance - 1:24, 1:70, 2:24, 2:70, 3:71, 3:72
-//Winter Fuel Payment - 3:71 - DONE
-//Carers Credit - 1:70 - DONE
-
   req.session.data.updateType = "addInterest";
   resetToDefaults();
   tempInterest.live = true;
@@ -1609,41 +1582,10 @@ router.get('/update/interests/add-party', function (req, res) {
 })
 
 
-//router.get('/update/check', function (req, res) {
-//  res.render('update/check', {
-//    addressone : addressOne,
-//    addresstwo : addressTwo,
-//    addressthree : addressThree,
-//    addressfour : addressFour,
-//    editdate : content.editDate,
-//    correctiontype :dataState.correctionType,
-//    correcting : dataState.correcting,
-//    pagetitle : content.pageTitle,
-//    currentstatus : content.statusToText(dataState.currentStatus),
-//    newstatus : content.statusToText(dataState.newStatus)
-//  })
-//})
-
-
 //*****************
 // ACCOUNT CREATION 
 //*****************
 
-/*
-Create
-Cant see:
-Name Start Date
-Name Notified Start Date
-are pre populated with the current system date. 
-
-
-Update/insert
-Can edit:
-Name Start Date
-Name Notified Start Date
-are pre populated with the current system date. 
-dont see trace
-*/
 
 //************
 //All versions
@@ -1806,25 +1748,6 @@ router.get(/previous-address-handler/, function (req, res) {
   }
   res.redirect(next)
 })
-////previous-address-handler
-//router.get(/previous-address-handler/, function (req, res) {
-//  if (person.previous_address_count === 0) {
-//    if (req.query.data === 'yes') {
-//      person.previous_address = true;
-//      res.redirect('search-previous')
-//    } else {
-//      person.previous_address = false;
-//    }
-//    person.previous_address_count++;
-//  }
-//  if (req.query.data === 'yes') {
-//    res.redirect('search-previous')
-//  } else if (person.correspondence_address === null) {
-//    res.redirect('correspondence-question')
-//  } else {
-//    res.redirect('contact-question')
-//  }
-//})
 
 //contact-handler
 router.get(/contact-handler/, function (req, res) {
@@ -1836,36 +1759,6 @@ router.get(/contact-handler/, function (req, res) {
     res.redirect('mobile')
   }
 })
-  // enter name
-  // other name - no
-  // previous name - no
-  // dob
-  
-  // enter name
-  // other name - yes
-  // enter other name
-  // no previous name
-  // dob
-  
-  // enter name
-  // other name - no
-  // previous name - yes
-  // previous name
-  // another previous name - no
-  // dob
-  
-////first-name-handler
-//router.get(/main-name-handler/, function (req, res) {
-//  if (person.requested_name === null) {
-//    res.redirect('requested-name')
-//  } else {
-//    if (person.previous_name_count < 2) {
-//      res.redirect('previous-name')
-//    } else {
-//      res.redirect('dob')
-//    }
-//  }
-//})
 
 //requested-name-handler
 router.get(/requested-name-handler/, function (req, res) {
