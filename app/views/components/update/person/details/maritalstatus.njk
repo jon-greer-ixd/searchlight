@@ -1,9 +1,10 @@
+<h2 class="heading-medium question">What is the person's marital or civil partnership status?</h2>
 <div class="grid-row">
   <div class="column-two-thirds">
     <form class="form" method="get" action="check">
       <div class="form-group">
         <fieldset>
-          <legend class="radio-header">Marital or civil partnership status</legend>
+          <legend class="visually-hidden">Marital or civil partnership status</legend>
           
             <div class="multiple-choice">
               <input id="single" type="radio" name="personalDetailValue" {% if data.personalDetails.maritalStatus.value == "Single" %} checked = "checked" {% endif %} value="Single">
@@ -46,7 +47,7 @@
             </div>
   
             {% if data.editState == "correcting" %}
-              <p class="form-block" style="margin-top:-15px;">or</p>
+              <p class="form-block">or</p>
               <div class="multiple-choice">
                 <input id="unknown" name="personalDetailValue" type="radio" value="Unknown">
                 <label for="unknown">Marital or civil partnership status is unknown</label>

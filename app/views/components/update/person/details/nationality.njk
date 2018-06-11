@@ -290,17 +290,26 @@
       <p class="form-block" style="margin-top:-15px;">or</p>
       
       <div class="form-group">
-        <div class="multiple-choice">
-          <input id="none" name="data" type="radio" value="stateless" {% if data.personalDetails.nationality.value == "Stateless" %} checked ="checked"{% endif %}>
-          <label for="none">The person is stateless</label>
-        </div>
       
+        {% if data.editState == "adding" or data.editState == "updating" %}
+          <div class="multiple-choice">
+            <input id="none" name="data" type="checkbox" value="stateless" {% if data.personalDetails.nationality.value == "Stateless" %} checked ="checked"{% endif %}>
+            <label for="none">The person is stateless</label>
+          </div>
+        {% endif %}  
+        
         {% if data.editState == "correcting" %}
           <div class="multiple-choice">
+            <input id="none" name="data" type="radio" value="stateless" {% if data.personalDetails.nationality.value == "Stateless" %} checked ="checked"{% endif %}>
+            <label for="none">The person is stateless</label>
+          </div>
+
+        <div class="multiple-choice">
             <input id="unknown" name="data" type="radio" value="unknown">
             <label for="unknown">Nationality is unknown</label>
           </div>
-        {% endif %}          
+        {% endif %}   
+        
       </div>
       <div class="form-group">
         <input class="button" type="submit" value="Next">

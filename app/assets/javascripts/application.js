@@ -111,6 +111,24 @@ if (document.getElementById("cancel-boxes")) {
   }
 }
 
+//checkbox contact
+if (document.getElementsByClassName("multi-boxes")) {
+  var boxes = document.getElementsByClassName("multi-boxes");
+  var clearBox = document.getElementById("unknown");
+  clearBox.addEventListener('change', cancelPrefs);
+  function cancelPrefs() {
+    for (var box in boxes) {
+     boxes[box].checked = false;
+    }
+  }
+  for (var box in boxes) {
+     boxes[box].addEventListener('change', changePrefs);
+    }
+  function changePrefs() {
+     clearBox.checked = false;
+  }
+}
+
 
 if (document.getElementById("work-number")) {
   console.log('start');

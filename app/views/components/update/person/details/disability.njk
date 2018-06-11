@@ -15,10 +15,13 @@
           <label for="no">No</label>
         </div>
         
-        <div class="multiple-choice">
-          <input id="no" type="radio" name="personalDetailValue" {% if data.personalDetails.disability.value == "Unknown" %} checked="checked" {% endif %} value="Unknown">
-          <label for="unknown">Unknown</label>
-        </div>
+        {% if data.editState == "correcting" %}
+          <p class="form-block">or</p>
+          <div class="multiple-choice">
+            <input id="unknown" name="personalDetailValue" type="radio" value="Unknown" {% if data.personalDetails.nationality.value == "Unknown" %} checked ="checked"{% endif %}>
+            <label for="unknown">Disability status is unknown</label>
+          </div>
+        {% endif %}  
         
       </fieldset>
       <div class="form-group">

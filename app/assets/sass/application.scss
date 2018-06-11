@@ -281,7 +281,7 @@ form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-la
 
 .personal-details {
   .grid-row {
-    margin-bottom: 20px;
+    margin-bottom: 0;
     img {
       margin: -4px 4px 0 0;
     }
@@ -1182,4 +1182,8 @@ summary {
 
 .no-margin {
   margin-bottom: 0;
+}
+
+.extra-margin .grid-row {
+  margin-bottom: 20px;
 }

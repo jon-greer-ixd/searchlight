@@ -21,7 +21,7 @@
           {% if data['updateType'] == "addRequestedName" or data['updateType'] == "correctRequestedName" or data['updateType'] == "updateRequestedName" %}
             <tr>
               <td><span class="strong">Requested name</span></td>
-              <td>{{data.requestedName | upper}}</td>
+              <td>{{data.requestedName}}</td>
               <td><a>Change</a></td>
             </tr>
             {% if data['updateType'] == "addRequestedName" or data['updateType'] == "updateRequestedName" %}
