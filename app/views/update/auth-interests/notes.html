@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+  {% include "components/update/auth-interests/details-nav.html" %}
+  
+  <div class="sl-account-canvas row updater slim-header">
+    <div class="sl-account-canvas-width">
+      <h2>Notes</h2>
+
+      {% include "update/auth-interests/details.html" %}
+
+      {% include "components/modals.html" %}
+
+      <h2>Income Support (ISCS)</h2>
+
+      {% include "update/auth-interests/details.html" %}
+
+      <div class="last-card">
+      </div>
+        
+    </div>
+  </div>
+
+{% endblock %}

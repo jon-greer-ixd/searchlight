@@ -10,20 +10,51 @@
   
   <div class="sl-account-canvas row updater slim-header">
     <div class="sl-account-canvas-width">
-      <h2>JobSeekers Allowance (JSAPS)</h2>
+      <h2>Local authority data</h2>
+      
+      <div class="sl-primary-card sl-personal-details-card list-card">
+        <div class="grid-row no-margin">
+          <div class="column-one-third">
+            <h3 class="strong title">JobSeekers Allowance (JSAPS)</h3>
+          </div>
+        </div>
+        <hr class="light">
+        {% include "update/auth-interests/details.html" %}
+      </div>
+      
+      <br>
+      <br>
 
-      {% include "update/auth-interests/details.html" %}
+      <div class="sl-primary-card sl-personal-details-card list-card">
+        <div class="grid-row no-margin">
+          <div class="column-one-third">
+            <h3 class="strong title">Income Support (ISCS)</h3>
+          </div>
+        </div>
+        <hr class="light">
+        {% include "update/auth-interests/details.html" %}
+      </div>
 
-      {% include "components/modals.html" %}
+      
+      <br>
+      <br>
 
-      <h2>Income Support (ISCS)</h2>
-
-      {% include "update/auth-interests/details.html" %}
+      <div class="sl-primary-card sl-personal-details-card list-card">
+        <div class="grid-row no-margin">
+          <div class="column-one-third">
+            <h3 class="strong title">Pensions Service (PSCS)</h3>
+          </div>
+        </div>
+        <hr class="light">
+        {% include "update/auth-interests/details.html" %}
+      </div>
 
       <div class="last-card">
       </div>
         
     </div>
   </div>
+
+  {% include "components/modals.html" %}
 
 {% endblock %}

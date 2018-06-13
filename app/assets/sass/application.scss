@@ -1198,6 +1198,53 @@ summary {
 
 .list-card {
   li {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
+  h3.title {
+    padding-bottom :0!important;
+  }
+  .details {
+    @include clearfix;
+    margin : 30px 0;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.short-name {
+  line-height: 50px;
+  color: white;
+  @include clearfix;
+  li {
+    float: left;
+    margin-right: 13px;
+    &:last-child {
+      clear: both;
+      margin: 0;
+      padding: 0;
+      line-height :100%;
+      a {
+        margin: 0;
+        padding: 0;
+        display: block;
+      }
+    }
+  }
+  a {
+    color: white;
+    margin-bottom:10px;
+  }
+}
+
+.new-slim {
+  height: auto!important;
+}
+
+#sl-account .new-header {
+  margin-top: 100px;
 }
