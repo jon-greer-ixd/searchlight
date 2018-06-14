@@ -66,6 +66,7 @@ $path: "/public/images/";
 }
 
 .slim {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.39);
   height: 65px!important;
   .sl-account-primary-name {
     h1 {
@@ -1190,4 +1191,8 @@ summary {
 
 h2.title {
   padding-top: 10px;
+}
+
+.spacing-top-single {
+  padding-top: 0;
 }
