@@ -49,7 +49,7 @@ $path: "/public/images/";
 }
 
 .slim-header {
-  padding-top: 108px!important;
+  padding-top: 75px!important;
 }
 
 .super-slim-header {
@@ -1159,7 +1159,7 @@ summary {
 }
 
 .namespace {
-  width: 8px;
+  width: 2px;
   display: inline-block;
 }
 
@@ -1186,4 +1186,8 @@ summary {
 
 .extra-margin .grid-row {
   margin-bottom: 20px;
+}
+
+h2.title {
+  padding-top: 10px;
 }
