@@ -4,14 +4,17 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
+          <a class="link-back" onCLick="history.back()">Back</a>
+          
           {% if data['updateType'] == 'endInterest' %}
-            <h2>End an interest</h2>
+            <h2 class="title">End an interest</h2>
           {% elif data['updateType'] == 'transferInterest' %}
-            <h2>Transfer an interest</h2>
+            <h2 class="title">Transfer an interest</h2>
           {% elif data['updateType'] == 'endfParties' %}
-            <h2>End interested parties</h2>
+            <h2 class="title">End interested parties</h2>
           {% else %}
-            <h2>Add an interest</h2>
+            <h2 class="title">Add an interest</h2>
           {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

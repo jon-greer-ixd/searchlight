@@ -4,26 +4,29 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
+          <a class="link-back" onCLick="history.back()">Back</a>          
+          
           {% if data.updateType == 'updateNameOne' %}
-            <h2>Update name type 1</h2>
+            <h2 class="title">Update name type 1</h2>
           {% elif data.updateType == 'correctNameOne' %}
-            <h2>Correct name type 1</h2>
+            <h2 class="title">Correct name type 1</h2>
           {% elif data.updateType == 'addNameTwo' %}
-            <h2>Add a name type 2</h2>
+            <h2 class="title">Add a name type 2</h2>
           {% elif data.updateType == 'updateNameTwo' %}
-            <h2>Update name type 2</h2>
+            <h2 class="title">Update name type 2</h2>
           {% elif data.updateType == 'correctNameTwo' %}
-            <h2>Correct name type 2</h2>
+            <h2 class="title">Correct name type 2</h2>
           {% elif data.updateType == 'addRequestedName' %}
-            <h2>Add a requested name</h2>
+            <h2 class="title">Add a requested name</h2>
           {% elif data.updateType == 'updateRequestedName' %}
-            <h2>Update requested name</h2>
+            <h2 class="title">Update requested name</h2>
           {% elif data.updateType == 'correctRequestedName' %}
-            <h2>Correct requested name</h2>
+            <h2 class="title">Correct requested name</h2>
           {% elif data.updateType == 'removeRequestedName' %}
-            <h2>End requested name</h2>
+            <h2 class="title">End requested name</h2>
           {% elif data.updateType == 'removeNameTwo' %}
-            <h2>End name type 2</h2>
+            <h2 class="title">End name type 2</h2>
           {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

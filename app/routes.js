@@ -1420,7 +1420,7 @@ router.get(/add-interest-handler/, function (req, res) {
   req.session.data.updateType = "addInterest";
   resetToDefaults();
   tempInterest.live = true;
-  tempInterest.title = req.query.title;
+  tempInterest.title = req.query.interest;
   tempInterest.startDate = dates.convertDayToString(req.query.startdate);
   if(tempInterest.title === "Carers Credit") {
     tempInterest.system = "sys";

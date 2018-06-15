@@ -4,12 +4,15 @@
       <div class="sl-account-canvas-width">
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
+          <a class="link-back" onCLick="history.back()">Back</a>
+          
           {% if data.updateType === "changeNameOne" %}
-            <h2>Change name type 1</h2>
+            <h2 class="title">Change name type 1</h2>
           {% elif data.updateType === "changeNameTwo" %}
-            <h2>Change name type 2</h2>
+            <h2 class="title">Change name type 2</h2>
           {% elif data.updateType === "changeRequested" %}
-            <h2>Change requested name</h2>
+            <h2 class="title">Change requested name</h2>
           {% endif %}
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
