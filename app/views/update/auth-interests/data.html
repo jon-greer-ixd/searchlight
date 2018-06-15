@@ -9,30 +9,12 @@
   {% include "components/nav/update-details-nav-v2.html" %}
   
   <div class="sl-account-canvas row updater slim-header">
-    <div class="sl-account-canvas-width">
+    
+    <div class="sl-account-canvas-width" id="notes-data">
       
       <a class="link-back" onCLick="history.back()">Back</a>
       
-      <h2>Local authority data</h2>
-      
-      <div class="sl-primary-card sl-personal-details-card list-card">
-        <div class="grid-row no-margin">
-          <div class="column-one-third">
-            <h3 class="strong title">JobSeekers Allowance (JSAPS)</h3>
-          </div>
-        </div>
-        <hr class="light">
-        {% include "update/auth-interests/details.html" %}
-      </div>
-      
-      <br>
-      <br>
-
-      <div class="sl-primary-card sl-personal-details-card list-card">
-        <div class="grid-row no-margin">
-          <div class="sl-account-canvas-width" id="notes-data">
-      
-            <h2 class="title">Local Authority data</h2>
+      <h2 class="title">Local Authority data</h2>
       
       <div class="sl-primary-card sl-personal-details-card list-card">
         <div class="grid-row">
@@ -49,16 +31,6 @@
             <h3 class="strong title">Income Support (ISCS)</h3>
           </div>
         </div>
-        <hr class="light">
-        {% include "update/auth-interests/details.html" %}
-      </div>
-
-      
-      <br>
-      <br>
-
-      <div class="sl-primary-card sl-personal-details-card list-card">
-        <div class="grid-row no-margin">
         {% include "components/update/auth-interests/details.html" %}
       </div>
 
@@ -68,7 +40,6 @@
             <h3 class="strong title">Pensions Service (PSCS)</h3>
           </div>
         </div>
-        <hr class="light">
         {% include "components/update/auth-interests/details.html" %}
       </div>
 
