@@ -1,0 +1,33 @@
+<div id="sl-account" class="container-fluid ng-scope">
+  
+  <div class="sl-account-header row">
+
+      <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder ng-scope slim">
+      
+        <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">
+      
+          {% include "components/account2/name-details-v2.html" %}        
+
+          <div id="sl-placeholder">
+            
+            <div ng-if="placeholderType === 'primary-name-placeholder'" class="primary-name spacing-top-single-half ng-scope">
+              
+              <div>
+                <div class="primary-animated-background primary-name-placeholder"></div>
+              </div>
+
+              <div class="spacing-top-single">
+                <div class="secondary-animated-background secondary-name-placeholder"></div>
+              </div>
+              
+            </div>
+
+          </div>
+          
+        </sl-placeholder>
+        
+      </div>
+{% block nav %} {% endblock %}
+    
+  </div>
+

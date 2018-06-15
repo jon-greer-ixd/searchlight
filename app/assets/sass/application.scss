@@ -49,7 +49,16 @@ $path: "/public/images/";
 }
 
 .slim-header {
-  padding-top: 108px!important;
+  padding-top: 75px!important;
+}
+
+.new-slim-header {
+  padding-top: 145px!important;
+}
+
+#block {
+  height: 145px;
+  background: black;
 }
 
 .super-slim-header {
@@ -66,6 +75,7 @@ $path: "/public/images/";
 }
 
 .slim {
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.39);
   height: 65px!important;
   .sl-account-primary-name {
     h1 {
@@ -723,6 +733,14 @@ input.short-field {
   }
 }
 
+a.short-name {
+  color: white;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 .main-table {
   td, tr {
     width: auto!important;
@@ -1159,7 +1177,7 @@ summary {
 }
 
 .namespace {
-  width: 8px;
+  width: 2px;
   display: inline-block;
 }
 
@@ -1198,6 +1216,32 @@ summary {
 
 .list-card {
   li {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+  }
+}
+
+h2.title {
+  padding-top: 10px;
+}
+
+.spacing-top-single {
+  padding-top: 0;
+}
+
+#notes {
+  h3 {
+    padding-bottom: 0;
+  }
+  p, li {
+    margin-bottom: 0;
+  }
+}
+
+#notes-data {
+  h3.title {
+    padding-bottom: 0;
+  }
+  li:last-child {
+    margin-bottom: 0;
   }
 }
