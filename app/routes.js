@@ -1442,9 +1442,9 @@ router.get(/interest-check-handler/, function (req, res) {
     dataState.interestAdded = true;   
   }
   resetTempInterest(req.session.data.tempInterest);
-  if (req.session.data.updateType === "transferInterest") {
-    dataState.interestTransfered = true;
-  }
+//  if (req.session.data.updateType === "transferInterest") {
+//    dataState.interestTransfered = true;
+//  }
   res.redirect("/account2/account");
 })
 
