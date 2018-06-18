@@ -1258,12 +1258,18 @@ h2.title {
       margin-bottom: 25px;
     }
   }
-  h3 {
-    padding-bottom: 0;
-  }
+//  h3 {
+//    padding-bottom: 0;
+//  }
   li:last-child {
     margin-bottom: 0;
   }
+}
+
+hr.strong {
+  height: 3px;
+  margin-top: 30px;
+  background-color: #0b0c0c;
 }
 
 .title-group {
