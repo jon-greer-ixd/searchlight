@@ -1243,6 +1243,7 @@ h2.title {
 
 #notes {
   h3 {
+    margin-top: 60px;
     padding-bottom: 0;
   }
   p, li {
@@ -1251,7 +1252,13 @@ h2.title {
 }
 
 #notes-data {
-  h3.title {
+  hr {
+    margin-bottom: 40px;
+    &.light {
+      margin-bottom: 25px;
+    }
+  }
+  h3 {
     padding-bottom: 0;
   }
   li:last-child {
@@ -1259,6 +1266,15 @@ h2.title {
   }
 }
 
+.title-group {
+  h3 {
+    padding-bottom: 0;
+  }
+  p {
+    margin-top :0;
+    margin-bottom :0;
+  }
+}
 
 .short-name {
   line-height: 50px;
