@@ -5,13 +5,6 @@ var defaults = {
   updateType : null,
   
   //names
-//  title : "MR",
-//  nameOneLast : "KEITA",
-//  nameTwoFirst : "MICHAEL",
-//  nameTwoLast : "SMITH JONES BOOTH",
-//  hasNameTwo : false,
-//  hasRequestedName : false,
-  requestedName : "JIMBOB",
   nameOneUpdated : false,
   nameOneCorrected : false,
   nameTwoAdded : false,
