@@ -158,6 +158,20 @@ function messageCentre(item, type, state) {
   return message
 }
 
+//state-machine
+function setState(state) {
+  if (state === "add") {
+    state = "added";
+  } else if (state === "update") {
+    state = "updated";
+  } else if (state === "correct") {
+    state = "corrected";
+  } else if (state === "end") {
+    state = "ended";
+  }
+  return state;
+}
+
 module.exports.messageCentre = messageCentre;
 module.exports.authority = authority;
 module.exports.changeSex = changeSex;
@@ -166,3 +180,4 @@ module.exports.defaults = defaults;
 module.exports.contactTypes = contactTypes;
 module.exports.personalDetails = personalDetails;
 module.exports.details = details;
+module.exports.setState = setState;

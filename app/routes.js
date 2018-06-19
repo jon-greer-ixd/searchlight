@@ -16,6 +16,8 @@ var contactTypes = require('./defaults.js').contactTypes;
 
 var flip = require('./defaults.js').flip;
 
+var setState = require('./defaults.js').setState;
+
 var changeSex = require('./defaults.js').changeSex;
 
 var messageCentre = require('./defaults.js').messageCentre;
@@ -892,21 +894,12 @@ router.get(/add-handler/, function (req, res) {
   req.session.data.updateType = "add";
   if(req.session.data.details.nameTwo.show == true) {
     req.session.data.nameType = "requestedName";
-    res.redirect('../../update/name/requested-name')
+    res.redirect('../../update/name/update-name')
   } else if(req.session.data.details.requestedName.show == true) {
     req.session.data.nameType = "nameTwo";
     res.redirect('../../update/name/update-name')
   } else {
     res.redirect('../../update/name/add')
-  }
-})
-
-//add name
-router.get(/add-name-handler/, function (req, res) {
-  if(req.session.data.nameType == "requestedName") {
-    res.redirect('requested-name')
-  } else {
-    res.redirect('update-name')
   }
 })
 
@@ -918,49 +911,37 @@ router.get(/name-change-handler/, function (req, res) {
 
 //change name
 router.get(/change-name-type-handler/, function (req, res) {
-  req.session.data.updateType = req.query.data;
-  var nextPage = "update-name";
-  if(req.session.data.nameType == "requestedName") {
-    nextPage = 'requested-name';
-  }
   if(req.session.data.updateType == "end") {
-    nextPage = "remove";
+    res.redirect("remove")
+  } else {
+    res.redirect("update-name")
   }
-  res.redirect(nextPage)
 })
 
+//check name
 router.get(/check-name-handler/, function (req, res) {
-  req.session.data.toaster = null;
-  if (req.session.data.updateType == "add") {
-    if (req.session.data.nameType == "nameTwo") {
-      req.session.data.details.nameTwo.title = req.session.data.title;
-      req.session.data.details.nameTwo.first = req.session.data.firstname;
-      req.session.data.details.nameTwo.last = req.session.data.lastname;
-    } else {
-      req.session.data.details.requestedName.value = req.session.data.requestedname;
-    }
-    req.session.data.details[req.session.data.nameType].show = true;
-    req.session.data.details[req.session.data.nameType].state = "added";
-  } else if (req.session.data.updateType == "update") {
-    req.session.data.details[req.session.data.nameType].title = req.session.data.title;
-    req.session.data.details[req.session.data.nameType].first = req.session.data.firstname;
-    req.session.data.details[req.session.data.nameType].last = req.session.data.lastname;
-    req.session.data.details[req.session.data.nameType].state = "updated";
-  } else if (req.session.data.updateType == "correct") {
-    if (req.session.data.nameType != "requestedName") {
+  req.session.data.toaster = null;  
+  if (req.session.data.nameType == "name" || req.session.data.nameType == "nameTwo") {
+    if (req.session.data.updateType != "end") {
       req.session.data.details[req.session.data.nameType].title = req.session.data.title;
       req.session.data.details[req.session.data.nameType].first = req.session.data.firstname;
       req.session.data.details[req.session.data.nameType].last = req.session.data.lastname;
-    } else {
-      req.session.data.details.requestedName.value = req.session.data.requestedname;
+      req.session.data.details[req.session.data.nameType].suffix = req.session.data.suffix;
+      req.session.data.details[req.session.data.nameType].show = true;
+    } else { 
+      req.session.data.details.nameTwo.show = false;
     }
-    req.session.data.details[req.session.data.nameType].state = "corrected";
-  } else if (req.session.data.updateType == "end") {
-    req.session.data.details[req.session.data.nameType].show = false;
-    req.session.data.details[req.session.data.nameType].state = "ended";
   }
+  if (req.session.data.nameType == "requestedName") {
+    if (req.session.data.updateType != "end") {
+      req.session.data.details.requestedName.value = req.session.data.requestedName;
+      req.session.data.details[req.session.data.nameType].show = true;
+    } else { 
+      req.session.data.details.requestedName.show = false;
+    }
+  }
+  req.session.data.details[req.session.data.nameType].state = setState(req.session.data.updateType);
   req.session.data.toaster = messageCentre(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
-    
   res.redirect('../../account2/account')
 })
 

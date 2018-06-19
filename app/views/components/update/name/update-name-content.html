@@ -8,6 +8,29 @@
         </p>
       </legend>
       
+      {% if data.nameType == "requestedName" %}
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
+          <legend class="visuallyhidden">Requested name</legend>
+          <label class="form-label" for="requestedName">Requested name</label>
+          <input class="form-control" id="requestedName" type="text" name="requestedName" {% if data.updateType == "correct" %} value = {{data.details.requestedName.value}} {% endif %}>
+        </fieldset>
+      
+        {% if data.updateType != "correct" %}
+          <fieldset>
+            <div class="form-group prepop">
+              <label class="form-label" for="startdate">
+                Start date
+                <span class="form-hint">
+                  For example 31/8/1979
+                </span>
+              </label>
+              <input class="form-control box-one" id="startdate" name="startdate" type="text">
+              <a class="populate-link-one">Use today's date</a>
+            </div>
+          </fieldset>
+        {% endif %}
+        {% else %}
+      
         <div class="form-group">
          <fieldset data-required data-error="Choose a title">
            <legend class="radio-header">Title</legend>
@@ -122,7 +145,6 @@
             </div>
           </fieldset>
       
-      
           <fieldset>
             <div class="form-group prepop">
               <label class="form-label" for="startdate">
@@ -134,6 +156,10 @@
           </fieldset>
       
         {% endif %}
+      
+        {% endif %}
+
+      
       
       <div class="form-group">
         <input class="button" type="submit" value="Next">

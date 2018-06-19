@@ -12,24 +12,24 @@
       
         <div class="form-group">
           <div class="multiple-choice">
-            <input id="update" type="radio" name="data" value="update">
+            <input id="update" type="radio" name="updateType" value="update">
             <label for="update">Update</label>
           </div>
           <div class="multiple-choice">
-            <input id="correct" type="radio" name="data" value="correct">
+            <input id="correct" type="radio" name="updateType" value="correct">
             <label for="correct">Correct a mistake</label>
           </div>
           
           {% if data.nameType == "nameTwo"%}
           <div class="multiple-choice">
-            <input id="remove" type="radio" name="data" value="end">
+            <input id="remove" type="radio" name="updateType" value="end">
             <label for="remove">End name type 2</label>
           </div>
           {% endif %}
           
           {% if data.nameType == "requestedName" %}
           <div class="multiple-choice">
-            <input id="remove" type="radio" name="data" value="end">
+            <input id="remove" type="radio" name="updateType" value="end">
             <label for="remove">End requested name</label>
           </div>
           {% endif %}

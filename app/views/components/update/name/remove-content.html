@@ -26,7 +26,19 @@
           <a class="populate-link-one">Use today's date</a>
         </div>
       </fieldset>
-
+      
+      {% if data.nameType =="nameTwo" %}
+        <fieldset>
+          <div class="form-group prepop">
+            <label class="form-label" for="startdate">
+              Notified date
+            </label>
+            <input class="form-control box-two" id="startdate" name="startdate" type="text">
+            <a class="populate-link-two">Use today's date</a>
+          </div>
+        </fieldset>
+      {% endif %}
+      
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
