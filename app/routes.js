@@ -310,7 +310,6 @@ var dataState = {
   interestAdded : false,
   interestRemoved : false,
   typeTwoAdded : false,
-  nameAdded : false,
   interestTransfered : false,
   addressCorrected : false,
   statusCorrected : false
@@ -954,9 +953,6 @@ router.get(/check-name-handler/, function (req, res) {
 //account2
 router.get('/account2/account', function (req, res) {
   res.render('account2/account.html', {
-    nameOneUpdated : req.session.data.nameOneUpdated,
-    nameOneCorrected : req.session.data.nameOneCorrected,
-
     dataState : dataState,
     today : dates.todayAsString(),
     residentialaddress : residentialAddress,
@@ -975,7 +971,6 @@ router.get('/account2/account', function (req, res) {
     interestRemoved : dataState.interestRemoved,
     interestTransfered : dataState.interestTransfered,
     typeTwoAdded : dataState.typeTwoAdded,
-    nameAdded : dataState.nameOneCorrected,
     cherishedlinecorrected : dataState.cherishedLineCorrected,
     currentstatus : dataState.currentStatus,
     statuscorrected : dataState.statusCorrected,
@@ -986,8 +981,6 @@ router.get('/account2/account', function (req, res) {
 //account
 router.get('/update/account', function (req, res) {
   res.render('update/account.html', {
-    nameOneUpdated : req.session.data.nameOneUpdated,
-    nameOneCorrected : req.session.data.nameOneCorrected,
     residentialaddress : residentialAddress,
     correspondenceaddress : correspondenceAddress,
     previousaddress : previousAddress,

@@ -3,26 +3,7 @@ var defaults = {
   contactType : null,
   //updater
   updateType : null,
-  
-  //names
-//  title : "MR",
-//  nameOneLast : "KEITA",
-//  nameTwoFirst : "MICHAEL",
-//  nameTwoLast : "SMITH JONES BOOTH",
-//  hasNameTwo : false,
-//  hasRequestedName : false,
-  requestedName : "JIMBOB",
-  nameOneUpdated : false,
-  nameOneCorrected : false,
-  nameTwoAdded : false,
-  nameTwoUpdated : false,
-  nameTwoCorrected : false,
-  nameTwoRemoved : false,
-  requestedNameAdded : false,
-  requestedNameUpdated : false,
-  requestedNameCorrected : false,
-  requestedNameRemoved : false,
-  
+    
   //CONTACT  
   
   showContact : false,
