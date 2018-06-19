@@ -101,7 +101,7 @@
     <div class="column-one-third">
       <ul>
         <li class="strong">
-          {{data.title | upper}} <span class="namespace"> </span> {{data.nameOneFirst | upper}} <span class="namespace"> </span> {{data.nameOneLast | upper}}
+          {{data.details.name.title | upper}} <span class="namespace"> </span> {{data.details.name.first | upper}} <span class="namespace"> </span> {{data.details.name.last | upper}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
           {% if data.hasNameTwo == true or data.hasRequestedName == true %}

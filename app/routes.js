@@ -349,6 +349,7 @@ router.use('/', main);
     }
   }
     
+  req.session.data.details = require('./defaults.js').details;
   req.session.data.personalDetails = require('./defaults.js').personalDetails;
   req.session.data.contactTypes = contactTypes;
   req.session.data.authority = require('./defaults.js').authority;

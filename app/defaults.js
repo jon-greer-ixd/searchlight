@@ -57,6 +57,23 @@ var authority = {
   "councilTaxReduction" : {"state" : null, "show" : false}
 };
 
+var details = {
+  name : {state : null, show : true, display : (this.title + " " + this.first + " " + this.last), value : null, title : "Mr", first : "IBRAHIM BOUBACAR", last : "KEITA"}
+}
+
+var personalDetails = {
+  "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
+  "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
+  "sex" : {state : null, show : true, display : "Sex", value : "Male"},
+  "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
+  "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
+  "disability" : {state : null, show : false, display : "Disability", value : null},
+  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
+  "nationality" : {state : null, show : false, display : "Nationality", value : null},
+  "preferedLanguage" : {state : null, show : false, display : "Prefered language", value : null},
+  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
+}
+
 var contactTypes = {
   "personalMobile" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Personal mobile", value : "07761 111 111"},
   "homeTelephone" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Home telephone", value : "0191 111 111", exD : false},
@@ -73,20 +90,6 @@ var contactTypes = {
   "typeTalk" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "TypeTalk", value : "0191 999 999"},
   "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Other contact method", value : "Fred the Pigeon"}
 }
-
-var personalDetails = {
-  "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
-  "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
-  "sex" : {state : null, show : true, display : "Sex", value : "Male"},
-  "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
-  "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
-  "disability" : {state : null, show : false, display : "Disability", value : null},
-  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
-  "nationality" : {state : null, show : false, display : "Nationality", value : null},
-  "preferedLanguage" : {state : null, show : false, display : "Prefered language", value : null},
-  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
-}
-
 
 
 //  prints all the items
@@ -161,3 +164,4 @@ module.exports.flip = flip;
 module.exports.defaults = defaults;
 module.exports.contactTypes = contactTypes;
 module.exports.personalDetails = personalDetails;
+module.exports.details = details;
