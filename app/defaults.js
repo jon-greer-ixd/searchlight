@@ -3,19 +3,7 @@ var defaults = {
   contactType : null,
   //updater
   updateType : null,
-  
-  //names
-  nameOneUpdated : false,
-  nameOneCorrected : false,
-  nameTwoAdded : false,
-  nameTwoUpdated : false,
-  nameTwoCorrected : false,
-  nameTwoRemoved : false,
-  requestedNameAdded : false,
-  requestedNameUpdated : false,
-  requestedNameCorrected : false,
-  requestedNameRemoved : false,
-  
+
   //CONTACT  
   
   showContact : false,
