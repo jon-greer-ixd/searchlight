@@ -5,30 +5,16 @@ var defaults = {
   updateType : null,
 
   //CONTACT  
-  
   showContact : false,
   preferedContactState : null,
 
   //PERSONAL DETAILS  
-      
   //death
   dead : false,
   deathState : null,
   showDeath : false,
-        
-  //spoken language
-  addSpokenLanguage : false,
-  spokenLanguageUpdated : false,
-  
-  //immigration status
-  addImmigration : false,
-  ImmigrationUpdated : false,
-  
-    //prefered language
-  addPreferedLanguage : false,
-  preferedLanguageUpdated : false,
-  
-//messagecentre
+          
+  //messagecentre
   toaster : null
 };
 
