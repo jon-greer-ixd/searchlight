@@ -6,18 +6,9 @@
       <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
 
         <a class="link-back" onCLick="history.back()">Back</a>          
-
-        {% if data.updateType == 'updateNameOne' %}
-          <h2 class="title">Update name type 1</h2>
-        {% elif data.updateType == 'correctNameOne' %}
-          <h2 class="title">Correct name type 1</h2>
-        {% elif data.updateType == 'addNameTwo' %}
-          <h2 class="title">Add name type 2</h2>
-        {% elif data.updateType == 'updateNameTwo' %}
-          <h2 class="title">Update name type 2</h2>
-        {% elif data.updateType == 'correctNameTwo' %}
-          <h2 class="title">Correct name type 2</h2>
-        {% endif %}
+        
+        <h2 class="title">
+        </h2>
         <div id="sl-address-primary-card" class="sl-primary-card last-card">
           <div id="address-pane">
             {% include "components/update/name/update-name-content.html" %}

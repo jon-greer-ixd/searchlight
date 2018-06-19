@@ -888,6 +888,13 @@ router.get(/check-sex-handler/, function (req, res) {
 /** NAME **/
 /**********/
 
+router.get(/name-change-handler/, function (req, res) {
+  req.session.data.toaster = null;
+//  req.session.data.updateType = req.query.nameType;
+  console.log(req.session.data.nameType);
+  res.redirect('/update/name/update')
+})
+
 //change-type-handler
 router.get(/change-type-handler/, function (req, res) {
   if (req.query.name === "one") {
