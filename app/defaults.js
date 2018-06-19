@@ -5,13 +5,12 @@ var defaults = {
   updateType : null,
   
   //names
-  title : "MR",
-  nameOneFirst : "IBRAHIM BOUBACAR",
-  nameOneLast : "KEITA",
-  nameTwoFirst : "MICHAEL",
-  nameTwoLast : "SMITH JONES BOOTH",
-  hasNameTwo : false,
-  hasRequestedName : false,
+//  title : "MR",
+//  nameOneLast : "KEITA",
+//  nameTwoFirst : "MICHAEL",
+//  nameTwoLast : "SMITH JONES BOOTH",
+//  hasNameTwo : false,
+//  hasRequestedName : false,
   requestedName : "JIMBOB",
   nameOneUpdated : false,
   nameOneCorrected : false,
@@ -58,7 +57,9 @@ var authority = {
 };
 
 var details = {
-  name : {state : null, show : true, display : (this.title + " " + this.first + " " + this.last), value : null, title : "Mr", first : "IBRAHIM BOUBACAR", last : "KEITA"}
+  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
+  nameTwo : {state : null, show : false, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA"},
+  requestedName : {state : null, show : false, display : "Requested name", value : null}
 }
 
 var personalDetails = {

@@ -7,13 +7,8 @@
           
           <a class="link-back" onCLick="history.back()">Back</a>
 
-          {% if data.updateType == "updateRequestedName" %}
-            <h2 class="title">Update requested name</h2>
-          {% elif data.updateType == "correctRequestedName" %}
-            <h2 class="title">Correct requested name</h2>
-          {% else %}
-            <h2 class="title">Add a requested name</h2>
-          {% endif %}
+            <h2 class="title">{{data.updateType | capitalize }} requested name</h2>
+          
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               

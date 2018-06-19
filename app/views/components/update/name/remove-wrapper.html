@@ -7,11 +7,8 @@
           
           <a class="link-back" onCLick="history.back()">Back</a>          
           
-          {% if data.updateType == "removeRequestedName" %}
-            <h2 class="title">End requested name</h2>
-          {% elif data.updateType == "removeNameTwo" %}
-            <h2 class="title">End name type 2</h2>
-          {% endif %}
+            <h2 class="title">End {{data.details[data.nameType].display | lower}}</h2>
+          
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               

@@ -8,10 +8,10 @@
             <!-- ngIf: !data.name.nameDetails -->
             <!-- ngIf: data.name.primaryName -->
             <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
-              {% if data.hasRequestedName %}
-                {{data.requestedName | upper}}
-              {% elif data.hasNameTwo %}
-              {{data.title | upper}} <span class="namespace"> </span> {{data.nameTwoFirst | upper}} <span class="namespace"> </span> {{data.nameTwoLast | upper}}
+              {% if data.details.requestedName.show %}
+                {{data.details.requestedName.value | upper}}
+              {% elif data.details.nameTwo.show %}
+                {{data.details.nameTwo.title | upper}} <span class="namespace"> </span> {{data.details.nameTwo.first | upper}} <span class="namespace"> </span> {{data.details.nameTwo.last | upper}}
               {% else %}
                 {{data.details.name.title | upper}} <span class="namespace"> </span> {{data.details.name.first | upper}} <span class="namespace"> </span> {{data.details.name.last| upper}}
               {% endif %}

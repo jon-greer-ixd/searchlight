@@ -4,17 +4,17 @@
       
       <legend class="visually-hidden">
         <p class="">
-          What kind of change do you need to make?
+          Requested name
         </p>
       </legend>
             
         <fieldset class="form-group" data-required data-error="Cannot be blank">
           <legend class="visuallyhidden">Requested name</legend>
-          <label class="form-label" for="requestedName">Requested name</label>
-          <input class="form-control" id="requestedName" type="text" name="requestedName">
+          <label class="form-label" for="requestedname">Requested name</label>
+          <input class="form-control" id="requestedname" type="text" name="requestedname" {% if data.updateType == "correct" %} value = {{data.details.requestedName.value}} {% endif %}>
         </fieldset>
       
-        {% if data['updateType'] != "correctRequestedName" %}
+        {% if data.updateType != "correct" %}
           <fieldset>
             <div class="form-group prepop">
               <label class="form-label" for="startdate">
@@ -27,31 +27,7 @@
               <a class="populate-link-one">Use today's date</a>
             </div>
           </fieldset>
-      
-<!--
-          <fieldset class="form-group">
-            <legend class="visuallyhidden">Start date</legend>
-            <label class="form-label" for="postcode">
-              Start date
-              <span class="form-hint">
-                For example 31/8/1979
-              </span>
-            </label>
-            <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
-          </fieldset>
--->
-      
         {% endif %}
-      
-<!--
-        <fieldset class="form-group">
-          <legend class="visuallyhidden">Notified date</legend>
-          <label class="form-label" for="postcode">
-            Notified date
-          </label>
-          <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
-        </fieldset>
--->
       
       <div class="form-group">
         <input class="button" type="submit" value="Next">

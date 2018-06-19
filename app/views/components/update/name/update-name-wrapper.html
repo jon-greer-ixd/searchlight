@@ -5,10 +5,12 @@
 
       <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
 
-        <a class="link-back" onCLick="history.back()">Back</a>          
+        <a class="link-back" onCLick="history.back()">Back</a>  
         
         <h2 class="title">
+          {{data.updateType | capitalize }} a {{data.details[data.nameType].display | lower}}
         </h2>
+        
         <div id="sl-address-primary-card" class="sl-primary-card last-card">
           <div id="address-pane">
             {% include "components/update/name/update-name-content.html" %}

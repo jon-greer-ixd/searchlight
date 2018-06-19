@@ -2,7 +2,7 @@
 <div class="grid-row">
   <div class="column-one-half">
     
-    <form method="get" action="change-name-handler">
+    <form method="get" action="change-name-type-handler">
       
         <legend class="visually-hidden">
           <p>
@@ -20,16 +20,16 @@
             <label for="correct">Correct a mistake</label>
           </div>
           
-          {% if data.updateType == "changeNameTwo"%}
+          {% if data.nameType == "nameTwo"%}
           <div class="multiple-choice">
-            <input id="remove" type="radio" name="data" value="remove">
+            <input id="remove" type="radio" name="data" value="end">
             <label for="remove">End name type 2</label>
           </div>
           {% endif %}
           
-          {% if data.updateType == "changeRequested" %}
+          {% if data.nameType == "requestedName" %}
           <div class="multiple-choice">
-            <input id="remove" type="radio" name="data" value="remove">
+            <input id="remove" type="radio" name="data" value="end">
             <label for="remove">End requested name</label>
           </div>
           {% endif %}

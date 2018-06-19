@@ -1,6 +1,5 @@
-
-  <!-- REQUESTED NAME-->
-  {% if data.hasRequestedName == true %}
+<!-- REQUESTED NAME-->
+  {% if data.details.requestedName.show == true %}
     <div class="grid-row names">
       <div class="column-one-third">
         <ul>
@@ -10,7 +9,7 @@
       <div class="column-one-third">
         <ul class="">
           <li class="strong">
-            {{data.requestedName | upper}}
+            {{data.details.requestedName.value | upper}}
           </li>
           <li class="sl-secondary-text-color sl-metadata">
             Requested name&nbsp; · &nbsp;since today
@@ -23,10 +22,7 @@
             <a data-toggle="modal" data-target="#requested_name_modal" class="under-link">View maintenance</a> 
           </li>
           <li>
-            <form class="dumbform" method="get" action="change-type-handler">
-              <input class="visually-hidden" type="text" value="three" id="name" name="name">
-              <input type="submit" class="under-link" value="Change">
-            </form>
+            <a class="secondary-link" href="name-change-handler/?nameType=requestedName">Change</a>
           </li>
         </ul>
       </div>
@@ -42,11 +38,11 @@
   {% endif %}
 
   <!-- NAME 2 -->
-  {% if data.hasNameTwo == true %}
+  {% if data.details.nameTwo.show == true %}
     <div class="grid-row names">
       <div class="column-one-third">
         <ul>
-          {% if data.hasRequestedName == false %}
+          {% if data.details.requestedName.show == false %}
             <li>Name</li>
           {% else %}
             <li>&nbsp;</li>
@@ -56,7 +52,7 @@
       <div class="column-one-third">
         <ul class="">
           <li class="strong">
-            {{data.title | upper}} <span class="namespace"> </span> {{data.nameTwoFirst | upper}} <span class="namespace"> </span> {{data.nameTwoLast | upper}}
+            {{data.details.nameTwo.title | upper}} <span class="namespace"> </span> {{data.details.nameTwo.first | upper}} <span class="namespace"> </span> {{data.details.nameTwo.last | upper}}
           </li>
           <li class="sl-secondary-text-color sl-metadata">
             Name type 2&nbsp; · &nbsp;since today
@@ -69,10 +65,7 @@
             <a data-toggle="modal" data-target="#name_two_modal" class="under-link">View maintenance</a> 
           </li>
           <li>
-            <form class="dumbform" method="get" action="change-type-handler">
-              <input class="visually-hidden" type="text" value="two" id="name" name="name">
-              <input type="submit" class="under-link" value="Change">
-            </form>
+            <a class="secondary-link" href="name-change-handler/?nameType=nameTwo">Change</a>
           </li>
         </ul>
       </div>
@@ -91,7 +84,7 @@
   <div class="grid-row names">
     <div class="column-one-third">
       <ul>
-      {% if data.hasRequestedName == false and data.hasNameTwo == false %}
+      {% if data.details.requestedName.show == false and data.details.nameTwo.show == false %}
         <li>Name</li>
       {% else %}
         <li>&nbsp;</li>
@@ -104,13 +97,13 @@
           {{data.details.name.title | upper}} <span class="namespace"> </span> {{data.details.name.first | upper}} <span class="namespace"> </span> {{data.details.name.last | upper}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
-          {% if data.hasNameTwo == true or data.hasRequestedName == true %}
+          {% if data.details.nameTwo.show == true or data.details.requestedName.show == true %}
             Name type 1&nbsp; · &nbsp;since
           {% else %}
             Since
           {% endif %}
 
-          {% if data.nameOneUpdated == true %}
+          {% if data.name.state == "updated" %}
             today
           {% else %}
             15 Dec 2000
@@ -125,29 +118,13 @@
         </li>
         <li>
           <a class="secondary-link" href="name-change-handler/?nameType=name">Change</a>
-<!--
-          <form class="dumbform" method="get" action="change-type-handler">
-            <input class="visually-hidden" type="text" value="one" id="name" name="name">
-            <input type="submit" class="under-link" value="Change">
-          </form>
--->
         </li>
       </ul>
     </div>
   </div>
 
-<!--
-    <div class="grid-row">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="light">
-      </div>
-    </div>
--->
 
-  {% if data.hasNameTwo === true and data.hasRequestedName === true %}
+  {% if data.details.nameTwo.show === true and data.details.requestedName.show === true %}
   {% else %}
     <div class="grid-row no margin">
       <div class="column-one-third">
@@ -164,27 +141,24 @@
       <div class="column-one-third">
         <ul>
           <li class="sl-secondary-text-color sl-metadata">
-            {% if data.hasNameTwo === false and data.hasRequestedName === false %}
+            {% if data.details.nameTwo.show == false and data.details.requestedName.show === false %}
               Add another name
-            {% elif data.hasNameTwo === true and data.hasRequestedName === false  %}
+            {% elif data.details.nameTwo.show === true and data.details.requestedName.show === false  %}
               Add a requested name
-            {% elif data.hasNameTwo === false and data.hasRequestedName === true  %}
+            {% elif data.details.nameTwo.show === false and data.details.requestedName.show === true  %}
               Add a name type 2
             {% endif %}
           </li>
         </ul>
       </div>
       <div class="column-one-third last-col">
-        <ul class="sub-menu">
+        <ul class="edit-menu">
           <li>
-            <form class="dumbform" method="get" action="add-handler">
-              <input type="submit" class="under-link" value="Add">
-            </form>
+            <a class="secondary-link" href="add-handler">Add</a>
           </li>
         </ul>
       </div>
     </div>
   {% endif %}
 
-
-      {% include "components/account2/previous-names.html" %}
+  {% include "components/account2/previous-names.html" %}
