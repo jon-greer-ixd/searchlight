@@ -9,6 +9,16 @@
         <hr class="light">
       {% endif %}
       
+      {% if data.personalDetails.disability.show == true %}
+        {% include "components/account2/disability.html" %}
+        <hr class="light">
+      {% endif %}
+      
+      {% if data.personalDetails.specialNeeds.show == true %}
+        {% include "components/account2/special-needs.html" %}
+        <hr class="light">
+      {% endif %}
+      
       {% include "components/account2/names.html" %}
       
       <hr class="light">
