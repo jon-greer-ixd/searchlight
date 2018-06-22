@@ -31,9 +31,11 @@
         <div class="column-one-third">
           <ul>
             <li class="strong">{{data['dob']}}</li>
+<!--
             <li class="sl-secondary-text-color sl-metadata">
               Since 5 Jun 2010
             </li>
+-->
             <li class="multi-dates">
               <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
               <span class="sl-metadata">Verified to level 2</span>
@@ -56,6 +58,13 @@
     </div>
   
     <hr class="light">
+      
+            
+    {% if data.personalDetails.dateOfDeath.show == true %}
+      {% include "components/account2/dod.njk" %}
+      <hr class="light">
+    {% endif %}
+
 
     <div class="extra-margin">
       <div class="grid-row">

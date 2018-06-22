@@ -31,6 +31,7 @@ var details = {
 
 var personalDetails = {
   "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
+  "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
   "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
   "sex" : {state : null, show : true, display : "Sex", value : "Male"},
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},

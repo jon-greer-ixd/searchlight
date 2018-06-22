@@ -33,6 +33,8 @@
                 {% include "components/update/person/details/pv.njk" %}
               {% elif data.personalDetail == "preferedLanguage" %}
                 {% include "components/update/person/details/prefered-language.njk" %}
+              {% elif data.personalDetail == "dateOfDeath" %}
+                {% include "components/update/person/details/dod.njk" %}
               {% endif %}
           </div>
         </div>

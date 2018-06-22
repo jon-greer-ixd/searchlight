@@ -693,6 +693,9 @@ router.get(/check-person-handler/, function (req, res) {
       req.session.data.personalDetails.pv.value = false;
     }
   }
+  if (req.session.data.personalDetail == "dateOfDeath") {
+    req.session.data.personalDetails.dateOfDeath.level = req.session.data.verificationlevel;  
+  }
   req.session.data.personalDetail = null;
   res.redirect('/account2/account')
 })

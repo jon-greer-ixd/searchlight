@@ -35,6 +35,13 @@
             </td>
             <td><a>Change</a></td>
           </tr>
+            {% if data.personalDetail == "dateOfDeath" %}
+            <tr>
+              <td class="strong">Verification level</td>
+              <td>{{data.verificationlevel}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            {% endif %}
           
         </table>
       <br>
