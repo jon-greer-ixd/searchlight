@@ -612,6 +612,9 @@ router.get(/person-change-handler/, function (req, res) {
     req.session.data.editState = "correcting";
     req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
+  } else if (req.session.data.personalDetail == "dateOfDeath") {
+    req.session.data.editState = "correcting";
+    res.redirect('/update/person/update')
   } else if (req.session.data.personalDetail == "recordLevel") {
     req.session.data.editState = "updating";
     res.redirect('/update/person/update')

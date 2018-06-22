@@ -8,26 +8,26 @@
             For example 31/8/1979
           </span>
         </label>
-        <input class="form-control" id="date" type="text" name="personalDetailValue">
+        <input class="form-control" id="date" type="text" name="personalDetailValue" {% if data.editState == "correcting"%} value={{data.personalDetails.dateOfDeath.value}} {% endif %}>
       </fieldset>
       <fieldset class="form-group">
         <legend>
           <p class="bold">What level has their date of death been verified to?</p>
         </legend>
         <div class="multiple-choice">
-          <input id="three" type="radio" name="verificationlevel" value="Level 3">
+          <input id="three" type="radio" name="verificationlevel" value="Level 3" {% if data.editState == "correcting" and data.personalDetails.dateOfDeath.level == "Level 3" %} checked="checked" {% endif %}>
           <label for="three">Verified to level 3</label>
         </div>
         <div class="multiple-choice">
-          <input id="two" type="radio" name="verificationlevel" value="Level 2">
+          <input id="two" type="radio" name="verificationlevel" value="Level 2" {% if data.editState == "correcting" and data.personalDetails.dateOfDeath.level == "Level 2" %} checked="checked" {% endif %}>
           <label for="two">Verified to level 2</label>
         </div>
         <div class="multiple-choice">
-          <input id="one" type="radio" name="verificationlevel" value="Level 1">
+          <input id="one" type="radio" name="verificationlevel" value="Level 1" {% if data.editState == "correcting" and data.personalDetails.dateOfDeath.level == "Level 1" %} checked="checked" {% endif %}>
           <label for="one">Verified to level 1</label>
         </div>
         <div class="multiple-choice">
-          <input id="none" type="radio" name="verificationlevel" value="Not verified">
+          <input id="none" type="radio" name="verificationlevel" value="Not verified" {% if data.editState == "correcting" and data.personalDetails.dateOfDeath.level == "Not verified" %} checked="checked" {% endif %}>
           <label for="none">Not verified</label>
         </div>
       </fieldset>
