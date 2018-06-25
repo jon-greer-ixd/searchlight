@@ -32,9 +32,11 @@
               {% elif data.personalDetail == "pv" %}
                 {% include "components/update/person/details/pv.njk" %}
               {% elif data.personalDetail == "preferedLanguage" %}
-                {% include "components/update/person/details/prefered-language.njk" %}
+                {% include "components/update/person/details/preferedLanguage.njk" %}
               {% elif data.personalDetail == "dateOfDeath" %}
-                {% include "components/update/person/details/dod.njk" %}
+                {% include "components/update/person/details/dateOfDeath.njk" %}
+              {% elif data.personalDetail == "dateOfBirth" %}
+                {% include "components/update/person/details/dateOfBirth.njk" %}
               {% endif %}
           </div>
         </div>

@@ -17,7 +17,13 @@
               
             <div class="multiple-choice">
               <input id="update" type="radio" name="data" value="updating">
-              <label for="update">Update to a new {{ data.contactTypes[data.contactType].type | contactIs }}</label>
+              <label for="update">
+                {% if data.contactType == "otherContact" %}
+                  Update the details
+                {% else %}
+                  Update to a new {{ data.contactTypes[data.contactType].type | contactIs }}
+                {% endif %}
+              </label>
             </div>
               
             {% if data.contactTypes[data.contactType].pref == true %}

@@ -363,10 +363,7 @@ router.use('/', main);
           
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
-  req.session.data.interests = interests;
-    
-  req.session.data.dob = "8 Feb 1940";
-    
+  req.session.data.interests = interests;    
   req.session.data.updateOne = "20 May 1990";
   req.session.data.startOne = "20 May 1990";
   req.session.data.updateTwo = "5 Jun 2010";
@@ -612,7 +609,7 @@ router.get(/person-change-handler/, function (req, res) {
     req.session.data.editState = "correcting";
     req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == "dateOfDeath") {
+  } else if (req.session.data.personalDetail == "dateOfDeath" || req.session.data.personalDetail == "dateOfBirth") {
     req.session.data.editState = "correcting";
     res.redirect('/update/person/update')
   } else if (req.session.data.personalDetail == "recordLevel") {

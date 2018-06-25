@@ -20,44 +20,10 @@
       {% endif %}
       
       {% include "components/account2/names.html" %}
-      
       <hr class="light">
-      
-      <div class="grid-row">
-        <div class="column-one-third">
-          <p>Date of birth</p>
-        </div>
-
-        <div class="column-one-third">
-          <ul>
-            <li class="strong">{{data['dob']}}</li>
-<!--
-            <li class="sl-secondary-text-color sl-metadata">
-              Since 5 Jun 2010
-            </li>
--->
-            <li class="multi-dates">
-              <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
-              <span class="sl-metadata">Verified to level 2</span>
-            </li>
-          </ul>
-        </div>
-
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
-            <span class="pipe"> | </span> 
-            <a href="/history/birth-history" class="under-link">View history</a>
-          </li>
-          <li>
-            <a class="secondary-link" href="">Change</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <hr class="light">
+            
+      {% include "components/account2/dob.njk" %}
+      <hr class="light">
       
             
     {% if data.personalDetails.dateOfDeath.show == true %}
