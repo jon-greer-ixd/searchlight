@@ -594,7 +594,7 @@ router.get(/add-person-handler/, function (req, res) {
   console.log(req.session.data.personalDetail);
   req.session.data.editState = "adding";
   if (req.session.data.personalDetail == "nifu" || req.session.data.personalDetail == "disability" ) {
-    req.session.data.personalDetailValue = "Yes";
+    req.session.data.personalDetailValue = "This person is disabled";
     res.redirect("/update/person/check");
   } else if (req.session.data.personalDetail == "gender") {
     res.redirect("/update/person/gender/add");
@@ -625,7 +625,7 @@ router.get(/change-person-type-handler/, function (req, res) {
     req.session.data.personalDetails.nifu.show = false;
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == "disability") {
-    req.session.data.personalDetailValue = "No";
+    req.session.data.personalDetailValue = "This person is not disabled";
     req.session.data.personalDetails.disability.show = false;
     if (req.session.data.editState == "correcting" ) {
       res.redirect('/update/person/update')
