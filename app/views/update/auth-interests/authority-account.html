@@ -150,13 +150,13 @@
     </li>
     
     <li class="sl-local-nav-item Relationships">
-      <a href="notes" class="sl-local-nav-anchor Relationships" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Relationships" analytics-label="Relationships anchor tag" aria-label="relationships menu selection">   
+      <a href="#notes" class="sl-local-nav-anchor Relationships" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Relationships" analytics-label="Relationships anchor tag" aria-label="relationships menu selection">   
         <span class="relationships-scrollspy" du-scrollspy="" du-smooth-scroll="Relationships" offset="155">Local authority notes</span>
       </a>
     </li>  
     
     <li class="sl-local-nav-item Relationships">
-      <a href="data" class="sl-local-nav-anchor Relationships" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Relationships" analytics-label="Relationships anchor tag" aria-label="relationships menu selection">   
+      <a href="#data" class="sl-local-nav-anchor Relationships" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Relationships" analytics-label="Relationships anchor tag" aria-label="relationships menu selection">   
         <span class="relationships-scrollspy" du-scrollspy="" du-smooth-scroll="Relationships" offset="155">Local authority data</span>
       </a>
     </li>
@@ -722,6 +722,8 @@
             </div>
           </div>
         </div>
+          
+        <div id="notes" ></div>  
 
         <div name="Relationships" id="relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           <h2>Relationships</h2>
@@ -735,24 +737,20 @@
           
           
         <!-- Auth notes --> 
-<!--
-        <div name="Relationships" id="relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          <h2>Local Authority notes</h2>
-          <div ng-class="{'sl-primary-card': data.relationships.empty || !data.relationships}" class="sl-primary-card">
+        <div name="Relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Local authority notes</h2>
+          <div class="sl-primary-card">
                {% include "components/update/auth-interests/notes-card.html" %}
           </div>
         </div>
--->
-
+          
         <!-- Auth data --> 
-<!--
         <div name="Relationships" id="relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-          <h2>Local Authority data</h2>
+          <h2>Local authority data</h2>
           <div id="sl-address-primary-card" class="sl-primary-card">
             {% include "components/update/auth-interests/data-card.html" %}
           </div>
         </div>
--->
 
         <div class="last-card">
         </div>

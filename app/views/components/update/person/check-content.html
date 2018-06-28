@@ -8,10 +8,13 @@
           <tr>
             {% if data.personalDetail == "pv" %}
               <td><span class="strong">Who in the household is potentially violent?</span></td>
+            {% elif data.personalDetail == "disability" and data.editState == "correcting" %}
+              <td><span class="strong">Is this person disabled?</span></td>
             {% else %}
               <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
             {% endif %}
             <td>
+            
             
               {% set counter = data.personalDetailValue.length %}
               
