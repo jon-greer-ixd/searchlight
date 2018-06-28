@@ -3,7 +3,7 @@
     <div class="grid-row names">
       <div class="column-one-third">
         <ul>
-          <li>Name</li>
+          <li>Current names</li>
         </ul>
       </div>
       <div class="column-one-third">
@@ -43,7 +43,7 @@
       <div class="column-one-third">
         <ul>
           {% if data.details.requestedName.show == false %}
-            <li>Name</li>
+            <li>Current names</li>
           {% else %}
             <li>&nbsp;</li>
           {% endif %}
@@ -85,7 +85,7 @@
     <div class="column-one-third">
       <ul>
       {% if data.details.requestedName.show == false and data.details.nameTwo.show == false %}
-        <li>Name</li>
+        <li>Current name</li>
       {% else %}
         <li>&nbsp;</li>
       {% endif %}

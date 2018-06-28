@@ -36,7 +36,11 @@
               {{data.personalDetailValue}}
             {% endif %}
             </td>
-            <td><a>Change</a></td>
+            {% if data.personalDetail == "disability" or data.personalDetail == "sex" %}
+              <td>&nbsp;</td>
+            {% else %}
+              <td><a>Change</a></td>
+            {% endif %}
           </tr>
             {% if data.personalDetail == "dateOfDeath" %}
             <tr>
