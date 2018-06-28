@@ -592,7 +592,10 @@ router.get(/check-contact-handler/, function (req, res) {
 router.get(/add-person-handler/, function (req, res) {
   console.log(req.session.data.personalDetail);
   req.session.data.editState = "adding";
-  if (req.session.data.personalDetail == "nifu" || req.session.data.personalDetail == "disability" ) {
+  if (req.session.data.personalDetail == "nifu") {
+    req.session.data.personalDetailValue = "Yes";
+    res.redirect("/update/person/check");
+  } else if (req.session.data.personalDetail == "disability" ) {
     req.session.data.personalDetailValue = "This person is disabled";
     res.redirect("/update/person/check");
   } else if (req.session.data.personalDetail == "gender") {
