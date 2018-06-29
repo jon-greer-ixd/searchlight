@@ -3,9 +3,9 @@
 {% extends "components/update/toasters/toast.html" %}
 
 {% if data.preferredContactState == "updated" %}
-  {% set contact_message = "Prefered method of contact set"  %}
+  {% set contact_message = "preferred method of contact set"  %}
 {% elif data.preferredContactState == "removed" %}
-  {% set contact_message = "Prefered contact state removed"  %}
+  {% set contact_message = "preferred contact state removed"  %}
 {% endif %}
 
   {% block message %}

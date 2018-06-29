@@ -567,11 +567,11 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   if (req.session.data.preferredContactState == "updating") {
     req.session.data.preferredContactState = "updated";
-    req.session.data.toaster = messageCentre("Prefered method of contact", null, "set");
+    req.session.data.toaster = messageCentre("preferred method of contact", null, "set");
   }
   //remove preference
   if ( req.session.data.preferredContactState == "removing") {
-    req.session.data.toaster = messageCentre("Prefered contact state", null, "removed");
+    req.session.data.toaster = messageCentre("preferred contact state", null, "removed");
     req.session.data.preferredContactState = "removed";
   }
   if (req.session.data.exdirectory == "true") {
