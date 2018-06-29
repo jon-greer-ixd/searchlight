@@ -6,7 +6,7 @@ var defaults = {
 
   //CONTACT  
   showContact : false,
-  preferedContactState : null,
+  preferredContactState : null,
 
   //PERSONAL DETAILS  
   //death
@@ -40,7 +40,7 @@ var personalDetails = {
   "disability" : {state : null, show : false, display : "Disability status", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
-  "preferedLanguage" : {state : null, show : false, display : "Prefered language", value : null},
+  "preferredLanguage" : {state : null, show : false, display : "Prefered language", value : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
 

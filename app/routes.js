@@ -489,7 +489,7 @@ router.get(/contact-change-handler/, function (req, res) {
 })
 
 router.get(/update-contact-handler/, function (req, res) {
-  req.session.data.preferedContactState = null;
+  req.session.data.preferredContactState = null;
   var next = "check";
   if (req.query.data == "updating" || req.query.data == "correcting") {
     req.session.data.contactState = req.query.data;
@@ -498,11 +498,11 @@ router.get(/update-contact-handler/, function (req, res) {
     req.session.data.contactState = req.query.data;
     next = "end";
   } else if (req.query.data == "removePref") {
-     req.session.data.preferedContactState = "removing";
+     req.session.data.preferredContactState = "removing";
   } else if (req.query.data == "setPref") {
-     req.session.data.preferedContactState = "updating";
+     req.session.data.preferredContactState = "updating";
   }
-    console.log(`preferedContactState = ${req.session.data.preferedContactState}`);
+    console.log(`preferredContactState = ${req.session.data.preferredContactState}`);
   res.redirect(next);
 })
 
@@ -557,7 +557,7 @@ router.get(/check-contact-handler/, function (req, res) {
     setSelectedContactState("corrected");
   }
   //update preference
-  if (req.session.data.pref == "true" || req.session.data.preferedContactState == "updating") {
+  if (req.session.data.pref == "true" || req.session.data.preferredContactState == "updating") {
     for (var x in req.session.data.contactTypes) {
       req.session.data.contactTypes[x].pref = false;
     }
@@ -565,14 +565,14 @@ router.get(/check-contact-handler/, function (req, res) {
   } else {
     req.session.data.contactTypes[req.session.data.contactType].pref = false;
   }
-  if (req.session.data.preferedContactState == "updating") {
-    req.session.data.preferedContactState = "updated";
+  if (req.session.data.preferredContactState == "updating") {
+    req.session.data.preferredContactState = "updated";
     req.session.data.toaster = messageCentre("Prefered method of contact", null, "set");
   }
   //remove preference
-  if ( req.session.data.preferedContactState == "removing") {
+  if ( req.session.data.preferredContactState == "removing") {
     req.session.data.toaster = messageCentre("Prefered contact state", null, "removed");
-    req.session.data.preferedContactState = "removed";
+    req.session.data.preferredContactState = "removed";
   }
   if (req.session.data.exdirectory == "true") {
     req.session.data.contactTypes.homeTelephone.exD = true;
@@ -1704,8 +1704,8 @@ router.get(/immigration-handler/, function (req, res) {
   res.redirect('task-list')
 })
 
-//prefered-language-handler
-router.get(/prefered-language-handler/, function (req, res) {
+//preferred-language-handler
+router.get(/preferred-language-handler/, function (req, res) {
   person.preferred_language = true;
   res.redirect('task-list')
 })
@@ -1818,7 +1818,7 @@ router.get(/nino-contacts-handler/, function (req, res) {
 //contact-group-handler
 router.get(/contact-group-handler/, function (req, res) {
   req.session.data.toaster = null;
-  req.session.data.preferedContactState = null;
+  req.session.data.preferredContactState = null;
   req.session.data.contactState = "adding";
   console.log(req.query.contactType);
   if (req.query.contactType == "telephone" || req.query.contactType == "email" || req.query.contactType == "fax") {

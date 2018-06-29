@@ -1,4 +1,4 @@
-{% if data.preferedContactState == "removed" or data.preferedContactState == "updated" %}
+{% if data.preferredContactState == "removed" or data.preferredContactState == "updated" %}
   {% include "components/account2/state-message.njk" %}
 {% else %}
   {% for someId, item in data.contactTypes %}

@@ -1,4 +1,4 @@
-<h2 class="heading-medium question">What is the person's prefered language?</h2>  
+<h2 class="heading-medium question">What is the person's preferred language?</h2>  
 <div class="grid-row">
   <div class="column-two-thirds">
     <form class="form" method="get" action="check">
@@ -6,12 +6,12 @@
         <legend class="visually-hidden">language</legend>
         
         <div class="multiple-choice">
-          <input id="English" type="radio" name="personalDetailValue" {% if data.editState == "correcting" and data.personalDetails.preferedLanguage.value == "English" %} checked == "checked"{% endif %} value="English">
+          <input id="English" type="radio" name="personalDetailValue" {% if data.editState == "correcting" and data.personalDetails.preferredLanguage.value == "English" %} checked == "checked"{% endif %} value="English">
           <label for="English">English</label>
         </div>
         
         <div class="multiple-choice">
-          <input id="welsh" type="radio" name="personalDetailValue" {% if data.editState == "correcting" and data.personalDetails.preferedLanguage.value == "Welsh" %} checked == "checked"{% endif %} value="Welsh">
+          <input id="welsh" type="radio" name="personalDetailValue" {% if data.editState == "correcting" and data.personalDetails.preferredLanguage.value == "Welsh" %} checked == "checked"{% endif %} value="Welsh">
           <label for="welsh">Welsh</label>
         </div>
         
