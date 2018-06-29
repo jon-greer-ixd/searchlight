@@ -629,6 +629,13 @@ router.get(/change-person-type-handler/, function (req, res) {
     req.session.data.personalDetailValue = "No";
     req.session.data.personalDetails.nifu.show = false;
     res.redirect('/update/person/check')
+  } else if (req.session.data.personalDetail == "preferredLanguage" && req.session.data.editState == "updating") {
+    if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Welsh") {
+      req.session.data.personalDetailValue = "English";
+    } else {
+      req.session.data.personalDetailValue = "Welsh";
+    }
+    res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == "disability") {
     req.session.data.personalDetailValue = "This person is not disabled";
     req.session.data.personalDetails.disability.show = false;
