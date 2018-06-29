@@ -23,25 +23,25 @@ var authority = {
   "councilTaxReduction" : {"state" : null, "show" : false}
 };
 
-//MINISTER TRAORE 
+//'FILING CABINET 7, DRAW 3'
 //var details = {
 //  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
 //  nameTwo : {state : null, show : false, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA"},
-//  requestedName : {state : null, show : false, display : "Requested name", value : null}
+//  requestedName : {state : null, show : true, display : "Requested name", value : ''FILING CABINET 7, DRAW 3''}
 //}
 
 //MINISTER TRAORE 
-var details = {
-  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
-  nameTwo : {state : null, show : false, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "BOUBACAR", last : "KEITA"},
-  requestedName : {state : null, show : false, display : "Requested name", value : "MINISTER TRAORE"}
-}
-
 //var details = {
 //  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
-//  nameTwo : {state : null, show : true, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : " BOUBACAR", last : "KEITA"},
-//  requestedName : {state : 'added', show : true, display : "Requested name", value : 'FILING CABINET 7, DRAW 3'}
+//  nameTwo : {state : null, show : false, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "BOUBACAR", last : "KEITA"},
+//  requestedName : {state : null, show : true, display : "Requested name", value : "MINISTER TRAORE"}
 //}
+
+var details = {
+  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
+  nameTwo : {state : null, show : true, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : " BOUBACAR", last : "KEITA"},
+  requestedName : {state : null, show : false, display : "Requested name", value : null}
+}
 
 var personalDetails = {
   "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
