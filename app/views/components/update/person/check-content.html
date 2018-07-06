@@ -9,7 +9,7 @@
             {% if data.personalDetail == "pv" %}
               <td><span class="strong">Who in the household is potentially violent?</span></td>
             {% elif data.personalDetail == "disability" and data.editState == "correcting" %}
-              <td><span class="strong">Is this person disabled?</span></td>
+              <td><span class="strong">Is the person disabled?</span></td>
             {% else %}
               <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
             {% endif %}
@@ -36,13 +36,13 @@
               {{data.personalDetailValue}}
             {% endif %}
             </td>
-            {% if data.personalDetail == "disability" or data.personalDetail == "sex" %}
+            {% if data.personalDetail == "disability" or data.personalDetail == "sex" or data.personalDetail == "preferredLanguage" %}
               <td>&nbsp;</td>
             {% else %}
               <td><a>Change</a></td>
             {% endif %}
           </tr>
-            {% if data.personalDetail == "dateOfDeath" %}
+            {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
             <tr>
               <td class="strong">Verification level</td>
               <td>{{data.verificationlevel}}</td>

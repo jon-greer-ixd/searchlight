@@ -27,7 +27,7 @@ var authority = {
 //var details = {
 //  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
 //  nameTwo : {state : null, show : false, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA"},
-//  requestedName : {state : null, show : true, display : "Requested name", value : ''FILING CABINET 7, DRAW 3''}
+//  requestedName : {state : null, show : true, display : "Requested name", value : 'FILING CABINET 7, DRAW 3'}
 //}
 
 //MINISTER TRAORE 
@@ -48,7 +48,7 @@ var personalDetails = {
   "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
   "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
   "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
-  "sex" : {state : null, show : true, display : "Sex", value : "Male"},
+  "sex" : {state : null, show : true, display : "Sex", value : "Female"},
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
   "disability" : {state : null, show : false, display : "Disability status", value : null},

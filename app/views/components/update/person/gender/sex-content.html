@@ -1,0 +1,41 @@
+<h2 class="heading-medium question">Which sex does the person want to be identified as?</h2>
+
+<div class="grid-row">
+  
+  <div class="column-one-half">
+    
+    <form method="get" action="update">
+      
+      <legend class="visually-hidden">
+        <p class="">
+          What do you need to add?
+        </p>
+      </legend>
+      
+      <div class="form-group">
+        <fieldset>
+
+          <div class="multiple-choice">
+            <input id="radio-1" type="radio" value="Male" name="sexValue">
+<!-- {% if data.sex == "Male" %} checked="checked" {% endif %} -->
+            <label for="radio-1">Male</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="radio-2" type="radio" value="Female" name="sexValue">
+<!-- {% if data.sex == "Female" %} checked="checked" {% endif %} -->
+            <label for="radio-2">Female</label>
+          </div>
+        </fieldset>
+      </div>
+            
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    
+    <p><a href="/account2/account">Cancel</a></p>
+    
+  </div>
+  
+</div>

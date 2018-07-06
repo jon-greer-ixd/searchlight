@@ -2,6 +2,18 @@
     <div class="grid-row">
       <div class="column-one-half">
         <table class="table"> 
+
+          <tr>
+            <td><span class="strong">Sex</span></td>
+            <td>
+              {{data.sexValue}}
+            </td>
+            <td>
+              <a>&nbsp;</a>
+            </td>
+          </tr>
+
+<!--
           {% if data.personalDetails.gender.preGra == false and data.personalDetails.gender.gra == false %}
             <tr>
               <td><span class="strong">Sex</span></td>
@@ -24,6 +36,7 @@
               </td>
             </tr>
           {% endif %}
+-->
           <tr>
             <td><span class="strong">Effective date of gender change</span></td>
             <td>{{data.prepopulatedString}}</td>

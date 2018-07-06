@@ -684,6 +684,9 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetail == "pv") {
     req.session.data.personalDetails.pv.partner = false;
     req.session.data.personalDetails.pv.member = false;
+    
+    //
+    
     var temp;
     if (req.session.data.personalDetails.pv.value != "The potentially violent status is unknown") {
       for (var item in req.session.data.personalDetails.pv.value) {
@@ -699,8 +702,9 @@ router.get(/check-person-handler/, function (req, res) {
         req.session.data.personalDetails.pv.value = true;
       }
     } else {
-      req.session.data.personalDetails.pv.show = false;
+      req.session.data.personalDetails.pv.show = true;
       req.session.data.personalDetails.pv.value = false;
+      console.log(`pv value = ${req.session.data.personalDetails.pv.value} `);
     }
   }
   if (req.session.data.personalDetail == "dateOfDeath") {
@@ -782,7 +786,7 @@ router.get(/add-gender-handler/, function (req, res) {
   } else {
     req.session.data.personalDetail = "preGra";
   }
-  res.redirect('/update/person/gender/update')
+  res.redirect('/update/person/gender/sex')
 })
 
 router.get(/gender-type-handler/, function (req, res) {
@@ -854,6 +858,7 @@ router.get(/check-gender-handler/, function (req, res) {
   }
   req.session.data.personalDetails.gender.show = true;
   req.session.data.toaster = messageCentre("Gender details", null, "added");
+  req.session.data.personalDetails.sex.value = req.session.data.sexValue;
   res.redirect('/account2/account')
 })
 

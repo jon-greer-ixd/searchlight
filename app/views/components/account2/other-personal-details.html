@@ -6,14 +6,14 @@
   <div class="personal-details">
 
     <hr class="light">
-        
+    
+    {% include "components/account2/sex.html" %}
+    <hr class="light">
+    
     {% for items, item in data.personalDetails %}
       {% if item.show == true %}
         {% if items == "gender" %}
           {% include "components/account2/gender.html" %}
-          <hr class="light">
-        {% elif items == "sex" %}
-          {% include "components/account2/sex.html" %}
           <hr class="light">
         {% elif items == "recordLevel" %}
           {% include "components/account2/record-level.html" %}
