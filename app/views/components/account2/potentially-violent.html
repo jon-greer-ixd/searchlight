@@ -1,47 +1,62 @@
   <div class="grid-row names">
 
-{% if data.personalDetails.pv.value == false %}
-    <div class="column-one-third">
-      Potentially violent status
-    </div>
-    <div class="column-one-third">
-      <ul>
-        <li class="sl-secondary-text-color sl-metadata">Ended {{data.prepopulatedString}}</li>
-      </ul>
-    </div>
-{% else %}
-
-  <div class="column-two-thirds">
-    <span class="strong"> 
-
-      {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
-        This person, their partner and another member of the household are potentially violent.
-
-      {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
-        This person’s partner and another member of the household are potentially violent.
-
-      {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
-        This person and another member of the household are potentially violent.
-
-      {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
-        This person and their partner are potentially violent.
-
-      {% elif data.personalDetails.pv.member == true %}
-        A member of this person’s household is potentially violent.
-
-      {% elif data.personalDetails.pv.partner == true %}
-        This person’s partner is potentially violent.
-
-      {% elif data.personalDetails.pv.value == true %}
-        This person is potentially violent
-
-      {% endif %}
-
-  </span>
-</div>
+    {% if data.personalDetails.pv.state == "ended" %}
+      <div class="column-one-third">
+        Potentially violent status
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="sl-secondary-text-color sl-metadata">Ended {{data.prepopulatedString}}</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          
+          <li>
+            <a data-toggle="modal" data-target="#pv_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="/history/pv-history" class="under-link">View history</a>
+          </li>
+          
+          <li class="under-link">
+            <a href="pv-update-handler" class="under-link">Change</a>
+          </li>
+          
+        </ul>
+      </div>
     
-{% endif %}
-    <div class="column-one-third last-col">
+    {% else %}
+
+      <div class="column-two-thirds">
+        <span class="strong"> 
+
+          {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
+            This person, their partner and another member of the household are potentially violent.
+
+          {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
+            This person’s partner and another member of the household are potentially violent.
+
+          {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
+            This person and another member of the household are potentially violent.
+
+          {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
+            This person and their partner are potentially violent.
+
+          {% elif data.personalDetails.pv.member == true %}
+            A member of this person’s household is potentially violent.
+
+          {% elif data.personalDetails.pv.partner == true %}
+            This person’s partner is potentially violent.
+
+          {% elif data.personalDetails.pv.value == true %}
+            This person is potentially violent
+
+          {% endif %}
+
+        </span>
+      </div>
+    
+      <div class="column-one-third last-col">
         <ul class="edit-menu">
           
           <li>
@@ -56,4 +71,6 @@
           
         </ul>
       </div>
+    {% endif %}
+    
   </div>

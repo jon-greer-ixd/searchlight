@@ -10,11 +10,11 @@
       </legend>
       
       <div class="form-group">
-
         <div class="multiple-choice">
           <input id="update" type="radio" name="data" value="updating">
           <label for="update">Update</label>
         </div>
+
       {% if data.personalDetail == "nationality" %}
         <div class="multiple-choice" data-target="contact-by-text">
           <input id="example-contact-by-text" type="radio" name="data" value="correcting">
@@ -31,13 +31,14 @@
           </div>
         </div>
        {% else %}
+
         <div class="multiple-choice">
           <input id="correct" type="radio" name="data" value="correcting">
           <label for="correct">Correct a mistake</label>
         </div>
-       {% endif %}
+
       </div> 
-      
+            
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>

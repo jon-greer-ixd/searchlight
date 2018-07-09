@@ -111,6 +111,23 @@ if (document.getElementById("cancel-boxes")) {
   }
 }
 
+
+//if (document.getElementById("country-selector")) {
+//  console.log("here");
+//  var nationalityField = document.getElementById("country-selector")
+//  var statelessRadio = document.getElementById("stateless")
+//  var unknownRadio = document.getElementById("unknown")
+//  //If checkbox is clicked clear field
+//  statelessRadio.addEventListener('change', clearNationality);
+//  unknownRadio.addEventListener('change', clearNationality);
+//  function clearNationality() {
+//    console.log("changed");
+//    document.getElementById("country-selector").value = "Afghan";
+//  }  
+//  //if feild is clicked clear checkbox
+//}
+
+
 //checkbox contact
 if (document.getElementsByClassName("multi-boxes")) {
   var boxes = document.getElementsByClassName("multi-boxes");
@@ -160,6 +177,8 @@ if (document.getElementById("day-number")) {
      day.checked = false;
   }
 }
+
+
 
 
 

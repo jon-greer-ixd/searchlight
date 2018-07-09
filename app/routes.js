@@ -605,6 +605,15 @@ router.get(/add-person-handler/, function (req, res) {
   }
 })
 
+
+
+router.get(/pv-update-handler/, function (req, res) {
+  req.session.data.toaster = null;
+  req.session.data.personalDetail = "pv";
+  req.session.data.editState = "updating";
+  res.redirect('/update/person/update')
+})
+
 router.get(/person-change-handler/, function (req, res) {
   req.session.data.toaster = null;
   req.session.data.personalDetail = req.query.personalDetail;
@@ -625,6 +634,7 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
+<<<<<<< HEAD
   if (req.session.data.personalDetail == "nationality") {
     if (req.session.data.editState == 'correcting') {
       req.session.data.editState = req.query.correct;
@@ -636,13 +646,36 @@ router.get(/change-person-type-handler/, function (req, res) {
   if (req.session.data.personalDetail == "nifu") {
     req.session.data.personalDetailValue = "No";
     req.session.data.personalDetails.nifu.show = false;
+=======
+  console.log(req.session.data.editState);
+  if (req.session.data.editState == "ending") {
     res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == "preferredLanguage" && req.session.data.editState == "updating") {
-    if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Welsh") {
-      req.session.data.personalDetailValue = "English";
+  } else {
+    if (req.session.data.personalDetail == "nifu") {
+      req.session.data.personalDetailValue = "No";
+      req.session.data.personalDetails.nifu.show = false;
+      res.redirect('/update/person/check')
+    } else if (req.session.data.personalDetail == "preferredLanguage" && req.session.data.editState == "updating") {
+      if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Welsh") {
+        req.session.data.personalDetailValue = "English";
+      } else {
+        req.session.data.personalDetailValue = "Welsh";
+      }
+      res.redirect('/update/person/check')
+    } else if (req.session.data.personalDetail == "disability") {
+      req.session.data.personalDetailValue = "Not disabled";
+      req.session.data.personalDetails.disability.show = false;
+  //    if (req.session.data.editState == "correcting" ) {
+  //      res.redirect('/update/person/update')
+  //    } else {
+  //      res.redirect('/update/person/check')
+  //    }
+>>>>>>> 9af088120d11ba339f8cfb9f5f20f7466e62f120
+    res.redirect('/update/person/check')
     } else {
-      req.session.data.personalDetailValue = "Welsh";
+      res.redirect('/update/person/update')
     }
+<<<<<<< HEAD
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == "disability") {
     req.session.data.personalDetailValue = "This person is not disabled";
@@ -654,6 +687,8 @@ router.get(/change-person-type-handler/, function (req, res) {
     }
   } else {
     res.redirect('/update/person/update')
+=======
+>>>>>>> 9af088120d11ba339f8cfb9f5f20f7466e62f120
   }
 })
 
@@ -665,6 +700,10 @@ router.get(/personal-detail-handler/, function (req, res) {
   }
   res.redirect('/update/person/check')
 })
+
+// create a copy of the personal detail
+// edit it
+// pass it back so that the route can swap it back 
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {  
@@ -684,19 +723,18 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
   }
+  
   if (req.session.data.personalDetail == "recordLevel") {
     if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
         req.session.data.personalDetails[req.session.data.personalDetail].show = false;
     }
   }
+  
   if (req.session.data.personalDetail == "pv") {
     req.session.data.personalDetails.pv.partner = false;
     req.session.data.personalDetails.pv.member = false;
-    
-    //
-    
-    var temp;
-    if (req.session.data.personalDetails.pv.value != "The potentially violent status is unknown") {
+    if (req.session.data.editState != "ending") {
+      var temp;
       for (var item in req.session.data.personalDetails.pv.value) {
         if (req.session.data.personalDetails.pv.value[item] == "The person's partner") {
           req.session.data.personalDetails.pv.partner = true
@@ -710,11 +748,13 @@ router.get(/check-person-handler/, function (req, res) {
         req.session.data.personalDetails.pv.value = true;
       }
     } else {
+      //ending
       req.session.data.personalDetails.pv.show = true;
       req.session.data.personalDetails.pv.value = false;
-      console.log(`pv value = ${req.session.data.personalDetails.pv.value} `);
+      req.session.data.personalDetails.pv.state = "ended";
     }
   }
+  
   if (req.session.data.personalDetail == "dateOfDeath") {
     req.session.data.personalDetails.dateOfDeath.level = req.session.data.verificationlevel;  
   }

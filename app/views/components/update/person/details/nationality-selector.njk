@@ -3,7 +3,6 @@
   
   <select name="personalDetailValue" class="form-control" name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
     
-    
     {% if data.editState != "adding" %}
       {% if data.personalDetails.nationality.value != "Stateless" %}
         <option value={{data.personalDetails.nationality.value}} selected="selected">{{data.personalDetails.nationality.value}}</option>
