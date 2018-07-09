@@ -625,6 +625,14 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
+  if (req.session.data.personalDetail == "nationality") {
+    if (req.session.data.editState == 'correcting') {
+      req.session.data.editState = req.query.correct;
+    }
+    if (req.session.data.editState == 'ending') {
+      res.redirect('/update/person/check')
+    }
+  }
   if (req.session.data.personalDetail == "nifu") {
     req.session.data.personalDetailValue = "No";
     req.session.data.personalDetails.nifu.show = false;
@@ -637,14 +645,13 @@ router.get(/change-person-type-handler/, function (req, res) {
     }
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == "disability") {
-    req.session.data.personalDetailValue = "Not disabled";
+    req.session.data.personalDetailValue = "This person is not disabled";
     req.session.data.personalDetails.disability.show = false;
-//    if (req.session.data.editState == "correcting" ) {
-//      res.redirect('/update/person/update')
-//    } else {
-//      res.redirect('/update/person/check')
-//    }
-  res.redirect('/update/person/check')
+    if (req.session.data.editState == "correcting" ) {
+      res.redirect('/update/person/update')
+    } else {
+      res.redirect('/update/person/check')
+    }
   } else {
     res.redirect('/update/person/update')
   }
