@@ -18,28 +18,41 @@
           <input id="correct" type="radio" name="data" value="correcting">
           <label for="correct">Correct a mistake</label>
         </div>
+        
         {% if data.personalDetail == "pv" %}
           <div class="multiple-choice">
             <input id="remove" type="radio" name="data" value="ending">
             <label for="remove">End the {{ data.personalDetails[data.personalDetail].display | lower }}</label>
           </div>
         {% endif %}
+        
       </div> 
       
-<!--
-      {% if data.personalDetail == "disability" or data.personalDetail == "pv" %}
-        <div class="form-group">
-          <div class="multiple-choice">
-            <input id="update" type="radio" name="data" value="updating">
-            <label for="update">Update</label>
+      {% if data.personalDetail == "nationality" %}
+        {% if data.editState == "correcting" %}
+          <div class="form-group">
+            <div class="multiple-choice">
+              <input id="update" type="radio" name="data" value="updating">
+              <label for="update">Update</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="correct" type="radio" name="data" value="correcting">
+              <label for="correct">Correct a mistake</label>
+            </div>
+      
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="example-contact-by-text" type="radio" name="radio-contact-group" value="No">
+            <label for="example-contact-by-text">Text message</label>
           </div>
-          <div class="multiple-choice">
-            <input id="correct" type="radio" name="data" value="correcting">
-            <label for="correct">Correct a mistake</label>
+          <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+            <label class="form-label" for="contact-text-message">Mobile phone number</label>
+            <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
           </div>
-        </div> 
+            
+        </div>
+
+        {% endif %}
       {% endif %}
--->
       
       <div class="form-group">
         <input class="button" type="submit" value="Next">

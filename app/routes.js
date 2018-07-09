@@ -605,6 +605,15 @@ router.get(/add-person-handler/, function (req, res) {
   }
 })
 
+
+
+router.get(/pv-update-handler/, function (req, res) {
+  req.session.data.toaster = null;
+  req.session.data.personalDetail = "pv";
+  req.session.data.editState = "updating";
+  res.redirect('/update/person/update')
+})
+
 router.get(/person-change-handler/, function (req, res) {
   req.session.data.toaster = null;
   req.session.data.personalDetail = req.query.personalDetail;
@@ -664,13 +673,12 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
-function pvUpdator() {
-  console.log("pvUpdator = " + req.session.data.editState);
-}
+// create a copy of the personal detail
+// edit it
+// pass it back so that the route can swap it back 
 
 //check-person-handler
-router.get(/check-person-handler/, function (req, res) {
-  req.session.data.personalDetail+Updator();
+router.get(/check-person-handler/, function (req, res) {  
   if (req.session.data.editState == "adding") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
     req.session.data.personalDetails[req.session.data.personalDetail].show = true;
@@ -680,30 +688,25 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
   } else if (req.session.data.editState == "ending") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "ended";
-    if (req.session.data.personalDetail != "pv") {
-      req.session.data.personalDetails[req.session.data.personalDetail].show = false;
-    }
+    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
   }
   req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
   req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
   if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
   }
+  
   if (req.session.data.personalDetail == "recordLevel") {
     if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
         req.session.data.personalDetails[req.session.data.personalDetail].show = false;
     }
   }
+  
   if (req.session.data.personalDetail == "pv") {
-    
-    
     req.session.data.personalDetails.pv.partner = false;
     req.session.data.personalDetails.pv.member = false;
-    
-    //
-    
-    var temp;
-    if (req.session.data.personalDetails.pv.value != "The potentially violent status is unknown") {
+    if (req.session.data.editState != "ending") {
+      var temp;
       for (var item in req.session.data.personalDetails.pv.value) {
         if (req.session.data.personalDetails.pv.value[item] == "The person's partner") {
           req.session.data.personalDetails.pv.partner = true
@@ -717,11 +720,13 @@ router.get(/check-person-handler/, function (req, res) {
         req.session.data.personalDetails.pv.value = true;
       }
     } else {
+      //ending
       req.session.data.personalDetails.pv.show = true;
       req.session.data.personalDetails.pv.value = false;
-      console.log(`pv value = ${req.session.data.personalDetails.pv.value} `);
+      req.session.data.personalDetails.pv.state = "ended";
     }
   }
+  
   if (req.session.data.personalDetail == "dateOfDeath") {
     req.session.data.personalDetails.dateOfDeath.level = req.session.data.verificationlevel;  
   }
