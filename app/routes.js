@@ -664,8 +664,13 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
+function pvUpdator() {
+  console.log("pvUpdator = " + req.session.data.editState);
+}
+
 //check-person-handler
-router.get(/check-person-handler/, function (req, res) {  
+router.get(/check-person-handler/, function (req, res) {
+  req.session.data.personalDetail+Updator();
   if (req.session.data.editState == "adding") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
     req.session.data.personalDetails[req.session.data.personalDetail].show = true;
