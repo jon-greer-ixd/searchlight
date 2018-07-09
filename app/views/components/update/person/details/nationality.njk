@@ -1,106 +1,4 @@
 <h2 class="heading-medium question">What is the person's nationality?</h2>
-
-<div class="grid-row">
-  
-  <div class="column-two-thirds">
-    
-    <form class="form" method="get" action="personal-detail-handler">          
-            
-        <div class="form-group">
-          <div class="multiple-choice" data-target="contact-by-email">
-            <input id="example-contact-by-email" type="radio" name="data" value="Yes">
-            
-              {% if data.editState == "adding" %}
-                <label for="example-contact-by-email">They have a nationality</label>
-              {% elif data.editState == "updating" %}
-                <label for="example-contact-by-email">Update to a different nationality</label>
-              {% elif data.editState == "correcting" %}
-                <label for="example-contact-by-email">Correct to a different nationality</label>
-              {% endif %}
-          
-          </div>
-
-          <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
-            {% include "components/update/person/details/nationality-selector.njk" %}
-          </div>
-
-          <div class="multiple-choice" data-target="contact-by-phone">
-            <input id="stateless" name="data" type="radio" value="stateless" {% if data.editState == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
-            <label for="stateless">They are stateless</label>
-          </div>
-          
-          {% if data.editState == "correcting" %}
-            <div class="multiple-choice" data-target="contact-by-text">
-              <input id="unknown" name="data" type="radio" value="unknown">
-              <label for="unknown">Nationality is unknown</label>
-            </div>
-          {% endif %}            
-        </div>
-      
-      
-      <div class="form-group">
-        <input class="button" type="submit" value="Next">
-      </div>
-      
-    </form>
-    
-    <p><a href="/account2/account">Cancel</a></p>
-    
-  </div>
-  
-</div>
-    
-<!--
-
-
-
-
-<h2 class="heading-medium question">What kind of correction do you need to make?</h2>
-
-
-<div class="form-group">
-  <fieldset>
-
-    <legend>
-      <h1 class="visually-hidden">
-        What kind of correction do you need to make?
-      </h1>
-    </legend>
-
-    <div class="multiple-choice" data-target="contact-by-email">
-      <input id="example-contact-by-email" type="radio" name="data" value="Yes">
-      <label for="example-contact-by-email">Correct to a different nationality</label>
-    </div>
-    <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
-      <label class="form-label" for="contact-email">The person is stateless</label>
-      <input class="form-control" name="contact-email" type="text" id="contact-email">
-    </div>
-
-    <div class="multiple-choice" data-target="contact-by-phone">
-      <input id="example-contact-by-phone" type="radio" name="data" value="No">
-      <label for="example-contact-by-phone">he person is stateless</label>
-    </div>
-    <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
-      <label class="form-label" for="contact-phone">Phone number</label>
-      <input class="form-control" name="contact-phone" type="text" id="contact-phone">
-    </div>
-
-    <div class="multiple-choice" data-target="contact-by-text">
-      <input id="example-contact-by-text" type="radio" name="data" value="No">
-      <label for="example-contact-by-text">Their nationality is unknown</label>
-    </div>
-    <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
-      <label class="form-label" for="contact-text-message">Mobile phone number</label>
-      <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
-    </div>
-
-  </fieldset>
-</div>
-
-
-
-
-
 <div class="grid-row">
   <div class="column-two-thirds">
     <form class="form" method="get" action="personal-detail-handler">
@@ -109,19 +7,19 @@
           Do you know their nationality?
          </h1>
       </legend>
-            {% include "components/update/person/details/nationality-selector.njk" %}
+      {% include "components/update/person/details/nationality-selector.njk" %}
+
       
       <p class="form-block" style="margin-top:-15px;">or</p>
       
       <div class="form-group">
       
-        {% if data.editState == "adding" or data.editState == "updating" %}
-          <div class="multiple-choice">
-            <input id="none" name="data" type="checkbox" value="stateless" {% if data.personalDetails.nationality.value == "Stateless" %} checked ="checked"{% endif %}>
-            <label for="none">The person is stateless</label>
-          </div>
-        {% endif %}  
+        <div class="multiple-choice">
+          <input id="none" name="data" type="checkbox" value="stateless" {% if data.personalDetails.nationality.value == "Stateless" %} checked ="checked"{% endif %}>
+          <label for="none">The person is stateless</label>
+        </div>
         
+<!--
         {% if data.editState == "correcting" %}
           <div class="multiple-choice">
             <input id="none" name="data" type="radio" value="stateless" {% if data.personalDetails.nationality.value == "Stateless" %} checked ="checked"{% endif %}>
@@ -133,6 +31,7 @@
             <label for="unknown">Nationality is unknown</label>
           </div>
         {% endif %}   
+-->
         
       </div>
       <div class="form-group">
@@ -141,4 +40,4 @@
     </form>
     <p><a href="task-list">Cancel</a></p>
   </div>
-</div>-->
+</div>
