@@ -18,6 +18,12 @@
           <input id="correct" type="radio" name="data" value="correcting">
           <label for="correct">Correct a mistake</label>
         </div>
+        {% if data.personalDetail == "pv" %}
+          <div class="multiple-choice">
+            <input id="remove" type="radio" name="data" value="ending">
+            <label for="remove">End the {{ data.personalDetails[data.personalDetail].display | lower }}</label>
+          </div>
+        {% endif %}
       </div> 
       
 <!--

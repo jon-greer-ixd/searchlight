@@ -625,28 +625,33 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
-  if (req.session.data.personalDetail == "nifu") {
-    req.session.data.personalDetailValue = "No";
-    req.session.data.personalDetails.nifu.show = false;
+  console.log(req.session.data.editState);
+  if (req.session.data.editState == "ending") {
     res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == "preferredLanguage" && req.session.data.editState == "updating") {
-    if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Welsh") {
-      req.session.data.personalDetailValue = "English";
-    } else {
-      req.session.data.personalDetailValue = "Welsh";
-    }
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == "disability") {
-    req.session.data.personalDetailValue = "Not disabled";
-    req.session.data.personalDetails.disability.show = false;
-//    if (req.session.data.editState == "correcting" ) {
-//      res.redirect('/update/person/update')
-//    } else {
-//      res.redirect('/update/person/check')
-//    }
-  res.redirect('/update/person/check')
   } else {
-    res.redirect('/update/person/update')
+    if (req.session.data.personalDetail == "nifu") {
+      req.session.data.personalDetailValue = "No";
+      req.session.data.personalDetails.nifu.show = false;
+      res.redirect('/update/person/check')
+    } else if (req.session.data.personalDetail == "preferredLanguage" && req.session.data.editState == "updating") {
+      if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Welsh") {
+        req.session.data.personalDetailValue = "English";
+      } else {
+        req.session.data.personalDetailValue = "Welsh";
+      }
+      res.redirect('/update/person/check')
+    } else if (req.session.data.personalDetail == "disability") {
+      req.session.data.personalDetailValue = "Not disabled";
+      req.session.data.personalDetails.disability.show = false;
+  //    if (req.session.data.editState == "correcting" ) {
+  //      res.redirect('/update/person/update')
+  //    } else {
+  //      res.redirect('/update/person/check')
+  //    }
+    res.redirect('/update/person/check')
+    } else {
+      res.redirect('/update/person/update')
+    }
   }
 })
 
@@ -670,7 +675,9 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
   } else if (req.session.data.editState == "ending") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "ended";
-    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    if (req.session.data.personalDetail != "pv") {
+      req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    }
   }
   req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
   req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
@@ -683,6 +690,8 @@ router.get(/check-person-handler/, function (req, res) {
     }
   }
   if (req.session.data.personalDetail == "pv") {
+    
+    
     req.session.data.personalDetails.pv.partner = false;
     req.session.data.personalDetails.pv.member = false;
     
