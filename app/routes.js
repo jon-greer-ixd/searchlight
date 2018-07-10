@@ -625,7 +625,7 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
-  if (req.session.data.personalDetail == "nationality") {
+  if (req.session.data.personalDetail == "nationality" || req.session.data.personalDetail == "pv" ) {
     if (req.session.data.editState == 'correcting') {
       req.session.data.editState = req.query.correct;
     }

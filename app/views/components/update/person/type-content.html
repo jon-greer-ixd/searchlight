@@ -15,7 +15,7 @@
           <input id="update" type="radio" name="data" value="updating">
           <label for="update">Update</label>
         </div>
-      {% if data.personalDetail == "nationality" %}
+      {% if data.personalDetail == "nationality" or data.personalDetail == "pv" %}
         <div class="multiple-choice" data-target="contact-by-text">
           <input id="example-contact-by-text" type="radio" name="data" value="correcting">
           <label for="example-contact-by-text">Correct a mistake</label>
@@ -23,11 +23,11 @@
         <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
           <div class="multiple-choice">
             <input id="correct" type="radio" name="correct" value="correcting">
-            <label for="correct">Correct to a different nationality</label>
+            <label for="correct">Correct to a different {{data.personalDetails[data.personalDetail].display | lower}}</label>
           </div>
           <div class="multiple-choice">
             <input id="end" type="radio" name="correct" value="ending">
-            <label for="end">Remove nationality</label>
+            <label for="end">End the {{data.personalDetails[data.personalDetail].display | lower}}</label>
           </div>
         </div>
        {% else %}
