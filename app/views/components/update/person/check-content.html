@@ -6,57 +6,45 @@
           <!-- nifu -->
           <!-- nationality -->
           <tr>
-            
-          {% if data.editState == "ending" %}
-            <td><span class="strong">End the {{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
-            <td><a href="type">Change</a></td>
-          {% else %}
+            {% if data.personalDetail == "pv" %}
+              <td><span class="strong">Who in the household is potentially violent?</span></td>
+            {% else %}
+              <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
+            {% endif %}
+            <td>
             
               {% if data.personalDetail == "specialNeeds" or data.personalDetail == "pv" %}
 
-                <td><span class="strong">Who in the household is potentially violent?</span></td>
-              {% else %}
-                <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
-              {% endif %}
-              <td>
-
-
-                {% set counter = data.personalDetailValue.length %}
-
-                {% if data.personalDetail == "specialNeeds" or data.personalDetail == "pv" %}
-
-                  {% if data.personalDetailValue != "Unknown" %}
-                    {% for item in data.personalDetailValue %}
-                      {% if counter != 1 %}
-                        {{item}}, <br>
-                      {% else %}
-                        {{item}}
-                      {% endif %}
-                      {% set counter = counter -1 %}
-                    {% endfor %}
-                  {% else %}
-                    {{data.personalDetailValue}}
-                  {% endif %}
+                {% if data.personalDetailValue != "Unknown" %}
+                  {% for item in data.personalDetailValue %}
+                    {% if counter != 1 %}
+                      {{item}}, <br>
+                    {% else %}
+                      {{item}}
+                    {% endif %}
+                    {% set counter = counter -1 %}
+                  {% endfor %}
                 {% else %}
-                {{data.personalDetailValue}}
-              {% endif %}
-              </td>
-              {% if data.personalDetail == "disability" or data.personalDetail == "sex" or data.personalDetail == "preferredLanguage" %}
-                <td>&nbsp;</td>
+                  {{data.personalDetailValue}}
+                {% endif %}
               {% else %}
-                <td><a>Change</a></td>
-              {% endif %}
-            </tr>
-              {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
-              <tr>
-                <td class="strong">Verification level</td>
-                <td>{{data.verificationlevel}}</td>
-                <td><a>Change</a></td>
-              </tr>
-              {% endif %}
-          
+              {{data.personalDetailValue}}
             {% endif %}
-
+            </td>
+            {% if data.personalDetail == "disability" or data.personalDetail == "sex" or data.personalDetail == "preferredLanguage" %}
+              <td>&nbsp;</td>
+            {% else %}
+              <td><a>Change</a></td>
+            {% endif %}
+          </tr>
+            {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
+            <tr>
+              <td class="strong">Verification level</td>
+              <td>{{data.verificationlevel}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            {% endif %}
+          
         </table>
       <br>
       <form method="get" action="check-person-handler">
