@@ -3,18 +3,23 @@
       <div class="column-one-half">
         <table class="table"> 
           
-          <!-- nifu -->
-          <!-- nationality -->
+          {% if data.editState == "ending" %}
+          <!-- end -->
           <tr>
+            <td><span class="strong">End the {{data.personalDetails[data.personalDetail].display | lower }}</span></td>
+            <td>&nbsp;</td>
+            <td><a>Change</a></td>
+          </tr>
+          {% else %}
+          <tr>
+          <!-- add / update / correct -->
             {% if data.personalDetail == "pv" %}
               <td><span class="strong">Who in the household is potentially violent?</span></td>
             {% else %}
               <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
             {% endif %}
             <td>
-            
               {% if data.personalDetail == "specialNeeds" or data.personalDetail == "pv" %}
-
                 {% if data.personalDetailValue != "Unknown" %}
                   {% for item in data.personalDetailValue %}
                     {% if counter != 1 %}
@@ -28,8 +33,8 @@
                   {{data.personalDetailValue}}
                 {% endif %}
               {% else %}
-              {{data.personalDetailValue}}
-            {% endif %}
+                {{data.personalDetailValue}}
+              {% endif %}
             </td>
             {% if data.personalDetail == "disability" or data.personalDetail == "sex" or data.personalDetail == "preferredLanguage" %}
               <td>&nbsp;</td>
@@ -44,6 +49,11 @@
               <td><a>Change</a></td>
             </tr>
             {% endif %}
+          {% endif %}
+          
+          <tr>
+            
+            
           
         </table>
       <br>
