@@ -13,7 +13,15 @@
         <div class="form-group">
           <div class="multiple-choice">
             <input id="update" type="radio" name="updateType" value="update">
-            <label for="update">Update</label>
+            <label for="update">Update 
+              {% if data.nameType == "name" %} 
+                the name type 1
+              {% elif data.nameType == "nameTwo" %} 
+                the name type 2
+              {% elif data.nameType == "requestedName" %} 
+                the requested name
+              {% endif %} 
+            </label>
           </div>
           <div class="multiple-choice">
             <input id="correct" type="radio" name="updateType" value="correct">
@@ -23,14 +31,14 @@
           {% if data.nameType == "nameTwo"%}
           <div class="multiple-choice">
             <input id="remove" type="radio" name="updateType" value="end">
-            <label for="remove">End name type 2</label>
+            <label for="remove">End the name type 2</label>
           </div>
           {% endif %}
           
           {% if data.nameType == "requestedName" %}
           <div class="multiple-choice">
             <input id="remove" type="radio" name="updateType" value="end">
-            <label for="remove">End requested name</label>
+            <label for="remove">End the requested name</label>
           </div>
           {% endif %}
           

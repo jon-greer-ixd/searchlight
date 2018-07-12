@@ -8,17 +8,27 @@
           <a class="link-back" onCLick="history.back()">Back</a>
           
           <h2 class="title">
+            
             {% if data.editState == "adding" %}
               Add 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} a {% endif %}
+            
             {% elif data.editState == "correcting" %}
               Correct
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+            
             {% elif data.editState == "ending" %}
-              Change
+              Change 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+            
             {% else %}
               Update
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+
             {% endif %}
 
             {{ data.personalDetails[data.personalDetail].display | lower }}
+            
           </h2>
 
 <!--

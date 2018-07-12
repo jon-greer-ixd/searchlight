@@ -6,8 +6,11 @@
           {% if data.editState == "ending" %}
           <!-- end -->
           <tr>
-            <td><span class="strong">End the {{data.personalDetails[data.personalDetail].display | lower }}</span></td>
-            <td>&nbsp;</td>
+            <td>
+              <span class="strong">
+                End {% if data.personalDetail == "pv" or data.personalDetail == "nationality" %} the {% endif %} {{data.personalDetails[data.personalDetail].display | lower }}
+              </span>
+            </td>
             <td><a>Change</a></td>
           </tr>
           {% else %}

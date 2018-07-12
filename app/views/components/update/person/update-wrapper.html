@@ -9,14 +9,21 @@
           
           <h2 class="title">
             {% if data.editState == "adding" %}
-              Add
+              Add 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} a {% endif %}
             {% elif data.editState == "correcting" %}
               Correct
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+
             {% else %}
               Update
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+
             {% endif %}
-            {{data.personalDetails[data.personalDetail].display | lower}}
+
+            {{ data.personalDetails[data.personalDetail].display | lower }}
           </h2>
+          
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               {% if data.personalDetail == "nationality" %}

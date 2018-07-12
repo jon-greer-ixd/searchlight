@@ -69,13 +69,30 @@
       <div class="form-group">
         <div class="multiple-choice">
           <input id="update" type="radio" name="data" value="updating">
-          <label for="update">Update to a new {{data.personalDetails[data.personalDetail].display | lower}}</label>
+          <label for="update">
+            Update the 
+            {% if data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
+              status
+            {% else %}
+              {{data.personalDetails[data.personalDetail].display | lower}}
+            {% endif %}
+          </label>
         </div>
         
-      {% if data.personalDetail == "nationality" or data.personalDetail == "pv" %}
+      {% if data.personalDetail == "nationality" or data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %}
         <div class="multiple-choice">
           <input id="example-contact-by-text" type="radio" name="data" value="correcting">
-          <label for="example-contact-by-text">Correct  to a different {{data.personalDetails[data.personalDetail].display | lower}}</label>
+          <label for="example-contact-by-text">
+            Correct a mistake 
+<!--
+            Correct the 
+            {% if data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
+              status
+            {% else %}
+              {{data.personalDetails[data.personalDetail].display | lower}}
+            {% endif %}
+-->
+          </label>
         </div>
 <!--
         <div class="multiple-choice">
@@ -85,12 +102,16 @@
 -->
         <div class="multiple-choice">
           <input id="end" type="radio" name="data" value="ending">
-          <label for="end">End the {{data.personalDetails[data.personalDetail].display | lower}}</label>
+          <label for="end">
+            End the {{data.personalDetails[data.personalDetail].display | lower}}
+          </label>
         </div>
        {% else %}
         <div class="multiple-choice">
           <input id="correct" type="radio" name="data" value="correcting">
-          <label for="correct">Correct a mistake</label>
+          <label for="correct">
+            Correct  to a different {{data.personalDetails[data.personalDetail].display | lower}}
+          </label>
         </div>
        {% endif %}
       </div> 
