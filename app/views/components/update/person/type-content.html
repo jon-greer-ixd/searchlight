@@ -79,7 +79,7 @@
           </label>
         </div>
         
-      {% if data.personalDetail == "nationality" or data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %}
+      {% if data.personalDetail == "nationality" or data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "specialNeeds" or data.personalDetail == "preferredLanguage" %}
         <div class="multiple-choice">
           <input id="example-contact-by-text" type="radio" name="data" value="correcting">
           <label for="example-contact-by-text">
@@ -110,7 +110,7 @@
         <div class="multiple-choice">
           <input id="correct" type="radio" name="data" value="correcting">
           <label for="correct">
-            Correct  to a different {{data.personalDetails[data.personalDetail].display | lower}}
+            Correct a mistake
           </label>
         </div>
        {% endif %}

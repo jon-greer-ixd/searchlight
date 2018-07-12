@@ -10,20 +10,20 @@
           <h2 class="title">
             
             {% if data.editState == "adding" %}
-              Add 
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} a {% endif %}
+              Add
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} a {% endif %}
             
             {% elif data.editState == "correcting" %}
               Correct
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} 
             
             {% elif data.editState == "ending" %}
-              Change 
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+              Change
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} 
             
             {% else %}
               Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} 
 
             {% endif %}
 

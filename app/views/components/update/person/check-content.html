@@ -8,7 +8,7 @@
           <tr>
             <td>
               <span class="strong">
-                End {% if data.personalDetail == "pv" or data.personalDetail == "nationality" %} the {% endif %} {{data.personalDetails[data.personalDetail].display | lower }}
+                End {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} {{data.personalDetails[data.personalDetail].display | lower }}
               </span>
             </td>
             <td><a>Change</a></td>
@@ -44,6 +44,7 @@
             {% else %}
               <td><a>Change</a></td>
             {% endif %}
+              <td><a>Change</a></td>
           </tr>
             {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
             <tr>
@@ -54,8 +55,6 @@
             {% endif %}
           {% endif %}
           
-          <tr>
-            
             
           
         </table>

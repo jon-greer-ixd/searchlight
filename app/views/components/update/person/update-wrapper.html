@@ -12,15 +12,13 @@
               Add 
               {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} a {% endif %}
             {% elif data.editState == "correcting" %}
-              Correct
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
-
+              Correct    
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %}
             {% else %}
               Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %} 
-
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %}
             {% endif %}
-
+            
             {{ data.personalDetails[data.personalDetail].display | lower }}
           </h2>
           

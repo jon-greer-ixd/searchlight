@@ -8,7 +8,17 @@
         <a class="link-back" onCLick="history.back()">Back</a>  
         
         <h2 class="title">
-          {{data.updateType | capitalize }} {{data.details[data.nameType].display | lower}}
+          {% if data.updateType == "add" %} 
+            Add a
+          {% elif data.updateType == "update" %}
+            Update
+          {% elif data.updateType == "correct" %}
+            Correct
+          {% else %}
+            Update
+          {% endif %}
+          
+          {{data.details[data.nameType].display | lower}}
         </h2>
         
         <div id="sl-address-primary-card" class="sl-primary-card last-card">

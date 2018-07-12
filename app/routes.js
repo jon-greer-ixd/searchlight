@@ -634,7 +634,7 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
-  if (req.session.data.personalDetail == "nationality" || req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "maritalStatus" ) {
+  if (req.session.data.personalDetail == "nationality" || req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "maritalStatus" || req.session.data.personalDetail == "disability" || req.session.data.personalDetail == "specialNeeds" || req.session.data.personalDetail == "preferredLanguage") {
 //    if (req.session.data.editState == 'correcting') {
 //      req.session.data.editState = req.query.correct;
 //    }
@@ -646,7 +646,7 @@ router.get(/change-person-type-handler/, function (req, res) {
     req.session.data.personalDetailValue = "No";
     req.session.data.personalDetails.nifu.show = false;
     res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == "preferredLanguage" && req.session.data.editState == "updating") {
+  } else if (req.session.data.personalDetail == "preferredLanguage") {
     if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Welsh") {
       req.session.data.personalDetailValue = "English";
     } else {
@@ -656,11 +656,7 @@ router.get(/change-person-type-handler/, function (req, res) {
   } else if (req.session.data.personalDetail == "disability") {
     req.session.data.personalDetailValue = "This person is not disabled";
     req.session.data.personalDetails.disability.show = false;
-    if (req.session.data.editState == "correcting" ) {
-      res.redirect('/update/person/update')
-    } else {
-      res.redirect('/update/person/check')
-    }
+    res.redirect('/update/person/check')
   } else {
     res.redirect('/update/person/update')
   }
