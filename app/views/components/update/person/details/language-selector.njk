@@ -1,0 +1,76 @@
+<fieldset class="form-group">
+  <label class="form-label" for="personalDetailValue">Spoken language</label>
+  
+  <select name="personalDetailValue" class="form-control" name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
+    
+    {% if data.editState != "adding" %}
+      <option value={{data.personalDetails.spokenLanguage.value}} selected="selected">{{data.personalDetails.spokenLanguage.value}}</option>
+    {% else %}
+      <option value="" selected="selected">Select Country</option>
+    {% endif %}
+    
+   <option value="Albanian">Albanian</option>
+   <option value="Arabic">Arabic</option>
+   <option value="Armenian">Armenian</option>
+   <option value="Azerbaijani">Azerbaijani</option>
+   <option value="Belarusian">Belarusian</option>
+   <option value="Bengali">Bengali</option>
+   <option value="Bulgarian">Bulgarian</option>
+   <option value="Chinese">Chinese</option>
+   <option value="Croatian">Croatian</option>
+   <option value="Czech">Czech</option>
+   <option value="Danish">Danish</option>
+   <option value="Dutch">Dutch</option>
+   <option value="Estonian">Estonian</option>
+   <option value="English">English</option>
+   <option value="Finnish">Finnish</option>
+   <option value="French">French</option>
+   <option value="Gaelic">(Scots) Gaelic (Scots)</option>
+   <option value="Georgian">Georgian</option>
+   <option value="German">German</option>
+   <option value="Greek">Greek</option>
+   <option value="Gujarati">Gujarati</option>
+   <option value="Hindi">Hindi</option>
+   <option value="Hungarian">Hungarian</option>
+   <option value="Icelandic">Icelandic</option>
+   <option value="Indonesian">Indonesian</option>
+   <option value="Iranian">Iranian</option>
+   <option value="Irish">Irish</option>
+   <option value="Italian">Italian</option>
+   <option value="Japanese">Japanese</option>
+   <option value="Korean">Korean</option>
+   <option value="Kurdish">Kurdish</option>
+   <option value="Latvian">Latvian</option>
+   <option value="Lithuanian">Lithuanian</option>
+   <option value="Macedonian">Macedonian</option>
+   <option value="Maltese">Maltese</option>
+   <option value="Manx">Manx</option>
+   <option value="Norwegian">Norwegian</option>
+   <option value="Punjabi">Punjabi</option>
+   <option value="Persian">Persian</option>
+   <option value="Philippine">Philippine</option>
+   <option value="Polish">Polish</option>
+   <option value="Portuguese">Portuguese</option>
+   <option value="Romanian">Romanian</option>
+   <option value="Russian">Russian</option>
+   <option value="Scots">Scots</option>
+   <option value="Serbian">Serbian</option>
+   <option value="Slovak">Slovak</option>
+   <option value="Slovenian">Slovenian</option>
+   <option value="Somali">Somali</option>
+   <option value="Spanish">Spanish</option>
+   <option value="Sudanese">Sudanese</option>
+   <option value="Swedish">Swedish</option>
+   <option value="Tahitian">Tahitian</option>
+   <option value="Tamil">Tamil</option>
+   <option value="Thai">Thai</option>
+   <option value="Turkish">Turkish</option>
+   <option value="Ukrainian">Ukrainian</option>
+   <option value="Urdu">Urdu</option>
+   <option value="Uzbek">Uzbek</option>
+   <option value="Vietnamese">Vietnamese</option>
+   <option value="Welsh">Welsh</option>  
+  </select>
+</fieldset>
+
+

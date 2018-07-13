@@ -10,20 +10,24 @@
           <h2 class="title">
             
             {% if data.editState == "adding" %}
-              Add
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} a {% endif %}
+              Add 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} 
+                a 
+              {% elif data.personalDetail == "immigration" %}
+                an
+              {% endif %}
             
             {% elif data.editState == "correcting" %}
               Correct
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} 
             
-            {% elif data.editState == "ending" %}
+            {% elif data.editState == "ending" or data.editState == "removing" %}
               Change
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} 
             
             {% else %}
               Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} 
 
             {% endif %}
 

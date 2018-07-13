@@ -1,0 +1,39 @@
+<div class="grid-row">
+  
+  <div class="column-two-thirds">
+      
+    <form class="form" method="get" action="check">
+        
+      <fieldset class="form-group">
+        <legend>
+          <p class="bold">What is their immigration status?</p>
+        </legend>
+        <div class="multiple-choice">
+          <input id="asylum-seeker" type="radio" name="imstatus" value="Asylum seeker" {% if data.personalDetails.immigration.value == "Asylum seeker" %} checked="checked" {% endif %}>
+          <label for="asylum-seeker">Asylum seeker</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="exceptional-leave" type="radio" name="imstatus" value="Exceptional leave to remain" {% if data.personalDetails.immigration.value == "Exceptional leave to remain" %} checked="checked" {% endif %}>
+          <label for="exceptional-leave">Exceptional leave to remain</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="indefinite" type="radio" name="imstatus" value="Indefinite leave to remain" {% if data.personalDetails.immigration.value == "Indefinite leave to remain" %} checked="checked" {% endif %}>
+          <label for="indefinite">Indefinite leave to remain</label>
+        </div>
+      </fieldset>
+        
+      <fieldset class="form-group">
+        <legend class="visuallyhidden">Immigration number</legend>
+        <label class="form-label" for="iref">Immigration reference number</label>
+        <input class="form-control" id="imref" type="text" name="imref" value={{data.personalDetails.immigration.reference}}>
+      </fieldset>
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+
+</div>

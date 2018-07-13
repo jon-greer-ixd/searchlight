@@ -1,28 +1,44 @@
   <h2 class="heading-medium question">Check your answers</h2>
     <div class="grid-row">
       <div class="column-one-half">
+        
         <table class="table"> 
           
-          {% if data.editState == "ending" %}
-          <!-- end -->
+        <!-- END -->
+        {% if data.editState == "ending" or data.editState == "removing" %}
           <tr>
             <td>
               <span class="strong">
-                End {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} the {% endif %} {{data.personalDetails[data.personalDetail].display | lower }}
+                Remove {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} {{data.personalDetails[data.personalDetail].display | lower }}
               </span>
             </td>
             <td><a>Change</a></td>
           </tr>
-          {% else %}
-          <tr>
-          <!-- add / update / correct -->
-            {% if data.personalDetail == "pv" %}
-              <td><span class="strong">Who in the household is potentially violent?</span></td>
-            {% else %}
-              <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize }}</span></td>
-            {% endif %}
-            <td>
-              {% if data.personalDetail == "specialNeeds" or data.personalDetail == "pv" %}
+          
+        {% else %}
+        <!-- ADD, CORRECT, UPDATE -->
+          {% if data.personalDetail == "immigration" %}
+            <tr>
+              <td><span class="strong">Immigration status</span></td>
+              <td>{{data.imstatus}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Immigration reference number</span></td>
+              <td>{{data.imref}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          
+          {% elif data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
+            <tr>
+              {% if data.personalDetail == "pv" %}
+                <td><span class="strong">Who in the household is potentially violent?</span></td>
+              {% else %}
+                <td><span class="strong">Special needs</span></td>
+              {% endif %}
+              <td>
+                {{counter}}
+                {% set counter = data.personalDetailValue.length %}
                 {% if data.personalDetailValue != "Unknown" %}
                   {% for item in data.personalDetailValue %}
                     {% if counter != 1 %}
@@ -32,19 +48,24 @@
                     {% endif %}
                     {% set counter = counter -1 %}
                   {% endfor %}
-                {% else %}
-                  {{data.personalDetailValue}}
-                {% endif %}
-              {% else %}
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          {% else %}
+          <tr>
+            <td>
+              <span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize}}</span>
+            </td>
+            <td>
                 {{data.personalDetailValue}}
-              {% endif %}
             </td>
             {% if data.personalDetail == "disability" or data.personalDetail == "sex" or data.personalDetail == "preferredLanguage" %}
               <td>&nbsp;</td>
             {% else %}
               <td><a>Change</a></td>
             {% endif %}
-              <td><a>Change</a></td>
           </tr>
             {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
             <tr>
@@ -53,10 +74,9 @@
               <td><a>Change</a></td>
             </tr>
             {% endif %}
-          {% endif %}
-          
-            
-          
+          {% endif %}          
+        {% endif %}
+
         </table>
       <br>
       <form method="get" action="check-person-handler">

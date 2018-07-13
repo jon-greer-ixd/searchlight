@@ -10,13 +10,17 @@
           <h2 class="title">
             {% if data.editState == "adding" %}
               Add 
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} a {% endif %}
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} 
+                a 
+              {% elif data.personalDetail == "immigration" %}
+                an
+              {% endif %}
             {% elif data.editState == "correcting" %}
               Correct    
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %}
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "immigration" %} the {% endif %}
             {% else %}
               Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} the {% endif %}
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "immigration" %} the {% endif %}
             {% endif %}
             
             {{ data.personalDetails[data.personalDetail].display | lower }}
@@ -40,6 +44,10 @@
                 {% include "components/update/person/details/preferredLanguage.njk" %}
               {% elif data.personalDetail == "dateOfDeath" %}
                 {% include "components/update/person/details/dateOfDeath.njk" %}
+              {% elif data.personalDetail == "spokenLanguage" %}
+                {% include "components/update/person/details/spokenLanguage.njk" %}
+              {% elif data.personalDetail == "immigration" %}
+                {% include "components/update/person/details/immigration.njk" %}
               {% elif data.personalDetail == "dateOfBirth" %}
                 {% include "components/update/person/details/dateOfBirth.njk" %}
               {% endif %}

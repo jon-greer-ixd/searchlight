@@ -1,6 +1,6 @@
   <div class="grid-row names">
 
-    {% if data.personalDetails.pv.state == "ended" %}
+    {% if data.personalDetails.pv.state == "removed" %}
       <div class="column-one-third">
         <ul>
           <li>Potentially violent status</li>
@@ -8,7 +8,7 @@
       </div>
       <div class="column-one-third">
         <ul>
-          <li class="sl-secondary-text-color sl-metadata">Ended {{data.prepopulatedString}}</li>
+          <li class="sl-secondary-text-color sl-metadata">Status removed  ·  {{data.prepopulatedString}}</li>
         </ul>
       </div>
       <div class="column-one-third last-col">

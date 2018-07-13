@@ -37,9 +37,15 @@ var authority = {
 //  requestedName : {state : null, show : true, display : "Requested name", value : "MINISTER TRAORE"}
 //}
 
+//var details = {
+//  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
+//  nameTwo : {state : null, show : true, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : " BOUBACAR", last : "KEITA"},
+//  requestedName : {state : null, show : false, display : "Requested name", value : null}
+//}
+
 var details = {
-  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "IBRAHIM BOUBACAR", last : "KEITA", suffix : null},
-  nameTwo : {state : null, show : true, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : " BOUBACAR", last : "KEITA"},
+  name : {state : null, show : true, display : "Name type 1", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : "TOM MICHAEL", last : "SMITH", suffix : null},
+  nameTwo : {state : null, show : true, display : "Name type 2", value : (this.title + " " + this.first + " " + this.last), title : "mr", first : " THOMAS", last : "SMITH"},
   requestedName : {state : null, show : false, display : "Requested name", value : null}
 }
 
@@ -54,7 +60,9 @@ var personalDetails = {
   "disability" : {state : null, show : false, display : "Disability status", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
+  "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
   "preferredLanguage" : {state : null, show : false, display : "Preferred language", value : null},
+  "immigration" : {state : null, show : false, display : "Immigration status", value : null, reference : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
 

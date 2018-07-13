@@ -634,11 +634,11 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
-  if (req.session.data.personalDetail == "nationality" || req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "maritalStatus" || req.session.data.personalDetail == "disability" || req.session.data.personalDetail == "specialNeeds" || req.session.data.personalDetail == "preferredLanguage") {
+  if (req.session.data.personalDetail == "nationality" || req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "maritalStatus" || req.session.data.personalDetail == "disability" || req.session.data.personalDetail == "specialNeeds" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "spokenLanguage" || req.session.data.personalDetail == "immigration") {
 //    if (req.session.data.editState == 'correcting') {
 //      req.session.data.editState = req.query.correct;
 //    }
-    if (req.session.data.editState == 'ending') {
+    if (req.session.data.editState == 'ending' || req.session.data.editState == 'removing') {
       res.redirect('/update/person/check')
     }
   }
@@ -677,13 +677,24 @@ router.get(/personal-detail-handler/, function (req, res) {
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {  
-  if (req.session.data.editState == "adding") {
+  //remove
+  if (req.session.data.editState == "removing") {
+    req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
+    req.session.data.personalDetails[req.session.data.personalDetail].value = null;
+    if (req.session.data.personalDetail != "pv") {
+      req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    }
+  //add
+  } else if (req.session.data.editState == "adding") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
     req.session.data.personalDetails[req.session.data.personalDetail].show = true;
+  //update
   } else if (req.session.data.editState == "updating") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "updated";
+  //correct
   } else if (req.session.data.editState == "correcting") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
+  //end
   } else if (req.session.data.editState == "ending") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "ended";
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
@@ -728,6 +739,13 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetail == "dateOfDeath") {
     req.session.data.personalDetails.dateOfDeath.level = req.session.data.verificationlevel;  
   }
+  
+  if (req.session.data.personalDetail == "immigration") {
+    req.session.data.personalDetails.immigration.value = req.session.data.imstatus;  
+    req.session.data.personalDetails.immigration.reference = req.session.data.imref;
+    console.log(`value = ${req.session.data.personalDetails.immigration.value} Ref =${req.session.data.personalDetails.immigration.reference}`);
+  }
+  
   req.session.data.personalDetail = null;
   res.redirect('/account2/account')
 })

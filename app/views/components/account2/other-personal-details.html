@@ -27,8 +27,14 @@
         {% elif items == "preferredLanguage" %}
           {% include "components/account2/preferred-language.html" %}
           <hr class="light">
+        {% elif items == "spokenLanguage" %}
+          {% include "components/account2/spoken-language.html" %}
+          <hr class="light">
         {% elif items == "nationality" %}
           {% include "components/account2/nationality.html" %}
+          <hr class="light">
+        {% elif items == "immigration" %}
+          {% include "components/account2/immigration.njk" %}
           <hr class="light">
         {% elif items == "maritalStatus" %}
           {% include "components/account2/marital.html" %}
