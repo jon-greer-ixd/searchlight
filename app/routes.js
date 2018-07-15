@@ -349,7 +349,7 @@ router.use('/', main);
       req.session.data[key] = defaults[key];
     }
   }
-    
+        
   req.session.data.details = require('./defaults.js').details;
   req.session.data.personalDetails = require('./defaults.js').personalDetails;
   req.session.data.contactTypes = contactTypes;
@@ -360,6 +360,15 @@ router.use('/', main);
 //      req.session.data[item] = contactTypes[item];
 //    }
 //  }
+    
+  // set the message for startup items such as PV
+  if(req.session.data.personalDetails.pv.state == "start") {
+    req.session.data.toaster = "This person is potentially violent";
+  } else if (req.session.data.personalDetails.disability.state == "start") {
+    req.session.data.toaster = "This person is disabled";
+  } else if (req.session.data.personalDetails.dateOfDeath.state == "start") {
+    req.session.data.toaster = "This person is deceased";
+  };
           
   resetTempInterest(req.session.data.tempInterest);
   resetInterests();
