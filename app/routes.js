@@ -689,66 +689,65 @@ router.get(/personal-detail-handler/, function (req, res) {
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   var changePv = function() {
-    if (req.session.data.personalDetail == "pv") {
-      var temp;
-      req.session.data.personalDetails.pv.partner = false;
-      req.session.data.personalDetails.pv.member = false;
-      console.log(`state = ${req.session.data.editState}`);
-      for (var item in req.session.data.personalDetailValue) {
-        if (req.session.data.personalDetailValue[item] == "The person's partner") {
-          req.session.data.personalDetails.pv.partner = true
-        } else if (req.session.data.personalDetailValue[item] == "Someone else in the household") {
-          req.session.data.personalDetails.pv.member = true
-        } else if (req.session.data.personalDetailValue[item] == "The person") {
-          temp = true;        
-        }
-      }
-      if (temp == true) {
-        req.session.data.personalDetails.pv.value = true;
+    var temp;
+    req.session.data.personalDetails.pv.value = false;
+    req.session.data.personalDetails.pv.partner = false;
+    req.session.data.personalDetails.pv.member = false;
+    for (var item in req.session.data.personalDetailValue) {
+      if (req.session.data.personalDetailValue[item] == "The person's partner") {
+        req.session.data.personalDetails.pv.partner = true
+      } else if (req.session.data.personalDetailValue[item] == "Someone else in the household") {
+        req.session.data.personalDetails.pv.member = true
+      } else if (req.session.data.personalDetailValue[item] == "The person") {
+        temp = true;        
       }
     }
+    if (temp == true) {
+      req.session.data.personalDetails.pv.value = true;
+    }
   };
-  
+  //check for PV
+  if (req.session.data.personalDetail == "pv") {
+    changePv();
+  } else {
+    req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
+  }
+  //check for state
   if (req.session.data.editState == "adding") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
     req.session.data.personalDetails[req.session.data.personalDetail].show = true;
-    changePv();
   } else if (req.session.data.editState == "updating") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "updated";
-    changePv();
   } else if (req.session.data.editState == "correcting") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
-    changePv();
   } else if (req.session.data.editState == "removing") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
     req.session.data.personalDetails[req.session.data.personalDetail].value = null;
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
     if (req.session.data.personalDetail == "pv") {
       req.session.data.personalDetails.pv.value = false;
-      req.session.data.personalDetails.pv.person = false;
       req.session.data.personalDetails.pv.partner = false;
+      req.session.data.personalDetails.pv.member = false;
       req.session.data.personalDetails[req.session.data.personalDetail].show = true;
     }
   }
-    
+  //set message
   req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
-  req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
-  
-  if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
-    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
-  }
-  
+//  if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
+//    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+//  }
+  //specific values for record level
   if (req.session.data.personalDetail == "recordLevel") {
     if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
       req.session.data.personalDetails[req.session.data.personalDetail].show = false;
       req.session.data.personalDetails[req.session.data.personalDetail].value = null;
     }
   }
-    
+  //specific values for date of death
   if (req.session.data.personalDetail == "dateOfDeath") {
     req.session.data.personalDetails.dateOfDeath.level = req.session.data.verificationlevel;  
   }
-  
+  //specific values for immigration
   if (req.session.data.personalDetail == "immigration") {
     req.session.data.personalDetails.immigration.value = req.session.data.imstatus;  
     req.session.data.personalDetails.immigration.reference = req.session.data.imref;
