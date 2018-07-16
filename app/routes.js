@@ -369,7 +369,7 @@ router.use('/', main);
   } else if (req.session.data.personalDetails.dateOfDeath.state == "start") {
     req.session.data.toaster = "This person is deceased";
   } else if (req.session.data.personalDetails.nifu.state == "start") {
-    req.session.data.toaster = "Account may be under investigation for fraud";
+    req.session.data.toaster = "Account is monitored by Identity Fraud Intelligence";
   };
           
   resetTempInterest(req.session.data.tempInterest);
