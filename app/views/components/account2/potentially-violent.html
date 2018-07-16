@@ -33,26 +33,25 @@
         <span class="strong"> 
 
           {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
-            This person, their partner and another member of the household are potentially violent
-
+            This person, their partner and a member of this household are potentially violent
+          
           {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
-            This person’s partner and another member of the household are potentially violent
+            This person's partner and a member of this household are potentially violent
 
           {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
-            This person and another member of the household are potentially violent
+            This person and a member of this household are potentially violent
 
           {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
             This person and their partner are potentially violent
 
           {% elif data.personalDetails.pv.member == true %}
-            A member of this person’s household is potentially violent
+            A member of this household is potentially violent
 
           {% elif data.personalDetails.pv.partner == true %}
-            This person’s partner is potentially violent
+            This person's partner is potentially violent
 
           {% elif data.personalDetails.pv.value == true %}
             This person is potentially violent
-
           {% endif %}
 
         </span>
