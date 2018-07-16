@@ -688,25 +688,27 @@ router.get(/personal-detail-handler/, function (req, res) {
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
-  function changePv() {
+  var changePv = function() {
     if (req.session.data.personalDetail == "pv") {
-    var temp;
-    req.session.data.personalDetails.pv.partner = false;
-    req.session.data.personalDetails.pv.member = false;
-    for (var item in req.session.data.personalDetails.pv.value) {
-      if (req.session.data.personalDetails.pv.value[item] == "The person's partner") {
-        req.session.data.personalDetails.pv.partner = true
-      } else if (req.session.data.personalDetails.pv.value[item] == "Someone else in the household") {
-        req.session.data.personalDetails.pv.member = true
-      } else if (req.session.data.personalDetails.pv.value[item] == "The person") {
-        temp = true;        
+      var temp;
+      req.session.data.personalDetails.pv.partner = false;
+      req.session.data.personalDetails.pv.member = false;
+      console.log(`state = ${req.session.data.editState}`);
+      for (var item in req.session.data.personalDetailValue) {
+        if (req.session.data.personalDetailValue[item] == "The person's partner") {
+          req.session.data.personalDetails.pv.partner = true
+        } else if (req.session.data.personalDetailValue[item] == "Someone else in the household") {
+          req.session.data.personalDetails.pv.member = true
+        } else if (req.session.data.personalDetailValue[item] == "The person") {
+          temp = true;        
+        }
+      }
+      if (temp == true) {
+        req.session.data.personalDetails.pv.value = true;
       }
     }
-    if (temp == true) {
-      req.session.data.personalDetails.pv.value = true;
-    }
-  }
-
+  };
+  
   if (req.session.data.editState == "adding") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
     req.session.data.personalDetails[req.session.data.personalDetail].show = true;
