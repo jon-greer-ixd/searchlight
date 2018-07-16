@@ -49,7 +49,7 @@ var details = {
   requestedName : {state : null, show : false, display : "Requested name", value : null}
 }
 
-////current
+//current
 //var personalDetails = {
 //  "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
 //  "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
@@ -66,6 +66,7 @@ var details = {
 //  "immigration" : {state : null, show : false, display : "Immigration status", value : null, reference : null},
 //  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 //}
+
 
 //disability and special needs
 var personalDetails = {
@@ -85,6 +86,7 @@ var personalDetails = {
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
 
+
 //pv
 //var personalDetails = {
 //  "pv" : {state : "start", show : true, display : "Potentially violent status", value : true, partner : false, member : false},
@@ -102,6 +104,26 @@ var personalDetails = {
 //  "immigration" : {state : null, show : false, display : "Immigration status", value : null, reference : null},
 //  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 //}
+
+
+//NIFU
+//var personalDetails = {
+//  "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
+//  "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
+//  "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
+//  "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
+//  "sex" : {state : null, show : true, display : "Sex", value : "Female"},
+//  "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
+//  "nifu" : {state : "start", show : true, display : "National fraud interest", value : "Do not tell the customer. This account may be under investigation for fraud. Continue as normal, do not make any changes to the account. Contact the fraud team on 0191 111 111."},
+//  "disability" : {state : null, show : false, display : "Disability status", value : null},
+//  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
+//  "nationality" : {state : null, show : false, display : "Nationality", value : null},
+//  "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
+//  "preferredLanguage" : {state : null, show : false, display : "Preferred language", value : null},
+//  "immigration" : {state : null, show : false, display : "Immigration status", value : null, reference : null},
+//  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
+//}
+
 
 var contactTypes = {
   "personalMobile" : {"state" : null, "show" : false, "pref" : false, "type" : "phone", display : "Personal mobile", value : "07761 111 111"},

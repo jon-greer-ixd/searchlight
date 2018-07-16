@@ -368,6 +368,8 @@ router.use('/', main);
     req.session.data.toaster = "This person is disabled";
   } else if (req.session.data.personalDetails.dateOfDeath.state == "start") {
     req.session.data.toaster = "This person is deceased";
+  } else if (req.session.data.personalDetails.nifu.state == "start") {
+    req.session.data.toaster = "Account may be under investigation for fraud";
   };
           
   resetTempInterest(req.session.data.tempInterest);
@@ -692,6 +694,10 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.personalDetails[req.session.data.personalDetail].value = null;
     if (req.session.data.personalDetail != "pv") {
       req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    } else {
+      req.session.data.personalDetails.pv.value = false;
+      req.session.data.personalDetails.pv.person = false;
+      req.session.data.personalDetails.pv.partner = false;
     }
   //add
   } else if (req.session.data.editState == "adding") {
@@ -723,7 +729,7 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetail == "pv") {
     req.session.data.personalDetails.pv.partner = false;
     req.session.data.personalDetails.pv.member = false;
-    if (req.session.data.editState != "ending") {
+    if (req.session.data.editState != "removing") {
       var temp;
       for (var item in req.session.data.personalDetails.pv.value) {
         if (req.session.data.personalDetails.pv.value[item] == "The person's partner") {
@@ -741,7 +747,7 @@ router.get(/check-person-handler/, function (req, res) {
       //ending
       req.session.data.personalDetails.pv.show = true;
       req.session.data.personalDetails.pv.value = false;
-      req.session.data.personalDetails.pv.state = "ended";
+      req.session.data.personalDetails.pv.state = "removed";
     }
   }
   

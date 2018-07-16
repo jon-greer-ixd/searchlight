@@ -3,9 +3,14 @@
   <div class="sl-primary-card sl-personal-details-card">
 
     <div class="personal-details">
-      
+            
       {% if data.personalDetails.pv.show == true %}
         {% include "components/account2/potentially-violent.html" %}
+        <hr class="light">
+      {% endif %}
+      
+      {% if data.personalDetails.nifu.show == true %}
+        {% include "components/account2/nifu.html" %}
         <hr class="light">
       {% endif %}
       
