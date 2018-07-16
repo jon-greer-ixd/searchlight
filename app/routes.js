@@ -618,9 +618,9 @@ router.get(/add-person-handler/, function (req, res) {
 
 
 
-router.get(/pv-update-handler/, function (req, res) {
+router.get(/adding-detail-handler/, function (req, res) {
+  req.session.data.personalDetail = req.query.personalDetail;
   req.session.data.toaster = null;
-  req.session.data.personalDetail = "pv";
   req.session.data.editState = "adding";
   res.redirect('/update/person/update')
 })
@@ -724,10 +724,13 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
     req.session.data.personalDetails[req.session.data.personalDetail].value = null;
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    // specific values for pv
     if (req.session.data.personalDetail == "pv") {
       req.session.data.personalDetails.pv.value = false;
       req.session.data.personalDetails.pv.partner = false;
       req.session.data.personalDetails.pv.member = false;
+    }
+    if (req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "preferredLanguage") {
       req.session.data.personalDetails[req.session.data.personalDetail].show = true;
     }
   }
