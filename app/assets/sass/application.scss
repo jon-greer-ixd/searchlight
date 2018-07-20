@@ -1319,7 +1319,11 @@ hr.strong {
   margin-top: 100px;
 }
 
-#income {
+#income {    
+    max-width: 1310px;
+    margin: auto;
+    position: relative;
+  
   .jobdetails {
     @include clearfix;
     width: 600px;
@@ -1366,7 +1370,6 @@ hr.strong {
   .job-container {
     margin-bottom: 30px;
     overflow-x: scroll;
-    overflow-y: hidden;
     white-space: nowrap;
     width :100%;
     margin-bottom: 60px;
