@@ -1,8 +1,16 @@
-<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-  <h2>Income</h2>
-  <div id="sl-address-primary-card" class="sl-primary-card">
-    <div id="creation-pane"> 
-      {% include "components/income/income.html" %}
+<div class="sl-account-canvas row">
+  
+  <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+
+    <div id="income">
+      
+      <h2>Income</h2>
+      <div id="sl-address-primary-card" class="sl-primary-card reduced-income">
+        {% include "components/income/income-content.html" %}
+      </div>
+      
     </div>
+
   </div>
+  
 </div>
