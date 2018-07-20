@@ -1320,29 +1320,20 @@ hr.strong {
 }
 
 #income {
-  .job {
-    margin-bottom :60px;
-  }
-  @include clearfix;
-  ul {
-    @include clearfix;
-    border-bottom: 1px solid #bfc1c3;
-  }
   .jobdetails {
+    @include clearfix;
+    width: 600px;
     line-height: 150%;
-    width: 50%;
     margin-bottom: 30px;
     p {
       margin-bottom: 0;
     }
-    h3 {
-      padding-bottom: 0;
-      font-weight: bold;
-    }
     ul {
+      float: left;
       border-bottom: none;
+      width :100%;
       li {
-        width :20%;
+        width: 200px;
         float: left;
         &:nth-child(2) {
           font-weight: bold;
@@ -1350,85 +1341,164 @@ hr.strong {
       }
     }
   }  
-  .titles, .figures, .headers {
-    li {
-      padding: 10px 5px;
-    }
-  }
-  .figures2, .headers2 {
-    li {
-      padding: 10px 10px;
-    }
+  h3 {
+    padding-bottom: 0;
+    font-weight: bold;
   }
   .titles {
-//    border-top: 1px solid #bfc1c3;
+    width :1710px;
     font-weight :bold;
     li {
       float: left;
       &:first-child {
-        width: 15.75%;
+        width: 306px;
       }
-      &:nth-child(2), &:nth-child(3) {
-        width: 26.25%;
+      &:nth-child(2) {
+        width: 510px;
+        padding: 10px 0;
+      }  
+      &:nth-child(3) {
+        width: 200px;
+        padding: 10px 0;
       }  
     }
   }
-  .titles2 {
-//    border-top: 1px solid #bfc1c3;
-    font-weight :bold;
-    li {
-      float: left;
-      &:first-child {
-        width: 17.4%;
-      }
-      &:nth-child(2), &:nth-child(3) {
-        width: 29%;
-      }  
-    }
-  }
-  .headers, .headers2 {
-    li {
-      height: 74px;
-    }
-  }
-  .figures, .headers {
-    li {
-      float: left;
-      width: 5.25%;
-      &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
-        background-color: #dee0e2;
-      }
-      &:nth-child(3), &:nth-child(15) {
-        width: 5.75%;
-      }
-      &:last-child {
-        width: 4.5%;
-      }
-    }
-  }
-  .figures2, .headers2 {
-    li {
-      float: left;
-      width: 5.8%;
-      &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
-        background-color: #dee0e2;
-      }
-    }
-  }
-}
-
-.info {
-  .highlight {
-    background-color: #dee0e2;
-  }
-  @include clearfix;
-  width: 100%;
-  .inline {
-    li {
+  .job-container {
+    margin-bottom: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width :100%;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    ul.data {
+      margin: 0;
+      padding: 0;
       border-bottom: 1px solid #bfc1c3;
-      padding: 8px;
+      width: 1748px;
+      float: left;
+      &.header {
+        border-top: 1px solid #bfc1c3;
+        li {
+          height: 71px;
+        }
+      }
+      li {
+        padding: 10px;
+        width: 102px;
+        float: left;
+        &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+          background-color: #dee0e2;
+        }
+      }
     }
-    width: 12%;
-    float: left;
   }
 }
+  
+  
+  
+//  @include clearfix;
+//  ul {
+//    @include clearfix;
+//    border-bottom: 1px solid #bfc1c3;
+//  }
+//  .jobdetails {
+//    line-height: 150%;
+//    width: 50%;
+//    margin-bottom: 30px;
+//    p {
+//      margin-bottom: 0;
+//    }
+//    ul {
+//      border-bottom: none;
+//      li {
+//        width :20%;
+//        float: left;
+//        &:nth-child(2) {
+//          font-weight: bold;
+//        }
+//      }
+//    }
+//  }  
+//  .titles, .figures, .headers {
+//    li {
+//      padding: 10px 5px;
+//    }
+//  }
+//  .figures2, .headers2 {
+//    li {
+//      padding: 10px 10px;
+//    }
+//  }
+//  .titles {
+////    border-top: 1px solid #bfc1c3;
+//    font-weight :bold;
+//    li {
+//      float: left;
+//      &:first-child {
+//        width: 15.75%;
+//      }
+//      &:nth-child(2), &:nth-child(3) {
+//        width: 26.25%;
+//      }  
+//    }
+//  }
+//  .titles2 {
+////    border-top: 1px solid #bfc1c3;
+//    font-weight :bold;
+//    li {
+//      float: left;
+//      &:first-child {
+//        width: 17.4%;
+//      }
+//      &:nth-child(2), &:nth-child(3) {
+//        width: 29%;
+//      }  
+//    }
+//  }
+//  .headers, .headers2 {
+//    li {
+//      height: 74px;
+//    }
+//  }
+//  .figures, .headers {
+//    li {
+//      float: left;
+//      width: 5.25%;
+//      &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+//        background-color: #dee0e2;
+//      }
+//      &:nth-child(3), &:nth-child(15) {
+//        width: 5.75%;
+//      }
+//      &:last-child {
+//        width: 4.5%;
+//      }
+//    }
+//  }
+//  .figures2, .headers2 {
+//    li {
+//      float: left;
+//      width: 5.8%;
+//      &:nth-child(3), &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(8) {
+//        background-color: #dee0e2;
+//      }
+//    }
+//  }
+//}
+//
+//.info {
+//  .highlight {
+//    background-color: #dee0e2;
+//  }
+//  @include clearfix;
+//  width: 100%;
+//  .inline {
+//    li {
+//      border-bottom: 1px solid #bfc1c3;
+//      padding: 8px;
+//    }
+//    width: 12%;
+//    float: left;
+//  }
+//}
