@@ -50,25 +50,6 @@ var details = {
 }
 
 //current
-//var personalDetails = {
-//  "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
-//  "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
-//  "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
-//  "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
-//  "sex" : {state : null, show : true, display : "Sex", value : "Female"},
-//  "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
-//  "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
-//  "disability" : {state : null, show : false, display : "Disability status", value : null},
-//  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
-//  "nationality" : {state : null, show : false, display : "Nationality", value : null},
-//  "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
-//  "preferredLanguage" : {state : null, show : false, display : "Preferred language", value : null},
-//  "immigration" : {state : null, show : false, display : "Immigration status", value : null, reference : null},
-//  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
-//}
-
-
-//disability and special needs
 var personalDetails = {
   "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
   "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
@@ -77,14 +58,33 @@ var personalDetails = {
   "sex" : {state : null, show : true, display : "Sex", value : "Female"},
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
-  "disability" : {state : "start", show : true, display : "Disability status", value : "This person is disabled"},
-  "specialNeeds" : {state : "added", show : true, display : "Special needs", value : ["A lift", "A ramp", "Wide doorways"]},
+  "disability" : {state : null, show : false, display : "Disability status", value : null},
+  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
   "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
   "preferredLanguage" : {state : null, show : false, display : "Preferred language", value : null},
   "immigration" : {state : null, show : false, display : "Immigration status", value : null, reference : null},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
 }
+
+
+//disability and special needs
+//var personalDetails = {
+//  "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
+//  "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
+//  "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
+//  "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
+//  "sex" : {state : null, show : true, display : "Sex", value : "Female"},
+//  "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
+//  "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
+//  "disability" : {state : "start", show : true, display : "Disability status", value : "This person is disabled"},
+//  "specialNeeds" : {state : "added", show : true, display : "Special needs", value : ["A lift", "A ramp", "Wide doorways"]},
+//  "nationality" : {state : null, show : false, display : "Nationality", value : null},
+//  "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
+//  "preferredLanguage" : {state : null, show : false, display : "Preferred language", value : null},
+//  "immigration" : {state : null, show : false, display : "Immigration status", value : null, reference : null},
+//  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
+//}
 
 
 //pv
