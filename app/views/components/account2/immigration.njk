@@ -1,3 +1,31 @@
+{% if data.personalDetails.immigration.state == "removed" %}
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      <ul>
+        <p>Immigration status</p>
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul>
+        <li class="sl-secondary-text-color sl-metadata">Removed  ·  {{data.prepopulatedString}}</li>
+      </ul>
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="/history/immigration" class="under-link">View history</a>
+        </li>
+        <li>
+          <a href="adding-detail-handler?personalDetail=immigration" class="under-link">Add</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% else %}
+
 <div class="grid-row">
   <div class="column-one-third">
     <p>Immigration status</p>
@@ -13,9 +41,9 @@
   <div class="column-one-third last-col">
     <ul class="edit-menu">
       <li>
-        <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
+        <a data-toggle="modal" data-target="#immigration_modal" class="under-link">View maintenance</a> 
         <span class="pipe"> | </span> 
-        <a href="/history/birth-history" class="under-link">View history</a>
+          <a href="/history/immigration" class="under-link">View history</a>
       </li>
       <li>
         <a href="person-change-handler/?personalDetail=immigration" class="under-link">Change</a>
@@ -23,3 +51,5 @@
     </ul>
   </div>
 </div>
+
+{% endif %}

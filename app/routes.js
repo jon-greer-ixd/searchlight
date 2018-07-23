@@ -617,7 +617,6 @@ router.get(/add-person-handler/, function (req, res) {
 })
 
 
-
 router.get(/adding-detail-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
   req.session.data.toaster = null;
@@ -730,7 +729,7 @@ router.get(/check-person-handler/, function (req, res) {
       req.session.data.personalDetails.pv.partner = false;
       req.session.data.personalDetails.pv.member = false;
     }
-    if (req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "preferredLanguage") {
+    if (req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "immigration") {
       req.session.data.personalDetails[req.session.data.personalDetail].show = true;
     }
   }
@@ -752,8 +751,12 @@ router.get(/check-person-handler/, function (req, res) {
   }
   //specific values for immigration
   if (req.session.data.personalDetail == "immigration") {
-    req.session.data.personalDetails.immigration.value = req.session.data.imstatus;  
-    req.session.data.personalDetails.immigration.reference = req.session.data.imref;
+    if (req.session.data.editState != "removing") {
+      req.session.data.personalDetails.immigration.value = req.session.data.imstatus;  
+      req.session.data.personalDetails.immigration.reference = req.session.data.imref;
+    } else {
+      req.session.data.personalDetails.immigration.reference = null;
+    }
   }
   
   req.session.data.personalDetail = null;
