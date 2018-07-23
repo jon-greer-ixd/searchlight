@@ -13,29 +13,27 @@
         {% include "components/account2/nifu.html" %}
         <hr class="light">
       {% endif %}
-      
-      {% if data.personalDetails.disability.show == true %}
-        {% include "components/account2/disability.html" %}
-        <hr class="light">
-      {% endif %}
-      
-      {% if data.personalDetails.specialNeeds.show == true %}
-        {% include "components/account2/special-needs.html" %}
-        <hr class="light">
-      {% endif %}
-      
+            
       {% include "components/account2/names.html" %}
       <hr class="light">
             
       {% include "components/account2/dob.njk" %}
       <hr class="light">
-      
             
     {% if data.personalDetails.dateOfDeath.show == true %}
       {% include "components/account2/dod.njk" %}
       <hr class="light">
     {% endif %}
-
+      
+    {% if data.personalDetails.disability.show == true %}
+      {% include "components/account2/disability.html" %}
+      <hr class="light">
+    {% endif %}
+      
+    {% if data.personalDetails.specialNeeds.show == true %}
+      {% include "components/account2/special-needs.html" %}
+      <hr class="light">
+    {% endif %}
 
     <div class="extra-margin">
       <div class="grid-row">
@@ -111,9 +109,10 @@
     </div>   
       
       <hr class="light">
-      {% include "components/account2/creation.html" %}
       
+      {% include "components/account2/creation.html" %}
       <hr class="light">
+            
       {% include "components/account2/other-personal-details.html" %}
       
       {% include "components/modals.html" %}

@@ -30,31 +30,29 @@
     {% else %}
 
       <div class="column-two-thirds">
-        <span class="strong"> 
 
-          {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
-            This person, their partner and a member of their household are potentially violent
-          
-          {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
-            This person's partner and a member of their household are potentially violent
+        {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
+          This person, their partner and a member of their household are potentially violent
 
-          {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
-            This person and a member of their household are potentially violent
+        {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
+          This person's partner and a member of their household are potentially violent
 
-          {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
-            This person and their partner are potentially violent
+        {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
+          This person and a member of their household are potentially violent
 
-          {% elif data.personalDetails.pv.member == true %}
-            A member of this household is potentially violent
+        {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
+          This person and their partner are potentially violent
 
-          {% elif data.personalDetails.pv.partner == true %}
-            This person's partner is potentially violent
+        {% elif data.personalDetails.pv.member == true %}
+          A member of this household is potentially violent
 
-          {% elif data.personalDetails.pv.value == true %}
-            This person is potentially violent
-          {% endif %}
+        {% elif data.personalDetails.pv.partner == true %}
+          This person's partner is potentially violent
 
-        </span>
+        {% elif data.personalDetails.pv.value == true %}
+          This person is potentially violent
+        {% endif %}
+
       </div>
     
       <div class="column-one-third last-col">

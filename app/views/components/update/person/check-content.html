@@ -28,7 +28,7 @@
               <td>{{data.imref}}</td>
               <td><a>Change</a></td>
             </tr>
-          
+                    
           {% elif data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
             <tr>
               {% if data.personalDetail == "pv" %}
@@ -59,7 +59,11 @@
               <span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize}}</span>
             </td>
             <td>
-                {{data.personalDetailValue}}
+                {% if data.personalDetailValue == 'Disabled' %}
+                  This person is disabled
+                {% else %}
+                  {{data.personalDetailValue}}
+                {% endif %}
             </td>
             {% if data.personalDetail == "disability" or data.personalDetail == "sex" or data.personalDetail == "preferredLanguage" %}
               <td>&nbsp;</td>
