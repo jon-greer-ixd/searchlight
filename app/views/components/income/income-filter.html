@@ -1,0 +1,51 @@
+<div class="sl-account-canvas row">
+  
+  <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+
+    <div id="income">
+      
+      <h2>Income</h2>
+      
+      <div id="sl-address-primary-card" class="sl-primary-card reduced-income last-card">
+        
+        <div class="grid-row">
+          
+          <div class="column-two-thirds">
+        
+            <form class="form" method="get" action="check">
+
+              <div class="filter">
+                <fieldset class="form-group">
+                  <label class="form-label" for="date">
+                    Date from
+                  </label>
+                  <input class="form-control" id="date" type="text" name="personalDetailValue" value={{data.personalDetails.dateOfBirth.value}}>
+                </fieldset>
+
+                <fieldset class="form-group">
+                  <label class="form-label" for="date">
+                    Date to
+                  </label>
+                  <input class="form-control" id="date" type="text" name="personalDetailValue" value={{data.personalDetails.dateOfBirth.value}}>
+                </fieldset>
+              </div>
+
+              <div class="form-group">
+                <input class="button" type="submit" value="Search">
+              </div>
+            </form>
+                      
+          </div>
+          
+        </div>
+
+        
+        {% include "components/income/income-content.html" %}
+        
+      </div>
+      
+    </div>
+
+  </div>
+  
+</div>

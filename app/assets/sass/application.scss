@@ -1323,11 +1323,20 @@ hr.strong {
   margin-top: 100px;
 }
 
+//income
+
+
+.filter {
+  fieldset {
+    float: left;
+    width: 50%;
+  }
+}
+
 #income {    
     max-width: 98%;
     margin: auto;
     position: relative;
-  
   .jobdetails {
     @include clearfix;
     width: 600px;
