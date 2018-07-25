@@ -1327,9 +1327,13 @@ hr.strong {
 
 
 .filter {
-  fieldset {
+  .prepop {
     float: left;
-    width: 50%;
+    width: 220px;
+    margin-right :70px;
+    input {
+      width: 100%;
+    }
   }
 }
 

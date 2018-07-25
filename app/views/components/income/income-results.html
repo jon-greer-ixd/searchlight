@@ -6,7 +6,7 @@
       
       <h2>Income</h2>
       
-      <div id="sl-address-primary-card" class="sl-primary-card reduced-income">
+      <div id="sl-address-primary-card" class="sl-primary-card reduced-income last-card">
         
         <div class="grid-row">
           
@@ -25,7 +25,7 @@
                     </span>
 -->
                   </label>
-                  <input class="form-control box-one" id="" name="date" type="text">
+                  <input class="form-control box-one" id="" name="date" type="text" value={{data.cistartdate}}>
                   <a class="populate-link-one">Use today's date</a>
                 </div>
 
@@ -38,7 +38,7 @@
                     </span>
 -->
                   </label>
-                  <input class="form-control box-two" id="" name="date" type="text">
+                  <input class="form-control box-two" id="" name="date" type="text" value={{data.cistartdate}}>
                   <a class="populate-link-two">Use three months ago</a>
                 </div>
                 
@@ -52,8 +52,12 @@
           </div>
           
         </div>
-
-<!--        {% include "components/income/income-content.html" %}-->
+        
+      </div>
+        
+      <div id="sl-address-primary-card" class="sl-primary-card reduced-income last-card">
+        
+        {% include "components/income/income-content.html" %}
         
       </div>
       
