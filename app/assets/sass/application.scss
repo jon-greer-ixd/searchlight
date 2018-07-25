@@ -661,7 +661,7 @@ hr {
 }
 
 #sl-account {
-  background: white;
+  background: #dee0e2;
 }
 
 h1.question-title {
@@ -1324,7 +1324,7 @@ hr.strong {
 }
 
 #income {    
-    max-width: 1310px;
+    max-width: 98%;
     margin: auto;
     position: relative;
   
@@ -1357,17 +1357,16 @@ hr.strong {
     width :1710px;
     font-weight :bold;
     li {
+      padding-bottom: 10px;
       float: left;
       &:first-child {
-        width: 306px;
+        width: 200px;
       }
       &:nth-child(2) {
-        width: 510px;
-        padding: 10px 0;
+        width: 500px;
       }  
       &:nth-child(3) {
         width: 200px;
-        padding: 10px 0;
       }  
     }
   }
@@ -1379,10 +1378,11 @@ hr.strong {
     margin-bottom: 60px;
     padding-bottom: 20px;
     ul.data {
+      font-size: 17px;
       margin: 0;
       padding: 0;
       border-bottom: 1px solid #bfc1c3;
-      width: 1748px;
+      width: 1683px;
       float: left;
       &.header {
         border-top: 1px solid #bfc1c3;
@@ -1392,10 +1392,16 @@ hr.strong {
       }
       li {
         padding: 10px;
-        width: 102px;
+        width: 99px;
         float: left;
-        &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8) {
+        &:nth-child(1) {
+          padding-left: 0;
+        }
+        &:nth-child(3),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
           background-color: #dee0e2;
+        }
+        &:last-child {
+          padding-right: 0;
         }
       }
     }
