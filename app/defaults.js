@@ -57,7 +57,7 @@ var personalDetails = {
   "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
   "sex" : {state : null, show : true, display : "Sex", value : "Female"},
   "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
-  "nifu" : {state : null, show : false, display : "National fraud interest", value : null},
+  "nifu" : {state : null, show : false, display : "Identity fraud interest", value : null},
   "disability" : {state : null, show : false, display : "Disability status", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
