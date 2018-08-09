@@ -15,7 +15,7 @@
           <input class="form-control" id="requestedName" type="text" name="requestedName" {% if data.updateType == "correct" or data.updateType == "update" %} value = {{data.details.requestedName.value}} {% endif %}>
         </fieldset>
       
-        {% if data.updateType == "add" %}
+        {% if data.updateType == "add" or data.updateType == "update" %}
           <fieldset>
             <div class="form-group prepop">
               <label class="form-label" for="startdate">
@@ -24,7 +24,7 @@
                   For example 31/8/1979
                 </span>
               </label>
-              <input class="form-control box-one" id="startdate" name="startdate" type="text">
+              <input class="form-control box-one" id="startdate" name="startdate" type="text" {% if data.updateType == "update" %} value = {{data.prepopulatedDate}} {% endif %}>
               <a class="populate-link-one">Use today's date</a>
             </div>
           </fieldset>
