@@ -15,6 +15,16 @@
             <td><a>Change</a></td>
           </tr>
           
+        {% elif data.personalDetailValue == "removing" %}
+          <tr>
+            <td>
+              <span class="strong">
+                Remove {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} {{data.personalDetails[data.personalDetail].display | lower }}
+              </span>
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+          
         {% else %}
         <!-- ADD, CORRECT, UPDATE -->
           {% if data.personalDetail == "immigration" %}
