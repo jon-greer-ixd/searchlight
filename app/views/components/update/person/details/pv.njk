@@ -26,7 +26,15 @@
             <input id="member" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
             <label for="member">Someone else in the household</label>
           </div>
-                    
+          
+          {% if data.editState != "adding" %}
+            <p class="form-block" style="margin-top:-10px;">or</p>
+
+            <div class="multiple-choice">
+              <input id="none" name="personalDetailValue" type="checkbox" value="removing">
+              <label for="none">Remove the potentially violent status</label>
+            </div>
+          {% endif %}
 
         </fieldset>
                 

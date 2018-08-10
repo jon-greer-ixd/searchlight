@@ -712,7 +712,20 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
   }
   //check for state
-  if (req.session.data.editState == "adding") {
+  if (req.session.data.personalDetailValue == "removing") {
+    req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
+    req.session.data.personalDetails[req.session.data.personalDetail].value = null;
+    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    console.log('HERE', req.session.data.personalDetails[req.session.data.personalDetail].show);
+    if (req.session.data.personalDetail == "pv") {
+      req.session.data.personalDetails.pv.value = false;
+      req.session.data.personalDetails.pv.partner = false;
+      req.session.data.personalDetails.pv.member = false;
+    }
+    if (req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "immigration") {
+      req.session.data.personalDetails[req.session.data.personalDetail].show = true;
+    }
+  } else if (req.session.data.editState == "adding") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
     req.session.data.personalDetails[req.session.data.personalDetail].show = true;
   } else if (req.session.data.editState == "updating") {
@@ -723,6 +736,7 @@ router.get(/check-person-handler/, function (req, res) {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
     req.session.data.personalDetails[req.session.data.personalDetail].value = null;
     req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    console.log('HERE', req.session.data.personalDetails[req.session.data.personalDetail].show);
     // specific values for pv
     if (req.session.data.personalDetail == "pv") {
       req.session.data.personalDetails.pv.value = false;
