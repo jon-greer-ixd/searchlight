@@ -17,10 +17,10 @@
               {% endif %}
             {% elif data.editState == "correcting" %}
               Correct    
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "immigration" %} the {% endif %}
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %}
             {% else %}
               Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "immigration" %} the {% endif %}
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %}
             {% endif %}
             
             {{ data.personalDetails[data.personalDetail].display | lower }}

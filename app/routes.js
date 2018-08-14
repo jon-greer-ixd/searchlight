@@ -607,7 +607,7 @@ router.get(/add-person-handler/, function (req, res) {
     req.session.data.personalDetailValue = "Yes";
     res.redirect("/update/person/check");
   } else if (req.session.data.personalDetail == "disability" ) {
-    req.session.data.personalDetailValue = "Disabled";
+    req.session.data.personalDetailValue = "This person is disabled";
     res.redirect("/update/person/check");
   } else if (req.session.data.personalDetail == "gender") {
     res.redirect("/update/person/gender/add");
@@ -615,7 +615,6 @@ router.get(/add-person-handler/, function (req, res) {
     res.redirect("/update/person/update");
   }
 })
-
 
 router.get(/adding-detail-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
@@ -644,14 +643,25 @@ router.get(/person-change-handler/, function (req, res) {
 
 router.get(/change-person-type-handler/, function (req, res) {
   req.session.data.editState = req.query.data;
-  if (req.session.data.personalDetail == "nationality" || req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "maritalStatus" || req.session.data.personalDetail == "disability" || req.session.data.personalDetail == "specialNeeds" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "spokenLanguage" || req.session.data.personalDetail == "immigration") {
-//    if (req.session.data.editState == 'correcting') {
-//      req.session.data.editState = req.query.correct;
-//    }
-    if (req.session.data.editState == 'ending' || req.session.data.editState == 'removing') {
+  if (req.session.data.personalDetail == "disability") {
+    if(req.session.data.editState == "correcting") {
+      res.redirect('/update/person/update')
+    } else {
+      req.session.data.personalDetailValue = "This person is not disabled";
       res.redirect('/update/person/check')
     }
+  } else {
+    res.redirect('/update/person/update')
   }
+  
+//  if (req.session.data.personalDetail == "nationality" || req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "maritalStatus" || req.session.data.personalDetail == "specialNeeds" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "spokenLanguage" || req.session.data.personalDetail == "immigration") {
+////    if (req.session.data.editState == 'correcting') {
+////      req.session.data.editState = req.query.correct;
+////    }
+//    if (req.session.data.editState == 'ending' || req.session.data.editState == 'removing') {
+//      res.redirect('/update/person/check')
+//    }
+//  }
   if (req.session.data.personalDetail == "nifu") {
     req.session.data.personalDetailValue = "No";
     req.session.data.personalDetails.nifu.show = false;
@@ -663,12 +673,6 @@ router.get(/change-person-type-handler/, function (req, res) {
       req.session.data.personalDetailValue = "Welsh";
     }
     res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == "disability") {
-    req.session.data.personalDetailValue = "This person is not disabled";
-    req.session.data.personalDetails.disability.show = false;
-    res.redirect('/update/person/check')
-  } else {
-    res.redirect('/update/person/update')
   }
 })
 
@@ -681,89 +685,82 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
-// create a copy of the personal detail
-// edit it
-// pass it back so that the route can swap it back 
-
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   var changePv = function() {
-    var temp;
     req.session.data.personalDetails.pv.value = false;
     req.session.data.personalDetails.pv.partner = false;
     req.session.data.personalDetails.pv.member = false;
-    for (var item in req.session.data.personalDetailValue) {
-      if (req.session.data.personalDetailValue[item] == "The person's partner") {
-        req.session.data.personalDetails.pv.partner = true
-      } else if (req.session.data.personalDetailValue[item] == "Someone else in the household") {
-        req.session.data.personalDetails.pv.member = true
-      } else if (req.session.data.personalDetailValue[item] == "The person") {
-        temp = true;        
+    if (req.session.data.personalDetailValue == "noone") {
+      req.session.data.personalDetails.pv.state = "removed";
+    } else {
+      var temp;
+      for (var item in req.session.data.personalDetailValue) {
+        if (req.session.data.personalDetailValue[item] == "The person's partner") {
+          req.session.data.personalDetails.pv.partner = true
+        } else if (req.session.data.personalDetailValue[item] == "Someone else in the household") {
+          req.session.data.personalDetails.pv.member = true
+        } else if (req.session.data.personalDetailValue[item] == "The person") {
+          temp = true;        
+        }
+      }
+      if (temp == true) {
+        req.session.data.personalDetails.pv.value = true;
       }
     }
-    if (temp == true) {
-      req.session.data.personalDetails.pv.value = true;
-    }
   };
+  var nullFalse = function() {
+    req.session.data.personalDetails[req.session.data.personalDetail].value = null;
+    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+  }
   //check for PV
   if (req.session.data.personalDetail == "pv") {
     changePv();
   } else {
     req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
+    if (req.session.data.editState == "updating") {
+      req.session.data.personalDetails[req.session.data.personalDetail].state = "updated";
+    } else if (req.session.data.editState == "correcting") {
+      req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
+    }
   }
-  //check for state
+  //check for 'Unknown'
+  if (req.session.data.personalDetailValue == "Unknown") {
+    nullFalse();  
+  }
+  //check for disability
+  if (req.session.data.personalDetail == "disability") {
+    if (req.session.data.editState != "adding") {
+      nullFalse();  
+    }
+  }
+  //check for removing
   if (req.session.data.personalDetailValue == "removing") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
-    req.session.data.personalDetails[req.session.data.personalDetail].value = null;
-    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+    nullFalse();  
     console.log('HERE', req.session.data.personalDetails[req.session.data.personalDetail].show);
-    if (req.session.data.personalDetail == "pv") {
-      req.session.data.personalDetails.pv.value = false;
-      req.session.data.personalDetails.pv.partner = false;
-      req.session.data.personalDetails.pv.member = false;
-    }
     if (req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "immigration") {
       req.session.data.personalDetails[req.session.data.personalDetail].show = true;
     }
-  } else if (req.session.data.editState == "adding") {
+  }
+  //check for adding
+  if (req.session.data.editState == "adding") {
     req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
     req.session.data.personalDetails[req.session.data.personalDetail].show = true;
-  } else if (req.session.data.editState == "updating") {
-    req.session.data.personalDetails[req.session.data.personalDetail].state = "updated";
-  } else if (req.session.data.editState == "correcting") {
-    req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
-  } else if (req.session.data.editState == "removing") {
-    req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
-    req.session.data.personalDetails[req.session.data.personalDetail].value = null;
-    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
-    console.log('HERE', req.session.data.personalDetails[req.session.data.personalDetail].show);
-    // specific values for pv
-    if (req.session.data.personalDetail == "pv") {
-      req.session.data.personalDetails.pv.value = false;
-      req.session.data.personalDetails.pv.partner = false;
-      req.session.data.personalDetails.pv.member = false;
-    }
-    if (req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "immigration") {
-      req.session.data.personalDetails[req.session.data.personalDetail].show = true;
-    }
   }
   //set message
   req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
-//  if (req.session.data.personalDetails[req.session.data.personalDetail].value == "Unknown") {
-//    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
-//  }
   //specific values for record level
   if (req.session.data.personalDetail == "recordLevel") {
     if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
-      req.session.data.personalDetails[req.session.data.personalDetail].show = false;
-      req.session.data.personalDetails[req.session.data.personalDetail].value = null;
+      nullFalse();  
     }
   }
-  //specific values for date of death
+  //check for date of death
   if (req.session.data.personalDetail == "dateOfDeath") {
     req.session.data.personalDetails.dateOfDeath.level = req.session.data.verificationlevel;  
   }
-  //specific values for immigration
+  //check for immigration
   if (req.session.data.personalDetail == "immigration") {
     if (req.session.data.editState != "removing") {
       req.session.data.personalDetails.immigration.value = req.session.data.imstatus;  
@@ -772,7 +769,7 @@ router.get(/check-person-handler/, function (req, res) {
       req.session.data.personalDetails.immigration.reference = null;
     }
   }
-  
+  //reset the temp personal detail and redirect
   req.session.data.personalDetail = null;
   res.redirect('/account2/account')
 })
