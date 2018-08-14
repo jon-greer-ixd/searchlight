@@ -61,15 +61,14 @@
                 <label for="void">Annulled - void marriage or civil partnership</label>
               </div>
             {% endif %}
-<!--
-            {% if data.editState != "correcting" %}
+          
+            {% if data.editState == "correcting" %}
               <p class="form-block">or</p>
               <div class="multiple-choice">
                 <input id="unknown" name="personalDetailValue" type="radio" value="Unknown">
                 <label for="unknown">Marital or civil partnership status is unknown</label>
               </div>
             {% endif %}
--->
           
         </fieldset>
       </div>

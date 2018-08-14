@@ -11,7 +11,7 @@
             
             {% if data.editState == "adding" %}
               Add 
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} 
                 a 
               {% elif data.personalDetail == "immigration" or data.personalDetail == 'nifu' %}
                 an
@@ -19,15 +19,18 @@
             
             {% elif data.editState == "correcting" %}
               Correct
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %}     the 
+              {% endif %} 
             
             {% elif data.editState == "ending" or data.editState == "removing" %}
               Change
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %}     the 
+              {% endif %} 
             
             {% else %}
               Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} 
+              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %}     the 
+              {% endif %} 
 
             {% endif %}
 

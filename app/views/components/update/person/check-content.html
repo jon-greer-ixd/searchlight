@@ -3,8 +3,126 @@
       <div class="column-one-half">
         
         <table class="table"> 
+          <tr>
+            
+          <!-- Potentially violent status -->
+            {% if data.personalDetail == "pv" %}
+              {% if data.personalDetailValue == "noone" %}
+                <td><span class="strong">Remove the potentially violent status</span></td>
+              {% else %}
+                <td><span class="strong">Who is potentially violent?</span></td>
+                <td>
+                  {{counter}}
+                  {% set counter = data.personalDetailValue.length %}
+                  {% if data.personalDetailValue != "Unknown" %}
+                    {% for item in data.personalDetailValue %}
+                      {% if counter != 1 %}
+                        {{item}}, <br>
+                      {% else %}
+                        {{item}}
+                      {% endif %}
+                      {% set counter = counter -1 %}
+                    {% endfor %}
+                  {% endif %}
+                </td>
+              {% endif %}
+            
+            <!-- Disability -->
+            {% elif data.personalDetail == "disability" %}
+              {% if data.editState == "correcting" %}
+                <td><span class="strong">Is this person disabled?</span></td>
+                <td>{{data.personalDetailValue}}</td>
+              {% else %}
+                <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize}}</span></td>
+                <td>{{data.personalDetailValue}}</td>
+              {% endif %}
+                        
+            <!-- ...everything else -->
+            {% else %}
+              <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize}}</td>
+              <td>{{data.personalDetailValue}}</td>
+            {% endif %}
+            <td><a>Change</a></td>
+          </tr>
           
-        <!-- END -->
+          <!-- Date of birth -->
+          {% if data.personalDetail == "dateOfBirth" %}
+            <tr>
+              <td><span class="strong">Verification level</span></td>
+              <td>{{data.verificationlevel}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          <!-- Date of death -->
+          {% if data.personalDetail == "dateOfDeath" %}
+            <tr>
+              <td><span class="strong">Verification level</span></td>
+              <td>{{data.verificationlevel}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+        </table>
+      <br>
+      <form method="get" action="check-person-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="/account2/account">Cancel</a>
+    </div>
+  </div>
+       <!--   <tr>
+            <!-- ADD and UPDATE
+            {% if data.editState == "adding" or data.editState == "updating" %}
+              {% if data.personalDetail == "pv" %}
+             
+                <td>
+                  {{counter}}
+                  {% set counter = data.personalDetailValue.length %}
+                  {% if data.personalDetailValue != "Unknown" %}
+                    {% for item in data.personalDetailValue %}
+                      {% if counter != 1 %}
+                        {{item}}, <br>
+                      {% else %}
+                        {{item}}
+                      {% endif %}
+                      {% set counter = counter -1 %}
+                    {% endfor %}
+                  {% endif %}
+                </td>
+                  {% else %}
+                <td>{{data.personalDetails[data.personalDetail].display | capitalize}}</td>
+                <td>{{data.personalDetailValue}}</td>
+              {% endif %}
+                <td><a>Change</a></td>
+            {% endif %}
+
+            <!-- CORRECT
+            {% if data.editState == "correcting" %}
+              {% if data.personalDetail == "pv" %}
+                {% if data.personalDetailValue == "noone" %}
+                  <td><span class="strong">Remove the potentially violent status</span></td>
+                {% else %}
+                  <td><span class="strong">Who is potentially violent?</span></td>
+                  <td>{{data.personalDetailValue}}</td>
+                {% endif %}
+              {% elif data.personalDetail == "disability" %}
+                <td><span class="strong">Is this person disabled?</span></td>
+              {% else %}
+                <td><span class="strong">{{data.personalDetails[data.personalDetail].display | capitalize}}</span></td>
+              {% endif %}
+              <td><a>Change</a></td>
+            {% endif %}
+            <!-- END 
+          </tr>
+        -->
+          
+          
+          
+          
+        <!-- END
         {% if data.editState == "ending" or data.editState == "removing" %}
           <tr>
             <td>
@@ -15,7 +133,8 @@
             <td><a>Change</a></td>
           </tr>
           
-        {% elif data.personalDetailValue == "removing" %}
+          
+        {% elif data.personalDetailValue == "correct" %}
           <tr>
             <td>
               <span class="strong">
@@ -26,7 +145,7 @@
           </tr>
           
         {% else %}
-        <!-- ADD, CORRECT, UPDATE -->
+        <!-- ADD, UPDATE
           {% if data.personalDetail == "immigration" %}
             <tr>
               <td><span class="strong">Immigration status</span></td>
@@ -38,7 +157,7 @@
               <td>{{data.imref}}</td>
               <td><a>Change</a></td>
             </tr>
-                    
+                    <td>{{data.personalDetailValue}}</td>
           {% elif data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
             <tr>
               {% if data.personalDetail == "pv" %}
@@ -63,6 +182,7 @@
             </tr>
           {% endif %}
           
+
           {% else %}
           <tr>
             <td>
@@ -75,11 +195,6 @@
                   {{data.personalDetailValue}}
                 {% endif %}
             </td>
-            {% if data.personalDetail == "disability" or data.personalDetail == "sex" or data.personalDetail == "preferredLanguage" %}
-              <td>&nbsp;</td>
-            {% else %}
-              <td><a>Change</a></td>
-            {% endif %}
           </tr>
             {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
             <tr>
@@ -87,120 +202,8 @@
               <td>{{data.verificationlevel}}</td>
               <td><a>Change</a></td>
             </tr>
+
             {% endif %}
           {% endif %}          
         {% endif %}
-
-        </table>
-      <br>
-      <form method="get" action="check-person-handler">
-        <div class="form-group">
-          <input class="button" type="submit" value="Submit">
-        </div>
-      </form>
-      <a href="/account2/account">Cancel</a>
-    </div>
-  </div>
-
-
-          <!-- marital
-<!--
-          {% if data.maritalState === "adding" or data.maritalState === "updating" or data.maritalState === "correcting" %}
-            <tr>
-              <td><span class="strong">Marital or civil partnership status</span></td>
-              <td>{{data.maritalStatus}}</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
--->
-          
-          <!-- sex
-<!--
-          {% if data.sex.state === "correcting" %}
-            <tr>
-              <td><span class="strong">Sex</span></td>
-              <td>{{data.sexValue}}</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
--->
-          
-          <!-- recordLevel
-<!--
-          {% if data.recordLevel.state === "adding" or data.recordLevel.state === "updating" or data.recordLevel.state === "correcting" %}
-            <tr>
-              <td><span class="strong">Special customer record level</span></td>
-              <td>
-                
-                {% if data.recordLevel.value == "4" %}
-                  4 - Other
-                {% elif data.recordLevel.value == "3" %}
-                  3 - VIP
-                {% elif data.n.recordLevelvalue == "2" %}
-                  2 - Transgender
-                {% endif %}
-                
-              </td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
-          
-          {% if data.recordLevel.state === "removing" %}
-            <tr>
-              <td><span class="strong">End the special customer record level</span></td>
-              <td>&nbsp;</td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
--->
-          
-          
-          
-          <!-- disability
-<!--
-          {% if data.disability.state === "adding" %}
-            <tr>
-              <td><span class="strong">Disability status</span></td>
-              <td>
-                  Disabled
-              </td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
--->
-          
-<!--
-          {% if data.disability.state === "correcting" %}
-            <tr>
-              <td><span class="strong">Disability status</span></td>
-              <td>
-                  This person is not disabled
-              </td>
-              <td><a>&nbsp;</a></td>
-            </tr>
-          {% endif %}
--->
-          
-<!--
-          {% if data.disability.state === "removing" %}
-            <tr>
-              <td><span class="strong">End disability status</span></td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
--->
-          
-          <!-- special needs
-<!--
-          {% if data.specialNeeds.state === "adding" or data.specialNeeds.state === "updating" or data.specialNeeds.state === "correcting" %}
-            <tr>
-              <td><span class="strong">What does this person need?</span></td>
-              <td>
-                {% for need in data.needs %}
-                {{need}}<br>
-                {% endfor %}
-              </td>
-              <td><a>Change</a></td>
-            </tr>
-          {% endif %}
 -->
