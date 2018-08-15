@@ -917,7 +917,7 @@ router.get(/check-gender-handler/, function (req, res) {
     req.session.data.personalDetails.gender.preGra = true;
   }
   req.session.data.personalDetails.gender.show = true;
-  req.session.data.toaster = messageCentre("Gender details", null, "added");
+  req.session.data.toaster = messageCentre("Gender recognition details", null, "added");
   req.session.data.personalDetails.sex.value = req.session.data.sexValue;
   res.redirect('/account2/account')
 })
