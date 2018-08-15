@@ -62,11 +62,11 @@
     </div>
   </fieldset>
         
-    {% if data.editState != "adding" %}
+    {% if data.updateType != 1 %}
       <p class="form-block" style="margin-top:-15px;">or</p>
       <div class="form-group">
         <div class="multiple-choice">
-          <input id="unknown" name="personalDetailValue" type="checkbox" value="none">
+          <input id="unknown" name="personalDetailValue" type="checkbox" value=null>
             <label for="unknown">Remove special needs</label>
         </div>
       </div>

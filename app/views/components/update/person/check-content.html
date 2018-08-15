@@ -19,7 +19,7 @@
                 {% endif %}
               {% else %}
               <!-- special needs-->
-                {% if data.personalDetailValue == "none" %}
+                {% if data.personalDetailValue == "null" %}
                   <td><span class="strong">Remove special needs</span></td>
                 {% else %}
                   <td><span class="strong">Special needs</span></td>
@@ -28,7 +28,7 @@
               <td>
                 {{counter}}
                 {% set counter = data.personalDetailValue.length %}
-                {% if data.personalDetailValue != "none" %}
+                {% if data.personalDetailValue != "null" %}
                   {% for item in data.personalDetailValue %}
                     {% if counter != 1 %}
                       {{item}}, <br>
