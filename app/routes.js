@@ -725,7 +725,7 @@ router.get(/check-person-handler/, function (req, res) {
     }
   }
   //check for 'Unknown'
-  if (req.session.data.personalDetailValue == "Unknown") {
+  if (req.session.data.personalDetailValue == "Unknown" || req.session.data.personalDetailValue == "none") {
     nullFalse();  
   }
   //check for disability
