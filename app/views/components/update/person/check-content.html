@@ -1,31 +1,44 @@
   <h2 class="heading-medium question">Check your answers</h2>
+
     <div class="grid-row">
+      
       <div class="column-one-half">
         
-        <table class="table"> 
+        <table class="table">
+          
           <tr>
             
           <!-- Potentially violent status -->
-            {% if data.personalDetail == "pv" %}
-              {% if data.personalDetailValue == "noone" %}
-                <td><span class="strong">Remove the potentially violent status</span></td>
+          {% if data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
+            <tr>
+              {% if data.personalDetail == "pv" %}
+                {% if data.personalDetailValue == "noone" %}
+                  <td><span class="strong">Remove the potentially violent status</span></td>
+                {% else %}
+                  <td><span class="strong">Who is potentially violent?</span></td>
+                {% endif %}
               {% else %}
-                <td><span class="strong">Who is potentially violent?</span></td>
-                <td>
-                  {{counter}}
-                  {% set counter = data.personalDetailValue.length %}
-                  {% if data.personalDetailValue != "Unknown" %}
-                    {% for item in data.personalDetailValue %}
-                      {% if counter != 1 %}
-                        {{item}}, <br>
-                      {% else %}
-                        {{item}}
-                      {% endif %}
-                      {% set counter = counter -1 %}
-                    {% endfor %}
-                  {% endif %}
-                </td>
+              <!-- special needs-->
+                {% if data.personalDetailValue == "none" %}
+                  <td><span class="strong">Remove special needs</span></td>
+                {% else %}
+                  <td><span class="strong">Special needs</span></td>
+                {% endif %}
               {% endif %}
+              <td>
+                {{counter}}
+                {% set counter = data.personalDetailValue.length %}
+                {% if data.personalDetailValue != "none" %}
+                  {% for item in data.personalDetailValue %}
+                    {% if counter != 1 %}
+                      {{item}}, <br>
+                    {% else %}
+                      {{item}}
+                    {% endif %}
+                    {% set counter = counter -1 %}
+                  {% endfor %}
+                {% endif %}
+              </td>
             
             <!-- Disability -->
             {% elif data.personalDetail == "disability" %}

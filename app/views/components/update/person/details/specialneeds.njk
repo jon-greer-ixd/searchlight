@@ -2,6 +2,7 @@
 <div class="grid-row">
 
     <div class="column-two-thirds">
+      
       <p>Select all that apply</p>
       
       <form class="form" method="get" action="personal-detail-handler">
@@ -61,30 +62,23 @@
     </div>
   </fieldset>
         
-<!--
-    {% if data.editState == "correcting" %}
-      
-        <p class="form-block" style="margin-top:-15px;">or</p>
-
-          <div class="form-group">
-            <div class="multiple-choice">
-              <input id="unknown" name="data" type="checkbox" value="unknown">
-              <label for="unknown">Their special needs are unknown</label>
-            </div>
-          </div>
-      
-      {% endif %}
--->
-
-        
-
-
-        <div class="form-group">
-          <input class="button" type="submit" value="Next">
+    {% if data.editState != "adding" %}
+      <p class="form-block" style="margin-top:-15px;">or</p>
+      <div class="form-group">
+        <div class="multiple-choice">
+          <input id="unknown" name="personalDetailValue" type="checkbox" value="none">
+            <label for="unknown">Remove special needs</label>
         </div>
+      </div>
+    {% endif %}
 
-      </form>
-      <p><a href="task-list">Cancel</a></p>
-    </div>
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
 
   </div>
