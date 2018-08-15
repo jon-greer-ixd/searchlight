@@ -56,7 +56,7 @@ var personalDetails = {
   "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
   "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
   "sex" : {state : null, show : true, display : "Sex", value : "Female"},
-  "gender" : {state : null, show : false, display : "Gender", value : null, gra : false, preGra : false},
+  "gender" : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "Identity fraud interest", value : null},
   "disability" : {state : null, show : false, display : "Disability status", value : null},
   "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
