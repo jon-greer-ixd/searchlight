@@ -627,15 +627,19 @@ router.get(/person-change-handler/, function (req, res) {
   req.session.data.toaster = null;
   req.session.data.personalDetail = req.query.personalDetail;
   if (req.session.data.personalDetail == "sex") {
-    req.session.data.editState = "correcting";
+    req.session.data.updateType = 3;
     req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == "dateOfDeath" || req.session.data.personalDetail == "dateOfBirth") {
-    req.session.data.editState = "correcting";
+    req.session.data.updateType = 3;
     res.redirect('/update/person/update')
   } else if (req.session.data.personalDetail == "recordLevel") {
-    req.session.data.editState = "updating";
+    req.session.data.updateType = 2;
     res.redirect('/update/person/update')
+  } else if (req.session.data.personalDetail == "nifu") {
+    req.session.data.updateType = 2;
+    req.session.data.personalDetailValue = "null";
+    res.redirect('/update/person/check')
   } else {
     res.redirect('/update/person/type')
   }
@@ -648,6 +652,13 @@ router.get(/change-person-type-handler/, function (req, res) {
     } else {
       req.session.data.personalDetailValue = "This person is not disabled";
       res.redirect('/update/person/check')
+    }
+  } else if (req.session.data.personalDetail == "preferredLanguage") {
+    if (req.session.data.updateType == 2) {
+      req.session.data.personalDetailValue == "English" ? req.session.data.personalDetailValue = "Welsh" : req.session.data.personalDetailValue = "English";
+      res.redirect('/update/person/check')
+    } else {
+      res.redirect('/update/person/update')
     }
   } else {
     res.redirect('/update/person/update')
@@ -725,7 +736,7 @@ req.session.data.personalDetails[req.session.data.personalDetail].value = req.se
 
 router.get(/personal-detail-handler/, function (req, res) {
   if (req.query.data == "stateless") {
-    req.session.data.personalDetailValue = "Stateless";
+    req.session.data.personalDetailValue = "stateless";
   } else if (req.query.data == "null") {
     req.session.data.personalDetailValue = "null";
   }
@@ -759,7 +770,7 @@ router.get(/check-person-handler/, function (req, res) {
     }
   };
     
-  // SET VALUE  
+  // SET VALUES  
   if (req.session.data.personalDetail == "pv") {
     changePv(); 
   } else if (req.session.data.personalDetailValue == "null") {
@@ -769,6 +780,11 @@ router.get(/check-person-handler/, function (req, res) {
   } else  {
     currentDetail.value = req.session.data.personalDetailValue;  
   }
+  
+  if (req.session.data.verificationlevel != null) {
+    currentDetail.level = req.session.data.verificationlevel;  
+  }
+  
   console.log(`Value ${req.session.data.personalDetailValue}`);
 
   // SET STATE
@@ -788,6 +804,7 @@ router.get(/check-person-handler/, function (req, res) {
 
   // RESET
   req.session.data.updateType = null;
+  req.session.data.verificationlevel = null;
   
   // NEXT
   res.redirect('/account2/account')
