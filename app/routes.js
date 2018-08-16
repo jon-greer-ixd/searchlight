@@ -732,12 +732,15 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
+
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
   
   // SET VALUE  
   if (req.session.data.personalDetailValue == "null") {
+    currentDetail.value = null;
+  } else if (req.session.data.personalDetail == "disability" && req.session.data.updateType != 1) {
     currentDetail.value = null;
   } else {
     currentDetail.value = req.session.data.personalDetailValue;  

@@ -70,10 +70,13 @@
         <div class="multiple-choice">
           <input id="update" type="radio" name="updateType" value=2>
           <label for="update">
-              Update    
+              Update   
+            
             {% if data.personalDetail != "specialNeeds"%}
                the 
-            {% elif data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
+            {% endif %}
+            
+            {% if data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
               status
             {% else %}
               {{data.personalDetails[data.personalDetail].display | lower}}
