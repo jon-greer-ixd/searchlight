@@ -619,7 +619,7 @@ router.get(/add-person-handler/, function (req, res) {
 router.get(/adding-detail-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
   req.session.data.toaster = null;
-  req.session.data.editState = "adding";
+  req.session.data.updateType = 1;
   res.redirect('/update/person/update')
 })
 
@@ -726,8 +726,8 @@ req.session.data.personalDetails[req.session.data.personalDetail].value = req.se
 router.get(/personal-detail-handler/, function (req, res) {
   if (req.query.data == "stateless") {
     req.session.data.personalDetailValue = "Stateless";
-  } else if (req.query.data == "unknown") {
-    req.session.data.personalDetailValue = "Unknown";
+  } else if (req.query.data == "null") {
+    req.session.data.personalDetailValue = "null";
   }
   res.redirect('/update/person/check')
 })
@@ -736,26 +736,52 @@ router.get(/personal-detail-handler/, function (req, res) {
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
-  
+  var changePv = function() {
+    req.session.data.personalDetails.pv.value = false;
+    req.session.data.personalDetails.pv.partner = false;
+    req.session.data.personalDetails.pv.member = false;
+    if (req.session.data.personalDetailValue != "null") {
+      var temp;
+      for (var item in req.session.data.personalDetailValue) {
+        if (req.session.data.personalDetailValue[item] == "The person's partner") {
+          req.session.data.personalDetails.pv.partner = true
+        } else if (req.session.data.personalDetailValue[item] == "Someone else in the household") {
+          req.session.data.personalDetails.pv.member = true
+        } else if (req.session.data.personalDetailValue[item] == "The person") {
+          temp = true;        
+        }
+      }
+      if (temp == true) {
+        req.session.data.personalDetails.pv.value = true;
+      }
+    } else {
+      currentDetail.value = null;
+    }
+  };
+    
   // SET VALUE  
-  if (req.session.data.personalDetailValue == "null") {
+  if (req.session.data.personalDetail == "pv") {
+    changePv(); 
+  } else if (req.session.data.personalDetailValue == "null") {
     currentDetail.value = null;
   } else if (req.session.data.personalDetail == "disability" && req.session.data.updateType != 1) {
     currentDetail.value = null;
-  } else {
+  } else  {
     currentDetail.value = req.session.data.personalDetailValue;  
   }
-  console.log(req.session.data.updateType);
+  console.log(`Value ${req.session.data.personalDetailValue}`);
 
   // SET STATE
   currentDetail.state = req.session.data.updateType;
+  console.log(`State ${currentDetail.state}`);
   
   // SET SHOW
-  if (currentDetail.value == null) {
+  if (currentDetail.value == null && req.session.data.personalDetail != "pv") {
     currentDetail.show = false;
   } else {
     currentDetail.show = true;
   }
+  console.log(`Show ${currentDetail.show}`);
   
   // SET MESSAGE
   req.session.data.toaster = messageCentre(currentDetail.display, null, currentDetail.state);

@@ -5,12 +5,16 @@
       <div class="column-one-half">
         
         <table class="table">
-          
+                  
           <tr>
             <!-- TITLE -->
               <td> <span class="strong">
                 {% if data.personalDetailValue == "null" %}
-                  Remove the {{data.personalDetails[data.personalDetail].display | capitalize}}
+                  Remove
+                    {% if data.personalDetail != "specialNeeds" or data.personalDetail != "nationality" %}
+                      the 
+                    {% endif %}
+                  {{data.personalDetails[data.personalDetail].display | lower}}
                 {% elif data.personalDetail == "pv" %}
                   Who is potentially violent?
                 {% else %}
