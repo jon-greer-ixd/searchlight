@@ -602,7 +602,7 @@ router.get(/check-contact-handler/, function (req, res) {
 //PERSON
 router.get(/add-person-handler/, function (req, res) {
   console.log(req.session.data.personalDetail);
-  req.session.data.editState = "adding";
+  req.session.data.updateType = 1;
   if (req.session.data.personalDetail == "nifu") {
     req.session.data.personalDetailValue = "Yes";
     res.redirect("/update/person/check");
@@ -619,7 +619,7 @@ router.get(/add-person-handler/, function (req, res) {
 router.get(/adding-detail-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
   req.session.data.toaster = null;
-  req.session.data.editState = "adding";
+  req.session.data.updateType = 1;
   res.redirect('/update/person/update')
 })
 
@@ -627,28 +627,38 @@ router.get(/person-change-handler/, function (req, res) {
   req.session.data.toaster = null;
   req.session.data.personalDetail = req.query.personalDetail;
   if (req.session.data.personalDetail == "sex") {
-    req.session.data.editState = "correcting";
+    req.session.data.updateType = 3;
     req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == "dateOfDeath" || req.session.data.personalDetail == "dateOfBirth") {
-    req.session.data.editState = "correcting";
+    req.session.data.updateType = 3;
     res.redirect('/update/person/update')
   } else if (req.session.data.personalDetail == "recordLevel") {
-    req.session.data.editState = "updating";
+    req.session.data.updateType = 2;
     res.redirect('/update/person/update')
+  } else if (req.session.data.personalDetail == "nifu") {
+    req.session.data.updateType = 2;
+    req.session.data.personalDetailValue = "null";
+    res.redirect('/update/person/check')
   } else {
     res.redirect('/update/person/type')
   }
 })
 
 router.get(/change-person-type-handler/, function (req, res) {
-  req.session.data.editState = req.query.data;
   if (req.session.data.personalDetail == "disability") {
-    if(req.session.data.editState == "correcting") {
+    if(req.session.data.updateType == 3) {
       res.redirect('/update/person/update')
     } else {
       req.session.data.personalDetailValue = "This person is not disabled";
       res.redirect('/update/person/check')
+    }
+  } else if (req.session.data.personalDetail == "preferredLanguage") {
+    if (req.session.data.updateType == 2) {
+      req.session.data.personalDetailValue == "English" ? req.session.data.personalDetailValue = "Welsh" : req.session.data.personalDetailValue = "English";
+      res.redirect('/update/person/check')
+    } else {
+      res.redirect('/update/person/update')
     }
   } else {
     res.redirect('/update/person/update')
@@ -676,24 +686,72 @@ router.get(/change-person-type-handler/, function (req, res) {
   }
 })
 
+
+/*
+
+if (req.session.data.editState == "adding") {
+  req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
+  req.session.data.personalDetails[req.session.data.personalDetail].show = true;
+}
+
+var hideAndSetToZero = function() {
+  req.session.data.personalDetails[req.session.data.personalDetail].value = null;
+  req.session.data.personalDetails[req.session.data.personalDetail].show = false;
+}
+
+handle PV (list or none)
+handle needs (list or none)
+
+handle marital (value or none)
+handle nationality (value or none)
+handle spoken language (value or none)
+handle pref language (value or none)
+
+handle immigration (multi value or none)
+
+handle record level (value)
+handle DOB (value)
+handle DOD (value)
+
+handle disability (on/off)
+handle sex (on/off)
+handle nifu (on/off)
+
+handle gender ()
+
+//set message
+req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
+//specific values for record level
+if (req.session.data.personalDetail == "recordLevel") {
+  if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
+    nullFalse();  
+  }
+}
+
+req.session.data.personalDetails[req.session.data.personalDetail].state = req.session.data.editState;
+
+req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
+
+*/
+
 router.get(/personal-detail-handler/, function (req, res) {
   if (req.query.data == "stateless") {
-    req.session.data.personalDetailValue = "Stateless";
-  } else if (req.query.data == "unknown") {
-    req.session.data.personalDetailValue = "Unknown";
+    req.session.data.personalDetailValue = "stateless";
+  } else if (req.query.data == "null") {
+    req.session.data.personalDetailValue = "null";
   }
   res.redirect('/update/person/check')
 })
 
+
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
+  var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
   var changePv = function() {
     req.session.data.personalDetails.pv.value = false;
     req.session.data.personalDetails.pv.partner = false;
     req.session.data.personalDetails.pv.member = false;
-    if (req.session.data.personalDetailValue == "noone") {
-      req.session.data.personalDetails.pv.state = "removed";
-    } else {
+    if (req.session.data.personalDetailValue != "null") {
       var temp;
       for (var item in req.session.data.personalDetailValue) {
         if (req.session.data.personalDetailValue[item] == "The person's partner") {
@@ -707,70 +765,48 @@ router.get(/check-person-handler/, function (req, res) {
       if (temp == true) {
         req.session.data.personalDetails.pv.value = true;
       }
+    } else {
+      currentDetail.value = null;
     }
   };
-  var nullFalse = function() {
-    req.session.data.personalDetails[req.session.data.personalDetail].value = null;
-    req.session.data.personalDetails[req.session.data.personalDetail].show = false;
-  }
-  //check for PV
+    
+  // SET VALUES  
   if (req.session.data.personalDetail == "pv") {
-    changePv();
+    changePv(); 
+  } else if (req.session.data.personalDetailValue == "null") {
+    currentDetail.value = null;
+  } else if (req.session.data.personalDetail == "disability" && req.session.data.updateType != 1) {
+    currentDetail.value = null;
+  } else  {
+    currentDetail.value = req.session.data.personalDetailValue;  
+  }
+  
+  if (req.session.data.verificationlevel != null) {
+    currentDetail.level = req.session.data.verificationlevel;  
+  }
+  
+  console.log(`Value ${req.session.data.personalDetailValue}`);
+
+  // SET STATE
+  currentDetail.state = req.session.data.updateType;
+  console.log(`State ${currentDetail.state}`);
+  
+  // SET SHOW
+  if (currentDetail.value == null && req.session.data.personalDetail != "pv") {
+    currentDetail.show = false;
   } else {
-    req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
-    if (req.session.data.editState == "updating") {
-      req.session.data.personalDetails[req.session.data.personalDetail].state = "updated";
-    } else if (req.session.data.editState == "correcting") {
-      req.session.data.personalDetails[req.session.data.personalDetail].state = "corrected";
-    }
+    currentDetail.show = true;
   }
-  //check for 'Unknown'
-  if (req.session.data.personalDetailValue == "Unknown" || req.session.data.personalDetailValue == "none") {
-    nullFalse();  
-  }
-  //check for disability
-  if (req.session.data.personalDetail == "disability") {
-    if (req.session.data.editState != "adding") {
-      nullFalse();  
-    }
-  }
-  //check for removing
-  if (req.session.data.personalDetailValue == "removing") {
-    req.session.data.personalDetails[req.session.data.personalDetail].state = "removed";
-    nullFalse();  
-    console.log('HERE', req.session.data.personalDetails[req.session.data.personalDetail].show);
-    if (req.session.data.personalDetail == "pv" || req.session.data.personalDetail == "preferredLanguage" || req.session.data.personalDetail == "immigration") {
-      req.session.data.personalDetails[req.session.data.personalDetail].show = true;
-    }
-  }
-  //check for adding
-  if (req.session.data.editState == "adding") {
-    req.session.data.personalDetails[req.session.data.personalDetail].state = "added";
-    req.session.data.personalDetails[req.session.data.personalDetail].show = true;
-  }
-  //set message
-  req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
-  //specific values for record level
-  if (req.session.data.personalDetail == "recordLevel") {
-    if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
-      nullFalse();  
-    }
-  }
-  //check for date of death
-  if (req.session.data.personalDetail == "dateOfDeath") {
-    req.session.data.personalDetails.dateOfDeath.level = req.session.data.verificationlevel;  
-  }
-  //check for immigration
-  if (req.session.data.personalDetail == "immigration") {
-    if (req.session.data.editState != "removing") {
-      req.session.data.personalDetails.immigration.value = req.session.data.imstatus;  
-      req.session.data.personalDetails.immigration.reference = req.session.data.imref;
-    } else {
-      req.session.data.personalDetails.immigration.reference = null;
-    }
-  }
-  //reset the temp personal detail and redirect
-  req.session.data.personalDetail = null;
+  console.log(`Show ${currentDetail.show}`);
+  
+  // SET MESSAGE
+  req.session.data.toaster = messageCentre(currentDetail.display, null, currentDetail.state);
+
+  // RESET
+  req.session.data.updateType = null;
+  req.session.data.verificationlevel = null;
+  
+  // NEXT
   res.redirect('/account2/account')
 })
 

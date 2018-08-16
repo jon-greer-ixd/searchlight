@@ -1,6 +1,8 @@
   <div class="grid-row names">
+    
+<!--    <p>{{data.personalDetails.pv.value}}</p>-->
 
-    {% if data.personalDetails.pv.state == "removed" %}
+    {% if data.personalDetails.pv.value == null %}
       <div class="column-one-third">
         <ul>
           <li>Potentially violent status</li>
@@ -21,7 +23,7 @@
           </li>
           
           <li class="under-link">
-            <a href="adding-detail-handler?personalDetail=pv" class="under-link">Add</a>
+            <a href="adding-detail-handler?personalDetail=pv" class="under-link">Change</a>
           </li>
           
         </ul>

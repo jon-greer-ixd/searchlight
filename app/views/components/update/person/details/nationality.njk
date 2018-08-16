@@ -11,8 +11,8 @@
       
       {% include "components/update/person/details/nationality-selector.njk" %}
       
-      {% if data.editState != "correcting" %}
-        {% if data.personalDetails.nationality.value != "Stateless" %}
+      {% if data.updateType != 3 %}
+        {% if data.personalDetails.nationality.value != "stateless" %}
           <p class="form-block" style="margin-top:-15px;">or</p>
           <div class="form-group">
             <div class="multiple-choice">
@@ -24,56 +24,28 @@
       {% else %}
 
         <p class="form-block" style="margin-top:-15px;">or</p>
-        {% if data.personalDetails.nationality.value != "Stateless" %}
+        {% if data.personalDetails.nationality.value != "stateless" %}
           <div class="form-group">
             <div class="multiple-choice">
               <input id="stateless" name="data" type="radio" value="stateless">
               <label for="stateless">They are stateless</label>
             </div>
             <div class="multiple-choice">
-              <input id="unknown" name="data" type="radio" value="unknown" >
-              <label for="unknown">Their nationality is unknown</label>
+              <input id="unknown" name="data" type="radio" value=null>
+              <label for="unknown">Remove nationality</label>
             </div>
           </div>
         {% else %}
           <div class="form-group">
             <div class="multiple-choice">
-              <input id="unknown" name="data" type="checkbox" value="unknown" >
-              <label for="unknown">Their nationality is unknown</label>
+              <input id="unknown" name="data" type="checkbox" value=null>
+              <label for="unknown">Remove nationality</label>
             </div>
           </div>
         {% endif %}
       {% endif %}
         
-        
-
-        
-        
-<!--
-        {% if data.editState == "correcting" %}
-          {% if data.personalDetails.nationality.value == "Stateless" %}
-          {% else %}
-            <div class="multiple-choice">
-              <input id="stateless" name="data" type="radio" value="stateless">
-              <label for="stateless">They are stateless</label>
-            </div>
-            <div class="multiple-choice">
-              <input id="unknown" name="data" type="radio" value="unknown" >
-              <label for="unknown">Their nationality is unknown</label>
-            </div>
-          {% endif %}
-        
-        {% else %}
-            {% if data.personalDetails.nationality.value != "Stateless" %}
-            <p class="form-block" style="margin-top:-15px;">or</p>
-            <div class="multiple-choice">
-              <input id="none" name="data" type="checkbox" value="stateless">
-              <label for="none">They are stateless</label>
-            </div>
-          {% endif %}
-        {% endif %}
--->
-
+      
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>

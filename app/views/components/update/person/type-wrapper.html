@@ -8,7 +8,11 @@
           <a class="link-back" onCLick="history.back()">Back</a>
           
           <h2 class="title">
-            Change {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %} {{data.personalDetails[data.personalDetail].display | lower}}
+            Change 
+            {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} 
+              the 
+            {% endif %} 
+            {{data.personalDetails[data.personalDetail].display | lower}}
           </h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

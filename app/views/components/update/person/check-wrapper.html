@@ -9,7 +9,7 @@
           
           <h2 class="title">
             
-            {% if data.editState == "adding" %}
+            {% if data.updateType == 1 %}
               Add 
               {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} 
                 a 
@@ -17,7 +17,7 @@
                 an
               {% endif %}
             
-            {% elif data.editState == "correcting" %}
+            {% elif data.updateType == 3 %}
               Correct
               {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %}     the 
               {% endif %} 

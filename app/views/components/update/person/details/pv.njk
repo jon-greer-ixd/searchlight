@@ -27,11 +27,11 @@
             <label for="member">Someone else in the household</label>
           </div>
           
-          {% if data.editState != "adding" %}
+          {% if data.updateType != 1 %}
             <p class="form-block" style="margin-top:-10px;">or</p>
 
             <div class="multiple-choice">
-              <input id="none" name="personalDetailValue" type="checkbox" value="noone">
+              <input id="none" name="personalDetailValue" type="checkbox" value=null>
               <label for="none">Remove the potentially violent status</label>
             </div>
           {% endif %}
@@ -87,11 +87,11 @@
             </div>
 
             <div class="multiple-choice" data-target="contact-by-phone">
-              <input id="stateless" name="data" type="radio" value="stateless" {% if data.editState == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
+              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
               <label for="stateless">End the potentially violent status</label>
             </div>
 
-            {% if data.editState == "correcting" %}
+            {% if data.updateType == "correcting" %}
               <div class="multiple-choice" data-target="contact-by-text">
                 <input id="unknown" name="data" type="radio" value="unknown">
                 <label for="unknown">Their nationality is unknown</label>
@@ -150,11 +150,11 @@
             </div>
 
             <div class="multiple-choice" data-target="contact-by-phone">
-              <input id="stateless" name="data" type="radio" value="stateless" {% if data.editState == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
+              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
               <label for="stateless">End the potentially violent status</label>
             </div>
 
-            {% if data.editState == "correcting" %}
+            {% if data.updateType == "correcting" %}
               <div class="multiple-choice" data-target="contact-by-text">
                 <input id="unknown" name="data" type="radio" value="unknown">
                 <label for="unknown">Their nationality is unknown</label>

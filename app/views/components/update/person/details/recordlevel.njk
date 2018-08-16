@@ -10,7 +10,7 @@
         
         <legend class="visually-hidden">Is this person disabled?</legend>
         
-        {% if data.editState != "adding" %}
+        {% if data.updateType == 2 %}
           {% if data.personalDetails.recordLevel.value != "1 - Unrestricted access" %}
             <div class="multiple-choice">
               <input id="1" type="radio" name="personalDetailValue" value="1 - Unrestricted access">
@@ -40,6 +40,9 @@
         <input class="button" type="submit" value="Next">
       </div>
     </form>
+    
     <p><a href="task-list">Cancel</a></p>
+    
   </div>
+  
 </div>
