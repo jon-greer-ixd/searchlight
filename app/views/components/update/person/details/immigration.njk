@@ -8,24 +8,34 @@
         <legend>
           <p class="bold">What is their immigration status?</p>
         </legend>
-        <div class="multiple-choice">
-          <input id="asylum-seeker" type="radio" name="imstatus" value="Asylum seeker" {% if data.personalDetails.immigration.value == "Asylum seeker" %} checked="checked" {% endif %}>
-          <label for="asylum-seeker">Asylum seeker</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="exceptional-leave" type="radio" name="imstatus" value="Exceptional leave to remain" {% if data.personalDetails.immigration.value == "Exceptional leave to remain" %} checked="checked" {% endif %}>
-          <label for="exceptional-leave">Exceptional leave to remain</label>
-        </div>
-        <div class="multiple-choice">
-          <input id="indefinite" type="radio" name="imstatus" value="Indefinite leave to remain" {% if data.personalDetails.immigration.value == "Indefinite leave to remain" %} checked="checked" {% endif %}>
-          <label for="indefinite">Indefinite leave to remain</label>
-        </div>
+        
+        {% if data.personalDetails.immigration.value != "Asylum seeker" %}
+          <div class="multiple-choice">
+            <input id="asylum-seeker" type="radio" name="personalDetailValue" value="Asylum seeker">
+            <label for="asylum-seeker">Asylum seeker</label>
+          </div>
+        {% endif %}
+        
+        {% if data.personalDetails.immigration.value != "Exceptional leave to remain" %}
+          <div class="multiple-choice">
+            <input id="exceptional-leave" type="radio" name="personalDetailValue" value="Exceptional leave to remain">
+            <label for="exceptional-leave">Exceptional leave to remain</label>
+          </div>
+        {% endif %}
+        
+        {% if data.personalDetails.immigration.value != "Indefinite leave to remain" %}
+          <div class="multiple-choice">
+            <input id="indefinite" type="radio" name="personalDetailValue" value="Indefinite leave to remain">
+            <label for="indefinite">Indefinite leave to remain</label>
+          </div>
+        {% endif %}
+        
       </fieldset>
         
       <fieldset class="form-group">
         <legend class="visuallyhidden">Immigration number</legend>
         <label class="form-label" for="iref">Immigration reference number</label>
-        <input class="form-control" id="imref" type="text" name="imref" value={{data.personalDetails.immigration.reference}}>
+        <input class="form-control" id="imref" type="text" name="verificationlevel" {% if data.updateType != 1 %} value={{data.personalDetails.immigration.level}} {% endif %}>
       </fieldset>
 
       <div class="form-group">
