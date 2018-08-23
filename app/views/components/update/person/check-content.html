@@ -45,14 +45,20 @@
             </td>
           </tr>
           
-          {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
+          {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" or data.personalDetail == "immigration" %}
             <tr>
-              <td class="strong">Verification level</td>
+              <td class="strong">
+                {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
+                  Verification level
+                {% else %}
+                  Immigration reference number
+                {% endif %}
+              </td>
               <td>{{data.verificationlevel}}</td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
-          
+                    
         </table>
       <br>
       <form method="get" action="check-person-handler">
