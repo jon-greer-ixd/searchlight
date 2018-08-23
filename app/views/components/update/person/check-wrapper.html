@@ -11,16 +11,17 @@
             
             {% if data.updateType == 1 %}
               Add 
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" %} 
-                a 
-              {% elif data.personalDetail == "immigration" or data.personalDetail == 'nifu' %}
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
                 an
+            
+              {% elif data.personalDetail == "specialNeeds" %}
+
+              {% else %}
+                a
               {% endif %}
             
             {% elif data.updateType == 3 %}
-              Correct
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %}     the 
-              {% endif %} 
+              Correct the
             
             {% elif data.editState == "ending" or data.editState == "removing" %}
               Change
@@ -28,9 +29,7 @@
               {% endif %} 
             
             {% else %}
-              Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %}     the 
-              {% endif %} 
+              Update the
 
             {% endif %}
 

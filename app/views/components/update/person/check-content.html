@@ -10,11 +10,7 @@
             <!-- TITLE -->
               <td> <span class="strong">
                 {% if data.personalDetailValue == "null" %}
-                  Remove
-                    {% if data.personalDetail != "specialNeeds" or data.personalDetail != "nationality" %}
-                      the 
-                    {% endif %}
-                  {{data.personalDetails[data.personalDetail].display | lower}}
+                  Remove the {{data.personalDetails[data.personalDetail].display | lower}}
                 {% elif data.personalDetail == "pv" %}
                   Who is potentially violent?
                 {% else %}

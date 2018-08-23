@@ -21,7 +21,7 @@
           </tr>
           {% if data.pref == "true" %}
             <tr>
-              <td><span class="strong">preferred method of contact</span></td>
+              <td><span class="strong">Preferred method of contact</span></td>
               <td>
                 Yes
               </td>
@@ -46,7 +46,7 @@
         
           <!-- If this contactType is the current preferred method of contact and its now corrected show preferred contact = No -->
           <tr>
-            <td><span class="strong">preferred method of contact</span></td>
+            <td><span class="strong">Preferred method of contact</span></td>
             {% if (data.contactTypes[data.contactType].pref == true and data.pref == false) %}
               <td>No</td>
             {% else %}

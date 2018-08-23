@@ -746,6 +746,7 @@ router.get(/personal-detail-handler/, function (req, res) {
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
+  console.log(req.session.data.updateType);
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
   var changePv = function() {
     req.session.data.personalDetails.pv.value = false;
