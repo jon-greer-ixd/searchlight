@@ -740,6 +740,7 @@ router.get(/personal-detail-handler/, function (req, res) {
   } else if (req.query.data == "null") {
     req.session.data.personalDetailValue = "null";
   }
+  console.log(req.session.data.personalDetailValue);
   res.redirect('/update/person/check')
 })
 

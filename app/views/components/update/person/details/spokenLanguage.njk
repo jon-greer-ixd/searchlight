@@ -11,6 +11,17 @@
       
       {% include "components/update/person/details/language-selector.njk" %}
       
+      {% if data.updateType == 3 %}
+        <div class="form-group">
+          <p class="form-block" style="margin-top:-10px;">or</p>
+          <div class="multiple-choice">
+            <input id="none" name="data" type="checkbox" value=null>
+            <label for="none">Remove the spoken language</label>
+          </div>
+        </div>
+      {% endif %}
+
+      
       <div class="form-group">
         <input class="button" type="submit" value="Next">
       </div>
