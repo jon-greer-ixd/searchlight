@@ -10,17 +10,17 @@
           <h2 class="title">
             {% if data.updateType == 1 %}
               Add 
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" %} 
-                a 
-              {% elif data.personalDetail == "immigration" %}
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
                 an
+              {% elif data.personalDetail == "specialNeeds" %}
+            
+              {% else %}
+                a
               {% endif %}
             {% elif data.updateType == 3 %}
-              Correct    
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %}
+              Correct the 
             {% else %}
-              Update
-              {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %} the {% endif %}
+              Update the
             {% endif %}
             
             {{ data.personalDetails[data.personalDetail].display | lower }}
