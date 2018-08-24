@@ -1354,7 +1354,7 @@ hr.strong {
       border-bottom: none;
       width :100%;
       li {
-        width: 200px;
+        width: 187px;
         float: left;
         &:nth-child(2) {
           font-weight: bold;
@@ -1373,10 +1373,10 @@ hr.strong {
       padding-bottom: 10px;
       float: left;
       &:first-child {
-        width: 200px;
+        width: 185px;
       }
       &:nth-child(2) {
-        width: 500px;
+        width: 454px;
       }  
       &:nth-child(3) {
         width: 200px;
@@ -1395,7 +1395,7 @@ hr.strong {
       margin: 0;
       padding: 0;
       border-bottom: 1px solid #bfc1c3;
-      width: 2130px;
+      width: 1940px;
       float: left;
       &.header {
         border-top: 1px solid #bfc1c3;
@@ -1405,21 +1405,30 @@ hr.strong {
       }
       li {
         padding: 10px;
-        width: 99px;
+        width: 88px;
         float: left;
         &:nth-child(1) {
           padding-left: 0;
         }
+        &:nth-child(3) {
+          width: 100px;
+        }   
+        &:nth-child(3),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
+          background-color: #dee0e2;
+        }
         &:nth-child(17) {
           width: 135px;
         }
-        &:nth-child(3),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
-          background-color: #dee0e2;
+        &:nth-child(18) {
+          width: 105px;
         }
         &:last-child {
           padding-right: 0;
         }
       }
     }
+  }
+  ul.break {
+    margin-top: 15px;
   }
 }
