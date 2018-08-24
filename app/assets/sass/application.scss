@@ -1395,7 +1395,7 @@ hr.strong {
       margin: 0;
       padding: 0;
       border-bottom: 1px solid #bfc1c3;
-      width: 1683px;
+      width: 2130px;
       float: left;
       &.header {
         border-top: 1px solid #bfc1c3;
@@ -1409,6 +1409,9 @@ hr.strong {
         float: left;
         &:nth-child(1) {
           padding-left: 0;
+        }
+        &:nth-child(17) {
+          width: 135px;
         }
         &:nth-child(3),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
           background-color: #dee0e2;
