@@ -1432,3 +1432,30 @@ hr.strong {
     margin-top: 15px;
   }
 }
+
+#sl-account #sl-address-primary-card.data-error {
+  padding: 20px;
+  background: url(../../../public/images/error-warning-icon.svg);
+  background-repeat: no-repeat;
+  background-position: 20px 20px;
+  background-size: 2.5%;
+  @include clearfix;
+  margin-bottom: 15px;
+  background-color: #FFF3DA;
+  padding-left: 70px;
+  padding-bottom: 10px;
+  h3 {
+    font-size: 19px;
+    margin-bottom :10px;
+  }
+  ul {
+    clear :both;
+    li {
+      &:nth-child(1) {
+        width: 148px;
+        margin-bottom: 10px;
+      }
+      float: left;
+    }
+  }
+}

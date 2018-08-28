@@ -53,9 +53,13 @@
           <span id="sl-account-primary-name" class="spacing-top-mid sl-account-primary-name">
             <!-- ngIf: !data.name.nameDetails -->
             <!-- ngIf: data.name.primaryName -->
+            
             <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
-              {{person_title | upper }} {{person_firstName | upper }} {{person_lastName | upper }}
+              {{person_title | upper}} <span class="namespace"> </span> 
+              {{person_firstName | upper}} <span class="namespace"> </span> 
+              {{person_lastName | upper}}
             </h1><!-- end ngIf: data.name.primaryName -->
+            
           </span>
           <!-- ngIf: !data.person.person[0].birthDateGroup[0] -->
           <!-- ngIf: data.person.person[0].birthDateGroup[0] -->
@@ -67,7 +71,9 @@
                   <span class="nino-separator">11</span>
                   <span class="nino-separator">92</span>
                   <span class="nino-separator">84</span>
-                  <span>Z</span> · 
+                  <span>Z</span>
+                  <span>&nbsp; · &nbsp;</span>
+
                 </span>
               </span>
             </span>
