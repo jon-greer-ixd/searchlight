@@ -1,0 +1,13 @@
+{# state message #}
+{% set contact_message = "" %}
+{% extends "./update/toasters/toast.html" %}
+
+{% if data.preferredContactState == "updated" %}
+  {% set contact_message = "preferred method of contact set"  %}
+{% elif data.preferredContactState == "removed" %}
+  {% set contact_message = "preferred contact state removed"  %}
+{% endif %}
+
+  {% block message %}
+    {{ contact_message }}
+  {% endblock %}

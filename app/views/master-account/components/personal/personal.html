@@ -1,0 +1,50 @@
+<div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  
+  <h2>Personal details</h2>
+  
+  <div class="sl-primary-card sl-personal-details-card">
+
+    <div class="personal-details">
+            
+      {% if data.personalDetails.pv.show == true %}
+        {% include "./potentially-violent.html" %}
+        <hr class="light">
+      {% endif %}
+      
+      {% if data.personalDetails.nifu.show == true %}
+        {% include "./nifu.html" %}
+        <hr class="light">
+      {% endif %}
+            
+      {% include "./names.html" %}
+      <hr class="light">
+            
+      {% include "./dob.njk" %}
+      <hr class="light">
+            
+      {% if data.personalDetails.dateOfDeath.show == true %}
+        {% include "./dod.njk" %}
+        <hr class="light">
+      {% endif %}
+      
+      {% if data.personalDetails.disability.show == true %}
+        {% include "./disability.html" %}
+        <hr class="light">
+      {% endif %}
+
+      {% if data.personalDetails.specialNeeds.show == true %}
+        {% include "./special-needs.html" %}
+        <hr class="light">
+      {% endif %}
+
+      {% include "./nino.html" %}
+      <hr class="light">
+      
+      {% include "./creation.html" %}
+      <hr class="light">
+            
+      {% include "./other-personal-details.html" %}
+      
+  </div>
+    
+</div>

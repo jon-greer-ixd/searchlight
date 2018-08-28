@@ -1,0 +1,16 @@
+{% extends "./update/toasters/toast.html" %}
+
+{% set y = item.display %}
+{% set x = item.type %}
+{% set z = item.state %}
+
+{% block message %}
+  {{y}} 
+  {% if x == "phone" or x == "fax" or x == "other-phone" %}
+    number 
+  {% elif x == "email" %}
+    address 
+  {% endif %}
+  {{z}}
+{% endblock %}
+

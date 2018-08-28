@@ -1,0 +1,61 @@
+  <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+
+    <h2>Contact</h2>
+
+    <div id="sl-address-primary-card" class="sl-primary-card">
+
+      <div id="address-pane">
+        
+        {{counter}}
+        {% set counter = 0 %}
+        
+        <!-- find the pref -->
+        {% for list, item in data.contactTypes %}
+          {% if item.pref == true %}
+            {% if item.show == true %}
+            {% set counter = counter + 1 %}
+              {% include "./contact-template.html" %}
+              <hr class="light">
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        
+        <!-- show everything else -->
+        {% for list, item in data.contactTypes %}
+          {% if item.show == true and item.pref == false %}
+            {% set counter = counter + 1 %}
+            {% include "./contact-template.html" %}
+            <hr class="light">
+          {% endif %}
+        {% endfor %}
+        
+        <div class="grid-row">
+          <div class="column-one-third">
+            {% if counter == 0 %}
+              No contact details held for this customer.
+            {% else %}
+              &nbsp;
+            {% endif %}
+          </div>
+          
+          <div class="column-one-third">
+            &nbsp;
+          </div>
+          
+          <div class="column-one-third last-col">
+            
+            <ul class="edit-menu">
+              {% if (data.contactTypes | allContactsAdded) == false %}
+              <li>
+                <a class="secondary-link" href="../update/contact/add-contact">Add a contact method</a>
+              </li>
+              {% endif %}
+            </ul>
+            
+          </div>
+          
+        </div>
+        
+      </div>
+
+    </div>
