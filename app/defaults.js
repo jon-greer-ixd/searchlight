@@ -190,10 +190,10 @@ function messageCentre(item, type, state) {
   if (type == "other") {
     type = "";
   }
-  if (state == 2) {
+  if (state == 2 || state == "updating") {
     state = "updated";
   }
-  if (state == 3) {
+  if (state == 3 || state == "correcting") {
     state = "corrected";
   }
   if (state == "removing") {

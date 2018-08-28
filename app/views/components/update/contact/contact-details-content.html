@@ -10,18 +10,20 @@
         </label>
         <input class="form-control" name="contact-text-message" type="text" id="contact-text-message" {% if data.contactState == "correcting" %} value={{ data.contactTypes[data.contactType].value }} {% endif %}>
       </fieldset>
-
-      <div class="form-group prepop">
-        <label class="form-label" for="date">
-          Start date
-          <span class="form-hint">
-            For example 31/8/197
-          </span>
-        </label>
-        <input class="form-control box-one" id="date" name="date" type="text" {% if data.contactState == "correcting" %} value={{data.prepopulatedDate}} {% endif %}>
-        <a class="populate-link-one">Use today's date</a>
-      </div>
-
+      
+      {% if data.contactState != "correcting" %}
+        <div class="form-group prepop">
+          <label class="form-label" for="date">
+            Start date
+            <span class="form-hint">
+              For example 31/8/197
+            </span>
+          </label>
+          <input class="form-control box-one" id="date" name="date" type="text" {% if data.contactState == "correcting" %} value={{data.prepopulatedDate}} {% endif %}>
+          <a class="populate-link-one">Use today's date</a>
+        </div>
+      {% endif %}
+      
       <fieldset class="form-group">
         <div class="multiple-choice">
           <input id="pref" name="pref" type="checkbox" value="true"  {% if data.contactState == "correcting" and data.contactTypes[data.contactType].pref == true %} checked="checked" {% endif %}>
