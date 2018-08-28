@@ -338,6 +338,12 @@ router.get('/search-v3', function (req, res) {
   })
 })
 
+router.get('/search-v4', function (req, res) {
+  res.render('pages/search-v4.njk', {
+    ninoversion : ninoVersion
+  })
+})
+
 var tempInterest;
 
 router.use('/', main);
