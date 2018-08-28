@@ -1373,10 +1373,10 @@ hr.strong {
       padding-bottom: 10px;
       float: left;
       &:first-child {
-        width: 185px;
+        width: 285px;
       }
       &:nth-child(2) {
-        width: 377px;
+        width: 450px;
       }  
       &:nth-child(3) {
         width: 200px;
@@ -1416,7 +1416,7 @@ hr.strong {
         &:nth-child(5), &:nth-child(6), &:nth-child(11), &:nth-child(12) {
           width: 50px;
         }   
-        &:nth-child(3),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
+        &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
           background-color: #dee0e2;
         }
         &:nth-child(17) {
