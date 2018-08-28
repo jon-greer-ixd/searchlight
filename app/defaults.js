@@ -178,7 +178,7 @@ function changeSex(sex) {
 //data.toaster = messageCentre(item, state);
 function messageCentre(item, type, state) {
   var message;
-  if (state == 1) {
+  if (state == 1 || state == "adding") {
     state = "added";
   }
   if (type == "phone" || type == "fax" || type == "textPhone" || type == "typeTalk" || type == "other-phone") {
