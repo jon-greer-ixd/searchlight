@@ -1,20 +1,45 @@
 {% extends "layout.html" %}
 
-{% set person_name = "JAMES JONES" %}
-{% set person_dob = "21 Jun 1980" %}
-
-{% set account_creation = "15 Aug 2000" %}
-
 {% block page_title %}
   GOV.UK prototype kit
 {% endblock %}
 
 {% block content %}
 
+
+{% set person_title = "Mr" %}
+{% set person_firstName = "James" %}
+{% set person_lastName = "Jones" %}
+{% set person_dob = "21 Jan 1980" %}
+
 <div id="sl-account" class="container-fluid ng-scope">  
 
   <div class="sl-account-header row">
-              
+      
+      {% if data.authority.councilTaxReduction.state == "added" and data.authority.housingBenefit.state != "added" %}
+        {% include "components/update/toasters/ctr-interest-added.html" %}
+      {% endif %}
+
+      {% if data.authority.councilTaxReduction.state == "added" and data.authority.housingBenefit.state == "added" %}
+        {% include "components/update/toasters/interests-added.html" %}
+      {% endif %}
+
+      {% if data.authority.housingBenefit.state == "added" and data.authority.councilTaxReduction.state != "added" %}
+        {% include "components/update/toasters/hb-interest-added.html" %}
+      {% endif %}
+      
+      {% if data.authority.councilTaxReduction.state == "ended" %}
+        {% include "components/update/toasters/ctr-interest-ended.html" %}
+      {% endif %}
+    
+      {% if data.authority.housingBenefit.state == "ended" %}
+        {% include "components/update/toasters/hb-interest-ended.html" %}
+      {% endif %}
+
+      {% if data.authority.councilTaxReduction.state == "ended" and data.authority.housingBenefit.state == "ended" %}
+        {% include "components/update/toasters/interests-removed.html" %}
+      {% endif %}
+        
     <!-- ngIf: !data.person.person && !data.person.person[0].personalDetails -->
     <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" class="sl-primary-name-container-placeholder blue-header ng-scope">
       <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">
@@ -29,7 +54,7 @@
             <!-- ngIf: !data.name.nameDetails -->
             <!-- ngIf: data.name.primaryName -->
             <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
-              {{person_name}}
+              {{person_title | upper }} {{person_firstName | upper }} {{person_lastName | upper }}
             </h1><!-- end ngIf: data.name.primaryName -->
           </span>
           <!-- ngIf: !data.person.person[0].birthDateGroup[0] -->
@@ -58,6 +83,7 @@
                     <!-- ngIf: dod -->
                     <span ng-class="{'sl-person-age': !dates.accountFlag, 'sl-account-age-metadata': dates.accountFlag}" ng-if="dod" class="ng-scope sl-account-age-metadata">
                       <span class="ng-binding">{{person_dob}}</span> 
+                      <span ng-class="{'sl-warning-text-red':dates.bold}" class="ng-binding"> </span>
                     </span><!-- end ngIf: dod -->
                   </span><!-- end ngIf: dob -->
                 </span>
@@ -96,7 +122,7 @@
         <sl-account-local-nav><div id="sl-account-local-nav">
   <ul class="sl-local-nav-menu sl-metadata">
     <li class="sl-local-nav-item Personal active">
-      <a href="#" class="sl-local-nav-anchor sl-local-nav-anchor-first Personal" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Personal" analytics-label="Personal anchor tag" aria-label="personal details menu selection">
+      <a href="./account" class="sl-local-nav-anchor sl-local-nav-anchor-first Personal" tabindex="0" analytics-on="" analytics-category="Local Nav Bar" analytics-event="Personal" analytics-label="Personal anchor tag" aria-label="personal details menu selection">
         <span class="personal-scrollspy active" du-scrollspy="" du-smooth-scroll="Personal" offset="245">Personal details</span>
       </a>
     </li>
@@ -136,6 +162,8 @@
     </li>  
     
     
+
+    
   </ul>
   </div></sl-account-local-nav>
   </div>
@@ -154,16 +182,15 @@
   <div class="grid-row">
     <div class="column-one-third">
       <ul>
-        <li>Current name</li>
+        <li>Name</li>
       </ul>
     </div>
     
     <div class="column-one-third">
       <ul>
-        <li class="strong">{{person_name}}</li>
+        <li class="strong">{{person_title | upper }} {{person_firstName | upper }} {{person_lastName | upper }}</li>
         <li class="sl-secondary-text-color sl-metadata">
-          Name type 1 <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span> since {{account_creation}}
-           
+          Name type 1 &nbsp;·&nbsp;  since 5 Jun 2010
         </li>
       </ul>      
 <!--
@@ -201,11 +228,13 @@
 
     <div class="column-one-third">
       <ul>
-        <li class="strong">{{person_dob}}</li>
+        <li class="strong">8 Feb 1940</li>
+<!--
         <li class="sl-secondary-text-color sl-metadata">
-          Since {{account_creation}}
+          Since 5 Jun 2010
         </li>
-        <li class="multi-dates">
+-->
+        <li class="">
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata">Verified to level 2</span>
         </li>
@@ -308,6 +337,7 @@
       </div>
     </div>
     
+<!--
     <hr class="light">
     
     <div class="grid-row">
@@ -318,7 +348,6 @@
         <p class="strong">English</p>
       </div>
       <div class="column-one-third last-col">
-<!--
         <ul class="edit-menu">
           <li>
             <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
@@ -327,12 +356,11 @@
             <a class="secondary-link" href="">Change</a>
           </li>
         </ul>
--->
       </div>
     </div>
+-->
     
-    <hr class="light">
-    
+<!--
     <div class="grid-row">
       <div class="column-one-third">
         <p>Preferred language</p>
@@ -340,10 +368,12 @@
       <div class="column-one-third">
         <ul>
           <li class="strong">English</li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+          </li>
         </ul>      
       </div>
       <div class="column-one-third last-col">
-<!--
         <ul class="edit-menu">
           <li>
             <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
@@ -354,34 +384,9 @@
             <a class="secondary-link" href="">Change</a>
           </li>
         </ul>
+      </div>
+    </div>    
 -->
-      </div>
-    </div>
-    
-    <hr class="light">
-    
-    <div class="grid-row">
-      <div class="column-one-third">
-        <p>Marital or Civil Partnership status</p>
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="strong">Married</li>
-        </ul>
-      </div>
-      <div class="column-one-third last-col">
-<!--
-        <ul class="edit-menu">
-          <li>
-            <a class="under-link">View history</a> 
-          </li>
-          <li>
-            <a class="secondary-link" href="">Change</a>
-          </li>
-        </ul>
--->
-      </div>
-    </div>
 
 </div>
   
@@ -403,7 +408,6 @@
   
   <div class="previous-addresses">
     
-<!--
     <div class="grid-row" id="correspondence">
     
       <div class="column-one-third" >
@@ -423,19 +427,20 @@
         </div>
         <div class="column-two-thirds column-last">
           <ul class="edit-menu">
+<!--
             <li>
               <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add a correspondence address</a>
             </li>
+-->
           </ul>
         </div>
       {% endif %}
       
     </div>
--->
     
   </div>
   
-<!--  <hr class="light">-->
+  <hr class="light">
   
   <div class="grid-row">
 
@@ -575,7 +580,7 @@
 
     <div class="column-one-third">
       <ul>
-        <li>Home telephone number</li>
+        <li>Home telephone</li>
       </ul>
     </div>
   
@@ -597,13 +602,18 @@
 
     <div class="column-one-third">
       <ul>
-        <li>Email address</li>
+        <li>Email</li>
       </ul>
     </div>
   
     <div class="column-one-third">
       <ul>
-        <li><span class="strong">home@gmail.com</span></li>
+        <li><span class="strong">email@gmail.com</span></li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+        </li>
+-->
       </ul>
 
     </div>
@@ -619,19 +629,29 @@
 
     <div class="column-one-third">
       <ul>
-        <li>Mobile number</li>
+        <li>Mobile</li>
       </ul>
     </div>
   
     <div class="column-one-third">
       <ul>
         <li><span class="strong">07712 345 678</span></li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+        </li>
+-->
       </ul>
 
     </div>
   
     <div class="column-one-third">
       <ul class="edit-menu">
+<!--
+        <li>
+          <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
+        </li>
+-->
       </ul>
     </div>
     
@@ -641,159 +661,19 @@
   </div>
 </div>        
           
-<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-<h2>Interests</h2>
-<div id="sl-address-primary-card" class="sl-primary-card">      
-  
-  <div id="interests">
-    <div class="grid-row nav">
-      <div class="column-one-third">
-        Start date
-      </div>
-      <div class="column-one-third expanded">
-        Interest
-      </div>
-      <div class="column-one-third last-col">
-<!--
-        <ul class="edit-menu">
-          <li>
-            {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true  %}
-              &nbsp;
-            {% elif data.authority.housingBenefit.show == true %}
-              <a href="interest-change-handler/?interest=councilTaxReduction&state=updating" class="under-link">Add a Council tax reduction interest</a>
-            {% elif data.authority.councilTaxReduction.show == true %}
-              <a href="interest-change-handler/?interest=housingBenefit&state=updating" class="under-link">Add a Housing Benefit interest</a>
-            {% else %}
-              <a href="interest-change-handler/?interest=both&state=adding" class="under-link">Add an interest</a>
-            {% endif %}
-          </li>
-        </ul>
--->
-      </div>
-    </div>
-  
-    <hr>
-  
-    {% if data.authority.housingBenefit.show == true %}
-      <div class="grid-row interest">
-        <div class="column-one-third">
-          <ul>
-            <li>{{data.prepopulatedString}}</li>
-          </ul>
-        </div>
+        <div name="interests" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Interests</h2>
 
-          <div class="column-one-third expanded">
-            <ul>
-              <li><span class="strong"><span class="interest-type">System</span>HOUSING BENEFIT</span></li>
-              <li class="sl-secondary-text-color sl-metadata">
-                Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
-            </ul>
+         <div class="sl-primary-card ng-scope" ng-if="!data.fullAwardHistory || data.fullAwardHistory.empty">
+
+          <div class="row ng-scope" ng-if="data.fullAwardHistory.empty">
+
+              <div class="col-xs-12">No interests held for this customer.
+
+              </div>
+            </div>
           </div>
-
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-              <li>
-                <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
-              </li>
-              <li>
-                {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true %}
-                  <a href="interest-change-handler/?interest=both&state=ending" class="under-link">End an interest</a>
-                {% else %}
-                  <a href="interest-change-handler/?interest=housingBenefit&state=ending" class="under-link">End this interest</a>
-                {% endif %}
-              </li>
-            </ul>
-          </div>
-        </div> 
-        <hr class="light">
-      {% endif %}
-
-    
-      {% if data.authority.councilTaxReduction.show == true %}
-        <div class="grid-row interest">
-          <div class="column-one-third">
-            <ul>
-              <li>{{data.prepopulatedString}}</li>
-            </ul>
-          </div>
-
-          <div class="column-one-third expanded">
-            <ul>
-              <li><span class="strong"><span class="interest-type">System</span>COUNCIL TAX REDUCTION</span></li>
-              <li class="sl-secondary-text-color sl-metadata">
-                Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">GATESHEAD COUNCIL</a>
-            </ul>
-          </div>
-
-          <div class="column-one-third last-col">
-            <ul class="edit-menu">
-              <li>
-                <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
-              </li>
-              <li>
-                {% if data.authority.housingBenefit.show == true and data.authority.councilTaxReduction.show == true %}
-                  <a href="interest-change-handler/?interest=both&state=ending" class="under-link">End an interest</a>
-                {% else %}
-                  <a href="interest-change-handler/?interest=councilTaxReduction&state=ending" class="under-link">End this interest</a>
-                {% endif %}
-              </li>
-            </ul>
-          </div>
-        </div> 
-        <hr class="light">
-      {% endif %}
-
-      <div class="grid-row interest">
-        <div class="column-one-third">
-          <ul>
-            <li>01 Jan 2010</li>
-          </ul>
         </div>
-        
-        <div class="column-one-third expanded">
-          <ul>
-            <li><span class="strong"><span class="interest-type">System</span>State Pension</span></li>
-            <li class="sl-secondary-text-color sl-metadata">
-              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
-          </ul>
-        </div>
-        
-        <div class="column-one-third last-col">
-          <ul class="edit-menu">
-              <li>
-                <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
-              </li>
-            </ul>
-        </div>
-      </div> 
-
-      <hr class="light">
-  
-      <div class="grid-row interest">
-        <div class="column-one-third">
-          <ul>
-            <li>01 Jan 2010</li>
-          </ul>
-        </div>
-        
-        <div class="column-one-third expanded">
-          <ul>
-            <li><span class="strong"><span class="interest-type crl">CRL</span>State Pension</span></li>
-            <li class="sl-secondary-text-color sl-metadata">
-              Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">THE PENSION SERVICE</a>
-          </ul>
-        </div>
-        
-        <div class="column-one-third last-col">
-        </div>
-      </div> 
-  
-      <hr>
-  
-      {% include "components/update/auth-interests/previous-interests.html" %}
-    
-  </div>
-</div></div>
           
 
         <div name="Benefits" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
@@ -821,7 +701,6 @@
             </div>
           </div>
         </div>
-          
           
         <div class="last-card">
         </div>
