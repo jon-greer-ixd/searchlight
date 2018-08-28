@@ -1376,7 +1376,7 @@ hr.strong {
         width: 185px;
       }
       &:nth-child(2) {
-        width: 454px;
+        width: 377px;
       }  
       &:nth-child(3) {
         width: 200px;
@@ -1395,7 +1395,7 @@ hr.strong {
       margin: 0;
       padding: 0;
       border-bottom: 1px solid #bfc1c3;
-      width: 1940px;
+      width: 1772px;
       float: left;
       &.header {
         border-top: 1px solid #bfc1c3;
@@ -1412,6 +1412,9 @@ hr.strong {
         }
         &:nth-child(3) {
           width: 100px;
+        }   
+        &:nth-child(5), &:nth-child(6), &:nth-child(11), &:nth-child(12) {
+          width: 50px;
         }   
         &:nth-child(3),&:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7) {
           background-color: #dee0e2;
