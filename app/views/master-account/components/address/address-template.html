@@ -1,0 +1,48 @@
+<div class="grid-row" id="correspondence">
+  <div class="column-one-third" >
+    <ul>
+      <li>
+        {% if address.type == 1 %}
+          Residential
+        {% elif address.type == 2 %}
+          Correspondence
+        {% endif %}
+        address
+      </li>
+      
+      {% if ddress.type = 2 %}
+        <li class="sl-secondary-text-color sl-metadata">
+          {{editDate}} - present
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+  {% if correspondence == true %}
+    {% include "./correspondence.html" %}
+  {% else %}
+    <div class="column-one-third">
+    </div>
+    <div class="column-two-thirds column-last">
+      <ul class="edit-menu">
+        <li>
+          <a class="secondary-link" href="update-type-handler?data=add_correspondence">Add a correspondence address</a>
+        </li>
+      </ul>
+    </div>
+  {% endif %}
+</div>
+
+
+<!-- 
+
+  line_1 : "1 Current Crescent",
+  line_2 : "Gateshead",
+  line_3 : "Tyne and wear",
+  postcode : "NE1 1HH",
+  startDate : "01 Jan 1990",
+  endDate : "present",
+  type : 1,
+  status : "live"
+  previous : false
+
+-->

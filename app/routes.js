@@ -1074,6 +1074,34 @@ router.get(/check-name-handler/, function (req, res) {
 /** ADDRESS **/
 /*************/
 
+//master-account
+router.get('/master-account/account', function (req, res) {
+  res.render('master-account/account.html', {
+    dataState : dataState,
+    today : dates.todayAsString(),
+    residentialaddress : residentialAddress,
+    correspondenceaddress : correspondenceAddress,
+    previousaddress : previousAddress,
+    startdate : residentialAddress.startDate,
+    updated : dataState.updatedToNewAddress,
+    cherished : dataState.cherished,
+    editDate : content.editDate,
+    correspondence : dataState.correspondenceAdded,
+    statusupdated : dataState.statusUpdated,
+    addresscorrected : dataState.addressCorrected,
+    correspondenceremoved : dataState.correspondenceRemoved,
+    dateisupdated : dataState.dateIsUpdated,
+    interestAdded : dataState.interestAdded,
+    interestRemoved : dataState.interestRemoved,
+    interestTransfered : dataState.interestTransfered,
+    typeTwoAdded : dataState.typeTwoAdded,
+    cherishedlinecorrected : dataState.cherishedLineCorrected,
+    currentstatus : dataState.currentStatus,
+    statuscorrected : dataState.statusCorrected,
+    interests : interests
+  })
+})
+
 //account2
 router.get('/account2/account', function (req, res) {
   res.render('account2/account.html', {

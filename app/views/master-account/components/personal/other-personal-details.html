@@ -13,25 +13,25 @@
     {% for items, item in data.personalDetails %}
       {% if item.show == true %}
         {% if items == "gender" %}
-          {% include "./personal/gender.html" %}
+          {% include "./gender.html" %}
           <hr class="light">
         {% elif items == "recordLevel" %}
-          {% include "./personal/record-level.html" %}
+          {% include "./record-level.html" %}
           <hr class="light">
         {% elif items == "preferredLanguage" %}
-          {% include "./personal/preferred-language.html" %}
+          {% include "./preferred-language.html" %}
           <hr class="light">
         {% elif items == "spokenLanguage" %}
-          {% include "./personal/spoken-language.html" %}
+          {% include "./spoken-language.html" %}
           <hr class="light">
         {% elif items == "nationality" %}
-          {% include "./personal/nationality.html" %}
+          {% include "./nationality.html" %}
           <hr class="light">
         {% elif items == "immigration" %}
-          {% include "./personal/immigration.njk" %}
+          {% include "./immigration.njk" %}
           <hr class="light">
         {% elif items == "maritalStatus" %}
-          {% include "./personal/marital.html" %}
+          {% include "./marital.html" %}
           <hr class="light">
         {% endif %}
         <!-- Spoken language -->
