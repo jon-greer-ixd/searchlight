@@ -1376,7 +1376,7 @@ hr.strong {
         width: 285px;
       }
       &:nth-child(2) {
-        width: 450px;
+        width: 490px;
       }  
       &:nth-child(3) {
         width: 200px;
@@ -1395,7 +1395,7 @@ hr.strong {
       margin: 0;
       padding: 0;
       border-bottom: 1px solid #bfc1c3;
-      width: 1772px;
+      width: 1872px;
       float: left;
       &.header {
         border-top: 1px solid #bfc1c3;
@@ -1413,7 +1413,7 @@ hr.strong {
         &:nth-child(3) {
           width: 100px;
         }   
-        &:nth-child(5), &:nth-child(6), &:nth-child(11), &:nth-child(12) {
+        &:nth-child(5), &:nth-child(11) {
           width: 50px;
         }   
         &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9) {

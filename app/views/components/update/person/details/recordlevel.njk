@@ -10,29 +10,33 @@
         
         <legend class="visually-hidden">Is this person disabled?</legend>
         
-        {% if data.updateType == 2 %}
-          {% if data.personalDetails.recordLevel.value != "1 - Unrestricted access" %}
-            <div class="multiple-choice">
-              <input id="1" type="radio" name="personalDetailValue" value="1 - Unrestricted access">
-              <label for="1">1 - Unrestricted access</label>
-            </div>
-          {% endif %}
+        {% if data.personalDetails.recordLevel.value != "1 - Unrestricted access" %}
+          <div class="multiple-choice">
+            <input id="1" type="radio" name="personalDetailValue" value="1 - Unrestricted access">
+            <label for="1">1 - Unrestricted access</label>
+          </div>
         {% endif %}
         
-        <div class="multiple-choice">
-          <input id="2" type="radio" name="personalDetailValue" value="2 - Transgender" {% if data.personalDetails.recordLevel.value == "2 - Transgender" %} checked="checked" {% endif %}>
-          <label for="2">2 - Transgender</label>
-        </div>
+        {% if data.personalDetails.recordLevel.value != "2 - Transgender" %}
+          <div class="multiple-choice">
+            <input id="2" type="radio" name="personalDetailValue" value="2 - Transgender"  >
+            <label for="2">2 - Transgender</label>
+          </div>
+        {% endif %}
         
-        <div class="multiple-choice">
-          <input id="3" type="radio" name="personalDetailValue" value="3 - VIP" {% if data.personalDetails.recordLevel.value == "3 - VIP" %}  checked="checked" {% endif %}>
-          <label for="3">3 - VIP</label>
-        </div>
+        {% if data.personalDetails.recordLevel.value != "3 - VIP" %}
+          <div class="multiple-choice">
+            <input id="3" type="radio" name="personalDetailValue" value="3 - VIP" {>
+            <label for="3">3 - VIP</label>
+          </div>
+        {% endif %}
         
-        <div class="multiple-choice">
-          <input id="4" type="radio" name="personalDetailValue" value="4 - Other" {% if data.personalDetails.recordLevel.value == "4 - Other" %} checked="checked" {% endif %}>
-          <label for="4">4 - Other</label>
-        </div>
+        {% if data.personalDetails.recordLevel.value != "4 - Other" %}
+          <div class="multiple-choice">
+            <input id="4" type="radio" name="personalDetailValue" value="4 - Other">
+            <label for="4">4 - Other</label>
+          </div>
+        {% endif %}
         
       </fieldset>
       

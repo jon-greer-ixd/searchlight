@@ -349,13 +349,14 @@ var tempInterest;
 router.use('/', main);
   // Route index page
   router.get('/', function (req, res) { 
-      
+    
+          
   for (var key in defaults) {
     if (defaults.hasOwnProperty(key)) {
       req.session.data[key] = defaults[key];
     }
   }
-        
+      
   req.session.data.details = require('./defaults.js').details;
     
   req.session.data.personalDetails = require('./defaults.js').personalDetails;

@@ -15,7 +15,10 @@ var defaults = {
   showDeath : false,
           
   //messagecentre
-  toaster : null
+  toaster : null,
+  
+  //gcii
+  gciiExample : 4
 };
 
 var authority = {
@@ -54,7 +57,7 @@ var personalDetails = {
   "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
   "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
   "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
-  "recordLevel" : {state : null, show : false, display : "Special customer record level", value : null},
+  "recordLevel" : {state : null, show : true, display : "Customer record level", value : "1 - Unrestricted access"},
   "sex" : {state : null, show : true, display : "Sex", value : "Female"},
   "gender" : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "Identity fraud interest", value : null},
