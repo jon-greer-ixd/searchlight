@@ -78,11 +78,23 @@
             
             {% if data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
               status
+            {% elif data.personalDetail == "nino" %}
+              {{data.personalDetails[data.personalDetail].display}}
             {% else %}
               {{data.personalDetails[data.personalDetail].display | lower}}
             {% endif %}
           </label>
         </div>
+
+        {% if data.personalDetail == "nino" %}
+          <div class="multiple-choice">
+            <input id="example-contact-by-text" type="radio" name="updateType" value=4>
+            <label for="example-contact-by-text">
+              Update the verification level 
+            </label>
+          </div>
+       {% endif %}
+        
         
       {% if data.personalDetail == "nationality" or data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "specialNeeds" or data.personalDetail == "preferredLanguage" or data.personalDetail == "spokenLanguage" or data.personalDetail == "immigration" or data.personalDetail == "disability" %}
         <div class="multiple-choice">

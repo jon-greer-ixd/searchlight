@@ -97,18 +97,20 @@ if (document.getElementById("cancel-boxes")) {
   var boxTwo = document.getElementById("partner");
   var boxThree = document.getElementById("member");
   var clearBox = document.getElementById("none");
-  clearBox.addEventListener('change', cancelPrefs);
   function cancelPrefs() {
-     boxOne.checked = false;
-     boxTwo.checked = false;
-     boxThree.checked = false;
+    boxOne.checked = false;
+    boxTwo.checked = false;
+    boxThree.checked = false;
+    console.log("here");
   }
+  function changePrefs() {
+    clearBox.checked = false;
+    console.log("here");
+  }
+  clearBox.addEventListener('change', cancelPrefs);
   boxOne.addEventListener('change', changePrefs);
   boxTwo.addEventListener('change', changePrefs);
   boxThree.addEventListener('change', changePrefs);
-  function changePrefs() {
-     clearBox.checked = false;
-  }
 }
 
 

@@ -67,7 +67,9 @@ var personalDetails = {
   "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
   "preferredLanguage" : {state : null, show : false, display : "Preferred language", value : null},
   "immigration" : {state : null, show : false, display : "Immigration status", value : null, level : null},
-  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null}
+  "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null},
+  "nino" : {state : null, show : true, display : "National Insurance number", value : null},
+  "ninoVerificationLevel" : {state : null, show : true, display : "National Insurance number verification level", value : "Verified"}
 }
 
 

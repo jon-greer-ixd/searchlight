@@ -632,6 +632,7 @@ router.get(/adding-detail-handler/, function (req, res) {
 })
 
 router.get(/person-change-handler/, function (req, res) {
+  console.log(req.query.personalDetail);
   req.session.data.toaster = null;
   req.session.data.personalDetail = req.query.personalDetail;
   if (req.session.data.personalDetail == "sex") {
@@ -654,6 +655,11 @@ router.get(/person-change-handler/, function (req, res) {
 })
 
 router.get(/change-person-type-handler/, function (req, res) {
+  if (req.session.data.personalDetail == "nino" || req.session.data.updateType == 4) {
+    req.session.data.updateType == 2;
+    req.session.data.personalDetail = "ninoVerificationLevel";
+    res.redirect('/update/person/update')
+  }
   if (req.session.data.personalDetail == "disability") {
     if(req.session.data.updateType == 3) {
       res.redirect('/update/person/update')

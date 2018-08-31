@@ -9,7 +9,11 @@
           
           <h2 class="title">
             Change the 
-            {{data.personalDetails[data.personalDetail].display | lower}}
+            {% if data.personalDetail == "nino" %}
+              {{data.personalDetails[data.personalDetail].display}}
+            {% else %}
+              {{data.personalDetails[data.personalDetail].display | lower}}
+            {% endif %}
           </h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

@@ -50,6 +50,8 @@
                 {% include "components/update/person/details/immigration.njk" %}
               {% elif data.personalDetail == "dateOfBirth" %}
                 {% include "components/update/person/details/dateOfBirth.njk" %}
+              {% elif data.personalDetail == "ninoVerificationLevel" %}
+                {% include "components/update/person/details/ninolevel.njk" %}
               {% endif %}
           </div>
         </div>
