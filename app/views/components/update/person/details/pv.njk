@@ -4,7 +4,7 @@
 
     <div class="column-two-thirds">
       <p class="form-label">Select all that apply</p>
-      <form class="form" method="get" action="check" id="cancel-boxes">
+      <form class="form" method="get" action="check">
 
         <fieldset class="form-group">
 
@@ -13,17 +13,17 @@
           </legend>
           
           <div class="multiple-choice">
-            <input id="person" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+            <input id="person" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
             <label for="person">The person</label>
           </div>
           
           <div class="multiple-choice">
-            <input id="partner" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+            <input id="partner" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
             <label for="partner">The person's partner</label>
           </div>
           
           <div class="multiple-choice">
-            <input id="member" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+            <input id="member" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
             <label for="member">Someone else in the household</label>
           </div>
           
@@ -31,8 +31,8 @@
             <p class="form-block" style="margin-top:-10px;">or</p>
 
             <div class="multiple-choice">
-              <input id="none" name="personalDetailValue" type="checkbox" value=null>
-              <label for="none">Remove the potentially violent status</label>
+              <input id="unknown" name="personalDetailValue" type="checkbox" value=null>
+              <label for="unknown">Remove the potentially violent status</label>
             </div>
           {% endif %}
 

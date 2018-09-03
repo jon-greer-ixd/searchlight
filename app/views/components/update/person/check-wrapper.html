@@ -21,8 +21,10 @@
               {% endif %}
             
             {% elif data.updateType == 3 %}
-              Correct the
-            
+              Correct 
+                {% if data.personalDetail != "sex" %}
+                  the
+                {% endif %}
             {% elif data.editState == "ending" or data.editState == "removing" %}
               Change
               {% if data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "disability" or data.personalDetail == "immigration" %}     the 

@@ -92,26 +92,26 @@ if (document.getElementById("contact-boxes")) {
 }
 
 //checkbox contact
-if (document.getElementById("cancel-boxes")) {
-  var boxOne = document.getElementById("person");
-  var boxTwo = document.getElementById("partner");
-  var boxThree = document.getElementById("member");
-  var clearBox = document.getElementById("none");
-  function cancelPrefs() {
-    boxOne.checked = false;
-    boxTwo.checked = false;
-    boxThree.checked = false;
-    console.log("here");
-  }
-  function changePrefs() {
-    clearBox.checked = false;
-    console.log("here");
-  }
-  clearBox.addEventListener('change', cancelPrefs);
-  boxOne.addEventListener('change', changePrefs);
-  boxTwo.addEventListener('change', changePrefs);
-  boxThree.addEventListener('change', changePrefs);
-}
+//if (document.getElementById("cancel-boxes")) {
+//  var boxOne = document.getElementById("person");
+//  var boxTwo = document.getElementById("partner");
+//  var boxThree = document.getElementById("member");
+//  var clearBox = document.getElementById("none");
+//  function cancelPrefs() {
+//    boxOne.checked = false;
+//    boxTwo.checked = false;
+//    boxThree.checked = false;
+//    console.log("here");
+//  }
+//  function changePrefs() {
+//    clearBox.checked = false;
+//    console.log("here");
+//  }
+//  clearBox.addEventListener('change', cancelPrefs);
+//  boxOne.addEventListener('change', changePrefs);
+//  boxTwo.addEventListener('change', changePrefs);
+//  boxThree.addEventListener('change', changePrefs);
+//}
 
 
 //if (document.getElementById("country-selector")) {
@@ -139,12 +139,12 @@ if (document.getElementsByClassName("multi-boxes")) {
     for (var box in boxes) {
      boxes[box].checked = false;
     }
+  function changePrefs() {
+     clearBox.checked = false;
   }
   for (var box in boxes) {
      boxes[box].addEventListener('change', changePrefs);
     }
-  function changePrefs() {
-     clearBox.checked = false;
   }
 }
 
