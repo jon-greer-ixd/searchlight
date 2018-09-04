@@ -344,6 +344,12 @@ router.get('/search-v4', function (req, res) {
   })
 })
 
+router.get('/search-v5', function (req, res) {
+  res.render('pages/search-v5.njk', {
+    ninoversion : ninoVersion
+  })
+})
+
 var tempInterest;
 
 router.use('/', main);
@@ -737,7 +743,7 @@ handle gender ()
 req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
 //specific values for record level
 if (req.session.data.personalDetail == "recordLevel") {
-  if (req.session.data.personalDetails.recordLevel.value == "1 - Unrestricted access") {
+  if (req.session.data.personalDetails.recordLevel.value == "Unrestricted access") {
     nullFalse();  
   }
 }
