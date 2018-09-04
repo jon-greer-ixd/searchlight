@@ -10,31 +10,25 @@
                         
             {% if data.contactState == "adding" %}
               Add
-            {% elif data.contactState == "updating" %}
-              Update
-            {% elif data.contactState == "correcting" %}
-              Correct
-            {% elif data.contactState == "removing" %}
-              End
-            {% endif %}
-
-            {% if data.contactState == "adding" or data.contactState == "updating" or data.contactState == "correcting" or data.contactState == "removing" %}
-
               {% if data.contactType == "eveningTelephone" %}
                 an
-              {% elif data.contactType != "otherContact"%}
+              {% elif data.contactType != "otherContact" %}
                 a
               {% endif %}
+            
+            {% elif data.contactState == "updating" %}
+              Update their
+            {% elif data.contactState == "correcting" %}
+              Correct their
+            {% elif data.contactState == "removing" %}
+              End their
+            {% endif %}
 
-              {{ data.contactTypes[data.contactType].display | lower }} 
-              {{ data.contactTypes[data.contactType].type | contactIs }}
+
+            {{ data.contactTypes[data.contactType].display | lower }} 
+            {{ data.contactTypes[data.contactType].type | contactIs }}
             
-            {% endif %}
-            
-            {% if data.preferredContactState == "removing" %}
-              Remove the preferred method of contact status
-            {% endif %}
-            
+                        
             {% if data.preferredContactState == "updating" %}
               Set a preferred contact method
             {% endif %}

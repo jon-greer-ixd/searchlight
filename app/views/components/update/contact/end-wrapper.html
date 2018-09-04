@@ -9,14 +9,7 @@
           
             <h2 class="title">
               
-              End             
-              
-              {% if data.contactType == "eveningTelephone" %}
-                an
-              {% elif data.contactType != "otherContact" %}
-                a
-              {% endif %}
-            
+              End their           
               {{ data.contactTypes[data.contactType].display | lower  }}
               {{ data.contactTypes[data.contactType].type | contactIs  }}
           

@@ -18,28 +18,31 @@
             <div class="multiple-choice">
               <input id="update" type="radio" name="data" value="updating">
               <label for="update">
+                Update
+<!--
                 {% if data.contactType == "otherContact" %}
                   Update the details
                 {% else %}
                   Update
-<!--                  Update the {{ data.contactTypes[data.contactType].display }} {{ data.contactTypes[data.contactType].type | contactIs }}-->
+                  Update the {{ data.contactTypes[data.contactType].display }} {{ data.contactTypes[data.contactType].type | contactIs }}
                 {% endif %}
+-->
               </label>
             </div>
               
-<!--
             {% if data.contactTypes[data.contactType].pref == true %}
+<!--
               <div class="multiple-choice">
                 <input id="removePref" type="radio" name="data" value="removePref">
                   <label for="removePref">Remove the preferred method of contact status</label>
               </div>
+-->
             {% else %}
               <div class="multiple-choice">
                 <input id="settingPref" type="radio" name="data" value="setPref">
                   <label for="settingPref">Set as their preferred method of contact</label>
               </div>
             {% endif %}
--->
               
             <div class="multiple-choice">
               <input id="correct" type="radio" name="data" value="correcting">

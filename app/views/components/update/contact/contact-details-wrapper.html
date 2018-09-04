@@ -10,18 +10,18 @@
             
             {% if data.contactState == "adding" %}
               Add
+              {% if data.contactType == "eveningTelephone" %}
+                an
+              {% elif data.contactType != "otherContact" %}
+                a
+              {% endif %}
+
             {% elif data.contactState == "updating" %}
-              Update
+              Update their
             {% elif data.contactState == "correcting" %}
-              Correct
+              Correct their
             {% endif %}
-            
-            {% if data.contactType == "eveningTelephone" %}
-              an
-            {% elif data.contactType != "otherContact" %}
-              a
-            {% endif %}
-            
+                      
             {{ data.contactTypes[data.contactType].display | lower  }}
             {{ data.contactTypes[data.contactType].type | contactIs  }}
             
