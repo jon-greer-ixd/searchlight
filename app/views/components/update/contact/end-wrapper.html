@@ -10,7 +10,11 @@
             <h2 class="title">
               
               End their           
+            {% if data.contactType == "typeTalk" %}
+              {{ data.contactTypes[data.contactType].display  }}
+            {% else %}
               {{ data.contactTypes[data.contactType].display | lower  }}
+            {% endif %}
               {{ data.contactTypes[data.contactType].type | contactIs  }}
           
             </h2>

@@ -10,12 +10,23 @@
             
             Change their
             
+            {% if data.contactType == "typeTalk" %}
+              {{ data.contactTypes[data.contactType].display  }}
+            {% else %}
+              {{ data.contactTypes[data.contactType].display | lower  }}
+            {% endif %}
+              {{ data.contactTypes[data.contactType].type | contactIs  }}
+            
+            
+            
+<!--
             {{ data.contactTypes[data.contactType].display | lower}} 
             {% if data.contactTypes[data.contactType].type == "phone" or  data.contactTypes[data.contactType].type == "fax" or  data.contactTypes[data.contactType].type == "other-phone" %}
               number
             {% elif  data.contactTypes[data.contactType].type == "email" %}
               address
             {% endif%}
+-->
             
           </h2>
           

@@ -7,31 +7,36 @@
           <a class="link-back" onCLick="history.back()">Back</a>          
           
           <h2 class="title">
-                        
-            {% if data.contactState == "adding" %}
-              Add
-              {% if data.contactType == "eveningTelephone" %}
-                an
-              {% elif data.contactType != "otherContact" %}
-                a
-              {% endif %}
             
-            {% elif data.contactState == "updating" %}
-              Update their
-            {% elif data.contactState == "correcting" %}
-              Correct their
-            {% elif data.contactState == "removing" %}
-              End their
-            {% endif %}
-
-
-            {{ data.contactTypes[data.contactType].display | lower }} 
-            {{ data.contactTypes[data.contactType].type | contactIs }}
-            
-                        
             {% if data.preferredContactState == "updating" %}
               Set a preferred contact method
+            {% else %}
+
+              {% if data.contactState == "adding" %}
+                Add
+                {% if data.contactType == "eveningTelephone" %}
+                  an
+                {% elif data.contactType != "otherContact" %}
+                  a
+                {% endif %}
+
+              {% elif data.contactState == "updating" %}
+                Update their
+              {% elif data.contactState == "correcting" %}
+                Correct their
+              {% elif data.contactState == "removing" %}
+                End their
+              {% endif %}
+
+              {% if data.contactType == "typeTalk" %}
+                {{ data.contactTypes[data.contactType].display  }}
+              {% else %}
+                {{ data.contactTypes[data.contactType].display | lower  }}
+              {% endif %}
+                {{ data.contactTypes[data.contactType].type | contactIs  }}
+            
             {% endif %}
+                        
             
           </h2>
           

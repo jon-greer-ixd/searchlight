@@ -21,9 +21,13 @@
             {% elif data.contactState == "correcting" %}
               Correct their
             {% endif %}
-                      
-            {{ data.contactTypes[data.contactType].display | lower  }}
-            {{ data.contactTypes[data.contactType].type | contactIs  }}
+            
+            {% if data.contactType == "typeTalk" %}
+              {{ data.contactTypes[data.contactType].display  }}
+            {% else %}
+              {{ data.contactTypes[data.contactType].display | lower  }}
+            {% endif %}
+              {{ data.contactTypes[data.contactType].type | contactIs  }}
             
         </h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">

@@ -18,7 +18,7 @@
               {% if (data.contactTypes | lastTelephoneCheck) == "none" %}
                 <div class="multiple-choice">
                   <input id="telephone" type="radio" name="contactType" value="telephone">
-                  <label for="telephone">Telephone number</label>
+                  <label for="telephone">Telephone or mobile number</label>
                 </div>
               {% else %}
                 <div class="multiple-choice">
@@ -31,48 +31,48 @@
             {% if data.contactTypes.homeEmail.show == false and data.contactTypes.businessEmail.show == false %}
               <div class="multiple-choice">
                 <input id="email" type="radio" name="contactType" value="email">
-                <label for="email">Email</label>
+                <label for="email">Email address</label>
               </div>
             {% elif data.contactTypes.homeEmail.show == true and data.contactTypes.businessEmail.show == false %}
               <div class="multiple-choice">
                 <input id="businessEmail" type="radio" name="contactType" value="businessEmail">
-                <label for="businessEmail">Business email</label>
+                <label for="businessEmail">Business email address</label>
               </div>
             {% elif data.contactTypes.homeEmail.show == false and data.contactTypes.businessEmail.show == true %}
               <div class="multiple-choice">
                 <input id="homeEmail" type="radio" name="contactType" value="homeEmail">
-                <label for="homeEmail">Home email</label>
+                <label for="homeEmail">Home email address</label>
               </div>
             {% endif %}
             
             {% if data.contactTypes.textPhone.show == false %}
               <div class="multiple-choice">
                 <input id="textphone" type="radio" name="contactType" value="textPhone">
-                <label for="textphone">TextPhone</label>
+                <label for="textphone">TextPhone number</label>
               </div>
             {% endif %}
             
             {% if data.contactTypes.typeTalk.show == false %}
               <div class="multiple-choice">
                 <input id="typetalk" type="radio" name="contactType" value="typeTalk">
-                <label for="typetalk">TypeTalk</label>
+                <label for="typetalk">Typetalk number</label>
               </div>
             {% endif %}
             
             {% if data.contactTypes.homeFax.show == false and data.contactTypes.businessFax.show == false %}
               <div class="multiple-choice">
                 <input id="fax" type="radio" name="contactType" value="fax">
-                <label for="fax">Fax</label>
+                <label for="fax">Fax number</label>
               </div>
             {% elif data.contactTypes.homeFax.show == false and data.contactTypes.businessFax.show == true %}
               <div class="multiple-choice">
                 <input id="homeFax" type="radio" name="contactType" value="homeFax">
-                <label for="homeFax">Home fax</label>
+                <label for="homeFax">Home fax number</label>
               </div>
             {% elif data.contactTypes.homeFax.show == true and data.contactTypes.businessFax.show == false %}
               <div class="multiple-choice">
                 <input id="businessFax" type="radio" name="contactType" value="businessFax">
-                <label for="businessFax">Business fax</label>
+                <label for="businessFax">Business fax number</label>
               </div>
             {% endif %}
             
