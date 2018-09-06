@@ -12,7 +12,7 @@
               Add
               {% if data.contactType == "eveningTelephone" %}
                 an
-              {% elif data.contactType != "otherContact" %}
+              {% else %}
                 a
               {% endif %}
 
@@ -24,6 +24,8 @@
             
             {% if data.contactType == "typeTalk" %}
               {{ data.contactTypes[data.contactType].display  }}
+            {% elif data.contactType == "otherContact" %}
+              contact method
             {% else %}
               {{ data.contactTypes[data.contactType].display | lower  }}
             {% endif %}

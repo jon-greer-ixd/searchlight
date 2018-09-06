@@ -548,10 +548,19 @@ router.get(/pref-handler/, function (req, res) {
 router.get(/check-contact-handler/, function (req, res) {  
   function setSelectedContactState(newState) {
     req.session.data.contactTypes[req.session.data.contactType].state = newState;
-    req.session.data.toaster = messageCentre(
-      req.session.data.contactTypes[req.session.data.contactType].display, 
-      req.session.data.contactTypes[req.session.data.contactType].type, 
-      req.session.data.contactState);
+    if (req.session.data.contactType == "otherContact") {
+      req.session.data.toaster = messageCentre (
+        "Contact method", 
+        req.session.data.contactTypes[req.session.data.contactType].type, 
+        req.session.data.contactState
+      );
+    } else {
+      req.session.data.toaster = messageCentre (
+        req.session.data.contactTypes[req.session.data.contactType].display, 
+        req.session.data.contactTypes[req.session.data.contactType].type, 
+        req.session.data.contactState
+      )
+    }
   }
   function setSelectedContactToShow(show) {
     req.session.data.contactTypes[req.session.data.contactType].show = show;

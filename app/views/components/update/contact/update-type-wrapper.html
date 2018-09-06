@@ -8,12 +8,14 @@
           
           <h2 class="title">
             
-            Change their
+            Change
             
             {% if data.contactType == "typeTalk" %}
-              {{ data.contactTypes[data.contactType].display  }}
+              their {{ data.contactTypes[data.contactType].display  }}
+            {% elif data.contactType == "otherContact" %}
+              a contact method
             {% else %}
-              {{ data.contactTypes[data.contactType].display | lower  }}
+              their {{ data.contactTypes[data.contactType].display | lower  }}
             {% endif %}
               {{ data.contactTypes[data.contactType].type | contactIs  }}
             

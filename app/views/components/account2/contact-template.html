@@ -1,7 +1,13 @@
 <div class="grid-row">
   <div class="column-one-third">
     <ul>
-      <li>{{item.display}}</li>
+      
+      {% if item.display == "Another contact method" %}
+        <li>Other</li>
+      {% else %}
+        <li>{{item.display}}</li>
+      {% endif %}
+      
     </ul>
   </div>
   <div class="column-one-third">

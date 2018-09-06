@@ -8,7 +8,16 @@
         
         {% if data.contactState == "adding" or data.contactState == "updating" %}
           <tr>
-            <td><span class="strong">{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</span></td>
+            <td>
+              <span class="strong">
+                {% if data.contactType == "otherContact" %}
+                  Contact details
+                {% else %}
+                  {{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}
+                {% endif %}
+
+              </span>
+            </td>
             <td>{{ data.contactTypes[data.contactType].value }}</td>
             <td><a>Change</a></td>
           </tr>     
@@ -71,7 +80,12 @@
         {% if data.preferredContactState == "updating" %}
           <tr>
             <td><span class="strong">Contact method</span></td>
-            <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
+            {% if data.contactType == "otherContact" %}
+              <td>{{ data.contactTypes.otherContact.value }}</td>
+            {% else %}
+              <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
+            {% endif %}
+            
             <td><a>Change</a></td>
           </tr>
         {% endif %}

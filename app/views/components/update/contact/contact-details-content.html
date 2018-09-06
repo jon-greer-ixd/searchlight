@@ -6,7 +6,13 @@
       
       <fieldset class="form-group">
         <label class="form-label" for="contact-text-message">
-          {{data.contactTypes[data.contactType].display}} {{ data.contactTypes[data.contactType].type | contactIs }}
+        
+          {% if data.contactType == "otherContact" %}
+            Contact details
+          {% else %}
+            {{data.contactTypes[data.contactType].display}} {{ data.contactTypes[data.contactType].type | contactIs }}
+          {% endif %}
+          
         </label>
         <input class="form-control" name="contact-text-message" type="text" id="contact-text-message" {% if data.contactState == "correcting" %} value={{ data.contactTypes[data.contactType].value }} {% endif %}>
       </fieldset>

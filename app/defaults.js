@@ -142,9 +142,9 @@ var contactTypes = {
   "businessEmail" : {"state" : null, "show" : false, "pref" : false, "type" : "email", display : "Business email", value : "business@gmail.com"},
   "homeFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Home fax", value : "0191 555 555"},
   "businessFax" : {"state" : null, "show" : false, "pref" : false, "type" : "fax", display : "Business fax", value : "0191 777 777"},
-  "textPhone" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "Text phone", value : "0191 888 888"},
+  "textPhone" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "Textphone", value : "0191 888 888"},
   "typeTalk" : {"state" : null, "show" : false, "pref" : false, "type" : "other-phone", display : "Typetalk", value : "0191 999 999"},
-  "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Other contact method", value : "Fred the Pigeon"}
+  "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Another contact method", value : "Fred the Pigeon"}
 }
 
 
