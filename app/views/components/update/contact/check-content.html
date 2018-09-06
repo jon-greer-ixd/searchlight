@@ -28,16 +28,18 @@
             </td>
             <td><a>Change</a></td>
           </tr>
-          {% if data.pref == "true" %}
             <tr>
               <td><span class="strong">Preferred method of contact</span></td>
               <td>
-                Yes
+               {% if data.pref == "true" %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
               </td>
               <td><a>Change</a></td>
             </tr>
           {% endif %}
-        {% endif %}
         
         {% if data.contactState == "correcting" %}
           <tr>
@@ -53,24 +55,15 @@
             <td>{{ data.contactTypes[data.contactType].value }}</td>
             <td><a>Change</a></td>
           </tr>
-<!--
-          <tr>
-            <td><span class="strong">Start date</span></td>
-            <td>
-              {{ data.prepopulatedString }}
-            </td>
-            <td><a>Change</a></td>
-          </tr>
--->
-        
-          <!-- If this contactType is the current preferred method of contact and its now corrected show preferred contact = No -->
           <tr>
             <td><span class="strong">Preferred method of contact</span></td>
-            {% if (data.contactTypes[data.contactType].pref == true and data.pref == false) %}
-              <td>No</td>
-            {% else %}
-              <td>Yes</td>
-            {% endif %}
+             <td>
+               {% if data.pref == "true" %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </td>
             <td><a>Change</a></td>
           </tr>
         {% endif %}
