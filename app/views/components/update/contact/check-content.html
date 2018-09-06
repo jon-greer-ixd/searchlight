@@ -24,7 +24,7 @@
           <tr>
             <td><span class="strong">Start date</span></td>
             <td>
-              {{ data.prepopulatedDate }}
+              {{ data.prepopulatedString }}
             </td>
             <td><a>Change</a></td>
           </tr>
@@ -41,7 +41,15 @@
         
         {% if data.contactState == "correcting" %}
           <tr>
-            <td><span class="strong">{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</span></td>
+            <td>
+              <span class="strong">
+                {% if data.contactType == "otherContact" %}
+                  Contact details
+                {% else %}
+                  {{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}
+                {% endif %}
+              </span>
+            </td>
             <td>{{ data.contactTypes[data.contactType].value }}</td>
             <td><a>Change</a></td>
           </tr>
@@ -49,7 +57,7 @@
           <tr>
             <td><span class="strong">Start date</span></td>
             <td>
-              {{ data.prepopulatedDate }}
+              {{ data.prepopulatedString }}
             </td>
             <td><a>Change</a></td>
           </tr>
@@ -71,7 +79,7 @@
           <tr>
             <td><span class="strong">End date</span></td>
             <td>
-              {{ data.prepopulatedDate }}
+              {{ data.prepopulatedString }}
             </td>
             <td><a>Change</a></td>
           </tr>
