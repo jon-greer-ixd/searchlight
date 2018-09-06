@@ -15,13 +15,29 @@
               {% else %}
                 a
               {% endif %}
-
             {% elif data.contactState == "updating" %}
-              Update their
+              Update
+              {% if data.contactType == "otherContact" %}
+                a
+              {% else %}
+                their
+              {% endif %}
             {% elif data.contactState == "correcting" %}
-              Correct their
+              Correct
+              {% if data.contactType == "otherContact" %}
+                a
+              {% else %}
+                their
+              {% endif %}
+            {% elif data.contactState == "removing" %}
+              End
+              {% if data.contactType == "otherContact" %}
+                a
+              {% else %}
+                their
+              {% endif %}
             {% endif %}
-            
+
             {% if data.contactType == "typeTalk" %}
               {{ data.contactTypes[data.contactType].display  }}
             {% elif data.contactType == "otherContact" %}
@@ -29,7 +45,8 @@
             {% else %}
               {{ data.contactTypes[data.contactType].display | lower  }}
             {% endif %}
-              {{ data.contactTypes[data.contactType].type | contactIs  }}
+
+            {{ data.contactTypes[data.contactType].type | contactIs  }}
             
         </h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">

@@ -10,8 +10,9 @@
             
             {% if data.preferredContactState == "updating" %}
               Set a preferred contact method
+            
             {% else %}
-
+            
               {% if data.contactState == "adding" %}
                 Add
                 {% if data.contactType == "eveningTelephone" %}
@@ -19,15 +20,29 @@
                 {% else %}
                   a
                 {% endif %}
-
               {% elif data.contactState == "updating" %}
-                Update their
+                Update
+                {% if data.contactType == "otherContact" %}
+                  a
+                {% else %}
+                  their
+                {% endif %}
               {% elif data.contactState == "correcting" %}
-                Correct their
+                Correct
+                {% if data.contactType == "otherContact" %}
+                  a
+                {% else %}
+                  their
+                {% endif %}
               {% elif data.contactState == "removing" %}
-                End their
+                End
+                {% if data.contactType == "otherContact" %}
+                  a
+                {% else %}
+                  their
+                {% endif %}
               {% endif %}
-
+                        
               {% if data.contactType == "typeTalk" %}
                 {{ data.contactTypes[data.contactType].display  }}
               {% elif data.contactType == "otherContact" %}

@@ -9,14 +9,23 @@
           
             <h2 class="title">
               
-              End their           
-            {% if data.contactType == "typeTalk" %}
-              {{ data.contactTypes[data.contactType].display  }}
-            {% else %}
-              {{ data.contactTypes[data.contactType].display | lower  }}
-            {% endif %}
+              End
+              {% if data.contactType == "otherContact" %}
+                a
+              {% else %}
+                their
+              {% endif %}
+
+              {% if data.contactType == "typeTalk" %}
+                {{ data.contactTypes[data.contactType].display  }}
+              {% elif data.contactType == "otherContact" %}
+                contact method
+              {% else %}
+                {{ data.contactTypes[data.contactType].display | lower  }}
+              {% endif %}
+
               {{ data.contactTypes[data.contactType].type | contactIs  }}
-          
+              
             </h2>
           
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
