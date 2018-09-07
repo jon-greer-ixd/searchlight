@@ -766,6 +766,8 @@ req.session.data.personalDetails[req.session.data.personalDetail].value = req.se
 router.get(/personal-detail-handler/, function (req, res) {
   if (req.query.data == "stateless") {
     req.session.data.personalDetailValue = "stateless";
+  } else if (req.query.data == "unknown") {
+    req.session.data.personalDetailValue = "unknown";
   } else if (req.query.data == "null") {
     req.session.data.personalDetailValue = "null";
   }

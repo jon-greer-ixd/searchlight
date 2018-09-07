@@ -4,8 +4,8 @@
   <select name="personalDetailValue" class="form-control" name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
     
     {% if data.updateType != 1 %}
-      {% if data.personalDetails.nationality.value != "stateless" %}
-        <option value={{data.personalDetails.nationality.value}} selected="selected">{{data.personalDetails.nationality.value}}</option>
+      {% if data.personalDetails.nationality.value != "stateless" and data.personalDetails.nationality.value != "unknown" %}
+        <option value={{data.personalDetails.nationality.value}} selected="selected">{{data.personalDetails.nationality.value }}</option>
       {% else %}
         <option value="" selected="selected">Select Country</option>
       {% endif %}

@@ -148,7 +148,6 @@ if (document.getElementsByClassName("multi-boxes")) {
   }
 }
 
-
 if (document.getElementById("work-number")) {
   console.log('start');
   var work = document.getElementById("work-number");
@@ -163,6 +162,22 @@ if (document.getElementById("work-number")) {
     console.log("changed");
      work.checked = false;
   }
+}
+
+
+if (document.getElementById("nationalityField")) {
+  var stateless = document.getElementById("stateless");
+  var unknown = document.getElementById("unknown");
+  var remove = document.getElementById("remove");
+  var nationalityField = document.getElementById("nationalityField");
+  
+  function natPrefs() {
+    console.log("canceled");
+    stateless.checked = false;
+    unknown.checked = false;
+    remove.checked = false;
+  }
+  nationalityField.addEventListener('click', natPrefs);
 }
 
 if (document.getElementById("day-number")) {
