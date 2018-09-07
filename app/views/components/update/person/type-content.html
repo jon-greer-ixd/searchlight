@@ -72,11 +72,11 @@
           <label for="update">
               Update
             {% if data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
-              status
+               the status
             {% elif data.personalDetail == "nino" %}
               {{data.personalDetails[data.personalDetail].display}}
             {% else %}
-              {{data.personalDetails[data.personalDetail].display | lower}}
+              their {{data.personalDetails[data.personalDetail].display | lower}}
             {% endif %}
           </label>
         </div>
