@@ -8,6 +8,10 @@
           <a class="link-back" onCLick="history.back()">Back</a>
           
           <h2 class="title">
+            
+            {% set items = [1, "TWO" ] %}
+            {{ items | titleBuilder }} 
+                        
             {% if data.updateType == 1 %}
               Add 
               {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
@@ -16,9 +20,20 @@
                 a
               {% endif %}
             {% elif data.updateType == 3 %}
-              Correct the 
+              Correct
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "pv" %}
+                the
+              {% else %}
+                their
+              {% endif %}
             {% else %}
-              Update their
+              Update               
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "pv" %}
+                the
+              {% else %}
+                their
+              {% endif %}
+
             {% endif %}
             
             {{ data.personalDetails[data.personalDetail].display | lower }}
