@@ -1,4 +1,4 @@
-<!--<h2 class="heading-medium question">What is their nationality status?</h2>-->
+<h2 class="heading-medium question">What is their nationality?</h2>
 
 <div class="grid-row">
   <div class="column-two-thirds">
@@ -10,13 +10,8 @@
       </legend>
       
       <div class="form-group">
-        
-        <div class="multiple-choice" data-target="contact-by-email">
-          <input id="example-contact-by-email" type="radio" name="data" value="Yes" {% if data.personalDetails.nationality.value != "stateless" and data.personalDetails.nationality.value != "unknown" %} checked {% endif %}>
-          <label for="example-contact-by-email">They have a nationality</label>
-        </div>
-        <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
-          {% include "components/update/person/details/nationality-selector.njk" %}
+       <div id="nationalityField">
+         {% include "components/update/person/details/nationality-selector.njk" %}
         </div>
 
         <div class="multiple-choice" data-target="contact-by-phone">
@@ -28,7 +23,6 @@
           <input id="unknown" type="radio" name="data" value="unknown" {% if data.personalDetails.nationality.value == "unknown" %} checked {% endif %}>
           <label for="unknown">Their nationality is unknown</label>
         </div>        
-        
         
       </div>
               

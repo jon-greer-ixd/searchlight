@@ -165,19 +165,24 @@ if (document.getElementById("work-number")) {
 }
 
 
-if (document.getElementById("nationalityField")) {
+if (document.getElementById("stateless")) {
   var stateless = document.getElementById("stateless");
   var unknown = document.getElementById("unknown");
-  var remove = document.getElementById("remove");
-  var nationalityField = document.getElementById("nationalityField");
-  
+  var nationalityFields = document.getElementsByClassName("ui-autocomplete-input");
   function natPrefs() {
     console.log("canceled");
     stateless.checked = false;
     unknown.checked = false;
-    remove.checked = false;
+  }
+  function miricle() {
+    console.log("wow");
+    for (var x in nationalityFields) {
+      nationalityFields[x].value = "";
+    }
   }
   nationalityField.addEventListener('click', natPrefs);
+  stateless.addEventListener('click', miricle);
+  unknown.addEventListener('click', miricle);
 }
 
 if (document.getElementById("day-number")) {
