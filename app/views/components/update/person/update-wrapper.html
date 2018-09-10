@@ -11,7 +11,9 @@
                                     
             {% if data.updateType == 1 %}
               Add 
-              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
+              {% if data.personalDetail == "specialNeeds" %}
+                 
+              {% elif data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
                 an
               {% else %}
                 a

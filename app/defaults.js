@@ -62,7 +62,7 @@ var personalDetails = {
   "gender" : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "Identity fraud interest", value : null},
   "disability" : {state : null, show : false, display : "Disability status", value : null},
-  "specialNeeds" : {state : null, show : false, display : "Special needs", value : null},
+  "specialNeeds" : {state : null, show : false, display : "Additional needs", value : null},
   "nationality" : {state : null, show : false, display : "Nationality", value : null},
   "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
   "preferredLanguage" : {state : null, show : false, display : "Preferred language", value : null},

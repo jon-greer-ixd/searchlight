@@ -10,19 +10,40 @@
           <h2 class="title">
             
             {% if data.updateType == 1 %}
+            
               Add 
-              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
+              {% if data.personalDetail == "specialNeeds" %}
+                 
+              {% elif data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
                 an
               {% else %}
                 a
               {% endif %}
             
             {% elif data.updateType == 3 %}
-              Correct their
+              Correct 
+              {% if data.personalDetail == "pv" %}
+                the
+              {% else %}
+                their
+              {% endif %}
+            
             {% elif data.editState == "ending" or data.editState == "removing" %}
-              Change their
+              Change 
+              {% if data.personalDetail == "pv" %}
+                the
+              {% else %}
+                their
+              {% endif %}
+            
             {% else %}
-              Update their
+              Update 
+              {% if data.personalDetail == "pv" %}
+                the
+              {% else %}
+                their
+              {% endif %}
+
             {% endif %}
 
             {{ data.personalDetails[data.personalDetail].display | lower }}
