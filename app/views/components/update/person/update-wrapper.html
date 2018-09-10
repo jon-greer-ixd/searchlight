@@ -8,10 +8,7 @@
           <a class="link-back" onCLick="history.back()">Back</a>
           
           <h2 class="title">
-            
-            {% set items = [1, "TWO" ] %}
-            {{ items | titleBuilder }} 
-                        
+                                    
             {% if data.updateType == 1 %}
               Add 
               {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
