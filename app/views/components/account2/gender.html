@@ -1,13 +1,13 @@
 {% if data.personalDetails.gender.gra == true and data.personalDetails.gender.preGra == true %}
   <div class="grid-row no-margin">
     <div class="column-one-third">
-      <p>Gender</p>
+      <p>Gender recognition</p>
     </div>
       <div class="column-one-third">
         <ul>
-            <li class="strong">Gender change&nbsp; · &nbsp; {{data.prepopulatedString}}</li>
+            <li class="strong">Gender recognition certificate</li>
 <!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
-            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
         </ul>    
       </div>
       <div class="column-one-third last-col">
@@ -36,12 +36,13 @@
     </div>
       <div class="column-one-third">
         <ul>
-            <li class="strong">Pre gender change&nbsp; · &nbsp; {{data.prepopulatedString}}</li>
+            <li class="strong">Pre Gender Recognition Act application</li>
 <!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
-            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
         </ul>    
       </div>
       <div class="column-one-third last-col">
+<!--
         <ul class="edit-menu">
           <li>
             <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
@@ -49,21 +50,23 @@
             <a href="../history/sex-history-adv" class="under-link">View history</a>
           </li>
         </ul>
+-->
       </div>
   </div>
-
 {% endif %}
+
+
 
 {% if data.personalDetails.gender.gra == true and data.personalDetails.gender.preGra == false %}
   <div class="grid-row no-margin">
     <div class="column-one-third">
-      <p>Gender</p>
+      <p>Gender recognition</p>
     </div>
       <div class="column-one-third">
         <ul>
-            <li class="strong">Gender change&nbsp; · &nbsp; {{data.prepopulatedString}}</li>
+            <li class="strong">Gender recognition certificate</li>
 <!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
-            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
         </ul>    
       </div>
       <div class="column-one-third last-col">
@@ -82,13 +85,13 @@
 {% if data.personalDetails.gender.gra == false and data.personalDetails.gender.preGra == true %}
   <div class="grid-row no-margin">
     <div class="column-one-third">
-      <p>Gender</p>
+      <p>Gender recognition</p>
     </div>
       <div class="column-one-third">
         <ul>
-            <li class="strong">Pre gender change&nbsp; · &nbsp; {{data.prepopulatedString}}</li>
+            <li class="strong">Pre Gender Recognition Act application</li>
 <!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
-            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
         </ul>    
       </div>
       <div class="column-one-third last-col">
@@ -117,7 +120,7 @@
     </div>
       <div class="column-one-third">
         <ul>
-            <li class="sl-secondary-text-color sl-metadata">Add gender recognition details</li>
+            <li class="sl-secondary-text-color sl-metadata">Add a gender recognition certificate</li>
         </ul>    
       </div>
       <div class="column-one-third last-col">

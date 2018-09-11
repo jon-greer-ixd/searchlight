@@ -8,7 +8,8 @@
                   
           <tr>
             <!-- TITLE -->
-              <td> <span class="strong">
+              <td> 
+                <span class="strong">
                 {% if data.personalDetailValue == "null" %}
                   Remove 
                     {% if data.personalDetail == "pv" or data.personalDetail == "disability" %}
@@ -23,8 +24,8 @@
                 {% else %}
                   {{data.personalDetails[data.personalDetail].display | capitalize}}
                 {% endif %}
-              </span> </td>
-            
+              </span>
+            </td>
             
             <!-- VALUE -->
               {% if data.personalDetailValue != "null" %}
@@ -42,7 +43,7 @@
                     {% endfor %}
                   {% else %}   
                     {% if data.personalDetailValue != "VIP" %}
-                      {{data.personalDetailValue | capitalize}}
+                      {{data.personalDetailValue}}
                     {% else %}
                       {{data.personalDetailValue}}
                     {% endif %}
@@ -56,18 +57,20 @@
             </td>
           </tr>
           
-          {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" or data.personalDetail == "immigration" %}
-            <tr>
-              <td class="strong">
-                {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
-                  Verification level
-                {% else %}
-                  Immigration reference number
-                {% endif %}
-              </td>
-              <td>{{data.verificationlevel}}</td>
-              <td><a>Change</a></td>
-            </tr>
+          {% if data.personalDetailValue != "null" %}
+            {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" or data.personalDetail == "immigration" %}
+              <tr>
+                <td class="strong">
+                  {% if data.personalDetail == "dateOfDeath" or data.personalDetail == "dateOfBirth" %}
+                    Verification level
+                  {% else %}
+                    Immigration reference number
+                  {% endif %}
+                </td>
+                <td>{{data.verificationlevel}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
           {% endif %}
                     
         </table>

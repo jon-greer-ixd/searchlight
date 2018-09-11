@@ -164,7 +164,6 @@ if (document.getElementById("work-number")) {
   }
 }
 
-
 if (document.getElementById("stateless")) {
   var stateless = document.getElementById("stateless");
   var unknown = document.getElementById("unknown");
@@ -175,7 +174,6 @@ if (document.getElementById("stateless")) {
     unknown.checked = false;
   }
   function miricle() {
-    console.log("wow");
     for (var x in nationalityFields) {
       nationalityFields[x].value = "";
     }
@@ -184,6 +182,29 @@ if (document.getElementById("stateless")) {
   stateless.addEventListener('click', miricle);
   unknown.addEventListener('click', miricle);
 }
+
+
+if (document.getElementById("clearForm")) {
+  var radios = document.getElementsByClassName("clearRadio");
+  var inputBox = document.getElementById("imref");
+  var clearBox = document.getElementById("unknown");
+  function clearAll() {
+    for (var x in radios) {
+      radios[x].checked = null;
+    }
+    inputBox.value="";
+  }
+  function clearTheBox() {
+    clearBox.checked = null;
+  }
+  
+  radios[0].addEventListener('click', clearTheBox);
+  radios[1].addEventListener('click', clearTheBox);
+  radios[2].addEventListener('click', clearTheBox);
+  inputBox.addEventListener('click', clearTheBox);
+  clearBox.addEventListener('click', clearAll);
+}
+
 
 if (document.getElementById("day-number")) {
   var day = document.getElementById("day-number");
@@ -199,8 +220,4 @@ if (document.getElementById("day-number")) {
      day.checked = false;
   }
 }
-
-
-
-
 
