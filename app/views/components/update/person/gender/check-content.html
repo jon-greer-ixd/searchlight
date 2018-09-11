@@ -4,12 +4,24 @@
         <table class="table"> 
 
           <tr>
-            <td><span class="strong">Sex</span></td>
+            <td><span class="strong">Type of gender details</span></td>            
+            <td>
+              {% if data.personalDetail == "gra" %}
+                A gender recognition certificate
+              {% else %}
+                A pre Gender Recognition Act application
+              {% endif %}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+          
+          <tr>
+            <td><span class="strong">Gender</span></td>
             <td>
               {{data.sexValue}}
             </td>
             <td>
-              <a>&nbsp;</a>
+              <a>Change</a>
             </td>
           </tr>
 
