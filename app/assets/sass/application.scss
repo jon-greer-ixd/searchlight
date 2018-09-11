@@ -1443,6 +1443,7 @@ hr.strong {
 }
 
 #sl-account #sl-address-primary-card.data-error {
+  box-shadow: none;
   padding: 20px;
   background: url(../../../public/images/error-warning-icon.svg);
   background-repeat: no-repeat;
