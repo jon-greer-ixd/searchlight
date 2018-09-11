@@ -1395,7 +1395,7 @@ hr.strong {
       margin: 0;
       padding: 0;
       border-bottom: 1px solid #bfc1c3;
-      width: 1872px;
+      width: 1962px;
       float: left;
       &.header {
         border-top: 1px solid #bfc1c3;
@@ -1412,13 +1412,16 @@ hr.strong {
         }
         &:nth-child(3) {
           width: 100px;
-        }   
-        &:nth-child(5), &:nth-child(11) {
-          width: 50px;
-        }   
-        &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
-          background-color: #dee0e2;
+        }  
+        &:nth-child(4) {
+           width: 109px;
         }
+        &:nth-child(5) {
+          width: 90px;
+        }   
+        &:nth-child(11) {
+          width: 90px;
+        }   
         &:nth-child(17) {
           width: 135px;
         }
@@ -1427,6 +1430,9 @@ hr.strong {
         }
         &:last-child {
           padding-right: 0;
+        }
+        &:nth-child(4), &:nth-child(5), &:nth-child(6), &:nth-child(7), &:nth-child(8), &:nth-child(9) {
+          background-color: #dee0e2;
         }
       }
     }

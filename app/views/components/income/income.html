@@ -6,22 +6,11 @@
       
       <h2>Income</h2>
       
-      <div id="sl-address-primary-card" class="sl-primary-card reduced-income last-card data-error">
-<!--        <h2>There are conflicts with the following information</h2>-->
-<!--        <h2>HMRC hold different information for the following personal details</h2>-->
-        <h3>HMRC hold different personal details for this person</h3>
-        <ul>
-          <li>Name:</li>
-          <li><span class="">JAMES HARRY &nbsp; JONES</span></li>
-        </ul>            
-        <ul>
-          <li>Date of birth:</li>
-          <li><span class="">20 Jan 1980</span></li>
-        </ul>            
-      </div>
-      
       <div id="sl-address-primary-card" class="sl-primary-card reduced-income last-card">
-        {% if data.gciiExample == "5" %}
+
+        {% if data.gciiExample == "2" %}
+          {% include "components/income/example2.html" %}
+        {% elif data.gciiExample == "5" %}
           {% include "components/income/example5.html" %}
         {% elif data.gciiExample == "4" %}
           {% include "components/income/example4.html" %}
