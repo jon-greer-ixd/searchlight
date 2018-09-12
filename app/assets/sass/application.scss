@@ -1469,3 +1469,48 @@ hr.strong {
     }
   }
 }
+
+
+#alerts {
+  li {
+    float: left;
+    font-size: 17px;
+    padding-right: 3px;
+    &:nth-child(1) {
+      width: 20px;
+    }
+    &:nth-child(2) {
+      width: 60px;
+    }
+    &:nth-child(3) {
+      width: 40px;
+    }
+    &:nth-child(4) {
+      width: 50px;
+    }
+    &:nth-child(5) {
+      width: 40px;
+    }
+    &:nth-child(6) {
+      width: 50px;
+    }
+    &:nth-child(7) {
+      width: 40px;
+    }
+    &:nth-child(8) {
+      width: 40px;
+    }
+    &:nth-child(9) {
+      width: 40px;
+    }
+    &:nth-child(10) {
+      width: 40px;
+    }
+    &:nth-child(11) {
+      width: 40px;
+    }
+    &:nth-child(12) {
+      width: 40px;
+    }
+  }
+}
