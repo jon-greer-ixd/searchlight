@@ -2511,6 +2511,22 @@ router.get('/nino/2/task-list/', function (req, res) {
   })
 })
 
+
+
+/************/
+/** ALERTS **/
+/************/
+
+router.get('/alerts/page-one', function (req, res) {
+  res.render('alerts/page-one.njk')
+})
+
+router.get('/alerts/alert-search', function (req, res) {
+  res.render('alerts/alert-search.njk')
+})
+
+
 module.exports = router
 
-//1714
+
+

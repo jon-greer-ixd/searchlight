@@ -714,6 +714,35 @@ h1.question-title {
   }
 }
 
+#alert-tab {
+  ul {
+    height: 40px;
+    li {
+      margin-right: 2px;
+      color: #005EA5;
+      font-size: 17px;
+      text-align: center;
+      float: left;
+      width: 150px;
+      background: #DEE0E2;
+      line-height: 40px;
+      height: 40px;
+      &:first-child {
+        background: #DEE0E2;
+        color: #005EA5;
+        border: none;
+      }
+      &:last-child {
+        background: white;
+        color: #0B0C0C;
+        border-top: 1px solid #BFC1C3;
+        border-right: 1px solid #BFC1C3;
+        border-left: 1px solid #BFC1C3;
+      }
+    }
+  }
+}
+
 details summary:hover, a:hover {  
   color: #3A9CD4;
 }
@@ -1534,5 +1563,23 @@ hr.strong {
 .alerts.description {
   background-color: lightgray;
   padding-left: 10px;
+}
+
+#alert-search-form {
+  padding-top: 25px;
+  .column-full {
+    padding: 0 17px!important;
+  }
+  #benefits, #alert-code {
+    margin-top: 24px;
+  }
+  .form-control {
+    width :90%;
+  }
+  .populate-link-one {
+    text-decoration: underline;
+    padding-top: 10px;
+    display: block;
+  }
 }
 

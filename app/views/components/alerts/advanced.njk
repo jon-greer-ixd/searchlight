@@ -1,0 +1,97 @@
+<div ui-view="trace" class="ng-scope"><div id="trace" class="container-fluid ng-scope" ng-show="personTrace.personTrace" aria-hidden="true">
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12">
+      <div class="sl-account-canvas-width">
+        <div class="col-xs-12 no-bootstrap-padding">
+          
+            <div id="alert-tab" class="tabs">
+              <ul>
+                <li><a href="page-one">Person trace</a></li>
+                <li><a href="">Address trace</a></li>
+                <li><a href="">Organisation trace</a></li>
+                <li><a href="">Notifications</a></li>
+                <li><a href="alert-search">Alerts</a></li>
+                <!-- <li><a href="">Create an account</a></li> -->
+              </ul>
+            </div>
+
+          <div class="sl-primary-card">
+                        
+            <div class="sl-trace-header">
+              <h2 class="sl-font-bold sl-third-heading">Search for alerts</h2>
+            </div>
+
+            
+            <form id="alert-search-form">
+              <div class="grid-row">
+                <div class="column-one-third">
+                  <div class="form-group">
+                    <label class="form-label" for="full-name-f1">
+                      Date of alert
+                      <span class="form-hint">
+                        For example 21/10/2018
+                      </span>
+                    </label>
+                    <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+                    <a class="populate-link-one">Use yesterday's date</a>
+                  </div>
+                </div>
+                  
+                <div class="column-one-third" id="benefits">
+                  <div class="form-group">
+                    <label class="form-label" for="full-name-f1">Benefits system</label>
+                    <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+                  </div>
+                </div>
+              
+                <div class="column-one-third" id="alert-code">
+                  <div class="form-group">
+                    <label class="form-label" for="full-name-f1">Alert code</label>
+                    <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+                  </div>
+                </div>
+                
+              </div>
+              
+              <div class="grid-row">
+                <div class="column-full">
+                  <div class="form-group">
+                    <details>
+                      <summary><span class="summary">Optional search criteria</span></summary>
+                      <div class="panel panel-border-narrow">
+                        
+                        <div class="column-one-third">
+                          <div class="form-group">
+                            <label class="form-label" for="full-name-f1">Office ID</label>
+                            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+                          </div>
+                        </div>
+
+                        <div class="column-one-third">
+                          <div class="form-group">
+                            <label class="form-label" for="full-name-f1">Alert type</label>
+                            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </details> 
+                  </div>
+                </div>
+              </div>
+              <div class="grid-row">
+                <div class="column-full">
+                  <div class="form-group">
+                    <button class="button" type="submit">Search</button>
+                  </div>
+                </div>
+              </div>
+              
+            </form>
+              
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
