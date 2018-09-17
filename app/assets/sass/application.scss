@@ -1470,47 +1470,69 @@ hr.strong {
   }
 }
 
+#sl-account .sl-account-canvas-width#alerts-container {
+  max-width: 1555px;
+}
 
-#alerts {
-  li {
-    float: left;
+.alerts {
+  clear: both;
+  padding: 10px 0;
+  &:first-child{
+    font-weight: bold;
+    border-bottom: 1px solid grey;
+  }
+  @include clearfix;
+  div {
     font-size: 17px;
-    padding-right: 3px;
+    width: 100px;
+    margin-right: 15px;
+    float: left;
+    span {
+      width: 100%;
+      float: left;
+    }
     &:nth-child(1) {
-      width: 20px;
+      width: 26px;
     }
     &:nth-child(2) {
-      width: 60px;
+      width: 90px;
     }
     &:nth-child(3) {
-      width: 40px;
+      width: 80px;
     }
     &:nth-child(4) {
-      width: 50px;
+      width: 95px;
     }
     &:nth-child(5) {
-      width: 40px;
+      width: 128px;
     }
     &:nth-child(6) {
-      width: 50px;
+      width: 81px;
     }
     &:nth-child(7) {
-      width: 40px;
+      width: 205px;
     }
     &:nth-child(8) {
-      width: 40px;
+      width: 70px;
     }
     &:nth-child(9) {
-      width: 40px;
+      width: 45px;
     }
     &:nth-child(10) {
-      width: 40px;
-    }
-    &:nth-child(11) {
-      width: 40px;
+      width: 100px;
     }
     &:nth-child(12) {
-      width: 40px;
+      width: 125px;
+    }
+    &:last-child {
+      margin-right: 0;
+      width: 52px;
     }
   }
 }
+
+.alerts.description {
+  background-color: lightgray;
+  padding-left: 10px;
+}
+

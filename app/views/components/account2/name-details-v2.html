@@ -8,7 +8,13 @@
             <!-- ngIf: !data.name.nameDetails -->
             <!-- ngIf: data.name.primaryName -->
             <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
-             {{data.details.name.title | upper}} {{data.details.name.first}} {{data.details.name.last}}
+              {% if data.details.name.title != "None" %}
+                {{data.details.name.title | upper}} 
+                <span class="namespace"> </span> 
+              {% endif %}
+
+             {{data.details.name.first}} {{data.details.name.last}}
+              
             </h1><!-- end ngIf: data.name.primaryName -->
           </span>
           <!-- ngIf: !data.person.person[0].birthDateGroup[0] -->

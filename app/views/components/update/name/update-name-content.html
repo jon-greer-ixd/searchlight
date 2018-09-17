@@ -36,6 +36,11 @@
          <fieldset data-required data-error="Choose a title">
            <legend class="radio-header">Title</legend>
             <div class="multiple-choice">
+              <input id="None" type="radio" name="title" value="None" {% if data.updateType == "correct" or data.updateType == "update" and data.details[data.nameType].title == "None" %} checked="checked" {% endif %}>
+              <label for="None">None</label>
+            </div>
+           
+            <div class="multiple-choice">
               <input id="mr" type="radio" name="title" value="mr" {% if data.updateType == "correct" or data.updateType == "update" and data.details[data.nameType].title == "mr" %} checked="checked" {% endif %}>
               <label for="mr">Mr</label>
             </div>
