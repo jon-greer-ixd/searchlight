@@ -1536,7 +1536,7 @@ hr.strong {
       border-top: 1px solid #bfc1c3;
       border-bottom: none;
       white-space: nowrap;
-      &:nth-child(13) {
+      &:nth-child(12) {
         text-align: right;
         padding-right: 0;
       }
@@ -1546,5 +1546,23 @@ hr.strong {
         padding-top: 15px;
       }
     }
+  }
+}
+
+#alert-search-form {
+  padding-top: 25px;
+  .column-full {
+    padding: 0 17px!important;
+  }
+//  #benefits, #alert-code {
+//    margin-top: 24px;
+//  }
+  .form-control {
+    width :90%;
+  }
+  .populate-link-one {
+    text-decoration: underline;
+    padding-top: 10px;
+    display: block;
   }
 }

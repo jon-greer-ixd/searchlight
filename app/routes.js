@@ -22,6 +22,8 @@ var changeSex = require('./defaults.js').changeSex;
 
 var messageCentre = require('./defaults.js').messageCentre;
 
+var alertsData = require('./data/alerts.js').alerts;
+
 
 //***********
 // INTERESTS 
