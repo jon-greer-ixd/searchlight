@@ -22,8 +22,6 @@ var changeSex = require('./defaults.js').changeSex;
 
 var messageCentre = require('./defaults.js').messageCentre;
 
-var alertsData = require('./data/alerts.js').alerts;
-
 
 //***********
 // INTERESTS 
@@ -365,6 +363,8 @@ router.use('/', main);
     }
   }
       
+  req.session.data.alertData = require('./data/alerts.js').alerts;
+    
   req.session.data.details = require('./defaults.js').details;
     
   req.session.data.personalDetails = require('./defaults.js').personalDetails;

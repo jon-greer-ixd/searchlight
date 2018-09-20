@@ -210,14 +210,54 @@ if (document.getElementById("day-number")) {
   var day = document.getElementById("day-number");
   var night = document.getElementById("night");
   day.addEventListener('change', cancelPrefs);
-  function cancelPrefs() {
+  var cancelPrefs = function() {
     console.log("canceled");
      night.checked = false;
   }
   night.addEventListener('change', changePrefs);
-  function changePrefs() {
+  var changePrefs = function() {
     console.log("changed");
      day.checked = false;
   }
 }
+
+if ( document.getElementById("alerts") ) {
+    console.log("HERE");
+
+  var myFunction = function() {
+    console.log("HERE");
+  }
+
+  var selectLink = document.getElementById("select_link");
+  var unLink = document.getElementById("un_link");
+  selectLink.addEventListener('click', myFunction);
+}
+
+/*
+
+  checkLink
+  unLink
+  button
+  checkboxes
+
+  checkLink.onclick(function)
+  unLink.onclick(function)
+
+  checkboxes.addeventlistener() {
+    if any box checked remove class for button
+    if all boxes unchecked add class
+  }
+
+  function (action) {
+  if (action == "checked") {
+      when unLink clicked all boxes not checked
+      when checkLink clicked all boxes checked
+    }
+  }
+  */
+
+
+
+
+
 

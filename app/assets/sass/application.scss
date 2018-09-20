@@ -1505,8 +1505,25 @@ hr.strong {
 
 
 // alerts //
+.options {
+  @include clearfix;
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  li {
+    margin-right: 25px;
+    float :left;
+    a {
+      text-decoration: underline;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
 
 #alerts {
+  @include clearfix;
   margin-bottom: 50px;
   .description {
     font-size: 17px;
@@ -1518,9 +1535,10 @@ hr.strong {
   }
   font-family: $sl-font;
   table {
+    table-layout: auto;
     .multiple-choice {
       position: relative;
-      left: 30px;
+      left: 20px;
       top: 3px;
       [type=checkbox] + label::before {
         width :30px;
@@ -1532,11 +1550,12 @@ hr.strong {
       }
     }
     td {
+      padding-right: 18px;
       font-size: 18px;
       border-top: 1px solid #bfc1c3;
       border-bottom: none;
       white-space: nowrap;
-      &:nth-child(12) {
+      &:nth-child(13) {
         text-align: right;
         padding-right: 0;
       }

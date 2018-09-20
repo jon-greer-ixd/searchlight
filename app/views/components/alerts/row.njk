@@ -1,27 +1,25 @@
 <tr class="data">
-  <td>{{i}}</td>
-  <td>Non Match On NI Number</td>
-  <td>Rejection report</td>
-  <td>3000</td>
-<!--  <td>NRS2</td>-->
-  <td>112233</td>
-  <td>T003</td>
-  <td>SX170201C</td>
-  <td>NAHASAPEEMAPETILON</td>
-  <td>JONATHAN</td>
-  <td>01 Jan 2018</td>
-  <td>11 Sep 2018</td>
+  <td>{{counter}}</td>
+  <td>{{item.title}}</td>
+  <td>{{item.alertType}}</td>
+  <td>{{item.code}}</td>
+  <td>NRS2</td>
+  <td>{{item.office}}</td>
+  <td>{{item.transaction}}</td>
+  <td>{{item.nino}}</td>
+  <td>{{item.surname}}</td>
+  <td>{{item.forename}}</td>
+  <td>{{item.startDate}}</td>
+  <td>{{item.processedDate}}</td>
   <td class="check">
-
     <div class="multiple-choice">
-      <input id={{i}} name="contact-by-text-phone" type="checkbox" value="true">
-      <label for={{i}}></label>
+      <input id={{counter}} name="contact-by-text-phone" type="checkbox" value="true">
+      <label for={{counter}}></label>
     </div>
-    
   </td>
 </tr>
 <tr>
   <td colspan="13" class="description">
-    <span class="">Details:</span> Transaction date - 01 Jan 2005, &nbsp; Name Start Date - 01012005, &nbsp; Titile - Mr, &nbsp; Forename 1 - JOHN, &nbsp; Forname 2 - SAM, &nbsp; Surname - JONES, &nbsp; Requested form of address = BILL
+    <span class="">Details:</span> {{item.description}}
   </td> 
 </tr>

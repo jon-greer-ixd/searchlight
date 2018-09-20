@@ -10,8 +10,35 @@
 
   <div class="column-full">
     <div class="sl-primary-card" id="alerts">
-      <h3>Alerts for 10 September 2018</h3>
-      <p>Alerts 1 - 10 of 150</p>
+      <h3>There are more than 100 results</h3>
+      <div class="options">
+        <ul>
+          <li><a id="">Copy 100 results</a></li>
+          <li><a id="">Print 100 results</a></li>
+          <li><a id="">Mark 100 results as processed</a></li>
+        </ul>
+      </div>
+      <hr>
+<!--
+      <div class="form-group">
+        <button class="button" type="submit">Copy 150 results</button>
+        <button class="button" type="submit">Print 150 results</button>
+      </div>
+-->
+      <p>Page 1 (there are more than 10 pages)</p>
+      <div class="options">
+        <ul>
+          <li><a id="select_link">Select 10 results</a></li>
+          <li><a id="un_link">Deselect 10 results</a></li>
+        </ul>
+      </div>
+        <div class="form-group">
+          <fieldset>
+            <button class="button" type="submit" disabled="disabled" aria-disabled="true">Mark as processed</button>
+            <button class="button" type="submit" disabled="disabled" aria-disabled="true">Mark as not processed</button>
+          </fieldset>
+        </div>
+
       {% include "components/alerts/results.njk" %}
     </div>
   </div>

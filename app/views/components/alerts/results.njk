@@ -1,26 +1,52 @@
-<table class="alert-header">
-</table>
-
 <form>
-  <table class="alert-data">
-    <tr>
-      <td class="strong">No</td>
-      <td class="strong">Title</td>
-      <td class="strong">Type</td>
-      <td class="strong">Code</td>
-<!--      <td class="strong">System</td>-->
-      <td class="strong">Office</td>
-      <td class="strong">Type</td>
-      <td class="strong">NINO</td>
-      <td class="strong">Surname</td>
-      <td class="strong">Forename</td>
-      <td class="strong">Start date</td>
-      <td class="strong">Processed date</td>
-      <td class="strong check">Done</td>
-    </tr>
-    
-    {% for i in range(1, 11) %}
-      {% include "components/alerts/row.njk" %}
-    {% endfor %}
-  </table>
+  <div class="form-group">
+    <table class="alert-data">
+      <tr>
+        <!-- Alert details -->
+        <td class="strong">No</td>
+        <td class="strong">Title</td>
+        <td class="strong">Alert type</td>
+        <td class="strong">Code</td>
+<!--    <td class="strong">Date</td> -->
+        <!-- Transaction details -->
+        <td class="strong">System</td>
+        <td class="strong">Office</td>
+        <td class="strong">Type</td>
+        <!-- personal details -->
+        <td class="strong">NINO</td>
+        <td class="strong">Surname</td>
+        <td class="strong">Forename</td>
+        <td class="strong">Start date</td>
+        <!-- Process details -->
+        <td class="strong">Processed date</td>
+        <td class="strong check">&nbsp;</td>
+      </tr>
+
+      {{counter}}
+      {% set counter = 1%}
+      {% for item in data.alertData %}
+        {% include "components/alerts/row.njk" %}
+        {% set counter = counter + 1 %}
+      {% endfor %}
+
+    </table>
+  </div>
+  
 </form>
+
+<!--
+  No
+  NINO
+  System ID // System
+  Alert date // can we remove?
+  Alert type
+  Alert code
+  Alert title // title
+  Office ID // office
+  Transaction type // Type
+  Surname
+  Forename
+  Name start date // start date
+  Processed date
+  Action  // processed
+-->
