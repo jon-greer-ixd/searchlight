@@ -1,0 +1,17 @@
+<div class="sl-account-canvas row updater slim-header">
+
+  <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+
+    <div class="sl-account-canvas-width" id="alerts-container">
+
+      <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+
+        <a class="link-back" onCLick="history.back()">Back</a>
+            
+        {% include "components/alerts/alerts-four-content.html" %}
+
+      </div>
+
+    </div>
+
+  </div>
