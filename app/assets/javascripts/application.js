@@ -131,7 +131,7 @@ if (document.getElementById("contact-boxes")) {
 
 
 //checkbox contact
-if (document.getElementsByClassName("multi-boxes")) {
+if (document.getElementById("multi-box-form")) {
   var boxes = document.getElementsByClassName("multi-boxes");
   var clearBox = document.getElementById("unknown");
   clearBox.addEventListener('change', cancelPrefs);
@@ -210,27 +210,62 @@ if (document.getElementById("day-number")) {
   var day = document.getElementById("day-number");
   var night = document.getElementById("night");
   day.addEventListener('change', cancelPrefs);
-  var cancelPrefs = function() {
+  function cancelPrefs() {
     console.log("canceled");
      night.checked = false;
   }
   night.addEventListener('change', changePrefs);
-  var changePrefs = function() {
+  function changePrefs() {
     console.log("changed");
      day.checked = false;
   }
 }
 
 if ( document.getElementById("alerts") ) {
-    console.log("HERE");
-
-  var myFunction = function() {
-    console.log("HERE");
-  }
-
-  var selectLink = document.getElementById("select_link");
-  var unLink = document.getElementById("un_link");
-  selectLink.addEventListener('click', myFunction);
+    var processButton = document.getElementById("processButton");
+    var unprocessButton = document.getElementById("unprocessButton");
+    var processBoxes = document.getElementsByClassName("process-boxes");
+    var selectLink = document.getElementById("select_link");
+    var unLink = document.getElementById("un_link");  
+    var checkAll = function() {
+      console.log("here");
+      for (var x in processBoxes) {
+       processBoxes[x].checked = true;
+      }
+      //make buttons live
+      processButton.disabled = false;
+      unprocessButton.disabled = false;
+    };
+    var unCheckAll = function() {
+      for (var x in processBoxes) {
+       processBoxes[x].checked = false;
+      }
+      processButton.disabled = true;
+      unprocessButton.disabled = true;
+    };
+    var checkButtons = function() {
+      console.log("here");
+      var flag = false;
+      for (var x in processBoxes) {
+        if(processBoxes[x].checked == true) {
+          flag = true;
+        }
+      }
+      if (flag == false) {
+        processButton.disabled = true;
+        unprocessButton.disabled = true;
+      } else {
+        processButton.disabled = false;
+        unprocessButton.disabled = false;
+      }
+    };
+      
+    selectLink.addEventListener('click', checkAll);
+    unLink.addEventListener('click', unCheckAll);
+  
+    for (var x in processBoxes) {
+      processBoxes[x].addEventListener('change', checkButtons);
+    }
 }
 
 /*
