@@ -26,20 +26,21 @@
       </div>
 -->
       <p>Page 1 of 5</p>
-      <div class="options">
+
+      {% include "components/alerts/results.njk" %}
+            <div class="options">
         <ul>
           <li><a id="select_link">Select 10 results</a></li>
           <li><a id="un_link">Deselect 10 results</a></li>
         </ul>
       </div>
-        <div class="form-group">
-          <fieldset>
-            <button class="button" type="submit" id="processButton" disabled="disabled">Mark as processed</button>
-            <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button>
-          </fieldset>
-        </div>
+      <div class="form-group">
+        <fieldset>
+          <a href="../alerts/alerts-four"><button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
+          <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button>
+        </fieldset>
+      </div>
 
-      {% include "components/alerts/results.njk" %}
     </div>
   </div>
 

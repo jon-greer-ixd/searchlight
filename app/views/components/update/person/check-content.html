@@ -42,7 +42,9 @@
                       {% set counter = counter -1 %}
                     {% endfor %}
                   {% else %}   
-                    {% if data.personalDetailValue != "VIP" %}
+                    {% if data.personalDetailValue == "unknown" %}
+                      {{data.personalDetailValue | capitalize}}
+                    {% elif data.personalDetailValue != "VIP" %}
                       {{data.personalDetailValue}}
                     {% else %}
                       {{data.personalDetailValue}}

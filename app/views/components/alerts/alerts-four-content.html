@@ -26,6 +26,9 @@
       </div>
 -->
       <p>Page 1 (there are more than 10 pages)</p>
+
+      {% include "components/alerts/results.njk" %}
+      
       <div class="options">
         <ul>
           <li><a id="select_link">Select 10 results</a></li>
@@ -38,8 +41,6 @@
             <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button>
           </fieldset>
         </div>
-
-      {% include "components/alerts/results.njk" %}
     </div>
   </div>
 

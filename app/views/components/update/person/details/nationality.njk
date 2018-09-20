@@ -18,11 +18,13 @@
           <input id="stateless" type="radio" name="data" value="stateless" {% if data.personalDetails.nationality.value == "stateless" %} checked {% endif %}>
           <label for="stateless">They are stateless</label>
         </div>
-
-        <div class="multiple-choice" data-target="contact-by-text">
-          <input id="unknown" type="radio" name="data" value="unknown" {% if data.personalDetails.nationality.value == "unknown" %} checked {% endif %}>
-          <label for="unknown">Their nationality is unknown</label>
-        </div>        
+        
+        {% if data.updateType != 2 %}
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="unknown" type="radio" name="data" value="unknown" {% if data.personalDetails.nationality.value == "unknown" %} checked {% endif %}>
+            <label for="unknown">Their nationality is unknown</label>
+          </div>        
+        {% endif %}
         
       </div>
               
