@@ -1,49 +1,52 @@
+{% include "components/alerts/results-filter.njk" %}
+<br>
+
 <div id="search-results" class="grid-row">
 
-<!--
-  <div class="column-one-third">
-    <div class="sl-primary-card">
-      <h3>Edit or start a new search</h3>
+  <!--
+    <div class="column-one-third">
+      <div class="sl-primary-card">
+        <h3>Edit or start a new search</h3>
+      </div>
     </div>
-  </div>
--->
+  -->
 
-  <div class="column-full">
-    <div class="sl-primary-card" id="alerts">
-      <h3>There are more than 100 results</h3>
-      <div class="options">
-        <ul>
-          <li><a id="">Print 100 results</a></li>
-          <li><a id="">Copy 100 results</a></li>
-          <li><a href="alerts-two" id="">Mark 100 results as processed</a></li>
-        </ul>
-      </div>
-      <hr>
-<!--
-      <div class="form-group">
-        <button class="button" type="submit">Copy 150 results</button>
-        <button class="button" type="submit">Print 150 results</button>
-      </div>
--->
-      <p>Page 1 (there are more than 10 pages)</p>
+    <div class="column-full">
+      <div class="sl-primary-card" id="alerts">
+        <h3>There are more than 100 results</h3>
+        <div class="options">
+          <ul>
+            <li><a id="">Print 100 results</a></li>
+            <li><a id="">Copy 100 results</a></li>
+            <li><a href="alerts-two" id="">Mark 100 results as processed</a></li>
+          </ul>
+        </div>
+        <hr>
+  <!--
+        <div class="form-group">
+          <button class="button" type="submit">Copy 150 results</button>
+          <button class="button" type="submit">Print 150 results</button>
+        </div>
+  -->
+        <p>Page 1 (there are more than 10 pages)</p>
 
-      {% include "components/alerts/results.njk" %}
-            
-      <div class="options">
-        <ul>
-          <li><a id="select_link">Select 10 results</a></li>
-          <li><a id="un_link">Deselect 10 results</a></li>
-        </ul>
-      </div>
-      <div class="form-group">
-        <fieldset>
-          <a href="../alerts/alerts-four"><button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
-          <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button>
-        </fieldset>
+        {% include "components/alerts/results.njk" %}
+
+        <div class="options">
+          <ul>
+            <li><a id="select_link">Select 10 results</a></li>
+            <li><a id="un_link">Deselect 10 results</a></li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <fieldset>
+            <a href="../alerts/alerts-four"><button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
+            <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button>
+          </fieldset>
+        </div>
+
       </div>
 
     </div>
-    
-  </div>
 
-</div>
+  </div>
