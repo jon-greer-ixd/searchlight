@@ -46,6 +46,8 @@
                       {{data.personalDetailValue | capitalize}}
                     {% elif data.updateType == 4 %}
                   
+                    {% elif data.personalDetailValue != "dateOfBirth" or data.personalDetailValue != "dateOfDeath"  %}
+                      {{ data.personalDetailValue | asString }} 
                     {% elif data.personalDetailValue != "VIP" %}
                       {{data.personalDetailValue}}
                     {% else %}

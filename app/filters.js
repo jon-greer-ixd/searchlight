@@ -43,6 +43,13 @@ module.exports = function (env) {
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
   
+  var Dates = require('./dates.js');
+  var dates = Dates.dates;
+  
+  filters.asString = function(x) {
+    return dates.convertDayToString(x);
+  }
+    
   filters.lastTelephoneCheck = function(contact_types) {
     var counter = 0;
     var returnItem;

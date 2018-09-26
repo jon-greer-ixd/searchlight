@@ -47,12 +47,17 @@ var dates = {
     "December"
   ],
   convertDayToString : function (date) {
+      //if it doesnt contain a / return it as it is
+    if (!date.includes('/')) {
+      return (date);
+    } else {
       var parts = date.split('/');
-      d = parseInt(parts[0]);
-      m = parseInt(parts[1]);
-      y = parseInt(parts[2]);
-    date = d + " " + this.months[m - 1] + " " + y;
-    return (date);
+      var d = parseInt(parts[0]);
+      var m = parseInt(parts[1]);
+      var y = parseInt(parts[2]);
+      date = d + " " + this.months[m - 1] + " " + y;
+      return (date);
+    }
   },
   todayAsString : function() {
     return dayOfTheMonth + " " + monthAsString + " " + year;

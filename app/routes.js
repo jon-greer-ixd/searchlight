@@ -89,6 +89,8 @@ var Dates = require('./dates.js');
 var dates = Dates.dates;
 dates.logToday();
 
+console.log(dates.convertDayToString( "21/6/1979" ) )
+
 var createJourney = null;
 var ninoVersion = null;
 
@@ -829,6 +831,10 @@ router.get(/check-person-handler/, function (req, res) {
   } else  {
     currentDetail.value = req.session.data.personalDetailValue;  
   }
+  
+//  if (req.session.data.personalDetail == "dateOfDeath" || req.session.data.personalDetail == "dateOfBirth") {
+//    currentDetail.value = dates.convertDayToString(currentDetail.value);
+//  }
   
   if (req.session.data.verificationlevel != null) {
     currentDetail.level = req.session.data.verificationlevel;  
