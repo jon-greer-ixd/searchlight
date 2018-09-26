@@ -1,0 +1,27 @@
+<h2 class="heading-medium question">What kind of correction do you need to make?</h2>
+<div class="grid-row">
+  <div class="column-two-thirds">
+    
+    <form class="form" method="get" action="dod-handler">
+      <fieldset class="form-group">
+        <legend class="visually-hidden">What kind of correction do you need to make?</legend>
+                
+        <div class="multiple-choice">
+          <input id="update" type="radio" name="data" value="update">
+          <label for="update">Correct the date of death or verification level</label>
+        </div>
+        
+        <div class="multiple-choice">
+          <input id="remove" name="data" type="radio" value="remove">
+          <label for="remove">Remove their date of death</label>
+        </div>
+        
+      </fieldset>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+</div>

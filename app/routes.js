@@ -656,7 +656,10 @@ router.get(/person-change-handler/, function (req, res) {
     req.session.data.updateType = 3;
     req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == "dateOfDeath" || req.session.data.personalDetail == "dateOfBirth") {
+  } else if (req.session.data.personalDetail == "dateOfDeath") {
+    req.session.data.updateType = 3;
+    res.redirect('/update/person/dod-options')
+  } else if (req.session.data.personalDetail == "dateOfBirth") {
     req.session.data.updateType = 3;
     res.redirect('/update/person/update')
   } else if (req.session.data.personalDetail == "recordLevel") {
@@ -765,6 +768,17 @@ req.session.data.personalDetails[req.session.data.personalDetail].value = req.se
 
 */
 
+
+router.get(/dod-handler/, function (req, res) {
+  if (req.query.data == "remove") {
+    req.session.data.updateType = 4;
+    console.log(req.session.data.updateType);
+    res.redirect('/update/person/check')
+  } else {
+    res.redirect('/update/person/update')
+  }
+})
+
 router.get(/personal-detail-handler/, function (req, res) {
   if (req.query.data == "stateless") {
     req.session.data.personalDetailValue = "stateless";
@@ -808,7 +822,7 @@ router.get(/check-person-handler/, function (req, res) {
   // SET VALUES  
   if (req.session.data.personalDetail == "pv") {
     changePv(); 
-  } else if (req.session.data.personalDetailValue == "null") {
+  } else if (req.session.data.personalDetailValue == "null" || req.session.data.updateType == 4) {
     currentDetail.value = null;
   } else if (req.session.data.personalDetail == "disability" && req.session.data.updateType != 1) {
     currentDetail.value = null;
@@ -835,6 +849,7 @@ router.get(/check-person-handler/, function (req, res) {
   console.log(`Show ${currentDetail.show}`);
   
   // SET MESSAGE
+  //function messageCentre(item, type, state)
   req.session.data.toaster = messageCentre(currentDetail.display, null, currentDetail.state);
 
   // RESET
@@ -844,6 +859,8 @@ router.get(/check-person-handler/, function (req, res) {
   // NEXT
   res.redirect('/account2/account')
 })
+//end
+
 
 //DISABILITY
 router.get(/disability-type-handler/, function (req, res) {

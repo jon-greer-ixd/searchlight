@@ -205,6 +205,9 @@ function messageCentre(item, type, state) {
   if (state == 3 || state == "correcting") {
     state = "corrected";
   }
+  if (state == 4) {
+    state = "removed";
+  }
   if (state == "removing") {
     state = "ended";
   }
