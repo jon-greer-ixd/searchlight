@@ -6,6 +6,7 @@
 {% set value_1 = "21/10/2018" %}
 {% set value_2 = "CACS" %}
 {% set value_3 = "3508" %}
+
 {% include "components/alerts/results-filter.njk" %}
 
 <br>
@@ -22,7 +23,6 @@
 
   <div class="column-full">
     <div class="sl-primary-card" id="alerts">
-      <h3>There are 50 results</h3>
       <div class="options">
         <ul>
           <li><a id="">Print 50 results</a></li>
@@ -49,7 +49,7 @@
       <div class="form-group">
         <fieldset>
           <a href="../alerts/alerts-four"><button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
-          <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button>
+          <a href=""><button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button></a>
         </fieldset>
       </div>
 

@@ -6,6 +6,7 @@
 {% set value_1 = "21/10/2018" %}
 {% set value_2 = "CACS" %}
 {% set value_3 = "3508" %}
+
 {% include "components/alerts/results-filter.njk" %}
 
 <br>
@@ -44,7 +45,6 @@
           <li><a>7</a></li>
           <li><a>8</a></li>
           <li><a>9</a></li>
-<!--            <li>there are more than 10 pages</li>-->
         </ul>
       </div>
 
@@ -59,7 +59,7 @@
         <div class="form-group">
           <fieldset>
             <a href=""><button class="button" type="submit" id="processButton" disabled="disabled">Mark as processed</button></a>
-            <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button>
+            <a href=""><button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as not processed</button></a>
           </fieldset>
         </div>
     </div>
