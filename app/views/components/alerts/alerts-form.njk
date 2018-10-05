@@ -15,6 +15,7 @@
 
     <div class="column-one-quarter" id="benefits">
       <div class="form-group">
+<!--
         <label class="form-label" for="full-name-f1">
           Benefits system ID
           <span class="form-hint">
@@ -22,6 +23,8 @@
           </span>
         </label>
         <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value={{value_2}}>
+-->
+         {% include "components/alerts/system-selector.njk" %}
       </div>
     </div>
 
@@ -79,7 +82,7 @@
                  <!-- title -->
                   <p id="ledger-title"class="form-label" for="full-name-f1">Search by a range of National Insurance numbers
                     <span class="form-hint">
-                      Enter the last two digits of the first number to search
+                      Enter the last two digits of the first number
                     </span>
                   </p>
                 </div>
