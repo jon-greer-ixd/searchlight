@@ -1593,10 +1593,6 @@ hr.strong {
   margin-right :20px;
 }
 
-#alert-result-filtering {
-  padding-bottom: 5px;
-}
-
 #alerts-container {
   input {
     height: 37px;
@@ -1654,4 +1650,8 @@ hr.strong {
   .form-group {
     margin-bottom: 10px;
   }
+}
+
+#trace .sl-account-canvas {
+  padding-bottom: 60px;
 }
