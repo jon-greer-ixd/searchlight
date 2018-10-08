@@ -21,6 +21,9 @@
                 
                 {% elif data.personalDetail == "pv" %}
                   Who is potentially violent?
+                  
+                {% elif data.personalDetail == "specialNeeds" and data.updateType == 3 %}
+                    Additional need
                 {% else %}
                   {{data.personalDetails[data.personalDetail].display | capitalize}}
                 {% endif %}
@@ -31,16 +34,20 @@
               {% if data.personalDetailValue != "null"  %}
                 <td>
                   {% if data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
-                    {{counter}}
-                    {% set counter = data.personalDetailValue.length %}
-                    {% for item in data.personalDetailValue %}
-                      {% if counter != 1 %}
-                        {{item}}, <br>
-                      {% else %}
-                        {{item}}
-                      {% endif %}
-                      {% set counter = counter -1 %}
-                    {% endfor %}
+                    {% if data.updateType == 3 %}
+                      {{data.personalDetailValue}}
+                    {% else %}
+                      {{counter}}
+                      {% set counter = data.personalDetailValue.length %}
+                      {% for item in data.personalDetailValue %}
+                        {% if counter != 1 %}
+                          {{item}}, <br>
+                        {% else %}
+                          {{item}}
+                        {% endif %}
+                        {% set counter = counter -1 %}
+                      {% endfor %}
+                    {% endif %}   
                   {% else %}   
                     {% if data.personalDetailValue == "unknown" %}
                       {{data.personalDetailValue | capitalize}}
@@ -62,6 +69,23 @@
               <a>Change</a>
             </td>
           </tr>
+          
+          
+          {% if data.personalDetail == "specialNeeds" and data.updateType == 3 %}
+            <tr>
+              <!-- TITLE -->
+              <td> 
+                <span class="strong">Correct to</span>
+              </td>
+              <td> 
+                {{data.tempValue}}
+              </td>
+              <td>
+                <a>Change</a>
+              </td>
+            </tr>
+          {% endif %}
+          
           
           {% if data.personalDetailValue != "null" %}
             {% if data.updateType != 4 %}

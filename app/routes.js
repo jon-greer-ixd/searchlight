@@ -630,6 +630,7 @@ router.get(/check-contact-handler/, function (req, res) {
 router.get(/add-person-handler/, function (req, res) {
   console.log(req.session.data.personalDetail);
   req.session.data.updateType = 1;
+  console.log(req.session.data.updateType);
   if (req.session.data.personalDetail == 'nifu') {
     req.session.data.personalDetailValue = 'Yes';
     res.redirect('/update/person/check');
@@ -689,6 +690,8 @@ router.get(/change-person-type-handler/, function (req, res) {
       req.session.data.personalDetailValue = 'This person is not disabled';
       res.redirect('/update/person/check')
     }
+  } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
+    res.redirect('/update/person/correct-needs/select-need')
   } else if (req.session.data.personalDetail == 'preferredLanguage') {
     if (req.session.data.updateType == 2) {
       req.session.data.personalDetailValue == 'English' ? req.session.data.personalDetailValue = 'Welsh' : req.session.data.personalDetailValue = 'English';
@@ -828,6 +831,12 @@ router.get(/check-person-handler/, function (req, res) {
     currentDetail.value = null;
   } else if (req.session.data.personalDetail == 'disability' && req.session.data.updateType != 1) {
     currentDetail.value = null;
+  } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
+    console.log("here!");
+    //remove the personal detail value
+      //itterate though the special needs
+      // if it equals it remove it
+    // add the tempValue to the end
   } else  {
     currentDetail.value = req.session.data.personalDetailValue;  
   }
