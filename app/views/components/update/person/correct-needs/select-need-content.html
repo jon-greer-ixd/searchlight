@@ -8,10 +8,12 @@
         <fieldset class="form-group">
 
           {% for item in data.personalDetails.specialNeeds.value %}
-            <div class="multiple-choice">
-              <input id="{{item}}" name="personalDetailValue" type="radio" value={{item}}>
-              <label for="{{item}}">{{item}}</label>
-            </div>
+            {% if item != null or item != undefined %}
+              <div class="multiple-choice">
+                <input id="{{item}}" name="personalDetailValue" type="radio" value="{{item}}">
+                <label for="{{item}}">{{item}}</label>
+              </div>
+            {% endif %}     
           {% endfor %}     
 
         </fieldset>

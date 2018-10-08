@@ -832,11 +832,38 @@ router.get(/check-person-handler/, function (req, res) {
   } else if (req.session.data.personalDetail == 'disability' && req.session.data.updateType != 1) {
     currentDetail.value = null;
   } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
-    console.log("here!");
-    //remove the personal detail value
-      //itterate though the special needs
-      // if it equals it remove it
-    // add the tempValue to the end
+    
+    for (item in req.session.data.personalDetails.specialNeeds.value) {
+      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
+        delete req.session.data.personalDetails.specialNeeds.value[item];
+      }
+    }
+    
+    req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue);
+    
+    
+//    console.log("TEMP VALUE " + req.session.data.tempValue);
+//    for (item in req.session.data.personalDetails.specialNeeds.value) {
+//      console.log("ITEM " + req.session.data.personalDetails.specialNeeds.value[item]);
+//      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.tempvalue) {
+//        console.log("MATCHED ITEM " + item);
+//        delete req.session.data.personalDetails.specialNeeds.value[item];
+//      }
+//    }
+//    
+//    var myArray = req.session.data.personalDetails.specialNeeds;
+//    console.log(myArray);
+//    for (item in myArray) {
+//      console.log(`need = ${myArray[item].display}`);
+////      if (req.session.data.personalDetailValue == myArray[item].display) {
+////        delete myArray[item];
+////        console.log(`myarray ${myArray}`);
+////      }
+//    }
+//    //remove the personal detail value
+//      //itterate though the special needs
+//      // if it equals it remove it
+//    // add the tempValue to the end
   } else  {
     currentDetail.value = req.session.data.personalDetailValue;  
   }
@@ -849,11 +876,11 @@ router.get(/check-person-handler/, function (req, res) {
     currentDetail.level = req.session.data.verificationlevel;  
   }
   
-  console.log(`Value ${req.session.data.personalDetailValue}`);
+//  console.log(`Value ${req.session.data.personalDetailValue}`);
 
   // SET STATE
   currentDetail.state = req.session.data.updateType;
-  console.log(`State ${currentDetail.state}`);
+//  console.log(`State ${currentDetail.state}`);
   
   // SET SHOW
   if (currentDetail.value == null && req.session.data.personalDetail != 'pv') {
@@ -861,7 +888,7 @@ router.get(/check-person-handler/, function (req, res) {
   } else {
     currentDetail.show = true;
   }
-  console.log(`Show ${currentDetail.show}`);
+//  console.log(`Show ${currentDetail.show}`);
   
   // SET MESSAGE
   //function messageCentre(item, type, state)
