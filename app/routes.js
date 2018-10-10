@@ -838,8 +838,9 @@ router.get(/check-person-handler/, function (req, res) {
         delete req.session.data.personalDetails.specialNeeds.value[item];
       }
     }
-    
-    req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue);
+    if(req.session.data.tempValue != "null"){
+      req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
+    };
     
     
 //    console.log("TEMP VALUE " + req.session.data.tempValue);
@@ -883,6 +884,10 @@ router.get(/check-person-handler/, function (req, res) {
 //  console.log(`State ${currentDetail.state}`);
   
   // SET SHOW
+//  if (req.session.data.personalDetails.specialNeeds.value.length == 0) {
+//    req.session.data.personalDetails.specialNeeds.show = false;
+//  }
+  
   if (currentDetail.value == null && req.session.data.personalDetail != 'pv') {
     currentDetail.show = false;
   } else {
@@ -897,6 +902,7 @@ router.get(/check-person-handler/, function (req, res) {
   // RESET
   req.session.data.updateType = null;
   req.session.data.verificationlevel = null;
+  req.session.data.tempValue = undefined;
   
   // NEXT
   res.redirect('/account2/account')

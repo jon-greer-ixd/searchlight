@@ -10,7 +10,18 @@
             <!-- TITLE -->
               <td> 
                 <span class="strong">
-                {% if data.personalDetailValue == "null" or data.updateType == 4 %}
+                {% if data.tempValue == "null" %}
+                  {% if data.personalDetailValue == "An induction loop" %}
+                    Remove induction loop
+                  {% elif data.personalDetailValue == "A lift" %}
+                    Remove lift
+                  {% elif data.personalDetailValue == "A ramp" %}
+                    Remove ramp
+                  {% else %}
+                    Remove {{data.personalDetailValue | lower}}
+                  {% endif %}
+                  
+                {% elif data.personalDetailValue == "null" or data.updateType == 4 %}
                   Remove 
                     {% if data.personalDetail == "pv" or data.personalDetail == "disability" %}
                       the
@@ -31,7 +42,9 @@
             </td>
             
             <!-- VALUE -->
-              {% if data.personalDetailValue != "null"  %}
+              {% if data.tempValue == "null" %}
+                <td></td>
+              {% elif data.personalDetailValue != "null"  %}
                 <td>
                   {% if data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
                     {% if data.updateType == 3 %}
@@ -70,8 +83,7 @@
             </td>
           </tr>
           
-          
-          {% if data.personalDetail == "specialNeeds" and data.updateType == 3 %}
+          {% if data.personalDetail == "specialNeeds" and data.updateType == 3 and data.tempValue != "null" %}
             <tr>
               <!-- TITLE -->
               <td> 
@@ -85,7 +97,6 @@
               </td>
             </tr>
           {% endif %}
-          
           
           {% if data.personalDetailValue != "null" %}
             {% if data.updateType != 4 %}
