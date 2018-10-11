@@ -796,6 +796,10 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
+function remove(arr, index){
+    arr.splice(index,1);
+    return arr;
+}
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
@@ -833,15 +837,18 @@ router.get(/check-person-handler/, function (req, res) {
     currentDetail.value = null;
   } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
     
-    for (item in req.session.data.personalDetails.specialNeeds.value) {
-      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
-        delete req.session.data.personalDetails.specialNeeds.value[item];
-      }
-    }
-    if(req.session.data.tempValue != "null"){
+    req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
+    console.log(req.session.data.tempValue);
+    if(!req.session.data.tempValue.includes('null') ){
       req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
     };
     
+    for (item in req.session.data.personalDetails.specialNeeds.value) {
+      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
+        remove(req.session.data.personalDetails.specialNeeds.value,item);
+      }
+    }
+
     
 //    console.log("TEMP VALUE " + req.session.data.tempValue);
 //    for (item in req.session.data.personalDetails.specialNeeds.value) {
@@ -893,7 +900,11 @@ router.get(/check-person-handler/, function (req, res) {
   } else {
     currentDetail.show = true;
   }
-//  console.log(`Show ${currentDetail.show}`);
+    
+  console.log("needs length", req.session.data.personalDetails.specialNeeds.value.length);
+  if(req.session.data.personalDetails.specialNeeds.value.length == 0) {
+    req.session.data.personalDetails.specialNeeds.show = false;
+  }
   
   // SET MESSAGE
   //function messageCentre(item, type, state)
