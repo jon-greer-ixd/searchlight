@@ -22,6 +22,8 @@ var changeSex = require('./defaults.js').changeSex;
 
 var messageCentre = require('./defaults.js').messageCentre;
 
+var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
+
 
 //***********
 // INTERESTS 
@@ -778,7 +780,6 @@ req.session.data.personalDetails[req.session.data.personalDetail].value = req.se
 
 */
 
-
 router.get(/dod-handler/, function (req, res) {
   if (req.query.data == 'remove') {
     req.session.data.updateType = 4;
@@ -808,7 +809,14 @@ function remove(arr, index){
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
+  
   console.log(req.session.data.updateType);
+  
+  if(req.session.data.personalDetail == "disability" ) {
+    req.session.data.personalDetails.disability.value = personalDetailsFunctions.flipValue(req.session.data.personalDetails.disability.value);
+    req.session.data.personalDetails.disability.show = personalDetailsFunctions.setDisplay(req.session.data.personalDetails.disability.value);
+  };
+  
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
   var changePv = function() {
     req.session.data.personalDetails.pv.value = false;
@@ -838,8 +846,8 @@ router.get(/check-person-handler/, function (req, res) {
     changePv(); 
   } else if (req.session.data.personalDetailValue == 'null' || req.session.data.updateType == 4) {
     currentDetail.value = null;
-  } else if (req.session.data.personalDetail == 'disability' && req.session.data.updateType != 1) {
-    currentDetail.value = null;
+//  } else if (req.session.data.personalDetail == 'disability' && req.session.data.updateType != 1) {
+//    currentDetail.value = null;
   } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
     
     req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
@@ -853,61 +861,30 @@ router.get(/check-person-handler/, function (req, res) {
         remove(req.session.data.personalDetails.specialNeeds.value,item);
       }
     }
-
-    
-//    console.log("TEMP VALUE " + req.session.data.tempValue);
-//    for (item in req.session.data.personalDetails.specialNeeds.value) {
-//      console.log("ITEM " + req.session.data.personalDetails.specialNeeds.value[item]);
-//      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.tempvalue) {
-//        console.log("MATCHED ITEM " + item);
-//        delete req.session.data.personalDetails.specialNeeds.value[item];
-//      }
-//    }
-//    
-//    var myArray = req.session.data.personalDetails.specialNeeds;
-//    console.log(myArray);
-//    for (item in myArray) {
-//      console.log(`need = ${myArray[item].display}`);
-////      if (req.session.data.personalDetailValue == myArray[item].display) {
-////        delete myArray[item];
-////        console.log(`myarray ${myArray}`);
-////      }
-//    }
-//    //remove the personal detail value
-//      //itterate though the special needs
-//      // if it equals it remove it
-//    // add the tempValue to the end
   } else  {
-    currentDetail.value = req.session.data.personalDetailValue;  
+    if (req.session.data.personalDetail != 'disability') {
+      currentDetail.value = req.session.data.personalDetailValue;  
+    }
   }
-  
-//  if (req.session.data.personalDetail == 'dateOfDeath' || req.session.data.personalDetail == 'dateOfBirth') {
-//    currentDetail.value = dates.convertDayToString(currentDetail.value);
-//  }
-  
+    
   if (req.session.data.verificationlevel != null) {
     currentDetail.level = req.session.data.verificationlevel;  
   }
   
-//  console.log(`Value ${req.session.data.personalDetailValue}`);
-
   // SET STATE
   currentDetail.state = req.session.data.updateType;
 //  console.log(`State ${currentDetail.state}`);
   
   // SET SHOW
-//  if (req.session.data.personalDetails.specialNeeds.value.length == 0) {
-//    req.session.data.personalDetails.specialNeeds.show = false;
-//  }
-  
-  if (currentDetail.value == null && req.session.data.personalDetail != 'pv') {
-    currentDetail.show = false;
-  } else {
-    currentDetail.show = true;
+  if (req.session.data.personalDetail != 'disability') {
+    if (currentDetail.value == null && req.session.data.personalDetail != 'pv') {
+      currentDetail.show = false;
+    } else {
+      currentDetail.show = true;
+    }
   }
     
-  console.log("needs length", req.session.data.personalDetails.specialNeeds.value.length);
-  if(req.session.data.personalDetails.specialNeeds.value.length == 0) {
+  if(req.session.data.personalDetails.specialNeeds.value != undefined && req.session.data.personalDetails.specialNeeds.value.length == 0) {
     req.session.data.personalDetails.specialNeeds.show = false;
   }
   
