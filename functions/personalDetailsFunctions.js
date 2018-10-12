@@ -6,7 +6,7 @@ function flipValue(personalDetail, value) {
       return false;
     }
   } else {
-    return ('Male' ? 'Female' : 'Male');
+    return (value == 'Male' ? 'Female' : 'Male');
   }
 };
 
