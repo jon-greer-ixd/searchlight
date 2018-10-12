@@ -812,8 +812,11 @@ router.get(/check-person-handler/, function (req, res) {
   
   console.log(req.session.data.updateType);
   
+  if(req.session.data.personalDetail == "disability" || req.session.data.personalDetail == 'sex' ) {
+    req.session.data.personalDetails[req.session.data.personalDetail].value = personalDetailsFunctions.flipValue(req.session.data.personalDetail, req.session.data.personalDetails[req.session.data.personalDetail].value);
+  };
+  
   if(req.session.data.personalDetail == "disability" ) {
-    req.session.data.personalDetails.disability.value = personalDetailsFunctions.flipValue(req.session.data.personalDetails.disability.value);
     req.session.data.personalDetails.disability.show = personalDetailsFunctions.setDisplay(req.session.data.personalDetails.disability.value);
   };
   
@@ -862,8 +865,8 @@ router.get(/check-person-handler/, function (req, res) {
       }
     }
   } else  {
-    if (req.session.data.personalDetail != 'disability') {
-      currentDetail.value = req.session.data.personalDetailValue;  
+    if (req.session.data.personalDetail != 'disability' && req.session.data.personalDetail != 'sex') {
+      currentDetail.value = req.session.data.personalDetailValue;
     }
   }
     

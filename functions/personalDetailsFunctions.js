@@ -1,9 +1,12 @@
-function flipValue(personalDetailValue) {
-        console.log("here", personalDetailValue);
-  if(personalDetailValue != true) {
-    return true;
+function flipValue(personalDetail, value) {
+  if(personalDetail == "disability") {
+    if(value != true) {
+      return true;
+    } else {
+      return false;
+    }
   } else {
-    return false;
+    return ('Male' ? 'Female' : 'Male');
   }
 };
 
