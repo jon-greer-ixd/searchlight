@@ -812,53 +812,24 @@ router.get(/check-person-handler/, function (req, res) {
   
   console.log(req.session.data.updateType);
   
-  if(req.session.data.personalDetail == "disability" || req.session.data.personalDetail == 'sex' ) {
-    req.session.data.personalDetails[req.session.data.personalDetail].value = personalDetailsFunctions.flipValue(req.session.data.personalDetail, req.session.data.personalDetails[req.session.data.personalDetail].value);
-  };
-  
-  if(req.session.data.personalDetail == "disability" ) {
-    req.session.data.personalDetails.disability.show = personalDetailsFunctions.setDisplay(req.session.data.personalDetails.disability.value);
-  };
-  
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
-  var changePv = function() {
-    req.session.data.personalDetails.pv.value = false;
-    req.session.data.personalDetails.pv.partner = false;
-    req.session.data.personalDetails.pv.member = false;
-    if (req.session.data.personalDetailValue != 'null') {
-      var temp;
-      for (var item in req.session.data.personalDetailValue) {
-        if (req.session.data.personalDetailValue[item] == "The person's partner") {
-          req.session.data.personalDetails.pv.partner = true
-        } else if (req.session.data.personalDetailValue[item] == 'Someone else in the household') {
-          req.session.data.personalDetails.pv.member = true
-        } else if (req.session.data.personalDetailValue[item] == 'The person') {
-          temp = true;        
-        }
-      }
-      if (temp == true) {
-        req.session.data.personalDetails.pv.value = true;
-      }
-    } else {
-      currentDetail.value = null;
-    }
+  var value = req.session.data.personalDetailValue;
+  
+  if(req.session.data.personalDetail == "disability" || req.session.data.personalDetail == 'sex' ) {
+    currentDetail.value = personalDetailsFunctions.flipValue(req.session.data.personalDetail, currentDetail.value);
   };
-    
+        
   // SET VALUES  
   if (req.session.data.personalDetail == 'pv') {
-    changePv(); 
+    req.session.data.personalDetails.pv = personalDetailsFunctions.setPV(currentDetail, value);
   } else if (req.session.data.personalDetailValue == 'null' || req.session.data.updateType == 4) {
     currentDetail.value = null;
-//  } else if (req.session.data.personalDetail == 'disability' && req.session.data.updateType != 1) {
-//    currentDetail.value = null;
   } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
-    
     req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
     console.log(req.session.data.tempValue);
     if(!req.session.data.tempValue.includes('null') ){
       req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
     };
-    
     for (item in req.session.data.personalDetails.specialNeeds.value) {
       if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
         remove(req.session.data.personalDetails.specialNeeds.value,item);
@@ -876,17 +847,24 @@ router.get(/check-person-handler/, function (req, res) {
   
   // SET STATE
   currentDetail.state = req.session.data.updateType;
-//  console.log(`State ${currentDetail.state}`);
   
   // SET SHOW
-  if (req.session.data.personalDetail != 'disability') {
-    if (currentDetail.value == null && req.session.data.personalDetail != 'pv') {
+  if (req.session.data.personalDetail != 'disability' && req.session.data.personalDetail != 'pv') {
+    if (currentDetail.value == null) {
       currentDetail.show = false;
     } else {
       currentDetail.show = true;
     }
   }
-    
+  
+  if(req.session.data.personalDetail == "disability") {
+    req.session.data.personalDetails.disability.show = personalDetailsFunctions.setDisplay(currentDetail.value);
+  };
+      
+  if(req.session.data.personalDetail == "pv") {
+    req.session.data.personalDetails.pv = personalDetailsFunctions.setDisplay(currentDetail);
+  };
+
   if(req.session.data.personalDetails.specialNeeds.value != undefined && req.session.data.personalDetails.specialNeeds.value.length == 0) {
     req.session.data.personalDetails.specialNeeds.show = false;
   }
