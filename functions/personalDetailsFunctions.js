@@ -27,7 +27,12 @@ function setDisplay(detail, value) {
   } else if(value == 4 || value == 5) {
     detail.show = false;
   } else if (detail.display == "Potentially violent status") {
-    console.log();
+    if (detail.value != true && detail.partner != true && detail.member != true) {
+      detail.show = false;
+    } else {
+
+      detail.show = true;
+    }
   }
   return detail;
 };
