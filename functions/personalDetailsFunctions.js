@@ -6,21 +6,6 @@ function flipValue(personalDetail, value) {
   }
 };
 
-//function setDisplay(display) {
-//  if(display == true || display == false ) {
-//    return display;
-//  } else if(display == 4 || display == 5) {
-//    return false;
-//  } else if (display.display == "Potentially violent status") {
-//    if (display.value != true && display.partner != true && display.member != true) {
-//      display.show = false;
-//    } else {
-//      display.show = true;
-//    }
-//    return display;
-//  }
-//};
-
 function setDisplay(detail, value) {
   if (detail.display == "Disability status") {
     detail.show = value;

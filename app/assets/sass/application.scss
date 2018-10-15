@@ -1655,3 +1655,19 @@ hr.strong {
 #trace .sl-account-canvas {
   padding-bottom: 60px;
 }
+
+
+.quater-col {
+  &:first-child{
+    width: 23.2%;
+  }
+  width: 25%;
+  padding: 0;
+  float: left;
+}
+
+.half-col {
+  width: 50%;
+  padding: 0;
+  float: left;
+}

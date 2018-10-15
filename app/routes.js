@@ -2575,8 +2575,8 @@ router.get('/notifications/page-one', function (req, res) {
   res.render('notifications/page-one.njk')
 })
 
-router.get('/notifications/alert-search', function (req, res) {
-  res.render('notifications/alert-search.njk')
+router.get('/notifications/search', function (req, res) {
+  res.render('notifications/search.njk')
 })
 
 
