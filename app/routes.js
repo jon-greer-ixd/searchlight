@@ -817,7 +817,6 @@ router.get(/check-person-handler/, function (req, res) {
   var updateValue = req.session.data.updateType;
   
   // SET VALUES  
-          
   if (req.session.data.personalDetail == 'pv' || 
       req.session.data.personalDetail == "disability" || 
       req.session.data.personalDetail == 'sex'|| 
@@ -850,7 +849,7 @@ router.get(/check-person-handler/, function (req, res) {
   }
   
   // SET STATE
-  currentDetail.state = req.session.data.updateType;
+  currentDetail.state = updateValue;
   
   // SET DISPLAY
   if(req.session.data.personalDetail != "gender") {
