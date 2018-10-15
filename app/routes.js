@@ -814,19 +814,22 @@ router.get(/check-person-handler/, function (req, res) {
   console.log(req.session.data.updateType);
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
   var value = req.session.data.personalDetailValue;
+  var updateValue = req.session.data.updateType;
   
   // SET VALUES  
-  if(req.session.data.personalDetail == "disability" || req.session.data.personalDetail == 'sex'|| req.session.data.personalDetail == 'nifu' ) {
-    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.flipValue(currentDetail);
-  };
-        
-  if (req.session.data.personalDetail == 'pv') {
-    req.session.data.personalDetails.pv = personalDetailsFunctions.setValue(currentDetail, value);
-  } else if (req.session.data.personalDetailValue == 'null' || req.session.data.updateType == 4) {
-    currentDetail.value = null;
-  } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
-    req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
-    console.log(req.session.data.tempValue);
+          
+  if (req.session.data.personalDetail == 'pv' || 
+      req.session.data.personalDetail == "disability" || 
+      req.session.data.personalDetail == 'sex'|| 
+      req.session.data.personalDetail == 'nifu') {
+        req.session.data.personalDetails.personalDetail = personalDetailsFunctions.setValue(currentDetail, value);
+  } else if (req.session.data.personalDetailValue == 'null' || 
+             updateValue == 4) {
+                currentDetail.value = null;
+  } else if (req.session.data.personalDetail == 'specialNeeds' && 
+             updateValue == 3) {
+              req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
+              console.log(req.session.data.tempValue);
     if(!req.session.data.tempValue.includes('null') ){
       req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
     };
@@ -836,8 +839,9 @@ router.get(/check-person-handler/, function (req, res) {
       }
     }
   } else  {
-    if (req.session.data.personalDetail != 'disability' && req.session.data.personalDetail != 'sex') {
-      currentDetail.value = req.session.data.personalDetailValue;
+    if (req.session.data.personalDetail != 'disability' && 
+        req.session.data.personalDetail != 'sex') {
+          currentDetail.value = req.session.data.personalDetailValue;
     }
   }
     

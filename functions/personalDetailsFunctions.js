@@ -15,18 +15,10 @@ function setPV(pv, value) {
 };
 
 function flipValue(personalDetail) {
-  if(personalDetail.display == "Disability status" || personalDetail.display == "Identity fraud interest") {
-    if (personalDetail.value != true ){
-      personalDetail.value = true;
-    } else {
-      personalDetail.value = false;
-    }
+  if(personalDetail.display == "Disability status" || personalDetail.display == "Identity fraud interest" || personalDetail.display == "Identity fraud interest") {
+    personalDetail.value = (personalDetail.value != true ? true : false); 
   } else {
-    if (personalDetail.value == 'Male') {
-      personalDetail.value = 'Female';
-    } else {
-      personalDetail.value = 'Male';
-    }
+    personalDetail.value = (personalDetail.value == "Male" ? 'Female' : 'Male'); 
   }
   return personalDetail;
 };
@@ -53,6 +45,9 @@ function setDisplay(detail, value) {
 function setValue(detail, value) {
  if (detail.display == "Potentially violent status") {
    detail = setPV(detail, value);
+   return detail;
+  } else if (detail.display == "Disability status" || detail.display == "Sex" || detail.display == "Identity fraud interest") {
+   detail = flipValue(detail);
    return detail;
   }
 };
