@@ -366,8 +366,10 @@ router.use('/', main);
       req.session.data[key] = defaults[key];
     }
   }
-      
+    
+  //data
   req.session.data.alertData = require('./data/alerts.js').alerts;
+  req.session.data.notificationsData = require('./data/notifications.js').notifications;
     
   req.session.data.details = require('./defaults.js').details;
     

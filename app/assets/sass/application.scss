@@ -1571,6 +1571,48 @@ hr.strong {
   }
 }
 
+#notifications {
+  @include clearfix;
+  margin-bottom: 50px;
+  font-family: $sl-font;
+  table {
+    border-bottom: 1px solid #bfc1c3;
+    table-layout: auto;
+    .multiple-choice {
+      padding-bottom: 9px;
+      [type=checkbox] + label::before {
+        width :30px;
+        height :30px;
+      }
+      [type=checkbox] + label::after {
+        top: 10px;
+        left: 7px;      
+      }
+    }
+    td {
+      padding-right: 18px;
+      font-size: 18px;
+      border-top: 1px solid #bfc1c3;
+      border-bottom: none;
+      white-space: nowrap;
+      &:nth-child(13) {
+        text-align: right;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.print-link {
+  float: left;
+  margin-top: 10px;
+  clear: both;
+  a {
+    text-decoration: underline;
+  }
+}
+
+
 #alert-search-form {
   padding-top: 25px;
   .column-full {

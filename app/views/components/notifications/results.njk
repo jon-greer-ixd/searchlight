@@ -2,30 +2,35 @@
   <div class="form-group">
     <table class="alert-data">
       <tr>
-        <!-- Alert details -->
-        <td class="strong">No<br>&nbsp;</td>
-        <td class="strong">NINO<br>&nbsp;</td>
-        <td class="strong">System<br>ID</td>
-        <td class="strong">Alert type<br>&nbsp;</td>
-        <td class="strong">Alert<br>code</td>
-        <td class="strong">Alert title<br>&nbsp;</td>
-        <td class="strong">Office<br>ID</td>
-        <td class="strong">Type<br>&nbsp;</td>
-        <td class="strong">Surname<br>&nbsp;</td>
-        <td class="strong">Forename<br>&nbsp;</td>
-        <td class="strong">Name start<br>date</td>
-        <!-- Process details -->
-        <td class="strong">Processed<br>date</td>
-        <td class="strong check">&nbsp;</td>
+        <td class="strong">No</td>
+        <td class="strong">Office ID</td>
+        <td class="strong">Benefit System</td>
+        <td class="strong">Date </td>
+        <td class="strong">Type</td>
+        <td class="strong">NINO</td>
+        <td class="strong">Surname</td>
+        <td class="strong">Date of birth</td>
+        <td class="strong">Processed date</td>
+        <td class="strong check">Update</td>
       </tr>
 
-      {{counter}}
-      {% set counter = 1%}
-      {% for item in data.alertData %}
-        {% include "components/notifications/row.njk" %}
-        {% set counter = counter + 1 %}
-      {% endfor %}
-
+      <tr>
+        <td class="">1</td>
+        <td class="">10002</td>
+        <td class="">ATLAS</td>
+        <td class="">01 Oct 2018</td>
+        <td class="">Income related benefit</td>
+        <td class="">SX170201</td>
+        <td class="">NAHASAPEEMAPETILON</td>
+        <td class="">01 Jan 1989</td>
+        <td class=""></td>
+        <td class="check">
+          <div class="multiple-choice">
+            <input id={{counter}} name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true">
+            <label for={{counter}}></label>
+          </div>
+        </td>
+      </tr>
     </table>
   </div>
   

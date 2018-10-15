@@ -147,10 +147,6 @@ var contactTypes = {
   "otherContact" : {"state" : null, "show" : false, "pref" : false, "type" : "other", display : "Another contact method", value : "Fred the Pigeon"}
 }
 
-var alerts = [
-  {"title" : null, "type" : false, "code" : false, "system" : "phone", "Office" : "Personal mobile", "type" : "07761 111 111", "nino" : "07761 111 111", "surname" : "07761 111 111", "forename" : "07761 111 111", "startDate" : "07761 111 111", "processedDate" : "07761 111 111"}
-];
-
 
 //  prints all the items
 //  Object.keys(contactTypes).map(e => {
