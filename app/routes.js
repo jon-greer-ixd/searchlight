@@ -817,7 +817,7 @@ router.get(/check-person-handler/, function (req, res) {
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
   var value = req.session.data.personalDetailValue;
   
-  if(req.session.data.personalDetail == "disability" || req.session.data.personalDetail == 'sex' ) {
+  if(req.session.data.personalDetail == "disability" || req.session.data.personalDetail == 'sex'|| req.session.data.personalDetail == 'nifu' ) {
     currentDetail.value = personalDetailsFunctions.flipValue(req.session.data.personalDetail, currentDetail.value);
   };
         
@@ -850,26 +850,20 @@ router.get(/check-person-handler/, function (req, res) {
   // SET STATE
   currentDetail.state = req.session.data.updateType;
   
-  // SET SHOW
-  if (req.session.data.personalDetail != 'disability' && req.session.data.personalDetail != 'pv') {
+  // SET DISPLAY
+  if(req.session.data.personalDetail != "gender") {
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(currentDetail);
+  } else {
     if (currentDetail.value == null) {
       currentDetail.show = false;
     } else {
       currentDetail.show = true;
     }
-  }
+  };
   
-  if(req.session.data.personalDetail == "disability") {
-    req.session.data.personalDetails.disability.show = personalDetailsFunctions.setDisplay(currentDetail.value);
-  };
-      
-  if(req.session.data.personalDetail == "pv") {
-    req.session.data.personalDetails.pv = personalDetailsFunctions.setDisplay(currentDetail);
-  };
-
-  if(req.session.data.personalDetails.specialNeeds.value != undefined && req.session.data.personalDetails.specialNeeds.value.length == 0) {
-    req.session.data.personalDetails.specialNeeds.show = false;
-  }
+//  if(req.session.data.personalDetails.specialNeeds.value != undefined && req.session.data.personalDetails.specialNeeds.value.length == 0) {
+//    req.session.data.personalDetails.specialNeeds.show = false;
+//  }
   
   // SET MESSAGE
   //function messageCentre(item, type, state)

@@ -1,5 +1,5 @@
 function flipValue(personalDetail, value) {
-  if(personalDetail == "disability") {
+  if(personalDetail == "disability" || personalDetail == "nifu") {
     return (value != true ? true : false);
   } else {
     return (value == 'Male' ? 'Female' : 'Male');
@@ -7,16 +7,19 @@ function flipValue(personalDetail, value) {
 };
 
 function setDisplay(detail, value) {
-  if (detail.display == "Disability status") {
-    detail.show = value;
-  } else if(value == 4 || value == 5) {
+  if(value == 4 || value == 5) {
     detail.show = false;
   } else if (detail.display == "Potentially violent status") {
     if (detail.value != true && detail.partner != true && detail.member != true) {
       detail.show = false;
     } else {
-
       detail.show = true;
+    }
+  } else {
+    if (detail.value != null && detail.value != false) {
+      detail.show = true;
+    } else {
+      detail.show = false;
     }
   }
   return detail;
