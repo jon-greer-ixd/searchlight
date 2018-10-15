@@ -1,9 +1,34 @@
-function flipValue(personalDetail, value) {
-  if(personalDetail == "disability" || personalDetail == "nifu") {
-    return (value != true ? true : false);
-  } else {
-    return (value == 'Male' ? 'Female' : 'Male');
+function setPV(pv, value) {
+  pv.partner = false;
+  pv.value = false;
+  pv.member = false;
+  for (var x in value) {
+    if (value[x] == 'The person\'s partner') {
+      pv.partner = true;
+    } else if (value[x] == 'Someone else in the household') {
+      pv.member = true;
+    } else if (value[x] == 'The person') {
+      pv.value = true;
+    }
   }
+  return pv;
+};
+
+function flipValue(personalDetail) {
+  if(personalDetail.display == "Disability status" || personalDetail.display == "Identity fraud interest") {
+    if (personalDetail.value != true ){
+      personalDetail.value = true;
+    } else {
+      personalDetail.value = false;
+    }
+  } else {
+    if (personalDetail.value == 'Male') {
+      personalDetail.value = 'Female';
+    } else {
+      personalDetail.value = 'Male';
+    }
+  }
+  return personalDetail;
 };
 
 function setDisplay(detail, value) {
@@ -25,23 +50,15 @@ function setDisplay(detail, value) {
   return detail;
 };
 
-function setPV(pv, value) {
-  pv.partner = false;
-  pv.value = false;
-  pv.member = false;
-  for (var x in value) {
-    if (value[x] == 'The person\'s partner') {
-      pv.partner = true;
-    } else if (value[x] == 'Someone else in the household') {
-      pv.member = true;
-    } else if (value[x] == 'The person') {
-      pv.value = true;
-    }
+function setValue(detail, value) {
+ if (detail.display == "Potentially violent status") {
+   detail = setPV(detail, value);
+   return detail;
   }
-  return pv;
 };
 
 
 module.exports.flipValue = flipValue;
 module.exports.setDisplay = setDisplay;
 module.exports.setPV = setPV;
+module.exports.setValue = setValue;

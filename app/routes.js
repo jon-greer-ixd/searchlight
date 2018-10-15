@@ -811,19 +811,17 @@ function remove(arr, index){
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
-  
   console.log(req.session.data.updateType);
-  
   var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
   var value = req.session.data.personalDetailValue;
   
+  // SET VALUES  
   if(req.session.data.personalDetail == "disability" || req.session.data.personalDetail == 'sex'|| req.session.data.personalDetail == 'nifu' ) {
-    currentDetail.value = personalDetailsFunctions.flipValue(req.session.data.personalDetail, currentDetail.value);
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.flipValue(currentDetail);
   };
         
-  // SET VALUES  
   if (req.session.data.personalDetail == 'pv') {
-    req.session.data.personalDetails.pv = personalDetailsFunctions.setPV(currentDetail, value);
+    req.session.data.personalDetails.pv = personalDetailsFunctions.setValue(currentDetail, value);
   } else if (req.session.data.personalDetailValue == 'null' || req.session.data.updateType == 4) {
     currentDetail.value = null;
   } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
