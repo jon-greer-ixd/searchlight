@@ -15,7 +15,7 @@ function setPV(pv, value) {
 };
 
 function flipValue(personalDetail) {
-  if(personalDetail.display == "Disability status" || personalDetail.display == "Identity fraud interest" || personalDetail.display == "Identity fraud interest") {
+  if(personalDetail.display == "Disability status" || personalDetail.display == 'Identity fraud interest' || personalDetail.display == "Identity fraud interest") {
     personalDetail.value = (personalDetail.value != true ? true : false); 
   } else {
     personalDetail.value = (personalDetail.value == "Male" ? 'Female' : 'Male'); 
@@ -43,16 +43,40 @@ function setDisplay(detail, value) {
 };
 
 function setValue(detail, value) {
- if (detail.display == "Potentially violent status") {
+ if (detail.display == 'Potentially violent status') {
    detail = setPV(detail, value);
    return detail;
-  } else if (detail.display == "Disability status" || detail.display == "Sex" || detail.display == "Identity fraud interest") {
+  } else if (detail.display == 'Disability status' || detail.display == 'Sex' || detail.display == 'Identity fraud interest') {
    detail = flipValue(detail);
    return detail;
   }
 };
 
+function remove(arr, index){
+  arr.splice(index,1);
+  return arr;
+};
 
+function correctSpecialNeeds (specialNeeds, personalDetailValue, tempValue) {
+  if (typeof specialNeeds.value == 'string') {
+    specialNeeds.value = tempValue;
+  } else {
+//    tempValue = JSON.stringify(tempValue);
+    if(!tempValue.includes('null') ){
+      specialNeeds.value.push(tempValue);
+    }
+    for (var item in specialNeeds.value) {
+      if (specialNeeds.value[item] == personalDetailValue) {
+        remove(specialNeeds.value,item);
+      }
+    }
+  }
+  return specialNeeds;
+};
+
+
+
+module.exports.correctSpecialNeeds = correctSpecialNeeds;
 module.exports.flipValue = flipValue;
 module.exports.setDisplay = setDisplay;
 module.exports.setPV = setPV;
