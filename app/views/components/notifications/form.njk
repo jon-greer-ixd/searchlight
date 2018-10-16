@@ -15,29 +15,12 @@
 
     <div class="column-one-quarter" id="benefits">
       <div class="form-group">
-<!--
-        <label class="form-label" for="full-name-f1">
-          Benefits system ID
-          <span class="form-hint">
-            For example CACS
-          </span>
-        </label>
-        <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value={{value_2}}>
--->
-         {% include "components/notifications/system-selector.njk" %}
+        {% include "components/notifications/system-selector.njk" %}
       </div>
     </div>
 
     <div class="column-one-quarter" id="alert-code">
-      <div class="form-group">
-        <label class="form-label" for="full-name-f1">
-          Notification type
-          <span class="form-hint">
-            For example 3508
-          </span>
-        </label>
-        <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value={{value_3}}>
-      </div>
+      {% include "components/notifications/notification-selector.njk" %}
     </div>
 
     <div class="column-one-quarter" id="alert-code">
