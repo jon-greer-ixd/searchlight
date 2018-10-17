@@ -12,8 +12,6 @@ var Interest = require('./interest.js');
 
 var defaults = require('./defaults.js').defaults;
 
-var contactTypes = require('./defaults.js').contactTypes;
-
 var flip = require('./defaults.js').flip;
 
 var setState = require('./defaults.js').setState;
@@ -373,8 +371,10 @@ router.use('/', main);
     
   req.session.data.details = require('./defaults.js').details;
     
-  req.session.data.personalDetails = require('./defaults.js').personalDetails;
-  req.session.data.contactTypes = contactTypes;
+  req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
+    
+  req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
+
   req.session.data.authority = require('./defaults.js').authority;
       
 //  for (var item in contactTypes) {
