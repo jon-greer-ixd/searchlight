@@ -3,7 +3,7 @@ var personalDetails = {
   "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
   "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
   "recordLevel" : {state : null, show : true, display : "Customer record level", value : "Unrestricted access"},
-  "sex" : {state : null, show : true, display : "Sex", value : "Female"},
+  "sex" : {state : null, show : true, display : "Sex", value : false},
   "gender" : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "Identity fraud interest", value : null},
   "disability" : {state : null, show : false, display : "Disability status", value : null},

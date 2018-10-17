@@ -369,7 +369,7 @@ router.use('/', main);
   req.session.data.alertData = require('./data/alerts.js').alerts;
   req.session.data.notificationsData = require('./data/notifications.js').notifications;
     
-  req.session.data.details = require('./defaults.js').details;
+  req.session.data.details = require('./data/details.js').details;
     
   req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
     
@@ -661,7 +661,7 @@ router.get(/person-change-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
   if (req.session.data.personalDetail == 'sex') {
     req.session.data.updateType = 3;
-    req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
+    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetails.sex);
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == 'dateOfDeath') {
     req.session.data.updateType = 3;
@@ -808,56 +808,77 @@ function remove(arr, index){
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   console.log(req.session.data.updateType);
-  var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
-  var value = req.session.data.personalDetailValue;
+  
+  var chosenDetail = req.session.data.personalDetail;
+  var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
+  var chosenValue = req.session.data.personalDetailValue;
+  var tempValue = req.session.data.tempValue;
   var updateValue = req.session.data.updateType;
+  var verificationlevel = req.session.data.verificationlevel;
   
   // SET VALUES  
-  if (req.session.data.personalDetail == 'pv' || 
-      req.session.data.personalDetail == "disability" || 
-      req.session.data.personalDetail == 'sex'|| 
-      req.session.data.personalDetail == 'nifu') {
-        req.session.data.personalDetails.personalDetail = personalDetailsFunctions.setValue(currentDetail, value);
-  } else if (req.session.data.personalDetailValue == 'null' || 
-             updateValue == 4) {
-                currentDetail.value = null;
-  } else if (req.session.data.personalDetail == 'specialNeeds' && 
-             updateValue == 3) {
-              req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
-              console.log(req.session.data.tempValue);
-    if(!req.session.data.tempValue.includes('null') ){
-      req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
-    };
-    for (item in req.session.data.personalDetails.specialNeeds.value) {
-      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
-        remove(req.session.data.personalDetails.specialNeeds.value,item);
-      }
-    }
-  } else  {
-    if (req.session.data.personalDetail != 'disability' && 
-        req.session.data.personalDetail != 'sex') {
-          currentDetail.value = req.session.data.personalDetailValue;
-    }
+  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
+    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
+  } else { 
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue);
   }
+//  if (req.session.data.personalDetail == 'pv' || 
+//      req.session.data.personalDetail == "disability" || 
+//      req.session.data.personalDetail == 'sex'|| 
+//      req.session.data.personalDetail == 'nifu' ||
+//      req.session.data.personalDetail == 'sex') {
+//        req.session.data.personalDetails.personalDetail = personalDetailsFunctions.setValue(currentDetail, value);
+//  } else if (req.session.data.personalDetailValue == 'null' || 
+//             updateValue == 4) {
+//                currentDetail.value = null;
+//  } else if (req.session.data.personalDetail == 'specialNeeds' && 
+//             updateValue == 3) {
+//              req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
+//              console.log(req.session.data.tempValue);
+//    if(!req.session.data.tempValue.includes('null') ){
+//      req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
+//    };
+//    for (item in req.session.data.personalDetails.specialNeeds.value) {
+//      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
+//        remove(req.session.data.personalDetails.specialNeeds.value,item);
+//      }
+//    }
+//  } else  {
+//    currentDetail.value = req.session.data.personalDetailValue;
+//  }
     
+  // set verification level  
   if (req.session.data.verificationlevel != null) {
-    currentDetail.level = req.session.data.verificationlevel;  
+    req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
   }
   
   // SET STATE
-  currentDetail.state = updateValue;
+  req.session.data.personalDetails[req.session.data.personalDetail].state = updateValue;
   
   // SET DISPLAY
-  req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(currentDetail);
-    
+  if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
+  }
+
   // SET MESSAGE
   //function messageCentre(item, type, state)
-  req.session.data.toaster = messageCentre(currentDetail.display, null, currentDetail.state);
+  req.session.data.toaster = messageCentre(detailObject.display, null, detailObject.state);
 
+  console.log(req.session.data.personalDetails.pv.value);
+  console.log(req.session.data.personalDetails.pv.show);
+  
   // RESET
   req.session.data.updateType = null;
   req.session.data.verificationlevel = null;
   req.session.data.tempValue = undefined;
+  
+  chosenDetail,
+  detailObject,
+  chosenValue,
+  tempValue,
+  updateValue,
+  verificationlevel = null;
+
   
   // NEXT
   res.redirect('/account2/account')
