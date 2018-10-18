@@ -70,7 +70,30 @@ function setDisplay(chosenDetail, detailObject) {
   return detailObject;
 };
 
+function remove(arr, index){
+  arr.splice(index,1);
+  return arr;
+};
 
+function correctSpecialNeeds (specialNeeds, personalDetailValue, tempValue) {
+  if (typeof specialNeeds.value == 'string') {
+    specialNeeds.value = tempValue;
+  } else {
+//    tempValue = JSON.stringify(tempValue);
+    if(!tempValue.includes('null') ){
+      specialNeeds.value.push(tempValue);
+    }
+    for (var item in specialNeeds.value) {
+      if (specialNeeds.value[item] == personalDetailValue) {
+        remove(specialNeeds.value,item);
+      }
+    }
+  }
+  return specialNeeds;
+};
+
+
+module.exports.correctSpecialNeeds = correctSpecialNeeds;
 module.exports.flipValue = flipValue;
 module.exports.setDisplay = setDisplay;
 module.exports.setPV = setPV;
