@@ -88,7 +88,7 @@ function setDisplay(chosenDetail, detailObject) {
     }
   } else {
     detailObject.show = false;
-    if(detailObject.value != null && detailObject.value != false) {
+    if(detailObject.value !== null && detailObject.value !== false) {
       detailObject.show = true;
     }  
   }
