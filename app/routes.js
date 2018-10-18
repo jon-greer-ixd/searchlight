@@ -822,31 +822,7 @@ router.get(/check-person-handler/, function (req, res) {
   } else { 
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue);
   }
-//  if (req.session.data.personalDetail == 'pv' || 
-//      req.session.data.personalDetail == "disability" || 
-//      req.session.data.personalDetail == 'sex'|| 
-//      req.session.data.personalDetail == 'nifu' ||
-//      req.session.data.personalDetail == 'sex') {
-//        req.session.data.personalDetails.personalDetail = personalDetailsFunctions.setValue(currentDetail, value);
-//  } else if (req.session.data.personalDetailValue == 'null' || 
-//             updateValue == 4) {
-//                currentDetail.value = null;
-//  } else if (req.session.data.personalDetail == 'specialNeeds' && 
-//             updateValue == 3) {
-//              req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
-//              console.log(req.session.data.tempValue);
-//    if(!req.session.data.tempValue.includes('null') ){
-//      req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
-//    };
-//    for (item in req.session.data.personalDetails.specialNeeds.value) {
-//      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
-//        remove(req.session.data.personalDetails.specialNeeds.value,item);
-//      }
-//    }
-//  } else  {
-//    currentDetail.value = req.session.data.personalDetailValue;
-//  }
-    
+
   // set verification level  
   if (req.session.data.verificationlevel != null) {
     req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
