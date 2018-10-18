@@ -816,12 +816,16 @@ router.get(/check-person-handler/, function (req, res) {
   var updateType = req.session.data.updateType;
   var verificationlevel = req.session.data.verificationlevel;
   
+  console.log('additional needs value', req.session.data.personalDetails.specialNeeds.value);
+  
   // SET VALUES  
   if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
     req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
   } else { 
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
   }
+  
+  console.log('additional needs value', req.session.data.personalDetails.specialNeeds.value);
 
   // set verification level  
   if (req.session.data.verificationlevel != null) {

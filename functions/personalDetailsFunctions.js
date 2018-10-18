@@ -18,9 +18,9 @@ function setPV(pv, chosenValue) {
   return pv;
 };
 
-function setNeeds(needs, value) {
-  needs.value = value;
-  return needs;
+function setNeeds(needsObject, chosenValue) {
+  needsObject.value = chosenValue;
+  return needsObject;
 };
 
 function flipValue(value) {
@@ -44,7 +44,7 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
     if (updateType == 3) {
       return correctSpecialNeeds(detailObject, chosenValue, tempValue);
     } else {
-      return setNeeds(detailObject, tempValue);
+      return setNeeds(detailObject, chosenValue);
     }
   } else {
     detailObject.value = chosenValue;
@@ -57,7 +57,7 @@ function correctSpecialNeeds (detailObject, chosenValue, tempValue) {
     detailObject.value = tempValue;
   } else {
 //    tempValue = JSON.stringify(tempValue);
-    if(!tempValue.includes('null') ){
+    if(tempValue != 'null' && tempValue != null){
       detailObject.value.push(tempValue);
     }
     for (var item in detailObject.value) {
@@ -88,7 +88,7 @@ function setDisplay(chosenDetail, detailObject) {
     }
   } else {
     detailObject.show = false;
-    if(detailObject.value !== null && detailObject.value !== false) {
+    if(detailObject.value != null && detailObject.value != false) {
       detailObject.show = true;
     }  
   }
@@ -96,6 +96,7 @@ function setDisplay(chosenDetail, detailObject) {
 };
 
 
+module.exports.setNeeds = setNeeds;
 module.exports.correctSpecialNeeds = correctSpecialNeeds;
 module.exports.flipValue = flipValue;
 module.exports.setDisplay = setDisplay;
