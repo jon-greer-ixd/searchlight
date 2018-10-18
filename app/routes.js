@@ -827,10 +827,7 @@ router.get(/check-person-handler/, function (req, res) {
   } else if (req.session.data.personalDetail == 'specialNeeds' && updateValue == 3) {
     personalDetailsFunctions.correctSpecialNeeds(currentDetail, value, req.session.data.tempValue);
   } else  {
-    if (req.session.data.personalDetail != 'disability' && 
-        req.session.data.personalDetail != 'sex') {
-          currentDetail.value = req.session.data.personalDetailValue;
-    }
+    currentDetail.value = req.session.data.personalDetailValue;
   }
     
   if (req.session.data.verificationlevel != null) {
@@ -843,23 +840,12 @@ router.get(/check-person-handler/, function (req, res) {
   // SET DISPLAY
   if(req.session.data.personalDetail != "gender") {
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(currentDetail);
-  } else {
-    if (currentDetail.value == null) {
-      currentDetail.show = false;
-    } else {
-      currentDetail.show = true;
-    }
-  };
-  
-//  if(req.session.data.personalDetails.specialNeeds.value != undefined && req.session.data.personalDetails.specialNeeds.value.length == 0) {
-//    req.session.data.personalDetails.specialNeeds.show = false;
-//  }
-  
+  }
+    
   // SET MESSAGE
-  //function messageCentre(item, type, state)
   req.session.data.toaster = messageCentre(currentDetail.display, null, currentDetail.state);
 
-  // RESET
+  // RESET VALUES
   req.session.data.updateType = null;
   req.session.data.verificationlevel = null;
   req.session.data.tempValue = undefined;
