@@ -221,14 +221,14 @@ if (document.getElementById("day-number")) {
   }
 }
 
-if ( document.getElementById("alerts") ) {
+if ( document.getElementById("alerts") || document.getElementById("notifications") ) {
+    console.log('here');
     var processButton = document.getElementById("processButton");
     var unprocessButton = document.getElementById("unprocessButton");
     var processBoxes = document.getElementsByClassName("process-boxes");
     var selectLink = document.getElementById("select_link");
     var unLink = document.getElementById("un_link");  
     var checkAll = function() {
-      console.log("here");
       for (var x in processBoxes) {
        processBoxes[x].checked = true;
       }

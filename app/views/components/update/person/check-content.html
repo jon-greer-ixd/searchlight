@@ -10,72 +10,91 @@
             <!-- TITLE -->
               <td> 
                 <span class="strong">
-                {% if data.tempValue == "null" %}
-                  {% if data.personalDetailValue == "An induction loop" %}
-                    Remove induction loop
-                  {% elif data.personalDetailValue == "A lift" %}
-                    Remove lift
-                  {% elif data.personalDetailValue == "A ramp" %}
-                    Remove ramp
-                  {% else %}
-                    Remove {{data.personalDetailValue | lower}}
-                  {% endif %}
                   
-                {% elif data.personalDetailValue == "null" or data.updateType == 4 %}
-                  Remove 
-                    {% if data.personalDetail == "pv" or data.personalDetail == "disability" %}
-                      the
-                    {% else %}
-                      their
-                    {% endif %}
-                {{data.personalDetails[data.personalDetail].display | lower}}
-                
-                {% elif data.personalDetail == "pv" %}
-                  Who is potentially violent?
-                  
-                {% elif data.personalDetail == "specialNeeds" and data.updateType == 3 %}
-                    Additional need
+                {% if data.personalDetail == "sex" %}
+                  Sex
                 {% else %}
-                  {{data.personalDetails[data.personalDetail].display | capitalize}}
+
+                  {% if data.tempValue == "null" %}
+                    {% if data.personalDetailValue == "An induction loop" %}
+                      Remove induction loop
+                    {% elif data.personalDetailValue == "A lift" %}
+                      Remove lift
+                    {% elif data.personalDetailValue == "A ramp" %}
+                      Remove ramp
+                    {% else %}
+                      Remove {{data.personalDetailValue | lower}}
+                    {% endif %}
+
+                  {% elif data.personalDetailValue == "null" or data.updateType == 4 %}
+                    Remove 
+                      {% if data.personalDetail == "pv" or data.personalDetail == "disability" %}
+                        the
+                      {% else %}
+                        their
+                      {% endif %}
+                  {{data.personalDetails[data.personalDetail].display | lower}}
+
+                  {% elif data.personalDetail == "pv" %}
+                    Who is potentially violent?
+
+                  {% elif data.personalDetail == "specialNeeds" and data.updateType == 3 %}
+                      Additional need
+                  {% else %}
+                    {{data.personalDetails[data.personalDetail].display | capitalize}}
+                  {% endif %}
                 {% endif %}
+
               </span>
             </td>
             
             <!-- VALUE -->
-              {% if data.tempValue == "null" %}
-                <td></td>
-              {% elif data.personalDetailValue != "null"  %}
-                <td>
-                  {% if data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
-                    {% if data.updateType == 3 %}
-                      {{data.personalDetailValue}}
-                    {% else %}
-                      {{counter}}
-                      {% set counter = data.personalDetailValue.length %}
-                      {% for item in data.personalDetailValue %}
-                        {% if counter != 1 %}
-                          {{item}}, <br>
-                        {% else %}
-                          {{item}}
-                        {% endif %}
-                        {% set counter = counter -1 %}
-                      {% endfor %}
-                    {% endif %}   
-                  {% else %}   
-                    {% if data.personalDetailValue == "unknown" %}
-                      {{data.personalDetailValue | capitalize}}
-                    {% elif data.updateType == 4 %}
-                  
-                    {% elif data.personalDetailValue != "dateOfBirth" or data.personalDetailValue != "dateOfDeath"  %}
-                      {{ data.personalDetailValue | asString }} 
-                    {% elif data.personalDetailValue != "VIP" %}
-                      {{data.personalDetailValue}}
-                    {% else %}
-                      {{data.personalDetailValue}}
+            
+              {% if data.personalDetail == "sex" %}
+                {% if data.personalDetailValue == true %}
+                  <td> Male</td>
+                {% else %}
+                 <td>Female</td>
+                {% endif %}
+              {% else %}
+            
+                {% if data.tempValue == "null" %}
+                  <td></td>
+                {% elif data.personalDetailValue != "null"  %}
+                  <td>
+                    {% if data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
+                      {% if data.updateType == 3 %}
+                        {{data.personalDetailValue}}
+                      {% else %}
+                        {{counter}}
+                        {% set counter = data.personalDetailValue.length %}
+                        {% for item in data.personalDetailValue %}
+                          {% if counter != 1 %}
+                            {{item}}, <br>
+                          {% else %}
+                            {{item}}
+                          {% endif %}
+                          {% set counter = counter -1 %}
+                        {% endfor %}
+                      {% endif %}   
+                    {% else %}   
+                      {% if data.personalDetailValue == "unknown" %}
+                        {{data.personalDetailValue | capitalize}}
+                      {% elif data.updateType == 4 %}
+
+                      {% elif data.personalDetailValue != "dateOfBirth" or data.personalDetailValue != "dateOfDeath"  %}
+                        {{ data.personalDetailValue | asString }} 
+                      {% elif data.personalDetailValue != "VIP" %}
+                        {{data.personalDetailValue}}
+                      {% else %}
+                        {{data.personalDetailValue}}
+                      {% endif %}
                     {% endif %}
-                  {% endif %}
-                </td>
-              {% endif %}
+                  </td>
+                {% endif %}
+            
+            {% endif %}
+
             
             <!-- CHANGE -->
             <td>

@@ -12,8 +12,6 @@ var Interest = require('./interest.js');
 
 var defaults = require('./defaults.js').defaults;
 
-var contactTypes = require('./defaults.js').contactTypes;
-
 var flip = require('./defaults.js').flip;
 
 var setState = require('./defaults.js').setState;
@@ -371,10 +369,12 @@ router.use('/', main);
   req.session.data.alertData = require('./data/alerts.js').alerts;
   req.session.data.notificationsData = require('./data/notifications.js').notifications;
     
-  req.session.data.details = require('./defaults.js').details;
+  req.session.data.details = require('./data/details.js').details;
     
-  req.session.data.personalDetails = require('./defaults.js').personalDetails;
-  req.session.data.contactTypes = contactTypes;
+  req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
+    
+  req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
+
   req.session.data.authority = require('./defaults.js').authority;
       
 //  for (var item in contactTypes) {
@@ -661,7 +661,7 @@ router.get(/person-change-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
   if (req.session.data.personalDetail == 'sex') {
     req.session.data.updateType = 3;
-    req.session.data.personalDetailValue = changeSex(req.session.data.personalDetails.sex.value);
+    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetails.sex);
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == 'dateOfDeath') {
     req.session.data.updateType = 3;
@@ -682,6 +682,7 @@ router.get(/person-change-handler/, function (req, res) {
 })
 
 router.get(/change-person-type-handler/, function (req, res) {
+  console.log(req.session.data.updateType);
   if (req.session.data.personalDetail == 'nino' || req.session.data.updateType == 4) {
     req.session.data.updateType == 2;
     req.session.data.personalDetail = 'ninoVerificationLevel';
@@ -703,7 +704,11 @@ router.get(/change-person-type-handler/, function (req, res) {
     }
   } else if (req.session.data.personalDetail == 'preferredLanguage') {
     if (req.session.data.updateType == 2) {
-      req.session.data.personalDetailValue == 'English' ? req.session.data.personalDetailValue = 'Welsh' : req.session.data.personalDetailValue = 'English';
+      if (req.session.data.personalDetailValue == 'English') {
+        req.session.data.personalDetailValue = 'Welsh';
+      } else {
+        req.session.data.personalDetailValue = 'English';
+      }
       res.redirect('/update/person/check')
     } else {
       res.redirect('/update/person/update')
@@ -711,27 +716,18 @@ router.get(/change-person-type-handler/, function (req, res) {
   } else {
     res.redirect('/update/person/update')
   }
-  
-//  if (req.session.data.personalDetail == 'nationality' || req.session.data.personalDetail == 'pv' || req.session.data.personalDetail == 'maritalStatus' || req.session.data.personalDetail == 'specialNeeds' || req.session.data.personalDetail == 'preferredLanguage' || req.session.data.personalDetail == 'spokenLanguage' || req.session.data.personalDetail == 'immigration') {
-////    if (req.session.data.editState == 'correcting') {
-////      req.session.data.editState = req.query.correct;
-////    }
-//    if (req.session.data.editState == 'ending' || req.session.data.editState == 'removing') {
-//      res.redirect('/update/person/check')
+//  if (req.session.data.personalDetail == 'nifu') {
+//    req.session.data.personalDetailValue = 'No';
+//    req.session.data.personalDetails.nifu.show = false;
+//    res.redirect('/update/person/check')
+//  } else if (req.session.data.personalDetail == 'preferredLanguage') {
+//    if (req.session.data.personalDetails[req.session.data.personalDetail].value == 'Welsh') {
+//      req.session.data.personalDetailValue = 'English';
+//    } else {
+//      req.session.data.personalDetailValue = 'Welsh';
 //    }
+//    res.redirect('/update/person/check')
 //  }
-  if (req.session.data.personalDetail == 'nifu') {
-    req.session.data.personalDetailValue = 'No';
-    req.session.data.personalDetails.nifu.show = false;
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == 'preferredLanguage') {
-    if (req.session.data.personalDetails[req.session.data.personalDetail].value == 'Welsh') {
-      req.session.data.personalDetailValue = 'English';
-    } else {
-      req.session.data.personalDetailValue = 'Welsh';
-    }
-    res.redirect('/update/person/check')
-  }
 })
 
 
@@ -812,43 +808,77 @@ function remove(arr, index){
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   console.log(req.session.data.updateType);
-  var currentDetail = req.session.data.personalDetails[req.session.data.personalDetail];
-  var value = req.session.data.personalDetailValue;
+  
+  var chosenDetail = req.session.data.personalDetail;
+  var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
+  var chosenValue = req.session.data.personalDetailValue;
+  var tempValue = req.session.data.tempValue;
   var updateValue = req.session.data.updateType;
+  var verificationlevel = req.session.data.verificationlevel;
   
   // SET VALUES  
-  if (req.session.data.personalDetail == 'pv' || 
-      req.session.data.personalDetail == "disability" || 
-      req.session.data.personalDetail == 'sex'|| 
-      req.session.data.personalDetail == 'nifu') {
-        req.session.data.personalDetails.personalDetail = personalDetailsFunctions.setValue(currentDetail, value);
-  } else if (req.session.data.personalDetailValue == 'null' || updateValue == 4) {
-    currentDetail.value = null;
-  } else if (req.session.data.personalDetail == 'specialNeeds' && updateValue == 3) {
-    personalDetailsFunctions.correctSpecialNeeds(currentDetail, value, req.session.data.tempValue);
-  } else  {
-    currentDetail.value = req.session.data.personalDetailValue;
+  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
+    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
+  } else { 
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue);
   }
+//  if (req.session.data.personalDetail == 'pv' || 
+//      req.session.data.personalDetail == "disability" || 
+//      req.session.data.personalDetail == 'sex'|| 
+//      req.session.data.personalDetail == 'nifu' ||
+//      req.session.data.personalDetail == 'sex') {
+//        req.session.data.personalDetails.personalDetail = personalDetailsFunctions.setValue(currentDetail, value);
+//  } else if (req.session.data.personalDetailValue == 'null' || 
+//             updateValue == 4) {
+//                currentDetail.value = null;
+//  } else if (req.session.data.personalDetail == 'specialNeeds' && 
+//             updateValue == 3) {
+//              req.session.data.tempValue = JSON.stringify(req.session.data.tempValue);
+//              console.log(req.session.data.tempValue);
+//    if(!req.session.data.tempValue.includes('null') ){
+//      req.session.data.personalDetails.specialNeeds.value.push(req.session.data.tempValue)
+//    };
+//    for (item in req.session.data.personalDetails.specialNeeds.value) {
+//      if (req.session.data.personalDetails.specialNeeds.value[item] == req.session.data.personalDetailValue) {
+//        remove(req.session.data.personalDetails.specialNeeds.value,item);
+//      }
+//    }
+//  } else  {
+//    currentDetail.value = req.session.data.personalDetailValue;
+//  }
     
+  // set verification level  
   if (req.session.data.verificationlevel != null) {
-    currentDetail.level = req.session.data.verificationlevel;  
+    req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
   }
   
   // SET STATE
-  currentDetail.state = updateValue;
+  req.session.data.personalDetails[req.session.data.personalDetail].state = updateValue;
   
   // SET DISPLAY
-  if(req.session.data.personalDetail != "gender") {
-    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(currentDetail);
+  if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
   }
-    
-  // SET MESSAGE
-  req.session.data.toaster = messageCentre(currentDetail.display, null, currentDetail.state);
 
-  // RESET VALUES
+  // SET MESSAGE
+  //function messageCentre(item, type, state)
+  req.session.data.toaster = messageCentre(detailObject.display, null, detailObject.state);
+
+  console.log(req.session.data.personalDetails.pv.value);
+  console.log(req.session.data.personalDetails.pv.show);
+  
+  // RESET
   req.session.data.updateType = null;
   req.session.data.verificationlevel = null;
   req.session.data.tempValue = undefined;
+  
+  chosenDetail,
+  detailObject,
+  chosenValue,
+  tempValue,
+  updateValue,
+  verificationlevel = null;
+
   
   // NEXT
   res.redirect('/account2/account')
