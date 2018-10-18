@@ -813,14 +813,14 @@ router.get(/check-person-handler/, function (req, res) {
   var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
   var chosenValue = req.session.data.personalDetailValue;
   var tempValue = req.session.data.tempValue;
-  var updateValue = req.session.data.updateType;
+  var updateType = req.session.data.updateType;
   var verificationlevel = req.session.data.verificationlevel;
   
   // SET VALUES  
   if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
     req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
   } else { 
-    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue);
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
   }
 
   // set verification level  
@@ -829,7 +829,7 @@ router.get(/check-person-handler/, function (req, res) {
   }
   
   // SET STATE
-  req.session.data.personalDetails[req.session.data.personalDetail].state = updateValue;
+  req.session.data.personalDetails[req.session.data.personalDetail].state = updateType;
   
   // SET DISPLAY
   if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
@@ -852,9 +852,8 @@ router.get(/check-person-handler/, function (req, res) {
   detailObject,
   chosenValue,
   tempValue,
-  updateValue,
+  updateType,
   verificationlevel = null;
-
   
   // NEXT
   res.redirect('/account2/account')

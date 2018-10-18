@@ -28,7 +28,7 @@ function flipValue(value) {
   return value;
 };
 
-function setValue(chosenDetail, detailObject, chosenValue, tempValue) {
+function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType) {
   if(chosenValue == "null") {
     chosenValue = null;
   }
@@ -41,13 +41,38 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue) {
   } else if (chosenDetail == 'pv') {
     return setPV(detailObject, chosenValue);
   } else if (chosenDetail == 'specialNeeds') {
-    return setNeeds(detailObject, tempValue);
+    if (updateType == 3) {
+      return correctSpecialNeeds(detailObject, chosenValue, tempValue);
+    } else {
+      return setNeeds(detailObject, tempValue);
+    }
   } else {
     detailObject.value = chosenValue;
     return detailObject;
   }
 };
 
+function correctSpecialNeeds (detailObject, chosenValue, tempValue) {
+  if (typeof detailObject.value == 'string') {
+    detailObject.value = tempValue;
+  } else {
+//    tempValue = JSON.stringify(tempValue);
+    if(!tempValue.includes('null') ){
+      detailObject.value.push(tempValue);
+    }
+    for (var item in detailObject.value) {
+      if (detailObject.value[item] == chosenValue) {
+        remove(detailObject.value,item);
+      }
+    }
+  }
+  return detailObject;
+};
+
+function remove(arr, index){
+  arr.splice(index,1);
+  return arr;
+};
 
 ///////////////////////
 // display functions //
@@ -68,28 +93,6 @@ function setDisplay(chosenDetail, detailObject) {
     }  
   }
   return detailObject;
-};
-
-function remove(arr, index){
-  arr.splice(index,1);
-  return arr;
-};
-
-function correctSpecialNeeds (specialNeeds, personalDetailValue, tempValue) {
-  if (typeof specialNeeds.value == 'string') {
-    specialNeeds.value = tempValue;
-  } else {
-//    tempValue = JSON.stringify(tempValue);
-    if(!tempValue.includes('null') ){
-      specialNeeds.value.push(tempValue);
-    }
-    for (var item in specialNeeds.value) {
-      if (specialNeeds.value[item] == personalDetailValue) {
-        remove(specialNeeds.value,item);
-      }
-    }
-  }
-  return specialNeeds;
 };
 
 
