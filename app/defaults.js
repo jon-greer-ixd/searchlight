@@ -1,4 +1,6 @@
 var defaults = {
+  
+// 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE
 //  //contact
 //  contactType : null,
 //  //updater
@@ -73,6 +75,9 @@ function messageCentre(item, type, state) {
   if (state == 5) {
     state = "ended";
   }
+  if (state == 6) {
+    state = "deleted";
+  }
   if (state == "removing") {
     state = "ended";
   }
@@ -84,6 +89,10 @@ function messageCentre(item, type, state) {
   console.log(`message = ${message}`);
   return message
 }
+
+  // 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE
+
+
 
 //state-machine
 function setState(state) {

@@ -1417,6 +1417,19 @@ router.get(/check-benefit-handler/, function (req, res) {
   res.redirect('/account2/account')
 })
 
+
+//relationships
+
+router.get(/cancel-handler/, function (req, res) {
+  req.session.data.toaster = null;
+  res.redirect('/account2/account')
+})
+
+router.get(/relationship-handler/, function (req, res) {
+  req.session.data.toaster = messageCentre("Relationship", null, req.session.data.updateType);
+  res.redirect('/account2/account')
+})
+
 router.get('/update/search-results-handler', function (req, res) {
   if (req.session.data.updateType === 'correctNew') {
     res.redirect('/update/check')
