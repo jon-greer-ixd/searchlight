@@ -1725,3 +1725,21 @@ hr.strong {
     margin-top: 15px;
   }
 }
+
+#benefit {
+  .column-one-third:nth-child(2) {
+    padding: 0 0 0 15px;
+  }
+}
+
+.benefit-header {
+  p {
+    margin-bottom: 0;  
+  }
+  a {
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}

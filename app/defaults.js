@@ -10,13 +10,13 @@ var defaults = {
 
   //PERSONAL DETAILS  
   //death
-  dead : false,
-  deathState : null,
-  showDeath : false,
+//  dead : false,
+//  deathState : null,
+//  showDeath : false,
           
   //messagecentre
   toaster : null,
-  
+    
   //gcii
   gciiExample : 4
 };
@@ -69,6 +69,9 @@ function messageCentre(item, type, state) {
   }
   if (state == 4) {
     state = "removed";
+  }
+  if (state == 5) {
+    state = "ended";
   }
   if (state == "removing") {
     state = "ended";

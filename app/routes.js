@@ -1403,6 +1403,20 @@ router.get(/update-type-handler/, function (req, res) {
   }
 })
 
+router.get(/change-link-handler/, function (req, res) {
+  req.session.data.updateType = 4;
+  req.session.data.personalDetail = "bereavementBenefit";
+  res.redirect('/update/benefits/check')
+})
+
+router.get(/check-benefit-handler/, function (req, res) {
+  req.session.data.personalDetails.bereavementBenefit.value = false;
+  req.session.data.personalDetails.bereavementBenefit.show = false;
+  req.session.data.personalDetails.bereavementBenefit.state = 5;
+  req.session.data.toaster = messageCentre(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
+  res.redirect('/account2/account')
+})
+
 router.get('/update/search-results-handler', function (req, res) {
   if (req.session.data.updateType === 'correctNew') {
     res.redirect('/update/check')
