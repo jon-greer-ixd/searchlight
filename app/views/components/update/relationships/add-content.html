@@ -1,0 +1,52 @@
+<div class="grid-row">
+  <div class="column-one-half">
+    
+    <form method="get" action="check">
+      <div class="form-group">
+       <fieldset data-required data-error="Choose a title">
+         <legend class="radio-header">Relationship type</legend>
+          <div class="multiple-choice">
+            <input id="one" type="radio" name="relationship_nino" value="one">
+            <label for="one">One</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="two" type="radio" name="drelationship_nino" value="two">
+            <label for="two">Two</label>
+          </div>
+
+          <div class="multiple-choice">
+            <input id="three" type="radio" name="relationship_nino" value="three">
+            <label for="three">Three</label>
+          </div>
+        </fieldset>
+      </div>
+      
+      <fieldset class="form-group" data-required data-error="Cannot be blank">
+        <legend class="visuallyhidden">National Insurance number</legend>
+          <label class="form-label" for="relationship_type">National Insurance number</label>
+          <input class="form-control" id="relationship_type" type="text" name="relationship_type">
+      </fieldset>
+
+      <fieldset>
+        <div class="form-group prepop">
+          <label class="form-label" for="startdate">
+            Start date
+            <span class="form-hint">
+              For example 31/8/1979
+            </span>
+          </label>
+          <input class="form-control box-one" id="startdate" name="relationship_start_date" type="text">
+          <a class="populate-link-one">Use today's date</a>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    
+    <p><a href="/account2/account">Cancel</a></p>
+    
+  </div>
+</div>
