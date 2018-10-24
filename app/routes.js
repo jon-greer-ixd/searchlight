@@ -18,9 +18,9 @@ var setState = require('./defaults.js').setState;
 
 var changeSex = require('./defaults.js').changeSex;
 
-var messageCentre = require('./defaults.js').messageCentre;
-
 var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
+
+var generalFunctions = require('../functions/general.js');
 
 
 //***********
@@ -557,13 +557,13 @@ router.get(/check-contact-handler/, function (req, res) {
   function setSelectedContactState(newState) {
     req.session.data.contactTypes[req.session.data.contactType].state = newState;
     if (req.session.data.contactType == 'otherContact') {
-      req.session.data.toaster = messageCentre (
+      req.session.data.toaster = setToasterMessage (
         'Contact method', 
         req.session.data.contactTypes[req.session.data.contactType].type, 
         req.session.data.contactState
       );
     } else {
-      req.session.data.toaster = messageCentre (
+      req.session.data.toaster = setToasterMessage (
         req.session.data.contactTypes[req.session.data.contactType].display, 
         req.session.data.contactTypes[req.session.data.contactType].type, 
         req.session.data.contactState
@@ -609,11 +609,11 @@ router.get(/check-contact-handler/, function (req, res) {
   }
   if (req.session.data.preferredContactState == 'updating') {
     req.session.data.preferredContactState = 'updated';
-    req.session.data.toaster = messageCentre('preferred method of contact', null, 'set');
+    req.session.data.toaster = setToasterMessage('preferred method of contact', null, 'set');
   }
   //remove preference
   if ( req.session.data.preferredContactState == 'removing') {
-    req.session.data.toaster = messageCentre('preferred contact state', null, 'removed');
+    req.session.data.toaster = setToasterMessage('preferred contact state', null, 'removed');
     req.session.data.preferredContactState = 'removed';
   }
   if (req.session.data.exdirectory == 'true') {
@@ -764,7 +764,7 @@ handle nifu (on/off)
 handle gender ()
 
 //set message
-req.session.data.toaster = messageCentre(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
+req.session.data.toaster = setToasterMessage(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
 //specific values for record level
 if (req.session.data.personalDetail == 'recordLevel') {
   if (req.session.data.personalDetails.recordLevel.value == 'Unrestricted access') {
@@ -841,8 +841,8 @@ router.get(/check-person-handler/, function (req, res) {
   }
 
   // SET MESSAGE
-  //function messageCentre(item, type, state)
-  req.session.data.toaster = messageCentre(detailObject.display, null, detailObject.state);
+  //function setToasterMessage(item, type, state)
+  req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
 
   console.log(req.session.data.personalDetails.pv.value);
   console.log(req.session.data.personalDetails.pv.show);
@@ -1008,7 +1008,7 @@ router.get(/check-gender-handler/, function (req, res) {
     req.session.data.personalDetails.gender.preGra = true;
   }
   req.session.data.personalDetails.gender.show = true;
-  req.session.data.toaster = messageCentre('Gender recognition details', null, 'added');
+  req.session.data.toaster = setToasterMessage('Gender recognition details', null, 'added');
   req.session.data.personalDetails.sex.value = req.session.data.sexValue;
   res.redirect('/account2/account')
 })
@@ -1109,7 +1109,7 @@ router.get(/check-name-handler/, function (req, res) {
     }
   }
   req.session.data.details[req.session.data.nameType].state = setState(req.session.data.updateType);
-  req.session.data.toaster = messageCentre(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
+  req.session.data.toaster = setToasterMessage(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
   res.redirect('../../account2/account')
 })
 
@@ -1319,7 +1319,7 @@ router.get(/update-type-handler/, function (req, res) {
   if (req.query.data == 'add_correspondence') {
     req.session.data.updateType = 'addCorrespondence';
     content.setPageTitle(req.session.data.updateType);
-    req.session.data.toaster = messageCentre('Correspondence address', null, 'added');
+    req.session.data.toaster = setToasterMessage('Correspondence address', null, 'added');
     res.redirect('/update/address-search')
     //status
   } else if (req.query.data === 'update_status') {
@@ -1413,7 +1413,7 @@ router.get(/check-benefit-handler/, function (req, res) {
   req.session.data.personalDetails.bereavementBenefit.value = false;
   req.session.data.personalDetails.bereavementBenefit.show = false;
   req.session.data.personalDetails.bereavementBenefit.state = 5;
-  req.session.data.toaster = messageCentre(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
+  req.session.data.toaster = setToasterMessage(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
   res.redirect('/account2/account')
 })
 
@@ -1426,7 +1426,7 @@ router.get(/cancel-handler/, function (req, res) {
 })
 
 router.get(/relationship-handler/, function (req, res) {
-  req.session.data.toaster = messageCentre("Relationship", null, req.session.data.updateType);
+  req.session.data.toaster = setToasterMessage("Relationship", null, req.session.data.updateType);
   res.redirect('/account2/account')
 })
 
@@ -1484,7 +1484,7 @@ router.get(/check-answers-handler/, function (req, res) {
     dataState.cherishedLineCorrected = true;   
   }
   if (req.session.data.updateType === 'end') {
-    req.session.data.toaster = messageCentre('Correspondence address', null, 'ended');
+    req.session.data.toaster = setToasterMessage('Correspondence address', null, 'ended');
     dataState.correspondenceAdded = false;   
     dataState.correspondenceRemoved = true;   
   }
