@@ -108,7 +108,7 @@ function setState(state) {
   return state;
 }
 
-module.exports.messageCentre = messageCentre;
+//module.exports.messageCentre = messageCentre;
 module.exports.authority = authority;
 module.exports.changeSex = changeSex;
 //module.exports.flip = flip;
