@@ -28,17 +28,17 @@ var authority = {
   "councilTaxReduction" : {"state" : null, "show" : false}
 };
 
-function flip(value) {
-  if (value === "Yes" || value === "yes" ) {
-    return "No";
-  } else if (value === "No" || value === "no" ) {
-    return "Yes";
-  } else if (value === "true" || value === true ) {
-    return false;
-  } else if (value === "false" || value === false ) {
-    return true;
-  }
-}
+//function flip(value) {
+//  if (value === "Yes" || value === "yes" ) {
+//    return "No";
+//  } else if (value === "No" || value === "no" ) {
+//    return "Yes";
+//  } else if (value === "true" || value === true ) {
+//    return false;
+//  } else if (value === "false" || value === false ) {
+//    return true;
+//  }
+//}
 
 function changeSex(sex) {
   if(sex === "Male") {
@@ -111,6 +111,6 @@ function setState(state) {
 module.exports.messageCentre = messageCentre;
 module.exports.authority = authority;
 module.exports.changeSex = changeSex;
-module.exports.flip = flip;
+//module.exports.flip = flip;
 module.exports.defaults = defaults;
 module.exports.setState = setState;
