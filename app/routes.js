@@ -528,10 +528,7 @@ router.get(/update-contact-handler/, function (req, res) {
   var next = 'contact-details';
   if (req.query.updateType == 5) {
     next = 'end';
-  } else if (req.query.updateType == 'removePref') {
-     req.session.data.preferredContactState = 'removing';
-  } else if (req.query.data == 'setPref') {
-    req.session.data.preferredContactState = 'updating';
+  } else if (req.query.updateType == 7) {
     next = 'check';
   }
   console.log(`preferredContactState = ${req.session.data.preferredContactState}`);
@@ -569,7 +566,7 @@ router.get(/check-contact-handler/, function (req, res) {
   }
 
   // SET PREFERENCE
-  if (req.session.data.pref == 'true' || req.session.data.preferredContactState == 2) {
+  if (req.session.data.pref == 'true' || req.session.data.updateType == 7) {
     req.session.data.contactTypes = contactFunctions.setPreferedContact(contactTypes, chosenContact);
   }
 
@@ -581,17 +578,15 @@ router.get(/check-contact-handler/, function (req, res) {
   }
 
   // SET MESSAGE
-  if (req.session.data.preferredContactState != null) {
-    req.session.data.toaster = generalFunctions.setToasterMessage('Preferred method of contact', null, req.session.data.preferredContactState);
+  var contactDisplay;
+  if (updateType == 7) {
+    contactDisplay = 'Preferred method of contact';
+  } else if (chosenContact == 'otherContact') {
+    contactDisplay = 'Contact method';
   } else {
-    var contactDisplay;
-    if (chosenContact == 'otherContact') {
-      contactDisplay = 'Contact method';
-    } else {
-      contactDisplay = req.session.data.contactTypes[chosenContact].display;
-    }
+    contactDisplay = req.session.data.contactTypes[chosenContact].display;
   }
-  req.session.data.toaster = generalFunctions.setToasterMessage (contactDisplay, contactObject.type, updateType)
+  req.session.data.toaster = generalFunctions.setToasterMessage (contactDisplay, contactObject.type, updateType);
 
   //reset
   req.session.data.pref = false;

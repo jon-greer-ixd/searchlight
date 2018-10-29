@@ -1,4 +1,4 @@
-// 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE
+// 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
 
 function setPreferedContact(contactTypes, preferedContactType) {
   for (var x in contactTypes) {

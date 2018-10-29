@@ -78,7 +78,8 @@
           </tr>
         {% endif %}
         
-        {% if data.preferredContactState == "updating" %}
+        
+        {% if data.updateType == 7 %}
           <tr>
             <td><span class="strong">Contact method</span></td>
             {% if data.contactType == "otherContact" %}
@@ -91,13 +92,6 @@
           </tr>
         {% endif %}
         
-        {% if data.preferredContactState == "removing" %}
-          <tr>
-            <td><span class="strong">Contact method</span></td>
-            <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
-            <td><a>Change</a></td>
-          </tr>
-        {% endif %}
         
         {% if data.contactType == "homeTelephone" %}
           {% if data.exdirectory == "true" %}
