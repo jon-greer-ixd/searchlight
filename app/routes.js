@@ -517,8 +517,6 @@ router.get(/authority-handler/, function (req, res) {
 
 
 //CONTACT
-
-
 router.get(/contact-change-handler/, function (req, res) {
   req.session.data.toaster = null;
   req.session.data.contactType = req.query.contactType;
