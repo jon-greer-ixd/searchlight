@@ -8,33 +8,33 @@
           
           <h2 class="title">
             
-            {% if data.preferredContactState == "updating" %}
+            {% if data.updateType == 7 %}
               Set a preferred contact method
             
             {% else %}
             
-              {% if data.contactState == "adding" %}
+              {% if data.updateType == 1 %}
                 Add
                 {% if data.contactType == "eveningTelephone" %}
                   an
                 {% else %}
                   a
                 {% endif %}
-              {% elif data.contactState == "updating" %}
+              {% elif data.updateType == 2 %}
                 Update
                 {% if data.contactType == "otherContact" %}
                   a
                 {% else %}
                   their
                 {% endif %}
-              {% elif data.contactState == "correcting" %}
+              {% elif data.updateType == 3 %}
                 Correct
                 {% if data.contactType == "otherContact" %}
                   a
                 {% else %}
                   their
                 {% endif %}
-              {% elif data.contactState == "removing" %}
+              {% elif data.updateType == 5 %}
                 End
                 {% if data.contactType == "otherContact" %}
                   a

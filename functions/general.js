@@ -1,9 +1,9 @@
 // 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE
 
-function setToasterMessage(item, type, state) {
+function setToasterMessage(item, type, updateType) {
   var message;
-  if (state == 1 || state == "adding") {
-    state = "added";
+  if (updateType == 1 || updateType == "adding") {
+    updateType = "added";
   }
   if (type == "phone" || type == "fax" || type == "textPhone" || type == "typeTalk" || type == "other-phone") {
     type = "number";
@@ -14,28 +14,28 @@ function setToasterMessage(item, type, state) {
   if (type == "other") {
     type = "";
   }
-  if (state == 2 || state == "updating") {
-    state = "updated";
+  if (updateType == 2 || updateType == "updating" || updateType == 7) {
+    updateType = "updated";
   }
-  if (state == 3 || state == "correcting") {
-    state = "corrected";
+  if (updateType == 3 || updateType == "correcting") {
+    updateType = "corrected";
   }
-  if (state == 4) {
-    state = "removed";
+  if (updateType == 4) {
+    updateType = "removed";
   }
-  if (state == 5) {
-    state = "ended";
+  if (updateType == 5) {
+    updateType = "ended";
   }
-  if (state == 6) {
-    state = "deleted";
+  if (updateType == 6) {
+    updateType = "deleted";
   }
-  if (state == "removing") {
-    state = "ended";
+  if (updateType == "removing") {
+    updateType = "ended";
   }
-  if (type == null) {
-    message = `${item} ${state}`;
+  if (type == null || updateType == 'updated') {
+    message = `${item} ${updateType}`;
   } else {
-    message = `${item} ${type} ${state}`;
+    message = `${item} ${type} ${updateType}`;
   }
   return message
 }

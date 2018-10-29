@@ -5,8 +5,8 @@
     <div class="column-one-half">
 
       <table class="table"> 
-        
-        {% if data.contactState == "adding" or data.contactState == "updating" %}
+                
+        {% if data.updateType == 1 or data.updateType == 2 %}
           <tr>
             <td>
               <span class="strong">
@@ -41,7 +41,7 @@
             </tr>
           {% endif %}
         
-        {% if data.contactState == "correcting" %}
+        {% if data.updateType == 3 %}
           <tr>
             <td>
               <span class="strong">
@@ -68,7 +68,7 @@
           </tr>
         {% endif %}
         
-        {% if data.contactState == "removing" %}
+        {% if data.updateType == 5 %}
           <tr>
             <td><span class="strong">End date</span></td>
             <td>
@@ -78,7 +78,8 @@
           </tr>
         {% endif %}
         
-        {% if data.preferredContactState == "updating" %}
+        
+        {% if data.updateType == 7 %}
           <tr>
             <td><span class="strong">Contact method</span></td>
             {% if data.contactType == "otherContact" %}
@@ -87,14 +88,6 @@
               <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
             {% endif %}
             
-            <td><a>Change</a></td>
-          </tr>
-        {% endif %}
-        
-        {% if data.preferredContactState == "removing" %}
-          <tr>
-            <td><span class="strong">Contact method</span></td>
-            <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
             <td><a>Change</a></td>
           </tr>
         {% endif %}
@@ -108,13 +101,15 @@
             </tr>
           {% endif %}
           {% if data.exdirectory != "true" and data.contactTypes.homeTelephone.exD == true %}
-            {% if data.contactState == "correcting" %}
+<!--
+            {% if data.updateType == 7 %}
               <tr>
                 <td><span class="strong">Ex-directory number</span></td>
                 <td>No</td>
                 <td><a>Change</a></td>
               </tr>
             {% endif %}
+-->
           {% endif %}
         {% endif %}
 
