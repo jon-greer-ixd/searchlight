@@ -525,15 +525,14 @@ router.get(/contact-change-handler/, function (req, res) {
 
 router.get(/update-contact-handler/, function (req, res) {
   req.session.data.preferredContactState = null;
-  var next = 'check';
-  if (req.session.data.updateType == 1 || req.session.data.updateType == 2) {
-    next = 'contact-details';
-  } else if (req.query.updateType == 'removing') {
+  var next = 'contact-details';
+  if (req.query.updateType == 'removing') {
     next = 'end';
   } else if (req.query.updateType == 'removePref') {
      req.session.data.preferredContactState = 'removing';
   } else if (req.query.data == 'setPref') {
-     req.session.data.preferredContactState = 'updating';
+    req.session.data.preferredContactState = 'updating';
+    next = 'check';
   }
   console.log(`preferredContactState = ${req.session.data.preferredContactState}`);
   res.redirect(next);
