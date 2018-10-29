@@ -6,56 +6,7 @@
           
           <a class="link-back" onCLick="history.back()">Back</a>          
           
-          <h2 class="title">
-            
-            {% if data.updateType == 7 %}
-              Set a preferred contact method
-            
-            {% else %}
-            
-              {% if data.updateType == 1 %}
-                Add
-                {% if data.contactType == "eveningTelephone" %}
-                  an
-                {% else %}
-                  a
-                {% endif %}
-              {% elif data.updateType == 2 %}
-                Update
-                {% if data.contactType == "otherContact" %}
-                  a
-                {% else %}
-                  their
-                {% endif %}
-              {% elif data.updateType == 3 %}
-                Correct
-                {% if data.contactType == "otherContact" %}
-                  a
-                {% else %}
-                  their
-                {% endif %}
-              {% elif data.updateType == 5 %}
-                End
-                {% if data.contactType == "otherContact" %}
-                  a
-                {% else %}
-                  their
-                {% endif %}
-              {% endif %}
-                        
-              {% if data.contactType == "typeTalk" %}
-                {{ data.contactTypes[data.contactType].display  }}
-              {% elif data.contactType == "otherContact" %}
-                contact method
-              {% else %}
-                {{ data.contactTypes[data.contactType].display | lower  }}
-              {% endif %}
-                {{ data.contactTypes[data.contactType].type | contactIs  }}
-            
-            {% endif %}
-                        
-            
-          </h2>
+          <h2 class="title">{% include "components/update/contact/title.njk" %}</h2>
           
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">

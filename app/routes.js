@@ -516,30 +516,30 @@ router.get(/authority-handler/, function (req, res) {
 })
 
 
-//CONTACT
+/*************/
+/** CONTACT **/
+/*************/
+
 router.get(/contact-change-handler/, function (req, res) {
   req.session.data.toaster = null;
-  req.session.data.contactType = req.query.contactType;
   res.redirect('/update/contact/update-type')
 })
 
 router.get(/update-contact-handler/, function (req, res) {
-  req.session.data.preferredContactState = null;
   var next = 'contact-details';
   if (req.query.updateType == 5) {
     next = 'end';
   } else if (req.query.updateType == 7) {
     next = 'check';
   }
-  console.log(`preferredContactState = ${req.session.data.preferredContactState}`);
   res.redirect(next);
 })
-
-router.get(/contact-type-handler/, function (req, res) {
-  var method = req.query.data;
-  req.session.data[method].state = 'adding';
-  res.redirect(method)
-})
+//
+//router.get(/contact-type-handler/, function (req, res) {
+//  var method = req.query.data;
+//  req.session.data[method].state = 'adding';
+//  res.redirect(method)
+//})
 
 router.get(/pref-handler/, function (req, res) {
   if (req.query.pref != 'true') {
@@ -554,16 +554,13 @@ router.get(/check-contact-handler/, function (req, res) {
   var contactObject = req.session.data.contactTypes[chosenContact];
   var contactTypes = req.session.data.contactTypes;
   var updateType = req.session.data.updateType;
+  var contactDisplay;
   
   // SET STATE  
   req.session.data.contactTypes[chosenContact].state = updateType;
   
   // SET DISPLAY  
-  if (updateType != 5) {
-    req.session.data.contactTypes[chosenContact].show = true;
-  } else {
-    req.session.data.contactTypes[chosenContact].show = false;
-  }
+  req.session.data.contactTypes[chosenContact].show = (updateType == 5 ? false : true);
 
   // SET PREFERENCE
   if (req.session.data.pref == 'true' || req.session.data.updateType == 7) {
@@ -571,14 +568,9 @@ router.get(/check-contact-handler/, function (req, res) {
   }
 
   // SET EX DIRECTORY
-  if (req.session.data.exdirectory == 'true') {
-    req.session.data.contactTypes.homeTelephone.exD = true;
-  } else {
-    req.session.data.contactTypes.homeTelephone.exD = false;
-  }
-
+  req.session.data.contactTypes.homeTelephone.exD = (req.session.data.exdirectory == 'true' ? true : false);
+  
   // SET MESSAGE
-  var contactDisplay;
   if (updateType == 7) {
     contactDisplay = 'Preferred method of contact';
   } else if (chosenContact == 'otherContact') {
@@ -591,7 +583,7 @@ router.get(/check-contact-handler/, function (req, res) {
   //reset
   req.session.data.pref = false;
   req.session.data.exdirectory = false;
-  chosenContact, contactObject, updateType = null;
+  chosenContact, contactObject, updateType, contactDisplay = null;
 
   //redirect
   res.redirect('/account2/account')
@@ -961,7 +953,6 @@ router.get(/check-gender-handler/, function (req, res) {
 /*********/
 /** SEX **/
 /*********/
-
 
 router.get(/update-sex-handler/, function (req, res) {
   if (req.query.data === 'gra') {
