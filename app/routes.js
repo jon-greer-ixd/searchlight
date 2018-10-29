@@ -591,7 +591,6 @@ router.get(/check-contact-handler/, function (req, res) {
   //reset
   req.session.data.pref = false;
   req.session.data.exdirectory = false;
-  req.session.data.contactState = null;
   chosenContact, contactObject, updateType = null;
 
   //redirect

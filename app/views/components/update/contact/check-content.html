@@ -92,7 +92,6 @@
           </tr>
         {% endif %}
         
-        
         {% if data.contactType == "homeTelephone" %}
           {% if data.exdirectory == "true" %}
             <tr>
@@ -102,13 +101,15 @@
             </tr>
           {% endif %}
           {% if data.exdirectory != "true" and data.contactTypes.homeTelephone.exD == true %}
-            {% if data.contactState == "correcting" %}
+<!--
+            {% if data.updateType == 7 %}
               <tr>
                 <td><span class="strong">Ex-directory number</span></td>
                 <td>No</td>
                 <td><a>Change</a></td>
               </tr>
             {% endif %}
+-->
           {% endif %}
         {% endif %}
 
