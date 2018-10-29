@@ -7,21 +7,13 @@ var addressThree = '7 Post Street';
 var addressFour = 'Gateshead, Tyne and Wear NE1 1HH';
 
 var content = require('./content.js').content;
-
 var Interest = require('./interest.js');
-
 var defaults = require('./defaults.js').defaults;
-
 var flip = require('./defaults.js').flip;
-
 var setState = require('./defaults.js').setState;
-
 var changeSex = require('./defaults.js').changeSex;
-
 var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
-
 var generalFunctions = require('../functions/general.js');
-
 var contactFunctions = require('../functions/contact.js');
 
 
@@ -34,7 +26,11 @@ var pip = Interest.createInterest();
 var jsa = Interest.createInterest();
 var esa = Interest.createInterest();
 
-var resetInterests = function() {
+function addInterest(interest) {
+  interests.unshift(interest);
+}
+
+var resetInterests = function () {
   interests.length = 0;
   //reset PIP
   pip.live = true;
@@ -57,9 +53,6 @@ var resetInterests = function() {
   addInterest(esa);
 }
 
-function addInterest(interest) {
-  interests.unshift(interest);
-}
 
 function resetTempInterest(interest) {
   tempInterest = Interest.createInterest();
@@ -121,7 +114,7 @@ person.reset();
 var trace = false;
 var underSixteen = false;
 
-var resetAll = function() {
+var resetAll = function () {
   residentialAddress.reset();
   correspondenceAddress.reset();
   previousAddress.reset();
@@ -131,7 +124,7 @@ var resetAll = function() {
 };
 
 var residentialAddress = {
-  reset : function() {
+  reset : function () {
     this.status = 'live',
     this.line = addressOne,
     this.startDate = '01 Jan 1990',
@@ -146,7 +139,7 @@ residentialAddress.reset();
 // dateTwo : '30 Dec 2000',
 
 var correspondenceAddress = {
-  reset : function() {
+  reset : function () {
     this.line = addressThree;
     this.startDate = null;
     this.endDate = null;
@@ -157,7 +150,7 @@ var correspondenceAddress = {
 correspondenceAddress.reset();
 
 var previousAddress = {
-  reset : function() {
+  reset : function () {
     this.status = 'live';
     this.line = addressOne;
     this.startDate = null;
@@ -169,7 +162,7 @@ var previousAddress = {
 };
 previousAddress.reset();
 
-var updater = function(updatetype) {
+var updater = function (updatetype) {
   if(updatetype === 'addCorrespondence') {
     correspondenceAddress.show = true;
   }
@@ -370,13 +363,9 @@ router.use('/', main);
   //data
   req.session.data.alertData = require('./data/alerts.js').alerts;
   req.session.data.notificationsData = require('./data/notifications.js').notifications;
-    
   req.session.data.details = require('./data/details.js').details;
-    
   req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
-    
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
-
   req.session.data.authority = require('./defaults.js').authority;
       
 //  for (var item in contactTypes) {
@@ -534,12 +523,6 @@ router.get(/update-contact-handler/, function (req, res) {
   }
   res.redirect(next);
 })
-//
-//router.get(/contact-type-handler/, function (req, res) {
-//  var method = req.query.data;
-//  req.session.data[method].state = 'adding';
-//  res.redirect(method)
-//})
 
 router.get(/pref-handler/, function (req, res) {
   if (req.query.pref != 'true') {
@@ -676,6 +659,7 @@ router.get(/change-person-type-handler/, function (req, res) {
   } else {
     res.redirect('/update/person/update')
   }
+  
 //  if (req.session.data.personalDetail == 'nifu') {
 //    req.session.data.personalDetailValue = 'No';
 //    req.session.data.personalDetails.nifu.show = false;
@@ -689,54 +673,6 @@ router.get(/change-person-type-handler/, function (req, res) {
 //    res.redirect('/update/person/check')
 //  }
 })
-
-
-/*
-
-if (req.session.data.editState == 'adding') {
-  req.session.data.personalDetails[req.session.data.personalDetail].state = 'added';
-  req.session.data.personalDetails[req.session.data.personalDetail].show = true;
-}
-
-var hideAndSetToZero = function() {
-  req.session.data.personalDetails[req.session.data.personalDetail].value = null;
-  req.session.data.personalDetails[req.session.data.personalDetail].show = false;
-}
-
-handle PV (list or none)
-handle needs (list or none)
-
-handle marital (value or none)
-handle nationality (value or none)
-handle spoken language (value or none)
-handle pref language (value or none)
-
-handle immigration (multi value or none)
-
-handle record level (value)
-handle DOB (value)
-handle DOD (value)
-
-handle disability (on/off)
-handle sex (on/off)
-handle nifu (on/off)
-
-handle gender ()
-
-//set message
-req.session.data.toaster = setToasterMessage(req.session.data.personalDetails[req.session.data.personalDetail].display, null, req.session.data.personalDetails[req.session.data.personalDetail].state);
-//specific values for record level
-if (req.session.data.personalDetail == 'recordLevel') {
-  if (req.session.data.personalDetails.recordLevel.value == 'Unrestricted access') {
-    nullFalse();  
-  }
-}
-
-req.session.data.personalDetails[req.session.data.personalDetail].state = req.session.data.editState;
-
-req.session.data.personalDetails[req.session.data.personalDetail].value = req.session.data.personalDetailValue;
-
-*/
 
 router.get(/dod-handler/, function (req, res) {
   if (req.query.data == 'remove') {
