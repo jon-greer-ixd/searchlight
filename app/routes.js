@@ -526,7 +526,7 @@ router.get(/contact-change-handler/, function (req, res) {
 router.get(/update-contact-handler/, function (req, res) {
   req.session.data.preferredContactState = null;
   var next = 'contact-details';
-  if (req.query.updateType == 'removing') {
+  if (req.query.updateType == 5) {
     next = 'end';
   } else if (req.query.updateType == 'removePref') {
      req.session.data.preferredContactState = 'removing';
