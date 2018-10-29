@@ -22,6 +22,8 @@ var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js
 
 var generalFunctions = require('../functions/general.js');
 
+var contactFunctions = require('../functions/contact.js');
+
 
 //***********
 // INTERESTS 
@@ -513,7 +515,9 @@ router.get(/authority-handler/, function (req, res) {
   res.redirect('authority-account')
 })
 
+
 //CONTACT
+
 
 router.get(/contact-change-handler/, function (req, res) {
   req.session.data.toaster = null;
@@ -552,79 +556,54 @@ router.get(/pref-handler/, function (req, res) {
   res.redirect('check')
 })
 
-//** check-contact-handler **
+//check-contact-handler
 router.get(/check-contact-handler/, function (req, res) {  
-  function setSelectedContactState(newState) {
-    req.session.data.contactTypes[req.session.data.contactType].state = newState;
-    if (req.session.data.contactType == 'otherContact') {
-      req.session.data.toaster = setToasterMessage (
-        'Contact method', 
-        req.session.data.contactTypes[req.session.data.contactType].type, 
-        req.session.data.contactState
-      );
-    } else {
-      req.session.data.toaster = setToasterMessage (
-        req.session.data.contactTypes[req.session.data.contactType].display, 
-        req.session.data.contactTypes[req.session.data.contactType].type, 
-        req.session.data.contactState
-      )
-    }
-  }
-  function setSelectedContactToShow(show) {
-    req.session.data.contactTypes[req.session.data.contactType].show = show;
-  }
-  //reset the states to existing
-  for (var y in req.session.data.contactTypes) {
-    if (req.session.data.contactTypes[y].state == 'added') {
-      req.session.data.contactTypes[y].state = 'existing';
-    }
-  }
-  //adding new
-  if(req.session.data.contactState == 'adding') {
-    req.session.data.showContact = true;
-    setSelectedContactToShow(true);
-    setSelectedContactState('added');
-  }
-  //updating
-  if(req.session.data.contactState == 'updating') {
-    setSelectedContactState('updated');
-  }
-  //removing
-  if(req.session.data.contactState == 'removing') {
-    setSelectedContactState('removed');
-    setSelectedContactToShow(false);
-  }
-  //correcting
-  if(req.session.data.contactState == 'correcting') {
-    setSelectedContactState('corrected');
-  }
-  //update preference
-  if (req.session.data.pref == 'true' || req.session.data.preferredContactState == 'updating') {
-    for (var x in req.session.data.contactTypes) {
-      req.session.data.contactTypes[x].pref = false;
-    }
-    req.session.data.contactTypes[req.session.data.contactType].pref = true;
+  var chosenContact = req.session.data.contactType;
+  var contactObject = req.session.data.contactTypes[chosenContact];
+  var contactTypes = req.session.data.contactTypes;
+  var updateType = req.session.data.updateType;
+  
+  // SET STATE  
+  req.session.data.contactTypes[chosenContact].state = updateType;
+  
+  // SET DISPLAY  
+  if (updateType != 5) {
+    req.session.data.contactTypes[chosenContact].show = true;
   } else {
-    req.session.data.contactTypes[req.session.data.contactType].pref = false;
+    req.session.data.contactTypes[chosenContact].show = false;
   }
-  if (req.session.data.preferredContactState == 'updating') {
-    req.session.data.preferredContactState = 'updated';
-    req.session.data.toaster = setToasterMessage('preferred method of contact', null, 'set');
+
+  // SET PREFERENCE
+  if (req.session.data.pref == 'true' || req.session.data.preferredContactState == 2) {
+    req.session.data.contactTypes = contactFunctions.setPreferedContact(contactTypes, chosenContact);
   }
-  //remove preference
-  if ( req.session.data.preferredContactState == 'removing') {
-    req.session.data.toaster = setToasterMessage('preferred contact state', null, 'removed');
-    req.session.data.preferredContactState = 'removed';
-  }
+
+  // SET EX DIRECTORY
   if (req.session.data.exdirectory == 'true') {
     req.session.data.contactTypes.homeTelephone.exD = true;
   } else {
     req.session.data.contactTypes.homeTelephone.exD = false;
   }
+
+  // SET MESSAGE
+  if (req.session.data.preferredContactState != null) {
+    req.session.data.toaster = generalFunctions.setToasterMessage('Preferred method of contact', null, req.session.data.preferredContactState);
+  } else {
+    var contactDisplay;
+    if (chosenContact == 'otherContact') {
+      contactDisplay = 'Contact method';
+    } else {
+      contactDisplay = req.session.data.contactTypes[chosenContact].display;
+    }
+  }
+  req.session.data.toaster = generalFunctions.setToasterMessage (contactDisplay, contactObject.type, updateType)
+
   //reset
   req.session.data.pref = false;
   req.session.data.exdirectory = false;
   req.session.data.contactState = null;
+  chosenContact, contactObject, updateType = null;
+
   //redirect
   res.redirect('/account2/account')
 })
@@ -800,70 +779,46 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
-function remove(arr, index){
-    arr.splice(index,1);
-    return arr;
-}
-
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   console.log(req.session.data.updateType);
-  
   var chosenDetail = req.session.data.personalDetail;
   var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
   var chosenValue = req.session.data.personalDetailValue;
   var tempValue = req.session.data.tempValue;
   var updateType = req.session.data.updateType;
   var verificationlevel = req.session.data.verificationlevel;
-  
-  console.log('additional needs value', req.session.data.personalDetails.specialNeeds.value);
-  
   // SET VALUES  
   if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
     req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
   } else { 
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
   }
-  
-  console.log('additional needs value', req.session.data.personalDetails.specialNeeds.value);
-
-  // set verification level  
+  // SET VERIFICATION LEVEL  
   if (req.session.data.verificationlevel != null) {
     req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
   }
-  
   // SET STATE
   req.session.data.personalDetails[req.session.data.personalDetail].state = updateType;
-  
   // SET DISPLAY
   if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
   }
-
   // SET MESSAGE
-  //function setToasterMessage(item, type, state)
   req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
-
-  console.log(req.session.data.personalDetails.pv.value);
-  console.log(req.session.data.personalDetails.pv.show);
-  
   // RESET
   req.session.data.updateType = null;
   req.session.data.verificationlevel = null;
   req.session.data.tempValue = undefined;
-  
   chosenDetail,
   detailObject,
   chosenValue,
   tempValue,
   updateType,
   verificationlevel = null;
-  
   // NEXT
   res.redirect('/account2/account')
 })
-//end
-
 
 //DISABILITY
 router.get(/disability-type-handler/, function (req, res) {
@@ -1008,7 +963,7 @@ router.get(/check-gender-handler/, function (req, res) {
     req.session.data.personalDetails.gender.preGra = true;
   }
   req.session.data.personalDetails.gender.show = true;
-  req.session.data.toaster = setToasterMessage('Gender recognition details', null, 'added');
+  req.session.data.toaster = generalFunctions.setToasterMessage('Gender recognition details', null, 'added');
   req.session.data.personalDetails.sex.value = req.session.data.sexValue;
   res.redirect('/account2/account')
 })
@@ -1109,7 +1064,7 @@ router.get(/check-name-handler/, function (req, res) {
     }
   }
   req.session.data.details[req.session.data.nameType].state = setState(req.session.data.updateType);
-  req.session.data.toaster = setToasterMessage(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
+  req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
   res.redirect('../../account2/account')
 })
 
@@ -1319,7 +1274,7 @@ router.get(/update-type-handler/, function (req, res) {
   if (req.query.data == 'add_correspondence') {
     req.session.data.updateType = 'addCorrespondence';
     content.setPageTitle(req.session.data.updateType);
-    req.session.data.toaster = setToasterMessage('Correspondence address', null, 'added');
+    req.session.data.toaster = generalFunctions.setToasterMessage('Correspondence address', null, 'added');
     res.redirect('/update/address-search')
     //status
   } else if (req.query.data === 'update_status') {
@@ -1413,7 +1368,7 @@ router.get(/check-benefit-handler/, function (req, res) {
   req.session.data.personalDetails.bereavementBenefit.value = false;
   req.session.data.personalDetails.bereavementBenefit.show = false;
   req.session.data.personalDetails.bereavementBenefit.state = 5;
-  req.session.data.toaster = setToasterMessage(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
+  req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
   res.redirect('/account2/account')
 })
 
@@ -1426,7 +1381,7 @@ router.get(/cancel-handler/, function (req, res) {
 })
 
 router.get(/relationship-handler/, function (req, res) {
-  req.session.data.toaster = setToasterMessage("Relationship", null, req.session.data.updateType);
+  req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
   res.redirect('/account2/account')
 })
 
@@ -1484,7 +1439,7 @@ router.get(/check-answers-handler/, function (req, res) {
     dataState.cherishedLineCorrected = true;   
   }
   if (req.session.data.updateType === 'end') {
-    req.session.data.toaster = setToasterMessage('Correspondence address', null, 'ended');
+    req.session.data.toaster = generalFunctions.setToasterMessage('Correspondence address', null, 'ended');
     dataState.correspondenceAdded = false;   
     dataState.correspondenceRemoved = true;   
   }
@@ -2037,8 +1992,7 @@ router.get(/nino-contacts-handler/, function (req, res) {
 router.get(/contact-group-handler/, function (req, res) {
   req.session.data.toaster = null;
   req.session.data.preferredContactState = null;
-  req.session.data.contactState = 'adding';
-  console.log(req.query.contactType);
+  req.session.data.updateType = 1;
   if (req.query.contactType == 'telephone' || req.query.contactType == 'email' || req.query.contactType == 'fax') {
     res.redirect('contact-type')
   } else {
