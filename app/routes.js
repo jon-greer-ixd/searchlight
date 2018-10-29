@@ -528,18 +528,16 @@ router.get(/contact-change-handler/, function (req, res) {
 router.get(/update-contact-handler/, function (req, res) {
   req.session.data.preferredContactState = null;
   var next = 'check';
-  if (req.query.data == 'updating' || req.query.data == 'correcting') {
-    req.session.data.contactState = req.query.data;
+  if (req.session.data.updateType == 1 || req.session.data.updateType == 2) {
     next = 'contact-details';
-  } else if (req.query.data == 'removing') {
-    req.session.data.contactState = req.query.data;
+  } else if (req.query.updateType == 'removing') {
     next = 'end';
-  } else if (req.query.data == 'removePref') {
+  } else if (req.query.updateType == 'removePref') {
      req.session.data.preferredContactState = 'removing';
   } else if (req.query.data == 'setPref') {
      req.session.data.preferredContactState = 'updating';
   }
-    console.log(`preferredContactState = ${req.session.data.preferredContactState}`);
+  console.log(`preferredContactState = ${req.session.data.preferredContactState}`);
   res.redirect(next);
 })
 

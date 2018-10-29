@@ -8,50 +8,30 @@
       <form class="form" method="get" action="update-contact-handler">
           <div class="form-group">
             <fieldset>
-        <!-- telephone -->
-          <legend>
-            <p class="visually-hidden">
-              What kind of telephone number is it?
-            </p>
-          </legend>
               
             <div class="multiple-choice">
-              <input id="update" type="radio" name="data" value="updating">
+              <input id="update" type="radio" name="updateType" value=2>
               <label for="update">
                 Update
-<!--
-                {% if data.contactType == "otherContact" %}
-                  Update the details
-                {% else %}
-                  Update
-                  Update the {{ data.contactTypes[data.contactType].display }} {{ data.contactTypes[data.contactType].type | contactIs }}
-                {% endif %}
--->
               </label>
             </div>
               
             {% if data.contactTypes[data.contactType].pref == true %}
-<!--
+
+              {% else %}
               <div class="multiple-choice">
-                <input id="removePref" type="radio" name="data" value="removePref">
-                  <label for="removePref">Remove the preferred method of contact status</label>
-              </div>
--->
-            {% else %}
-              <div class="multiple-choice">
-                <input id="settingPref" type="radio" name="data" value="setPref">
+                <input id="settingPref" type="radio" name="updateType" value="setPref">
                   <label for="settingPref">Set as their preferred method of contact</label>
               </div>
             {% endif %}
               
             <div class="multiple-choice">
-              <input id="correct" type="radio" name="data" value="correcting">
+              <input id="correct" type="radio" name="updateType" value=3>
               <label for="correct">Correct a mistake</label>
             </div>
               
             <div class="multiple-choice">
-              <input id="remove" type="radio" name="data" value="removing">
-<!--              <label for="remove">End the {{ data.contactTypes[data.contactType].display }} {{ data.contactTypes[data.contactType].type | contactIs }}</label>-->
+              <input id="remove" type="radio" name="updateType" value="removing">
               <label for="remove">End the contact method</label>
             </div>
                             
