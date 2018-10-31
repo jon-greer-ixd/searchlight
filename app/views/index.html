@@ -5,112 +5,94 @@
 {% endblock %}
 
 {% block content %}
-
-  <div class="sl-account-canvas row" id="prototype-navigation">
-    
-    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+  
+<div id=prototype-nav>
+  <div class="grid-row">
+    <div class="column-two-thirds">
       
-      <div class="sl-account-canvas-width">
-        
-        <div id="sl-address-primary-card" class="sl-primary-card">
-          
-          <div id="main-cont">
-            <h1 class="heading-large">Searchlight prototypes</h1>
-            <p>To reset the data in the prototype, hit the 'Feedback' link at the top of any page.</p>
+      <h1 class="heading-large">Searchlight prototypes</h1>
+      <p>To reset the data in the prototype, hit the 'Feedback' link at the top of any page.</p>
+            
+      <h2 class="heading-medium">Get notifications</h2>
+      <ul class="list">  
+        <li><a class="under-link" href="/notifications/v2/page-one">Version 2 - November 2018</a></li>
+        <li><a class="under-link" href="/notifications/page-one">Version 1 - October 2018</a></li>
+      </ul>
+      <hr>
+            
+      <h2 class="heading-medium">Get alerts</h2>
+      <ul class="list list-bullet">  
+        <li><a class="under-link" href="/alerts/v2/page-one">Version 2 November 2018</a></li>
+        <li><a class="under-link" href="/alerts/page-one">Version 1 September 2018</a></li>
+      </ul>
+      <hr>
+            
+      <h2 class="heading-medium">Get citizen income information</h2>
+      <p style="font-size: 17px">July 2018 - version 1<span> &nbsp; </span></p>
+      <ul class="list">  
+        <li><a class="under-link" href="/search-v4/?gciiExample=2">Example 2</a></li>
+        <li><a class="under-link" href="/search-v4/?gciiExample=5">Example 5</a></li>
+        <li><a class="under-link" href="/search-v4/?gciiExample=4">Example 4 - third party</a></li>
+      </ul>
+      <hr>
+            
+      <h2 class="heading-medium">
+        Maintain names<br>
+        Maintain personal details part 1<br>
+        Maintain contact details (work in progress)
+      </h2>
+      <details>
+        <summary>Journeys included</summary>
+        <ul class="list list-bullet">  
+          <li>Maintain contact details</li> <!--done-->
+          <li>Maintain nationality</li> <!--done-->
+          <li>Maintain Sex</li> <!--done-->
+          <li>Correct date of birth</li> <!--done-->
+          <li>Add or correct date of death</li> <!--done-->
+          <li>Maintain potentially violent status</li>  <!-- done -->
+          <li>Marital or Civil Partnership status</li>  <!-- done -->
+          <li>Disability status</li> <!-- done -->
+          <li>Special needs</li><!-- done -->
+          <li>Prefered Language</li>
+          <li>Spoken Language</li> <!-- done -->
+          <li>Immigration data</li>
+<!--                <li>Gender recognition details</li>-->
+          <li>Identity fraud interest</li>
+          <li>Customer record level</li>
 
-           <hr>
-            
-            <h2 class="heading-medium">Get notifications</h2>
-            <ul class="list">  
-              <li><a class="under-link" href="/notifications/page-one">Version 1 - October 2018</a></li>
-            </ul>
-           <hr>
-            
-            <h2 class="heading-medium">Get alerts</h2>
-            <ul class="list list-bullet">  
-              <li><a class="under-link" href="/alerts/v2/page-one">Version 2 November 2018</a></li>
-              <li><a class="under-link" href="/alerts/page-one">Version 1 September 2018</a></li>
-            </ul>
-           <hr>
-            
-            <h2 class="heading-medium">Get citizen income information</h2>
-            <p style="font-size: 17px">July 2018 - version 1<span> &nbsp; </span></p>
-            <ul class="list">  
-              <li><a class="under-link" href="/search-v4/?gciiExample=2">Example 2</a></li>
-              <li><a class="under-link" href="/search-v4/?gciiExample=5">Example 5</a></li>
-              <li><a class="under-link" href="/search-v4/?gciiExample=4">Example 4 - third party</a></li>
-            </ul>
+        </ul> 
+      </details>
 
-            <hr>
-            
-            <!-- <h2 class="heading-medium">Maintain gender</h2>-->
-            <h2 class="heading-medium">Maintain names</h2>
-            <h2 class="heading-medium">Maintain personal details part 1</h2>
-            <h2 class="heading-medium">Maintain contact details (work in progress)</h2>
-            <details>
-              <summary>Journeys included</summary>
-              <ul class="list list-bullet">  
-                <li>Maintain contact details</li> <!--done-->
-                <li>Maintain nationality</li> <!--done-->
-                <li>Maintain Sex</li> <!--done-->
-                <li>Correct date of birth</li> <!--done-->
-                <li>Add or correct date of death</li> <!--done-->
-                <li>Maintain potentially violent status</li>  <!-- done -->
-                <li>Marital or Civil Partnership status</li>  <!-- done -->
-                <li>Disability status</li> <!-- done -->
-                <li>Special needs</li><!-- done -->
-                <li>Prefered Language</li>
-                <li>Spoken Language</li> <!-- done -->
-                
-<!--            <li>Immigration data</li>-->
-                <li>Gender recognition details</li>
-                <li>Identity fraud interest</li>
-                <li>Customer record level</li>
-                
-              </ul> 
-            </details>
+      <p style="font-size: 17px">June 2018<span> &nbsp; </span></p>
+      
+      <ul class="list list-bullet">
+        <li><a class="under-link" href="account2/account">Version 1 - maintain names and personal details</a></li>
+      </ul>
 
-            <p style="font-size: 17px">June 2018<span> &nbsp; </span></p>
+      <hr>
             
-            <h2 class="heading-small"><a class="under-link" href="account2/account">Version 1 - maintain names and personal details</a></h2>
-           
-            <hr>
-            
-            <h2 class="heading-medium">Local Authority access</h2>
-            <p style="font-size: 17px">June 2018<span> &nbsp; </span></p> 
-                        
-            <h2 class="heading-small">
-              <a class="under-link" href="/search-v3">Local Authority - version 1</a>
-            </h2>
-            
-            <details>
-              <summary>Journeys included</summary>
-              <ul class="list list-bullet">      
-                <li>Maintain interests</li>
-                <li>Local Authority notes and data</li>
-              </ul> 
-            </details>
-            
-<!--
-            <br>
-            <h2 class="heading-small">
-              <a class="under-link" href="/update/auth-interests/data">LA Data - separate page</a>
-            </h2>
-            
-            <br>
-            <h2 class="heading-small">
-              <a class="under-link" href="/update/auth-interests/notes">LA Notes - separate page</a>
-            </h2>
--->
-            
-            <hr>
+      <h2 class="heading-medium">Local Authority access</h2>
+      <details>
+        <summary>Journeys included</summary>
+        <ul class="list list-bullet">      
+          <li>Maintain interests</li>
+          <li>Local Authority notes and data</li>
+        </ul> 
+      </details>
 
-            <h2 class="heading-medium">Maintain an interest</h2>
-            <p style="font-size: 17px">April 2018<span> &nbsp; </span></p> 
+      <p style="font-size: 17px">June 2018<span> &nbsp; </span></p> 
+      
+      <ul class="list list-bullet">
+        <li><a class="under-link" href="/search-v3">Local Authority - version 1</a></li>
+      </ul>             
+      <hr>
 
-            
-            <h2 class="heading-small"><a class="under-link" href="search">Maintain interests - full access - version 1</a></h2>
-<!--            <h2 class="heading-small"><a class="under-link" href="search">Add parties v2</a></h2>-->
+      <h2 class="heading-medium">Maintain an interest</h2>
+      <p style="font-size: 17px">April 2018<span> &nbsp; </span></p> 
+
+        <ul class="list list-bullet">
+          <li>
+            <a class="under-link" href="search">Maintain interests - full access - version 1</a>
             <details>
               <summary>Journeys included</summary>
               <ul class="list list-bullet">      
@@ -124,138 +106,117 @@
                 <li>Carers Credit (system only)</li>
               </ul> 
             </details>
-            <br>
-
-            <h2 class="heading-small">
-              <a class="under-link" href="/search-v2">Maintain interests - single benefit/system - version 1</a>
-            </h2>
-            
-            <br>
-            
-            <h2 class="heading-small">
-              <a class="under-link" href="/search-v3">Maintain interests - Local Authority - version 1</a>
-            </h2>
-
-            <hr>
-                        
-            <h2 class="heading-medium">Maintain an address</h2>
-            <h2 class="heading-medium">View history and maintenance</h2>
-            <br>
-
-            <h2 class="heading-small"><a class="under-link" href="/account2/account">History prototype v3</a></h2>
-            <details>
-              <summary>History views</summary>
-              <ul class="list list-bullet">      
-                <li><a href="/history/birth-history">Date of birth</a></li>
-                <li><a href="/history/death-history">Date of death</a></li>
-                <li><a href="/history/nino-history">NINO</a></li>
-                <li><a href="/history/pv-history">Potentially violent</a></li>
-                <li><a href="/history/sex-history-adv">Gender</a></li>
-                <li><a href="/history/sex-history">Sex</a></li>
-                <li><a href="/history/language-pref-history">Preferred language</a></li>
-                <li><a href="/history/immigration">Immigration status</a></li>
-              </ul> 
-            </details>
-            <p style="font-size: 17px">March 2018<span> &nbsp; </span></p> 
+          </li>
               
-            <h2 class="heading-small"><a class="under-link" href="search">Address and History prototype v2</a></h2>
-            <p style="font-size: 17px">January - March 2018<span> &nbsp; </span></p> 
+          <li>
+            <a class="under-link" href="/search-v2">Maintain interests - single benefit/system - version 1</a>
+          </li>
+          <li>
+            <a class="under-link" href="/search-v3">Maintain interests - Local Authority - version 1</a>
+          </li>
+        </ul>
 
-            <h2 class="heading-small"><a class="under-link" href="search-v1">Address prototype v2</a></h2>
-            <p style="font-size: 17px">December 2017</p>     
+        <hr>
 
-            <hr>
-                        
-            <h2 class="heading-medium">Maintain an address</h2>
-            <h2 class="heading-medium">View history and maintenance</h2>
-            <br>
+        <h2 class="heading-medium">Maintain an address</h2>
+        <h2 class="heading-medium">View history and maintenance</h2>
+        <br>
 
-            <h2 class="heading-small"><a class="under-link" href="/account2/account">History prototype v3</a></h2>
-            <details>
-              <summary>History views</summary>
-              <ul class="list list-bullet">      
-                <li><a href="/history/birth-history">Date of birth</a></li>
-                <li><a href="/history/death-history">Date of death</a></li>
-                <li><a href="/history/nino-history">NINO</a></li>
-                <li><a href="/history/pv-history">Potentially violent</a></li>
-                <li><a href="/history/sex-history-adv">Gender</a></li>
-                <li><a href="/history/sex-history">Sex</a></li>
-                <li><a href="/history/language-pref-history">Preferred language</a></li>
-                <li><a href="/history/immigration">Immigration status</a></li>
-              </ul> 
-            </details>
-            <p style="font-size: 17px">March 2018<span> &nbsp; </span></p> 
-              
-            <h2 class="heading-small"><a class="under-link" href="search">Address and History prototype v2</a></h2>
-            <p style="font-size: 17px">January - March 2018<span> &nbsp; </span></p> 
+        <h2 class="heading-small"><a class="under-link" href="/account2/account">History prototype v3</a></h2>
+        <details>
+          <summary>History views</summary>
+          <ul class="list list-bullet">      
+            <li><a href="/history/birth-history">Date of birth</a></li>
+            <li><a href="/history/death-history">Date of death</a></li>
+            <li><a href="/history/nino-history">NINO</a></li>
+            <li><a href="/history/pv-history">Potentially violent</a></li>
+            <li><a href="/history/sex-history-adv">Gender</a></li>
+            <li><a href="/history/sex-history">Sex</a></li>
+            <li><a href="/history/language-pref-history">Preferred language</a></li>
+            <li><a href="/history/immigration">Immigration status</a></li>
+          </ul> 
+        </details>
+        <p style="font-size: 17px">March 2018<span> &nbsp; </span></p> 
 
-            <h2 class="heading-small"><a class="under-link" href="search-v1">Address prototype v2</a></h2>
-            <p style="font-size: 17px">December 2017</p>     
+        <h2 class="heading-small"><a class="under-link" href="search">Address and History prototype v2</a></h2>
+        <p style="font-size: 17px">January - March 2018<span> &nbsp; </span></p> 
 
-            <hr>
+        <h2 class="heading-small"><a class="under-link" href="search-v1">Address prototype v2</a></h2>
+        <p style="font-size: 17px">December 2017</p>     
 
-<!--
-            <h2 class="heading-medium">View maintenance data and view history data</h2>
-            <br>
+        <hr>
 
-            <h2 class="heading-small"><a class="under-link" href="search">Version 1</a></h2>
-            <p style="font-size: 17px">Work in progress</p>
+        <h2 class="heading-medium">Maintain an address</h2>
+        <h2 class="heading-medium">View history and maintenance</h2>
+        <br>
 
-            <hr>
--->
+        <h2 class="heading-small"><a class="under-link" href="/account2/account">History prototype v3</a></h2>
+        <details>
+          <summary>History views</summary>
+          <ul class="list list-bullet">      
+            <li><a href="/history/birth-history">Date of birth</a></li>
+            <li><a href="/history/death-history">Date of death</a></li>
+            <li><a href="/history/nino-history">NINO</a></li>
+            <li><a href="/history/pv-history">Potentially violent</a></li>
+            <li><a href="/history/sex-history-adv">Gender</a></li>
+            <li><a href="/history/sex-history">Sex</a></li>
+            <li><a href="/history/language-pref-history">Preferred language</a></li>
+            <li><a href="/history/immigration">Immigration status</a></li>
+          </ul> 
+        </details>
+        <p style="font-size: 17px">March 2018<span> &nbsp; </span></p> 
 
-            <h2 class="heading-medium">Create an account and Insert an account</h2>
-            <br>
+        <h2 class="heading-small"><a class="under-link" href="search">Address and History prototype v2</a></h2>
+        <p style="font-size: 17px">January - March 2018<span> &nbsp; </span></p> 
 
-            <h2 class="heading-small"><a class="under-link" href="nino/6/type">Version 4</a></h2>
-            <p style="font-size: 17px; margin-bottom: 5px;">May 2018</p>
-            <details style="margin-bottom: 20px;">
-              <summary><span class="summary" style="font-size: 17px;">View main changes</span></summary>
-              <div class="panel panel-border-narrow">
-                <ul class="list list-bullet">
-                  <li>Simplified contact preferences</li>
-                </ul>
-              </div>
-            </details>
+        <h2 class="heading-small"><a class="under-link" href="search-v1">Address prototype v2</a></h2>
+        <p style="font-size: 17px">December 2017</p>     
 
-            <h2 class="heading-small"><a class="under-link" href="nino/5/type">Version 3</a></h2>
-            <p style="font-size: 17px; margin-bottom: 5px;">Feb 2018</p>
-            <details style="margin-bottom: 20px;">
-              <summary><span class="summary" style="font-size: 17px;">View main changes</span></summary>
-              <div class="panel panel-border-narrow">
-                <ul class="list list-bullet">
-                  <li>Nationality question updated to 'Do you know their nationality'</li>
-                  <li>Marital status question updated to 'Do you know their marital status'</li>
-                  <li>Marital status question could only be shown if person is older than UK legal marriage age (16)</li>
-<!--                  <li>Removed date field hints</li>-->
-                  <li>Content updated</li>
-                </ul>
-              </div>
-            </details>
+        <hr>
 
-            <h2 class="heading-small"><a class="under-link" href="nino/4/type">Version 2</a></h2>
-            <p style="font-size: 17px">Jan/Feb 2018</p>
 
-            <h2 class="heading-small"><a class="under-link" href="nino/2/type">Version 1</a></h2>
-            <p style="font-size: 17px">January 2018</p>
-            
-            <hr>
-          
-            <h2 class="heading-medium">Create a right of access report</h2>
-            <br>
-            <h2 class="heading-small"><a class="under-link" href="update/rar/print-rar">Version 1</a></h2>
-            <p style="font-size: 17px">March 2017</p>     
+        <h2 class="heading-medium">Create an account and Insert an account</h2>
+        <br>
+
+        <h2 class="heading-small"><a class="under-link" href="nino/6/type">Version 4</a></h2>
+        <p style="font-size: 17px; margin-bottom: 5px;">May 2018</p>
+        <details style="margin-bottom: 20px;">
+          <summary><span class="summary" style="font-size: 17px;">View main changes</span></summary>
+          <div class="panel panel-border-narrow">
+            <ul class="list list-bullet">
+              <li>Simplified contact preferences</li>
+            </ul>
           </div>
+        </details>
 
-          <!--
-            <p><a href="/search-full">Full search</a></p>
+        <h2 class="heading-small"><a class="under-link" href="nino/5/type">Version 3</a></h2>
+        <p style="font-size: 17px; margin-bottom: 5px;">Feb 2018</p>
+        <details style="margin-bottom: 20px;">
+          <summary><span class="summary" style="font-size: 17px;">View main changes</span></summary>
+          <div class="panel panel-border-narrow">
+            <ul class="list list-bullet">
+              <li>Nationality question updated to 'Do you know their nationality'</li>
+              <li>Marital status question updated to 'Do you know their marital status'</li>
+              <li>Marital status question could only be shown if person is older than UK legal marriage age (16)</li>
+<!--                  <li>Removed date field hints</li>-->
+              <li>Content updated</li>
+            </ul>
+          </div>
+        </details>
 
-            <p><a href="/search">Short Search</a></p>
+        <h2 class="heading-small"><a class="under-link" href="nino/4/type">Version 2</a></h2>
+        <p style="font-size: 17px">Jan/Feb 2018</p>
 
-            <p><a href="/kitchen-sink">Kitchen Sink</a></p>
-          -->
+        <h2 class="heading-small"><a class="under-link" href="nino/2/type">Version 1</a></h2>
+        <p style="font-size: 17px">January 2018</p>
+
+        <hr>
+
+        <h2 class="heading-medium">Create a right of access report</h2>
+        <br>
+        <h2 class="heading-small"><a class="under-link" href="update/rar/print-rar">Version 1</a></h2>
+        <p style="font-size: 17px">March 2017</p>     
           
-      </div>
     </div>
   </div>
 </div>
