@@ -2444,6 +2444,10 @@ router.get('/alerts/alert-search', function (req, res) {
   res.render('alerts/alert-search.njk')
 })
 
+router.get('/alerts/v2/page-one', function (req, res) {
+  res.render('alerts/v2/page-one.njk')
+})
+
 
 /*******************/
 /** notifications **/

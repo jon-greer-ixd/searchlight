@@ -1,0 +1,46 @@
+<nav id="sl-header" class="navbar navbar-default navbar-fixed-top ng-scope">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 sl-header-container" ng-class="{'sl-header-expanded': state.current.name !== 'search'}">
+        <ul>
+          <div class="sl-header-col-left">
+            <a class="skip-main" ng-click="jumpToMainContent()" href="#maincontent">Skip to main content</a>
+            <div class="sl-header-title" ui-sref="search" href="/">
+              <a class="sl-crown-logo-container">
+                <div class="sl-crown-logo sl-crown-logo-white"></div>
+                <img class="sl-crown-logo-black" alt="Searchlight black" src="/public/images/crown-logo-black.png">
+              </a>
+              <a class="sl-third-heading sl-main-heading sl-page-color sl-font-bold ng-binding" ui-sref="search" href="/search"> Searchlight</a>
+            </div>
+            <!-- ngIf: state.current.name !== 'search' -->
+          </div>
+          <!-- ngIf: state.current.name !== 'search' -->
+          
+          <div class="sl-header-col-right pull-right">
+                        
+              <li>
+                  <a href="page-two" tabindex="" class="sl-link sl-link-modal under-link">Get alerts</a>
+              </li>
+
+              <li>
+                <a href="/" tabindex="" ng-click="openFeedbackModal('lg'); feedbackJumpToTop()" class="sl-link sl-link-modal under-link">Feedback</a>
+              </li>
+
+           <li> 
+             <a href="/" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal under-link">What’s
+              new</a>
+            </li>
+
+
+          <span tabindex="-1" class="sl-hamburger-icon-container pull-right sl-hamburger-icon-container-search" ng-class="{'sl-hamburger-icon-container-search': state.current.name === 'search'}" ng-click="navMenuOpen = !navMenuOpen" href="#" role="button">
+            <!-- ngIf: !navMenuOpen --><div class="sl-hamburger-closed sl-hamburger-image ng-scope" ng-if="!navMenuOpen"></div><!-- end ngIf: !navMenuOpen -->
+            <!-- ngIf: navMenuOpen -->
+          </span>
+          </div>
+        </ul>
+      </div>
+      <!-- ngIf: navMenuOpen -->
+
+    </div>
+  </div>
+</nav>
