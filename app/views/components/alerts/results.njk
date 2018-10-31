@@ -26,6 +26,35 @@
         {% include "components/alerts/row.njk" %}
         {% set counter = counter + 1 %}
       {% endfor %}
+      
+      <tr class="data">
+        <td>10</td>
+        <td>SX170204</td>
+        <td>NRS2</td>
+        <td>22 Oct 2018</td>
+        <td>Rejection report</td>
+        <td>3001</td>
+        <td>Name 2 not held</td>
+        <td>13512</td>
+        <td>T011</td>
+        <td>**********</td>
+        <td>**********</td>
+        <td>**********</td>
+        <td> </td>
+<!--
+        <td class="check">
+          <div class="multiple-choice">
+            <input id={{counter}} name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true" disabled="true">
+            <label for={{counter}}></label>
+          </div>
+        </td>
+-->
+      </tr>
+      <tr>
+        <td colspan="14" class="description">
+          <span class="">Details:</span> {{item.description}}
+        </td> 
+      </tr>
 
     </table>
   </div>
