@@ -1,0 +1,60 @@
+<div class="sl-account-canvas row updater super-slim-header">
+  
+  <div class="sl-account-canvas-width" id="alerts-container">
+    
+    <a class="link-back" onCLick="history.back()">Back</a>
+    <h2 class="title">Search for notifications</h2>
+
+    <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+
+      <div class="sl-primary-card">
+        {% include "components/notifications/v2/form.njk" %}
+      </div>
+      <br>
+      
+<div id="search-results" class="grid-row">
+
+<!--
+  <div class="column-one-third">
+    <div class="sl-primary-card">
+      <h3>Edit or start a new search</h3>
+    </div>
+  </div>
+-->
+
+  <div class="column-full">
+    <div class="sl-primary-card" id="alerts">
+      <div class="options">
+        <ul>
+          <li><a id="">Print 50 results</a></li>
+          <li><a id="">Copy 50 results</a></li>
+          <li><a href="alerts-three" id="">Mark 50 results as processed</a></li>
+        </ul>
+      </div>
+      <hr>
+<!--
+      <div class="form-group">
+        <button class="button" type="submit">Copy 150 results</button>
+        <button class="button" type="submit">Print 150 results</button>
+      </div>
+-->
+      <p>Page 1 of 5</p>
+
+      {% include "components/notifications/results.njk" %}
+            <div class="options">
+        <ul>
+          <li><a id="select_link">Select 10 results</a></li>
+          <li><a id="un_link">Deselect 10 results</a></li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <a href="../notifications/alerts-four"><button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
+          <a href=""><button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as unprocessed</button></a>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+
+</div>
