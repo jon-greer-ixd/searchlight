@@ -2431,7 +2431,6 @@ router.get('/nino/2/task-list/', function (req, res) {
 })
 
 
-
 /************/
 /** ALERTS **/
 /************/
@@ -2459,6 +2458,10 @@ router.get('/notifications/page-one', function (req, res) {
 
 router.get('/notifications/v2/page-one', function (req, res) {
   res.render('notifications/v2/page-one.njk')
+})
+
+router.get('/notifications/v3/page-one', function (req, res) {
+  res.render('notifications/v3/page-one.njk')
 })
 
 router.get('/notifications/search', function (req, res) {
