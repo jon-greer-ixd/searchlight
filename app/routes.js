@@ -1000,7 +1000,6 @@ router.get('/update/search-results-handler', function (req, res) {
   }
 })
 
-
 router.get(/check-address-handler/, function (req, res) {
   var addressType = req.session.data.addressType;
   var chosenAddress = req.session.data.addresses[addressType];
@@ -1029,13 +1028,6 @@ router.get('/choice-handler', function (req, res) {
   res.render('address-search')
 })
 
-router.get('/update/update', function (req, res) {
-  res.render('update/update', {
-    correspondence : dataState.correspondenceAdded,
-    pagetitle : content.pageTitle
-  })
-})
-
 router.get('/update/update-v2', function (req, res) {
   res.render('update/update-v2', {
     cherish : residentialAddress.cherish,
@@ -1043,12 +1035,6 @@ router.get('/update/update-v2', function (req, res) {
     pagetitle : content.pageTitle,
     statusupdated : dataState.statusUpdated,
     status : dataState.currentStatus
-  })
-})
-
-router.get('/update/dates', function (req, res) {
-  res.render('update/dates', {
-    pagetitle : content.pageTitle
   })
 })
 
@@ -1090,52 +1076,13 @@ router.get('/update/print-sar', function (req, res) {
 })
 
 router.get('/update/cherish-handler', function (req, res) {
-  if (req.session.data.updateType === 'updateAddCherish') {
+  if (req.session.data.updateType == 1 || req.session.data.updateType == 2) {
+    res.redirect('dates')
+  } else if (req.session.data.updateType == 3) {
+    res.redirect('check')
+  } else if (req.query.data.updateType == 5) {
     res.redirect('dates')
   }
-  if (req.session.data.updateType === 'correctAddCherish') {
-    res.redirect('check')
-  }
-  if (req.query.data === 'remove_cherish') {
-    if (req.session.data.updateType === 'correctCherish') {
-      req.session.data.updateType = 'correctRemoveCherish';
-      content.setPageTitle(req.session.data.updateType);
-      res.redirect('check')
-    } 
-    if (req.session.data.updateType === 'updateCherish') {
-      req.session.data.updateType = 'updateRemoveCherish';
-      content.setPageTitle(req.session.data.updateType);
-      res.redirect('dates')
-    }
-  }
-  if (req.query.data === 'change_cherish') {
-    if (req.session.data.updateType === 'correctCherish') {
-      req.session.data.updateType = 'correctChangeCherish';
-      content.setPageTitle(req.session.data.updateType);
-      res.redirect('check')
-    } 
-    if (req.session.data.updateType === 'updateCherish') {
-      req.session.data.updateType = 'updateChangeCherish';
-      content.setPageTitle(req.session.data.updateType);
-      res.redirect('dates')
-    }
-  }
-})
-
-router.get('/update/address-search', function (req, res) {
-  res.render('update/address-search', {
-    pagetitle : content.pageTitle
-  })
-})
-
-router.get('/update/search-results', function (req, res) {
-  res.render('update/search-results', {
-    pagetitle : content.pageTitle
-  })
-})
-
-router.get(/dates-handler/, function (req, res) {
-  res.redirect('/update/check')
 })
 
 router.get(/update-type-handler/, function (req, res) {
@@ -1253,60 +1200,6 @@ router.get(/relationship-handler/, function (req, res) {
   req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
   res.redirect('/account2/account')
 })
-
-router.get('/update/check', function (req, res) {
-  res.render('update/check', {
-    addressone : addressOne,
-    addresstwo : addressTwo,
-    addressthree : addressThree,
-    addressfour : addressFour,
-    editdate : content.editDate,
-    correctiontype :dataState.correctionType,
-    correcting : dataState.correcting,
-    pagetitle : content.pageTitle,
-    currentstatus : content.statusToText(dataState.currentStatus),
-    newstatus : content.statusToText(dataState.newStatus)
-  })
-})
-
-router.get(/check-answers-handler/, function (req, res) {
-  updater(req.session.data.updateType,correspondenceAddress,correspondenceAddress,residentialAddress,previousAddress,dataState,content,addressOne,addressTwo,addressThree);
-  if(req.session.data.updateType === 'addCorrespondence') {
-    dataState.correspondenceAdded = true;
-  }
-  if (req.session.data.updateType === 'updateNew') {
-    dataState.updatedToNewAddress = true;
-    dataState.currentStatus = 'live';
-  }
-  if (req.session.data.updateType === 'updateStatus' || 
-      req.session.data.updateType === 'updateStatusDLO' || 
-      req.session.data.updateType === 'updateStatusLive') {
-      dataState.statusUpdated = true; 
-      dataState.currentStatus = dataState.newStatus;
-  }
-  if (req.session.data.updateType === 'correctStatus' || 
-      req.session.data.updateType === 'correctStatusDlo' || 
-      req.session.data.updateType === 'correctStatusLive') {
-      dataState.statusCorrected = true; 
-      dataState.currentStatus = dataState.newStatus;
-  }
-  if (req.session.data.updateType === 'correctNew') {
-    dataState.addressCorrected = true;   
-  }
-  if (req.session.data.updateType === 'correctDate') {
-    dataState.dateIsUpdated = true;   
-  } 
-  if (req.session.data.updateType === 'correctCherish') {
-    dataState.cherishedLineCorrected = true;   
-  }
-  if (req.session.data.updateType === 'end') {
-    req.session.data.toaster = generalFunctions.setToasterMessage('Correspondence address', null, 'ended');
-    dataState.correspondenceAdded = false;   
-    dataState.correspondenceRemoved = true;   
-  }
-  res.redirect('/account2/account')
-})
-
 
 
 //*********
