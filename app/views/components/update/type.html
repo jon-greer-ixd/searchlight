@@ -23,35 +23,37 @@
         
         <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
           <fieldset>
+            
             <div class="multiple-choice">
               <input id="address" type="radio" name="addressValue" value="new">
               <label for="address">Update to a new address</label>
             </div>
+            
             <div class="multiple-choice">
-              {% if correspondence === false %}
-                {% if status != "dlo" %}
-                  <input id="dlo" type="radio" name="addressValue" value="update_status_dlo">
-                  <label for="dlo">Update the status to dead letter office</label>
+              {% if data.addresses.correspondence.show == false %}
+                {% if data.addresses[data.addressType].status != "dlo" %}
+                  <input id="status" type="radio" name="addressValue" value="dlo">
+                  <label for="status">Update the status to dead letter office</label>
                 {% else %}
-                  <input id="update_live" type="radio" name="data" value="update_live">
-                  <label for="update_live">Update the status to live</label>
+                  <input id="status" type="radio" name="addressValue" value="live">
+                  <label for="status">Update the status to live</label>
                 {% endif %}
               {% else %}
-                <input id="update_status" type="radio" name="addressValue" value="update_status">
-                <label for="update_status">Update the status</label>
+                <input id="status" type="radio" name="addressValue" value="status">
+                <label for="status">Update the status</label>
               {% endif %}
             </div>
-            {% if cherish === false %}
+            
             <div class="multiple-choice">
-              <input id="cherish" type="radio" name="addressValue" value="update_add_cherish">
-              <label for="cherish">Add a cherished line</label>
+              <input id="cherish" type="radio" name="addressValue" value="cherish">
+                <label for="cherish">
+                  {% if data.addresses.residential.cherish != true %}
+                    Add a cherished line
+                  {% else %}
+                    Update the cherished line
+                  {% endif %}
+                </label>
             </div>
-            {% else %}
-            <div class="multiple-choice">
-              <input id="cherish" type="radio" name="addressValue" value="update_cherish">
-              <label for="cherish">Update the cherished line</label>
-            </div>
-            {% endif %}
             
             {% if data.addressType == 'correspondence' %}
               <div class="multiple-choice">
@@ -65,39 +67,41 @@
         
         <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
           <fieldset>
-              <div class="multiple-choice">
-                <input id="correct-address" type="radio" name="addressValue" value="correct_new">
-                <label for="correct-address">Correct to a new address</label>
-              </div>
-              <div class="multiple-choice">
-              {% if correspondence === false %}
-                {% if status != "dlo" %}
-                  <input id="correct_dlo" type="radio" name="addressValue" value="correct_dlo">
-                  <label for="correct_dlo">Correct the status to dead letter office</label>
+            <div class="multiple-choice">
+              <input id="correct-address" type="radio" name="addressValue" value="correct_new">
+              <label for="correct-address">Correct to a new address</label>
+            </div>
+            
+            <div class="multiple-choice">
+              {% if data.addresses.correspondence.show == false %}
+                {% if data.addresses[data.addressType].status != "dlo" %}
+                  <input id="status" type="radio" name="addressValue" value="dlo">
+                  <label for="status">Correct the status to dead letter office</label>
                 {% else %}
-                  <input id="correct_live" type="radio" name="addressValue" value="correct_live">
-                  <label for="correct_live">Correct the status to live</label>
+                  <input id="status" type="radio" name="addressValue" value="live">
+                  <label for="status">Correct the status to live</label>
                 {% endif %}
               {% else %}
-                <input id="correct_status" type="radio" name="addressValue" value="correct_status">
-                <label for="correct_status">Correct the status</label>
-              {% endif %}                
-              </div>
-              <div class="multiple-choice">
-                <input id="correct-date" type="radio" name="addressValue" value="correct_date">
-                <label for="correct-date">Correct the start or notified start date</label>
-              </div>
-              {% if cherish === false %}
-              <div class="multiple-choice">
-                <input id="correct-cherish" type="radio" name="addressValue" value="correct_add_cherish">
-                <label for="correct-cherish">Add a cherished line</label>
-              </div>
-              {% else %}
-              <div class="multiple-choice">
-                <input id="correct-cherish" type="radio" name="addressValue" value="correct_cherish">
-                <label for="correct-cherish">Correct the cherished line</label>
-              </div>
-              {% endif %}  
+                <input id="status" type="radio" name="addressValue" value="status">
+                <label for="status">Correct the status</label>
+              {% endif %}
+            </div>
+            
+            <div class="multiple-choice">
+              <input id="correct-date" type="radio" name="addressValue" value="dates">
+              <label for="correct-date">Correct the start or notified start date</label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="cherish" type="radio" name="addressValue" value="cherish">
+                <label for="cherish">
+                  {% if data.addresses.residential.cherish != true %}
+                    Add a cherished line
+                  {% else %}
+                    Correct the cherished line
+                  {% endif %}
+                </label>
+            </div>
             
             {% if data.addressType == 'correspondence' %}
               <div class="multiple-choice">

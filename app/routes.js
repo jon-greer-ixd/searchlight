@@ -163,107 +163,6 @@ var previousAddress = {
 previousAddress.reset();
 
 var updater = function (updatetype) {
-  //cherish - add
-  if (updatetype === 'updateAddCherish') {
-    residentialAddress.cherish = 'Flat A';
-    residentialAddress.startDate = content.editDate;
-    residentialAddress.updated = true;
-    previousAddress.line = addressOne;
-    previousAddress.cherish = false;
-    previousAddress.show = true;
-    previousAddress.correct = true;
-  }
-  //cherish - correct
-  if (updatetype === 'correctAddCherish') {
-    residentialAddress.updated = true;
-    residentialAddress.cherish = 'Flat A';
-    residentialAddress.startDate = '01 Jan 1990';
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = false;
-    dataState.cherishedLineCorrected = true;
-  }
-  if(updatetype === 'updateRemoveCherish') {
-    previousAddress.cherish = 'Flat A';
-    previousAddress.line = addressOne;
-    previousAddress.correct = true;
-    previousAddress.show = true;
-    residentialAddress.cherish = false;
-    residentialAddress.line = addressOne;
-    residentialAddress.updated = true;
-  }
-  if(updatetype === 'correctChangeCherish') {
-    previousAddress.cherish = 'Flat A';
-    previousAddress.line = addressOne;
-    previousAddress.correct = false;
-    previousAddress.show = true;
-    residentialAddress.cherish = 'Flat B';
-    residentialAddress.line = addressOne;
-    residentialAddress.updated = true;
-  }
-  if(updatetype === 'correctRemoveCherish') {
-    previousAddress.cherish = 'Flat A';
-    previousAddress.line = addressOne;
-    previousAddress.correct = false;
-    previousAddress.show = true;
-    residentialAddress.cherish = false;
-    previousAddress.startDate = content.editDate;
-    residentialAddress.line = addressOne;
-    residentialAddress.updated = true;
-    dataState.cherishedLineCorrected = true;
-  }
-  if(updatetype === 'updateChangeCherish') {
-    previousAddress.cherish = 'Flat A';
-    previousAddress.line = addressOne;
-    previousAddress.correct = true;
-    previousAddress.show = true;
-    residentialAddress.cherish = 'Flat B';
-    residentialAddress.line = addressOne;
-    residentialAddress.updated = true;
-  }
-  // add new
-  if (updatetype === 'updateNew') {
-    previousAddress.cherish = residentialAddress.cherish;
-    previousAddress.line = addressOne;
-    previousAddress.correct = true;
-    previousAddress.show = true;
-    residentialAddress.cherish = false;
-    residentialAddress.line = addressTwo;
-    residentialAddress.updated = true;
-  }
-  if (updatetype === 'updateStatus' || 
-    updatetype === 'updateStatusDLO' || 
-    updatetype === 'updateStatusLive') {
-    residentialAddress.status = dataState.newStatus;
-    residentialAddress.updated = true;
-    if (residentialAddress.status === 'nfa' || residentialAddress.status === 'pwa') {
-      previousAddress.line = addressOne;
-      previousAddress.show = true;
-      previousAddress.correct = true;
-    } else {
-      previousAddress.line = addressOne;
-      previousAddress.show = true;
-      previousAddress.correct = true;
-    }
-  }
-  if (updatetype === 'correctNew') {
-    previousAddress.cherish = residentialAddress.cherish;
-    previousAddress.line = addressOne;
-    previousAddress.correct = false;
-    previousAddress.show = true;
-    residentialAddress.cherish = false;
-    residentialAddress.line = addressTwo;
-    residentialAddress.updated = true;
-  }
-  if (updatetype === 'correctStatus' || 
-    updatetype === 'correctStatusDlo' || 
-    updatetype === 'correctStatusLive') {
-    residentialAddress.status = dataState.newStatus;
-    residentialAddress.updated = true;
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = false;
-  }
   if (updatetype === 'correctDate') {
     residentialAddress.updated = true;
     residentialAddress.startDate = '30 Nov 1990';
@@ -1073,12 +972,21 @@ router.get(/update-address-handler/, function (req, res) {
 router.get(/address-type-handler/, function (req, res) {
   console.log('value', req.session.data.addressValue);
   console.log(req.query);
+  
   if (req.session.data.addressValue == 5) {
     if (req.session.data.updateType == 3) {
       res.redirect('/update/check')
     } else {
       res.redirect('/update/dates')
     }
+  } else if (req.session.data.addressValue == 'dlo' || req.session.data.addressValue == 'live') {
+    res.redirect('/update/check')
+  } else if (req.session.data.addressValue == 'status') {
+    res.redirect('/update/status')
+  } else if (req.session.data.addressValue == 'cherish') {
+    res.redirect('/update/cherish-line')
+  } else if (req.session.data.addressValue == 'dates') {
+    res.redirect('/update/dates')
   } else {
     res.redirect('/update/address-search')
   }
@@ -1091,6 +999,7 @@ router.get('/update/search-results-handler', function (req, res) {
     res.redirect('/update/dates')
   }
 })
+
 
 router.get(/check-address-handler/, function (req, res) {
   var addressType = req.session.data.addressType;
