@@ -1098,18 +1098,21 @@ router.get(/check-address-handler/, function (req, res) {
   var addressType = req.session.data.addressType;
   var chosenAddress = req.session.data.addresses[addressType];
   var updateType = req.session.data.updateType;
-  
+  var addressValue = req.session.data.addressValue;
   // SET STATE
   req.session.data.addresses[req.session.data.addressType].state = updateType;
     
   // SET DISPLAY
-  if(req.session.data.addressValue == 5) {
-    updateType = 5;
-  }
-  req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType);
+  req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType, addressValue);
   
   // SET MESSAGE
   req.session.data.toaster = generalFunctions.setToasterMessage (chosenAddress.display, null, updateType);
+ 
+  // RESET
+  addressType, chosenAddress, updateType, addressValue = null;
+  req.session.data.addressType, req.session.data.updateType, req.session.data.addressValue = null;
+  
+  // REDIRECT
   res.redirect('/account2/account')
 })
 

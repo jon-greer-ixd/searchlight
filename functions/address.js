@@ -11,11 +11,11 @@ var setCherish = function (address, bool) {
   return address;
 }
 
-var setShow = function (address, updateType) {
-  if (updateType < 4) {
-    address.show = true;
-  } else {
+var setShow = function (address, updateType, addressValue) {
+  if (addressValue == 5) {
     address.show = false;
+  } else {
+    address.show = true;
   }
   return address;
 }

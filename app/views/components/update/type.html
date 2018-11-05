@@ -9,19 +9,6 @@
         </p>
       </legend>
       
-<!--
-        correspondence
-  updateNew 
-  updateStatus
-  updateStatusDLO
-  updateCherished
-  correctNew 
-  correctStatus 
-  correctStatusDLO
-  correctStart 
-  correctCherished
--->
-
       <div class="form-group">
 
         <div class="multiple-choice" data-target="contact-by-email">
@@ -68,8 +55,8 @@
             
             {% if data.addressType == 'correspondence' %}
               <div class="multiple-choice">
-                <input id="end" type="radio" name="addressValue" value=5>
-                <label for="end">End the correspondence address</label>
+                <input id="endU" type="radio" name="addressValue" value=5>
+                <label for="endU">End the correspondence address</label>
               </div>
             {% endif %}
           
@@ -100,12 +87,6 @@
                 <input id="correct-date" type="radio" name="addressValue" value="correct_date">
                 <label for="correct-date">Correct the start or notified start date</label>
               </div>
-<!--
-              <div class="multiple-choice">
-                <input id="correct-date-notified" type="radio" name="data" value="correct_date_notified">
-                <label for="correct-date-notified">Correct the notified start date</label>
-              </div>
--->
               {% if cherish === false %}
               <div class="multiple-choice">
                 <input id="correct-cherish" type="radio" name="addressValue" value="correct_add_cherish">
@@ -120,8 +101,8 @@
             
             {% if data.addressType == 'correspondence' %}
               <div class="multiple-choice">
-                <input id="end" type="radio" name="addressValue" value=5>
-                <label for="end">End the correspondence address</label>
+                <input id="endC" type="radio" name="addressValue" value=5>
+                <label for="endC">End the correspondence address</label>
               </div>
             {% endif %}
             
