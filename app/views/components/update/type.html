@@ -65,6 +65,14 @@
               <label for="cherish">Update the cherished line</label>
             </div>
             {% endif %}
+            
+            {% if data.addressType == 'correspondence' %}
+              <div class="multiple-choice">
+                <input id="end" type="radio" name="addressValue" value=5>
+                <label for="end">End the correspondence address</label>
+              </div>
+            {% endif %}
+          
           </fieldset>
         </div>
         
@@ -108,7 +116,15 @@
                 <input id="correct-cherish" type="radio" name="addressValue" value="correct_cherish">
                 <label for="correct-cherish">Correct the cherished line</label>
               </div>
-              {% endif %}                
+              {% endif %}  
+            
+            {% if data.addressType == 'correspondence' %}
+              <div class="multiple-choice">
+                <input id="end" type="radio" name="addressValue" value=5>
+                <label for="end">End the correspondence address</label>
+              </div>
+            {% endif %}
+            
           </fieldset>
         </div>  
         

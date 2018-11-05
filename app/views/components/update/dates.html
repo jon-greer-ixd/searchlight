@@ -1,37 +1,24 @@
 <h2 class="heading-medium question">
-  {% if data['updateType'] === "end" %}
+  {% if data.updateType == 5 %}
       What is the end date and the notified end date?
-  {% elif data['updateType'] === "correctDateNotified" %}
+  {% elif data.updateType == "correctDateNotified" %}
       What is the notified start date?
-  {% elif data['updateType'] === "correctDate" %}
+  {% elif data.updateType == "correctDate" %}
       Which date do you need to correct?
   {% else %}
       What is the start date and the notified start date?
   {% endif %}
 </h2>
 
-<!--
-<div class="panel panel-border-wide">
-  <ul>
-    <li>
-      Current start date: <span class="">01 Jan 1990</span>
-    </li>
-    <li>
-      Current notified start date: <span class="">01 Jan 1990</span>
-    </li>
-  </ul>
-</div>
--->
-
-  {% if data['updateType'] === "correctDate" %}
-    <p>Select all that apply</p>
-  {% endif %}
+{% if data.updateType == "correctDate" %}
+  <p>Select all that apply</p>
+{% endif %}
 
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="dates-handler">
 
-      {% if data['updateType'] === "correctDateNotified" %}
+      {% if data.updateType == "correctDateNotified" %}
       <div class="form-group">
         <fieldset>
           <label class="form-label" for="full-name-f1">
@@ -43,7 +30,7 @@
         </fieldset>
       </div>
       
-      {% elif data['updateType'] === "correctDate" %}
+      {% elif data.updateType == "correctDate" %}
         <div class="form-group">
           <fieldset>
 
@@ -84,7 +71,7 @@
       <div class="form-group prepop">
         <fieldset>
           <label class="form-label" for="full-name-f1">
-          {% if data['updateType'] === "end" %}
+          {% if data.updateType == 5 %}
             End 
           {% else %}
             Start

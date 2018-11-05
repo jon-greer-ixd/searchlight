@@ -1083,7 +1083,15 @@ router.get(/update-address-handler/, function (req, res) {
 })
 
 router.get(/address-type-handler/, function (req, res) {
-  res.redirect('/update/address-search')
+  if (req.session.data.addressValue = 5) {
+    if (req.session.data.updateType == 3) {
+      res.redirect('/update/check')
+    } else {
+      res.redirect('/update/dates')
+    }
+  } else {
+    res.redirect('/update/address-search')
+  }
 })
 
 router.get(/check-address-handler/, function (req, res) {
@@ -1093,10 +1101,11 @@ router.get(/check-address-handler/, function (req, res) {
   
   // SET STATE
   req.session.data.addresses[req.session.data.addressType].state = updateType;
-  
-  // SET VALUE
-  
+    
   // SET DISPLAY
+  if(req.session.data.addressValue == 5) {
+    updateType = 5;
+  }
   req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType);
   
   // SET MESSAGE

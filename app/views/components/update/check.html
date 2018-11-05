@@ -25,22 +25,69 @@
 
     <!-- Update -->
     {% if data.updateType == 2 %}
-      <tr>
-        <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
-        <td>{{addressthree}} {{addressfour}}</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>9 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>11 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
+      <!-- End as update -->
+      {% if data.addressValue == 5 %}
+        <tr>
+          <td><span class="strong">End date</span></td>
+          <td>1 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified end date</span></td>
+          <td>19 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% else %}  
+        <tr>
+          <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
+          <td>{{addressthree}} {{addressfour}}</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>9 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified start date</span></td>
+          <td>11 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% endif %}  
     {% endif %}  
+      
+    <!-- Correct -->
+    {% if data.updateType == 3 %}
+      <!-- End as correct -->
+      {% if data.addressValue == 5 %}
+        <tr>
+          <td>End their correspondence address</td>
+          <td><a href="type">Change</a></td>
+        </tr>
+      {% else %}  
+        <tr>
+          <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
+          <td>{{addressthree}} {{addressfour}}</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>9 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified start date</span></td>
+          <td>11 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% endif %}  
+    {% endif %}  
+      
+    <!-- End as correct -->
+    {% if data.updateType == 5 %}
+
+    {% endif %}  
+
 
       
       
