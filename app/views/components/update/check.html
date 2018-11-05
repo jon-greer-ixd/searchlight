@@ -3,9 +3,9 @@
   <div class="column-one-half">
     <div>
     <table class="table">
-    
-    <!-- Add Correspondence -->
-    {% if data['updateType'] === "addCorrespondence" %}
+      
+    <!-- Add -->
+    {% if data.updateType == 1 %}
       <tr>
         <td><span class="strong">Correspondence address</span></td>
         <td>{{addressthree}} {{addressfour}}</td>
@@ -22,6 +22,30 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}  
+
+    <!-- Update -->
+    {% if data.updateType == 2 %}
+      <tr>
+        <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
+        <td>{{addressthree}} {{addressfour}}</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notified start date</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}  
+
+      
+      
+      
+    
       
     <!-- End Correspondence -->
     {% if data['updateType'] === "end" %}
@@ -249,7 +273,7 @@
   </div>
   <br>
   <div>
-    <form method="get" action="check-answers-handler">
+    <form method="get" action="check-address-handler"> <!-- check-answers-handler -->
       <div class="form-group">
         <input class="button" type="submit" value="Submit">
       </div>

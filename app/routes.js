@@ -14,8 +14,8 @@ var setState = require('./defaults.js').setState;
 var changeSex = require('./defaults.js').changeSex;
 var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
 var generalFunctions = require('../functions/general.js');
+var addressFunctions = require('../functions/address.js');
 var contactFunctions = require('../functions/contact.js');
-
 
 //***********
 // INTERESTS 
@@ -365,6 +365,7 @@ router.use('/', main);
   req.session.data.notificationsData = require('./data/notifications.js').notifications;
   req.session.data.details = require('./data/details.js').details;
   req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
+  req.session.data.addresses = require('./data/addresses.js').addresses;
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
       
@@ -1072,6 +1073,40 @@ router.get('/update/account', function (req, res) {
   })
 })
 
+//ADDRESS
+router.get(/update-address-handler/, function (req, res) {
+  if (req.session.data.updateType == 1) {
+    res.redirect('/update/address-search')
+  } else { 
+    res.redirect('/update/type')
+  }
+})
+
+router.get(/address-type-handler/, function (req, res) {
+  res.redirect('/update/address-search')
+})
+
+router.get(/check-address-handler/, function (req, res) {
+  var addressType = req.session.data.addressType;
+  var chosenAddress = req.session.data.addresses[addressType];
+  var updateType = req.session.data.updateType;
+  
+  // SET STATE
+  req.session.data.addresses[req.session.data.addressType].state = updateType;
+  
+  // SET VALUE
+  
+  // SET DISPLAY
+  req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType);
+  
+  // SET MESSAGE
+  req.session.data.toaster = generalFunctions.setToasterMessage (chosenAddress.display, null, updateType);
+  res.redirect('/account2/account')
+})
+
+
+
+
 router.get('/choice-handler', function (req, res) {
   res.render('address-search')
 })
@@ -1325,7 +1360,7 @@ router.get('/update/check', function (req, res) {
 })
 
 router.get(/check-answers-handler/, function (req, res) {
-  updater(req.session.data.updateType);
+  updater(req.session.data.updateType,correspondenceAddress,correspondenceAddress,residentialAddress,previousAddress,dataState,content,addressOne,addressTwo,addressThree);
   if(req.session.data.updateType === 'addCorrespondence') {
     dataState.correspondenceAdded = true;
   }
