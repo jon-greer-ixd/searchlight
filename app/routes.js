@@ -163,9 +163,6 @@ var previousAddress = {
 previousAddress.reset();
 
 var updater = function (updatetype) {
-  if(updatetype === 'addCorrespondence') {
-    correspondenceAddress.show = true;
-  }
   //cherish - add
   if (updatetype === 'updateAddCherish') {
     residentialAddress.cherish = 'Flat A';
@@ -248,15 +245,6 @@ var updater = function (updatetype) {
       previousAddress.show = true;
       previousAddress.correct = true;
     }
-  }
-  if(updatetype === 'addCorrespondence') {
-    dataState.correspondenceAdded = true;
-  }
-  if (updatetype === 'end') {
-    dataState.correspondenceAdded = false;   
-    dataState.correspondenceRemoved = true;
-    previousAddress.line = addressThree;
-    previousAddress.show = true;
   }
   if (updatetype === 'correctNew') {
     previousAddress.cherish = residentialAddress.cherish;
@@ -1073,7 +1061,7 @@ router.get('/update/account', function (req, res) {
   })
 })
 
-//ADDRESS
+//ADDRESSES
 router.get(/update-address-handler/, function (req, res) {
   if (req.session.data.updateType == 1) {
     res.redirect('/update/address-search')
@@ -1083,7 +1071,9 @@ router.get(/update-address-handler/, function (req, res) {
 })
 
 router.get(/address-type-handler/, function (req, res) {
-  if (req.session.data.addressValue = 5) {
+  console.log('value', req.session.data.addressValue);
+  console.log(req.query);
+  if (req.session.data.addressValue == 5) {
     if (req.session.data.updateType == 3) {
       res.redirect('/update/check')
     } else {
@@ -1091,6 +1081,14 @@ router.get(/address-type-handler/, function (req, res) {
     }
   } else {
     res.redirect('/update/address-search')
+  }
+})
+
+router.get('/update/search-results-handler', function (req, res) {
+  if (req.session.data.updateType == 3) {
+    res.redirect('/update/check')
+  } else {
+    res.redirect('/update/dates')
   }
 })
 
@@ -1115,7 +1113,6 @@ router.get(/check-address-handler/, function (req, res) {
   // REDIRECT
   res.redirect('/account2/account')
 })
-
 
 
 
@@ -1346,14 +1343,6 @@ router.get(/cancel-handler/, function (req, res) {
 router.get(/relationship-handler/, function (req, res) {
   req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
   res.redirect('/account2/account')
-})
-
-router.get('/update/search-results-handler', function (req, res) {
-  if (req.session.data.updateType === 'correctNew') {
-    res.redirect('/update/check')
-  } else {
-    res.redirect('/update/dates')
-  }
 })
 
 router.get('/update/check', function (req, res) {

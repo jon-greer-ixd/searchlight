@@ -8,18 +8,7 @@
       <ul>
         <li>Residential address</li>
         <li class="sl-secondary-text-color sl-metadata">
-          
-            {% if residentialaddress.updated === true %} 
-              {% if data['updateType'] === "correctDate" or data['updateType'] === "correctToNew" or data['updateType'] === "correctNew" or data['updateType'] === "correctStatusDlo" or data['updateType'] === "correctChangeCherish" or data['updateType'] === "correctAddCherish" or data['updateType'] === "correctRemoveCherish" %}
-                {{startdate}} 
-              {% else %}
-                {{editDate}}
-              {% endif %}
-            {% else %}
-              {{startdate}}
-            {% endif %}
-          – present
-         
+            {{data.addresses.residential.startDate}} – present
         </li>
       </ul>
     </div>
@@ -63,7 +52,7 @@
           <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a> 
         </li>
         <li>
-          <a class="secondary-link" href="../update/type">Change</a>
+          <a class="secondary-link" href="update-address-handler?addressType=residential&updateType=0">Change</a>
         </li>
       </ul>
     </div>
@@ -73,4 +62,5 @@
 </div> 
 
 <hr class="light">
-  {% include "components/previous-address.html" %}
+
+{% include "components/previous-address.html" %}
