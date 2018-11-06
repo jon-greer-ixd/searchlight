@@ -121,6 +121,17 @@
           </td>
           <td><a>Change</a></td>
         </tr>
+      {% elif data.tempValue == 'dates' %}  
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>30 November 1990</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified start date</span></td>
+          <td>30 November 1990</td>
+          <td><a>Change</a></td>
+        </tr>
       {% elif data.tempValue == 'cherish' %}  
         {% if data.cherishStatus == 4 %}  
           <tr>
@@ -144,46 +155,6 @@
       {% endif %}  
     {% endif %}  
       
-    <!-- End as correct -->
-    {% if data.updateType == 5 %}
-
-    {% endif %}  
-
-
-      
-      
-      
-    
-    
-      
-      
-    
-      
-    <!-- Correct the start date -->
-    {% if data['updateType'] === "correctDate" %}
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>30 November 1990</td>
-        <td><a>Change</a></td>
-      </tr>
-<!--
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>01 Jan 1990</td>
-        <td><a>Change</a></td>
-      </tr>
--->
-    {% endif %}
-
-    <!-- Correct the notified start date -->
-    {% if data['updateType'] === "correctDateNotified" %}
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>01 Jan 1990</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
     </table>
   </div>
   <br>
