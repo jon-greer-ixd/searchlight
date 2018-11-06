@@ -47,7 +47,7 @@
             <div class="multiple-choice">
               <input id="cherish" type="radio" name="tempValue" value="cherish">
                 <label for="cherish">
-                  {% if data.addresses.residential.cherish != true %}
+                  {% if data.addresses[data.addressType].cherish != true %}
                     Add a cherished line
                   {% else %}
                     Update the cherished line
@@ -95,7 +95,7 @@
             <div class="multiple-choice">
               <input id="cherish" type="radio" name="tempValue" value="cherish">
                 <label for="cherish">
-                  {% if data.addresses.residential.cherish != true %}
+                  {% if data.addresses[data.addressType].cherish != true %}
                     Add a cherished line
                   {% else %}
                     Correct the cherished line

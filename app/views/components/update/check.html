@@ -60,6 +60,30 @@
           <td>11 December 2017</td>
           <td><a>Change</a></td>
         </tr>
+      {% elif data.tempValue == 'cherish' %}  
+        {% if data.cherishValue == 4 %}  
+          <tr>
+            <td><span class="strong">Update type</span></td>
+            <td>Remove the cherished line</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% else %}  
+          <tr>
+            <td><span class="strong">Cherished line</span></td>
+            <td>Flat A</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Start date</span></td>
+            <td>1 December 2017</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Notified start date</span></td>
+            <td>19 December 2017</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}  
       {% else %}  
         <tr>
           <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
@@ -79,6 +103,7 @@
       {% endif %}  
     {% endif %}  
       
+      
     <!-- Correct -->
     {% if data.updateType == 3 %}
       <!-- End as correct -->
@@ -96,6 +121,20 @@
           </td>
           <td><a>Change</a></td>
         </tr>
+      {% elif data.tempValue == 'cherish' %}  
+        {% if data.cherishValue == 4 %}  
+          <tr>
+            <td><span class="strong">Correction type</span></td>
+            <td>Remove the cherished line</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% else %}  
+          <tr>
+            <td><span class="strong">Cherished line</span></td>
+            <td>Flat A</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}  
       {% else %}  
         <tr>
           <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
@@ -115,140 +154,10 @@
       
       
     
-      
-    <!-- End Correspondence -->
-    {% if data['updateType'] === "end" %}
-      <tr>
-        <td><span class="strong">End date</span></td>
-        <td>1 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notified end date</span></td>
-        <td>19 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-      
-    <!-- Update to new -->
-    {% if data['updateType'] === "updateNew" %}
-      <tr>
-        <td><span class="strong">New address</span></td>
-        <td>{{addresstwo}} {{addressfour}}</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>9 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>{{editdate}}</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-      
-    <!-- Update status -->
-    {% if data['updateType'] === "updateStatus" or data['updateType'] === "updateStatusDLO" or data['updateType'] === "updateStatusLive" %}
-      <tr>
-        <td><span class="strong">Status</span></td>
-        <td>{{newstatus}}</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>1 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>19 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
     
-    <!-- Update add cherished line -->
-    {% if data['updateType'] === "updateAddCherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Flat A</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>1 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>19 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}    
       
-    <!-- Update remove cherished line -->
-    {% if data['updateType'] === "updateRemoveCherish" %}
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>9 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>11 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
       
-    <!-- Update change the cherished line -->
-    {% if data['updateType'] === "updateChangeCherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Flat B</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>1 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Notified start date</span></td>
-        <td>19 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
     
-    <!-- -----*----- -->
-    <!-- Corrections -->
-    <!-- -----*----- -->
-      
-    <!-- Correct to a new address -->
-    {% if data['updateType'] === "correctNew" %}
-<!--
-      <tr>
-        <td><span class="strong">Current address</span></td>
-        <td>{{addressone}} {{addressfour}}</td>
-        <td> </td>
-      </tr>
--->
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>{{addresstwo}} {{addressfour}}</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-      
-    <!-- Correct the status -->
-    {% if data['updateType'] === "correctStatus" or data['updateType'] === "correctStatusDlo" or data['updateType'] === "correctStatusLive" %}
-      <tr>
-        <td><span class="strong">Status</span></td>
-        <td>{{newstatus}}</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
       
     <!-- Correct the start date -->
     {% if data['updateType'] === "correctDate" %}
@@ -274,69 +183,6 @@
         <td><a>Change</a></td>
       </tr>
     {% endif %}
-
-    <!-- Correct add a cherished line -->
-    {% if data['updateType'] === "correctAddCherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Flat A</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-    <!-- Correct update a cherished line -->
-    {% if data['updateType'] === "correctChangeCherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Flat B</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-
-    <!-- Correct remove a cherished line -->
-    {% if data['updateType'] === "correctRemoveCherish" %}
-      <tr>
-        <td><span class="strong">Address</span></td>
-        <td>{{addressone}} {{addressfour}}</td>
-        <td></td>
-      </tr>
-    {% endif %}
-                   
-    <!-- Update change the cherished line -->
-    <!--
-    {% if data['updateType'] === "updateCherish" %}
-      <tr>
-        <td><span class="strong">Cherished line</span></td>
-        <td>Flat B</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Start date</span></td>
-        <td>1 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-      <tr>
-        <td><span class="strong">Date notified</span></td>
-        <td>19 December 2017</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    -->
-      
-    <!--
-    {% if data['updateType'] === "correctCherish" %}
-      <tr>
-        <td><span class="strong">Current cherished line</span></td>
-        <td>Flat A</td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td><span class="strong">New cherished line</span></td>
-        <td>Flat B</td>
-        <td><a>Change</a></td>
-      </tr>
-    {% endif %}
-    -->
 
     </table>
   </div>

@@ -8,7 +8,7 @@ var addresses = {
     'display' : 'Residential address', 
     'startDate' : '01 Jan 1990', 
     'endDate' : null, 
-    'cherish' : null, 
+    'cherish' : false, 
     'lineOne' : addressLines[0]
   }, 
   "correspondence" : {
@@ -18,7 +18,7 @@ var addresses = {
     'display' : 'Correspondence address', 
     'startDate' : '01 Jan 1990', 
     'endDate' : null, 
-    'cherish' : null, 
+    'cherish' : false, 
     'lineOne' : addressLines[2]
   }
 }

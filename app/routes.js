@@ -1008,6 +1008,7 @@ router.get(/check-address-handler/, function (req, res) {
   var chosenAddress = req.session.data.addresses[addressType];
   var updateType = req.session.data.updateType;
   var tempValue = req.session.data.tempValue;
+  var cherishStatus = req.session.data.cherishStatus;
 
   // SET STATE
   req.session.data.addresses[req.session.data.addressType].state = updateType;
@@ -1017,6 +1018,15 @@ router.get(/check-address-handler/, function (req, res) {
     req.session.data.addresses[req.session.data.addressType].status = req.session.data.tempStatus;
   }
     
+  if (tempValue == 'cherish') {
+    if (req.session.data.cherishStatus == 4 ) {
+      req.session.data.addresses[req.session.data.addressType].cherish = false;
+    } else {
+      req.session.data.addresses[req.session.data.addressType].cherish = true;
+    }
+  }
+  console.log(req.session.data.addresses[req.session.data.addressType]);
+    
   // SET DISPLAY
   req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType, tempValue);
   
@@ -1025,7 +1035,7 @@ router.get(/check-address-handler/, function (req, res) {
  
   // RESET
   req.session.data.tempStatus = null;
-  addressType, chosenAddress, updateType, tempValue = null;
+  addressType, chosenAddress, updateType, tempValue, cherishStatus = null;
   req.session.data.addressType, req.session.data.updateType, req.session.data.tempValue = null;
   
   // REDIRECT
@@ -1076,12 +1086,11 @@ router.get('/update/print-sar', function (req, res) {
 })
 
 router.get('/update/cherish-handler', function (req, res) {
-  if (req.session.data.updateType == 1 || req.session.data.updateType == 2) {
+  if (req.session.data.updateType == 2) {
     res.redirect('dates')
-  } else if (req.session.data.updateType == 3) {
+  }
+  if (req.session.data.updateType == 3) {
     res.redirect('check')
-  } else if (req.query.data.updateType == 5) {
-    res.redirect('dates')
   }
 })
 

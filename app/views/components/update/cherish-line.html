@@ -1,16 +1,19 @@
-{% if data['updateType'] === "updateAddCherish" or data['updateType'] === "correctAddCherish" %}
+<!--//add a cherished line-->
+{% if data.addresses[data.addressType].cherish == false %}
   <h2 class="heading-medium question">What is the cherished line of this address?</h2>
-{% else %}
-  <h2 class="heading-medium question">
-  {% if data['updateType'] === "updateCherish" %}
-    What kind of update do you need to make?
-  {% else %}
-    What kind of change do you need to make?
-  {% endif %}
-   </h2>
 {% endif %}
 
-{% if data['updateType'] === "correctCherish" %} 
+<!--//correct a cherished line-->
+{% if data.addresses[data.addressType].cherish == true and data.updateType == 2 %}
+  <h2 class="heading-medium question">What kind of update do you need to make?</h2>
+{% endif %}
+
+<!--//update a cherished line-->
+{% if data.addresses[data.addressType].cherish == true and data.updateType == 3 %}
+  <h2 class="heading-medium question">What kind of correction do you need to make?</h2>    
+{% endif %}
+
+{% if data.addresses[data.addressType].cherish == true and data.updateType == 2 %} 
   <div class="panel panel-border-wide">
     <ul>
       <li>
@@ -24,52 +27,51 @@
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="cherish-handler">
-      <legend class="visually-hidden">
-        <p>What is the cherished line of this address</p>
-      </legend>
+      
+    <!--//add a cherished line-->
+    {% if data.addresses[data.addressType].cherish == false %}
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label visually-hidden" for="full-name-f1">Cherished line</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+        </fieldset>
+      </div>
+    {% else %}
+      <div class="form-group">
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="correct" type="radio" name="cherishStatus" value=4>
+          <label for="correct">Remove the cherished line</label>
+        </div>
+        <div class="multiple-choice" data-target="contact-by-email">
+          <input id="update" type="radio" name="cherishStatus" value=2>
+          <label for="update">
+          {% if data.updateType == 2 %}
+            Update the cherished line
+          {% else %}
+            Correct the cherished line
+          {% endif %}
+          </label>
+        </div>
+      </div>
 
-      {% if data['updateType'] === "updateAddCherish" or data['updateType'] === "correctAddCherish" %}
-
-          <div class="form-group">
-            <fieldset>
-              <label class="form-label visually-hidden" for="full-name-f1">Cherished line</label>
-              <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
-            </fieldset>
-          </div>
-
-      {% else %}
-
+      <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
         <div class="form-group">
-          <div class="multiple-choice" data-target="contact-by-text">
-            <input id="correct" type="radio" name="data" value="remove_cherish">
-            <label for="correct">Remove the cherished line</label>
-          </div>
-          <div class="multiple-choice" data-target="contact-by-email">
-            <input id="update" type="radio" name="data" value="change_cherish">
-            <label for="update">
-            {% if data['updateType'] === "updateCherish" %}
-              Update the cherished line
-            {% else %}
-              Correct the cherished line
-            {% endif %}
-            </label>
-          </div>
+          <fieldset>
+          <label class="form-label" for="full-name-f1">Enter the correct cherished line</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+          </fieldset>
         </div>
-        <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
-          <div class="form-group">
-            <fieldset>
-            <label class="form-label" for="full-name-f1">Enter the correct cherished line</label>
-            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
-            </fieldset>
-          </div>
-        </div>
+      </div>
+    {% endif %}
             
-      {% endif %}
-          <div class="form-group">
-            <input class="button" type="submit" value="Next">
-          </div>
-      </form>
-      <a href="/account2/account">Cancel</a>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+  </form>
+    
+  <a href="/account2/account">Cancel</a>
 
-    </div>
+  </div>
+  
 </div>
