@@ -42,7 +42,7 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
     return setPV(detailObject, chosenValue);
   } else if (chosenDetail == 'specialNeeds') {
     if (updateType == 3) {
-      return correctSpecialNeeds(detailObject, chosenValue, tempValue);
+      return correctspecialNeeds(detailObject, chosenValue, tempValue);
     } else {
       return setNeeds(detailObject, chosenValue);
     }
@@ -52,7 +52,7 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
   }
 };
 
-function correctSpecialNeeds (detailObject, chosenValue, tempValue) {
+function correctspecialNeeds (detailObject, chosenValue, tempValue) {
   if (typeof detailObject.value == 'string') {
     detailObject.value = tempValue;
   } else {
@@ -97,7 +97,7 @@ function setDisplay(chosenDetail, detailObject) {
 
 
 module.exports.setNeeds = setNeeds;
-module.exports.correctSpecialNeeds = correctSpecialNeeds;
+module.exports.correctspecialNeeds = correctspecialNeeds;
 module.exports.flipValue = flipValue;
 module.exports.setDisplay = setDisplay;
 module.exports.setPV = setPV;
