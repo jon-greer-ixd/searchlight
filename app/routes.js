@@ -1036,7 +1036,7 @@ router.get(/check-address-handler/, function (req, res) {
   // RESET
   req.session.data.tempStatus = null;
   addressType, chosenAddress, updateType, tempValue, cherishStatus = null;
-  req.session.data.addressType, req.session.data.updateType, req.session.data.tempValue = null;
+  req.session.data.addressType, req.session.data.updateType, req.session.data.tempValue, req.session.data.cherishStatus = null;
   
   // REDIRECT
   res.redirect('/account2/account')
