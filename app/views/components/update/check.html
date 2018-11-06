@@ -26,7 +26,7 @@
     <!-- Update -->
     {% if data.updateType == 2 %}
       <!-- End as update -->
-      {% if data.addressValue == 5 %}
+      {% if data.tempValue == 5 %}
         <tr>
           <td><span class="strong">Update type</span></td>
           <td>End</td>
@@ -40,6 +40,24 @@
         <tr>
           <td><span class="strong">Notified end date</span></td>
           <td>19 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% elif data.tempValue == 'status' %}  
+        <tr>
+          <td><span class="strong">Status</span></td>
+          <td>
+            {{data.tempStatus | statusAsAString}}
+          </td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>9 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified start date</span></td>
+          <td>11 December 2017</td>
           <td><a>Change</a></td>
         </tr>
       {% else %}  
@@ -64,11 +82,19 @@
     <!-- Correct -->
     {% if data.updateType == 3 %}
       <!-- End as correct -->
-      {% if data.addressValue == 5 %}
+      {% if data.tempValue == 5 %}
         <tr>
           <td><span class="strong">Correction type</span></td>
           <td>End</td>
           <td><a href="type">Change</a></td>
+        </tr>
+      {% elif data.tempValue == 'status' %}  
+        <tr>
+          <td><span class="strong">Status</span></td>
+          <td>
+            {{data.tempStatus | statusAsAString}}
+          </td>
+          <td><a>Change</a></td>
         </tr>
       {% else %}  
         <tr>

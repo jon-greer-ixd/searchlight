@@ -113,6 +113,19 @@ module.exports = function (env) {
       return "";
     }
   }
+  
+  //show the correct status
+  filters.statusAsAString = function(status) {
+    if (status == "dlo") {
+      return "Dead letter office";
+    } else if (status == "live") {
+      return "Live";
+    } else if (status == "pwa") {
+      return "Person without address";
+    } else if (status == "nfa") {
+      return "No fixed abode";
+    }
+  }
 
   //check for item
   filters.checkForItem = function(list, thing) {

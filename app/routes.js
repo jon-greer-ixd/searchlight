@@ -970,22 +970,25 @@ router.get(/update-address-handler/, function (req, res) {
 })
 
 router.get(/address-type-handler/, function (req, res) {
-  console.log('value', req.session.data.addressValue);
-  console.log(req.query);
+  var addressType = req.session.data.addressType;
+  var chosenAddress = req.session.data.addresses[addressType];
   
-  if (req.session.data.addressValue == 5) {
+  if (req.session.data.tempValue == 5) {
     if (req.session.data.updateType == 3) {
       res.redirect('/update/check')
     } else {
       res.redirect('/update/dates')
     }
-  } else if (req.session.data.addressValue == 'dlo' || req.session.data.addressValue == 'live') {
-    res.redirect('/update/check')
-  } else if (req.session.data.addressValue == 'status') {
-    res.redirect('/update/status')
-  } else if (req.session.data.addressValue == 'cherish') {
+  } else if (req.session.data.tempValue == 'status') {
+    if (req.session.data.addresses.correspondence.show == true) {
+      res.redirect('/update/status')
+    } else {
+      req.session.data.tempStatus = addressFunctions.flipStatus(chosenAddress);
+      res.redirect('/update/check')
+    }
+  } else if (req.session.data.tempValue == 'cherish') {
     res.redirect('/update/cherish-line')
-  } else if (req.session.data.addressValue == 'dates') {
+  } else if (req.session.data.tempValue == 'dates') {
     res.redirect('/update/dates')
   } else {
     res.redirect('/update/address-search')
@@ -1004,19 +1007,26 @@ router.get(/check-address-handler/, function (req, res) {
   var addressType = req.session.data.addressType;
   var chosenAddress = req.session.data.addresses[addressType];
   var updateType = req.session.data.updateType;
-  var addressValue = req.session.data.addressValue;
+  var tempValue = req.session.data.tempValue;
+
   // SET STATE
   req.session.data.addresses[req.session.data.addressType].state = updateType;
+  
+  // SET VALUES
+  if (tempValue == 'status') {
+    req.session.data.addresses[req.session.data.addressType].status = req.session.data.tempStatus;
+  }
     
   // SET DISPLAY
-  req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType, addressValue);
+  req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType, tempValue);
   
   // SET MESSAGE
   req.session.data.toaster = generalFunctions.setToasterMessage (chosenAddress.display, null, updateType);
  
   // RESET
-  addressType, chosenAddress, updateType, addressValue = null;
-  req.session.data.addressType, req.session.data.updateType, req.session.data.addressValue = null;
+  req.session.data.tempStatus = null;
+  addressType, chosenAddress, updateType, tempValue = null;
+  req.session.data.addressType, req.session.data.updateType, req.session.data.tempValue = null;
   
   // REDIRECT
   res.redirect('/account2/account')
@@ -1046,20 +1056,10 @@ router.get('/update/status', function (req, res) {
 })
 
 router.get(/status-handler/, function (req, res) {
-  dataState.newStatus = req.query.data;
-//  dataState.statusUpdated = true;
-  if (dataState.newStatus === 'live') {
-    if (dataState.currentStatus == 'nfa' || dataState.currentStatus == 'pwa') {
-      res.redirect('address-search')
-    } else {
-      res.redirect('dates')
-    }
+  if (req.session.data.updateType == 2) {
+    res.redirect('dates')
   } else {
-    if (req.session.data.updateType != 'correctStatus') {
-      res.redirect('dates')
-    } else {
-      res.redirect('check')
-    }
+    res.redirect('check')
   }
 })
 

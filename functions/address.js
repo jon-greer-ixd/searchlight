@@ -20,6 +20,11 @@ var setShow = function (address, updateType, addressValue) {
   return address;
 }
 
+var flipStatus = function (residential) {
+  return (residential.status == 'dlo' ? 'live' : 'dlo');
+}
+
+module.exports.flipStatus = flipStatus;
 module.exports.setShow = setShow;
 module.exports.updateAddress = updateAddress;
 module.exports.setCherish = setCherish;
