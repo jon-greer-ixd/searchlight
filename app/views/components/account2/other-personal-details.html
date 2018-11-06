@@ -33,9 +33,13 @@
         {% elif items == "maritalStatus" %}
           {% include "components/account2/marital.html" %}
           <hr class="light">
+        {% elif items == "idAtRisk" %}
+          {% include "components/account2/risk.html" %}
+          <hr class="light">
+        {% elif items == "assetFreeze" %}
+          {% include "components/account2/asset-freeze.html" %}
+          <hr class="light">
         {% endif %}
-        <!-- Spoken language -->
-        <!-- PO -->    
       {% endif %}
     {% endfor %}
     

@@ -15,9 +15,9 @@ var personalDetails = {
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null},
   "nino" : {state : null, show : true, display : "National Insurance number", value : null},
   "ninoVerificationLevel" : {state : null, show : true, display : "National Insurance number verification level", value : "Verified"},
-  "bereavementBenefit" : {state : null, show : true, display : "Bereavement Benefit", value : true},
-  "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
-  "assetFreeze" : {state : null, show : false, display : "ASSET FREEZE STATUS", value : false}
+  "bereavementBenefit" : {state : null, show : true, display : "Bereavement Benefit", value : true}
+//  "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
+//  "assetFreeze" : {state : null, show : false, display : "ASSET FREEZE STATUS", value : false}
 }
 
 //  prints all the items
