@@ -474,6 +474,12 @@ router.get(/add-person-handler/, function (req, res) {
     res.redirect('/update/person/check');
   } else if (req.session.data.personalDetail == 'gender') {
     res.redirect('/update/person/gender/add');
+  } else if (req.session.data.personalDetail == 'idAtRisk') {
+    req.session.data.personalDetailValue = 'idAtRisk';
+    res.redirect('/update/person/check');
+  } else if (req.session.data.personalDetail == 'assetFreeze') {
+    req.session.data.personalDetailValue = 'assetfreeze';
+    res.redirect('/update/person/check');
   } else {
     res.redirect('/update/person/update');
   }

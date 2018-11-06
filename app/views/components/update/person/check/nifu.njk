@@ -1,0 +1,11 @@
+<tr>
+  <td class="bold">{{data.personalDetails[data.personalDetail].display}}</td>
+  <td>
+    {% if data.personalDetailValue == null or data.personalDetailValue == 'null' %}
+      No
+    {% else %}
+      {{data.personalDetailValue}}
+    {% endif %}
+  </td>
+  <td><a>Change</a></td>
+</tr>

@@ -26,34 +26,7 @@
 
       <div class="form-group">
       <fieldset>
-        
-<!--
-        {% if data.recordLevel.show === false %}
-          <div class="multiple-choice">
-            <input id="recordLevel" name="personalDetail" type="radio" value="recordLevel" >
-            <label for="recordLevel">Special customer record level</label>
-          </div>
-        {% endif %}
--->
-        
-<!--
-        {% if data.deathUpdated === false %}
-          <div class="multiple-choice">
-            <input id="death" name="personalDetail" type="radio" value="death" >
-            <label for="death">Date of death details</label>
-          </div>
-        {% endif %}
--->
-        
-<!--
-        {% if data.pvUpdated === false %}
-          <div class="multiple-choice">
-            <input id="pv" name="personalDetail" type="radio" value="pv" >
-            <label for="pv">Potentially violent details</label>
-          </div>
-        {% endif %}
--->
-        
+                
         {% for items, item in data.personalDetails %}
           {% if item.show == false %}
             <div class="multiple-choice">
@@ -62,60 +35,6 @@
             </div>
           {% endif %}
         {% endfor %}
-        
-<!--
-        {% if data.disability.show === false %}
-          <div class="multiple-choice">
-            <input id="disability" name="personalDetail" type="radio" value="disability" >
-            <label for="disability">Disability status</label>
-          </div>
-        {% endif %}
--->
-        
-<!--
-        {% if data.personalDetails.gender.show === false %}
-          <div class="multiple-choice">
-            <input id="gender" name="personalDetail" type="radio" value="gender" >
-            <label for="gender">Gender recognition</label>
-          </div>
-        {% endif %}
--->
-                
-<!--
-        {% if data.showpreferredLanguage === false %}
-          <div class="multiple-choice">
-            <input id="planguage" name="personalDetail" type="radio" value="planguage" >
-            <label for="planguage">Preferred language</label>
-          </div>
-        {% endif %}
--->
-                
-<!--
-        {% if data.showSpokenLanguage === false %}
-          <div class="multiple-choice">
-            <input id="spokenlanguage" name="personalDetail" type="radio" value="spokenlanguage" >
-            <label for="spokenlanguage">Spoken language</label>
-          </div>
-        {% endif %}
--->
-        
-<!--
-        {% if data.showMarital === false %}
-          <div class="multiple-choice">
-            <input id="marital" name="personalDetail" type="radio" value="marital" >
-            <label for="marital">Marital or civil partnership status</label>
-          </div>
-        {% endif %}
--->
-        
-<!--
-        {% if data.showImmigration === false %}
-          <div class="multiple-choice">
-            <input id="immigration" name="personalDetail" type="radio" value="immigration" >
-            <label for="immigration">Immigration information</label>
-          </div>
-        {% endif %}
--->
         
         </fieldset>        
       </div> 
