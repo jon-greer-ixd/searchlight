@@ -17,8 +17,7 @@ var personalDetails = {
   "ninoVerificationLevel" : {state : null, show : true, display : "National Insurance number verification level", value : "Verified"},
   "bereavementBenefit" : {state : null, show : true, display : "Bereavement Benefit", value : true},
   "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
-  "assetFreeze" : {state : null, show : false, display : "ASSET FREEZE STATUS", value : false},
-  "relationships" : {state : null, show : false, display : null, value : null}
+  "assetFreeze" : {state : null, show : false, display : "ASSET FREEZE STATUS", value : false}
 }
 
 //  prints all the items

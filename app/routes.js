@@ -251,6 +251,7 @@ router.use('/', main);
   req.session.data.alertData = require('./data/alerts.js').alerts;
   req.session.data.notificationsData = require('./data/notifications.js').notifications;
   req.session.data.details = require('./data/details.js').details;
+  req.session.data.miscData = require('./data/miscData.js').miscData;
   req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
   req.session.data.addresses = require('./data/addresses.js').addresses;
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
@@ -1115,7 +1116,6 @@ router.get(/check-benefit-handler/, function (req, res) {
 
 
 //relationships
-
 router.get(/cancel-handler/, function (req, res) {
   req.session.data.toaster = null;
   res.redirect('/account2/account')
@@ -1128,12 +1128,10 @@ router.get(/add-relationships-handler/, function (req, res) {
 
 router.get(/relationship-handler/, function (req, res) {
   if (req.session.data.updateType == 1) {
-    req.session.data.personalDetails.relationships.show = true;
+    req.session.data.miscData.relationships.show = true;
   } else {
-    req.session.data.personalDetails.relationships.show = false;
+    req.session.data.miscData.relationships.show = false;
   }
-  console.log(req.session.data.updateType);
-  console.log(req.session.data.personalDetails.relationships.show);
   req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
   req.session.updateType = null;
   res.redirect('/account2/account')
