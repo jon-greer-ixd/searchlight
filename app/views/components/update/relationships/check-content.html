@@ -5,29 +5,29 @@
       <table class="table">
         {% if data.updateType == 5 or data.updateType == 6 %}
           <tr>
-            <td>Update type</td>
+            <td class="bold">Update type</td>
             <td>{{ "Delete" if (data.updateType == 6) else "End" }}</td>
             <td><a href="type">Change</a></td>
           </tr>
           <tr>
-            <td>Relationship</td>
-            <td>James Smith</td>
+            <td class="bold">Relationship</td>
+            <td>JAMES  WILLIAMS</td>
             <td>&nbsp;</td>
           </tr>
         {% else %}
           <tr>
-            <td>Relationship type</td>
-            <td>{{data.relationship_nino}}</td>
+            <td class="bold">Relationship type</td>
+            <td>Award based relationship</td>
             <td><a>Change</a></td>
           </tr>
           <tr>
-            <td>National Insurance number</td>
-            <td>{{data.relationship_type}}</td>
+            <td class="bold">National Insurance number</td>
+            <td>SX170101</td>
             <td><a>Change</a></td>
           </tr>
           <tr>
-            <td>Start date</td>
-            <td>{{data.relationship_start_date}}</td>
+            <td class="bold">Start date</td>
+            <td>{{data.prepopulatedString}}</td>
             <td><a>Change</a></td>
           </tr>
         {% endif %}
