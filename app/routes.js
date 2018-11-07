@@ -1121,8 +1121,21 @@ router.get(/cancel-handler/, function (req, res) {
   res.redirect('/account2/account')
 })
 
+router.get(/add-relationships-handler/, function (req, res) {
+  req.session.data.updateType = 1;
+  res.redirect('check')
+})
+
 router.get(/relationship-handler/, function (req, res) {
+  if (req.session.data.updateType == 1) {
+    req.session.data.personalDetails.relationships.show = true;
+  } else {
+    req.session.data.personalDetails.relationships.show = false;
+  }
+  console.log(req.session.data.updateType);
+  console.log(req.session.data.personalDetails.relationships.show);
   req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
+  req.session.updateType = null;
   res.redirect('/account2/account')
 })
 

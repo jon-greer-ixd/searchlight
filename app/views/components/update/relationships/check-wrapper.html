@@ -9,7 +9,17 @@
 
         <a class="link-back" onCLick="history.back()">Back</a>
 
-        <h2 class="title">{{ "Delete" if (data.updateType == 6) else "End" }} a relationship</h2>
+<!--        <h2 class="title">{{ "Delete" if (data.updateType == 6) else "End" }} a relationship</h2>-->
+        <h2 class="title">
+          {% if data.updateType == 6 %}
+            Delete
+          {% elif data.updateType == 5 %}
+            End
+          {% elif data.updateType == 1 %}
+            Add
+          {% endif %}
+            a relationship
+        </h2>
 
         <div id="sl-address-primary-card" class="sl-primary-card last-card">
 
