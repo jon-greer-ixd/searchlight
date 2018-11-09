@@ -1115,6 +1115,34 @@ router.get(/check-benefit-handler/, function (req, res) {
 })
 
 
+//maintain account
+router.get(/maintain-account-handler/, function (req, res) {
+  if (req.session.data.updateType == 3) {
+    res.redirect('verification')
+  } else {
+    res.redirect('status')
+  }
+})
+
+router.get(/nino-level-handler/, function (req, res) {
+  if (req.session.data.tempAccountStatus == 'Superseded' ) {
+    res.redirect('supersede')
+  } else {
+    res.redirect('dates')
+  }
+})
+
+router.get(/check-nino-handler/, function (req, res) {
+  if (req.session.data.updateType == 3) {
+    req.session.data.personalDetails.ninoVerificationLevel.value = req.session.data.verificationLevel;
+    req.session.data.toaster = generalFunctions.setToasterMessage('National Insurance number verification level', null, 3);
+  } else {
+    req.session.data.personalDetails.accountStatus.value = req.session.data.tempAccountStatus;
+    req.session.data.toaster = generalFunctions.setToasterMessage('Account status', null, 2);
+  }
+  res.redirect('/account2/account')
+})
+
 //relationships
 router.get(/cancel-handler/, function (req, res) {
   req.session.data.toaster = null;
