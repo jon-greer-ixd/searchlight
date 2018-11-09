@@ -1,0 +1,44 @@
+  <h2 class="heading-medium question">Check your answers</h2>
+    <div class="grid-row">
+      <div class="column-one-half">
+        
+        <table class="table"> 
+          
+        {% if data.updateType == 3 %}
+          <tr>
+            <td><span class="strong">Verification level</span></td>
+            <td>{{data.verificationLevel}}</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+
+        {% if data.updateType == 2 %}
+          <tr>
+            <td><span class="strong">Account status</span></td>
+            <td>{{data.tempAccountStatus}}</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% if data.tempAccountStatus == 'Superseded' %}
+          <tr>
+            <td><span class="strong">Correct account</span></td>
+            <td>SX170201</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+          <tr>
+            <td><span class="strong">End date</span></td>
+            <td> 21 January 2018</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+
+      </table>
+      <br>
+      <form method="get" action="check-nino-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="../../../account2/account">Cancel</a>
+    </div>
+  </div>

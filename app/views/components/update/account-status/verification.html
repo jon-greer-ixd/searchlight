@@ -1,0 +1,32 @@
+<h2 class="heading-medium question">What is their account status?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">      
+      
+        <div class="form-group">
+         <fieldset data-required data-error="Choose a title">
+            <div class="multiple-choice">
+              <input id="None" type="radio" name="verificationLevel" value="Verified" {% if data.personalDetails.ninoVerificationLevel.value == "Verified" %} checked="checked" {% endif %}>
+              <label for="None">Verified</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="mr" type="radio" name="verificationLevel" value="Qualified" {% if data.personalDetails.ninoVerificationLevel.value == "Qualified" %} checked="checked" {% endif %}>
+              <label for="mr">Qualified</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="mrs" type="radio" name="verificationLevel" value="Unverified" {% if data.personalDetails.ninoVerificationLevel.value == "Unverified" %} checked="checked" {% endif %}>
+              <label for="mrs">Unverified</label>
+            </div>
+          </fieldset>
+        </div>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>
