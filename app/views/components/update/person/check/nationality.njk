@@ -3,7 +3,7 @@
   
   <td>
     {% if data.personalDetailValue == "stateless" or data.personalDetailValue == "unknown" %}
-      {{data.personalDetailValue | capitalizex}}
+      {{data.personalDetailValue | capitalize}}
     {% else %}
       {{data.personalDetailValue}}
     {% endif %}
