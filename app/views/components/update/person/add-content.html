@@ -28,7 +28,7 @@
       <fieldset>
                 
         {% for items, item in data.personalDetails %}
-          {% if item.show == false %}
+          {% if item.show == false and item.display != 'Account status' %}
             <div class="multiple-choice">
               <input id={{items | lower}} name="personalDetail" type="radio" value={{items}} >
               <label for={{items | lower}}>{{item.display}}</label>
