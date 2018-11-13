@@ -785,7 +785,11 @@ router.get(/check-gender-handler/, function (req, res) {
   }
   req.session.data.personalDetails.gender.show = true;
   req.session.data.toaster = generalFunctions.setToasterMessage('Gender recognition details', null, 'added');
-  req.session.data.personalDetails.sex.value = req.session.data.sexValue;
+  if (req.session.data.sexValue == 'Male') {
+    req.session.data.personalDetails.sex.value = true;
+  } else if (req.session.data.sexValue == 'Female'){
+    req.session.data.personalDetails.sex.value = false;
+  }
   req.session.data.sexValue = null;
   res.redirect('/account2/account')
 })
