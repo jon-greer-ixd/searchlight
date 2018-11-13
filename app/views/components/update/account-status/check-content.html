@@ -4,32 +4,45 @@
         
         <table class="table"> 
           
+        {% if data.updateType == 1 %}
+            <tr>
+              <td><span class="strong">What do you need to recover?</span></td>
+              <td>
+                {% if data.tempawards == 'true' %}
+                  Awards 
+                {% endif %}
+                {% if data.tempawards == 'true' and data.temprelationships == 'true' %}
+                  <br>
+                {% endif %}
+                {% if data.temprelationships == 'true' %}
+                  Relationships
+                {% endif %}
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+        {% endif %}
+          
         {% if data.updateType == 3 %}
           <tr>
-            <td><span class="strong">Verification level</span></td>
+            <td><span class="strong">Verification type</span></td>
             <td>{{data.verificationLevel}}</td>
             <td><a>Change</a></td>
           </tr>
         {% endif %}
 
-        {% if data.updateType == 2 %}
+        {% if data.updateType == 2 or data.updateType == 0 %}
           <tr>
             <td><span class="strong">Account status</span></td>
             <td>{{data.tempAccountStatus}}</td>
             <td><a>Change</a></td>
           </tr>
-        {% if data.tempAccountStatus == 'Superseded' %}
-          <tr>
-            <td><span class="strong">Correct account</span></td>
-            <td>SX170201</td>
-            <td><a>Change</a></td>
-          </tr>
-        {% endif %}
-          <tr>
-            <td><span class="strong">End date</span></td>
-            <td> 21 January 2018</td>
-            <td><a>Change</a></td>
-          </tr>
+          {% if data.tempAccountStatus == 'Superseded' %}
+            <tr>
+              <td><span class="strong">Superseding account</span></td>
+              <td>SX170201</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
         {% endif %}
 
       </table>

@@ -1133,6 +1133,11 @@ router.get(/check-benefit-handler/, function (req, res) {
 router.get(/maintain-account-handler/, function (req, res) {
   if (req.session.data.updateType == 3) {
     res.redirect('verification')
+  } else if (req.session.data.updateType == 1)  {
+    res.redirect('recover')
+  } else if (req.session.data.updateType == 0) {
+    req.session.data.tempAccountStatus = 'Open'
+    res.redirect('check')
   } else {
     res.redirect('status')
   }
@@ -1142,20 +1147,36 @@ router.get(/nino-level-handler/, function (req, res) {
   if (req.session.data.tempAccountStatus == 'Superseded' ) {
     res.redirect('supersede')
   } else {
-    res.redirect('dates')
+    res.redirect('check')
   }
 })
 
 router.get(/check-nino-handler/, function (req, res) {
   if (req.session.data.updateType == 3) {
+//  var tempmessage;
     req.session.data.personalDetails.ninoVerificationLevel.value = req.session.data.verificationLevel;
-    req.session.data.toaster = generalFunctions.setToasterMessage('National Insurance number verification level', null, 3);
+    req.session.data.toaster = generalFunctions.setToasterMessage('National Insurance number verification type', null, 2);
+  } else if (req.session.data.updateType == 1) {
+//    if (req.session.data.tempawards == 'true' && req.session.data.temprelationships == 'true') {
+//      tempmessage = 'Awards and relationship data recovered';
+//    } else if (req.session.data.tempawards == 'true') {
+//      tempmessage = 'Awards data recovered';
+//    } else if (req.session.data.temprelationships == 'true') {
+//      tempmessage = 'Relationship data recovered';
+//    }
+    req.session.data.toaster = generalFunctions.setToasterMessage('Any available data has been recovered', null, ' ');
   } else {
     req.session.data.personalDetails.accountStatus.value = req.session.data.tempAccountStatus;
     req.session.data.toaster = generalFunctions.setToasterMessage('Account status', null, 2);
   }
+  req.session.data.tempawards = null;
+  req.session.data.temprelationships = null;
+//  tempmessage = null;
   res.redirect('/account2/account')
 })
+
+// Available data has been recovered
+
 
 //relationships
 router.get(/cancel-handler/, function (req, res) {

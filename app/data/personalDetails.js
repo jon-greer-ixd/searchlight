@@ -18,7 +18,7 @@ var personalDetails = {
   "bereavementBenefit" : {state : null, show : true, display : "Bereavement Benefit", value : true},
 //  "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
 //  "assetFreeze" : {state : null, show : false, display : "ASSET FREEZE STATUS", value : false},
-  "accountStatus" : {state : null, show : false, display : "Account status", value : 'Live'}
+  "accountStatus" : {state : null, show : false, display : "Account status", value : 'Open'}
 }
 
 //  prints all the items

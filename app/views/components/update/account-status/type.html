@@ -7,12 +7,24 @@
 
         <div class="multiple-choice">
           <input id="correct" type="radio" name="updateType" value=3>
-          <label for="correct">Correct the National Insurance number verification level</label>
+          <label for="correct">Update their National Insurance number verification type</label>
         </div>
         
+        {% if data.personalDetails.accountStatus.value == 'Deleted' %}
+          <div class="multiple-choice">
+            <input id="update" type="radio" name="updateType" value=0>
+            <label for="update">Update their account status to open</label>
+          </div>
+        {% else %}
         <div class="multiple-choice">
           <input id="update" type="radio" name="updateType" value=2>
-          <label for="update">Update the account status</label>
+          <label for="update">Update their account status</label>
+        </div>
+        {% endif %}
+        
+        <div class="multiple-choice">
+          <input id="awards" type="radio" name="updateType" value=1>
+          <label for="awards">Recover deleted awards or relationships</label>
         </div>
         
       </div> 
