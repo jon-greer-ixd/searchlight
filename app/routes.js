@@ -481,6 +481,10 @@ router.get(/add-person-handler/, function (req, res) {
   } else if (req.session.data.personalDetail == 'assetFreeze') {
     req.session.data.personalDetailValue = 'assetfreeze';
     res.redirect('/update/person/check');
+  } else if (req.session.data.personalDetail == 'INDIndicator') {
+    req.session.data.personalDetailValue = 'INDIndicator';
+    req.session.data.personalDetailValue = true;
+    res.redirect('/update/person/check');
   } else {
     res.redirect('/update/person/update');
   }
@@ -510,6 +514,10 @@ router.get(/person-change-handler/, function (req, res) {
   } else if (req.session.data.personalDetail == 'recordLevel') {
     req.session.data.updateType = 2;
     res.redirect('/update/person/update')
+  } else if (req.session.data.personalDetail == 'INDIndicator') {
+    req.session.data.updateType = 2;
+    req.session.data.personalDetailValue = 'null';
+    res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == 'nifu') {
     req.session.data.updateType = 2;
     req.session.data.personalDetailValue = 'null';
