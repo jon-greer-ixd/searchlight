@@ -701,10 +701,19 @@ router.get(/add-gender-handler/, function (req, res) {
   req.session.data.editState = 'adding';
   if (req.query.data == 'gra') {
     req.session.data.personalDetail = 'gra';
+    if (req.session.data.personalDetails.gender.preGra == true) {
+      res.redirect('/update/person/gender/update')
+    } else {
+      res.redirect('/update/person/gender/sex')
+    }
   } else {
     req.session.data.personalDetail = 'preGra';
+    if (req.session.data.personalDetails.gender.gra == true) {
+      res.redirect('/update/person/gender/update')
+    } else {
+      res.redirect('/update/person/gender/sex')
+    }
   }
-  res.redirect('/update/person/gender/sex')
 })
 
 router.get(/gender-type-handler/, function (req, res) {
@@ -777,6 +786,7 @@ router.get(/check-gender-handler/, function (req, res) {
   req.session.data.personalDetails.gender.show = true;
   req.session.data.toaster = generalFunctions.setToasterMessage('Gender recognition details', null, 'added');
   req.session.data.personalDetails.sex.value = req.session.data.sexValue;
+  req.session.data.sexValue = null;
   res.redirect('/account2/account')
 })
 

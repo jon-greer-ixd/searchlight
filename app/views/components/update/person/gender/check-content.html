@@ -14,17 +14,17 @@
             </td>
             <td><a>Change</a></td>
           </tr>
-          
+              {% if data.sexValue != null %}
           <tr>
             <td><span class="strong">Gender</span></td>
             <td>
-              {{data.sexValue}}
+                {{data.sexValue}}
             </td>
             <td>
               <a>Change</a>
             </td>
           </tr>
-
+               {% endif %}
 <!--
           {% if data.personalDetails.gender.preGra == false and data.personalDetails.gender.gra == false %}
             <tr>
