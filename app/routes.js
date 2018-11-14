@@ -480,7 +480,7 @@ router.get(/add-person-handler/, function (req, res) {
     res.redirect('/update/person/check');
   } else if (req.session.data.personalDetail == 'assetFreeze') {
     req.session.data.personalDetailValue = 'assetfreeze';
-    res.redirect('/update/person/check');
+    res.redirect('/update/person/dates');
   } else if (req.session.data.personalDetail == 'INDIndicator') {
     req.session.data.personalDetailValue = 'INDIndicator';
     req.session.data.personalDetailValue = true;
@@ -518,6 +518,14 @@ router.get(/person-change-handler/, function (req, res) {
     req.session.data.updateType = 2;
     req.session.data.personalDetailValue = 'null';
     res.redirect('/update/person/check')
+  } else if (req.session.data.personalDetail == 'assetFreeze') {
+    if (req.session.data.personalDetails.assetFreeze.state == 5) {
+      req.session.data.updateType = 1;
+    } else {
+      req.session.data.updateType = 5;
+    }
+    req.session.data.personalDetailValue = 'null';
+    res.redirect('/update/person/dates')
   } else if (req.session.data.personalDetail == 'nifu') {
     req.session.data.updateType = 2;
     req.session.data.personalDetailValue = 'null';
@@ -624,6 +632,9 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
   }
+  if (req.session.data.personalDetail == 'assetFreeze' && req.session.data.updateType == 5 ) {   
+    req.session.data.personalDetails.assetFreeze.show = true;
+  }
   // SET MESSAGE
   req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
   // RESET
@@ -637,6 +648,7 @@ router.get(/check-person-handler/, function (req, res) {
   updateType,
   verificationlevel = null;
   // NEXT
+  console.log(req.session.data.personalDetails.assetFreeze.show);
   res.redirect('/account2/account')
 })
 

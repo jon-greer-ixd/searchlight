@@ -1,5 +1,6 @@
 var personalDetails = {
   "specialNeeds" : {state : null, show : false, display : "Additional needs", value : undefined},
+  "assetFreeze" : {state : null, show : false, display : "Asset freeze indicator", value : false},
   "recordLevel" : {state : null, show : true, display : "Customer record level", value : "Unrestricted access"},
   "disability" : {state : null, show : false, display : "Disability status", value : null},
   "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
@@ -18,7 +19,6 @@ var personalDetails = {
   "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
   "bereavementBenefit" : {state : null, show : true, display : "Bereavement Benefit", value : true},
   "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
-  "assetFreeze" : {state : null, show : false, display : "ASSET FREEZE STATUS", value : false},
   "accountStatus" : {state : null, show : false, display : "Account status", value : 'Open'}
 }
 

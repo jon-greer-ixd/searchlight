@@ -40,6 +40,8 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
    return detailObject;
   } else if (chosenDetail == 'pv') {
     return setPV(detailObject, chosenValue);
+  } else if (chosenDetail == 'assetFreeze') {
+      return setAssetFreeze(detailObject, updateType);
   } else if (chosenDetail == 'specialNeeds') {
     if (updateType == 3) {
       return correctspecialNeeds(detailObject, chosenValue, tempValue);
@@ -73,6 +75,13 @@ function remove(arr, index){
   arr.splice(index,1);
   return arr;
 };
+
+function setAssetFreeze(detailObject, updateType) {
+  if (updateType == 1) {
+    detailObject.value = true;
+  } 
+  return detailObject;
+}
 
 ///////////////////////
 // display functions //

@@ -14,7 +14,7 @@
               Add 
               {% if data.personalDetail == "specialNeeds" %}
                  
-              {% elif data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "INDIndicator" %}
+              {% elif data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "INDIndicator" or data.personalDetail == "assetFreeze" %}
                 an
               {% else %}
                 a
@@ -28,13 +28,8 @@
                 their
               {% endif %}
             
-            {% elif data.editState == "ending" or data.editState == "removing" %}
-              Change 
-              {% if data.personalDetail == "pv" %}
-                the
-              {% else %}
-                their
-              {% endif %}
+            {% elif data.updateType == 5 %}
+              End an
             
             {% else %}
               Update 

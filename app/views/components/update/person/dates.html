@@ -1,0 +1,33 @@
+<div class="grid-row">
+  
+  <div class="column-one-half">
+    
+    <form method="get" action="check">
+      
+      <div class="form-group prepop">
+        <label class="form-label" for="date">
+            {% if data.updateType == 1 %}
+              Start
+            {% elif data.updateType == 5 %}
+              End
+            {% endif %}
+           date
+          <span class="form-hint">
+            For example 31/8/197
+          </span>
+        </label>
+        <input class="form-control box-two" id="date" name="date" type="text">
+        <a class="populate-link-two">Use today's date</a>
+      </div>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    
+    <p><a href="/account2/account">Cancel</a></p>
+    
+  </div>
+  
+</div>
