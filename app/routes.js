@@ -520,7 +520,7 @@ router.get(/person-change-handler/, function (req, res) {
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == 'assetFreeze') {
     if (req.session.data.personalDetails.assetFreeze.state == 5) {
-      req.session.data.updateType = 1;
+      req.session.data.updateType = 2;
     } else {
       req.session.data.updateType = 5;
     }
@@ -622,6 +622,15 @@ router.get(/check-person-handler/, function (req, res) {
   } else { 
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
   }
+  // SET DATES FOR ASSET FREEZE
+  if (chosenDetail == 'assetFreeze') {
+    req.session.data.personalDetails.assetFreeze.start = req.session.data.assetFreezeStart;
+    if (req.session.data.assetFreezeEnd != '') {
+      req.session.data.personalDetails.assetFreeze.end = req.session.data.assetFreezeEnd;
+    } else {
+      req.session.data.personalDetails.assetFreeze.end = null;
+    }
+  }
   // SET VERIFICATION LEVEL  
   if (req.session.data.verificationlevel != null) {
     req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
@@ -632,11 +641,18 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
     req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
   }
-  if (req.session.data.personalDetail == 'assetFreeze' && req.session.data.updateType == 5 ) {   
-    req.session.data.personalDetails.assetFreeze.show = true;
-  }
+//  if (req.session.data.personalDetail == 'assetFreeze' && req.session.data.updateType == 5 ) {   
+//    req.session.data.personalDetails.assetFreeze.show = true;
+//  }
   // SET MESSAGE
   req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
+  
+  
+//  // SET STATE FOR ASSET FREEZE
+//  if (chosenDetail == 'assetFreeze' && req.session.data.updateType == 1 && req.session.data.assetFreezeEnd != null) {
+//    req.session.data.personalDetails.assetFreeze.state = 5;
+//  }
+  
   // RESET
   req.session.data.updateType = null;
   req.session.data.verificationlevel = null;
@@ -647,8 +663,9 @@ router.get(/check-person-handler/, function (req, res) {
   tempValue,
   updateType,
   verificationlevel = null;
+//  req.session.data.assetFreezeStart = null;
+//  req.session.data.assetFreezeEnd = null;
   // NEXT
-  console.log(req.session.data.personalDetails.assetFreeze.show);
   res.redirect('/account2/account')
 })
 

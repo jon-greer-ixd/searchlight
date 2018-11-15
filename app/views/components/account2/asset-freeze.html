@@ -1,50 +1,46 @@
-{% if data.personalDetails.assetFreeze.state == 5 %}
-  <div class="grid-row">
-    <div class="column-one-third">
-      <ul>
-        <li class="">Asset freeze</li>
-      </ul>
-    </div>
-    <div class="column-one-third">
-      <ul>
-        <li class="bold">No current asset freeze</li>
-      </ul>
-        <details id="previous-names">
-          <summary>
-            <span class="summary">View previous</span>
-          </summary>
-          <ul>
-            <li>21 Nov 2018&nbsp; · &nbsp;22 Nov 2018</li>
-          </ul>
-        </details>
-    </div>
-    <div class="column-one-third last-col">
-      <ul class="edit-menu">
-        <li>
-          <a class="secondary-link" href="person-change-handler/?personalDetail=assetFreeze">Change</a>
-        </li>
-      </ul>
-    </div>
-  </div>        
-{% else %}
-
-  <div class="grid-row">
-    <div class="column-one-third">
-      <ul>
-        <li class="">Asset freeze</li>
-      </ul>
-    </div>
-    <div class="column-one-third">
-      <ul>
-        <li class="bold">Since 12 Nov 2017 </li>
-      </ul>
-    </div>
-    <div class="column-one-third last-col">
-      <ul class="edit-menu">
-        <li>
-          <a class="secondary-link" href="person-change-handler/?personalDetail=assetFreeze">Change</a>
-        </li>
-      </ul>
-    </div>
-  </div>    
-{% endif %}
+<div class="grid-row">
+  <div class="column-one-third">
+    <ul>
+      <li class="">Asset freeze</li>
+    </ul>
+  </div>
+  <div class="column-one-third">
+    <ul>
+      {% if data.personalDetails.assetFreeze.state == 1 and data.personalDetails.assetFreeze.end != null %}
+        <li>No current asset freeze</li>
+      {% elif data.personalDetails.assetFreeze.state == 5 %}
+        <li>No current asset freeze</li>
+      {% else %}
+        <li class="bold">Since {{data.personalDetails.assetFreeze.start | asString}}</li>
+      {% endif %}
+    </ul>
+        
+    {% if data.personalDetails.assetFreeze.state == 1 and data.personalDetails.assetFreeze.end != null %}
+      <details id="previous-names">
+        <summary>
+          <span class="summary">View previous</span>
+        </summary>
+        <ul>
+          <li>{{data.personalDetails.assetFreeze.start | asString}}&nbsp; · &nbsp;{{data.personalDetails.assetFreeze.start | asString}}</li>
+        </ul>
+      </details>
+    {% elif data.personalDetails.assetFreeze.state == 2 or data.personalDetails.assetFreeze.state == 5 %}
+      <details id="previous-names">
+        <summary>
+          <span class="summary">View previous</span>
+        </summary>
+        <ul>
+          <li>{{data.personalDetails.assetFreeze.start | asString}}&nbsp; · &nbsp;{{data.personalDetails.assetFreeze.start | asString}}</li>
+        </ul>
+      </details>
+    {% endif %}
+    
+  </div>
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a class="secondary-link" href="person-change-handler/?personalDetail=assetFreeze">Change</a>
+      </li>
+    </ul>
+  </div>
+</div>

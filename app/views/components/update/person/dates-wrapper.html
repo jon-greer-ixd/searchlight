@@ -8,10 +8,20 @@
           <a class="link-back" onCLick="history.back()">Back</a>
           
           <h2 class="title"> 
-            {% if data.updateType == 1 %}
-              Add an
-            {% elif data.updateType == 5 %}
-              End an
+            {% if data.personalDetail == 'assetFreeze' %}
+              {% if data.updateType == 1 %}
+                Add an
+              {% elif data.updateType == 5 %}
+                End an
+              {% elif data.updateType == 2 %}
+                Add an
+              {% endif %}
+            {% else %}
+              {% if data.updateType == 1 %}
+                Add an
+              {% elif data.updateType == 5 %}
+                End an
+              {% endif %}
             {% endif %}
             {{data.personalDetails[data.personalDetail].display | lower}}
           </h2>

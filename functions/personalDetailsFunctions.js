@@ -95,6 +95,8 @@ function setDisplay(chosenDetail, detailObject) {
     } else {
       detailObject.show = true;
     }
+  } else if (chosenDetail == 'assetFreeze') {
+    detailObject.show = true;
   } else {
     detailObject.show = false;
     if(detailObject.value != null && detailObject.value != false) {

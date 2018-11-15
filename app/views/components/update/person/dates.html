@@ -4,19 +4,29 @@
     
     <form method="get" action="check">
       
+      {% if data.updateType != 5 %}
+
+        <div class="form-group prepop">
+          <label class="form-label" for="assetFreezeStart">
+            Start date
+            <span class="form-hint">
+              For example 31/8/197
+            </span>
+          </label>
+          <input class="form-control box-one" id="assetFreezeStart" name="assetFreezeStart" type="text">
+          <a class="populate-link-one">Use today's date</a>
+        </div>
+      
+      {% endif %}
+      
       <div class="form-group prepop">
-        <label class="form-label" for="date">
-            {% if data.updateType == 1 %}
-              Start
-            {% elif data.updateType == 5 %}
-              End
-            {% endif %}
-           date
+        <label class="form-label" for="assetFreezeEnd">
+          End date
           <span class="form-hint">
             For example 31/8/197
           </span>
         </label>
-        <input class="form-control box-two" id="date" name="date" type="text">
+        <input class="form-control box-two" id="assetFreezeEnd" name="assetFreezeEnd" type="text">
         <a class="populate-link-two">Use today's date</a>
       </div>
       
