@@ -6,25 +6,14 @@
   </div>
   <div class="column-one-third">
     <ul>
-      {% if data.personalDetails.assetFreeze.state == 1 and data.personalDetails.assetFreeze.end != null %}
-        <li>No current asset freeze</li>
-      {% elif data.personalDetails.assetFreeze.state == 5 %}
-        <li>No current asset freeze</li>
-      {% else %}
-        <li class="bold">Since {{data.personalDetails.assetFreeze.start | asString}}</li>
-      {% endif %}
+    {% if data.personalDetails.assetFreeze.state == 1 %}
+      <li class="bold">Since {{data.personalDetails.assetFreeze.start | asString}}</li>
+    {% elif data.personalDetails.assetFreeze.state == 5 %}
+      <li class="">No current asset freeze</li>
+    {% endif %}
     </ul>
         
-    {% if data.personalDetails.assetFreeze.state == 1 and data.personalDetails.assetFreeze.end != null %}
-      <details id="previous-names">
-        <summary>
-          <span class="summary">View previous</span>
-        </summary>
-        <ul>
-          <li>{{data.personalDetails.assetFreeze.start | asString}}&nbsp; · &nbsp;{{data.personalDetails.assetFreeze.start | asString}}</li>
-        </ul>
-      </details>
-    {% elif data.personalDetails.assetFreeze.state == 2 or data.personalDetails.assetFreeze.state == 5 %}
+    {% if data.personalDetails.assetFreeze.showHistory == true %}
       <details id="previous-names">
         <summary>
           <span class="summary">View previous</span>
