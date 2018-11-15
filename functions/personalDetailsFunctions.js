@@ -41,7 +41,7 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
   } else if (chosenDetail == 'pv') {
     return setPV(detailObject, chosenValue);
   } else if (chosenDetail == 'assetFreeze') {
-      return setAssetFreeze(detailObject, updateType);
+      return setAssetFreezeValue(detailObject, updateType);
   } else if (chosenDetail == 'specialNeeds') {
     if (updateType == 3) {
       return correctspecialNeeds(detailObject, chosenValue, tempValue);
@@ -76,12 +76,15 @@ function remove(arr, index){
   return arr;
 };
 
-function setAssetFreeze(detailObject, updateType) {
+function setAssetFreezeValue(detailObject, updateType) {
   if (updateType == 1) {
     detailObject.value = true;
+  } else {
+    detailObject.value = false;
   } 
   return detailObject;
 }
+
 
 ///////////////////////
 // display functions //
