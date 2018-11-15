@@ -18,7 +18,7 @@ var personalDetails = {
   "sex" : {state : null, show : true, display : "Sex", value : false},
   "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
   "bereavementBenefit" : {state : null, show : true, display : "Bereavement Benefit", value : true},
-  "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
+//  "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
   "accountStatus" : {state : null, show : false, display : "Account status", value : 'Open'}
 }
 
