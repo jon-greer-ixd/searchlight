@@ -85,6 +85,15 @@ function setIndicatorValue(detailObject, updateType) {
   return detailObject;
 }
 
+function setDates(detailObject, startDate, endDate) {
+  detailObject.start = startDate;
+  if (endDate != '' && endDate != null) {
+    detailObject.end = endDate;
+    detailObject.showHistory = true;
+  }
+  return detailObject;
+}
+
 
 ///////////////////////
 // display functions //
@@ -110,6 +119,7 @@ function setDisplay(chosenDetail, detailObject) {
 };
 
 
+module.exports.setDates = setDates;
 module.exports.setNeeds = setNeeds;
 module.exports.correctspecialNeeds = correctspecialNeeds;
 module.exports.flipValue = flipValue;

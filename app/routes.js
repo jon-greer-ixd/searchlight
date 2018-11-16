@@ -631,17 +631,17 @@ router.get(/check-person-handler/, function (req, res) {
   if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
     var endDate = chosenDetail + 'End';
     var startDate = chosenDetail + 'Start';
-    console.log('endDate', req.session.data[endDate]);
-    console.log('startDate', req.session.data[startDate]);
-    req.session.data.personalDetails[chosenDetail].start = req.session.data[startDate];
-    console.log('endDate', req.session.data[endDate] );
-    if ( req.session.data[endDate] != '') {
-      req.session.data.personalDetails[chosenDetail].end = req.session.data[endDate];
-      req.session.data.personalDetails[chosenDetail].showHistory = true;
-//    } else {
-//      req.session.data.personalDetails.assetFreeze.end = null;
-    }
+    req.session.data.personalDetails[chosenDetail] = personalDetailsFunctions.setDates(detailObject, req.session.data[startDate], req.session.data[endDate]);
   }
+//  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
+//    var endDate = chosenDetail + 'End';
+//    var startDate = chosenDetail + 'Start';
+//    req.session.data.personalDetails[chosenDetail].start = req.session.data[startDate];
+//    if ( req.session.data[endDate] != '') {
+//      req.session.data.personalDetails[chosenDetail].end = req.session.data[endDate];
+//      req.session.data.personalDetails[chosenDetail].showHistory = true;
+//    }
+//  }
   // SET STATE
   req.session.data.personalDetails[req.session.data.personalDetail].state = updateType;
   // SET DISPLAY
