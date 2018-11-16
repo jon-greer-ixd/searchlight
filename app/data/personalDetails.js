@@ -7,6 +7,7 @@ var personalDetails = {
   "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
   "gender" : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
   "nifu" : {state : null, show : false, display : "Identity fraud interest", value : null},
+  "idAtRisk" : {state : null, show : false, showHistory : false, display : "Identity at risk indicator", value : false, start : null, end : null},
   "immigration" : {state : null, show : false, display : "Immigration status", value : null, level : null},
   "INDIndicator" : {state : null, show : false, display : "Immigration and nationality interest", value : false},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null},
@@ -18,7 +19,6 @@ var personalDetails = {
   "sex" : {state : null, show : true, display : "Sex", value : false},
   "spokenLanguage" : {state : null, show : false, display : "Spoken language", value : null},
   "bereavementBenefit" : {state : null, show : true, display : "Bereavement Benefit", value : true},
-//  "idAtRisk" : {state : null, show : false, display : "ID AT RISK STATUS", value : false},
   "accountStatus" : {state : null, show : false, display : "Account status", value : 'Open'}
 }
 
