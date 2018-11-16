@@ -40,8 +40,8 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
    return detailObject;
   } else if (chosenDetail == 'pv') {
     return setPV(detailObject, chosenValue);
-  } else if (chosenDetail == 'assetFreeze') {
-      return setAssetFreezeValue(detailObject, updateType);
+  } else if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
+      return setIndicatorValue(detailObject, updateType);
   } else if (chosenDetail == 'specialNeeds') {
     if (updateType == 3) {
       return correctspecialNeeds(detailObject, chosenValue, tempValue);
@@ -76,7 +76,7 @@ function remove(arr, index){
   return arr;
 };
 
-function setAssetFreezeValue(detailObject, updateType) {
+function setIndicatorValue(detailObject, updateType) {
   if (updateType == 1) {
     detailObject.value = true;
   } else {
@@ -98,7 +98,7 @@ function setDisplay(chosenDetail, detailObject) {
     } else {
       detailObject.show = true;
     }
-  } else if (chosenDetail == 'assetFreeze') {
+  } else if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
     detailObject.show = true;
   } else {
     detailObject.show = false;

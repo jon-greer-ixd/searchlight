@@ -1,3 +1,8 @@
+{{ startLabel }}
+{{ endLabel }}
+{% set startLabel = data.personalDetail + 'Start' %}
+{% set endLabel = data.personalDetail + 'End' %}
+
 <div class="grid-row">
   
   <div class="column-one-half">
@@ -5,28 +10,31 @@
     <form method="get" action="check">
       
       {% if data.updateType == 1 %}
-
         <div class="form-group prepop">
-          <label class="form-label" for="assetFreezeStart">
+          <label class="form-label" for={{startLabel}}>
             Start date
             <span class="form-hint">
               For example 31/8/197
             </span>
           </label>
-          <input class="form-control box-one" id="assetFreezeStart" name="assetFreezeStart" type="text">
+          
+          <input class="form-control box-one" id="assetFreezeStart" name={{startLabel}} type="text">
+          
           <a class="populate-link-one">Use today's date</a>
         </div>
       
       {% endif %}
       
       <div class="form-group prepop">
-        <label class="form-label" for="assetFreezeEnd">
+        <label class="form-label" for={{endLabel}}>
           End date
           <span class="form-hint">
             For example 31/8/197
           </span>
         </label>
-        <input class="form-control box-two" id="assetFreezeEnd" name="assetFreezeEnd" type="text">
+        
+        <input class="form-control box-two" id="assetFreezeEnd" name={{endLabel}} type="text">
+        
         <a class="populate-link-two">Use today's date</a>
       </div>
       

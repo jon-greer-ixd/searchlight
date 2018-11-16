@@ -475,11 +475,12 @@ router.get(/add-person-handler/, function (req, res) {
     res.redirect('/update/person/check');
   } else if (req.session.data.personalDetail == 'gender') {
     res.redirect('/update/person/gender/add');
-  } else if (req.session.data.personalDetail == 'idAtRisk') {
-    req.session.data.personalDetailValue = 'idAtRisk';
-    res.redirect('/update/person/check');
   } else if (req.session.data.personalDetail == 'assetFreeze') {
     req.session.data.personalDetailValue = 'assetfreeze';
+    req.session.data.personalDetailValue = true;
+    res.redirect('/update/person/dates');
+  } else if (req.session.data.personalDetail == 'idAtRisk') {
+    req.session.data.personalDetailValue = 'idAtRisk';
     req.session.data.personalDetailValue = true;
     res.redirect('/update/person/dates');
   } else if (req.session.data.personalDetail == 'INDIndicator') {
@@ -519,8 +520,8 @@ router.get(/person-change-handler/, function (req, res) {
     req.session.data.updateType = 2;
     req.session.data.personalDetailValue = 'null';
     res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == 'assetFreeze') {
-    if (req.session.data.personalDetails.assetFreeze.state == 1) {
+  } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
+    if (req.session.data.personalDetails[req.session.data.personalDetail].state == 1) {
       req.session.data.updateType = 5;
     } else {
       req.session.data.updateType = 1;
@@ -626,12 +627,17 @@ router.get(/check-person-handler/, function (req, res) {
   if (req.session.data.verificationlevel != null) {
     req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
   }
-  // SET DATES FOR ASSET FREEZE
-  if (chosenDetail == 'assetFreeze') {
-    req.session.data.personalDetails.assetFreeze.start = req.session.data.assetFreezeStart;
-    if (req.session.data.assetFreezeEnd != '') {
-      req.session.data.personalDetails.assetFreeze.end = req.session.data.assetFreezeEnd;
-      req.session.data.personalDetails.assetFreeze.showHistory = true;
+  // SET DATES FOR ASSET FREEZE AND ID AT RISK
+  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
+    var endDate = chosenDetail + 'End';
+    var startDate = chosenDetail + 'Start';
+    console.log('endDate', req.session.data[endDate]);
+    console.log('startDate', req.session.data[startDate]);
+    req.session.data.personalDetails[chosenDetail].start = req.session.data[startDate];
+    console.log('endDate', req.session.data[endDate] );
+    if ( req.session.data[endDate] != '') {
+      req.session.data.personalDetails[chosenDetail].end = req.session.data[endDate];
+      req.session.data.personalDetails[chosenDetail].showHistory = true;
 //    } else {
 //      req.session.data.personalDetails.assetFreeze.end = null;
     }
@@ -646,7 +652,7 @@ router.get(/check-person-handler/, function (req, res) {
   req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
   
   //ASSET FREEZE
-  if (chosenDetail == 'assetFreeze') {
+  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
     if (req.session.data.assetFreezeEnd != '') {
       req.session.data.personalDetails.assetFreeze.state = 5;
     }

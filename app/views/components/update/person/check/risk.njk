@@ -1,5 +1,18 @@
-<tr>
-  <td class="bold">{{data.personalDetails[data.personalDetail].display}}</td>
-  <td>{{data.personalDetailValue}}</td>
-  <td><a>Change</a></td>
-</tr>
+{% if data.updateType == 1 or data.updateType == 2 %}
+  <tr>
+    <td class="bold">Start date</td>
+    <td>{{data.idAtRiskStart}}</td>
+    <td><a>Change</a></td>
+  </tr>
+  <tr>
+    <td class="bold">End date</td>
+    <td>{{data.idAtRiskEnd}}</td>
+    <td><a>Change</a></td>
+  </tr>
+{% else %}
+  <tr>
+    <td class="bold">End date</td>
+    <td>{{data.idAtRiskEnd}}</td>
+    <td><a>Change</a></td>
+  </tr>
+{% endif %}

@@ -9,7 +9,7 @@
           
           <h2 class="title">
             
-            {% if data.personalDetail == 'assetFreeze' %}
+            {% if data.personalDetail == 'assetFreeze' or data.personalDetail == 'idAtRisk' %}
               {% if data.updateType == 1 or data.updateType == 2 %}
                 Add an
               {% elif data.updateType == 5 %}

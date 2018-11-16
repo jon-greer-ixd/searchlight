@@ -1,16 +1,29 @@
 <div class="grid-row">
   <div class="column-one-third">
     <ul>
-      <li class="">ID AT RISK
-      </li>
+      <li class="">Identity at risk indicator</li>
     </ul>
   </div>
   <div class="column-one-third">
     <ul>
-      <li class="bold">
-        TRUE
-      </li>
+    {% if data.personalDetails.idAtRisk.state == 1 %}
+      <li class="bold">Since {{data.personalDetails.idAtRisk.start | asString}}</li>
+    {% elif data.personalDetails.idAtRisk.state == 5 %}
+      <li class="">No current asset freeze</li>
+    {% endif %}
     </ul>
+        
+    {% if data.personalDetails.idAtRisk.showHistory == true %}
+      <details id="previous-names">
+        <summary>
+          <span class="summary">View previous</span>
+        </summary>
+        <ul>
+          <li>{{data.personalDetails.idAtRisk.start | asString}}&nbsp; · &nbsp;{{data.personalDetails.idAtRisk.end | asString}}</li>
+        </ul>
+      </details>
+    {% endif %}
+    
   </div>
   <div class="column-one-third last-col">
     <ul class="edit-menu">
