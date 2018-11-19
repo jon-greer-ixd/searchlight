@@ -2,29 +2,14 @@
   <div class="column-one-half">
     
     <form method="get" action="add-relationships-handler">
-      <div class="form-group">
-       <fieldset data-required data-error="Choose a title">
-         <legend class="radio-header">Relationship type</legend>
-          <div class="multiple-choice">
-            <input id="one" type="radio" name="relationship_nino" value="one">
-            <label for="one">One</label>
-          </div>
-          <div class="multiple-choice">
-            <input id="two" type="radio" name="drelationship_nino" value="two">
-            <label for="two">Two</label>
-          </div>
-
-          <div class="multiple-choice">
-            <input id="three" type="radio" name="relationship_nino" value="three">
-            <label for="three">Three</label>
-          </div>
-        </fieldset>
+      
+      <div id="nationalityField">
+       {% include "components/update/relationships/relationship-selector.njk" %}
       </div>
       
       <fieldset class="form-group" data-required data-error="Cannot be blank">
-        <legend class="visuallyhidden">National Insurance number</legend>
-          <label class="form-label" for="relationship_type">National Insurance number</label>
-          <input class="form-control" id="relationship_type" type="text" name="relationship_type">
+        <label class="form-label" for="relationship_type">Target National Insurance number</label>
+        <input class="form-control" id="relationship_type" type="text" name="relationship_type">
       </fieldset>
 
       <fieldset>
