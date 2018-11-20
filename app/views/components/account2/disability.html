@@ -5,7 +5,11 @@
   <div class="column-one-third">
     <ul>
       <li class="strong">
-          This person is disabled
+        {% if data.personalDetails.disability.value == true %}
+          Disabled
+        {% else %}
+          Not disabled
+        {% endif %}
       </li>
     </ul>
   </div>

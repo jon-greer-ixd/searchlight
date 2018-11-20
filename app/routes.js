@@ -470,9 +470,6 @@ router.get(/add-person-handler/, function (req, res) {
   if (req.session.data.personalDetail == 'nifu') {
     req.session.data.personalDetailValue = 'Yes';
     res.redirect('/update/person/check');
-  } else if (req.session.data.personalDetail == 'disability') {
-    req.session.data.personalDetailValue = 'This person is disabled';
-    res.redirect('/update/person/check');
   } else if (req.session.data.personalDetail == 'gender') {
     res.redirect('/update/person/gender/add');
   } else if (req.session.data.personalDetail == 'assetFreeze') {
@@ -543,14 +540,7 @@ router.get(/change-person-type-handler/, function (req, res) {
     req.session.data.personalDetail = 'ninoVerificationLevel';
     res.redirect('/update/person/update')
   }
-  if (req.session.data.personalDetail == 'disability') {
-    if(req.session.data.updateType == 3) {
-      res.redirect('/update/person/update')
-    } else {
-      req.session.data.personalDetailValue = 'This person is not disabled';
-      res.redirect('/update/person/check')
-    }
-  } else if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
+  if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
     if (req.session.data.personalDetails.specialNeeds.value.length > 1) {
       res.redirect('/update/person/correct-needs/select-need')
     } else {

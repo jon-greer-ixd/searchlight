@@ -32,10 +32,16 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
   if(chosenValue == "null") {
     chosenValue = null;
   }
+  if(chosenValue == "true") {
+    chosenValue = true;
+  }
+  if(chosenValue == "false") {
+    chosenValue = false;
+  }
   if(tempValue == "null") {
     tempValue = null;
   }
-  if (chosenDetail == 'sex' || chosenDetail == 'disability') {
+  if (chosenDetail == 'sex') {
     detailObject.value = flipValue(detailObject.value);
    return detailObject;
   } else if (chosenDetail == 'pv') {
@@ -50,6 +56,7 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
     }
   } else {
     detailObject.value = chosenValue;
+    console.log(detailObject.display + ' ' + detailObject.value);
     return detailObject;
   }
 };
@@ -101,6 +108,10 @@ function setDates(detailObject, startDate, endDate) {
 
 
 function setDisplay(chosenDetail, detailObject) {
+  if(detailObject.value == 'null') {
+    detailObject.value = null;
+  }
+
   if (chosenDetail == 'pv') {
     if (detailObject.value != true && detailObject.memeber != true && detailObject.partner != true) {
       detailObject.show = false;
@@ -109,6 +120,12 @@ function setDisplay(chosenDetail, detailObject) {
     }
   } else if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
     detailObject.show = true;
+  } else if (chosenDetail == 'disability') {
+    if(detailObject.value != null) {
+      detailObject.show = true;
+    } else {
+      detailObject.show = false;
+    }
   } else {
     detailObject.show = false;
     if(detailObject.value != null && detailObject.value != false) {
