@@ -608,11 +608,12 @@ router.get(/check-person-handler/, function (req, res) {
   var updateType = req.session.data.updateType;
   var verificationlevel = req.session.data.verificationlevel;
   // SET VALUES  
-  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
-    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
-  } else { 
-    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
-  }
+  req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
+//  }//  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
+//    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
+//  } else { 
+//    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
+//  }
   // SET VERIFICATION LEVEL  
   if (req.session.data.verificationlevel != null) {
     req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  

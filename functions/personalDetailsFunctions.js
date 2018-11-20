@@ -29,6 +29,10 @@ function flipValue(value) {
 };
 
 function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType) {
+  if (updateType == 4 || updateType == 5) {
+    detailObject.value = null;
+    return detailObject;
+  }
   if(chosenValue == "null") {
     chosenValue = null;
   }
@@ -47,7 +51,7 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
   } else if (chosenDetail == 'pv') {
     return setPV(detailObject, chosenValue);
   } else if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
-      return setIndicatorValue(detailObject, updateType);
+    return setIndicatorValue(detailObject, updateType);
   } else if (chosenDetail == 'specialNeeds') {
     if (updateType == 3) {
       return correctspecialNeeds(detailObject, chosenValue, tempValue);
@@ -56,7 +60,6 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
     }
   } else {
     detailObject.value = chosenValue;
-    console.log(detailObject.display + ' ' + detailObject.value);
     return detailObject;
   }
 };
