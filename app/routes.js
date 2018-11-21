@@ -256,13 +256,7 @@ router.use('/', main);
   req.session.data.addresses = require('./data/addresses.js').addresses;
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
-      
-//  for (var item in contactTypes) {
-//    if (contactTypes.hasOwnProperty(item)) {
-//      req.session.data[item] = contactTypes[item];
-//    }
-//  }
-    
+          
   // set the message for startup items such as PV
   if(req.session.data.personalDetails.pv.state == 'start') {
     req.session.data.toaster = 'This person is potentially violent';
@@ -561,19 +555,6 @@ router.get(/change-person-type-handler/, function (req, res) {
   } else {
     res.redirect('/update/person/update')
   }
-  
-//  if (req.session.data.personalDetail == 'nifu') {
-//    req.session.data.personalDetailValue = 'No';
-//    req.session.data.personalDetails.nifu.show = false;
-//    res.redirect('/update/person/check')
-//  } else if (req.session.data.personalDetail == 'preferredLanguage') {
-//    if (req.session.data.personalDetails[req.session.data.personalDetail].value == 'Welsh') {
-//      req.session.data.personalDetailValue = 'English';
-//    } else {
-//      req.session.data.personalDetailValue = 'Welsh';
-//    }
-//    res.redirect('/update/person/check')
-//  }
 })
 
 router.get(/dod-handler/, function (req, res) {
@@ -601,48 +582,41 @@ router.get(/personal-detail-handler/, function (req, res) {
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   console.log(req.session.data.updateType);
-  var chosenDetail = req.session.data.personalDetail;
-  var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
-  var chosenValue = req.session.data.personalDetailValue;
-  var tempValue = req.session.data.tempValue;
-  var updateType = req.session.data.updateType;
-  var verificationlevel = req.session.data.verificationlevel;
+  var sessionData = req.session.data;
+  var chosenDetail = sessionData.personalDetail;
+  var detailObject = sessionData.personalDetails[req.session.data.personalDetail];
+  var chosenValue = sessionData.personalDetailValue;
+  var tempValue = sessionData.tempValue;
+  var updateType = sessionData.updateType;
+  var verificationlevel = sessionData.verificationlevel;
+
   // SET VALUES  
-  req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
-//  }//  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
-//    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
-//  } else { 
-//    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
-//  }
+  req.session.data.personalDetails[chosenDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
+  
   // SET VERIFICATION LEVEL  
   if (req.session.data.verificationlevel != null) {
-    req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
+    req.session.data.personalDetails[chosenDetail].level = verificationlevel;  
   }
+  
   // SET DATES FOR ASSET FREEZE AND ID AT RISK
   if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
     var endDate = chosenDetail + 'End';
     var startDate = chosenDetail + 'Start';
     req.session.data.personalDetails[chosenDetail] = personalDetailsFunctions.setDates(detailObject, req.session.data[startDate], req.session.data[endDate]);
   }
-//  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
-//    var endDate = chosenDetail + 'End';
-//    var startDate = chosenDetail + 'Start';
-//    req.session.data.personalDetails[chosenDetail].start = req.session.data[startDate];
-//    if ( req.session.data[endDate] != '') {
-//      req.session.data.personalDetails[chosenDetail].end = req.session.data[endDate];
-//      req.session.data.personalDetails[chosenDetail].showHistory = true;
-//    }
-//  }
+  
   // SET STATE
-  req.session.data.personalDetails[req.session.data.personalDetail].state = updateType;
+  req.session.data.personalDetails[chosenDetail].state = updateType;
+  
   // SET DISPLAY
-  if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
-    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
+  if (chosenDetail != 'sex' && chosenDetail != 'dob' ) {   
+    req.session.data.personalDetails[chosenDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
   }
+  
   // SET MESSAGE
   req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
   
-  //ASSET FREEZE
+  //ASSET FREEZE AND ID AT RISK FLAGS
   if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
     if (req.session.data.assetFreezeEnd != '') {
       req.session.data.personalDetails.assetFreeze.state = 5;
@@ -659,6 +633,7 @@ router.get(/check-person-handler/, function (req, res) {
   tempValue,
   updateType,
   verificationlevel = null;
+  
   // NEXT
   res.redirect('/account2/account')
 })
@@ -830,24 +805,24 @@ router.get(/check-gender-handler/, function (req, res) {
 /** SEX **/
 /*********/
 
-router.get(/update-sex-handler/, function (req, res) {
-  if (req.query.data === 'gra') {
-    req.session.data.updateType = 'addGra';
-  } else {
-    req.session.data.updateType = 'addPreGra';
-  }
-  res.redirect('/update/gender/update-gender')
-})
+//router.get(/update-sex-handler/, function (req, res) {
+//  if (req.query.data === 'gra') {
+//    req.session.data.updateType = 'addGra';
+//  } else {
+//    req.session.data.updateType = 'addPreGra';
+//  }
+//  res.redirect('/update/gender/update-gender')
+//})
 
-router.get(/sex-adv-handler/, function (req, res) {
-  req.session.data.updateType = 'updateGender';
-  res.redirect('/update/sex/update-sex')
-})
+//router.get(/sex-adv-handler/, function (req, res) {
+//  req.session.data.updateType = 'updateGender';
+//  res.redirect('/update/sex/update-sex')
+//})
 
-router.get(/sex-simple-handler/, function (req, res) {
-  req.session.data.updateType = 'correctSex';
-  res.redirect('/update/sex/check')
-})
+//router.get(/sex-simple-handler/, function (req, res) {
+//  req.session.data.updateType = 'correctSex';
+//  res.redirect('/update/sex/check')
+//})
 
 router.get('/sex/update', function (req, res) {
   req.session.data.updateType = 'updateGender';
