@@ -104,7 +104,6 @@ function setDates(detailObject, startDate, endDate) {
   return detailObject;
 }
 
-
 ///////////////////////
 // display functions //
 ///////////////////////
