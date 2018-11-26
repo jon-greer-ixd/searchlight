@@ -138,6 +138,27 @@ function setDisplay(chosenDetail, detailObject) {
 };
 
 
+
+
+// NEW
+var setPDValue = function(personDetailObject, personalDetailValue) {
+  if (personalDetailValue == 'null' || personalDetailValue == null) {
+    personDetailObject.value = null;
+  } else if (personalDetailValue == 'true') {
+    personDetailObject.value = true;
+  } else if (personalDetailValue == 'false') {
+    personDetailObject.value = false;
+  } else {
+    personDetailObject.value = personalDetailValue;
+  }
+  return personDetailObject;
+}
+
+
+
+module.exports.setPDValue = setPDValue;
+
+
 module.exports.setDates = setDates;
 module.exports.setNeeds = setNeeds;
 module.exports.correctspecialNeeds = correctspecialNeeds;

@@ -19,12 +19,12 @@
           {% if data.personalDetails.disability.value == true %}
             <div class="multiple-choice">
               <input id="false" type="radio" name="personalDetailValue" value=false>
-              <label for="false">Update to not disabled</label>
+              <label for="false">Not disabled</label>
             </div>
           {% else %}
             <div class="multiple-choice">
-              <input id="false" type="radio" name="personalDetailValue" value=true>
-              <label for="false">Update to disabled</label>
+              <input id="true" type="radio" name="personalDetailValue" value=true>
+              <label for="true">Disabled</label>
             </div>
           {% endif %}
         {% endif %}
@@ -33,12 +33,12 @@
           {% if data.personalDetails.disability.value == true %}
             <div class="multiple-choice">
               <input id="false" type="radio" name="personalDetailValue" value=false>
-              <label for="false">Correct to not disabled</label>
+              <label for="false">Not disabled</label>
             </div>
           {% else %}
             <div class="multiple-choice">
-              <input id="false" type="radio" name="personalDetailValue" value=true>
-              <label for="false">Correct to disabled</label>
+              <input id="true" type="radio" name="personalDetailValue" value=true>
+              <label for="true">Disabled</label>
             </div>
           {% endif %}
         {% endif %}
