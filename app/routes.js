@@ -473,18 +473,6 @@ var newSetView = function(personDetailObject) {
   return personDetailObject;
 }
 
-var newSetValue = function(personDetailObject) {
-  if (personalDetailValue == 'null' || personalDetailValue == null) {
-    personDetailObject.value = null;
-  } else if (personalDetailValue == 'true' || personalDetailValue == 'false' ) {
-    personDetailObject.value = Boolean(personalDetailValue);
-  } else {
-    personDetailObject.value = personalDetailValue;
-  }
-  console.log(personDetailObject.value);
-  return personDetailObject;
-}
-
 
 //PERSON
 router.get(/add-person-handler/, function (req, res) {
@@ -589,19 +577,6 @@ router.get(/change-person-type-handler/, function (req, res) {
   } else {
     res.redirect('/update/person/update')
   }
-  
-//  if (req.session.data.personalDetail == 'nifu') {
-//    req.session.data.personalDetailValue = 'No';
-//    req.session.data.personalDetails.nifu.show = false;
-//    res.redirect('/update/person/check')
-//  } else if (req.session.data.personalDetail == 'preferredLanguage') {
-//    if (req.session.data.personalDetails[req.session.data.personalDetail].value == 'Welsh') {
-//      req.session.data.personalDetailValue = 'English';
-//    } else {
-//      req.session.data.personalDetailValue = 'Welsh';
-//    }
-//    res.redirect('/update/person/check')
-//  }
 })
 
 router.get(/dod-handler/, function (req, res) {
@@ -626,15 +601,24 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
+router.get(/newpersonchange/, function (req, res) {
+  personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
+  personDetailObject.key = req.query.personalDetail;
+  console.log(personDetailObject.key);
+  res.redirect('/update/person/type')
+})
+
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   
   if(personDetailObject.key == 'disability') {
-    personDetailObject = newSetValue(personDetailObject);
-    personDetailObject = newSetView(personDetailObject, personalDetailValue);
+    var personalDetailValue = req.session.data.personalDetailValue;
+    personDetailObject = personalDetailsFunctions.setPDValue(personDetailObject, personalDetailValue);
+    personDetailObject = newSetView(personDetailObject);
     personDetailObject.state = req.session.data.updateType;
     req.session.data.personalDetails[personDetailObject.key] = personDetailObject;
     console.log(req.session.data.personalDetails[personDetailObject.key]);
+    console.log(req.session.data.personalDetails.disability.value);
     console.log('_______________________________________');
   } else {
   
