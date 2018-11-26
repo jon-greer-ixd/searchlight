@@ -599,6 +599,10 @@ router.get(/change_pd/, function (req, res) {
      personDetailObject.key == 'dateOfDeath') {
     req.session.data.updateType = 3;
     res.redirect('/update/person/update')
+  } else if (personDetailObject.key == 'sex') {
+    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
+    req.session.data.updateType = 3;
+    res.redirect('/update/person/check')
   } else {
     res.redirect('/update/person/type')
   }
@@ -609,7 +613,8 @@ router.get(/check-person-handler/, function (req, res) {
   
   if(personDetailObject.key == 'disability' || 
      personDetailObject.key == 'dateOfBirth' ||
-     personDetailObject.key == 'dateOfDeath') {
+     personDetailObject.key == 'dateOfDeath' ||
+     personDetailObject.key == 'sex') {
     var personalDetailValue = req.session.data.personalDetailValue;
     var verificationlevel = req.session.data.verificationlevel;
     personDetailObject = personalDetailsFunctions.setPDValue(personDetailObject, personalDetailValue);

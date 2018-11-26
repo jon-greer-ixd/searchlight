@@ -144,9 +144,9 @@ function setDisplay(chosenDetail, detailObject) {
 var setPDValue = function(personDetailObject, personalDetailValue) {
   if (personalDetailValue == 'null' || personalDetailValue == null) {
     personDetailObject.value = null;
-  } else if (personalDetailValue == 'true') {
+  } else if (personalDetailValue == 'true' || personalDetailValue == true) {
     personDetailObject.value = true;
-  } else if (personalDetailValue == 'false') {
+  } else if (personalDetailValue == 'false' || personalDetailValue == false) {
     personDetailObject.value = false;
   } else {
     personDetailObject.value = personalDetailValue;
