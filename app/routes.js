@@ -464,16 +464,6 @@ router.get(/check-contact-handler/, function (req, res) {
 /////////////////////// NEW!
 var personDetailObject;
 
-var newSetView = function(personDetailObject) {
-  if (personDetailObject.value != null) {
-    personDetailObject.show = true;
-  } else {
-    personDetailObject.show = false;
-  }
-  return personDetailObject;
-}
-
-
 //PERSON
 router.get(/add-person-handler/, function (req, res) {
   
@@ -614,7 +604,7 @@ router.get(/check-person-handler/, function (req, res) {
   if(personDetailObject.key == 'disability') {
     var personalDetailValue = req.session.data.personalDetailValue;
     personDetailObject = personalDetailsFunctions.setPDValue(personDetailObject, personalDetailValue);
-    personDetailObject = newSetView(personDetailObject);
+    personDetailObject = personalDetailsFunctions.setPDView(personDetailObject);
     personDetailObject.state = req.session.data.updateType;
     req.session.data.personalDetails[personDetailObject.key] = personDetailObject;
     console.log(req.session.data.personalDetails[personDetailObject.key]);

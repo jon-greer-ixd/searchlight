@@ -154,9 +154,18 @@ var setPDValue = function(personDetailObject, personalDetailValue) {
   return personDetailObject;
 }
 
+var setPDView = function(personDetailObject) {
+  if (personDetailObject.value != null) {
+    personDetailObject.show = true;
+  } else {
+    personDetailObject.show = false;
+  }
+  return personDetailObject;
+}
 
 
 module.exports.setPDValue = setPDValue;
+module.exports.setPDView = setPDView;
 
 
 module.exports.setDates = setDates;
