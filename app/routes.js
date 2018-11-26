@@ -591,25 +591,35 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
-router.get(/newpersonchange/, function (req, res) {
+router.get(/change_pd/, function (req, res) {
   personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
   personDetailObject.key = req.query.personalDetail;
   console.log(personDetailObject.key);
-  res.redirect('/update/person/type')
+  if(personDetailObject.key == 'dateOfBirth'||
+     personDetailObject.key == 'dateOfDeath') {
+    req.session.data.updateType = 3;
+    res.redirect('/update/person/update')
+  } else {
+    res.redirect('/update/person/type')
+  }
 })
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
   
-  if(personDetailObject.key == 'disability') {
+  if(personDetailObject.key == 'disability' || 
+     personDetailObject.key == 'dateOfBirth' ||
+     personDetailObject.key == 'dateOfDeath') {
     var personalDetailValue = req.session.data.personalDetailValue;
+    var verificationlevel = req.session.data.verificationlevel;
     personDetailObject = personalDetailsFunctions.setPDValue(personDetailObject, personalDetailValue);
+    personDetailObject = personalDetailsFunctions.setVerificationLevel(personDetailObject, verificationlevel);
     personDetailObject = personalDetailsFunctions.setPDView(personDetailObject);
     personDetailObject.state = req.session.data.updateType;
     req.session.data.personalDetails[personDetailObject.key] = personDetailObject;
-    console.log(req.session.data.personalDetails[personDetailObject.key]);
-    console.log(req.session.data.personalDetails.disability.value);
-    console.log('_______________________________________');
+    
+    req.session.data.toaster = generalFunctions.setToasterMessage(personDetailObject.display, null, personDetailObject.state);
+
   } else {
   
 //  
