@@ -4,34 +4,39 @@
     <form method="get" action="add-relationships-handler">
       
       <div id="nationalityField">
-       {% include "components/update/relationships/relationship-selector.njk" %}
-      </div>
-      
-      <fieldset class="form-group" data-required data-error="Cannot be blank">
-        <label class="form-label" for="relationship_type">Target National Insurance number</label>
-        <input class="form-control" id="relationship_type" type="text" name="relationship_type">
-      </fieldset>
+        
+        <!-- 
+  
+        This is hidden for carers credit
 
-      <fieldset>
-        <div class="form-group prepop">
-          <label class="form-label" for="startdate">
-            Start date
-            <span class="form-hint">
-              For example 31/8/1979
-            </span>
-          </label>
-          <input class="form-control box-one" id="startdate" name="relationship_start_date" type="text">
-          <a class="populate-link-one">Use today's date</a>
+        {% include "components/update/relationships/relationship-selector.njk" %}
         </div>
-      </fieldset>
 
-      <div class="form-group">
-        <input class="button" type="submit" value="Next">
-      </div>
-      
-    </form>
-    
-    <p><a href="/account2/account">Cancel</a></p>
-    
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
+          <label class="form-label" for="relationship_type">Target National Insurance number</label>
+          <input class="form-control" id="relationship_type" type="text" name="relationship_type">
+        </fieldset>
+
+        <fieldset>
+          <div class="form-group prepop">
+            <label class="form-label" for="startdate">
+              Start date
+              <span class="form-hint">
+                For example 31/8/1979
+              </span>
+            </label>
+            <input class="form-control box-one" id="startdate" name="relationship_start_date" type="text">
+            <a class="populate-link-one">Use today's date</a>
+          </div>
+        </fieldset>
+
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+
+      <p><a href="/account2/account">Cancel</a></p>
+
+    </div>
   </div>
-</div>
