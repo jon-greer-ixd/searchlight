@@ -570,9 +570,7 @@ router.get(/change-person-type-handler/, function (req, res) {
 })
 
 router.get(/dod-handler/, function (req, res) {
-  if (req.query.data == 'remove') {
-    req.session.data.updateType = 4;
-    console.log(req.session.data.updateType);
+  if (req.session.data.updateType == 4) {
     res.redirect('/update/person/check')
   } else {
     res.redirect('/update/person/update')
@@ -595,13 +593,21 @@ router.get(/change_pd/, function (req, res) {
   personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
   personDetailObject.key = req.query.personalDetail;
   console.log(personDetailObject.key);
-  if(personDetailObject.key == 'dateOfBirth'||
-     personDetailObject.key == 'dateOfDeath') {
+  if(personDetailObject.key == 'dateOfBirth') {
     req.session.data.updateType = 3;
     res.redirect('/update/person/update')
+  } else if (personDetailObject.key == 'recordLevel') {
+    req.session.data.updateType = 2;
+    res.redirect('/update/person/update')
+  } else if (personDetailObject.key == 'dateOfDeath') {
+    res.redirect('/update/person/dod-options')
   } else if (personDetailObject.key == 'sex') {
     req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
     req.session.data.updateType = 3;
+    res.redirect('/update/person/check')
+  } else if (personDetailObject.key == 'INDIndicator') {
+    req.session.data.personalDetailValue = null;
+    req.session.data.updateType = 2;
     res.redirect('/update/person/check')
   } else {
     res.redirect('/update/person/type')
@@ -610,10 +616,14 @@ router.get(/change_pd/, function (req, res) {
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
-  
-  if(personDetailObject.key == 'disability' || 
+  if(personDetailObject.key == 'disability' ||
      personDetailObject.key == 'dateOfBirth' ||
      personDetailObject.key == 'dateOfDeath' ||
+     personDetailObject.key == 'recordLevel' ||
+     personDetailObject.key == 'preferredLanguage' ||
+     personDetailObject.key == 'nifu' ||
+     personDetailObject.key == 'immigration' ||
+     personDetailObject.key == 'INDIndicator' ||
      personDetailObject.key == 'sex') {
     var personalDetailValue = req.session.data.personalDetailValue;
     var verificationlevel = req.session.data.verificationlevel;
@@ -622,7 +632,6 @@ router.get(/check-person-handler/, function (req, res) {
     personDetailObject = personalDetailsFunctions.setPDView(personDetailObject);
     personDetailObject.state = req.session.data.updateType;
     req.session.data.personalDetails[personDetailObject.key] = personDetailObject;
-    
     req.session.data.toaster = generalFunctions.setToasterMessage(personDetailObject.display, null, personDetailObject.state);
 
   } else {
@@ -671,16 +680,8 @@ router.get(/check-person-handler/, function (req, res) {
     
     
 }
-    // RESET
-//  req.session.data.updateType = null;
-//  req.session.data.verificationlevel = null;
-//  req.session.data.tempValue = undefined;
-//  chosenDetail,
-//  detailObject,
-//  chosenValue,
-//  tempValue,
-//  updateType,
-//  verificationlevel = null;
+  //RESET
+  req.session.data.personalDetailValue = null;
   // NEXT
   res.redirect('/account2/account')
 

@@ -1,4 +1,4 @@
-{% if data.personalDetailValue == "null" or data.personalDetailValue == null %}
+{% if data.updateType != 1 %}
   <tr>
 <td class="bold">Remove their {{data.personalDetails[data.personalDetail].display}}</td>
     <td><a>Change</a></td>
