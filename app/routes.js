@@ -624,6 +624,7 @@ router.get(/check-person-handler/, function (req, res) {
      personDetailObject.key == 'nifu' ||
      personDetailObject.key == 'immigration' ||
      personDetailObject.key == 'INDIndicator' ||
+     personDetailObject.key == 'maritalStatus' ||
      personDetailObject.key == 'sex') {
     var personalDetailValue = req.session.data.personalDetailValue;
     var verificationlevel = req.session.data.verificationlevel;
