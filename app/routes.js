@@ -604,6 +604,14 @@ router.get(/change_pd/, function (req, res) {
     req.session.data.personalDetailValue = null;
     req.session.data.updateType = 2;
     res.redirect('/update/person/check')
+  } else if (personDetailObject.key == 'assetFreeze'|| personDetailObject.key == 'idAtRisk') {
+    if (personDetailObject.end == null) {
+      res.redirect('/update/person/dates')
+    } else {
+      req.session.data.personalDetailValue = null;
+      req.session.data.updateType = 2;
+      res.redirect('/update/person/check')
+    }
   } else {
     res.redirect('/update/person/type')
   }
@@ -622,6 +630,7 @@ router.get(/check-person-handler/, function (req, res) {
      personDetailObject.key == 'maritalStatus' ||
      personDetailObject.key == 'nationality' ||
      personDetailObject.key == 'spokenLanguage' ||
+     personDetailObject.key == 'assetFreeze' ||
      personDetailObject.key == 'idAtRisk' ||
      personDetailObject.key == 'sex') {
     var personalDetailValue = req.session.data.personalDetailValue;
