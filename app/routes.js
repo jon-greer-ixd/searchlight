@@ -478,12 +478,7 @@ router.get(/add-person-handler/, function (req, res) {
     res.redirect('/update/person/check');
   } else if (req.session.data.personalDetail == 'gender') {
     res.redirect('/update/person/gender/add');
-  } else if (req.session.data.personalDetail == 'assetFreeze') {
-    req.session.data.personalDetailValue = 'assetfreeze';
-    req.session.data.personalDetailValue = true;
-    res.redirect('/update/person/dates');
-  } else if (req.session.data.personalDetail == 'idAtRisk') {
-    req.session.data.personalDetailValue = 'idAtRisk';
+  } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
     req.session.data.personalDetailValue = true;
     res.redirect('/update/person/dates');
   } else if (req.session.data.personalDetail == 'INDIndicator') {
@@ -625,6 +620,9 @@ router.get(/check-person-handler/, function (req, res) {
      personDetailObject.key == 'immigration' ||
      personDetailObject.key == 'INDIndicator' ||
      personDetailObject.key == 'maritalStatus' ||
+     personDetailObject.key == 'nationality' ||
+     personDetailObject.key == 'spokenLanguage' ||
+     personDetailObject.key == 'idAtRisk' ||
      personDetailObject.key == 'sex') {
     var personalDetailValue = req.session.data.personalDetailValue;
     var verificationlevel = req.session.data.verificationlevel;
