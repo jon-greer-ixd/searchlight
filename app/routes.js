@@ -644,47 +644,45 @@ router.get(/check-person-handler/, function (req, res) {
 
   } else {
   
-//  
-//  
-//  console.log(req.session.data.updateType);
-//  var chosenDetail = req.session.data.personalDetail;
-//  var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
-//  var chosenValue = req.session.data.personalDetailValue;
-//  var tempValue = req.session.data.tempValue;
-//  var updateType = req.session.data.updateType;
-//  var verificationlevel = req.session.data.verificationlevel;
-//  // SET VALUES  
-//  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
-//    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
-//  } else { 
-//    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
-//  }
-//  // SET VERIFICATION LEVEL  
-//  if (req.session.data.verificationlevel != null) {
-//    req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
-//  }
-//  // SET DATES FOR ASSET FREEZE AND ID AT RISK
-//  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
-//    var endDate = chosenDetail + 'End';
-//    var startDate = chosenDetail + 'Start';
-//    req.session.data.personalDetails[chosenDetail] = personalDetailsFunctions.setDates(detailObject, req.session.data[startDate], req.session.data[endDate]);
-//  }
-//  // SET STATE
-//  req.session.data.personalDetails[req.session.data.personalDetail].state = updateType;
-//  // SET DISPLAY
-//  if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
-//    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
-//  }
-//  // SET MESSAGE
-//  req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
-//  
-//  //ASSET FREEZE
-//  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
-//    if (req.session.data.assetFreezeEnd != '') {
-//      req.session.data.personalDetails.assetFreeze.state = 5;
-//    }
-//  }
-//  
+  console.log(req.session.data.updateType);
+  var chosenDetail = req.session.data.personalDetail;
+  var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
+  var chosenValue = req.session.data.personalDetailValue;
+  var tempValue = req.session.data.tempValue;
+  var updateType = req.session.data.updateType;
+  var verificationlevel = req.session.data.verificationlevel;
+  // SET VALUES  
+  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
+    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
+  } else { 
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
+  }
+  // SET VERIFICATION LEVEL  
+  if (req.session.data.verificationlevel != null) {
+    req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
+  }
+  // SET DATES FOR ASSET FREEZE AND ID AT RISK
+  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
+    var endDate = chosenDetail + 'End';
+    var startDate = chosenDetail + 'Start';
+    req.session.data.personalDetails[chosenDetail] = personalDetailsFunctions.setDates(detailObject, req.session.data[startDate], req.session.data[endDate]);
+  }
+  // SET STATE
+  req.session.data.personalDetails[req.session.data.personalDetail].state = updateType;
+  // SET DISPLAY
+  if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
+    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
+  }
+  // SET MESSAGE
+  req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
+  
+  //ASSET FREEZE
+  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
+    if (req.session.data.assetFreezeEnd != '') {
+      req.session.data.personalDetails.assetFreeze.state = 5;
+    }
+  }
+  
     
     
 }
