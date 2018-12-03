@@ -6,13 +6,20 @@
   </div>
   <div class="column-one-third">
     <ul>
-      <li class="bold">Yes</li>
+      <li class="bold">
+        {% if data.personalDetails.INDIndicator.value %}
+          Yes
+        {% else %}
+          No
+        {% endif %}
+        
+      </li>
     </ul>
   </div>
   <div class="column-one-third last-col">
     <ul class="edit-menu">
       <li>
-        <a href="person-change-handler/?personalDetail=INDIndicator" class="under-link">Change</a>
+        <a href="change_pd/?personalDetail=INDIndicator" class="under-link">Change</a>
       </li>
     </ul>
   </div>

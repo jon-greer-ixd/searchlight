@@ -6,30 +6,30 @@
   </div>
   <div class="column-one-third">
     <ul>
-    {% if data.personalDetails.assetFreeze.state == 1 %}
-      <li class="bold">Since {{data.personalDetails.assetFreeze.start | asString}}</li>
-    {% elif data.personalDetails.assetFreeze.state == 5 %}
-      <li class="">No current asset freeze</li>
-    {% endif %}
+      <li class="bold">
+        {% if data.personalDetails.assetFreeze.value == true %}
+          Yes
+        {% else %}
+          No
+        {% endif %}
+      </li>
+      <li class="sl-secondary-text-color sl-metadata">
+        Since today
+      </li>    
     </ul>
-        
-    {% if data.personalDetails.assetFreeze.showHistory == true %}
-      <details id="previous-names">
-        <summary>
-          <span class="summary">View previous</span>
-        </summary>
-        <ul>
-          <li>{{data.personalDetails.assetFreeze.start | asString}}&nbsp; · &nbsp;{{data.personalDetails.assetFreeze.end | asString}}</li>
-        </ul>
-      </details>
-    {% endif %}
-    
+            
   </div>
   <div class="column-one-third last-col">
     <ul class="edit-menu">
       <li>
-        <a class="secondary-link" href="person-change-handler/?personalDetail=assetFreeze">Change</a>
+        <a data-toggle="modal" data-target="#death_modal" class="under-link">View maintenance</a> 
+        <span class="pipe"> | </span> 
+        <a href="/history/af-history" class="under-link">View history</a>
+      </li>
+      <li>
+        <a href="change_pd/?personalDetail=assetFreeze" class="under-link">Change</a>
       </li>
     </ul>
   </div>
 </div>
+

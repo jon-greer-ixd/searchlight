@@ -104,7 +104,6 @@ function setDates(detailObject, startDate, endDate) {
   return detailObject;
 }
 
-
 ///////////////////////
 // display functions //
 ///////////////////////
@@ -145,9 +144,9 @@ function setDisplay(chosenDetail, detailObject) {
 var setPDValue = function(personDetailObject, personalDetailValue) {
   if (personalDetailValue == 'null' || personalDetailValue == null) {
     personDetailObject.value = null;
-  } else if (personalDetailValue == 'true') {
+  } else if (personalDetailValue == 'true' || personalDetailValue == true) {
     personDetailObject.value = true;
-  } else if (personalDetailValue == 'false') {
+  } else if (personalDetailValue == 'false' || personalDetailValue == false) {
     personDetailObject.value = false;
   } else {
     personDetailObject.value = personalDetailValue;
@@ -155,9 +154,27 @@ var setPDValue = function(personDetailObject, personalDetailValue) {
   return personDetailObject;
 }
 
+var setPDView = function(personDetailObject) {
+  if (personDetailObject.value != null) {
+    personDetailObject.show = true;
+  } else {
+    personDetailObject.show = false;
+  }
+  return personDetailObject;
+}
 
+var setVerificationLevel = function(personDetailObject, verificationlevel) {
+  if (verificationlevel == null) {
+    personDetailObject.level = null;  
+  } else {
+    personDetailObject.level = verificationlevel;  
+  }
+  return personDetailObject;
+}
 
 module.exports.setPDValue = setPDValue;
+module.exports.setPDView = setPDView;
+module.exports.setVerificationLevel = setVerificationLevel;
 
 
 module.exports.setDates = setDates;
