@@ -469,10 +469,8 @@ router.get(/add-person-handler/, function (req, res) {
   
   personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
   personDetailObject.key = req.session.data.personalDetail;
-
   console.log(req.session.data.personalDetail);
   req.session.data.updateType = 1;
-  console.log(req.session.data.updateType);
   if (req.session.data.personalDetail == 'nifu') {
     req.session.data.personalDetailValue = 'Yes';
     res.redirect('/update/person/check');
@@ -605,13 +603,14 @@ router.get(/change_pd/, function (req, res) {
     req.session.data.updateType = 2;
     res.redirect('/update/person/check')
   } else if (personDetailObject.key == 'assetFreeze'|| personDetailObject.key == 'idAtRisk') {
-    if (personDetailObject.end == null) {
-      res.redirect('/update/person/dates')
+    if (personDetailObject.state == 1) {
+      req.session.data.updateType = 5;
+      req.session.data.personalDetailValue = false;
     } else {
-      req.session.data.personalDetailValue = null;
-      req.session.data.updateType = 2;
-      res.redirect('/update/person/check')
+      req.session.data.updateType = 1;
+      req.session.data.personalDetailValue = true;
     }
+    res.redirect('/update/person/dates')
   } else {
     res.redirect('/update/person/type')
   }
@@ -637,6 +636,13 @@ router.get(/check-person-handler/, function (req, res) {
     var verificationlevel = req.session.data.verificationlevel;
     personDetailObject = personalDetailsFunctions.setPDValue(personDetailObject, personalDetailValue);
     personDetailObject = personalDetailsFunctions.setVerificationLevel(personDetailObject, verificationlevel);
+    
+    if (personDetailObject.key == 'assetFreeze' || personDetailObject.key == 'idAtRisk') {
+      var endDate = personDetailObject.key + 'End';
+      var startDate = personDetailObject.key + 'Start';
+      personDetailObject = personalDetailsFunctions.setDates(personDetailObject, req.session.data[startDate], req.session.data[endDate]);
+    }
+
     personDetailObject = personalDetailsFunctions.setPDView(personDetailObject);
     personDetailObject.state = req.session.data.updateType;
     req.session.data.personalDetails[personDetailObject.key] = personDetailObject;

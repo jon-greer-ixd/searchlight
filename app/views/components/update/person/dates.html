@@ -22,21 +22,22 @@
           
           <a class="populate-link-one">Use today's date</a>
         </div>
-      
       {% endif %}
       
-      <div class="form-group prepop">
-        <label class="form-label" for={{endLabel}}>
-          End date
-          <span class="form-hint">
-            For example 31/8/197
-          </span>
-        </label>
-        
-        <input class="form-control box-two" id="assetFreezeEnd" name={{endLabel}} type="text">
-        
-        <a class="populate-link-two">Use today's date</a>
-      </div>
+      {% if data.updateType == 5 %}
+        <div class="form-group prepop">
+          <label class="form-label" for={{endLabel}}>
+            End date
+            <span class="form-hint">
+              For example 31/8/197
+            </span>
+          </label>
+
+          <input class="form-control box-two" id="assetFreezeEnd" name={{endLabel}} type="text">
+
+          <a class="populate-link-two">Use today's date</a>
+        </div>
+      {% endif %}
       
       <div class="form-group">
         <input class="button" type="submit" value="Next">

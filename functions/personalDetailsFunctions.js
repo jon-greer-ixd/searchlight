@@ -95,13 +95,14 @@ function setIndicatorValue(detailObject, updateType) {
   return detailObject;
 }
 
-function setDates(detailObject, startDate, endDate) {
-  detailObject.start = startDate;
+function setDates(personDetailObject, startDate, endDate) {
+  personDetailObject.start = startDate;
   if (endDate != '' && endDate != null) {
-    detailObject.end = endDate;
-    detailObject.showHistory = true;
+    personDetailObject.end = endDate;
+  } else {
+    personDetailObject.end = null
   }
-  return detailObject;
+  return personDetailObject;
 }
 
 ///////////////////////
