@@ -637,11 +637,11 @@ router.get(/check-person-handler/, function (req, res) {
     personDetailObject = personalDetailsFunctions.setPDValue(personDetailObject, personalDetailValue);
     personDetailObject = personalDetailsFunctions.setVerificationLevel(personDetailObject, verificationlevel);
     
-    if (personDetailObject.key == 'assetFreeze' || personDetailObject.key == 'idAtRisk') {
-      var endDate = personDetailObject.key + 'End';
-      var startDate = personDetailObject.key + 'Start';
-      personDetailObject = personalDetailsFunctions.setDates(personDetailObject, req.session.data[startDate], req.session.data[endDate]);
-    }
+//    if (personDetailObject.key == 'assetFreeze' || personDetailObject.key == 'idAtRisk') {
+//      var endDate = personDetailObject.key + 'End';
+//      var startDate = personDetailObject.key + 'Start';
+//      personDetailObject = personalDetailsFunctions.setDates(personDetailObject, req.session.data[startDate], req.session.data[endDate]);
+//    }
 
     personDetailObject = personalDetailsFunctions.setPDView(personDetailObject);
     personDetailObject.state = req.session.data.updateType;
