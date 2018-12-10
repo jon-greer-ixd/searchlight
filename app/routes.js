@@ -1267,6 +1267,11 @@ router.get(/relationship-handler/, function (req, res) {
   res.redirect('/account2/account')
 })
 
+router.get(/change_relationship/, function (req, res) {
+  console.log(req.query.updateType);
+  res.redirect('/update/relationships/check')
+})
+
 
 //*********
 //Version 1

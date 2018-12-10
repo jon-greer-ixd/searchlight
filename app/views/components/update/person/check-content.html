@@ -70,6 +70,12 @@
             {% if data.personalDetail == 'INDIndicator' %}
               {% include "components/update/person/check/indindicator.njk" %}
             {% endif %}
+          
+          <!--  recordLevel-->
+            {% if data.personalDetail == 'relationship' %}
+              {% include "components/update/person/check/relationship.njk" %}
+            {% endif %}
+          
 
         </table>
       <br>
