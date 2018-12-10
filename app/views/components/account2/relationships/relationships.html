@@ -14,10 +14,21 @@
       <div class="column-two-thirds">
         <h3 class="strong">Award based relationships</h3>
       </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a class="secondary-link" href="change_relationship/?updateType=1">Add a relationship</a>
+          </li>
+        </ul>
+      </div>
     </div>
             
     {% if data.miscData.relationships.state == null %}
-      <p>No Award based relationships</p>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <p>No Award based relationships</p>
+      </div>
+    </div>
     {% endif %}
 
     {% if data.miscData.relationships.state == 1 %}
@@ -38,13 +49,6 @@
       <div class="column-one-third">
         <ul>
           <li>Relationship</li>
-        </ul>
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a class="secondary-link" href="change_relationship/?updateType=5">Add a relationship</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -80,6 +84,8 @@
 
     {% if data.miscData.relationships.state == 4 %}
       <p>No Award based relationships</p>
+          {% include "components/account2/relationships/previous.html" %}
+
     {% endif %}
 
 
