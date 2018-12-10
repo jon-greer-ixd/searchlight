@@ -1257,19 +1257,18 @@ router.get(/add-relationships-handler/, function (req, res) {
 })
 
 router.get(/relationship-handler/, function (req, res) {
-  if (req.session.data.updateType == 1) {
-    req.session.data.miscData.relationships.show = true;
-  } else {
-    req.session.data.miscData.relationships.show = false;
-  }
+  req.session.data.miscData.relationships.state = req.session.data.updateType;
   req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
   req.session.updateType = null;
   res.redirect('/account2/account')
 })
 
 router.get(/change_relationship/, function (req, res) {
-  console.log(req.query.updateType);
-  res.redirect('/update/relationships/check')
+  if(req.session.data.updateType == 1) {
+    res.redirect('/update/relationships/add')
+  } else {
+    res.redirect('/update/relationships/check')
+  }
 })
 
 

@@ -26,7 +26,7 @@
     {% if data.miscData.relationships.state == null %}
     <div class="grid-row">
       <div class="column-two-thirds">
-        <p>No Award based relationships</p>
+        <p>No award based relationships</p>
       </div>
     </div>
     {% endif %}
@@ -67,8 +67,8 @@
 
         <div class="column-one-third">
           <ul class="sl-secondary-text-color sl-metadata">
-            <li><a href="" class="under-link strong">MR &nbsp;JAMES  &nbsp;WILLIAMS</a></li>
-            <li>Relationship&nbsp; · &nbsp;Unknown</li>
+            <li><a href="" class="under-link strong">MR &nbsp;JAMES  &nbsp;SMITH</a></li>
+            <li>Relationship&nbsp; · &nbsp;Carers allowance</li>
             <li>Shared award&nbsp; · &nbsp;Carers allowance</li>
           </ul>
         </div>
@@ -83,14 +83,14 @@
     {% endif %}
 
     {% if data.miscData.relationships.state == 4 %}
-      <p>No Award based relationships</p>
-          {% include "components/account2/relationships/previous.html" %}
-
+      <p>No award based relationships</p>
+      <hr>
+      {% include "components/account2/relationships/previous.html" %}
     {% endif %}
 
 
     {% if data.miscData.relationships.state == 5 %}
-
+      <p>No award based relationships</p>
     {% endif %}
 
   </div>
