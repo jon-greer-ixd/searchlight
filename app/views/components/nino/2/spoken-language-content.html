@@ -1,0 +1,37 @@
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="spoken-language-handler">
+        
+
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Spoken language</legend>
+          <label class="form-label" for="full-name-f1">
+            Spoken language
+          </label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+        </fieldset>
+        
+        {% if createjourney === false %}
+          <fieldset class="form-group">
+            <legend class="visuallyhidden">Spoken language start date</legend>
+            <label class="form-label" for="full-name-f1">
+              Spoken language start date
+              <span class="form-hint">
+                For example 31/8/1979
+              </span>
+            </label>
+            <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="10 01 2018">
+          </fieldset>
+        {% endif %}
+        
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      <p><a href="task-list">Cancel</a></p>
+    </div>
+
+  </div>

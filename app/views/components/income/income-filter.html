@@ -1,0 +1,64 @@
+<div class="sl-account-canvas row">
+  
+  <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+
+    <div id="income">
+      
+      <h2>Income</h2>
+      
+      <div id="sl-address-primary-card" class="sl-primary-card reduced-income">
+        
+        <div class="grid-row">
+          
+          <div class="column-two-thirds">
+        
+            <form class="form" method="get" action="income-results">
+
+              <div class="filter">
+                
+                <div class="form-group prepop">
+                  <label class="form-label" for="date">
+                    Start date
+<!--
+                    <span class="form-hint">
+                      For example 31/8/197
+                    </span>
+-->
+                  </label>
+                  <input class="form-control box-one" id="" name="date" type="text">
+                  <a class="populate-link-one">Use today's date</a>
+                </div>
+
+                <div class="form-group prepop">
+                  <label class="form-label" for="date">
+                    End date
+<!--
+                    <span class="form-hint">
+                      For example 31/8/197
+                    </span>
+-->
+                  </label>
+                  <input class="form-control box-two" id="" name="date" type="text">
+                  <a class="populate-link-two">Use three months ago</a>
+                </div>
+                
+              </div>
+
+              <div class="form-group">
+                <input class="button" type="submit" value="Search">
+              </div>
+            </form>
+                      
+          </div>
+          
+        </div>
+
+<!--        {% include "components/income/income-content.html" %}-->
+        
+      </div>
+      
+    </div>
+
+  </div>
+  
+</div>

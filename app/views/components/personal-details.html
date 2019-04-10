@@ -1,0 +1,430 @@
+<div class="personal-details">
+  
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <ul>
+        <li class="bold">This customer has been flagged as potentially violent.</li>
+      </ul>
+    </div>
+        
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="/history/pv-history" class="under-link">View history</a>
+        </li>
+<!--
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+-->
+      </ul>
+    </div>
+  </div>
+  
+  <hr class="light">
+  
+  <div class="grid-row">
+    <div class="column-one-third">
+      <ul>
+        <li>Name</li>
+      </ul>
+    </div>
+    
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">MR TOM JONES</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Name 2 
+          <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span> 
+          Since {{data['updateTwo']}}
+        </li>
+      </ul>      
+      <ul class="multi-dates">
+        <li class="strong">MR TOM SMITH</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Name 1 
+          <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span>
+          Since {{data['updateOne']}}
+        </li>
+      </ul>      
+    </div>
+    
+    <div class="column-one-third last-col">
+<!--
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="previous-names" class="under-link">View history</a>
+        </li>
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+      </ul>
+-->
+    </div>
+  </div>
+  
+<!--
+  <hr class="light">
+  
+  <div class="grid-row">
+    
+    <div class="column-one-third">
+      <ul>
+        <li>Name type 2</li>
+      </ul>
+    </div>
+    
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">MR TOM SMITH</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 14 Dec 2016
+        </li>
+      </ul>
+    </div>
+    
+    <div class="column-one-third last-col">
+      
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+        </li>
+      </ul>
+    </div>
+  </div>
+-->
+  
+  <hr class="light">
+      
+  <div class="grid-row">
+    
+    <div class="column-one-third">
+      <p>Date of birth</p>
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">{{data.personalDetails.dateOfBirth.value}}</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 5 Jun 2010
+        </li>
+        <li class="multi-dates">
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-metadata">Verified to level 2</span>
+        </li>
+<!--
+        <li>
+          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
+        </li>
+-->
+      </ul>
+<!--
+            <details>
+        <summary class="update-summary">
+          <span class="summary">
+           Previous dates of birth
+          </span>
+        </summary>
+        <div>
+          <ul class="historic-name">
+            <li class="sl-secondary-text-color oval">
+              <span>10 Feb 1960</span>
+            </li>
+            <li class="sl-secondary-text-color">
+              <span>9 Mar 1999 – 13 Dec 2016</span>
+            </li>
+            <li class="sl-metadata sl-secondary-text-color spacing-top-sixth ng-binding">
+              <span class=""><a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">9 Mar 1999 – 13 Dec 2016</a></span>
+            </li>
+          </ul>
+        </div>
+      </details>
+-->
+
+    </div>
+
+      <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+<!--          <a href="previous-names" class="under-link">View history</a>-->
+          <a href="/history/birth-history" class="under-link">View history</a>
+        </li>
+<!--
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+-->
+      </ul>
+
+    </div>
+  </div>
+  
+  <hr class="light">
+      
+  <div class="grid-row">
+    
+    <div class="column-one-third">
+      <p>Date of death</p>
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li><span class="red">{{data['dod']}} &nbsp;</span> <span>(Age {{data['age']}})</span></li>
+<!--
+          <li>
+          <span class="">
+            <a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">Since 14 Dec 2016</a>
+          </span>
+        </li>
+-->
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 2 Feb 2018
+        </li>
+        <li class="multi-dates">
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-metadata">Verified to level 3</span>
+        </li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 2 Feb 2018
+        </li>
+      </ul>
+<!--
+            <details>
+        <summary class="update-summary">
+          <span class="summary">
+           Previous dates of birth
+          </span>
+        </summary>
+        <div>
+          <ul class="historic-name">
+            <li class="sl-secondary-text-color oval">
+              <span>10 Feb 1960</span>
+            </li>
+            <li class="sl-secondary-text-color">
+              <span>9 Mar 1999 – 13 Dec 2016</span>
+            </li>
+            <li class="sl-metadata sl-secondary-text-color spacing-top-sixth ng-binding">
+              <span class=""><a class="modal_link link_grey" data-toggle="modal" data-target="#name_modal">9 Mar 1999 – 13 Dec 2016</a></span>
+            </li>
+          </ul>
+        </div>
+      </details>
+-->
+
+    </div>
+
+      <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#death_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="/history/death-history" class="under-link">View history</a>
+        </li>
+<!--
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+-->
+      </ul>
+
+    </div>
+  </div>
+  
+  <hr class="light">
+
+
+  <!--
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Date of death</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li>28 Mar 1995 (aged 54)</li>
+          <li class="sl-secondary-text-color">Green tick Verified to level 3</li>
+        </ul>
+      </div>
+    </div>
+  -->
+
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      National Insurance number
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">SY119284Z</li>
+        <li>
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">Verified</span>
+        </li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 14 Dec 2016
+        </li>
+-->
+<!--
+        <li>
+          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
+        </li>
+-->
+      </ul>
+    </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+         <a href="/history/nino-history" class="under-link">View history</a>
+        </li>
+<!--
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+-->
+      </ul>
+
+    </div>
+
+
+  </div>
+      
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      Superseding National Insurance number
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong"><a class="under-link">SY119284Z</a></li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 14 Dec 2016
+        </li>
+-->
+<!--
+        <li>
+          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
+        </li>
+-->
+      </ul>
+    </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+<!--
+          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+-->
+<!--          <a href="previous-names" class="under-link">View history</a>-->
+        </li>
+<!--
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+-->
+      </ul>
+
+    </div>
+
+  </div>
+
+<div class="grid-row">
+
+    <div class="column-one-third">
+      National Insurance number status
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">Superseded</li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 14 Dec 2016
+        </li>
+-->
+<!--
+        <li>
+          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
+        </li>
+-->
+      </ul>
+    </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+<!--
+          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+-->
+<!--          <a href="previous-names" class="under-link">View history</a>-->
+        </li>
+<!--
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+-->
+      </ul>
+
+    </div>
+
+  </div>
+  
+<div class="grid-row">
+
+    <div class="column-one-third">
+      National Insurance number usage status
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">Deleted</li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 14 Dec 2016
+        </li>
+-->
+<!--
+        <li>
+          <a class="under-link">View maintenance</a> • <a class="under-link">View history</a>
+        </li>
+-->
+      </ul>
+    </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+<!--
+          <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+-->
+<!--          <a href="previous-names" class="under-link">View history</a>-->
+        </li>
+<!--
+        <li>
+          <a class="secondary-link" href="">Change</a>
+        </li>
+-->
+      </ul>
+
+    </div>
+
+  </div>
+      
+<hr class="light">
+  {% include "components/other-personal-details.html" %}
+
+<!--
+<hr>
+  {% include "components/personal-details-history.html" %}
+-->
+
+
+  {% include "components/modals.html" %}
+
+

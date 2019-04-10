@@ -1,0 +1,36 @@
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <form class="form" method="get" action="check">
+      <fieldset class="form-group">
+        <label class="form-label" for="date">
+          Date of birth
+          <span class="form-hint">
+            For example 31/8/1979
+          </span>
+        </label>
+        <input class="form-control" id="date" type="text" name="personalDetailValue" value={{data.personalDetails.dateOfBirth.value}}>
+      </fieldset>
+      <fieldset class="form-group">
+        <legend>
+          <p class="bold">What level has their date of birth been verified to?</p>
+        </legend>
+        <div class="multiple-choice">
+          <input id="two" type="radio" name="verificationlevel" value="Level 2" {% if data.personalDetails.dateOfBirth.level == "Level 2" %} checked="checked" {% endif %} >
+          <label for="two">Verified to level 2</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="one" type="radio" name="verificationlevel" value="Level 1" {% if data.personalDetails.dateOfBirth.level == "Level 1" %} checked="checked" {% endif %} >
+          <label for="one">Verified to level 1</label>
+        </div>
+        <div class="multiple-choice">
+          <input id="none" type="radio" name="verificationlevel" value="Not verified" {% if data.personalDetails.dateOfBirth.level == "Not verified" %} checked="checked" {% endif %} >
+          <label for="none">Not verified</label>
+        </div>
+      </fieldset>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+      <p><a href="../../search">Cancel</a></p>
+  </div>
+</div>

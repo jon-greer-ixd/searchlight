@@ -1,0 +1,44 @@
+<h2 class="heading-medium question">What is their customer record level?</h2>
+
+<div class="grid-row">
+  
+  <div class="column-two-thirds">
+    
+    <form class="form" method="get" action="check">
+      
+      <fieldset class="form-group">
+        
+        <legend class="visually-hidden">What is their customer record level?</legend>
+        
+        <div class="multiple-choice">
+          <input id="1" type="radio" name="personalDetailValue" value="Unrestricted access" {% if data.personalDetails.recordLevel.value == "Unrestricted access" %} checked {% endif %}>
+          <label for="1">Unrestricted access</label>
+        </div>
+        
+        <div class="multiple-choice">
+          <input id="2" type="radio" name="personalDetailValue" value="Transgender" {% if data.personalDetails.recordLevel.value == "Transgender" %} checked {% endif %}>
+          <label for="2">Transgender</label>
+        </div>
+        
+        <div class="multiple-choice">
+          <input id="3" type="radio" name="personalDetailValue" value="VIP" {% if data.personalDetails.recordLevel.value == "VIP" %} checked {% endif %}>
+          <label for="3">VIP</label>
+        </div>
+        
+        <div class="multiple-choice">
+          <input id="4" type="radio" name="personalDetailValue" value="Other" {% if data.personalDetails.recordLevel.value == "Other" %}  checked {% endif %}>
+          <label for="4">Other</label>
+        </div>
+        
+      </fieldset>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    
+    <p><a href="task-list">Cancel</a></p>
+    
+  </div>
+  
+</div>

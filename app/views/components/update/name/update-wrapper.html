@@ -1,0 +1,36 @@
+<!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row updater slim-header">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+        <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
+          <a class="link-back" onCLick="history.back()">Back</a>
+          
+          <h2 class="title">
+            {% if data.updateType == "add" %} 
+              Add a
+            {% elif data.updateType == "update" %}
+              Update
+            {% elif data.updateType == "correct" %}
+              Correct 
+            {% elif data.updateType == "end" %}
+              End
+            {% else %}
+              Change
+            {% endif %}
+            
+            {{data.details[data.nameType].display | lower}} 
+          </h2>
+          
+
+          <div id="sl-address-primary-card" class="sl-primary-card last-card">
+            <div id="address-pane">
+              
+                {% include "components/update/name/update-content.html" %}
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

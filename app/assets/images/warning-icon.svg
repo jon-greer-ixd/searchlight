@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+    <title>warning icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Searchlight" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Management-check-confirmation" transform="translate(-67.000000, -107.000000)">
+            <g id="search" transform="translate(45.000000, 37.000000)">
+                <g id="warning" transform="translate(0.000000, 51.000000)">
+                    <g id="warning-icon" transform="translate(22.000000, 19.000000)">
+                        <circle id="Oval-33" fill="#000000" cx="17" cy="17" r="17"></circle>
+                        <text id="!" font-family="GDSTransportWebsite-Bold, GDS Transport Website" font-size="27" font-weight="bold" letter-spacing="0.41538462" fill="#FFFFFF">
+                            <tspan x="13.5" y="26">!</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

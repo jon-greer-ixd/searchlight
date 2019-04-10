@@ -1,0 +1,35 @@
+{% set y = " " %}
+{% set x = " " %}
+{% set z = " " %}
+
+{% set main_message =     
+  {{ block message }}
+    {{y}} 
+      {% if x == "phone" or x == "fax" or x == "other-phone" %}
+        number 
+      {% elif x == "email" %}
+        address 
+      {% endif %}
+      {{z}}
+    {% endblock %}
+%}
+
+{% for someId, item in data.contactTypes %}
+  {% if item.state == "added" or item.state == "updated" or item.state == "corrected" or item.state == "removed" %}
+    {% extends "./update/toasters/toast.html" %}
+
+    {% set y = item.display %}
+    {% set x = item.type %}
+    {% set z = item.state %}
+
+    {% main_message %}
+
+  {% endif %}
+{% endfor %}
+
+{% if data.preferredContactState == "removed" %}
+  {% extends "./update/toasters/toast.html" %}
+    {% main_message %}
+      preferred contact state removed
+    {% endblock %}
+{% endif %}

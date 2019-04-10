@@ -1,0 +1,41 @@
+<div ui-view="trace" class="ng-scope"><div id="trace" class="container-fluid ng-scope" ng-show="personTrace.personTrace" aria-hidden="true">
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12">
+      <div class="sl-account-canvas-width">
+        <div class="col-xs-12 no-bootstrap-padding">
+          
+            <div class="tabs">
+              <ul>
+                <li><a href="">Person trace</a></li>
+                <li><a href="">Address trace</a></li>
+                <li><a href="">Organisation trace</a></li>
+                <li><a href="">Notifications</a></li>
+                <li><a href="">Alerts</a></li>
+                <!-- <li><a href="">Create an account</a></li> -->
+              </ul>
+            </div>
+
+            <div class="sl-primary-card">
+                        
+              <div class="sl-trace-header">
+                <h2 class="sl-font-bold sl-third-heading">Search for a customer</h2>
+              </div>
+              
+              <form method="get" action="">
+                <fieldset class="form-group">
+                  <legend class="visuallyhidden">Immigration number</legend>
+                  <label class="form-label" for="iref">Immigration reference number</label>
+                  <input class="form-control" id="imref" type="text" name="verificationlevel" {% if data.updateType != 1 %} value={{data.personalDetails.immigration.level}} {% endif %}>
+                </fieldset>
+
+                <div class="form-group">
+                  <input class="button" type="submit" value="Next">
+                </div>
+              </form>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,77 @@
+<!--//add a cherished line-->
+{% if data.addresses[data.addressType].cherish == false %}
+  <h2 class="heading-medium question">What is the cherished line of this address?</h2>
+{% endif %}
+
+<!--//correct a cherished line-->
+{% if data.addresses[data.addressType].cherish == true and data.updateType == 2 %}
+  <h2 class="heading-medium question">What kind of update do you need to make?</h2>
+{% endif %}
+
+<!--//update a cherished line-->
+{% if data.addresses[data.addressType].cherish == true and data.updateType == 3 %}
+  <h2 class="heading-medium question">What kind of correction do you need to make?</h2>    
+{% endif %}
+
+{% if data.addresses[data.addressType].cherish == true and data.updateType == 2 %} 
+  <div class="panel panel-border-wide">
+    <ul>
+      <li>
+        Current cherished line: <span class="">Flat A</span>
+      </li>
+    </ul>
+  </div>
+<br>
+{% endif %}
+
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="cherish-handler">
+      
+    <!--//add a cherished line-->
+    {% if data.addresses[data.addressType].cherish == false %}
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label visually-hidden" for="full-name-f1">Cherished line</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+        </fieldset>
+      </div>
+    {% else %}
+      <div class="form-group">
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="correct" type="radio" name="cherishStatus" value=4>
+          <label for="correct">Remove the cherished line</label>
+        </div>
+        <div class="multiple-choice" data-target="contact-by-email">
+          <input id="update" type="radio" name="cherishStatus" value=2>
+          <label for="update">
+          {% if data.updateType == 2 %}
+            Update the cherished line
+          {% else %}
+            Correct the cherished line
+          {% endif %}
+          </label>
+        </div>
+      </div>
+
+      <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
+        <div class="form-group">
+          <fieldset>
+          <label class="form-label" for="full-name-f1">Enter the correct cherished line</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+          </fieldset>
+        </div>
+      </div>
+    {% endif %}
+            
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+  </form>
+    
+  <a href="/account2/account">Cancel</a>
+
+  </div>
+  
+</div>

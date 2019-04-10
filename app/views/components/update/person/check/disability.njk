@@ -1,0 +1,18 @@
+{% if data.personalDetailValue == "null" or data.personalDetailValue == null %}
+  <tr>
+    <td class="bold">Remove their {{data.personalDetails[data.personalDetail].display | lower}}</td>
+    <td><a>Change</a></td>
+  </tr>
+{% else %}
+  <tr>
+    <td class="bold">{{data.personalDetails[data.personalDetail].display}}</td>
+    <td>
+      {% if data.personalDetailValue == 'true' %}
+        Disabled
+      {% else %}
+        Not disabled
+      {% endif %}
+    </td>
+    <td><a>Change</a></td>
+  </tr>
+{% endif %}

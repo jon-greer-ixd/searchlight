@@ -1,0 +1,48 @@
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="preferred-language-handler">
+
+        <fieldset class="form-group">
+          <legend class="visually-hidden">language</legend>
+          <div class="multiple-choice">
+            <input id="English" type="radio" name="data" value="English">
+            <label for="English">English</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="welsh" type="radio" name="data" value="welsh">
+            <label for="welsh">Welsh</label>
+          </div>
+        </fieldset>
+        
+        {% if createjourney === false %}
+          <fieldset class="form-group">
+            <legend class="visuallyhidden">preferred language start date</legend>
+            <label class="form-label" for="postcode">
+              preferred language start date
+              <span class="form-hint">
+                For example 31/8/1979
+              </span>
+            </label>
+            <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">
+          </fieldset>
+        {% endif %}
+<!--
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Name notified start date</legend>
+          <label class="form-label" for="full-name-f1">Name notified start date</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1" value="10 01 2018">
+        </fieldset>
+
+-->
+
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      <p><a href="task-list">Cancel</a></p>
+    </div>
+
+  </div>

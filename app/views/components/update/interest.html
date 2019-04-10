@@ -1,0 +1,47 @@
+<div class="grid-row interest">
+
+  <div class="column-one-third">
+    <ul>
+      <li>{{int.startDate}}</li>
+    </ul>
+  </div>
+
+  <div class="column-one-third expanded">
+    <ul>
+      {% if int.system === "sys" %}
+        <li><span class="strong"><span class="interest-type">System</span>{{int.title}}</span></li>
+      {% elseif int.system === "clerical" %}
+        <li><span class="strong"><span class="interest-type clerical">Clerical</span>{{int.title}}</span></li>
+      {% else %}
+        <li><span class="strong"><span class="interest-type crl">CRL</span>{{int.title}}</span></li>
+      {% endif %}
+      <li class="sl-secondary-text-color sl-metadata">
+        {% if int.system === "sys" %}
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#newinterest">PRESTON BDC and 1 other</a>
+        {% else %}
+          Interested parties: <a class="modal_link" data-toggle="modal" data-target="#housing">CHESTER LE STREET DC</a>
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
+      </li>
+      <li>
+        <form class="dumbform" method="get" action="change-interest-handler">
+          <div class="form-group">
+             <input class="visually-hidden" name="tempPos" value="{{ interests.indexOf(int) }}">
+            {% if int.live === true %}
+              <input type="submit" class="under-link" value="Change">
+            {% endif %}
+          </div>
+        </form>
+<!--          <a class="secondary-link" href="interests/update-interest?pos={{ data['interests'].indexOf(interest) }}" value="{{ data['first-name'] }}">Change</a>-->
+      </li>
+    </ul>
+  </div>
+  
+</div> 

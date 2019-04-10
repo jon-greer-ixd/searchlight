@@ -1,0 +1,219 @@
+  <h2 class="heading-medium question">Check your answers</h2>
+    <div class="grid-row">
+      <div class="column-one-half">
+        
+        <table class="table"> 
+          
+          {% if data.updateType == "correct" %}
+            {% if data.nameType != "requestedName" %}
+              <tr>
+                <td><span class="strong">Title</span></td>
+                <td>{{data.title}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">First name</span></td>
+                <td>{{data.firstname}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Last name</span></td>
+                <td>{{data.lastname}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Suffix</span></td>
+                <td>{{data.suffix}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% else %}
+              <tr>
+                <td><span class="strong">Requested name</span></td>
+                <td>{{data.requestedName}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% endif %}
+          
+          
+          {% if data.updateType == "update" %}
+            {% if data.nameType != "requestedName" %}
+              <tr>
+                <td><span class="strong">Title</span></td>
+                <td>{{data.title | capitalize }}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">First name</span></td>
+                <td>{{data.firstname}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Last name</span></td>
+                <td>{{data.lastname}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Suffix</span></td>
+                {% if data.suffix == "" %}
+                  <td> - </td>
+                {% else %}
+                  <td>{{data.suffix}}</td>
+                {% endif %}
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Start date</span></td>
+                <td>{{data.startdate}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Notified date</span></td>
+                <td>{{data.notifieddate}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% else %}
+              <tr>
+                <td><span class="strong">Requested name</span></td>
+                <td>{{data.requestedName}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% endif %}
+          
+          
+          {% if data.updateType == "add" and data.nameType == "nameTwo" %}
+            <tr>
+              <td><span class="strong">Title</span></td>
+              <td>{{data.title | capitalize }}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">First name</span></td>
+              <td>{{data.firstname}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Last name</span></td>
+              <td>{{data.lastname}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Suffix</span></td>
+              <td>{{data.suffix}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          
+            <tr>
+              <td><span class="strong">Start date</span></td>
+              <td>{{data.startdate}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Notified date</span></td>
+              <td>{{data.notifieddate}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          
+          {% if data.updateType == "add" and data.nameType == "requestedName" %}
+            <tr>
+              <td><span class="strong">Requested name</span></td>
+              <td>{{data.requestedName}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          
+            <tr>
+              <td><span class="strong">Start date</span></td>
+              <td>{{data.startdate}}</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          {% if data.updateType == "end" %}
+            <tr>
+              <td><span class="strong">End date</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            {% if data.nameType == "nameTwo" %}
+            <tr>
+              <td><span class="strong">Notified date</span></td>
+              <td>{{data['prepopulatedDate']}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            {% endif %}
+          {% endif %}
+
+          
+          
+          
+                    
+          {% if data['updateType'] == "addRequestedName" or data['updateType'] == "correctRequestedName" or data['updateType'] == "updateRequestedName" %}
+            <tr>
+              <td><span class="strong">Requested name</span></td>
+              <td>{{data.requestedName}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            {% if data['updateType'] == "addRequestedName" or data['updateType'] == "updateRequestedName" %}
+              <tr>
+                <td><span class="strong">Start date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% endif %}
+          
+          {% if data['updateType'] == "updateNameOne" or data['updateType'] == "correctNameOne" or data['updateType'] == "addNameTwo" or data['updateType'] == "updateNameTwo" or data['updateType'] == "correctNameTwo" %}
+            <tr>
+              <td><span class="strong">Title</span></td>
+              <td>{{data.title | upper}}</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">First name</span></td>
+              {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
+                <td>{{data.nameTwoFirst | upper}}</td>
+              {% else %}
+                <td>{{data.nameOneFirst | upper}}</td>
+              {% endif %}
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Last name</span></td>
+              {% if data.updateType === "addNameTwo" or data.updateType === "updateNameTwo" or data.updateType === "correctNameTwo" %}
+                <td>{{data.nameTwoLast | upper}}</td>
+              {% else %}
+                <td>{{data.nameOneLast | upper}}</td>
+              {% endif %}
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Suffix</span></td>
+              <td>-</td>
+              <td><a>Change</a></td>
+            </tr>
+            {% if data['updateType'] == "updateNameOne" or data['updateType'] == "addNameTwo" or data['updateType'] == "updateNameTwo"  or data['updateType'] == "addRequestedName" or data['updateType'] == "updateCorrected" %}
+              <tr>
+                <td><span class="strong">Start date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Notified date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+          {% endif %}
+      </table>
+      <br>
+      <form method="get" action="check-name-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="../../../account2/account">Cancel</a>
+    </div>
+  </div>

@@ -1,0 +1,86 @@
+<!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row updater slim-header">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+        <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
+          <a class="link-back" onCLick="history.back()">Back</a>
+          
+          <h2 class="title">
+                                    
+            {% if data.updateType == 1 %}
+              Add 
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "specialNeeds" %}
+                an
+              {% else %}
+                a
+              {% endif %}
+            {% elif data.updateType == 3 %}
+              Correct
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "pv" %}
+                the
+              {% else %}
+                their
+              {% endif %}
+            {% else %}
+              Update               
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "pv" %}
+                the
+              {% else %}
+                their
+              {% endif %}
+
+            {% endif %}
+            
+            {% if data.personalDetail == "specialNeeds" %}
+              additional need
+            {% else %}
+              {{ data.personalDetails[data.personalDetail].display | lower }}
+            {% endif %}
+            
+          </h2>
+          
+          <div id="sl-address-primary-card" class="sl-primary-card last-card">
+            <div id="address-pane">
+              {% if data.personalDetail == "nationality" %}
+                {% include "components/update/person/details/nationality.njk" %}
+              {% elif data.personalDetail == "specialNeeds" %}
+                {% include "components/update/person/details/specialNeeds.njk" %}
+              {% elif data.personalDetail == "maritalStatus" %}
+                {% include "components/update/person/details/maritalstatus.njk" %}
+              {% elif data.personalDetail == "recordLevel" %}
+                {% include "components/update/person/details/recordlevel.njk" %}
+              {% elif data.personalDetail == "disability" %}
+                {% include "components/update/person/details/disability.njk" %}
+              {% elif data.personalDetail == "pv" %}
+                {% include "components/update/person/details/pv.njk" %}
+              {% elif data.personalDetail == "preferredLanguage" %}
+                {% include "components/update/person/details/preferredLanguage.njk" %}
+              {% elif data.personalDetail == "dateOfDeath" %}
+                {% include "components/update/person/details/dateOfDeath.njk" %}
+              {% elif data.personalDetail == "spokenLanguage" %}
+                {% include "components/update/person/details/spokenLanguage.njk" %}
+              {% elif data.personalDetail == "immigration" %}
+                {% include "components/update/person/details/immigration.njk" %}
+              {% elif data.personalDetail == "dateOfBirth" %}
+                {% include "components/update/person/details/dateOfBirth.njk" %}
+              {% elif data.personalDetail == "ninoVerificationLevel" %}
+                {% include "components/update/person/details/ninolevel.njk" %}
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    	<script src="../../../../../public/javascripts/jquery-1.11.1.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery-ui.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery.select-to-autocomplete.js"></script>
+	<script>
+	  (function($){
+	    $(function(){
+	      $('select').selectToAutocomplete();
+	      $('form').submit(marital);
+	    });
+	  })(jQuery);
+	</script>

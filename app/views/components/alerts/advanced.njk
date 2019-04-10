@@ -1,0 +1,43 @@
+<div ui-view="trace" class="ng-scope"><div id="trace" class="container-fluid ng-scope" ng-show="personTrace.personTrace" aria-hidden="true">
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12">
+      <div class="sl-account-canvas-width">
+        <div class="col-xs-12 no-bootstrap-padding">
+          
+            <div id="alert-tab" class="tabs">
+              <ul>
+                <li><a href="page-one">Person trace</a></li>
+                <li><a href="">Address trace</a></li>
+                <li><a href="">Organisation trace</a></li>
+                <li><a href="">Notifications</a></li>
+                <li><a href="alert-search">Alerts</a></li>
+                <!-- <li><a href="">Create an account</a></li> -->
+              </ul>
+            </div>
+
+          <div class="sl-primary-card">
+                        
+            <div class="sl-trace-header">
+              <h2 class="sl-font-bold sl-third-heading">Search for alerts</h2>
+            </div>
+
+              {% include "components/alerts/alerts-form.njk" %}
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+      	<script src="../../../../../public/javascripts/jquery-1.11.1.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery-ui.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery.select-to-autocomplete.js"></script>
+	<script>
+	  (function($){
+	    $(function(){
+	      $('select').selectToAutocomplete();
+	      $('form').submit(marital);
+	    });
+	  })(jQuery);
+	</script>
+

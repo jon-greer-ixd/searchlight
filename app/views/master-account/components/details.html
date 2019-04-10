@@ -1,0 +1,22 @@
+ <!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+
+        {% include "./personal/personal.html" %}
+        
+        {% include "./address/address.html" %}
+        
+        {% include "./contact/contact.html" %}
+        
+        {% include "./interests/interests.html" %}
+        
+        {% include "./benefits/benefits.html" %}
+        
+        <div class="last-card">
+          {% include "./relationships/relationships.html" %}
+        </div>
+        
+      </div>
+    </div>
+  </div>

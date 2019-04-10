@@ -1,0 +1,39 @@
+{% if data.updateType == 3 and data.tempValue != "null" %}
+  <tr>
+    <td class="bold">Current additional need</td>
+    <td>{{data.personalDetailValue}}</td>
+    <td><a>Change</a></td>
+  </tr>
+  <tr>
+    <td class="bold">Correct to</td>
+    <td>{{data.tempValue}}</td>
+    <td><a>Change</a></td>
+  </tr>
+{% elif data.personalDetailValue == "null" or data.personalDetailValue == null %}
+  <tr>
+    <td class="bold">Remove their {{data.personalDetails[data.personalDetail].display}}</td>
+    <td><a>Change</a></td>
+  </tr>
+{% else %}
+  <tr>
+    <td class="bold">{{data.personalDetails[data.personalDetail].display}}</td>
+    <td>              
+      {{data.personalDetailValue}}
+    </td>
+{#
+    <td>              
+      {{counter}}
+        {% set counter = data.personalDetailValue.length %}
+        {% for item in data.personalDetailValue %}
+          {% if counter != 1 %}
+            {{item}}, <br>
+          {% else %}
+            {{item}}
+          {% endif %}
+          {% set counter = counter -1 %}
+        {% endfor %}
+    </td>
+#}
+    <td><a>Change</a></td>
+  </tr>
+{% endif %}

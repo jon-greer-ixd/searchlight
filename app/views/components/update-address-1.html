@@ -1,0 +1,65 @@
+ <!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+
+        <div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Update address</h2>
+          <div class="sl-primary-card sl-personal-details-card">
+            <div class="row ng-scope" ng-if="data.person.empty">
+              
+                <div class="grid-row">
+                  
+                  <div class="column-two-thirds">
+                    
+                    <h2 class="heading-medium update-header">What do you need to update?</h2>
+
+                    <form class="form" action="update-choice-handler" method="post">
+                      <div class="form-group">
+                        <fieldset>
+
+                          <legend>
+                            <p class="visually-hidden">What do you need to update?</p>
+                          </legend>
+
+                          <div class="multiple-choice">
+                            <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland">
+                            <label for="radio-1">Update to a new address</label>
+                          </div>
+                          <div class="multiple-choice">
+                            <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+                            <label for="radio-2">End this address</label>
+                          </div>
+                          <div class="multiple-choice">
+                            <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+                            <label for="radio-3">Cherish this address</label>
+                          </div>
+                          <div class="multiple-choice">
+                            <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+                            <label for="radio-3">Update the status</label>
+                          </div>
+
+                        </fieldset>
+                        </div>
+                      
+                        <fieldset>
+                        <input class="button" type="submit" value="Save and continue">
+                        </fieldset>
+
+                    </form>
+                    <br>
+                    <p><a>Cancel</a></p>
+                    
+                  </div>
+                </div>
+              
+              
+            </div>
+          </div>
+        </div>
+        
+      
+      </div>
+    </div>
+  </div>

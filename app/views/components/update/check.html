@@ -1,0 +1,170 @@
+<h2 class="heading-medium question">Check your answers</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <div>
+    <table class="table">
+      
+    <!-- Add -->
+    {% if data.updateType == 1 %}
+      <tr>
+        <td><span class="strong">Correspondence address</span></td>
+        <td>{{addressthree}} {{addressfour}}</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Start date</span></td>
+        <td>9 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+      <tr>
+        <td><span class="strong">Notified start date</span></td>
+        <td>11 December 2017</td>
+        <td><a>Change</a></td>
+      </tr>
+    {% endif %}  
+
+    <!-- Update -->
+    {% if data.updateType == 2 %}
+      <!-- End as update -->
+      {% if data.tempValue == 5 %}
+        <tr>
+          <td><span class="strong">Update type</span></td>
+          <td>End</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">End date</span></td>
+          <td>1 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified end date</span></td>
+          <td>19 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% elif data.tempValue == 'status' %}  
+        <tr>
+          <td><span class="strong">Status</span></td>
+          <td>
+            {{data.tempStatus | statusAsAString}}
+          </td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>9 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified start date</span></td>
+          <td>11 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% elif data.tempValue == 'cherish' %}  
+        {% if data.cherishStatus == 4 %}  
+          <tr>
+            <td><span class="strong">Update type</span></td>
+            <td>Remove the cherished line</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% else %}  
+          <tr>
+            <td><span class="strong">Cherished line</span></td>
+            <td>Flat A</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Start date</span></td>
+            <td>1 December 2017</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Notified start date</span></td>
+            <td>19 December 2017</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}  
+      {% else %}  
+        <tr>
+          <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
+          <td>{{addressthree}} {{addressfour}}</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>9 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified start date</span></td>
+          <td>11 December 2017</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% endif %}  
+    {% endif %}  
+      
+      
+    <!-- Correct -->
+    {% if data.updateType == 3 %}
+      <!-- End as correct -->
+      {% if data.tempValue == 5 %}
+        <tr>
+          <td><span class="strong">Correction type</span></td>
+          <td>End</td>
+          <td><a href="type">Change</a></td>
+        </tr>
+      {% elif data.tempValue == 'status' %}  
+        <tr>
+          <td><span class="strong">Status</span></td>
+          <td>
+            {{data.tempStatus | statusAsAString}}
+          </td>
+          <td><a>Change</a></td>
+        </tr>
+      {% elif data.tempValue == 'dates' %}  
+        <tr>
+          <td><span class="strong">Start date</span></td>
+          <td>30 November 1990</td>
+          <td><a>Change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">Notified start date</span></td>
+          <td>30 November 1990</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% elif data.tempValue == 'cherish' %}  
+        {% if data.cherishStatus == 4 %}  
+          <tr>
+            <td><span class="strong">Correction type</span></td>
+            <td>Remove the cherished line</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% else %}  
+          <tr>
+            <td><span class="strong">Cherished line</span></td>
+            <td>Flat A</td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}  
+      {% else %}  
+        <tr>
+          <td><span class="strong">{{data.addressType | capitalize}} address</span></td>
+          <td>{{addressthree}} {{addressfour}}</td>
+          <td><a>Change</a></td>
+        </tr>
+      {% endif %}  
+    {% endif %}  
+      
+    </table>
+  </div>
+  <br>
+  <div>
+    <form method="get" action="check-address-handler"> <!-- check-answers-handler -->
+      <div class="form-group">
+        <input class="button" type="submit" value="Submit">
+      </div>
+    </form>
+    <a href="/account2/account">Cancel</a>
+  </div>
+  </div>
+</div>

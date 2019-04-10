@@ -1,0 +1,72 @@
+<h2 class="heading-medium question">Select an address</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="search-results-handler">
+      <div class="form-group">
+         
+        <!--<label class="form-label" for="select-box">Select an address</label>-->
+        {% if data['updateType'] === "addCorrespondence" %}
+        <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
+          <option>10 addressess found</option>
+          <option>1 Post Street, Gateshead</option>
+          <option>2 Post Street, Gateshead</option>
+          <option>3 Post Street, Gateshead</option>
+          <option>4 Post Street, Gateshead</option>
+          <option>5 Post Street, Gateshead</option>
+          <option>6 Post Street, Gateshead</option>
+          <option>7 Post Street, Gateshead</option>
+          <option>8 Post Street, Gateshead</option>
+          <option>9 Post Street, Gateshead</option>
+          <option>10 Post Street, Gateshead</option>
+        </select>
+        {% else %}
+        <select class="form-control" id="select-box" name="select-box" onchange="myFunc()">
+          <option>6 addressess found</option>
+          <option>2 New Street, Gateshead</option>
+          <option>4 New Street, Gateshead</option>
+          <option>6 New Street, Gateshead</option>
+          <option>8 New Street, Gateshead</option>
+          <option>10 New Street, Gateshead</option>
+          <option>12 New Street, Gateshead</option>
+        </select>
+        {% endif %}
+      </div>
+
+      <div id="hidden">
+        <div class="form-group">
+          <label class="form-label" for="full-name-f1">Add a cherished line (optional)</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">      
+        </div>
+        
+        <div class="form-group">
+          {% if data['updateType'] === "addCorrespondence" %}
+          <ul>
+            <li>7 Post Street</li>
+            <li>Gateshead</li>
+            <li>Tyne &amp; Wear</li>
+            <li>NE11 1HH</li>
+          </ul>
+          {% else %}
+          <ul>
+            <li>2 New Street</li>
+            <li>Gateshead</li>
+            <li>Tyne &amp; Wear</li>
+            <li>NE11 1HH</li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div id="to_hide"class="form-group">
+        <a class="under-link" href="manual-address">I can't find the address in the list</a>
+      </div>
+
+      <div class="form-group search-group">
+        <input class="button" type="submit" value="Next">
+        <a href="address-search" class="secondary-button">New search</a>
+      </div>
+      
+    </form>
+    <a href="/account2/account">Cancel</a>
+  </div>
+</div>

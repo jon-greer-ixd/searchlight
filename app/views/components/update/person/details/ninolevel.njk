@@ -1,0 +1,45 @@
+<h2 class="heading-medium question">What is the National Insurance number verification level?</h2>
+
+<div class="grid-row">
+  
+  <div class="column-two-thirds">
+    
+    <form class="form" method="get" action="check">
+      
+      <fieldset class="form-group">
+        
+        <legend class="visually-hidden">Is this person disabled?</legend>
+        
+        {% if data.personalDetails.ninoVerificationLevel.value != "Verified" %}
+          <div class="multiple-choice">
+            <input id="1" type="radio" name="personalDetailValue" value="Verified">
+            <label for="1">Verified</label>
+          </div>
+        {% endif %}
+        
+        {% if data.personalDetails.ninoVerificationLevel.value != "Qualified" %}
+          <div class="multiple-choice">
+            <input id="2" type="radio" name="personalDetailValue" value="Qualified"  >
+            <label for="2">Qualified</label>
+          </div>
+        {% endif %}
+        
+        {% if data.personalDetails.ninoVerificationLevel.value != "Unverified" %}
+          <div class="multiple-choice">
+            <input id="3" type="radio" name="personalDetailValue" value="Unverified" {>
+            <label for="3">Unverified</label>
+          </div>
+        {% endif %}
+                
+      </fieldset>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    
+    <p><a href="task-list">Cancel</a></p>
+    
+  </div>
+  
+</div>

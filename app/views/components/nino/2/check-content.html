@@ -1,0 +1,134 @@
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+          {% if createjourney === false %}
+            <h2 class="table-header">National insurance number details</h2>
+            <table class="table">
+              <tr>
+                <td><span class="strong">National insurance number</span></td>
+                <td>NA000001D</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Creation date</span></td>
+                <td>01 January 2018</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Creation office</span></td>
+                <td>1234</td>
+                <td><a>Change</a></td>
+              </tr>
+            </table>
+            <br>
+          {% endif %}
+        
+        <h2 class="table-header">Personal details</h2>
+        <table class="table">
+          <tr>
+            <td><span class="strong">Title</span></td>
+            <td>Mr</td>
+            <td><a>Change</a></td>
+          </tr>
+          
+          {% if createjourney === false %}
+            <tr>
+              <td><span class="strong">Name</span></td>
+              <td>Tom Smith</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% else %}
+            <tr>
+              <td><span class="strong">Name</span></td>
+              <td>Mathéo Bangalter</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+
+          {% if createjourney === false %}
+            <tr>
+              <td><span class="strong">Name start date</span></td>
+              <td><span class="today">24 January 2018</span></td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Name notified start date</span></td>
+              <td><span class="today">24 January 2018</span></td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          
+          <tr>
+            <td><span class="strong">Sex</span></td>
+            <td>Male</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Date of birth</span></td>
+            <td><span class="today">8 February 1960</span></td>
+            <td><a>Change</a></td>
+          </tr>
+        </table>
+      
+        <br>
+        <h2 class="table-header">Address details</h2>
+      
+        <table class="table">
+          <tr>
+            <td><span class="strong">Residential address</span></td>
+            <td>1 Current Crescent, Gateshead, Tyne &amp; Wear NE1 1HH</td>
+            <td><a>Change</a></td>
+          </tr>
+          {% if createjourney === false %}
+            <tr>
+              <td><span class="strong">Address start date</span></td>
+              <td><span class="today">24 January 2018</span></td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">Address notified start date</span></td>
+              <td><span class="today">24 January 2018</span></td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+        </table>
+      
+        <br>
+        <h2 class="table-header">Other personal details</h2>
+      
+        <table class="table">
+          <tr>
+            <td><span class="strong">Mobile telephone number</span></td>
+            <td>07123 456 789</td>
+            <td><a>Change</a></td>
+          </tr>
+          
+          {% if createjourney === true %}
+          <tr>
+            <td><span class="strong">Nationality</span></td>
+            <td>French</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Marital status</span></td>
+            <td>Separated</td>
+            <td><a>Change</a></td>
+          </tr>
+          {% endif %}
+
+      </table>
+        
+        <br>
+      <form class="form" method="get" action="done">
+
+        <div class="form-group">
+          <input class="button" type="submit" value="Accept and submit">
+        </div>
+
+      </form>
+        <p><a href="../../search">Cancel</a></p>
+    </div>
+
+  </div>
+     
+

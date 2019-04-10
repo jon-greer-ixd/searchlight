@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+
+{% set person_title = "Mr" %}
+{% set person_firstName = "James" %}
+{% set person_lastName = "Jones" %}
+{% set person_dob = "21 Jan 1980" %}
+
+
+  {% include "components/income/nav.html" %}
+
+  {% include "components/income/income.html" %}
+
+{% endblock %}

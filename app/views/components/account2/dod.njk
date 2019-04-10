@@ -1,0 +1,44 @@
+  <div class="grid-row">
+    <div class="column-one-third">
+      <p>Date of death</p>
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+      <li class="strong">  {{ data.personalDetails.dateOfDeath.value | asString }}  </li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 5 Jun 2010
+        </li>
+-->
+        <li class="multi-dates">
+            {% if data.personalDetails.dateOfDeath.level == "Level 3" %}
+              <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+              <span class="sl-metadata">Verified to level 3</span>
+            {% elif data.personalDetails.dateOfDeath.level == "Level 2" %}
+              <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+              <span class="sl-metadata">Verified to level 2</span>
+            {% elif data.personalDetails.dateOfDeath.level == "Level 1" %}
+              <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+              <span class="sl-metadata">Verified to level 1</span>
+            {% elif data.personalDetails.dateOfDeath.level == "Not verified" %}
+              <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+              <span class="sl-metadata">Not verified</span>
+            {% endif %}
+        </li>
+      </ul>
+    </div>
+
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a data-toggle="modal" data-target="#death_modal" class="under-link">View maintenance</a> 
+        <span class="pipe"> | </span> 
+        <a href="/history/death-history" class="under-link">View history</a>
+      </li>
+      <li>
+        <a href="change_pd/?personalDetail=dateOfDeath" class="under-link">Change</a>
+      </li>
+    </ul>
+  </div>
+</div>

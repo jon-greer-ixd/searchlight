@@ -1,0 +1,138 @@
+
+<!--
+<p>Search for an address</p>
+
+<div class="grid-row">
+
+  <div class="column-one-half">
+
+    <form method="get" action="search-results">
+
+      <div class="form-group">
+        <label class="form-label" for="select-box">Country</label>
+        <select class="form-control" id="select-box" name="select-box">
+          <option>UK/Channel Islands/Isle of Man</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="detail">Address details</label>
+        <input class="form-control" id="detail" type="text" name="detail">
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="postcode">Postcode</label>
+        <input class="form-control" id="postcode" type="text" name="postcode">
+      </div>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Search">
+      </div>
+
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>
+-->
+
+
+
+<div class="grid-row">
+
+  <div class="column-one-half">
+
+    <form method="get" action="search-results">
+            
+      <div class="form-group">
+        <fieldset class="inline">
+        <legend>
+          <p>
+            Is the address within the United Kingdom?
+          </p>
+        </legend>
+
+        <div class="multiple-choice">
+          <input id="radio-inline-1" type="radio" name="radio-inline-group" value="Yes" checked="checked" onchange="hideInternationalAddress()">
+          <label for="radio-inline-1">Yes</label>
+        </div>
+
+        <div class="multiple-choice">
+          <input id="internationalID" type="radio" name="radio-inline-group" value="No" onchange="showInternationalAddress()">
+          <label for="radio-inline-2">No</label>
+        </div>
+
+      </fieldset>
+      
+        <div id="uk">
+          <br>
+          <p id="shown">
+            Search for a UK address
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="detail">Address details</label>
+            <input class="form-control" id="detail" type="text" name="detail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="postcode">Postcode</label>
+            <input class="form-control" id="postcode" type="text" name="postcode">
+          </div>
+          
+          <div class="form-group">
+            <input class="button" type="submit" value="Search">
+          </div>
+
+        </div>
+
+        <div id="international" class="visually-hidden">
+          <br>
+          <p class="">
+            Enter a non UK address
+          </p>
+
+          <div class="form-group">
+            <label class="form-label" for="detail">Country</label>
+            <input class="form-control" id="detail" type="text" name="detail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="detail">Address line 1</label>
+            <input class="form-control" id="detail" type="text" name="detail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="detail">Address line 2</label>
+            <input class="form-control" id="detail" type="text" name="detail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="detail">Address line 3</label>
+            <input class="form-control" id="detail" type="text" name="detail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="detail">Address line 4</label>
+            <input class="form-control" id="detail" type="text" name="detail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="detail">Address line 5</label>
+            <input class="form-control" id="detail" type="text" name="detail">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="postcode">Postcode</label>
+            <input class="form-control" id="postcode" type="text" name="postcode">
+          </div>
+          
+          <div class="form-group">
+            <input class="button" type="submit" value="Next">
+          </div>
+
+        </div>
+
+    </form>
+    <p><a href="account">Cancel</a></p>
+  </div>
+</div>

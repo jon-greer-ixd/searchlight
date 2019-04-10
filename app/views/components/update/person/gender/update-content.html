@@ -1,0 +1,63 @@
+<div class="grid-row">
+  
+  <div class="column-one-half">
+    
+    <form method="get" action="check">
+      
+      <legend class="visually-hidden">
+        <p class="">
+          What do you need to add?
+        </p>
+      </legend>
+      
+<!--
+      <div class="form-group">
+        <fieldset>
+          <legend>
+            <p class="radio-header">Which gender does the person identify as?</p>
+          </legend>
+
+          <div class="multiple-choice">
+            <input id="radio-1" type="radio" value="Male" name="data" {% if data.sex == "Male" %} checked="checked" {% endif %}>
+            <label for="radio-1">Male</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="radio-2" type="radio" value="Female" name="data" {% if data.sex == "Female" %} checked="checked" {% endif %}>
+            <label for="radio-2">Female</label>
+          </div>
+        </fieldset>
+      </div>
+-->
+      
+      <div class="form-group prepop">
+        <label class="form-label" for="date">
+          Effective date of gender change
+          <span class="form-hint">
+            For example 31/8/197
+          </span>
+        </label>
+        <input class="form-control box-one" id="date" name="date" type="text">
+<!--        <a class="populate-link-one">Use today's date</a>-->
+      </div>
+
+      <div class="form-group prepop">
+        <label class="form-label" for="date">
+          Notified or decision date
+          <span class="form-hint">
+          </span>
+        </label>
+        <input class="form-control box-two" id="date" name="date" type="text">
+        <a class="populate-link-two">Use today's date</a>
+      </div>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    
+    <p><a href="/account2/account">Cancel</a></p>
+    
+  </div>
+  
+</div>

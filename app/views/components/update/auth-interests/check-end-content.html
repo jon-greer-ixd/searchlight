@@ -1,0 +1,70 @@
+<h2 class="heading-medium question">Check your answers</h2>
+
+{% if data.authority.editHousing === true and data.authority.editTax === true %}
+  <div class="grid-row">
+    <div class="column-one-half">
+      <div>
+      <table class="table">
+        <tr>
+          <td><span class="strong">Interest</span></td>
+            <td>
+            Council Tax reduction<br>
+            Housing Benefit
+          </td>
+          <td><a href="">change</a></td>
+        </tr>
+        <tr>
+          <td><span class="strong">End date</span></td>
+            <td>{{data['prepopulatedDate']}}</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div>
+
+{% else %}
+  <div class="grid-row">
+    <div class="column-one-half">
+      <div>
+      <table class="table">
+        {% if data.authority.editHousing === true %}
+        <tr>
+          <td><span class="strong">Interest</span></td>
+            <td>Housing Benefit</td>
+          <td><a href="">Change</a></td>
+        </tr>
+        {% elseif data.authority.editTax === true %}
+        <tr>
+          <td><span class="strong">Interest</span></td>
+            <td>Council Tax reduction</td>
+          <td>&nbsp;</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <td><span class="strong">End date</span></td>
+            <td>{{data['prepopulatedDate']}}</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td><span class="strong">Office code</span></td>
+            <td>12345</td>
+          <td>&nbsp;</td>
+        </tr>
+      </table>
+    </div>
+    <br>
+    <div>
+
+{% endif %}
+      
+    <form method="get" action="authority-stop-handler">
+      <div class="form-group">
+        <input class="button" type="submit" value="Submit">
+      </div>
+    </form>
+
+    <a href="ac-one">Cancel</a>
+    </div>
+  </div>
+</div>

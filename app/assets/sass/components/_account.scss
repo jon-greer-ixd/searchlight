@@ -1,0 +1,194 @@
+#sl-account {
+  background: $canvas-colour;
+
+  @media (min-width: $screen-sm-min) and (max-width: $custom-md-max-breakpoint) {
+    margin-top: 111px;
+  }
+
+  @media (max-width: $screen-sm-min) {
+    margin-top: -2px;
+  }
+  @media (min-width: $custom-sm-max-breakpoint) {
+    margin-top: 52px;
+  }
+
+  .sl-account-header {
+
+    @media (min-width: $screen-sm-min) {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .sl-primary-name-container {
+      background-color: $govuk-blue;
+    }
+
+    .sl-primary-name-container.sl-deceased {
+      background-color: $grey-1;
+    }
+
+    .sl-local-nav-container {
+      background-color: $white;
+      box-shadow: $high-shadow;
+
+      @media (max-width: $screen-xs-max) {
+        z-index: 999;
+      }
+      @media (min-width: $screen-sm-min) {
+        margin-top: 0 !important;
+      }
+    }
+
+  }
+
+  .sl-account-canvas {
+    background: $canvas-colour;
+    min-height: 900px;
+
+    @media (min-width: $screen-sm-min) {
+      padding-top: 190px;
+    }
+  }
+  .sl-account-canvas-width {
+    max-width: $max-content-width;
+    margin: auto;
+    position: relative;
+  }
+  .sl-primary-name-container-placeholder {
+    background-color: $govuk-blue;
+    height: 140px;
+  }
+
+  .sl-personal-details-card {
+    padding-top: 30px;
+  }
+
+  .short-gutter {
+    padding: 0 15px 20px;
+  }
+
+  .sl-account-hover-popover {
+    color: $white;
+    background-color: $dark-grey;
+    text-align: center;
+    width:auto;
+    max-width: 500px;
+    border-radius: 5px;
+    min-height: 27px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.39);
+    z-index: 990;
+
+  }
+
+  .sl-account-hover-popover.bottom {
+    margin-top: 5px;
+
+    .arrow {
+      padding-left: 6.5px;
+    }
+
+    .arrow:after {
+      border-bottom-color: $dark-grey;
+      color: white;
+      margin: auto;
+      border-width: 0 6.5px 7px;
+      top: 4px;
+    }
+  }
+
+  .sl-account-hover-popover{
+    .popover-content {
+      padding: 4px 9px 3px 10px;
+    }
+  }
+  .sl-embedded-card {
+    background: $canvas-colour;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin-top: 20px;
+    // Hover off
+    transition: all .05s ease-in-out;
+  }
+  .sl-embedded-card:hover {
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.15);
+    // Hover on
+    transition: all .2s ease-in-out;
+    transform: scale(1.025);
+  }
+  .sl-primary-card.sl-acc-more-personal-details {
+    padding: 0 45px 20px;
+  }
+  .sl-previous-data {
+    line-height: 50px;
+    width: 100%;
+    background-color: $white;
+    box-shadow: $shadow;
+    border-top: solid 1px $grey-4;
+    padding-left: 31px;
+  }
+
+  .sl-previous-data:hover {
+    background-color: $grey-4;
+  }
+  .sl-previous-data.sl-previous-data-open {
+    background-color: $grey-4;
+  }
+  .sl-previous-data.sl-previous-data-open:hover {
+    background-color: $grey-3;
+  }
+  #sl-address-primary-card.noPadding {
+    padding-bottom: 0;
+  }
+
+  .sl-previous-data:focus {
+    outline: 0;
+  }
+  .sl-previous-arrow {
+    color: $govuk-blue;
+    width: 10px;
+  }
+  .sl-secondary-text.sl-previous-data-text {
+    color: $govuk-blue;
+  }
+  .sl-temp-nationality-holder {
+    padding-top: 20px;
+  }
+  .sl-account-warning-icon {
+    float: left;
+    margin: 4px 20px 0px 20px;
+  }
+  .sl-previous-address-main-card {
+    border-left: 15px solid #e8e8e8;
+  }
+  .sl-personal-details-item {
+    padding-bottom: 20px;
+  }
+  .sl-personal-details-item-last {
+    padding-bottom: 0;
+  }
+  .sl-primary-name-card {
+    max-width: $max-content-width;
+    margin: 0 auto;
+  }
+  #sl-address-primary-card {
+    padding: 30px;
+  }
+
+  .sl-placeholder-height {
+    height: 240px;
+  }
+
+  @max-content-width: 1310px;
+
+  .sl-account-popover-container:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .placeholder {
+    padding-top: 30px;
+  }
+
+}
+

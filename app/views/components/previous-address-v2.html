@@ -1,0 +1,180 @@
+    <details>
+    <summary><span class="summary">Previous addresses</span></summary>
+
+    {% if correspondenceremoved == true  %}
+    
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Correspondence address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              19 Dec 2017 - 1 Jan 2018
+          </li>
+        </ul>
+      </div>
+      <div class="column-two-thirds">
+        <p class="address">
+          7 Post Street<br>
+          Gateshead<br>
+          Tyne and Wear<br>
+          NE11 4HN<br>
+          England
+        </p>
+      </div>
+    </div>
+      
+    {% endif %}
+      
+      
+    {% if addresscorrected == true %}
+    
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              1 Dec 1990 – {{editDate}}
+          </li>
+        </ul>
+      </div>
+      <div class="column-two-thirds">
+        <p class="address incorrect">
+          4 Main Street<br>
+          Gateshead<br>
+          Tyne and Wear<br>
+          NE14 1HN<br>
+          England
+        </p>
+      </div>
+    </div>
+      
+      <!--
+      4 main streert should show if
+      address updated
+      address corrected incorrect
+      status corrected to no fixed abode incorrect
+      status updated to no fixed abode
+      
+      {% if statuscorrected == true or statusupdated == true %}
+        {% if currentstatus == "nfa" or currentstatus == "pwa" %}
+
+        <div class="grid-row address-list">
+          <div class="column-one-third">
+            <ul>
+              <li>Residential address</li>
+              <li class="sl-secondary-text-color sl-metadata">
+                  1 Dec 1990 – {{editDate}}
+              </li>
+            </ul>
+          </div>
+          <div class="column-two-thirds">
+            <p class="address incorrect">
+              4 Main Street<br>
+              Gateshead<br>
+              Tyne and Wear<br>
+              NE14 1HN<br>
+              England
+            </p>
+          </div>
+        </div>
+
+        {% elif updated == true or addresscorrected === true %}
+
+        {% endif %}
+      {% endif %}
+
+      -->
+      
+    {% endif %}
+      
+    {% if statuscorrected == true %}
+      {% if currentstatus == "nfa" or currentstatus == "pwa" %}
+        <div class="grid-row address-list">
+          <div class="column-one-third">
+            <ul>
+              <li>Residential address</li>
+              <li class="sl-secondary-text-color sl-metadata">
+                  1 Dec 1990 – {{editDate}}
+              </li>
+            </ul>
+          </div>
+          <div class="column-two-thirds">
+            <p class="address incorrect">
+              4 Main Street<br>
+              Gateshead<br>
+              Tyne and Wear<br>
+              NE14 1HN<br>
+              England
+            </p>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+      
+    {% if statusupdated == true %}
+      {% if currentstatus == "nfa" or currentstatus == "pwa" %}
+        <div class="grid-row address-list">
+          <div class="column-one-third">
+            <ul>
+              <li>Residential address</li>
+              <li class="sl-secondary-text-color sl-metadata">
+                  1 Dec 1990 – {{editDate}}
+              </li>
+            </ul>
+          </div>
+          <div class="column-two-thirds">
+            <p class="address">
+              4 Main Street<br>
+              Gateshead<br>
+              Tyne and Wear<br>
+              NE14 1HN<br>
+              England
+            </p>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+      
+    {% if updated == true %}
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              1 Dec 1990 – {{editDate}}
+          </li>
+        </ul>
+      </div>
+      <div class="column-two-thirds">
+        <p class="address">
+          4 Main Street<br>
+          Gateshead<br>
+          Tyne and Wear<br>
+          NE14 1HN<br>
+          England
+        </p>
+      </div>
+    </div>
+    {% endif %}
+      
+    <br>
+    <div class="grid-row address-list">
+      <div class="column-one-third">
+        <ul>
+          <li>Residential address</li>
+          <li class="sl-secondary-text-color sl-metadata">
+              1 Jan 1960 - 1 Dec 1990
+          </li>
+        </ul>
+      </div>
+      <div class="column-two-thirds">
+        <p class="address">
+          1 Old Street<br>
+          Newcastle upon Tyne<br>
+          Tyne and Wear<br>
+          NE1 111<br>
+          England
+        </p>
+      </div>
+    </div>
+  </details>

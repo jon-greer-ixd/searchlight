@@ -1,0 +1,115 @@
+ <!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+
+        <div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Personal details</h2>
+          <div class="sl-primary-card sl-personal-details-card">
+            <!-- ngIf: !data.person && personTimeout -->
+
+            <!-- ngIf: !data.person && !personTimeout -->
+
+            <!-- ngIf: data.person.empty --><div class="row ng-scope" ng-if="data.person.empty">
+
+              <div class="col-xs-12">No personal details held for this customer.</div>
+            </div><!-- end ngIf: data.person.empty -->
+            <!-- ngIf: data.person.person && data.person.person[0].personalDetails && !data.person.empty -->
+          </div>
+        </div>
+        <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Address</h2>
+
+          <div id="sl-address-primary-card" class="sl-primary-card">
+            <div>
+                {% include "./data/address.njk" %}
+            </div>
+          </div>
+        </div>
+
+        <div name="Contact" id="Contact" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Contact</h2>
+
+          <div class="sl-primary-card" id="sl-account-contact-details">
+            <!-- ngIf: !data.contact && contactTimeout -->
+
+            <!-- ngIf: !data.contact && !contactTimeout -->
+            <!-- ngIf: data.contact.empty --><div class="row ng-scope" ng-if="data.contact.empty">
+
+              <div class="col-xs-12">No contact details held for this customer.</div>
+            </div><!-- end ngIf: data.contact.empty -->
+            <!-- ngIf: data.contact && !data.contact.empty -->
+          </div>
+        </div>
+
+
+        <div name="Interests" id="Interests" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Interests</h2>
+          <!-- ngIf: !data.interests || data.interests.empty --><div class="sl-primary-card ng-scope" id="sl-account-interest-details" ng-if="!data.interests || data.interests.empty">
+            <!-- ngIf: !data.interests && interestsTimeout -->
+
+            <!-- ngIf: !data.interests && !interestsTimeout -->
+            <!-- ngIf: data.interests.empty --><div class="row ng-scope" ng-if="data.interests.empty">
+
+              <div class="col-xs-12">No interests held for this customer.
+              </div>
+            </div><!-- end ngIf: data.interests.empty -->
+          </div><!-- end ngIf: !data.interests || data.interests.empty -->
+          <!-- ngIf: data.interests && !data.interests.empty -->
+        </div>
+
+        <div name="Benefits" id="Benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Benefits</h2>
+
+          <!-- ngIf: !data.fullAwardHistory || data.fullAwardHistory.empty --><div class="sl-primary-card ng-scope" ng-if="!data.fullAwardHistory || data.fullAwardHistory.empty">
+            <!-- ngIf: !data.fullAwardHistory && benefitsTimeout -->
+
+            <!-- ngIf: !data.fullAwardHistory && !benefitsTimeout -->
+            <!-- ngIf: data.fullAwardHistory.empty --><div class="row ng-scope" ng-if="data.fullAwardHistory.empty">
+
+              <div class="col-xs-12">No benefits held for this customer.
+
+              </div>
+            </div><!-- end ngIf: data.fullAwardHistory.empty -->
+          </div><!-- end ngIf: !data.fullAwardHistory || data.fullAwardHistory.empty -->
+          <!-- ngIf: (data.fullAwardHistory.benefitsSummary.currentBenefits || data.fullAwardHistory.benefitsSummary.previousBenefits) && !data.fullAwardHistory.empty -->
+        </div>
+
+        <div name="Relationships" id="Relationships" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Relationships</h2>
+          <div ng-class="{'sl-primary-card': data.relationships.empty || !data.relationships}" class="sl-primary-card">
+            <!-- ngIf: !data.relationships && relationshipsTimeout -->
+            <!-- ngIf: !data.relationships && !relationshipsTimeout -->
+            <!-- ngIf: data.relationships.empty --><div class="row ng-scope" ng-if="data.relationships.empty">
+              <div class="col-xs-12">No relationships held for this customer.
+              </div>
+            </div><!-- end ngIf: data.relationships.empty -->
+            <!-- ngIf: data.relationships && !data.relationships.empty -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Code template for primary and embedded cards. Ensure styling is defined as child of width elements and embedded cards are defined under a row.
+
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="sl-primary-card">
+    </div>
+  </div>
+
+  <div class="col-xs-10 col-xs-offset-1">
+    <div class="sl-primary-card">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <div class="sl-embedded-card">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <div class="sl-embedded-card">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>--></div>

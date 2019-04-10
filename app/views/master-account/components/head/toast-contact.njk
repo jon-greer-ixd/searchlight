@@ -1,0 +1,9 @@
+{% if data.preferredContactState == "removed" or data.preferredContactState == "updated" %}
+  {% include "./state-message.njk" %}
+{% else %}
+  {% for someId, item in data.contactTypes %}
+    {% if item.state == "added" or item.state == "updated" or item.state == "corrected" or item.state == "removed" %}
+      {% include "./update-message.njk" %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

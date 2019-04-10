@@ -1,0 +1,23 @@
+{% if data.personalDetailValue == "null" or data.personalDetailValue == null %}
+  <tr>
+    <td class="bold">Remove their {{data.personalDetails[data.personalDetail].display}}</td>
+    <td><a>Change</a></td>
+  </tr>
+{% else %}
+  <tr>
+    <td class="bold">Who is potentially violent?</td>
+    <td>              
+      {{counter}}
+        {% set counter = data.personalDetailValue.length %}
+        {% for item in data.personalDetailValue %}
+          {% if counter != 1 %}
+            {{item}}, <br>
+          {% else %}
+            {{item}}
+          {% endif %}
+          {% set counter = counter -1 %}
+        {% endfor %}
+    </td>
+    <td><a>Change</a></td>
+  </tr>
+{% endif %}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <title>metadata icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Personal-details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SDEL-1684-—-View-a-customer's-personal-details-(including-spacing)-Copy-3" transform="translate(-815.000000, -403.000000)" fill="#00823B">
+            <g id="personal-details" transform="translate(465.000000, 224.000000)">
+                <g id="data-group" transform="translate(350.000000, 150.000000)">
+                    <g id="data-item">
+                        <g id="metadata-icon" transform="translate(0.000000, 29.000000)">
+                            <path d="M8,0 C3.6,0 0,3.6 0,8 C0,12.4 3.6,16 8,16 C12.4,16 16,12.4 16,8 C16,3.6 12.4,0 8,0 L8,0 Z M6.4,12 L2.4,8 L3.52,6.88 L6.4,9.76 L12.48,3.68 L13.6,4.8 L6.4,12 L6.4,12 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

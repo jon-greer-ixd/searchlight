@@ -1,0 +1,50 @@
+<h2 class="heading-medium question">What is the address status?</h2>
+
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="status-handler">
+      
+      <div class="form-group">
+        <fieldset>
+          <legend>
+            <p class="visually-hidden">What is the address status</p>
+          </legend>
+          
+          {% if data.addresses[data.addressType].status != "live"  %}
+            <div class="multiple-choice">
+              <input id="live" type="radio" name="tempStatus" value="live">
+              <label for="live">Live</label>
+            </div>
+          {% endif %}
+          
+          {% if data.addresses[data.addressType].status != "dlo" %}
+            <div class="multiple-choice">
+              <input id="dlo" type="radio" name="tempStatus" value="dlo">
+              <label for="dlo">Dead letter office</label>
+            </div>
+          {% endif %}
+          
+          {% if data.addresses[data.addressType].status != "nfa" %}
+            <div class="multiple-choice">
+              <input id="nfa" type="radio" name="tempStatus" value="nfa">
+              <label for="nfa">No fixed abode</label>
+            </div>
+          {% endif %}
+          
+          {% if data.addresses[data.addressType].status != "pwa" %}
+            <div class="multiple-choice">
+              <input id="pwa" type="radio" name="tempStatus" value="pwa">
+              <label for="pwa">Person without address</label>
+            </div>
+          {% endif %}
+
+        </fieldset>
+      </div>  
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      <p><a href="/account2/account">Cancel</a></p>
+    </form>
+  </div>
+</div>

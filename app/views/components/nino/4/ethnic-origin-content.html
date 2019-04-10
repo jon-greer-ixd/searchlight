@@ -1,0 +1,36 @@
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="ethnic-origin-handler">
+
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Ethnic origin</legend>
+          <label class="form-label" for="full-name-f1">Ethnic origin</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+        </fieldset>
+        
+        {% if createjourney === false %}
+          <fieldset class="form-group">
+            <legend class="visuallyhidden">Ethnic origin start date</legend>
+            <label class="form-label" for="postcode">
+              Ethnic origin start date
+              <span class="form-hint">
+                For example 31/8/1979
+              </span>
+            </label>
+            <input class="form-control" id="postcode" type="text" name="postcode" value="{{today}}">
+          </fieldset>
+        {% endif %}
+        
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      <p><a href="task-list">Cancel</a></p>
+    </div>
+
+  </div>
+     
+

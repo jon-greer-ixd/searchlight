@@ -1,0 +1,122 @@
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="previous-names">
+        
+        <fieldset>
+          <div class="form-group">
+            <legend>
+              <p class="">Title</p>
+            </legend>
+            <div class="multiple-choice" data-target="contact-by-email">
+              <input id="mr" type="radio" name="radio-contact-group" value="mr">
+              <label for="mr">Mr</label>
+            </div>
+            <div class="multiple-choice" data-target="contact-by-phone">
+              <input id="mrs" type="radio" name="radio-contact-group" value="mrs">
+              <label for="mrs">Mrs</label>
+            </div>
+            <div class="multiple-choice" data-target="contact-by-phone">
+              <input id="example-contact-by-phone" type="radio" name="radio-contact-group" value="No">
+              <label for="example-contact-by-phone">Ms</label>
+            </div>
+            <div class="multiple-choice" data-target="contact-by-text">
+              <input id="other" type="radio" name="radio-contact-group" value="other">
+              <label for="other">Other</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+              <div class="multiple-choice" data-target="contact-by-phone">
+                <input id="dr" type="radio" name="radio-contact-group" value="dr">
+                <label for="dr">Dr</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="rev" type="radio" name="data" value="rev">
+                <label for="rev">Rev</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="sir" type="radio" name="data" value="sir">
+                <label for="sir">Sir</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="lady" type="radio" name="data" value="lady">
+                <label for="lady">Lady</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="lord" type="radio" name="data" value="lord">
+                <label for="lord">Lord</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="Professor" type="radio" name="data" value="Professor">
+                <label for="Professor">Professor</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="captain" type="radio" name="data" value="captain">
+                <label for="captain">Captain</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="major" type="radio" name="data" value="major">
+                <label for="major">Major</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="dame" type="radio" name="data" value="dame">
+                <label for="dame">Dame</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="colonel" type="radio" name="data" value="colonel">
+                <label for="colonel">Colonel</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">First name</legend>
+          <label class="form-label" for="full-name-f1">First name</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+        </fieldset>
+
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Last name</legend>
+          <label class="form-label" for="full-name-f1">Last name</label>
+          <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+        </fieldset>
+        
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Suffix</legend>
+          <label class="form-label short" for="code">Suffix</label>
+          <input class="form-control" id="postcode" type="text" name="postcode">
+        </fieldset>
+        
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Name start date</legend>
+          <label class="form-label" for="postcode">
+            Name start date
+            <span class="form-hint">
+              For example 31/8/1979
+            </span>
+          </label>
+          <input class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+        </fieldset>
+
+        {% if createjourney === false %}
+
+          <fieldset class="form-group">
+            <legend class="visuallyhidden">Name notified start date</legend>
+            <label class="form-label short" for="date">Name notified start date</label>
+            <input class="form-control" id="date" type="text" name="date" value="{{today}}">
+          </fieldset>
+        {% endif %}
+
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+        <p><a href="../../search">Cancel</a></p>
+
+      </form>
+      
+    </div>
+
+  </div>
+     
+

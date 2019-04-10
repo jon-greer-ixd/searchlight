@@ -1,0 +1,107 @@
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <form class="form" method="get" action="another-contact">
+      
+      <fieldset class="form-group">
+        <label class="form-label" for="contact-text-message">Telephone number</label>
+        <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+      </fieldset>
+
+      <fieldset class="form-group">
+        <label class="form-label" for="postcode">
+          Start date
+          <span class="form-hint">
+            For example 31/8/197
+          </span>
+        </label>
+        <input value="{{data['prepopulatedDate']}}" class="form-control" name="postcode" type="text" id="postcode">
+      </fieldset>      
+      
+      <div class="form-group">
+        <fieldset>
+
+          <legend>
+            <p class="bold">Do any of the following apply to this number? (optional)</p>
+          </legend>
+
+          <div class="multiple-choice">
+            <input id="nationalities-british" name="pref" type="checkbox" value="British">
+            <label for="nationalities-british">It's their preferred method of contact</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="nationalities-irish" name="ex-der" type="checkbox" value="Irish">
+            <label for="nationalities-irish">It's an ex-directory number</label>
+          </div>
+          
+<!--
+          <div class="multiple-choice" data-target="business-third">
+            <input id="nationalities-other" name="bus" type="checkbox" value="Citizen of a different country">
+            <label for="nationalities-other">Its a business or third party number</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="business-third">
+            <div class="multiple-choice">
+              <input id="business" type="radio" name="group1" value="business">
+              <label for="business">Business</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="third" type="radio" name="group1" value="third">
+              <label for="third">Third party</label>
+            </div>
+          </div>
+-->
+
+<!--
+          <div class="multiple-choice" data-target="daynight">
+            <input id="day" name="day" type="checkbox" value="Citizen of a different country">
+            <label for="day">Its a daytime or evening only number</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="daynight">
+            <div class="multiple-choice">
+              <input id="daytime" type="radio" name="group2" value="daytime">
+              <label for="daytime">Daytime</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="evening" type="radio" name="group2" value="evening">
+              <label for="evening">Evening</label>
+            </div>
+          </div>
+-->
+          
+          <div class="multiple-choice" data-target="combo-box">
+            <input id="combo-q" name="day" type="checkbox" value="combo-q">
+            <label for="combo-q">It's a daytime, evening, business or third party number</label>
+          </div>
+          <div class="panel panel-border-narrow js-hidden" id="combo-box">
+            <div class="multiple-choice">
+              <input id="combo-1-1" type="radio" name="combo-1" value="combo-1-1">
+              <label for="combo-1-1">Daytime</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="combo-1-2" type="radio" name="combo-1" value="combo-1-2">
+              <label for="combo-1-2">Evening</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="combo-1-3" type="radio" name="combo-1" value="combo-1-3">
+              <label for="combo-1-3">Business</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="combo-1-4" type="radio" name="combo-1" value="combo-1-4">
+              <label for="combo-1-4">Third party</label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+
+    </form>
+      <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>

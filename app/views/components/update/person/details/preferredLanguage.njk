@@ -1,0 +1,53 @@
+{% if data.updateType == 1 %}
+  <h2 class="heading-medium question">What is their preferred language?</h2>  
+{% else %}
+  <h2 class="heading-medium question">What kind of correction do you need to make?</h2>  
+{% endif %}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <form class="form" method="get" action="check">
+      <fieldset class="form-group">
+        <legend class="visually-hidden">language</legend>
+        
+        <!-- ADD-->
+        {% if data.updateType == 1 %}
+          <div class="multiple-choice">
+            <input id="English" type="radio" name="personalDetailValue" value="English">
+            <label for="English">English</label>
+          </div>
+        
+          <div class="multiple-choice">
+            <input id="welsh" type="radio" name="personalDetailValue" {% if data.updateType != 1 and data.personalDetails.preferredLanguage.value == "Welsh" %} checked = "checked"{% endif %} value="Welsh">
+            <label for="welsh">Welsh</label>
+          </div>
+        {% endif %}
+        
+        <!-- CORRECT-->
+        {% if data.updateType == 3 %}
+          {% if data.personalDetails.preferredLanguage.value == "Welsh" %}
+            <div class="multiple-choice">
+              <input id="English" type="radio" name="personalDetailValue" value="English">
+              <label for="English">Correct the prefered language to English</label>
+            </div>
+          {% endif %}
+          {% if data.personalDetails.preferredLanguage.value == "English" %}
+            <div class="multiple-choice">
+                <input id="welsh" type="radio" name="personalDetailValue" value="Welsh">
+                <label for="welsh">Correct the prefered language to Welsh</label>
+              </div>
+          {% endif %}
+          <div class="multiple-choice">
+            <input id="unknown" name="personalDetailValue" type="radio" value="null">
+            <label for="unknown">Remove the preferred language</label>
+          </div>
+        {% endif %}
+
+      </fieldset>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+</div>

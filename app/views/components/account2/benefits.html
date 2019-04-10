@@ -1,0 +1,42 @@
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Benefits</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+
+{% if data.personalDetails.bereavementBenefit.show == true %}
+    
+    <div class="grid-row benefit-header">    
+      <div class="column-one-third">    
+        <p><a>Start date</a></p>
+      </div>
+      <div class="column-one-third">    
+        <p><a>Benefit</a></p>
+      </div>    
+    </div> 
+    
+    <hr>
+    
+    <div class="grid-row" id="benefit">
+      <div class="column-one-third">    
+        <p>3 Mar 2017</p>
+      </div>
+      <div class="column-one-third">    
+        <ul class="sl-secondary-text-color sl-metadata">
+          <li><span class="strong">Bereavement benefit</span>&nbsp; · &nbsp;<a href="" class="under-link">View benefit details</a></li>
+          <li>Current award started 3 Mar 2017&nbsp; · &nbsp;<a href="" class="under-link">View awards</a></li>
+        </ul>
+      </div>
+<!--
+      <div class="column-one-third last-col">    
+        <ul class="edit-menu">
+          <li><a href="change-link-handler?data=endbenefit" class="under-link">Change</a></li>
+        </ul>
+      </div>
+-->
+    </div>
+    
+  {% else %}
+    No benefit details held for this customer
+  {% endif %}
+      </div>
+
+</div>

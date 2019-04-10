@@ -1,0 +1,40 @@
+<h2 class="heading-medium question">What kind of change do you need to make?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="update-interest-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+      <div class="form-group">
+        
+        <div class="multiple-choice">
+          <input id="end" type="radio" name="data" value="end">
+          <label for="end">End the interest</label>
+        </div>
+        
+<!--
+        <div class="multiple-choice">
+          <input id="update" type="radio" name="data" value="end-parties">
+          <label for="update">End interested parties</label>
+        </div>
+-->
+        
+        <div class="multiple-choice">
+          <input id="transfer" type="radio" name="data" value="transfer">
+          <label for="transfer">Transfer the interest</label>
+        </div>
+        
+      </div> 
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>

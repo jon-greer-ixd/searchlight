@@ -1,0 +1,195 @@
+<div ui-view="content" class="ng-scope"><div class="container-fluid ng-scope">
+    <div id="search" class="row">
+        <div class="col-xs-12" ng-class="{'sl-search-full-height': !showTrace.personTrace}">
+            <div id="sl-home">
+                <div class="row">
+                    <div class="sl-account-canvas-width">
+                        <div class="col-xs-12">
+                            <h1 id="sl-title" ng-class="{'sl-search-centre-align': !showTrace.personTrace}" class="">
+                                <span class="sl-title-nowrap">Look up a&nbsp;</span><span class="sl-title-nowrap">customer</span>
+                            </h1>
+                            <div class="spacing-top-single sl-home-search-input-container input-group" ng-class="{'sl-home-search-input-reduced-padding': nino.length>7, 'sl-search-input-align': !showTrace.personTrace}">
+                                <sl-search><div id="sl-search" ng-keydown="toggleHover($event.keyCode, $event)" ng-class="{'sl-account-search-container': state.current.name !=='search', 'spacing-top-sixth': state.current.name !== 'search'}">
+  <form action="update/sa-interests/ac-one" ng-submit="slSearchFormSubmit(nino, errors)" autocomplete="off" class="ng-valid ng-dirty ng-valid-parse ng-valid-maxlength">
+    <div popover-placement="top" uib-popover-template="'components/popovers/slValidationError/slValidationError.html'" popover-is-open="!ninoValid" popover-enable="!ninoValid" popover-trigger="outsideClick">
+
+      <div>
+        <!--Despite being red, this will always find the id that it is looking for as the label will only be on the
+        account page, in which the id will be sl-search-input-->
+        <!-- ngIf: !nino.length && state.current.name !== 'search' -->
+        <div>
+
+          <input ng-attr-id="" ng-change="searchInputChange(nino)" ng-class="{'sl-home-search': state.current.name === 'search', 'sl-account-search': state.current.name !=='search', 'sl-input-invalid': !ninoValid}" ng-model="nino" maxlength="13" ng-focus="inputFocus = true" ng-blur="inputFocus = false" autofocus="" sl-nino-autocomplete="highlightLastChar" aria-label="National Insurance number input box" class="ng-valid ng-isolate-scope sl-home-search ng-touched ng-not-empty ng-dirty ng-valid-parse ng-valid-maxlength" id="maincontent" aria-invalid="false">
+
+          <!-- ngIf: nino --><div ng-if="nino" class="clear-icon ng-scope search" ng-class="{'search': state.current.name === 'search', 'account': state.current.name !=='search'}" ng-click="clearInput()" role="button" tabindex="0">
+            <div class="inner-clear-icon"></div>
+          </div><!-- end ngIf: nino -->
+
+          <div class="sl-header-btn">
+
+
+            <a href="/income/account" class="sl-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
+              <!-- ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) --><span ng-class="{'search' : state.current.name === 'search','account' : state.current.name !== 'search' }" ng-if="!nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid)" class="search-icon ng-scope search"></span><!-- end ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) -->
+
+              <!-- ngIf: nino.length > 7 && !accountSummary && errors.length === 0 && ninoValid -->
+
+
+            </a>
+
+          </div>
+          <!-- ngIf: nino --><div ng-if="nino" class="ng-scope">
+            <!-- ngIf: nino.length > 7 && ninoValid -->
+          </div><!-- end ngIf: nino -->
+        </div>
+        </div>
+      </div>
+  </form>
+</div></sl-search>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  
+  
+  
+<!--   include "./advanced.njk" -->
+  <div ui-view="trace" class="ng-scope"><div id="trace" class="container-fluid ng-scope" ng-show="personTrace.personTrace" aria-hidden="true">
+  <div class="sl-account-canvas row">
+    <div class="col-xs-12">
+      <div class="sl-account-canvas-width">
+        <div class="col-xs-12 no-bootstrap-padding">
+          
+            <div class="tabs">
+              <ul>
+                <li><a href="page-one">Person trace</a></li>
+                <li><a href="">Address trace</a></li>
+                <li><a href="">Organisation trace</a></li>
+                <li><a href="search">Notifications</a></li>
+                <!-- <li><a href="">Create an account</a></li> -->
+              </ul>
+            </div>
+
+          <div class="sl-primary-card">
+                        
+            <div class="sl-trace-header">
+              <h2 class="sl-font-bold sl-third-heading">Search for a customer</h2>
+            </div>
+            
+            <form name="traceInputForm" class="ng-pristine ng-valid ng-valid-pattern ng-valid-maxlength ng-valid-minlength">
+            <!-- ngIf: traceInputForm.$invalid || traceErrors === true -->
+              <div class="sl-trace-input-container no-bootstrap-padding spacing-top-half col-xs-12">
+                                <sl-trace-input-forenames><div id="sl-trace-input-forenames" class="col-xs-12 col-md-3 spacing-top-third no-left-padding" ng-class="{'sl-red-left-outline':traceInputForm.traceForenameInput.$invalid, 'spacing-top-trace-input': ((traceInputForm.traceDOBInput.$invalid || traceInputForm.traceSurnameInput.$invalid || traceInputForm.tracePostCodeInput.$invalid ) &amp;&amp; traceInputForm.traceForenameInput.$valid)}">
+    <label class="col-xs-12 no-bootstrap-padding" for="traceForenameInput">First and middle names</label>
+    <div ng-messages="traceInputForm.traceForenameInput.$error" ng-show="traceInputForm.traceForenameInput.$touched" aria-live="assertive" aria-hidden="true" class="ng-inactive ng-hide">
+        <!-- ngMessage: pattern -->
+        <!-- ngMessage: minlength -->
+        <!-- ngMessage: maxlength -->
+    </div>
+    <div><input id="traceForenameInput" class="sl-push-up col-xs-12 padding-left ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern ng-valid-maxlength" ng-class="{'sl-input-error': traceInputForm.traceForenameInput.$invalid &amp;&amp; traceInputForm.traceForenameInput.$touched}" type="text" ng-model="traceForenameInput" name="traceForenameInput" ng-pattern="/(^[a-zA-z0-9-\ ]{1})(?!\*)[a-zA-z0-9-\ *]*$/" ng-maxlength="70" aria-invalid="false"></div>
+</div></sl-trace-input-forenames>
+                                <sl-trace-input-surname><div id="sl-trace-input-surname" class="col-xs-12 col-md-3 spacing-top-third no-left-padding" ng-class="{'sl-red-left-outline':traceInputForm.traceSurnameInput.$invalid, 'spacing-top-trace-input': ((traceInputForm.traceForenameInput.$invalid || traceInputForm.traceDOBInput.$invalid || traceInputForm.tracePostCodeInput.$invalid ) &amp;&amp; traceInputForm.traceSurnameInput.$valid)}">
+    <label class="col-xs-12 no-bootstrap-padding" for="traceSurnameInput">Last name</label>
+    <div ng-messages="traceInputForm.traceSurnameInput.$error" ng-show="traceInputForm.traceSurnameInput.$touched" aria-live="assertive" aria-hidden="true" class="ng-inactive ng-hide">
+        <!-- ngMessage: pattern -->
+        <!-- ngMessage: minlength -->
+        <!-- ngMessage: maxlength -->
+    </div>
+    <div><input id="traceSurnameInput" class="sl-push-up col-xs-12 padding-left ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern ng-valid-maxlength" ng-class="{'sl-input-error': traceInputForm.traceSurnameInput.$invalid &amp;&amp; traceInputForm.traceSurnameInput.$touched}" ng-focus="postcodeLastNameInputFocused = true" ng-blur="postcodeLastNameInputFocused = false" type="text" ng-model="traceSurnameInput" name="traceSurnameInput" ng-pattern="/(^[a-zA-z0-9-\ ]{1})(?!\*)[a-zA-z0-9-\ *]*$/" ng-maxlength="35" aria-invalid="false"></div>
+</div></sl-trace-input-surname>
+                                <div ng-class="{'sl-trace-input-error':traceInputForm.traceDOBInput.$invalid ,'sl-trace-input-error-padding': (traceInputForm.traceSurnameInput.$invalid || traceInputForm.traceForenameInput.$invalid || traceInputForm.tracePostCodeInput.$invalid)}">
+                                <sl-smart-date-input sl-config="{text: 'Date of birth', type: 'dob', section: 'Trace'}" sl-regex="dateRegEx" sl-model="traceDOBInput" sl-date-1="traceDOBDate1" sl-date-2="traceDOBDate2" sl-other-input-focused="postcodeLastNameInputFocused" class="ng-isolate-scope"><div id="sl-smart-date-input" class="col-xs-12 col-md-3 spacing-top-third no-left-padding sl-dob-input" ng-class="{'sl-dob-input': config.type === 'dob'}" click-outside="inputFocused = false" outside-if-not="sl-date-range-option" ng-blur="inputFocused = false">
+  <label for="trace-dob-input" class="sl-body-text ng-binding">Date of birth</label>
+  <div class="ng-binding"></div>
+  <input type="text" id="trace-dob-input" name="trace-dob-input" class="col-xs-12 padding-left ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern" ng-class="{'sl-input-invalid': (trace-dob-input.$invalid &amp;&amp; config.type === 'dob') || (trace-dod-input.$invalid &amp;&amp; config.type === 'dod')}" ng-model="model" ng-pattern="/^([A-z]|[0-9]|[\-\.\/, ])+$/" ng-change="_parseInput(model)" ng-focus="inputFocused = true" autocomplete="off" ng-init="inputFocused = false" ng-keydown="$event.keyCode === 40 &amp;&amp; tabToNext($event)" aria-invalid="false">
+  <!-- ngIf: inputFocused && !otherInputFocused -->
+</div></sl-smart-date-input>
+                                </div>
+                                <sl-trace-input-postcode><div id="sl-trace-input-postcode" class="no-left-padding col-xs-12 col-md-3 spacing-top-third" ng-class="{'sl-red-left-outline':traceInputForm.tracePostCodeInput.$invalid, 'spacing-top-trace-input': ((traceInputForm.traceDOBInput.$invalid || traceInputForm.traceSurnameInput.$invalid || traceInputForm.traceForenameInput.$invalid ) &amp;&amp; traceInputForm.tracePostCodeInput.$valid)}">
+  <label class="col-xs-12 no-bootstrap-padding" for="tracePostCodeInput">Postcode</label>
+  <div ng-messages="traceInputForm.tracePostCodeInput.$error" ng-show="traceInputForm.tracePostCodeInput.$touched" aria-live="assertive" aria-hidden="true" class="ng-inactive ng-hide">
+    <!-- ngMessage: pattern -->
+    <!-- ngMessage: minlength -->
+    <!-- ngMessage: maxlength -->
+  </div>
+  <div><input id="tracePostCodeInput" class="sl-push-up col-xs-6 col-md-10 padding-left ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern ng-valid-minlength ng-valid-maxlength" ng-class="{'sl-input-error': traceInputForm.tracePostCodeInput.$invalid &amp;&amp; traceInputForm.tracePostCodeInput.$touched}" ng-focus="postcodeLastNameInputFocused = true" ng-blur="postcodeLastNameInputFocused = false" type="text" ng-model="tracePostCodeInput" name="tracePostCodeInput" ng-pattern="/^([0-9]|[A-Z ])+$/i" ng-minlength="6" ng-maxlength="8" aria-invalid="false"></div>
+</div></sl-trace-input-postcode>
+                            </div>
+
+                            <div class="sl-person-trace-more-options-container col-xs-12 no-bootstrap-padding spacing-bottom-half">
+
+                                <sl-progressive-reveal section-open="slMoreSearchOptionsOpen" section-details="personTraceSearchOptions" class="ng-isolate-scope"><div id="sl-progressive-reveal" class="spacing-top-half" ng-show="sectionDetails" aria-hidden="false">
+
+  <div class="sl-progressive-reveal-container" analytics-on="click" analytics-category="Account page, search for a customer" analytics-if="sectionOpen" analytics-label="User has clicked the progressive reveal to display more search details" analytics-event="More search details" ng-click="sectionOpen = !sectionOpen" ng-class="{'sl-previous-data-open':sectionOpen}" role="button" tabindex="0" id="">
+    <!-- ngIf: !sectionOpen --><img class="sl-progressive-reveal-icon ng-scope" src="../../public/images/blue-triangle-right.svg" alt="click to reveal more info right arrow" ng-if="!sectionOpen"><!-- end ngIf: !sectionOpen -->
+    <!-- ngIf: sectionOpen -->
+    <span class="ng-binding">More search details</span>
+  </div>
+</div></sl-progressive-reveal>
+                              
+                              
+                                <div ng-show="slMoreSearchOptionsOpen" class="sl-account-historic-details row ng-hide" aria-hidden="true">
+
+                                    <div class="col-xs-11 col-sm-12 no-padding">
+                                    <sl-smart-date-input sl-config="{text: 'Date of death', type: 'dod', section: 'Trace'}" sl-regex="dateRegEx" sl-model="traceDODInput" sl-date-1="traceDODDate1" sl-date-2="traceDODDate2" sl-other-input-focused="firstLineOfAddressFocused" class="ng-isolate-scope"><div id="sl-smart-date-input" class="col-xs-12 col-md-3 spacing-top-third no-left-padding" ng-class="{'sl-dob-input': config.type === 'dob'}" click-outside="inputFocused = false" outside-if-not="sl-date-range-option" ng-blur="inputFocused = false">
+  <label for="trace-dod-input" class="sl-body-text ng-binding">Date of death</label>
+  <div class="ng-binding"></div>
+  <input type="text" id="trace-dod-input" name="trace-dod-input" class="col-xs-12 padding-left ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern" ng-class="{'sl-input-invalid': (trace-dob-input.$invalid &amp;&amp; config.type === 'dob') || (trace-dod-input.$invalid &amp;&amp; config.type === 'dod')}" ng-model="model" ng-pattern="/^([A-z]|[0-9]|[\-\.\/, ])+$/" ng-change="_parseInput(model)" ng-focus="inputFocused = true" autocomplete="off" ng-init="inputFocused = false" ng-keydown="$event.keyCode === 40 &amp;&amp; tabToNext($event)" aria-invalid="false">
+  <!-- ngIf: inputFocused && !otherInputFocused -->
+</div></sl-smart-date-input>
+                                    </div>
+                                    <sl-trace-input-first-line-of-address><div id="sl-trace-input-first-line-of-address" class="no-left-padding col-xs-12 spacing-top-third" ng-class="{'sl-red-left-outline':traceInputForm.traceFirstLineOfAddressInput.$invalid}">
+    <div class="row">
+        <label class="col-xs-12 col-md-3" for="traceFirstLineOfAddressInput">First line of
+            address</label>
+    </div>
+    <div ng-messages="traceInputForm.traceFirstLineOfAddressInput.$error" ng-show="traceInputForm.traceFirstLineOfAddressInput.$touched" aria-live="assertive" aria-hidden="true" class="ng-inactive ng-hide">
+        <!-- ngMessage: pattern -->
+    </div>
+    <div class="row"><input id="traceFirstLineOfAddressInput" class="sl-push-up col-xs-10 col-md-3 trace-input-margin-left padding-left ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern ng-valid-maxlength" ng-class="{'sl-input-error': traceInputForm.traceFirstLineOfAddressInput.$invalid &amp;&amp; traceInputForm.traceFirstLineOfAddressInput.$touched}" type="text" ng-model="traceFirstLineOfAddressInput" ng-focus="firstLineOfAddressFocused = true" ng-blur="firstLineOfAddressFocused = false" name="traceFirstLineOfAddressInput" ng-pattern="/(^[a-zA-z0-9-\ ]{2})(?!\*)[a-zA-z0-9-\ *]*$/" ng-maxlength="35" aria-invalid="false"></div>
+</div></sl-trace-input-first-line-of-address>
+                                    <sl-trace-input-sex><div id="sl-trace-input-sex" class="no-left-padding col-xs-12 spacing-top-third ng-pristine ng-untouched ng-valid ng-empty" ng-model="traceSexInput" name="traceSexInput" aria-invalid="false">
+    <div class="col-xs-12 no-bootstrap-padding">
+        <fieldset>
+            <legend style="border-bottom: 0; margin-bottom: 10px">Sex</legend>
+            <div class="col-xs-12 col-md-2 sl-sex-input-container no-bootstrap-padding" style="width:130px">
+                <input id="traceMaleSelector" type="checkbox" ng-model="male" ng-init="maleFocused = false" ng-focus="maleFocused = true" ng-blur="maleFocused = false" ng-change="setMale()" class="ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+                <label for="traceMaleSelector" class="col-xs-7 sl-sex-input-checkbox-container" ng-class="{'sl-sex-focus': maleFocused}">
+                    <!-- ngIf: maleSelected -->
+                </label>
+                <label for="traceMaleSelector" class="sl-sex-label-position">Male</label>
+            </div>
+            <div class="col-xs-12 col-md-3 sl-sex-input-container no-left-padding">
+                <input id="traceFemaleSelector" type="checkbox" ng-model="female" ng-init="femaleFocused = false" ng-focus="femaleFocused = true" ng-blur="femaleFocused = false" ng-change="setFemale()" class="ng-pristine ng-untouched ng-valid ng-empty" aria-invalid="false">
+                <label for="traceFemaleSelector" class="col-xs-9 sl-sex-input-checkbox-container" ng-class="{'sl-sex-focus': femaleFocused}">
+                    <!-- ngIf: femaleSelected -->
+                </label>
+                <label for="traceFemaleSelector" class="sl-sex-label-position">Female</label>
+            </div>
+        </fieldset>
+    </div>
+</div></sl-trace-input-sex>
+                                </div>
+                            </div>
+                            <div class="spacing-top-half spacing-bottom-half">
+                                <button class="sl-acceptance-button" ng-click="sendTrace()">Search customers</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+  
+  
+</div>

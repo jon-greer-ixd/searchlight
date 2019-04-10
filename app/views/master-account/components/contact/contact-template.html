@@ -1,0 +1,31 @@
+<div class="grid-row">
+  <div class="column-one-third">
+    <ul>
+      <li>{{item.display}}</li>
+    </ul>
+  </div>
+  <div class="column-one-third">
+    <ul>
+      <li><span class="strong">{{item.value}}</span></li>
+      
+      {% if item.display == "Home telephone" and item.exD == true %}
+        <li class="sl-secondary-text-color sl-metadata">Ex-directory</li>
+      {% endif %}
+      
+      {% if item.pref == true %}
+        <li class="sl-secondary-text-color sl-metadata">preferred method of contact</li>
+      {% endif %}
+      
+    </ul>
+  </div>
+  <div class="column-one-third">
+    <ul class="edit-menu">
+      <li>
+        <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
+      </li>
+      <li>
+        <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
+      </li>
+    </ul>
+  </div>
+</div>

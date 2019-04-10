@@ -1,0 +1,91 @@
+<!--
+        <div name="interests" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Interests</h2>
+
+         <div class="sl-primary-card ng-scope" ng-if="!data.fullAwardHistory || data.fullAwardHistory.empty">
+
+          <div class="row ng-scope" ng-if="data.fullAwardHistory.empty">
+
+              <div class="col-xs-12">No interests held for this customer.
+
+              </div>
+            </div>
+          </div>
+        </div>
+-->
+          
+
+<!--
+        <div name="Benefits" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Benefits</h2>
+
+         <div class="sl-primary-card ng-scope" ng-if="!data.fullAwardHistory || data.fullAwardHistory.empty">
+
+          <div class="row ng-scope" ng-if="data.fullAwardHistory.empty">
+
+              <div class="col-xs-12">No benefits held for this customer.
+
+              </div>
+            </div>
+          </div>
+        </div>
+-->
+          
+          
+          
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  
+  <h2>Benefits</h2>
+    
+  <div id="sl-address-primary-card" class="sl-primary-card">  
+    
+    {% if person_ucAward == true or person_esaAward == true %}
+      <div class="grid-row benefit-header">    
+        <div class="column-one-third">    
+          <p><a>Start date</a></p>
+        </div>
+        <div class="column-one-third">    
+          <p><a>Benefit</a></p>
+        </div>    
+      </div>
+      <hr>
+    
+      {% if person_esaAward == true %}
+        <div class="grid-row" id="benefit">
+          <div class="column-one-third">    
+            <p>3 Mar 2017</p>
+          </div>
+          <div class="column-one-third">    
+            <ul class=" sl-metadata">
+              <li><span class="strong">INCOME RELATED ESA</span>&nbsp; · &nbsp;<a href="" class="under-link">View benefit details</a></li>
+              <li>Current award started 3 Mar 2017&nbsp; · &nbsp;<a href="" class="under-link">View awards</a></li>
+            </ul>
+          </div>
+        </div>
+      {% endif %}  
+    
+       {% if person_ucAward == true and person_esaAward == true %}
+        <hr>
+      {% endif %}  
+    
+      {% if person_ucAward == true %}
+        <div class="grid-row" id="benefit">
+          <div class="column-one-third">    
+            <p>19 Jan 2010</p>
+          </div>
+          <div class="column-one-third">    
+            <ul class=" sl-metadata">
+              <li><span class="strong">UNIVERSAL CREDIT</span>&nbsp; · &nbsp;<a href="" class="under-link">View benefit details</a></li>
+              <li>Current award started 19 Jan 2010&nbsp; · &nbsp;<a href="" class="under-link">View awards</a></li>
+            </ul>
+          </div>
+        </div>
+      {% endif %}  
+
+    {% else %}  
+      No benefit details held for this customer.
+    {% endif %}   
+    
+  </div>
+
+</div>

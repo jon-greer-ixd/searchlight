@@ -1,0 +1,67 @@
+#sl-footer {
+  a:focus {
+    outline: 3px solid $yellow;
+
+  }
+  width: 100%;
+  @media (min-width: $screen-sm-min) {
+    min-height: 300px
+  }
+  @media (max-width: $screen-sm-min) {
+    min-height: 520px
+  }
+  background-color: $grey-3;
+  border-top: 1px solid $grey-2;
+  padding-bottom: 36px;
+
+  .sl-footer-content {
+    position: relative;
+    height: 100%;
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: $screen-sm-min) {
+      padding-top: 62px;
+    }
+    @media (max-width: $screen-sm-min) {
+      padding-top: 30px;
+    }
+    overflow: hidden;
+  }
+
+  .sl-footer-left-content {
+    float: left;
+    @media (max-width: $screen-sm-min) {
+      margin-bottom: 20px;
+    }
+
+  }
+
+}
+
+.sl-footer-color {
+  color: $footer-grey;
+}
+
+.sl-footer-right-content {
+
+  @media (min-width: $screen-sm-min) {
+    position: absolute;
+    height: calc(100% - 62px);
+    top: 62px;
+    right: 0;
+
+    .footer-vertical-align {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+  }
+
+  .sl-govuk-crest {
+    width: 125px;
+    height: 104px;
+    background: url(/public/images/govuk-crest.svg);
+  }
+
+}
+

@@ -1,0 +1,18 @@
+<div id="updated-toaster" class="added">
+  <sl-toastr ng-if="notifications.length > 0" sl-notifications="notifications" class="ng-scope ng-isolate-scope">
+    <div class="ng-toast ng-toast--right ng-toast--top ng-toast--animate-fade">
+      <ul class="ng-toast__list"><!-- ngRepeat: message in messages -->
+        <li class="ng-toast__message " ng-mouseenter="onMouseEnter()" ng-mouseleave="onMouseLeave()" ng-repeat="message in messages" message="message" count="message.count" data-message-id="32"><div class="alert alert-info alert-dismissible" ng-class="{'alert-dismissible': message.dismissButton}"><!-- ngIf: message.dismissButton --><!-- end ngIf: message.dismissButton --><!-- ngIf: count --><!-- ngIf: !message.compileContent -->
+          <span ng-if="!message.compileContent" ng-transclude="" class="ng-scope">
+            <span ng-bind-html="message.content" class="ng-binding ng-scope">
+              <span>The correspondence address has been added.</span>
+<!--              <a href="#" class="sl-hyperlink underline sl-toastr-superseding ng-scope" ng-click="slAccountClick('SY829758F')" id="sl-toastr-superseding-link">View superseding record</a>-->
+            </span>
+          </span>
+          <button type="button" class="close ng-binding ng-scope" ng-if="message.dismissButton" ng-bind-html="message.dismissButtonHtml" ng-click="!message.dismissOnClick &amp;&amp; dismiss()">×</button><!-- end ngIf: !message.compileContent -->
+          </div>
+        </li><!-- end ngRepeat: message in messages -->
+      </ul>
+    </div>
+  </sl-toastr>
+</div>

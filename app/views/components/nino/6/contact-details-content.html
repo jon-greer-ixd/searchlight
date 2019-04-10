@@ -1,0 +1,81 @@
+<div class="grid-row">
+
+  <div class="column-two-thirds">
+
+    <form class="form" method="get" action="nino-contacts-handler">
+      
+      <!-- EMAIL -->
+      {% if data.contactType === "homeEmail" or data.contactType === "businessEmail" %}
+        <fieldset class="form-group">
+          <label class="form-label" for="contact-text-message">Email address</label>
+          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+        </fieldset>
+      
+      <!-- FAX -->
+      {% elif data.contactType === "homeFax" or data.contactType === "businessFax" %}
+        <fieldset class="form-group">
+          <label class="form-label" for="contact-text-message">Fax number</label>
+          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+        </fieldset>
+      
+      <!-- TEXTPHONE -->
+      {% elif data.contactType === "typeTalk" or data.contactType === "textPhone" %}
+        <fieldset class="form-group">
+           {% if data.contactType === "typeTalk" %}
+            <label class="form-label" for="contact-text-message">Typetalk number</label>
+          {% else %}
+            <label class="form-label" for="contact-text-message">Textphone number</label>
+          {% endif %}
+          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+        </fieldset>
+      
+      <!-- ANOTHER -->
+      {% elif data.contactType === "otherContact" %}
+        <fieldset class="form-group">
+          <label class="form-label" for="contact-text-message">Other contact details</label>
+          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+        </fieldset>
+      
+      <!-- TELEPHONE -->
+      {% else %}
+        <fieldset class="form-group">
+          <label class="form-label" for="contact-text-message">Telephone number</label>
+          <input class="form-control" name="contact-text-message" type="text" id="contact-text-message">
+        </fieldset>
+
+      {% endif %}
+      
+      <div class="form-group prepop">
+        <label class="form-label" for="date">
+          Start date
+          <span class="form-hint">
+            For example 31/8/197
+          </span>
+        </label>
+        <input class="form-control box-one" id="date" name="date" type="text">
+        <a class="populate-link-one">Use today's date</a>
+      </div>
+
+      <fieldset class="form-group">
+        <div class="multiple-choice">
+          <input id="nationalities-british" name="pref" type="checkbox" value="British">
+          <label for="nationalities-british">It's their preferred method of contact  (optional)</label>
+        </div>
+        {% if data.contactType == "homeTelephone" %}
+          <div class="multiple-choice">
+            <input id="nationalities-irish" name="ex-der" type="checkbox" value="Irish">
+            <label for="nationalities-irish">It's an ex-directory number (optional)</label>
+          </div>
+        {% endif %}
+      </fieldset>
+
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+
+    </form>
+      <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>

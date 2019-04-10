@@ -1,0 +1,16 @@
+<div name="Benefits" id="benefits" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Benefits</h2>
+
+  <!-- ngIf: !data.fullAwardHistory || data.fullAwardHistory.empty --><div class="sl-primary-card ng-scope" ng-if="!data.fullAwardHistory || data.fullAwardHistory.empty">
+    <!-- ngIf: !data.fullAwardHistory && benefitsTimeout -->
+
+    <!-- ngIf: !data.fullAwardHistory && !benefitsTimeout -->
+    <!-- ngIf: data.fullAwardHistory.empty --><div class="row ng-scope" ng-if="data.fullAwardHistory.empty">
+
+      <div class="col-xs-12">No benefits held for this customer.
+
+      </div>
+    </div><!-- end ngIf: data.fullAwardHistory.empty -->
+  </div><!-- end ngIf: !data.fullAwardHistory || data.fullAwardHistory.empty -->
+  <!-- ngIf: (data.fullAwardHistory.benefitsSummary.currentBenefits || data.fullAwardHistory.benefitsSummary.previousBenefits) && !data.fullAwardHistory.empty -->
+</div>

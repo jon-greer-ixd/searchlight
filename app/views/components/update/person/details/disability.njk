@@ -1,0 +1,60 @@
+<h2 class="heading-medium question">What is their disability status?</h2>
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <form class="form" method="get" action="check">
+      <fieldset class="form-group">
+        
+        {% if data.updateType == 1 %}
+          <div class="multiple-choice">
+            <input id="disabled" type="radio" name="personalDetailValue" value=true>
+            <label for="disabled">Disabled</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="not" type="radio" name="personalDetailValue" value=false>
+            <label for="not">Not disabled</label>
+          </div>
+        {% endif %}
+        
+        {% if data.updateType == 2 %}
+          {% if data.personalDetails.disability.value == true %}
+            <div class="multiple-choice">
+              <input id="false" type="radio" name="personalDetailValue" value=false>
+              <label for="false">Not disabled</label>
+            </div>
+          {% else %}
+            <div class="multiple-choice">
+              <input id="true" type="radio" name="personalDetailValue" value=true>
+              <label for="true">Disabled</label>
+            </div>
+          {% endif %}
+        {% endif %}
+        
+        {% if data.updateType == 3 %}
+          {% if data.personalDetails.disability.value == true %}
+            <div class="multiple-choice">
+              <input id="false" type="radio" name="personalDetailValue" value=false>
+              <label for="false">Not disabled</label>
+            </div>
+          {% else %}
+            <div class="multiple-choice">
+              <input id="true" type="radio" name="personalDetailValue" value=true>
+              <label for="true">Disabled</label>
+            </div>
+          {% endif %}
+        {% endif %}
+        
+        {% if data.updateType == 2 or data.updateType == 3 %}
+          <div class="multiple-choice">
+            <input id="remove" name="personalDetailValue" type="radio" value=null>
+            <label for="remove">Remove their disability status</label>
+          </div>
+        {% endif %}
+        
+      </fieldset>
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+</div>

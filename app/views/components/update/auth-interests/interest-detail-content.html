@@ -1,0 +1,68 @@
+<div class="grid-row">
+  
+  <div class="column-one-half">
+    
+    <form method="get" action="check">
+      
+      {% if data.interestState == "adding" %}
+        <div class="form-group">
+          <fieldset>
+            <legend>
+              <p class="bold">
+                Which interests do you need to add ?
+              </p>
+              <p class="form-hint">Select all that apply</p>
+            </legend>
+            <div class="multiple-choice">
+              <input id="ctr" name="ctr" type="checkbox" value="true">
+              <label for="ctr">Council Tax reduction</label>
+            </div>
+            <div class="multiple-choice">
+              <input id="hb" name="hb" type="checkbox" value="true">
+              <label for="hb">Housing Benefit</label>
+            </div>
+          </fieldset>
+        </div>
+      {% endif %}
+            
+      {% if data.interestState == "ending" %}              
+        {% if data.tempInterest == "both" %}
+          <div class="form-group">
+            <fieldset>
+              <legend>
+                <p class="bold">
+                  Which interests do you need to end?
+                </p>
+                <p class="form-hint">Select all that apply</p>
+              </legend>
+              <div class="multiple-choice">
+                <input id="ctr" name="ctr" type="checkbox" value="true">
+                <label for="ctr">Council Tax reduction</label>
+              </div>
+              <div class="multiple-choice">
+                <input id="hb" name="hb" type="checkbox" value="true">
+                <label for="hb">Housing Benefit</label>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+      {% endif %}
+      
+      {% if data.interestState != "ending" %}              
+        <div class="form-group">
+          <label class="form-label" for="officecode">Office code</label>
+          <input class="form-control" id="officecode" name="officecode" type="text">
+        </div>
+      {% endif %}
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    
+    <p><a href="/account2/account">Cancel</a></p>
+    
+  </div>
+  
+</div>

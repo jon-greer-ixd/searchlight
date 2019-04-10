@@ -1,0 +1,48 @@
+<h2 class="heading-medium question">
+  What kind of change do you need to make?
+</h2>
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="update-contact-handler">
+          <div class="form-group">
+            <fieldset>
+              
+            <div class="multiple-choice">
+              <input id="update" type="radio" name="updateType" value=2>
+              <label for="update">
+                Update
+              </label>
+            </div>
+              
+            {% if data.contactTypes[data.contactType].pref == true %}
+
+              {% else %}
+              <div class="multiple-choice">
+                <input id="settingPref" type="radio" name="updateType" value=7>
+                  <label for="settingPref">Set as their preferred method of contact</label>
+              </div>
+            {% endif %}
+              
+            <div class="multiple-choice">
+              <input id="correct" type="radio" name="updateType" value=3>
+              <label for="correct">Correct a mistake</label>
+            </div>
+              
+            <div class="multiple-choice">
+              <input id="remove" type="radio" name="updateType" value=5>
+              <label for="remove">End the contact method</label>
+            </div>
+                            
+            </fieldset>
+          </div>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+     </form>
+    <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>

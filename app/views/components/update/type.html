@@ -1,0 +1,125 @@
+<h2 class="heading-medium question">What kind of change do you need to make?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="address-type-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+      <div class="form-group">
+
+        <div class="multiple-choice" data-target="contact-by-email">
+          <input id="update" type="radio" name="updateType" value=2>
+          <label for="update">Update</label>
+        </div>
+      
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="correct" type="radio" name="updateType" value=3>
+          <label for="correct">Correct a mistake</label>
+        </div>
+        
+        <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
+          <fieldset>
+            
+            <div class="multiple-choice">
+              <input id="address" type="radio" name="tempValue" value="new">
+              <label for="address">Update to a new address</label>
+            </div>
+            
+            <div class="multiple-choice">
+              {% if data.addresses.correspondence.show == false %}
+                {% if data.addresses[data.addressType].status != "dlo" %}
+                  <input id="status" type="radio" name="tempValue" value="status">
+                  <label for="status">Update the status to dead letter office</label>
+                {% else %}
+                  <input id="status" type="radio" name="tempValue" value="status">
+                  <label for="status">Update the status to live</label>
+                {% endif %}
+              {% else %}
+                <input id="status" type="radio" name="tempValue" value="status">
+                <label for="status">Update the status</label>
+              {% endif %}
+            </div>
+            
+            <div class="multiple-choice">
+              <input id="cherish" type="radio" name="tempValue" value="cherish">
+                <label for="cherish">
+                  {% if data.addresses[data.addressType].cherish != true %}
+                    Add a cherished line
+                  {% else %}
+                    Update the cherished line
+                  {% endif %}
+                </label>
+            </div>
+            
+            {% if data.addressType == 'correspondence' %}
+              <div class="multiple-choice">
+                <input id="endU" type="radio" name="tempValue" value=5>
+                <label for="endU">End the correspondence address</label>
+              </div>
+            {% endif %}
+          
+          </fieldset>
+        </div>
+        
+        <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+          <fieldset>
+            <div class="multiple-choice">
+              <input id="correct-address" type="radio" name="tempValue" value="correct_new">
+              <label for="correct-address">Correct to a new address</label>
+            </div>
+            
+            <div class="multiple-choice">
+              {% if data.addresses.correspondence.show == false %}
+                {% if data.addresses[data.addressType].status != "dlo" %}
+                  <input id="status" type="radio" name="tempValue" value="status">
+                  <label for="status">Correct the status to dead letter office</label>
+                {% else %}
+                  <input id="status" type="radio" name="tempValue" value="status">
+                  <label for="status">Correct the status to live</label>
+                {% endif %}
+              {% else %}
+                <input id="status" type="radio" name="tempValue" value="status">
+                <label for="status">Correct the status</label>
+              {% endif %}
+            </div>
+            
+            <div class="multiple-choice">
+              <input id="correct-date" type="radio" name="tempValue" value="dates">
+              <label for="correct-date">Correct the start or notified start date</label>
+            </div>
+
+            <div class="multiple-choice">
+              <input id="cherish" type="radio" name="tempValue" value="cherish">
+                <label for="cherish">
+                  {% if data.addresses[data.addressType].cherish != true %}
+                    Add a cherished line
+                  {% else %}
+                    Correct the cherished line
+                  {% endif %}
+                </label>
+            </div>
+            
+            {% if data.addressType == 'correspondence' %}
+              <div class="multiple-choice">
+                <input id="endC" type="radio" name="tempValue" value=5>
+                <label for="endC">End the correspondence address</label>
+              </div>
+            {% endif %}
+            
+          </fieldset>
+        </div>  
+        
+      </div> 
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="add-system-handler">
+      
+      <fieldset>
+        <div class="form-group">
+          <legend>
+            <p class="bold">
+              What type of interest do you need to add?
+            </p>
+          </legend>
+        
+        {% if 
+          tempInterest.title == "Child Support Reform" or 
+          tempInterest.title == "Bereavement Allowance" or 
+          tempInterest.title == "Bereavement Benefit" or 
+          tempInterest.title == "Jobseeker's Allowance" 
+        %}
+
+          
+          {% if tempInterest.title == "Child Support Reform" or tempInterest.title == "Bereavement Allowance" or tempInterest.title == "Bereavement Benefit" or tempInterest.title == "Jobseeker's Allowance" %}
+            <div class="multiple-choice" data-target="contact-by-email">
+              <input id="sys" type="radio" name="system" value="sys">
+              <label for="sys">System</label>
+            </div>
+          {% endif %}
+          
+          {% if tempInterest.title == "Child Support Reform" or tempInterest.title == "Bereavement Benefit" or tempInterest.title == "Jobseeker's Allowance" %}
+            <div class="multiple-choice" data-target="contact-by-text">
+              <input id="crl" type="radio" name="system" value="crl">
+              <label for="crl">Computer record location (CRL)</label>
+            </div>
+          {% endif %}
+          
+          {% if tempInterest.title == "Bereavement Allowance" or tempInterest.title == "Bereavement Benefit" or tempInterest.title == "Jobseeker's Allowance" %}
+            <div class="multiple-choice" data-target="contact-by-text">
+              <input id="clerical" type="radio" name="system" value="clerical">
+              <label for="clerical">Clerical</label>
+            </div>          
+          {% endif %}
+        
+        {% else %}
+          <div class="multiple-choice" data-target="contact-by-email">
+            <input id="sys" type="radio" name="system" value="sys">
+            <label for="sys">System</label>
+          </div>
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="crl" type="radio" name="system" value="crl">
+            <label for="crl">Computer record location (CRL)</label>
+          </div>
+          <div class="multiple-choice" data-target="contact-by-text">
+            <input id="clerical" type="radio" name="system" value="clerical">
+            <label for="clerical">Clerical</label>
+          </div>          
+        {% endif %}
+
+        </div> 
+      </fieldset>
+      
+      <fieldset>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+      </fieldset>
+      
+    </form>
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>

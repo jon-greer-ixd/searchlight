@@ -1,0 +1,49 @@
+<h2 class="heading-medium question">What do you need to add?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="add-person-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+<!--
+  // Death_Date Verification 
+  // Potentially violent
+  // NIFU 
+  // Special Needs
+  // Disability_ 
+  // gender
+  // Preferred Lang
+  // Spoken Lang
+  // IND_Interest
+  // Marital Status
+  // Nationality 
+  // Immigration_Status 
+-->
+
+      <div class="form-group">
+      <fieldset>
+                
+        {% for items, item in data.personalDetails %}
+          {% if item.show == false and item.display != 'Account status' %}
+            <div class="multiple-choice">
+              <input id={{items | lower}} name="personalDetail" type="radio" value={{items}} >
+              <label for={{items | lower}}>{{item.display}}</label>
+            </div>
+          {% endif %}
+        {% endfor %}
+        
+        </fieldset>        
+      </div> 
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>

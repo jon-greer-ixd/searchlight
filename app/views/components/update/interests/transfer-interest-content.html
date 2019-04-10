@@ -1,0 +1,151 @@
+<div class="grid-row">
+  
+  <div class="column-one-half">
+    
+    <form method="get" action="check">
+      
+      <!-- NEW -->
+      {% if tempInterest.title === "Attendance Allowance" or tempInterest.title === "Jobseeker's Allowance" %}
+        {% if tempInterest.system === "sys" or tempInterest.system === "clerical" %}
+          <fieldset>
+            <div class="form-group">
+              <legend>
+                <p class="bold">
+                  Which interested parties do you need to transfer?
+                </p>
+              </legend>
+              <div class="multi-line">
+                <div class="multiple-choice" data-target="example">
+                  <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
+                  <label for="waste-type-1">
+                    Owning office <br> Preston BDC - office code 207701
+                  </label>
+                </div>
+                <div class="panel panel-border-narrow js-hidden" id="example">
+                  <label class="form-label" for="first-name-2">New owning office code</label>
+                  <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+                </div>
+                <div class="multiple-choice last" data-target="example-different-country">
+                  <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
+                  <label for="waste-type-2">
+                    Broadcasting office <br> Preston BDC - office code 100510
+                  </label>
+                </div>
+                <div class="panel panel-border-narrow js-hidden" id="example-different-country">
+                  <label class="form-label" for="first-name-2">New broadcasting office code</label>
+                  <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        {% else %}
+          <div class="form-group">
+            <label class="form-label" for="first-name-2">New business office code</label>
+            <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+          </div>
+        {% endif %}
+      {% elif tempInterest.title === "Child Support Reform" %}
+        {% if tempInterest.system === "sys" %}
+          <div class="form-group">
+            <label class="form-label" for="first-name-2">New owning office code</label>
+            <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+          </div>
+        {% else %}
+          <div class="form-group">
+            <label class="form-label" for="first-name-2">New business office code</label>
+            <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+          </div>
+        {% endif %}
+      {% elif tempInterest.title === "Bereavement Allowance" %}
+        <div class="form-group">
+          <label class="form-label" for="first-name-2">New owning office code</label>
+          <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        </div>
+      {% elif tempInterest.title === "Bereavement Benefit" %}
+        {% if tempInterest.system === "sys" %}
+        <div class="form-group">
+          <label class="form-label" for="first-name-2">New owning office code</label>
+          <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        </div>
+        {% else %}
+          <div class="form-group">
+            <label class="form-label" for="first-name-2">New business office code</label>
+            <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+          </div>
+        {% endif %}
+      {% elif tempInterest.title === "Winter Fuel Payment" %}
+        <div class="form-group">
+          <label class="form-label" for="first-name-2">New business office code</label>
+          <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        </div>
+      {% elif tempInterest.title === "Carers Credit" %}
+        <div class="form-group">
+          <label class="form-label" for="first-name-2">New broadcasting office code</label>
+          <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        </div>
+      {% elif tempInterest.title === "Employment and Support Allowance" %}
+        <div class="form-group">
+          <label class="form-label" for="first-name-2">New owning office code</label>
+          <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        </div>
+      {% else %}
+        {% if tempInterest.system === "sys" %}
+          <fieldset>
+            <div class="form-group">
+              <legend>
+                <p class="bold">
+                  Which interested parties do you need to transfer?
+                </p>
+              </legend>
+              <div class="multi-line">
+                <div class="multiple-choice" data-target="example">
+                  <input id="waste-type-1" name="waste-types" type="checkbox" value="waste-animal">
+                  <label for="waste-type-1">
+                    Owning office <br> Preston BDC - office code 207701
+                  </label>
+                </div>
+                <div class="panel panel-border-narrow js-hidden" id="example">
+                  <label class="form-label" for="first-name-2">New owning office code</label>
+                  <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+                </div>
+                <div class="multiple-choice last" data-target="example-different-country">
+                  <input id="waste-type-2" name="waste-types" type="checkbox" value="waste-mines">
+                  <label for="waste-type-2">
+                    Broadcasting office <br> Preston BDC - office code 100510
+                  </label>
+                </div>
+                <div class="panel panel-border-narrow js-hidden" id="example-different-country">
+                  <label class="form-label" for="first-name-2">New broadcasting office code</label>
+                  <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        {% else %}
+            
+        <legend>
+          <p class="visually-hidden">
+            Interest type
+          </p>
+        </legend>
+
+        <div class="form-group">
+          <label class="form-label" for="first-name-2">New business office code</label>
+          <input class="form-control" id="first-name-2" name="first-name-2" type="text">
+        </div>
+
+        {% endif %}
+      {% endif %}
+      
+      <!-- NEW -->
+
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      <p><a href="/account2/account">Cancel</a></p>
+    
+  </div>
+  
+</div>

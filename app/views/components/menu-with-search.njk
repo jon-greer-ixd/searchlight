@@ -1,0 +1,71 @@
+<nav id="sl-header" class="navbar navbar-default navbar-fixed-top ng-scope">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 sl-header-container sl-header-expanded" ng-class="{'sl-header-expanded': state.current.name !== 'search'}">
+        <ul>
+          <div class="sl-header-col-left">
+            <a class="skip-main" ng-click="jumpToMainContent()" href="#maincontent">Skip to main content</a>
+            <div class="sl-header-title" ui-sref="search" href="/">
+              <a class="sl-crown-logo-container">
+                <div class="sl-crown-logo sl-crown-logo-white"></div>
+                <img class="sl-crown-logo-black" alt="Searchlight black" src="../../../assets/images/crown-logo-black.png">
+              </a>
+              <a class="sl-third-heading sl-main-heading sl-page-color sl-font-bold ng-binding" ui-sref="search" href="/">Searchlight</a>
+            </div>
+            <!-- ngIf: state.current.name !== 'search' --><li ng-if="state.current.name !== 'search'" class="ng-scope"><a ui-sref="search" class="sl-link sl-link-home" href="/">Home</a></li><!-- end ngIf: state.current.name !== 'search' -->
+          </div>
+          <!-- ngIf: state.current.name !== 'search' --><div class="sl-search-input-container ng-scope" ng-if="state.current.name !== 'search'">
+            <sl-search><div id="sl-search" ng-keydown="toggleHover($event.keyCode, $event)" ng-class="{'sl-account-search-container': state.current.name !=='search', 'spacing-top-sixth': state.current.name !== 'search'}" class="sl-account-search-container spacing-top-sixth">
+  <form ng-submit="slSearchFormSubmit(nino, errors)" autocomplete="off" class="ng-pristine ng-valid">
+    <div popover-placement="bottom" uib-popover-template="'components/popovers/slValidationError/slValidationError.html'" popover-is-open="!ninoValid" popover-enable="!ninoValid" popover-trigger="outsideClick">
+
+      <div>
+        <!--Despite being red, this will always find the id that it is looking for as the label will only be on the
+        account page, in which the id will be sl-search-input-->
+        <!-- ngIf: !nino.length && state.current.name !== 'search' --><label for="sl-search-input" ng-if="!nino.length &amp;&amp; state.current.name !== 'search'" class="sl-search-placeholder sl-font-light sl-secondary-text-color ng-binding ng-scope" ng-class="{'remove-placeholder': inputFocus}">Look up a National Insurance number</label><!-- end ngIf: !nino.length && state.current.name !== 'search' -->
+        <div>
+
+          <input ng-attr-id="" ng-change="searchInputChange(nino)" ng-class="{'sl-home-search': state.current.name === 'search', 'sl-account-search': state.current.name !=='search', 'sl-input-invalid': !ninoValid}" ng-model="nino" maxlength="13" ng-focus="inputFocus = true" ng-blur="inputFocus = false" autofocus="" sl-nino-autocomplete="highlightLastChar" aria-label="National Insurance number input box" class="ng-pristine ng-untouched ng-valid ng-isolate-scope sl-account-search" id="sl-search-input" aria-invalid="false">
+
+          <!-- ngIf: nino -->
+
+          <div class="sl-header-btn">
+
+
+            <button class="sl-search-btn sl-account-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
+              <!-- ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) --><span ng-class="{'search' : state.current.name === 'search','account' : state.current.name !== 'search' }" ng-if="!nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid)" class="search-icon ng-scope account"></span><!-- end ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) -->
+
+              <!-- ngIf: nino.length > 7 && !accountSummary && errors.length === 0 && ninoValid -->
+
+
+            </button>
+
+          </div>
+          <!-- ngIf: nino -->
+        </div>
+        </div>
+      </div>
+  </form>
+</div></sl-search>
+          </div><!-- end ngIf: state.current.name !== 'search' -->
+          <div class="sl-header-col-right pull-right">
+            <li>
+            <a href="#" tabindex="" ng-click="openFeedbackModal('lg'); feedbackJumpToTop()" class="sl-link sl-link-modal">Feedback</a></li>
+
+
+           <li> <a href="#" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal">What’s
+              new</a></li>
+
+
+          <span tabindex="-1" class="sl-hamburger-icon-container pull-right" ng-class="{'sl-hamburger-icon-container-search': state.current.name === 'search'}" ng-click="navMenuOpen = !navMenuOpen" href="#" role="button">
+            <!-- ngIf: !navMenuOpen --><div class="sl-hamburger-closed sl-hamburger-image ng-scope" ng-if="!navMenuOpen"></div><!-- end ngIf: !navMenuOpen -->
+            <!-- ngIf: navMenuOpen -->
+          </span>
+          </div>
+        </ul>
+      </div>
+      <!-- ngIf: navMenuOpen -->
+
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,177 @@
+
+<h2 class="heading-medium question">Who in the household is potentially violent?</h2>
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      <p class="form-label">Select all that apply</p>
+      <form id="multi-box-form" class="form" method="get" action="check">
+
+        <fieldset class="form-group">
+
+          <legend>
+            <h3 class="visually-hidden">Who is potentially violent?</h3>
+          </legend>
+          
+          <div class="multiple-choice">
+            <input id="person" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+            <label for="person">The person</label>
+          </div>
+          
+          <div class="multiple-choice">
+            <input id="partner" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+            <label for="partner">The person's partner</label>
+          </div>
+          
+          <div class="multiple-choice">
+            <input id="member" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+            <label for="member">Someone else in the household</label>
+          </div>
+          
+          {% if data.updateType != 1 %}
+            <p class="form-block" style="margin-top:-10px;">or</p>
+
+            <div class="multiple-choice">
+              <input id="unknown" name="personalDetailValue" type="checkbox" value=null>
+              <label for="unknown">Remove the potentially violent status</label>
+            </div>
+          {% endif %}
+
+        </fieldset>
+                
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      
+      <p><a href="task-list">Cancel</a></p>
+      
+    </div>
+
+  </div>
+
+
+
+
+<!--
+<h2 class="heading-medium question">What kind of update do you need to make?</h2>
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="check" id="cancel-boxes">
+
+        <div class="form-group">
+          <fieldset>
+            <div class="multiple-choice" data-target="contact-by-email">
+              <input id="example-contact-by-email" type="radio" name="data" value="Yes">
+              <label for="example-contact-by-email">Update who is potentially violent</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
+              <p class="strong">Who in the household is potentially violent?</p>
+              <p class="form-label">Select all that apply</p>
+              <div class="multiple-choice">
+                <input id="person" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+                <label for="person">The person</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="partner" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+                <label for="partner">The person's partner</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="member" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+                <label for="member">Someone else in the household</label>
+              </div>
+            </div>
+
+            <div class="multiple-choice" data-target="contact-by-phone">
+              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
+              <label for="stateless">End the potentially violent status</label>
+            </div>
+
+            {% if data.updateType == "correcting" %}
+              <div class="multiple-choice" data-target="contact-by-text">
+                <input id="unknown" name="data" type="radio" value="unknown">
+                <label for="unknown">Their nationality is unknown</label>
+              </div>
+            {% endif %}   
+          </fieldset>
+
+        </div>
+                
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      
+      <p><a href="task-list">Cancel</a></p>
+      
+    </div>
+
+  </div>
+-->
+
+
+
+<!--
+<h2 class="heading-medium question">What kind of update do you need to make?</h2>
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="check" id="cancel-boxes">
+
+        <div class="form-group">
+          <fieldset>
+            <div class="multiple-choice" data-target="contact-by-email">
+              <input id="example-contact-by-email" type="radio" name="data" value="Yes">
+              <label for="example-contact-by-email">Update who is potentially violent</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="contact-by-email">
+              <p class="strong">Who in the household is potentially violent?</p>
+              <p class="form-label">Select all that apply</p>
+              <div class="multiple-choice">
+                <input id="person" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+                <label for="person">The person</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="partner" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+                <label for="partner">The person's partner</label>
+              </div>
+
+              <div class="multiple-choice">
+                <input id="member" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+                <label for="member">Someone else in the household</label>
+              </div>
+            </div>
+
+            <div class="multiple-choice" data-target="contact-by-phone">
+              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
+              <label for="stateless">End the potentially violent status</label>
+            </div>
+
+            {% if data.updateType == "correcting" %}
+              <div class="multiple-choice" data-target="contact-by-text">
+                <input id="unknown" name="data" type="radio" value="unknown">
+                <label for="unknown">Their nationality is unknown</label>
+              </div>
+            {% endif %}   
+          </fieldset>
+
+        </div>
+                
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      
+      <p><a href="task-list">Cancel</a></p>
+      
+    </div>
+
+  </div>-->

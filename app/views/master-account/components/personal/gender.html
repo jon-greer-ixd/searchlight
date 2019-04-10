@@ -1,0 +1,132 @@
+{% if data.personalDetails.gender.gra == true and data.personalDetails.gender.preGra == true %}
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      <p>Gender</p>
+    </div>
+      <div class="column-one-third">
+        <ul>
+            <li class="strong">Gender recognition certificate</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+    <div class="column-two-thirds">
+      <hr class="light">
+    </div>
+  </div>
+
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+      <div class="column-one-third">
+        <ul>
+            <li class="strong">Pre Gender Recognition Act application</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+{% endif %}
+
+{% if data.personalDetails.gender.gra == true and data.personalDetails.gender.preGra == false %}
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      <p>Gender</p>
+    </div>
+      <div class="column-one-third">
+        <ul>
+            <li class="strong">Gender recognition certificate</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+{% endif %}
+
+{% if data.personalDetails.gender.gra == false and data.personalDetails.gender.preGra == true %}
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      <p>Gender</p>
+    </div>
+      <div class="column-one-third">
+        <ul>
+            <li class="strong">Pre Gender Recognition Act application</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Date of gender change&nbsp; · &nbsp;{{data.prepopulatedString}}</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+    <div class="column-two-thirds">
+      <hr class="light">
+    </div>
+  </div>
+
+  <div class="grid-row no-margin">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+      <div class="column-one-third">
+        <ul>
+            <li class="sl-secondary-text-color sl-metadata">Add gender recognition details</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="add-gender-handler/?data=gra" class="under-link">Add</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+{% endif %}

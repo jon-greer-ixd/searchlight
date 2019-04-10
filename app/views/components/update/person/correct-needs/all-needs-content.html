@@ -1,0 +1,148 @@
+<h2 class="heading-medium question">Which additional need do they have instead of {{data.personalDetailValue | lower}}?</h2>
+  <div class="grid-row">
+
+      <div class="column-two-thirds">
+
+        <p>Select all that apply</p>
+
+        <form class="form" method="get" id="multi-box-form" action="../check">
+
+          <fieldset class="form-group">
+                        
+            {% set audioForms = false %}
+            {% set braille = false %}
+            {% set anInductionLoop = false %}
+            {% set largePrint = false %}
+            {% set signLanguage = false %}
+            {% set signLanguageHearing = false %}
+            {% set typeTalkMinicomHearing = false %}
+            {% set textphoneSpeech = false %}
+            {% set aLift = false %}
+            {% set aRamp = false %}
+            {% set wideDoorways = false %}
+            
+            {% for item in data.personalDetails.specialNeeds.value %}
+              {% if item == "Audio forms" %}
+                {% set audioForms = true %}
+              {% elif item == "Braille" %}
+                {% set braille = true %}
+              {% elif item == "An induction loop" %}
+                {% set anInductionLoop = true %}
+              {% elif item == "Large print" %}
+                {% set largePrint = true %}
+              {% elif item == "Sign language" %}
+                {% set signLanguage = true %}
+              {% elif item == "Sign language - hearing" %}
+                {% set signLanguageHearing = true %}
+              {% elif item == "Type-talk or minicom - hearing" %}
+                {% set typeTalkMinicomHearing = true %}
+              {% elif item == "Type-talk or textphone - speech" %}
+                {% set textphoneSpeech = true %}
+              {% elif item == "A lift" %}
+                {% set aLift = true %}
+              {% elif item == "A ramp" %}
+                {% set aRamp = true %}
+              {% elif item == "Wide doorways" %}
+                {% set wideDoorways = true %}
+              {% endif %}
+            {% endfor %}
+            
+            {% if audioForms != true %}
+              <div class="multiple-choice">
+                <input id="type-1" name="tempValue" class="multi-boxes" type="radio" value="Audio forms">
+                <label for="type-1">Audio forms</label>
+              </div>
+            {% endif %}
+
+            {% if braille != true %}
+              <div class="multiple-choice">
+                <input id="type-2" name="tempValue" class="multi-boxes" type="radio" value="Braille">
+                <label for="type-2">Braille</label>
+              </div>
+            {% endif %}
+            
+            {% if anInductionLoop != true %}
+              <div class="multiple-choice">
+                <input id="type-3" name="tempValue" class="multi-boxes" type="radio" value="An induction loop">
+                <label for="type-3">An induction loop</label>
+              </div>
+            {% endif %}
+
+            {% if largePrint != true %}
+              <div class="multiple-choice">
+                <input id="type-4" name="tempValue" class="multi-boxes" type="radio" value="Large print">
+                <label for="type-4">Large print</label>
+              </div>
+            {% endif %}
+            
+            {% if signLanguage != true %}
+              <div class="multiple-choice">
+                <input id="type-7" name="tempValue" class="multi-boxes" type="radio" value="Sign language">
+                <label for="type-7">Sign language</label>
+              </div>
+            {% endif %}
+
+            {% if signLanguageHearing != true %}
+              <div class="multiple-choice">
+                <input id="type-8" name="tempValue" class="multi-boxes" type="radio" value="Sign language - hearing">
+                <label for="type-8">Sign language - hearing</label>
+              </div>
+            {% endif %}
+            
+            {% if typeTalkMinicomHearing != true %}
+              <div class="multiple-choice">
+                <input id="type-9" name="tempValue" class="multi-boxes" type="radio" value="Type-talk or minicom - hearing">
+                <label for="type-9">Type-talk or minicom - hearing</label>
+              </div>
+            {% endif %}
+
+            {% if textphoneSpeech != true %}
+              <div class="multiple-choice">
+                <input id="type-10" name="tempValue" class="multi-boxes" type="radio" value="Type-talk or textphone - speech">
+                <label for="type-10">Type-talk or textphone - speech</label>
+              </div>
+            {% endif %}
+            
+            {% if aLift != true %}
+              <div class="multiple-choice">
+                <input id="type-5" name="tempValue" class="multi-boxes" type="radio" value="A lift">
+                <label for="type-5">A lift</label>
+              </div>
+            {% endif %}
+
+            {% if aRamp != true %}
+              <div class="multiple-choice">
+                <input id="type-6" name="tempValue" class="multi-boxes"  type="radio" value="A ramp">
+                <label for="type-6">A ramp</label>
+              </div>
+            {% endif %}
+            
+            {% if wideDoorways != true %}
+              <div class="multiple-choice">
+                <input id="type-11" name="tempValue" class="multi-boxes"  type="radio" value="Wide doorways">
+                <label for="type-11">Wide doorways</label>
+              </div>
+            {% endif %}
+            
+        </fieldset>
+          
+        {% if data.updateType != 1 %}
+          <p class="form-block" style="margin-top:-15px;">or</p>
+          <div class="form-group">
+            <div class="multiple-choice">
+              <input id="unknown" name="tempValue" type="radio" value=null>
+                <label for="unknown">Remove {{data.personalDetailValue | lower}}</label>
+            </div>
+          </div>
+        {% endif %}
+
+
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      <p><a href="task-list">Cancel</a></p>
+    </div>
+
+  </div>

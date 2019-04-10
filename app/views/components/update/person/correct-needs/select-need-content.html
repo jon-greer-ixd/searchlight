@@ -1,0 +1,29 @@
+<h2 class="heading-medium question">What do you need to correct?</h2>
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+            
+      <form class="form" method="get" id="multi-box-form" action="all-needs">
+
+        <fieldset class="form-group">
+
+          {% for item in data.personalDetails.specialNeeds.value %}
+            {% if item != null or item != undefined %}
+              <div class="multiple-choice">
+                <input id="{{item}}" name="personalDetailValue" type="radio" value="{{item}}">
+                <label for="{{item}}">{{item}}</label>
+              </div>
+            {% endif %}     
+          {% endfor %}     
+
+        </fieldset>
+        
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+
+    </form>
+    <p><a href="">Cancel</a></p>
+  </div>
+
+  </div>

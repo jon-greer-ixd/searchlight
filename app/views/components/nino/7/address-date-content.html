@@ -1,0 +1,55 @@
+  <div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="address-stat-handler">
+        
+        <fieldset class="form-group">
+          
+          <div class="multiple-choice">
+            <input id="live" type="radio" name="data" value="live">
+            <label for="live">Live</label>
+          </div>
+
+          <div class="multiple-choice">
+            <input id="dlo" type="radio" name="data" value="dlo">
+            <label for="dlo">Dead letter office</label>
+          </div>
+
+          <div class="multiple-choice" data-target="pwa-date">
+            <input id="nfa" type="radio" name="data" value="nfa">
+            <label for="nfa">No fixed abode</label>
+          </div>
+          
+          <div class="multiple-choice" data-target="pwa-date">
+            <input id="pwa" type="radio" name="data" value="pwa">
+            <label for="pwa">Person without address</label>
+          </div>
+            <div class="panel panel-border-narrow js-hidden" id="pwa-date">
+<!--              <p class="bold">When did this residential address status start?</p>-->
+              <div class="form-group prepop">
+                <label class="form-label" for="date">
+                  Start date
+                  <span class="form-hint">
+                    For example 31/8/197
+                  </span>
+                </label>
+                <input class="form-control box-one" id="date" name="date" type="text">
+                <a class="populate-link-one">Use today's date</a>
+              </div>
+            </div>
+          
+        </fieldset>
+                        
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+      </form>
+      <p><a href="">Cancel</a></p>
+      
+    </div>
+
+  </div>
+     
+

@@ -1,0 +1,44 @@
+<h2 class="heading-medium question">What do you need to update?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="update-type-handler">
+      <div class="form-group">
+        <fieldset>
+          <legend>
+            <p class="visually-hidden">Where do you live?</p>
+          </legend>
+          <div class="multiple-choice">
+            <input id="address" type="radio" name="data" value="address">
+            <label for="address">Update to a new address</label>
+          </div>
+          
+          {% if correspondence === false %}
+          <div class="multiple-choice">
+            <input id="dlo" type="radio" name="data" value="dlo">
+            <label for="dlo">Update the status to dead letter office</label>
+          </div>
+          {% else %}
+          <div class="multiple-choice">
+            <input id="status" type="radio" name="data" value="status">
+            <label for="status">Update the status</label>
+          </div>
+          {% endif %}
+<!--
+          <div class="multiple-choice">
+            <input id="end" type="radio" name="data" value="end">
+            <label for="end">End this address</label>
+          </div>
+-->
+          <div class="multiple-choice">
+            <input id="cherish" type="radio" name="data" value="cherish">
+            <label for="cherish">Cherish this address</label>
+          </div>
+        </fieldset>
+      </div>  
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      <p><a href="/account2/account">Cancel</a></p>
+    </form>
+  </div>
+</div>

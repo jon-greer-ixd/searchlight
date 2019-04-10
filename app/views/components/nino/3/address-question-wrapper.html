@@ -1,0 +1,18 @@
+<!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row updater super-slim-header">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+        <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          <h2>Do you need to add another address for this person?</h2>
+          <div id="sl-address-primary-card" class="sl-primary-card">
+            <div id="address-pane">
+              
+                {% include "components/nino/3/address-question-content.html" %}
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

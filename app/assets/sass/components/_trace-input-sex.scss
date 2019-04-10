@@ -1,0 +1,58 @@
+#sl-trace-input-sex{
+
+  .sl-sex-input-checkbox-container {
+    height: 44px;
+    width: 44px;
+    outline: 1px solid $black;
+    cursor: pointer;
+  }
+
+  .sl-sex-input-sexes {
+    margin-top: 10px;
+  }
+
+  .sl-sex-input-sexes:focus{
+    outline: 0;
+  }
+
+  .sl-sex-input-container {
+    @media (max-width: $screen-sm-max) {
+      padding-top: 10px;
+    }
+  }
+
+  .sl-sex-focus {
+    outline: 3px solid $yellow;
+  }
+
+  .sl-sex-selected {
+    border: solid;
+    border-width: 0 0 7px 7px;
+    width: 30px;
+    height: 14px;
+    position: inherit;
+    top: 13px;
+    left: -8px;
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  .sl-sex-label-position {
+    position: inherit;
+    top: -15px;
+  }
+
+  input {
+    margin: 0;
+    zoom: 1;
+    opacity: 0;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+}

@@ -1,0 +1,179 @@
+    <h2 class="heading-medium question">Check your answers</h2>
+      <div class="grid-row">
+        <div class="column-one-half">
+
+          {% if data['updateType'] === "endInterest" %}
+
+            <table class="table">
+              <tr>
+                <td><span class="strong">Benefit type</span></td>
+                <td>{{tempInterest.title}}</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">End date</span></td>
+                <td>{{data['prepopulatedDate']}}</td>
+                <td><a>Change</a></td>
+              </tr>
+<!--
+              {% for item in tempInterests %}
+                <tr>
+                  <td>Interest</td>
+                  <td>{{item.title}}</td>
+                  <td><a href="interests">Change</a></td>
+                </tr>
+              {% endfor %}
+-->
+            </table>
+          
+                <br>
+      <div>
+        <form method="get" action="end-interest-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+        
+        {% elif data['updateType'] === "endfParties" %}
+        
+          <table class="table">
+            <tr>
+              <td><span class="strong">End owning party</span></td>
+              <td>Disability Living Allowance<br>
+              Office code 100017</td>
+              <td><a>Change</a></td>
+            </tr>
+            <tr>
+              <td><span class="strong">End broadcasting party</span></td>
+              <td>Disability Living Allowance<br>
+              Office code  100017
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+        </table>
+                
+      <div>
+        <form method="get" action="interest-check-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+
+        
+        {% elif data['updateType'] === "transferInterest" %}
+        
+          <table class="table">
+            <tr>
+              <td><span class="strong">Interest</span></td>
+              <td>{{ tempInterest.title }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">New office code</span></td>
+              <td>100017</td>
+              <td><a>Change</a></td>
+            </tr>
+        </table>
+              <br>
+      <div>
+        <form method="get" action="interest-check-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+
+
+          {% else %} 
+
+          <table class="table">
+            <tr>
+              <td><span class="strong">Benefit type</span></td>
+              <td>{{ tempInterest.title }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">Interest start date</span></td>
+              <td>{{ tempInterest.startDate }}</td>
+              <td><a>Change</a></td>
+            </tr>
+
+            <tr>
+              <td><span class="strong">Interest type</span></td>
+              {% if tempInterest.system === "sys" %}
+                <td>System</td>
+              {% elseif tempInterest.system === "clerical" %}
+                <td>Clerical</td>
+              {% else %}
+                <td>Computer record location (CRL)</td>
+              {% endif %}
+              <td><a>Change</a></td>
+            </tr>
+
+            {% if tempInterest.owning === true %}
+              <tr>
+                <td><span class="strong">Owning office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Owning office start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+
+            {% endif %}
+
+            {% if tempInterest.broadcasting === true %}
+              <tr>
+                <td><span class="strong">Broadcasting office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Broadcasting office start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+
+            {% if tempInterest.system === "crl" %}
+              <tr>
+                <td><span class="strong">Maintained or non-maintained interest</span></td>
+                {% if tempInterest.maintained == true %}
+                  <td>Maintained</td>
+                {% else %}
+                  <td>Non-maintained</td>
+                {% endif %}
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Business office code</span></td>
+                  <td>100017</td>
+                <td><a>Change</a></td>
+              </tr>
+              <tr>
+                <td><span class="strong">Business office start date</span></td>
+                <td>{{ tempInterest.startDate }}</td>
+                <td><a>Change</a></td>
+              </tr>
+
+            {% endif %}
+
+        </table>
+
+      <br>
+      <div>
+        <form method="get" action="interest-check-handler">
+          <div class="form-group">
+            <input class="button" type="submit" value="Submit">
+          </div>
+        </form>
+
+      {% endif %}
+
+        <a href="../account">Cancel</a>
+      </div>
+      </div>
+    </div>

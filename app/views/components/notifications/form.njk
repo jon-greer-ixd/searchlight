@@ -1,0 +1,112 @@
+<form id="alert-search-form" action="notifications">
+  <div class="grid-row">
+    <div class="column-one-quarter">
+      <div class="form-group prepop">
+        <label class="form-label" for="full-name-f1">
+          Date of notification
+          <span class="form-hint">
+            For example 21/10/2018
+          </span>
+        </label>
+        <input class="form-control box-one" id="not_date" type="text" name="not_date" value={{data.not_date}}>
+        <a class="populate-link-one">Use yesterday's date</a>
+      </div>
+    </div>
+
+    <div class="column-one-quarter" id="benefits">
+      <div class="form-group">
+        {% include "components/notifications/system-selector.njk" %}
+      </div>
+    </div>
+
+    <div class="column-one-quarter" id="alert-code">
+      {% include "components/notifications/notification-selector.njk" %}
+    </div>
+
+    <div class="column-one-quarter" id="alert-code">
+      <div class="form-group">
+        <label class="form-label" for="full-name-f1">
+          Office ID
+          <span class="form-hint">
+            For example 11223
+          </span>
+        </label>
+        <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="grid-row">
+    <div class="column-full">
+      <div class="form-group">
+        <details>
+          <summary><span class="summary">View more search options</span></summary>
+          
+          <div class="panel panel-border-narrow" id="nino-search">
+            <!-- status -->  
+            <div class="quater-col">
+              <fieldset>
+                <label class="form-label" for="full-name-f1">Status</label>
+                <div class="multiple-choice">
+                  <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland" checked=checked>
+                  <label for="radio-1">Unprocessed</label>
+                </div>
+                <div class="multiple-choice">
+                  <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+                  <label for="radio-2">Processed</label>
+                </div>
+                <div class="multiple-choice">
+                  <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+                  <label for="radio-3">All</label>
+                </div>
+              </fieldset>
+            </div>
+            
+            <!-- NINO -->  
+            <div class="half-col">
+              <div class="half-col">
+                <label class="form-label" for="full-name-f1">National Insurance number</label>
+                <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+              </div>
+              <!-- Range
+              <div class="form-title">
+               <!-- title
+                <p id="ledger-title"class="form-label" for="full-name-f1">Search for a range of National Insurance numbers
+                  <span class="form-hint">
+                    Enter the last two digits of each number
+                  </span>
+                </p>
+              </div>
+              <div class="column-one-half">
+                <div class="column-one-half">
+                 <!-- from 
+                  <label class="form-label" for="full-name-f1">From</label>
+                  <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+                </div>
+                <div class="column-one-half">
+                 <!-- to 
+                  <label class="form-label" for="full-name-f1">To</label>
+                  <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+                </div>
+              </div>                
+              --> 
+            </div>
+            
+          </div>
+        </details> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="grid-row">
+    <div class="column-full last-full-col">
+      <div class="form-group">
+        <button class="button" type="submit">Search</button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+

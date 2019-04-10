@@ -1,0 +1,62 @@
+<div class="sl-account-canvas-width">
+  <sl-account-person-summary><div id="sl-account-person-summary">
+    <div class="sl-primary-name-card-container" ng-class="{'sl-deceased':data.p erson.person[0].deathDateGroup[0].deathDate}">
+      <div class="sl-primary-name-card">
+        <div class="sl-primary-name-height" id="sl-primary-name-height" style="min-height: 50px; height: 10px;">
+        <span class="sl-primary-name-and-age">
+          <span id="sl-account-primary-name" class="spacing-top-mid sl-account-primary-name">
+            <!-- ngIf: !data.name.nameDetails -->
+            <!-- ngIf: data.name.primaryName -->
+
+            <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
+              
+              {% if data.details.name.title != "None" %}
+                {{data.details.name.title | upper}} 
+                <span class="namespace"> </span> 
+              {% endif %}
+
+             {{data.details.name.first}} {{data.details.name.last}}
+              
+            </h1><!-- end ngIf: data.name.primaryName -->
+          </span>
+          <!-- ngIf: !data.person.person[0].birthDateGroup[0] -->
+          <!-- ngIf: data.person.person[0].birthDateGroup[0] -->
+          <div id="sl-account-person-age" class="spacing-bottom-mid sl-account-person-age sl-third-heading ng-scope" ng-if="data.person.person[0].birthDateGroup[0]">
+            <span class="sl-nino-metadata">
+              <span ng-bind-html="data.nino + data.person.person[0].ninoGroup[0].ninoSuffix | nino" class="ng-binding">
+                <span> 
+                  <span class="nino-separator">SY</span>
+                  <span class="nino-separator">11</span>
+                  <span class="nino-separator">92</span>
+                  <span class="nino-separator">84</span>
+                  <span>Z</span> 
+                  <span>&nbsp; · &nbsp;</span>
+                </span>
+              </span>
+            </span>
+            <span class="sl-age-metadata">
+            <!-- ngIf: !data.person.person[0].deathDateGroup[0].deathDate -->
+            <!-- ngIf: data.person.person[0].deathDateGroup[0].deathDate -->
+              <sl-age-info ng-if="data.person.person[0].deathDateGroup[0].deathDate" dates="{dateOfBirth: data.person.person[0].birthDateGroup[0].birthDate,
+        dateOfDeath: data.person.person[0].deathDateGroup[0].deathDate,  accountFlag: true}" class="ng-scope ng-isolate-scope">
+                <span id="birth-death-date">
+                <!-- ngIf: dob -->
+                  <span id="sl-date-of-birth" ng-if="dob" class="ng-scope">
+                    <!-- ngIf: !dod -->
+                    <!-- ngIf: dod -->
+                    <span ng-class="{'sl-person-age': !dates.accountFlag, 'sl-account-age-metadata': dates.accountFlag}" ng-if="dod" class="ng-scope sl-account-age-metadata">
+                      <span class="ng-binding">{{data.personalDetails.dateOfBirth.value}}</span> 
+                      <span ng-class="{'sl-warning-text-red':dates.bold}" class="ng-binding"> </span>
+                    </span><!-- end ngIf: dod -->
+                  </span><!-- end ngIf: dob -->
+                </span>
+              </sl-age-info><!-- end ngIf: data.person.person[0].deathDateGroup[0].deathDate -->
+            </span>
+          </div><!-- end ngIf: data.person.person[0].birthDateGroup[0] -->
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+  </sl-account-person-summary>
+</div>

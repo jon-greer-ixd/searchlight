@@ -1,0 +1,115 @@
+<div class="sl-account-canvas row updater super-slim-header">
+  
+  <div class="sl-account-canvas-width" id="alerts-container">
+    
+    <a class="link-back" onCLick="history.back()">Back</a>
+    <h2 class="title">Search for alerts</h2>
+
+    <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+
+      <div class="sl-primary-card">
+        {% include "components/alerts/v2/alerts-form.njk" %}
+      </div>
+      <br>
+      
+<div id="search-results" class="grid-row">
+
+  <!--
+    <div class="column-one-third">
+      <div class="sl-primary-card">
+        <h3>Edit or start a new search</h3>
+      </div>
+    </div>
+  -->
+
+    <div class="column-full">
+      <div class="sl-primary-card" id="alerts">
+        <h3>More than 100 results were found</h3>
+        <div class="options paging">
+          <ul>
+            <li>Page</li>
+            <li><span class="strong">1</span></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+            <li><a>4</a></li>
+            <li><a>5</a></li>
+            <li><a>6</a></li>
+            <li><a>7</a></li>
+            <li><a>8</a></li>
+            <li><a>9</a></li>
+            <li><a>10</a></li>
+<!--            <li>there are more than 10 pages</li>-->
+          </ul>
+        </div>
+<!--
+        <div class="options">
+          <ul>
+            <li><a id="">Print 100 results</a></li>
+            <li><a id="">Copy 100 results</a></li>
+            <li><a href="alerts-two" id="">Mark 100 results as processed</a></li>
+          </ul>
+        </div>
+-->
+
+<!--
+        <div class="form-group">
+          <button class="button" type="submit">Copy 150 results</button>
+          <button class="button" type="submit">Print 150 results</button>
+        </div>
+  -->
+
+        {% include "components/alerts/results.njk" %}
+
+        <div class="options">
+          <ul>
+            <li><a id="select_link">Select all</a></li>
+            <li><a id="un_link">Deselect all</a></li>
+          </ul>
+        </div>
+        
+        <div class="form-group">
+          <fieldset>
+            
+          {% if data.selectstatus == "processed" %}
+          <a href="">
+            <button class="button" type="submit" id="processButton"  disabled="disabled">Mark as unprocessed</button>
+          </a>
+          {% elif data.selectstatus == "all" %}
+            <a href="">
+              <button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button>
+            </a>
+            <a href="">
+              <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as unprocessed</button>
+            </a>
+          {% else %}
+          <a href="">
+            <button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button>
+          </a>
+          {% endif %}
+
+            
+          </fieldset>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>      
+      
+        
+    </div>
+
+  </div>
+  
+  <script src="../../../../../public/javascripts/jquery-1.11.1.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery-ui.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery.select-to-autocomplete.js"></script>
+	<script>
+	  (function($){
+	    $(function(){
+	      $('select').selectToAutocomplete();
+	      $('form').submit(marital);
+	    });
+	  })(jQuery);
+	</script>

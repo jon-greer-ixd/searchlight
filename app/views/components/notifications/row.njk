@@ -1,0 +1,35 @@
+<tr class="data">
+  <td>{{counter}}</td>
+  <td>{{item.office}}</td>
+  <td>ATLAS</td>
+  <td>{{item.date}}</td>
+  <td>{{item.type}}</td>
+  <td>{{item.nino}}</td>
+  <td>{{item.surname}}</td>
+  <td>{{item.dob}}</td>
+  <td>{{item.processedDate}}</td>
+  <td class="check">
+    <div class="multiple-choice">
+      <input id={{counter}} name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true">
+      <label for={{counter}}></label>
+    </div>
+  </td>
+</tr>
+<tr>
+  <td colspan="13" class="description">
+    <span class="">Details:</span> {{item.description}}
+  </td> 
+</tr>
+
+<!--
+        <td class="strong">No</td>
+        <td class="strong">Office ID</td>
+        <td class="strong">Benefit System</td>
+        <td class="strong">Notification date </td>
+        <td class="strong">Notification type</td>
+        <td class="strong">Nationali insurance number</td>
+        <td class="strong">Surname</td>
+        <td class="strong">Date of birth</td>
+        <td class="strong">Processed date</td>
+        <td class="strong check">&nbsp;</td>
+-->

@@ -1,0 +1,365 @@
+#sl-header {
+  background-color: $black;
+  border: 0;
+  top: 0;
+  min-height: 54px;
+
+
+
+  .sl-crown-logo-black {
+    display: none;
+  }
+  //mobile
+  @media (max-width: $screen-sm-min) {
+    position: relative;
+    margin-bottom: 0;
+    top: -2px;
+
+    .sl-header-container {
+      .sl-header-title {
+        margin-left: 0;
+      }
+      .sl-link {
+        display: none;
+      }
+      .sl-hamburger-icon-container {
+        display: block;
+      }
+    }
+
+    .sl-search-container-mobile {
+      .sl-search-input-container {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+
+  //Anything above mobile
+  @media (min-width: $screen-sm-min) {
+
+    .sl-header-container {
+      .sl-header-title {
+        margin-left: 15px;
+      }
+
+      .sl-hamburger-icon-container {
+        display: none;
+      }
+    }
+
+    .sl-nav-menu-mobile {
+      display: none;
+    }
+
+    .sl-search-container-mobile {
+      .sl-search-input-container {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+
+  @media (max-width: $custom-sm-max-breakpoint) {
+
+    .sl-header-container {
+      .sl-link {
+        top: 15px;
+      }
+      .sl-link-home {
+        top: 4px;
+      }
+    }
+
+    .sl-hamburger-closed {
+      background: url(/public/images/hamburger-menu-closed.svg);
+      height: 15px;
+      width: 18px;
+      margin: 6px 8px;
+    }
+
+    .sl-hamburger-open {
+      background: url(/public/images/images/cross-white.svg);
+      height: 15px;
+      width: 16px;
+      margin: 6px 10px 6px 9px;
+
+    }
+
+    .sl-hamburger-image {
+
+    }
+
+    .sl-header-expanded {
+      min-height: $sl-header-min-height-mobile;
+    }
+
+    .sl-header-container {
+      .sl-header-title {
+        top: 6px;
+
+        .sl-crown-logo {
+          height: 25px;
+        }
+
+      }
+
+      .sl-search-input-container {
+        margin-top: 10px;
+        padding-right: 35px;
+      }
+    }
+
+    .sl-search-container-mobile {
+      display: inline-block;
+    }
+  }
+  @media (min-width: $custom-sm-max-breakpoint) {
+    min-height: $sl-header-min-height;
+
+    .sl-header-container {
+      .sl-header-title {
+        top: 6px;
+
+        .sl-crown-logo {
+          height: 25px;
+        }
+
+      }
+
+      .sl-search-input-container {
+        display: inline;
+      }
+
+      .sl-link {
+        top: 4px;
+      }
+
+      .sl-header-col-right {
+        .sl-link {
+          top: 15px;
+        }
+      }
+    }
+
+    .sl-search-container-mobile {
+      display: none;
+    }
+  }
+  @media (min-width: $custom-sm-max-breakpoint) and (max-width: $custom-md-max-breakpoint) {
+
+    .sl-header-container {
+      .sl-search-input-container {
+        max-width: 390px;
+      }
+
+      .sl-search-input-container-trace {
+        max-width: 325px;
+      }
+    }
+
+  }
+  @media (min-width: $custom-md-max-breakpoint) {
+    .sl-header-container {
+      .sl-search-input-container {
+        max-width: 590px;
+      }
+
+      .sl-search-input-container-trace {
+        max-width: 535px;
+      }
+    }
+  }
+
+  .sl-link {
+    margin-left: -5px;
+    font-family: $sl-font;
+    color: $white;
+    padding: 5px 5px 2px 5px;
+    text-decoration: none;
+  }
+  .sl-link:hover {
+    text-decoration: underline;
+  }
+  .sl-link:focus {
+    background-color: $yellow;
+    color: $black;
+    outline: 0;
+  }
+
+  .sl-search-input-container {
+    height: 44px;
+
+    #sl-search-input {
+      height: 44px;
+    }
+    .sl-search-btn {
+      height: 44px;
+      width: 44px;
+      display: inline;
+    }
+    .sl-search-btn {
+      background-color: $govuk-blue;
+    }
+  }
+
+  .sl-header-container {
+    max-height: $sl-header-min-height-mobile;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    .sl-header-col-left, .sl-header-col-right {
+      display: inline-block;
+    }
+    .sl-header-title {
+      margin-right: 40px;
+      display: inline-block;
+      position: relative;
+      padding-top: 5px;
+
+      .sl-crown-logo-container {
+        pointer-events: none;
+        outline: 0;
+        text-decoration: none;
+        display: inline-block;
+        position: absolute;
+        padding-left: 5px;
+
+        .sl-crown-logo {
+          margin-right: 10px;
+          vertical-align: top;
+        }
+
+        .sl-crown-logo-white {
+          background: url(/public/images/crown-logo.svg);
+          height: 25px;
+          width: 35px;
+
+        }
+      }
+      .sl-crown-logo-container:focus {
+        padding: 0;
+      }
+      .sl-title {
+        font-weight: bold;
+        color: $white;
+      }
+    }
+
+    a.sl-third-heading.sl-main-heading {
+      outline: 3px solid transparent;
+      padding-right: 3px;
+    }
+
+    a.sl-third-heading.sl-main-heading:focus {
+      outline: 3px solid $yellow;
+    }
+
+    .sl-search-input-container {
+      position: absolute;
+      width: 100%;
+    }
+    .sl-link {
+      position: relative;
+      margin-right: 15px;
+    }
+    .sl-header-links {
+      margin-top: 6px;
+    }
+    .sl-hamburger-icon-container {
+      margin-top: 5px;
+      padding: 5px 2px;
+      margin-right: 7px;
+
+      .sl-hamburger-open {
+        color: $white;
+        width: 15px;
+      }
+    }
+
+    .sl-hamburger-icon-container-search {
+      margin-top: 6px;
+      padding: 5px 2px;
+      margin-right: 7px;
+    }
+
+  }
+
+  .sl-nav-menu-mobile {
+    margin-top: 2px;
+    background-color: $black;
+
+    .sl-nav-menu-item {
+      padding-bottom: 15px;
+
+    }
+    .sl-nav-menu-item-not-first {
+      border-top: solid 1px rgba(255, 255, 255, .25);
+      padding-top: 15px;
+    }
+    .sl-nav-menu-item-last {
+      padding-bottom: 20px;
+    }
+  }
+
+  .sl-crown-logo-white {
+    background: url(/public/images/crown-logo.svg);
+  }
+  .sl-search-container-mobile {
+
+    .sl-search-input-container {
+      margin-bottom: 15px;
+    }
+  }
+
+  a.skip-main {
+    left: -999px;
+    position: absolute;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -999;
+  }
+  a.skip-main:focus, a.skip-main:active {
+    background-color: $yellow;
+    left: 90px;
+    top: 10px;
+    width: auto;
+    height: auto;
+    overflow: auto;
+    outline: 0;
+    z-index: 2000;
+    padding: 5px;
+  }
+
+  .sl-main-heading {
+    padding: 3px 3px 3px 50px;
+    text-decoration: none;
+  }
+
+  a.sl-main-heading:hover {
+    text-decoration: none;
+    color: $white;
+  }
+
+  a.sl-main-heading:focus {
+    color: $white;
+  }
+
+  a.sl-main-heading:hover {
+    text-decoration: none;
+  }
+
+  .sl-searchbar-tech-assist {
+    display: none;
+  }
+  ul {
+    padding: 0;
+    list-style-type: none;
+    li {
+      display: inline;
+    }
+  }
+
+}

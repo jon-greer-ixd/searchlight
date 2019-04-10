@@ -1,0 +1,30 @@
+{{title}}
+{{value_1}}
+{{value_2}}
+{{value_3}}
+{% set title = "Edit or search again" %}
+{% set value_1 = "21/10/2018" %}
+{% set value_2 = "CACS" %}
+{% set value_3 = "3508" %}
+{% include "components/alerts/results-filter.njk" %}
+
+<br>
+
+<div id="search-results" class="grid-row">
+
+<!--
+  <div class="column-one-third">
+    <div class="sl-primary-card">
+      <h3>Edit or start a new search</h3>
+    </div>
+  </div>
+-->
+
+  <div class="column-full">
+    <div class="sl-primary-card" id="alerts">
+      <h3>There are no results</h3>
+      <hr>
+    </div>
+  </div>
+
+</div>

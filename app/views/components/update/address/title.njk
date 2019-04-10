@@ -1,0 +1,15 @@
+{% if data.updateType == 0 %}
+  Change their
+{% elif data.updateType == 1 %}
+  Add a
+{% elif data.updateType == 2 %}
+  Update their
+{% elif data.updateType == 3 %}
+  Correct their
+{% elif data.updateType == 5 %}
+  End their
+{% else %}
+  {{data.updateType}} 
+{% endif %}
+
+{{data.addressType}} address

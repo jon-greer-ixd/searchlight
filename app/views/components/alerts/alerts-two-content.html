@@ -1,0 +1,59 @@
+{{title}}
+{{value_1}}
+{{value_2}}
+{{value_3}}
+{% set title = "Edit or search again" %}
+{% set value_1 = "21/10/2018" %}
+{% set value_2 = "CACS" %}
+{% set value_3 = "3508" %}
+
+{% include "components/alerts/results-filter.njk" %}
+
+<br>
+
+<div id="search-results" class="grid-row">
+
+<!--
+  <div class="column-one-third">
+    <div class="sl-primary-card">
+      <h3>Edit or start a new search</h3>
+    </div>
+  </div>
+-->
+
+  <div class="column-full">
+    <div class="sl-primary-card" id="alerts">
+      <div class="options">
+        <ul>
+          <li><a id="">Print 50 results</a></li>
+          <li><a id="">Copy 50 results</a></li>
+          <li><a href="alerts-three" id="">Mark 50 results as processed</a></li>
+        </ul>
+      </div>
+      <hr>
+<!--
+      <div class="form-group">
+        <button class="button" type="submit">Copy 150 results</button>
+        <button class="button" type="submit">Print 150 results</button>
+      </div>
+-->
+      <p>Page 1 of 5</p>
+
+      {% include "components/alerts/results.njk" %}
+            <div class="options">
+        <ul>
+          <li><a id="select_link">Select 10 results</a></li>
+          <li><a id="un_link">Deselect 10 results</a></li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <a href="../alerts/alerts-four"><button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
+          <a href=""><button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as unprocessed</button></a>
+        </fieldset>
+      </div>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,219 @@
+<div class="personal-details">
+
+    
+  <div class="grid-row">
+    <div class="column-one-third">
+      <ul>
+        <li>Name</li>
+      </ul>
+    </div>
+    
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">{{person_title | upper }} {{person_firstName | upper }} {{person_lastName | upper }}</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Name type 1
+        </li>
+      </ul>      
+<!--
+      <ul class="multi-dates">
+        <li class="strong">MR TOM SMITH</li>
+        <li class="sl-secondary-text-color sl-metadata">
+          Name 1 
+          <span class="sl-metadata sl-secondary-text-color">&nbsp;·&nbsp;</span>
+          Since {{data['updateOne']}}
+        </li>
+      </ul>      
+-->
+    </div>
+    
+    <div class="column-one-third last-col">
+<!--
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#name_modal-v3" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="previous-names" class="under-link">View history</a>
+        </li>
+      </ul>
+-->
+    </div>
+  </div>
+    
+  <hr class="light">
+      
+  <div class="grid-row">
+    
+    <div class="column-one-third">
+      <p>Date of birth</p>
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">{{person_dob}}</li>
+<!--
+        <li class="sl-secondary-text-color sl-metadata">
+          Since 5 Jun 2010
+        </li>
+-->
+        <li class="">
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-metadata">Verified to level 2</span>
+        </li>
+      </ul>
+
+    </div>
+
+      <div class="column-one-third last-col">
+<!--
+            <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="birth-history" class="under-link">View history</a>
+        </li>
+      </ul>
+-->
+
+    </div>
+  </div>
+  
+  <hr class="light">
+
+  <div class="grid-row">
+
+    <div class="column-one-third">
+      National Insurance number
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">{{person_nino}}</li>
+        <li>
+          <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+          <span class="sl-secondary-text-color sl-metadata">Verified</span>
+        </li>
+      </ul>
+    </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+        <li>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+              
+<hr class="light">
+<details>
+  <summary>
+    <span class="summary">More personal details</span>
+  </summary>
+  
+  <div class="personal-details">
+    <hr class="light">
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Nationality</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">British</li>
+        </ul>
+      </div>
+        <div class="column-one-third last-col">
+<!--
+          <ul class="edit-menu">
+            <li>
+              <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            </li>
+            <li>
+              <a class="secondary-link" href="">Change</a>
+            </li>
+          </ul>
+-->
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Sex</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">Male</p>
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a class="under-link">View maintenance</a> 
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+-->
+      </div>
+    </div>
+    
+<!--
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Spoken language</p>
+      </div>
+      <div class="column-one-third">
+        <p class="strong">English</p>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> <span class="pipe"> | </span> <a href="language-pref-history" class="under-link">View history</a>
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+-->
+    
+<!--
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p>Preferred language</p>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">English</li>
+          <li class="sl-secondary-text-color sl-metadata">
+            Since 5 Jun 2010
+          </li>
+        </ul>      
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="language-pref-history" class="under-link">View history</a>
+          </li>
+          <li>
+            <a class="secondary-link" href="">Change</a>
+          </li>
+        </ul>
+      </div>
+    </div>    
+-->
+
+</div>
+  
+</details>
+
+
+  {% include "components/modals.html" %}
+          </div>

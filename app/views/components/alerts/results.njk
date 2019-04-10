@@ -1,0 +1,64 @@
+<form>
+  <div class="form-group">
+    <table class="alert-data">
+      <tr>
+        <!-- Alert details -->
+        <td class="strong">No<br>&nbsp;</td>
+        <td class="strong">NINO<br>&nbsp;</td>
+        <td class="strong">System<br>ID</td>
+        <td class="strong">Alert<br>date</td>
+        <td class="strong">Alert type<br>&nbsp;</td>
+        <td class="strong">Alert<br>code</td>
+        <td class="strong">Alert title<br>&nbsp;</td>
+        <td class="strong">Office<br>ID</td>
+        <td class="strong">Type<br>&nbsp;</td>
+        <td class="strong">Surname<br>&nbsp;</td>
+        <td class="strong">Forename<br>&nbsp;</td>
+        <td class="strong">Name start<br>date</td>
+        <!-- Process details -->
+        <td class="strong">Processed<br>date</td>
+        <td class="strong check">Select<br>&nbsp;</td>
+      </tr>
+
+      {{counter}}
+      {% set counter = 1%}
+      {% for item in data.alertData %}
+        {% include "components/alerts/row.njk" %}
+        {% set counter = counter + 1 %}
+      {% endfor %}
+      
+      <tr class="data">
+        <td>10</td>
+        <td>SX170204</td>
+        <td>NRS2</td>
+        <td>22 Oct 2018</td>
+        <td>Rejection report</td>
+        <td>3001</td>
+        <td>Name 2 not held</td>
+        <td>13512</td>
+        <td>T011</td>
+        <td>**********</td>
+        <td>**********</td>
+        <td>**********</td>
+        <td> </td>
+<!--
+        <td class="check">
+          <div class="multiple-choice">
+            <input id={{counter}} name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true" disabled="true">
+            <label for={{counter}}></label>
+          </div>
+        </td>
+-->
+      </tr>
+      <tr>
+        <td colspan="14" class="description">
+          <span class="">Details:</span> Transaction date - 01 Jan 2005, Name Start Date - 01012005, Titile - Mr, Forename 1 - JOHN, Forname 2 - SAM, Surname - JONES, Requested form of address = BILL
+        </td> 
+      </tr>
+
+    </table>
+  </div>
+  
+</form>
+
+<hr>

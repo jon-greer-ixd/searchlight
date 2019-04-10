@@ -1,0 +1,55 @@
+<h2 class="heading-medium question">What kind of change do you need to make?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    
+    <form method="get" action="change-name-type-handler">
+      
+        <legend class="visually-hidden">
+          <p>
+            What kind of change do you need to make?
+          </p>
+        </legend>
+      
+        <div class="form-group">
+          <div class="multiple-choice">
+            <input id="update" type="radio" name="updateType" value="update">
+            <label for="update">Update 
+              {% if data.nameType == "name" %} 
+                the name type 1
+              {% elif data.nameType == "nameTwo" %} 
+                the name type 2
+              {% elif data.nameType == "requestedName" %} 
+                the requested name
+              {% endif %} 
+            </label>
+          </div>
+          <div class="multiple-choice">
+            <input id="correct" type="radio" name="updateType" value="correct">
+            <label for="correct">Correct a mistake</label>
+          </div>
+          
+          {% if data.nameType == "nameTwo"%}
+          <div class="multiple-choice">
+            <input id="remove" type="radio" name="updateType" value="end">
+            <label for="remove">End the name type 2</label>
+          </div>
+          {% endif %}
+          
+          {% if data.nameType == "requestedName" %}
+          <div class="multiple-choice">
+            <input id="remove" type="radio" name="updateType" value="end">
+            <label for="remove">End the requested name</label>
+          </div>
+          {% endif %}
+          
+        </div> 
+      
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+            
+    </form>
+    
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>

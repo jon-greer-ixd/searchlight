@@ -1,0 +1,78 @@
+{{title}}
+{{value_1}}
+{{value_2}}
+{{value_3}}
+{% set value_1 = "21/10/2018" %}
+{% set value_2 = "CACS" %}
+{% set value_3 = "3508" %}
+
+{% include "components/alerts/results-filter.njk" %}
+
+<br>
+
+<div id="search-results" class="grid-row">
+
+  <!--
+    <div class="column-one-third">
+      <div class="sl-primary-card">
+        <h3>Edit or start a new search</h3>
+      </div>
+    </div>
+  -->
+
+    <div class="column-full">
+      <div class="sl-primary-card" id="alerts">
+        <h3>More than 100 results were found</h3>
+        <div class="options paging">
+          <ul>
+            <li>Page</li>
+            <li><span class="strong">1</span></li>
+            <li><a>2</a></li>
+            <li><a>3</a></li>
+            <li><a>4</a></li>
+            <li><a>5</a></li>
+            <li><a>6</a></li>
+            <li><a>7</a></li>
+            <li><a>8</a></li>
+            <li><a>9</a></li>
+            <li><a>10</a></li>
+<!--            <li>there are more than 10 pages</li>-->
+          </ul>
+        </div>
+<!--
+        <div class="options">
+          <ul>
+            <li><a id="">Print 100 results</a></li>
+            <li><a id="">Copy 100 results</a></li>
+            <li><a href="alerts-two" id="">Mark 100 results as processed</a></li>
+          </ul>
+        </div>
+-->
+
+<!--
+        <div class="form-group">
+          <button class="button" type="submit">Copy 150 results</button>
+          <button class="button" type="submit">Print 150 results</button>
+        </div>
+  -->
+
+        {% include "components/alerts/results.njk" %}
+
+        <div class="options">
+          <ul>
+            <li><a id="select_link">Select all</a></li>
+            <li><a id="un_link">Clear all</a></li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <fieldset>
+            <a href="../alerts/alerts-four"><button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
+            <a href=""><button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as unprocessed</button></a>
+          </fieldset>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>

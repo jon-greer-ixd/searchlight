@@ -1,0 +1,71 @@
+  <h2 class="heading-medium question">Check your answers</h2>
+    <div class="grid-row">
+      <div class="column-one-half">
+        <table class="table"> 
+
+          <tr>
+            <td><span class="strong">Type of gender details</span></td>            
+            <td>
+              {% if data.personalDetail == "gra" %}
+                A gender recognition certificate
+              {% else %}
+                A pre Gender Recognition Act application
+              {% endif %}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+              {% if data.sexValue != null %}
+          <tr>
+            <td><span class="strong">Gender</span></td>
+            <td>
+                {{data.sexValue}}
+            </td>
+            <td>
+              <a>Change</a>
+            </td>
+          </tr>
+               {% endif %}
+<!--
+          {% if data.personalDetails.gender.preGra == false and data.personalDetails.gender.gra == false %}
+            <tr>
+              <td><span class="strong">Sex</span></td>
+              <td>
+                {{data.personalDetails.sex.value}}
+              </td>
+              <td>
+                <a>&nbsp;</a>
+              </td>
+            </tr>
+          {% endif %}
+          {% if data.personalDetails.gra.state == "adding" and data.personalDetails.preGra.state == null %}
+            <tr>
+              <td><span class="strong">Sex</span></td>
+              <td>
+                {{data.sexValue}}
+              </td>
+              <td>
+                <a>&nbsp;</a>
+              </td>
+            </tr>
+          {% endif %}
+-->
+          <tr>
+            <td><span class="strong">Effective date of gender change</span></td>
+            <td>{{data.prepopulatedString}}</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Notified or decision date</span></td>
+            <td>{{data.prepopulatedString}}</td>
+            <td><a>Change</a></td>
+          </tr>
+        </table>
+      <br>
+      <form method="get" action="check-gender-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="/account2/account">Cancel</a>
+    </div>
+  </div>

@@ -1,0 +1,26 @@
+<div class="sl-account-canvas row">
+  
+  <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+
+    <div id="income">
+      
+      <h2>Income</h2>
+      
+      <div id="sl-address-primary-card" class="sl-primary-card reduced-income last-card">
+
+        {% if data.gciiExample == "2" %}
+          {% include "components/income/example2.html" %}
+        {% elif data.gciiExample == "5" %}
+          {% include "components/income/example5.html" %}
+        {% elif data.gciiExample == "4" %}
+          {% include "components/income/example4.html" %}
+        {% elif data.gciiExample == "6" %}
+          {% include "components/income/example6.html" %}
+        {% endif %}
+      </div>
+      
+    </div>
+
+  </div>
+  
+</div>

@@ -1,0 +1,63 @@
+<a href="bereavement-handler">
+<div class="sl-user-search-container ng-scope sl-home-search spacing-top-half hover sl-input-no-focus" ng-click="slSearchFormSubmit(nino, errors)" ng-class="{'sl-input-no-focus': !inputFocus, 'sl-user-search-container-no-results': !accountSummary || errors.length > 0, 'spacing-top-half': accountSummary &amp;&amp; errors.length === 0, 'sl-home-search': state.current.name === 'search', 'sl-account-search': state.current.name !=='search', 'hover': accountSummary &amp;&amp; errors.length === 0 &amp;&amp; ninoValid, 'sl-custom-hover':hoverState}" ng-if="nino.length > 7 &amp;&amp; ninoValid &amp;&amp; !corpOrgData" role="button" tabindex="0">
+  
+
+                <!-- ngIf: !accountSummary && errors.length === 0 && !corpOrgData -->
+
+                <!-- ngIf: accountSummary && errors.length === 0 --><div aria-live="polite" aria-atomic="true" ng-if="accountSummary &amp;&amp; errors.length === 0" class="sl-user-search-details-container ng-scope">
+                  <!-- ngIf: accountSummary.title || accountSummary.forename1 || accountSummary.surname -->
+  <div class="ng-scope">
+    <span aria-label="Account found: MRS BESSIE  BLACK.">
+    <span id="bstitle" class="sl-search-drop-down-name ng-binding ng-scope">MRS</span>
+    <span id="bsfirstname" class="sl-search-drop-down-name ng-binding ng-scope">BESSIE</span>&nbsp;
+    <span id="bslastname" class="sl-search-drop-down-name ng-binding ng-scope">BLACK</span> 
+                      </span>
+                  </div><!-- end ngIf: accountSummary.title || accountSummary.forename1 || accountSummary.surname -->
+
+
+
+                  <!-- ngIf: !accountSummary.deathDate && accountSummary.birthDate -->
+                  <!-- ngIf: accountSummary.deathDate && accountSummary.birthDate --><div ng-if="accountSummary.deathDate &amp;&amp; accountSummary.birthDate" class="row spacing-top-sixth ng-scope">
+                    <div class="sl-preview-nino col-xs-12 ">
+                      <span aria-label="Nino S X 1 7 0 2 0 1 A..">
+                        <span aria-hidden="true" ng-bind-html="displayedNino | nino" class="ng-binding"><span> <span style="margin-right: .2em">SX</span><span style="margin-right: .2em">17</span><span style="margin-right: .2em">02</span><span style="margin-right: .2em">01</span><span>A</span> </span></span>
+                      </span>
+                      <span aria-hidden="true">&nbsp;·&nbsp;</span>
+                      <sl-age-info dates="{dateOfBirth: accountSummary.birthDate, dateOfDeath: accountSummary.deathDate, bold:true}" class="ng-isolate-scope"><span id="birth-death-date">
+  <!-- ngIf: dob --><span id="sl-date-of-birth" ng-if="dob" class="ng-scope">
+    <span ng-class="{'sl-person-age': !dates.accountFlag, 'sl-account-age-metadata': dates.accountFlag}" class="sl-person-age">
+      <!-- ngIf: !dod -->
+
+      <!-- ngIf: dod --><span ng-if="dod" class="ng-scope">
+        <span aria-label="Lived between 25 Jan 1995 and 27 Feb 2019..">
+          <span id="bsDob" aria-hidden="true" class="ng-binding">27 Feb 2019</span>
+        </span>
+<!--        <span aria-hidden="true">&nbsp; · &nbsp;</span>-->
+<!--
+        <span aria-label="Died Age aged 24..">
+          <span aria-hidden="true" ng-class="{'sl-warning-text-red':dates.bold}" class="ng-binding sl-warning-text-red">Died aged 24</span>
+        </span>
+-->
+      </span><!-- end ngIf: dod -->
+
+    </span>
+  </span><!-- end ngIf: dob -->
+</span></sl-age-info>
+                      <!-- ngRepeat: address in postCodeData.personAddress --><!-- ngIf: postCodeData --><div id="sl-postcode-drop-down-repeater" ng-repeat="address in postCodeData.personAddress" ng-if="postCodeData" class="ng-scope">
+                      <!-- ngIf: address.addressTypeID === '1' && address.postCode --><span id="sl-postcode-drop-down-0" class="ng-binding ng-scope" ng-if="address.addressTypeID === '1' &amp;&amp; address.postCode">Postcode <span id="bspostcode"></span></span><!-- end ngIf: address.addressTypeID === '1' && address.postCode -->
+                      </div><!-- end ngIf: postCodeData --><!-- end ngRepeat: address in postCodeData.personAddress --><!-- ngIf: postCodeData --><div id="sl-postcode-drop-down-repeater" ng-repeat="address in postCodeData.personAddress" ng-if="postCodeData" class="ng-scope">
+                        <!-- ngIf: address.addressTypeID === '1' && address.postCode -->
+                      </div><!-- end ngIf: postCodeData --><!-- end ngRepeat: address in postCodeData.personAddress -->
+                    </div>
+
+                  </div><!-- end ngIf: accountSummary.deathDate && accountSummary.birthDate -->
+
+
+                  <br>
+
+
+                </div><!-- end ngIf: accountSummary && errors.length === 0 -->
+
+                <!-- ngIf: errors.length > 0 -->
+              </div>
+</a>
