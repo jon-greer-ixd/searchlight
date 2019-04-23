@@ -28,8 +28,10 @@
                   <a href="/nino/5/name-current" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% elif ninoversion === 4  %}
                   <a href="/nino/6/name-current" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
-                {% else %}
+                {% elif ninoversion === 5  %}
                   <a href="/nino/7/name-current" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% else %}
+                  <a href="/nino/8/name-current" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% endif %}
               </li>
             {% elif data['createJourney'] === false %}
@@ -42,8 +44,10 @@
                   <a href="/nino/5/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% elif ninoversion === 4 %}
                   <a href="/nino/6/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
-                {% else %}
+                {% elif ninoversion === 5 %}
                   <a href="/nino/7/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
+                {% else %}
+                  <a href="/nino/8/nino" tabindex="" class="sl-link sl-link-modal under-link">Create an account</a>
                 {% endif %}
               </li>
             {% endif %}

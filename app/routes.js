@@ -1869,6 +1869,19 @@ router.get(/v5-type-handler/, function (req, res) {
   res.redirect('../../search')
 })
 
+router.get(/v6-type-handler/, function (req, res) {
+  ninoVersion = 6;
+  if(req.query.trace[0] === 'true') {
+    trace = true;
+  }
+  if(req.query.data === 'create') {
+    req.session.data.createJourney = true;
+  } else {
+    req.session.data.createJourney = false;
+  }
+  res.redirect('../../search')
+})
+
 //contact-handler
 router.get(/contact-question-handler/, function (req, res) {
   if(req.query.data === 'yes') {

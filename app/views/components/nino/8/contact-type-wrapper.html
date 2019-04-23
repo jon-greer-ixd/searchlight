@@ -1,0 +1,28 @@
+<!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row updater super-slim-header">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+        <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
+          <a class="link-back" onCLick="history.back()">Back</a>
+          
+          <div id="sl-address-primary-card" class="sl-primary-card">
+          
+            {% if data.contactType === "telephone" %}
+              <h1 class="question-title">What kind of telephone number is it?</h1>
+            {% elif data.contactType === "email" %}
+              <h1 class="question-title">What kind of email address is it?</h1>
+            {% elif data.contactType === "fax" %}
+              <h1 class="question-title">What kind of fax number is it?</h1>
+            {% endif %}
+            
+            <div id="address-pane">
+              {% include "components/nino/8/contact-type-content.html" %}
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

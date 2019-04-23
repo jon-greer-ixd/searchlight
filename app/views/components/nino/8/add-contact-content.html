@@ -1,0 +1,93 @@
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="contact-group-handler">
+        <div class="form-group">
+          <fieldset>
+
+            {% if (data.contactTypes | allPhonesAdded == false) %}
+              {% if (data.contactTypes | lastTelephoneCheck) == "none" %}
+                <div class="multiple-choice">
+                  <input id="telephone" type="radio" name="contactType" value="telephone">
+                  <label for="telephone">Telephone or mobile number</label>
+                </div>
+              {% else %}
+                <div class="multiple-choice">
+                  <input id={{data.contactTypes | lastTelephoneCheck}} type="radio" name="contactType" value={{data.contactTypes | lastTelephoneCheck}}>
+                  <label for={{data.contactTypes | lastTelephoneCheck}}> {{data.contactTypes[(data.contactTypes | lastTelephoneCheck)].display}} number</label>
+                </div>
+              {% endif %}
+            {% endif %}
+            
+            {% if data.contactTypes.homeEmail.show == false and data.contactTypes.businessEmail.show == false %}
+              <div class="multiple-choice">
+                <input id="email" type="radio" name="contactType" value="email">
+                <label for="email">Email address</label>
+              </div>
+            {% elif data.contactTypes.homeEmail.show == true and data.contactTypes.businessEmail.show == false %}
+              <div class="multiple-choice">
+                <input id="businessEmail" type="radio" name="contactType" value="businessEmail">
+                <label for="businessEmail">Business email address</label>
+              </div>
+            {% elif data.contactTypes.homeEmail.show == false and data.contactTypes.businessEmail.show == true %}
+              <div class="multiple-choice">
+                <input id="homeEmail" type="radio" name="contactType" value="homeEmail">
+                <label for="homeEmail">Home email address</label>
+              </div>
+            {% endif %}
+            
+            {% if data.contactTypes.textPhone.show == false %}
+              <div class="multiple-choice">
+                <input id="textphone" type="radio" name="contactType" value="textPhone">
+                <label for="textphone">Textphone number</label>
+              </div>
+            {% endif %}
+            
+            {% if data.contactTypes.typeTalk.show == false %}
+              <div class="multiple-choice">
+                <input id="typetalk" type="radio" name="contactType" value="typeTalk">
+                <label for="typetalk">Typetalk number</label>
+              </div>
+            {% endif %}
+            
+            {% if data.contactTypes.homeFax.show == false and data.contactTypes.businessFax.show == false %}
+              <div class="multiple-choice">
+                <input id="fax" type="radio" name="contactType" value="fax">
+                <label for="fax">Fax number</label>
+              </div>
+            {% elif data.contactTypes.homeFax.show == false and data.contactTypes.businessFax.show == true %}
+              <div class="multiple-choice">
+                <input id="homeFax" type="radio" name="contactType" value="homeFax">
+                <label for="homeFax">Home fax number</label>
+              </div>
+            {% elif data.contactTypes.homeFax.show == true and data.contactTypes.businessFax.show == false %}
+              <div class="multiple-choice">
+                <input id="businessFax" type="radio" name="contactType" value="businessFax">
+                <label for="businessFax">Business fax number</label>
+              </div>
+            {% endif %}
+            
+            {% if data.contactTypes.otherContact.show == false %}
+              <div class="multiple-choice">
+                <input id="otherContact" type="radio" name="contactType" value="otherContact">
+                <label for="otherContact">Other contact method</label>
+              </div>            
+            {% endif %}
+            
+<!--
+            <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+            </div>
+-->
+
+          </fieldset>
+        </div>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+     </form>
+    <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>
