@@ -1,5 +1,5 @@
 // Path to assets for use with the file-url function
-// in the govuk frontend toolkit's url-helpers partial
+// in the govuk frontend toolkit's url-helpeSArs partial
 $path: "/public/images/";
 
 // boot strap
@@ -1926,4 +1926,8 @@ table.alert-data {
   display: block!important;
   width: 92.1%;
   text-align: left!important;
+}
+
+.panel.multi-panel {
+  margin-bottom: 30px;
 }

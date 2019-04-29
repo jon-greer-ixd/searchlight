@@ -518,6 +518,56 @@ if (document.getElementById("mcheck") ) {
   });
 }
 
+if ( document.getElementById('contact-feilds') ){
+   var contactFeilds = document.getElementById('contact-feilds');
+   var exDecField = document.getElementById('exdec-field')
+   var showContactFeilds = function () {
+   var contactType = document.getElementById('select-box').value;
+   var contactLabel = document.getElementById('contact-label').innerHTML;
+   console.log(contactType);
+   if(contactType == 'ht') {
+     exDecField.className="form-group show";
+   } else {
+      exDecField.className="form-group hidden";
+   }
+   if(contactType == 'contact') {
+      contactFeilds.className="hidden";
+   } else {
+      contactFeilds.className="show";
+   }
+   if(contactType == 'pm') {
+      document.getElementById('contact-label').innerHTML = "Personal mobile number";
+   } else if (contactType == 'ht') {
+      document.getElementById('contact-label').innerHTML = "Home telephone number";
+   } else if (contactType == 'dt') {
+      document.getElementById('contact-label').innerHTML = "Daytime telephone number";
+   } else if (contactType == 'et') {
+      document.getElementById('contact-label').innerHTML = "Evening telephone number";
+   } else if (contactType == 'bm') {
+      document.getElementById('contact-label').innerHTML = "Business mobile number";
+   } else if (contactType == 'bt') {
+      document.getElementById('contact-label').innerHTML = "Business mobile number";
+   } else if (contactType == 'tp') {
+      document.getElementById('contact-label').innerHTML = "Third party telephone number";
+   } else if (contactType == 'he') {
+      document.getElementById('contact-label').innerHTML = "Home email address";
+   } else if (contactType == 'be') {
+      document.getElementById('contact-label').innerHTML = "Business email address";
+   } else if (contactType == 'tn') {
+      document.getElementById('contact-label').innerHTML = "Textphone number";
+   } else if (contactType == 'tpn') {
+      document.getElementById('contact-label').innerHTML = "Textphone number";
+   } else if (contactType == 'ttn') {
+      document.getElementById('contact-label').innerHTML = "Typetalk number";
+   } else if (contactType == 'hf') {
+      document.getElementById('contact-label').innerHTML = "Home fax";
+   } else if (contactType == 'bf') {
+      document.getElementById('contact-label').innerHTML = "Business fax";
+   } else if (contactType == 'oc') {
+      document.getElementById('contact-label').innerHTML = "Other contact method";
+   }
+  }
+}
 
 if ( document.getElementById('hidden') ){
   var myFunc = function () {

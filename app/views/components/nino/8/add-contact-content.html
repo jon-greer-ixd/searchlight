@@ -1,87 +1,57 @@
+<p class="bold">Select a contact method</p>
+
 <div class="grid-row">
 
     <div class="column-two-thirds">
       
-      <form class="form" method="get" action="contact-group-handler">
+      <form class="form" method="get" action="another-contact">
         <div class="form-group">
-          <fieldset>
-
-            {% if (data.contactTypes | allPhonesAdded == false) %}
-              {% if (data.contactTypes | lastTelephoneCheck) == "none" %}
-                <div class="multiple-choice">
-                  <input id="telephone" type="radio" name="contactType" value="telephone">
-                  <label for="telephone">Telephone or mobile number</label>
-                </div>
-              {% else %}
-                <div class="multiple-choice">
-                  <input id={{data.contactTypes | lastTelephoneCheck}} type="radio" name="contactType" value={{data.contactTypes | lastTelephoneCheck}}>
-                  <label for={{data.contactTypes | lastTelephoneCheck}}> {{data.contactTypes[(data.contactTypes | lastTelephoneCheck)].display}} number</label>
-                </div>
-              {% endif %}
-            {% endif %}
-            
-            {% if data.contactTypes.homeEmail.show == false and data.contactTypes.businessEmail.show == false %}
-              <div class="multiple-choice">
-                <input id="email" type="radio" name="contactType" value="email">
-                <label for="email">Email address</label>
-              </div>
-            {% elif data.contactTypes.homeEmail.show == true and data.contactTypes.businessEmail.show == false %}
-              <div class="multiple-choice">
-                <input id="businessEmail" type="radio" name="contactType" value="businessEmail">
-                <label for="businessEmail">Business email address</label>
-              </div>
-            {% elif data.contactTypes.homeEmail.show == false and data.contactTypes.businessEmail.show == true %}
-              <div class="multiple-choice">
-                <input id="homeEmail" type="radio" name="contactType" value="homeEmail">
-                <label for="homeEmail">Home email address</label>
-              </div>
-            {% endif %}
-            
-            {% if data.contactTypes.textPhone.show == false %}
-              <div class="multiple-choice">
-                <input id="textphone" type="radio" name="contactType" value="textPhone">
-                <label for="textphone">Textphone number</label>
-              </div>
-            {% endif %}
-            
-            {% if data.contactTypes.typeTalk.show == false %}
-              <div class="multiple-choice">
-                <input id="typetalk" type="radio" name="contactType" value="typeTalk">
-                <label for="typetalk">Typetalk number</label>
-              </div>
-            {% endif %}
-            
-            {% if data.contactTypes.homeFax.show == false and data.contactTypes.businessFax.show == false %}
-              <div class="multiple-choice">
-                <input id="fax" type="radio" name="contactType" value="fax">
-                <label for="fax">Fax number</label>
-              </div>
-            {% elif data.contactTypes.homeFax.show == false and data.contactTypes.businessFax.show == true %}
-              <div class="multiple-choice">
-                <input id="homeFax" type="radio" name="contactType" value="homeFax">
-                <label for="homeFax">Home fax number</label>
-              </div>
-            {% elif data.contactTypes.homeFax.show == true and data.contactTypes.businessFax.show == false %}
-              <div class="multiple-choice">
-                <input id="businessFax" type="radio" name="contactType" value="businessFax">
-                <label for="businessFax">Business fax number</label>
-              </div>
-            {% endif %}
-            
-            {% if data.contactTypes.otherContact.show == false %}
-              <div class="multiple-choice">
-                <input id="otherContact" type="radio" name="contactType" value="otherContact">
-                <label for="otherContact">Other contact method</label>
-              </div>            
-            {% endif %}
-            
-<!--
-            <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+         
+            <div class="form-group">
+             <!--  <label class="form-label" for="select-box">Select a contact method</label> -->
+              <select class="form-control" id="select-box" name="select-box" onchange="showContactFeilds()">
+                <option value=contact>Contact method</option>
+                <option value="pm">Personal mobile number</option>
+                <option value="ht">Home telephone number</option>
+                <option value="dt">Daytime telephone number</option>
+                <option value="et">Evening telephone number </option>
+                <option value="bm">Business mobile number</option>
+                <option value="bt">Business telephone number </option>
+                <option value="tp">Third party telephone number</option>
+                <option value="he">Home email address</option>
+                <option value="be">Business email address</option>
+                <option value="tpn">Textphone number</option>
+                <option value="ttn">Typetalk number</option>
+                <option value="hf">Home fax</option>
+                <option value="bf">Business fax</option>
+                <option value="oc">Other contact method</option>
+              </select>
             </div>
--->
 
-          </fieldset>
+          <div id="contact-feilds" class="hidden">
+
+            <div class="form-group">
+              <label class="form-label" for="ni-number" id="contact-label">
+                Contact detail
+              </label>
+              <input class="form-control" id="ni-number" type="text" name="ni-number">
+            </div>
+
+            <div class="form-group">
+              <div class="multiple-choice">
+                <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+                <label for="checkbox-telephone-number">It's their preferred method of contact (optional)</label>
+              </div>
+            </div>
+            <div id="exdec-field" class="form-group hidden">
+              <div class="multiple-choice">
+                <input id="checkbox-telephone-number" name="contact-by-text-phone" type="checkbox" value="true">
+                <label for="checkbox-telephone-number">It's an ex-directory number (optional)</label>
+              </div>
+            </div>
+
         </div>
+        
         <div class="form-group">
           <input class="button" type="submit" value="Next">
         </div>
@@ -91,3 +61,4 @@
   </div>
 
 </div>
+
