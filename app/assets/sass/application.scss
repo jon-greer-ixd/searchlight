@@ -1,5 +1,5 @@
 // Path to assets for use with the file-url function
-// in the govuk frontend toolkit's url-helpeSArs partial
+// in the govuk frontend toolkit's url-helpers partial
 $path: "/public/images/";
 
 // boot strap
@@ -1330,6 +1330,11 @@ hr.strong {
   background-color: #0b0c0c;
 }
 
+hr.med {
+  height: 1px;
+  background-color: #0b0c0c;
+}
+
 .title-group {
   h3 {
     padding-bottom: 0;
@@ -1928,6 +1933,70 @@ table.alert-data {
   text-align: left!important;
 }
 
-.panel.multi-panel {
-  margin-bottom: 30px;
+.benefits-payments {
+  float: left;
+  width: 16.6%;
+//  &.amount {
+//    text-align: right;
+//  }
 }
+
+#benefit-panel {
+  .grid-row, .column-full, .column-one-third, .column-one-half, .column-two-thirds, .ccolumn-one-quarter {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    float: left;
+    width: 16.6%;
+    padding-bottom: 3px;
+    &.benefit-title {
+      width: 32%;
+      a {
+        font-weight: normal;
+      }
+    }
+  }
+  ul.amounts li {
+    width: 25%;
+  }
+}
+
+.benefit-header {
+  color: #005ea5;
+}
+
+hr.break {
+  margin: 5px 0;
+}
+
+.payments {
+  margin-top: -5px;
+}
+
+ul.amounts {
+  @include clearfix;
+  padding-bottom:5px;
+  display: block;
+  &:first-child {
+    padding-bottom:0px;
+  }
+}
+
+.amount-disclosure-first {
+  margin-top: 10px;
+}
+
+.amount-disclosure-last {
+  margin-bottom: 10px;
+  margin-top: -5px;
+}
+
+#benefit-panel {
+  .payment-headers {
+    margin-top: 10px;
+  }
+}
+
+
+
