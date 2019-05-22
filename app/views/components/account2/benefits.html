@@ -1,230 +1,73 @@
-<!--
 <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  
   <h2>Benefits</h2>
-  <div id="sl-address-primary-card" class="sl-primary-card">
+  <div id="benefit-panel" class="sl-primary-card">  
+    
+    <div class="benefit-container">
+      <table id="table1">
+        <tr class="header">
+          <th class="col1">Start date</th>
+          <th class="col2">End date</th>
+          <th class="col3">Benefit</th>
+        </tr>
+        <tr>
+          <td class="ben-dates">1 Oct 2013</td>
+          <td class="ben-dates"><span class="strong">-</span></td>
+          <td><span class="strong">Carers Allowance</span>&nbsp; · &nbsp;<a>View full details</a></td>
+        </tr>
+      </table>
+    
+      <table class="table2">
+        <tr>
+          <th>Payment start</th>
+          <th>Payment end</th>
+          <th>Amount</th>
+        </tr>
+        <tr>
+          <td>9 Apr 2018</td>
+          <td>29 Oct 2018</td>
+          <td>£64.60</td>
+        </tr>
+      </table>
+    
+      <details class="more-payments">
+        <summary>Show all payments</summary>
 
-{% if data.personalDetails.bereavementBenefit.show == true %}
-
-    <div class="grid-row benefit-header">    
-      <div class="column-one-third">    
-        <p><a>Start date</a></p>
-      </div>
-      <div class="column-one-third">    
-        <p><a>Benefit</a></p>
-      </div>    
-    </div> 
-
-    <hr>
-
-    <div class="grid-row" id="benefit">
-      <div class="column-one-third">    
-        <p>3 Mar 2017</p>
-      </div>
-      <div class="column-one-third">    
-        <ul class="sl-secondary-text-color sl-metadata">
-          <li><span class="strong">Bereavement benefit</span>&nbsp; · &nbsp;<a href="" class="under-link">View benefit details</a></li>
-          <li>Current award started 3 Mar 2017&nbsp; · &nbsp;<a href="" class="under-link">View awards</a></li>
-        </ul>
-      </div>
-    </div>
-
-  {% else %}
-    No benefit details held for this customer
-  {% endif %}
-      </div>
-
-</div>
--->
-
-
-<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
-
-  <h2>Benefits</h2>
-
-  <div id="benefit-panel" class="sl-primary-card">
-        <div class="grid-row">
-      <div class="column-full">
-        <ul>
-          <li>Start date</li>
-          <li>End date</li>
-          <li>Benefit</li>
-        </ul>
-      </div>
-    </div>
-
-    <hr>
-
-    <div>
-
-    <div class="grid-row">
-      <div class="column-full">
-        <ul>
-          <li>01 Jan 2019</li>
-          <li>01 Jun 2019</li>
-          <li class="benefit-title"><span class="strong">Carers Allowance</span>&nbsp; · &nbsp;<a class="under-link">View full details</a> </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds payment-headers">
-        <ul class="amounts">
-          <li>Payment start</li>
-          <li>Payment end</li>
-          <li>Amount</li>
-          <li>&nbsp;</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="break">
-      </div>
-    </div>
-
-    <div class="grid-row payments">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-            <ul class="amounts amount-disclosure-last">
-          <li>9 Apr 2018</li>
-          <li>29 Oct 2018</li>
-          <li>£64.60</li>
-          <li>&nbsp;</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <details>
-          <summary>Show all payments</summary>
-            <ul class="amounts amount-disclosure-first">
-              <li>10 Apr 2017</li>
-              <li>8 Apr 2018</li>
-              <li>£62.70</li>
-              <li>&nbsp;</li>
-            </ul>
-
-            <ul class="amounts">
-              <li>6 Sep 2016</li>
-              <li>9 Apr 2017</li>
-              <li>£62.10</li>
-              <li>&nbsp;</li>
-            </ul>
-
-            <ul class="amounts">
-              <li>11 Apr 2016</li>
-              <li>5 Sep 2016</li>
-              <li>£62.10</li>
-              <li>&nbsp;</li>
-            </ul>
-
-            <ul class="amounts">
-              <li>6 Apr 2015</li>
-              <li>10 Apr 2016</li>
-              <li>£62.10</li>
-              <li>&nbsp;</li>
-            </ul>
-
-            <ul class="amounts">
-              <li>21 Aug 2014</li>
-              <li>5 Apr 2015</li>
-              <li>£61.35</li>
-              <li>&nbsp;</li>
-            </ul>        
-        </details>
-      </div>
-    </div>
-
+        <table class="table2">
+          <tr>
+            <td >9 Apr 2018</td>
+            <td>29 Oct 2018</td>
+            <td>£64.70</td>
+          </tr>
+          <tr>
+            <td>10 Apr 2017</td>
+            <td>8 Apr 2018</td>
+            <td>£62.10</td>
+          </tr>
+          <tr>
+            <td>6 Sep 2016</td>
+            <td>9 Apr 2017</td>
+            <td>£62.10</td>
+          </tr>
+          <tr>
+            <td>11 Apr 2016</td>
+            <td>5 Sep 2016</td>
+            <td>£62.10</td>
+          </tr>
+          <tr>
+            <td>6 Apr 2015</td>
+            <td>10 Apr 2016</td>
+            <td>£62.10</td>
+          </tr>
+          <tr>
+            <td>21 Aug 2014</td>
+            <td>5 Apr 2015</td>
+            <td>£61.35</td>
+          </tr>
+        </table>
+      </details>
+   </div> <!-- end of benefit container-->
+<!--  <hr class="mid">-->
+    
   </div>
-    <div>
-
-    <hr class="med">
-
-    <div class="grid-row">
-      <div class="column-full">
-        <ul>
-          <li>01 Jan 2019</li>
-          <li>01 Jun 2019</li>
-          <li class="benefit-title"><span class="strong">Carers Allowance</span>&nbsp; · &nbsp;<a class="under-link">View full details</a> </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <ul class="amounts">
-          <li>Payment start</li>
-          <li>Payment end</li>
-          <li>Amount</li>
-          <li>&nbsp;</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="break">
-      </div>
-    </div>
-
-    <div class="grid-row payments">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <ul class="amounts">
-          <li>01 Jan 2019</li>
-          <li>01 Feb 2019</li>
-          <li>£62.26</li>
-          <li>&nbsp;</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid-row">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <details>
-          <summary>Show all payments</summary>
-        <ul class="amounts">
-          <li>01 Jan 2019</li>
-          <li>01 Feb 2019</li>
-          <li>£62.26</li>
-          <li>&nbsp;</li>
-        </ul>
-        <ul class="amounts">
-          <li>01 Jan 2019</li>
-          <li>01 Feb 2019</li>
-          <li>£62.26</li>
-          <li>&nbsp;</li>
-        </ul>
-        </details>
-      </div>
-    </div>
-
-  </div>
-
-  </div>
-
 </div>
