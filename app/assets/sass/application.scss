@@ -1990,6 +1990,7 @@ table, tr, td, th {
   tr.header th {
     font-weight: normal;
     color: #337ab7;
+    border-color: #898a94;
   }
   tr.sub-header th {
     font-weight: normal;
@@ -2003,13 +2004,13 @@ table, tr, td, th {
   td.ben-title {
     border-bottom: none;
     padding-top: 20px;
-    padding-bottom: 0;
+    padding-bottom: 4px;
   }
   td.ben-dates {
     border-bottom: none;
     vertical-align: top;
     padding-top: 20px;
-    padding-bottom: 0;
+    padding-bottom: 4px;
   }
 
   
