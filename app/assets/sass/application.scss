@@ -126,6 +126,7 @@ label {
 
 * {
     font-family: $sl-font;
+    -webkit-font-smoothing: antialiased;
 }
 
 html {
@@ -1025,10 +1026,12 @@ a.short-name {
   vertical-align: 10%;
   margin-right: 10px;
   text-align: center;
-  margin-left: 10p;
+  margin-left: 0;
+  font-weight: bold;
   &.crl {
     background-color: black;
     padding: 2px 8px 0;
+    font-weight: normal;
   }
   &.clerical {
     background-color: #f1f1f1;
@@ -1036,6 +1039,7 @@ a.short-name {
     border: 2px solid #939598;
     color: #333333;
     font-size: 95%;
+    font-weight: normal;
   }
   &.employ {
     background-color: #f1f1f1;
@@ -1044,10 +1048,12 @@ a.short-name {
     color: #333333;
     position: relative;
     top: -2px;
+    font-weight: normal;
   }
   &.pension {
     position: relative;
     top: -2px;
+    font-weight: normal;
   }
 }
 
@@ -1962,14 +1968,13 @@ table.alert-data {
 
 table, tr, td, th {
   font-family : "sl-font", Arial, sans-serif!important;
-  &.ben-dates {
-    border-bottom: none;
-    vertical-align: top;
-  }
 }
 
 .benefit-container {
   margin-bottom: 15px;
+  &:last-child{
+    margin-bottom: 0;
+  };
 }
 
 #table1, .table2 {
@@ -1997,7 +2002,16 @@ table, tr, td, th {
   }
   td.ben-title {
     border-bottom: none;
+    padding-top: 20px;
+    padding-bottom: 0;
   }
+  td.ben-dates {
+    border-bottom: none;
+    vertical-align: top;
+    padding-top: 20px;
+    padding-bottom: 0;
+  }
+
   
 }
 
@@ -2037,5 +2051,6 @@ table, tr, td, th {
 .more-payments {
   summary {
     margin-left: 33%;
+    -webkit-font-smoothing: antialiased;
   }
 }
