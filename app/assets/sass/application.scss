@@ -1964,6 +1964,7 @@ table, tr, td, th {
   font-family : "sl-font", Arial, sans-serif!important;
   &.ben-dates {
     border-bottom: none;
+    vertical-align: top;
   }
 }
 
@@ -1974,16 +1975,28 @@ table, tr, td, th {
 #table1, .table2 {
   font-size: 19px;
   td {
-    padding: 14px 0 10px;
-  }
-  th {
-    font-weight: bold;
-    color: #0b0c0c;
+    padding: 14px 0 9px;
   }
   tr, td {
     color: #0b0c0c;
     -webkit-font-smoothing: antialiased;
     margin: 0;
+  }
+  tr.header th {
+    font-weight: normal;
+    color: #337ab7;
+  }
+  tr.sub-header th {
+    font-weight: normal;
+    color: #6e777b;
+    border-bottom: none;
+    padding: 0;
+  }
+  tr.ben-first-amounts td{
+    padding: 5px 0 10px 0;
+  }
+  td.ben-title {
+    border-bottom: none;
   }
   
 }
@@ -2004,17 +2017,17 @@ table, tr, td, th {
 }
 
 .table2 {
-  width: 40%;
+  width: 37%;
   margin-left: 33%;
   tr {
     td:nth-child(1) {
-      width: 16%;
+      width: 17%;
     }
     td:nth-child(2) {
-      width: 12%;
+      width: 9%;
     }
     td:nth-child(3), th:nth-child(3) {
-      width: 5%;
+      width: 11%;
       text-align: right;
       padding-right :0;
     }
