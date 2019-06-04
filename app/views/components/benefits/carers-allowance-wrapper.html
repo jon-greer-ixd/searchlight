@@ -1,4 +1,16 @@
-<!--  account-canvas wraps whole page (hence name canvas)-->
+{% macro awarddetails() %}
+<tr>
+	<td>
+		<details>
+			<summary>Award details</summary>
+		</details>
+	</td>
+	<td></td>
+</tr>
+{% endmacro %}
+
+
+
 <div class="sl-account-canvas row updater slim-header">
 
 	<div class="sl-primary-card" id="benefit-name">
@@ -23,22 +35,22 @@
 						<li>The entitlement started on 1 Oct 2013.</li>
 						<li>The claim has a status of 'Ongoing award'</li>
 						<li>The claim was registered on 4 May 2011 and cleared on 5 May 2011.</li>
-						<li>The DWP decision was made on 25 Nov 2013 and became effective on 1 oct 2013. The deceision description is 'Entitled to payment of CA: overlapping benefit reduced or payment ceased'.</li>
+						<li>The DWP decision was made on 25 Nov 2013 and became effective on 1 Oct 2013. The deceision description is 'Entitled to payment of CA: overlapping benefit reduced or payment ceased'.</li>
 					</ul>
 	     		</div>
 
 	     		<h2>Payment Status</h2>
-	     		<div class="sl-primary-card">
+	     		<div class="sl-primary-card" id="payment-status">
 	     			<table>
 	     				<tr>
-	     					<td>Payment status type</td>
-	     					<td>Start date</td>
-	     					<td>End date</td>
+	     					<th>Payment status type</th>
+	     					<th>Start date</th>
+	     					<th>End date</th>
 	     				</tr>
 	     				<tr>
 	     					<td>Status not relevant</td>
 	     					<td>15 Feb 2019</td>
-	     					<td> </td>
+	     					<td class="bold"> - </td>
 	     				</tr>
 	     				<tr>
 	     					<td>In receipt of ongoing payment<br>
@@ -79,56 +91,45 @@
 	     		</div>		     		
 
 	     		<h2>Previous awards</h2>
-	     		<div class="sl-primary-card last-card">
+	     		<div class="sl-primary-card last-card" id="previous-awards">
 	     			<p>There are 6 previous awards from this assessment</p>
+	     			<hr>
 	     			<table>
-	     				<tr>
+	     				<tr class="date">
 	     					<td>9 Apr 2019 - 29 Oct 2018</td>
 	     					<td>£64.60</td>
 	     				</tr>		     				
-	     				<tr>
-	     					<td>Award details</td>
-	     				</tr>
-	     				<tr>
+						{{ awarddetails() }}	     			
+	     				<tr class="date">
 	     					<td>10 Apr 2017 - 8 Apr 2018</td>
 	     					<td>£62.70</td>
 	     				</tr>
-	     				<tr>
-	     					<td>Award details</td>
-	     				</tr>
-	     				<tr>
+						{{ awarddetails() }}	     			
+	     				<tr class="date">
 	     					<td>6 Sep 2016 - 9 Apr 2017</td>
 	     					<td>£62.10</td>
 	     				</tr>
-	     				<tr>
-	     					<td>Award details</td>
-	     				</tr>
-	     				<tr>
+						{{ awarddetails() }}	     			
+	     				<tr class="date">
 	     					<td>11 Apr 2016 - 5 Sep 2016</td>
 	     					<td>£62.10</td>
 	     				</tr>
-	     				<tr>
-	     					<td>Award details</td>
-	     				</tr>
-	     				<tr>
+						{{ awarddetails() }}	     			
+	     				<tr class="date">
 	     					<td>6 Apr 2015 - 5 Apr 2016</td>
 	     					<td>£62.10</td>
 	     				</tr>
-	     				<tr>
-	     					<td>Award details</td>
-	     				</tr>
-	     				<tr>
+						{{ awarddetails() }}	     			
+	     				<tr class="date">
 	     					<td>21 Aug 2014 - 5 Apr 2015</td>
 	     					<td>£61.35</td>
 	     				</tr>
-	     				<tr>
-	     					<td>Award details</td>
-	     				</tr>
-	     			</table>
+						{{ awarddetails() }}	     			
+					</table>
 	     		</div>
 
 	     	</div>
-	     		     	<div class="column-one-third">
+	     	<div class="column-one-third">
 	     		<h2>Key dates</h2>
 	     		<div class="sl-primary-card">
 	     			<ul class="list list-bullet">
