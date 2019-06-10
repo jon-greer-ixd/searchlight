@@ -2085,15 +2085,10 @@ table, tr, td, th {
       }
     }
   }
-  #payment-status, #previous-awards {
+  #payment-status, #previous-awards, #current-awards {
     table {
       td {
         padding-top: 15px;
-        padding-bottom: 15px;
-      }
-      th {
-        color: #005ea5;
-        font-weight: normal;
         padding-bottom: 15px;
       }
       tr:last-child() {
@@ -2102,6 +2097,32 @@ table, tr, td, th {
           padding-bottom: 0;
         }
       }
+    }
+  } 
+  #payment-status, #previous-awards {
+    table {
+      th {
+        color: #005ea5;
+        font-weight: normal;
+        padding-bottom: 15px;
+      }
+    }
+  }
+  #current-awards {
+    table {
+      th {
+        color:black;
+        font-weight: bold;
+        padding-bottom: 15px;
+      }
+    }
+    tr {
+      td:last-child, th:last-child {
+        text-align: right;
+      }
+    }
+    tr.break {
+      border-bottom: 3px solid black;
     }
   }
   #previous-awards {
