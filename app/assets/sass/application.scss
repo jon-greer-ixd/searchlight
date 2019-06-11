@@ -2076,6 +2076,16 @@ table, tr, td, th {
       margin-top :0;
     }
   }
+  h3 {
+    font-size: 28px;
+    font-weight :bold;
+    padding-top: 0;
+    margin-top: 60px;
+    padding-bottom: 10px;
+    &:nth-child(1) {
+      margin-top :0;
+    }
+  }
   .list-bullet {
       margin-bottom: 0;
    li {
@@ -2119,10 +2129,24 @@ table, tr, td, th {
     tr {
       td:last-child, th:last-child {
         text-align: right;
+        padding-right :0;
       }
     }
     tr.break {
       border-bottom: 3px solid black;
+    }
+    p:first-child, p:nth-child(2) {
+      margin-top: 0;
+      margin-bottom: 5px;
+    }
+  }
+  #current-awards.v2 {
+    table {
+      margin-top:30px;
+      th {
+        padding-bottom: 15px;
+        border-top :1px solid #bfc1c3;
+      }
     }
   }
   #previous-awards {
@@ -2134,12 +2158,43 @@ table, tr, td, th {
         padding-right: 0;
       }
     }
+    th {
+
+    }
     p {
       margin: 0;
     }
     hr {
       margin-top: 15px;
       margin-bottom: 0;
+    }
+  }
+}
+
+.timeline {
+  margin-top :-12px;
+  li {
+    margin-bottom: 10px;
+    &:first-child {
+      position: relative;
+      top: -6px;
+    }
+  }
+  border-left: 4px solid black;
+  line-height: 20px;
+  .dash {
+    font-size: 40px;
+    vertical-align: middle;
+    padding-right: 10px;
+    margin-left :-2px;
+  }
+  .items {
+    margin-left: 18px;
+  }
+  .dates {
+    margin-top: 20px;
+    &:first-child {
+      margin-bottom: 4px;
     }
   }
 }
