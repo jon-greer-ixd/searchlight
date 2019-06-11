@@ -2171,30 +2171,35 @@ table, tr, td, th {
   }
 }
 
-.timeline {
-  margin-top :-12px;
-  li {
-    margin-bottom: 10px;
-    &:first-child {
-      position: relative;
-      top: -6px;
+ol.app-timeline {
+  @include clearfix;
+  border-left: 3px solid black;
+  list-style-type: none;
+  padding-left: 0;
+  .app-timeline__entry {
+    float: left;
+    clear: both;
+    span {
+      float: left;
+      width: 100%;
+      &:first-child{
+        font-weight: bold;
+      }
     }
-  }
-  border-left: 4px solid black;
-  line-height: 20px;
-  .dash {
-    font-size: 40px;
-    vertical-align: middle;
-    padding-right: 10px;
-    margin-left :-2px;
-  }
-  .items {
-    margin-left: 18px;
-  }
-  .dates {
-    margin-top: 20px;
-    &:first-child {
-      margin-bottom: 4px;
+    margin: 0 0 30px 0;
+    padding-left: 1em;
+    position: relative;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &::before {
+      background-color: black;
+      content: ' ';
+      height: 3px;
+      left: 0;
+      position: absolute;
+      top: .5em;
+      width: 10px;
     }
   }
 }
