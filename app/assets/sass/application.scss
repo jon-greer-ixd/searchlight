@@ -2189,6 +2189,13 @@ ol.app-timeline {
   .app-timeline__entry {
     float: left;
     clear: both;
+    &:last-child() {
+      color: white;
+      background: black;
+      margin-left: 20px;
+      padding:  5px 12px;
+      border-radius: 5px;
+    }
     span {
       float: left;
       width: 100%;
