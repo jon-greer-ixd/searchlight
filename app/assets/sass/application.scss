@@ -2005,6 +2005,13 @@ table, tr, td, th {
     border-bottom: none;
     padding-top: 20px;
     padding-bottom: 4px;
+    span {
+      float: left;
+    }
+    span.claim-status {
+      clear: both;
+      padding-top: 4px;
+    }
   }
   td.ben-dates {
     border-bottom: none;
@@ -2053,6 +2060,9 @@ table, tr, td, th {
   summary {
     margin-left: 33%;
     -webkit-font-smoothing: antialiased;
+  }
+  .table2 {
+    margin-bottom: 40px;
   }
 }
 
@@ -2202,4 +2212,12 @@ ol.app-timeline {
       width: 10px;
     }
   }
+}
+
+
+.previous-awards-data {
+  summary {
+    margin-top :5px;
+  }
+  margin-bottom: 15px;
 }

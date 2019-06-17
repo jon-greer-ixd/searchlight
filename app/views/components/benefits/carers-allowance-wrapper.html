@@ -1,12 +1,35 @@
-{% macro awarddetails() %}
-<tr>
-	<td>
+
+
+{% macro awarddetails(start, end, amount) %}
+	<table>
+		<tr class="date">
+			<td>{{start}} &nbsp; &ndash; &nbsp; {{end}}</td>
+			<td>{{amount}}</td>
+		</tr>	
+	</table>	     				
+
+	<div class="previous-awards-data">
 		<details>
-			<summary>Award details</summary>
+			<summary>View award details</summary>
+ 			<div>
+				<table>
+<!-- 					
+					<tr>
+						<th>Award component</th>
+						<th>Amount</th>
+					</tr>
+ -->					
+ 					<tr class="date">
+						<td>
+							Personal allowance
+						</td>
+						<td>£0.00</td>
+					</tr>
+				</table>
+			</div>
 		</details>
-	</td>
-	<td></td>
-</tr>
+	</div>
+	<hr>
 {% endmacro %}
 
 
@@ -94,38 +117,12 @@
 	     		<div class="sl-primary-card last-card" id="previous-awards">
 	     			<p>There are 6 previous awards from this assessment</p>
 	     			<hr>
-	     			<table>
-	     				<tr class="date">
-	     					<td>9 Apr 2019 - 29 Oct 2018</td>
-	     					<td>£64.60</td>
-	     				</tr>		     				
-						{{ awarddetails() }}	     			
-	     				<tr class="date">
-	     					<td>10 Apr 2017 - 8 Apr 2018</td>
-	     					<td>£62.70</td>
-	     				</tr>
-						{{ awarddetails() }}	     			
-	     				<tr class="date">
-	     					<td>6 Sep 2016 - 9 Apr 2017</td>
-	     					<td>£62.10</td>
-	     				</tr>
-						{{ awarddetails() }}	     			
-	     				<tr class="date">
-	     					<td>11 Apr 2016 - 5 Sep 2016</td>
-	     					<td>£62.10</td>
-	     				</tr>
-						{{ awarddetails() }}	     			
-	     				<tr class="date">
-	     					<td>6 Apr 2015 - 5 Apr 2016</td>
-	     					<td>£62.10</td>
-	     				</tr>
-						{{ awarddetails() }}	     			
-	     				<tr class="date">
-	     					<td>21 Aug 2014 - 5 Apr 2015</td>
-	     					<td>£61.35</td>
-	     				</tr>
-						{{ awarddetails() }}	     			
-					</table>
+					{{ awarddetails("9 Apr 2019", "29 Oct 2018", "£64.60" ) }}	  
+					{{ awarddetails("10 Apr 2017", "8 Apr 2018", "£62.70" ) }}	  
+					{{ awarddetails("16 Sep 2016", "9 Apr 2017", "£62.10" ) }}	  
+					{{ awarddetails("1 Apr 2016", "5 Sep 2016", "£62.10" ) }}	  
+					{{ awarddetails("6 Apr 2015", "5 Apr 2016", "£62.10" ) }}	  
+					{{ awarddetails("21 Aug 2014", "5 Apr 2015", "£61.35" ) }}	  
 	     		</div>
 
 	     	</div>
