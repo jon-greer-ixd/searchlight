@@ -2193,7 +2193,7 @@ ol.app-timeline {
       color: white;
       background: black;
       margin-left: 20px;
-      padding:  5px 12px;
+      padding:  7px 12px 5px;
       border-radius: 5px;
     }
     span {
@@ -2219,6 +2219,14 @@ ol.app-timeline {
       width: 10px;
     }
   }
+}
+
+ol.app-timeline .today::before {
+  height: 10px;
+  width: 10px;
+  left: -5px;
+  top: 14px;
+  transform: rotate(45deg);
 }
 
 
