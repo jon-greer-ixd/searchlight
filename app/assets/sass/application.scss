@@ -2105,7 +2105,7 @@ table, tr, td, th {
       }
     }
   }
-  #payment-status, #previous-awards, #current-awards {
+  #payment-status, #previous-awards, #current-awards, .decision-history {
     table {
       td {
         padding-top: 15px;
@@ -2119,7 +2119,7 @@ table, tr, td, th {
       }
     }
   } 
-  #payment-status, #previous-awards {
+  #payment-status, #previous-awards, .decision-history {
     table {
       th {
         color: #005ea5;
@@ -2236,3 +2236,32 @@ ol.app-timeline .today::before {
   }
   margin-bottom: 15px;
 }
+
+
+.decision-history {
+  td, th {
+    width: 18%;
+    &:last-child(){
+      width: 52%;
+    }
+  }
+}
+
+
+.previous-awards-details {
+  tr {
+    td:nth-child(1) {
+      color: #6e777b;
+      border-bottom: none;
+      padding: 0;
+    }
+  }
+  th, td {
+    font-weight: normal;
+    border-bottom: none;
+    width: 25%;
+  }
+}
+
+
+

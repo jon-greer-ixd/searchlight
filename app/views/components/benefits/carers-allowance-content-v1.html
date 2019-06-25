@@ -1,0 +1,177 @@
+{% macro previousAwardDetails(start, end, amount) %}
+	<table>
+		<tr class="date">
+			<td class="">{{start}} &nbsp; &ndash; &nbsp; {{end}}</td>
+			<td class="">{{amount}}</td>
+		</tr>	
+	</table>	     				
+
+	<div class="previous-awards-data">
+		<details>
+			<summary>View award details</summary>
+ 			<div>
+				<table>
+<!-- 					
+					<tr>
+						<th>Award component</th>
+						<th>Amount</th>
+					</tr>
+ -->					
+ 					<tr class="date">
+						<td>
+							Personal allowance
+						</td>
+						<td>{{amount}}</td>
+					</tr>
+				</table>
+			</div>
+		</details>
+	</div>
+	<hr>
+{% endmacro %}
+
+
+{% macro awardDetails(status, start, end, supd) %}
+	<tr>
+		<td>
+			{{status}}
+			{% if supd %}
+  				<br>Superseded
+			{% endif %}
+		</td>
+		<td>{{start}}</td>
+		<td>{{end}}</td>
+	</tr>
+{% endmacro %}
+
+
+{% macro decisionData(date, decision, start, end, overlap, rate, cdi) %}
+		<tr>
+			<td class="">{{date}}</td>
+			<!--<td class="">{{decision}}</td> -->			
+			<td class="">{{start}}</td>
+			<td class="">{{end}}</td>
+			<td class="">{{overlap}}</td>
+			<td class="">{{rate}}</td>
+			<td class="">{{cdi}}</td>
+			<td class="">{{decision}}</td>
+		</tr>	
+	</table>
+	<table>
+{% endmacro %}
+
+
+
+<div class="sl-account-canvas row updater slim-header">
+
+	<div class="sl-primary-card" id="benefit-name">
+  		<div class="sl-account-canvas-width">
+<!-- 	     	
+			<a class="link-back" onCLick="history.back()">Back</a>
+ -->	        
+ 			<h1 class="title">Carer's Allowance</h1>
+	        <p>Ended. No end reason held.</p>
+  		</div>
+  	</div>
+
+    <div class="sl-account-canvas-width" id="benefit-detail">
+
+	     <div class="grid-row">
+
+	     	<div class="column-two-thirds">
+
+	     		<h3>Payment Status</h3>
+	     		<div class="sl-primary-card" id="payment-status">
+	     			<table>
+	     				<tr>
+	     					<th>Payment status type</th>
+	     					<th>Start date</th>
+	     					<th>End date</th>
+	     				</tr>
+	     				{{ awardDetails("Status not relevant", "15 Feb 2019", "-", false) }}
+	     				{{ awardDetails("In receipt of ongoing payment", "6 Sep 2016", "14 Feb 2019", true) }}
+	     				{{ awardDetails("In receipt of ongoing payment", "21 Aug 2014", "5 Sep 2016", true) }}
+	     				{{ awardDetails("Granted underlying entitlement only", "30 Nov 2011", "7 Oct 2012", true) }}
+	     				{{ awardDetails("Granted underlying entitlement only", "9 May 2011", "29 Nov 2011", true) }}
+	     				{{ awardDetails("Granted underlying entitlement only", "5 May 2011", "8 May 2011", true) }}
+	     			</table>
+	     		</div>		     		
+
+	     		<h3>Previous awards</h3>
+	     		<div class="sl-primary-card last-card" id="previous-awards">
+	     			<p>There are 6 previous awards from this assessment.</p>
+	     			<hr>
+						{{ previousAwardDetails("9 Apr 2019", "29 Oct 2018", "£64.60" ) }}	  
+						{{ previousAwardDetails("10 Apr 2017", "8 Apr 2018", "£62.70" ) }}	  
+						{{ previousAwardDetails("16 Sep 2016", "9 Apr 2017", "£62.10" ) }}	  
+						{{ previousAwardDetails("1 Apr 2016", "5 Sep 2016", "£62.10" ) }}	  
+						{{ previousAwardDetails("6 Apr 2015", "5 Apr 2016", "£62.10" ) }}	  
+						{{ previousAwardDetails("21 Aug 2014", "5 Apr 2015", "£61.35" ) }}	  
+	     		</div>
+
+
+	     		<h3>Decision history</h3>
+
+	     		<div class="sl-primary-card last-card" id="previous-awards">
+
+	     			<table id="decision-history">
+							<tr>
+								<th>Decision date</th>
+								<!-- <th class="">Decision</th> -->			
+								<th>Effective from</th>
+								<th>Effective to</th>
+								<th>Overlapping benefit</th>
+								<th>Rate</th>
+								<th>CDI withheld</th>
+								<th>Decision</th>
+							</tr>	
+							{{ decisionData("15 Feb 2019", "No longer caring 35 hours a week", "30 Oct 2018", "-", "None", "None", "0") }}	     				
+						</table>	     				
+
+	     		</div>
+
+	     	</div>
+
+
+	     	<div class="column-one-third">
+	     		<h3>Key dates</h3>
+	     		<div class="sl-primary-card">
+ 					<ol class="app-timeline">
+			         	<li class="app-timeline__entry">
+			          		<span>17 Feb 2011</span>
+			              	<span>Claim date.</span>
+			           	</li>
+			           	<li class="app-timeline__entry">
+			           		<span>4 May 2011</span>
+			             	<span>Claim received date.</span>
+			             	<span>Claim registered date.</span>
+			           	</li>
+			           	<li class="app-timeline__entry">
+			           		<span>5 May 2011</span>
+			             	<span>Cleared.</span>
+			           	</li>
+			           	<li class="app-timeline__entry">
+			           		<span>1 Oct 2013</span>
+			           		<span>DWP decision effective.</span>
+			           		<span>Entitlement start date.</span>
+			           	</li>
+			           	<li class="app-timeline__entry">
+			           		<span>25 Nov 2013</span>
+			           		<span>DWP decision - entitled to payment of CA. Overlapping benefit reduced or payment ceased.</span>
+			             	<span>Entitlement start date.</span>
+			           	</li>
+			           	<li class="app-timeline__entry">
+			           		<span>15 Feb 2019</span>
+			             	<span>Claim ended.</span>
+			           	</li>
+			           	<li class="app-timeline__entry today">
+			           		<span>Today</span>
+			           </li>
+         			</ol>
+
+	     		</div>
+	     	</div>
+
+	     </div>
+
+    </div>
