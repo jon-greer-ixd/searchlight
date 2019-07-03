@@ -2264,4 +2264,13 @@ ol.app-timeline .today::before {
 }
 
 
-
+.decision-details {
+  display: block;
+  margin-top: 5px;
+  table {
+    width: 75%;
+    td, tr, th {
+      border-bottom: 0;
+    }
+  }
+}
