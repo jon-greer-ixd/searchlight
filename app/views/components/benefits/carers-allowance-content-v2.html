@@ -1,14 +1,14 @@
 
 {% macro awardDetails(status, start, end, supd) %}
 	<tr>
-		<td>
-			{{status}}
-			{% if supd %}
-  				<br>Superseded
-			{% endif %}
-		</td>
 		<td>{{start}}</td>
 		<td>{{end}}</td>
+		<td>
+			<span>{{status}}</span>
+			{% if supd %}
+  			<span>Superseded</span>
+			{% endif %}
+		</td>
 	</tr>
 {% endmacro %}
 
@@ -35,9 +35,9 @@
 	     		<div class="sl-primary-card" id="payment-status">
 	     			<table>
 	     				<tr>
-	     					<th>Payment status type</th>
 	     					<th>Start date</th>
 	     					<th>End date</th>
+	     					<th>Payment status type</th>
 	     				</tr>
 	     				{{ awardDetails("Status not relevant", "15 Feb 2019", "-", false) }}
 	     				{{ awardDetails("In receipt of ongoing payment", "6 Sep 2016", "14 Feb 2019", true) }}
@@ -51,7 +51,6 @@
   				{% include "./components/previous-awards.html" %}
   				
 
-  				{% include "./components/decisions.html" %}
 
 
 	     	</div>
