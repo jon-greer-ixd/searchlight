@@ -1,82 +1,42 @@
 {% macro decisionData(date, decision, start, end, overlap, rate, cdi) %}
-	<table>
-		<tr class="date">
-			<td class="">{{date}}</td>
-			<td class="">{{decision}}</td>
-		</tr>	
-	</table>	     				
-
-	<div class="previous-awards-data">
-		<details>
-			<summary>View decision details</summary>
- 			<div>
-				<table class="">
-					<tr>
-						<td>Effective dates</td>
-						<td>{{start}} to {{end}}</td>
-					</tr>
-					<tr>
-						<td>Overlapping benefit</td>
-						<td>{{overlap}}</td>
-					</tr>
-					<tr>
-						<td>Overlapping benefit rate</td>
-						<td>{{rate}}</td>
-					</tr>
-					<tr>
-						<td>Withheld CDI</td>
-						<td>{{cdi}}</td>
-					</tr>
-				</table>
-			</div>
-		</details>
-	</div>
-	<hr>
 {% endmacro %}
 
-		<!-- DECISION HISTORY -->
-		<h3>Decision history</h3>
+<!-- DECISION HISTORY -->
+<h3>Decision history</h3>
 
-		<div class="sl-primary-card last-card">
-			<div class="decision-history">
-			 	<table>
+<div class="sl-primary-card last-card" id="decision-history">
+
+	<div>
+	 	<table class="first-table">
+			<tr>
+				<th>Decision date</th>
+				<th>Decision</th>
+			</tr>
+			<tr>
+				<td>30 Jun 2018</td>
+				<td>No longer caring 40 hours per week</td>
+			</tr>	
+		</table>	  
+	</div>
+
+		<details>
+			<summary>Show award details</summary>
+ 			<div class="panel panel-border-wide">
+				<table>
 					<tr>
-						<th>Decison date</th>
 						<th>Effective start</th>
 						<th>Effective end</th>
-						<th>Decision</th>
+						<th>Withheld CDI</th>
+						<th>Overlapping benefit</th>
+					</tr>
+					<tr>
+						<td>30 Jun 2018</td>
+						<td><span class="bold">-</span></td>
+						<td>0</th>
+						<td>Bereavement Allowance</td>
 					</tr>
 				</table>
 			</div>
-									
-			<!-- {{ decisionData("15 Feb 2019","No longer caring 40 hours per week","30 Oct 2018","-","None","None","0") }} -->
-			<div class="decision-history">
-				<table>
-					<tr class="date">
-						<td>30 Jul 2018</td>
-						<td>30 Jun 2018</td>
-						<td>-</td>
-						<td>No longer caring 40 hours per week</td>
-					</tr>	
-				</table>	  
-			</div>
-
-			<div class="decision-details">
-				<details>
-					<summary>Show decision details</summary>
-						<table>
-							<tr>
-								<td>Withheld CDI</td>
-								<td>0</td>
-							</tr>
-							<tr>
-								<td>Overlapping benefit</td>
-								<td>Bereavement Allowance</td>
-							</tr>
-						</table>
-				</details>
-			</div>
-
-			<hr>
-
+			<hr class="bold">
+		</details>
 </div>

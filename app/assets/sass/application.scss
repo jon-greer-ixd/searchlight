@@ -2105,7 +2105,7 @@ table, tr, td, th {
       }
     }
   }
-  #payment-status, #previous-awards, #current-awards, .decision-history {
+  #payment-status, #previous-awards, #current-awards {
     table {
       td {
         padding-top: 15px;
@@ -2187,6 +2187,7 @@ table, tr, td, th {
   }
 }
 
+
 #payment-status {
     td:last-child(), th:last-child() {
     width: 50%;
@@ -2211,7 +2212,6 @@ table, tr, td, th {
     width: 50%;
     text-align: right;
   }
-
   summary {
     margin-top: 10px;
     margin-bottom: 0;
@@ -2227,6 +2227,61 @@ table, tr, td, th {
     }
   }
 }
+
+#decision-history {
+  .panel {
+    padding-right: 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom :0;
+  }
+  summary {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-bottom :0;
+  }
+  table.first-table {
+    td, th {
+      width: 42.5%;
+    }
+    td:nth-child(1), th:nth-child(1) {
+      width: 14%;
+    }
+  }
+  table {
+    td, th {
+      text-align: left;
+      vertical-align: top;
+      padding: 0.63158em 0;
+    }
+    th {
+      padding-top: 0;
+    }
+    hr {
+      margin-top: 10px;
+      margin-bottom :0;
+      &.bold {
+        margin-bottom :30px;
+        height: 3px;
+        background: black;
+      }
+    }
+    tr:last-child() {
+      td {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+    td:last-child(), th:last-child() {
+      padding-right: 0;
+    }
+  }
+}
+
+
+
+
+
 
 ol.app-timeline {
   @include clearfix;
@@ -2274,15 +2329,6 @@ ol.app-timeline .today::before {
   left: -5px;
   top: 14px;
   transform: rotate(45deg);
-}
-
-.decision-history {
-  td, th {
-    width: 18%;
-    &:last-child(){
-      width: 52%;
-    }
-  }
 }
 
 
