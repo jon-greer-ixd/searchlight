@@ -2136,14 +2136,16 @@ table, tr, td, th {
     tr.break {
       border-bottom: 3px solid black;
     }
-    p:first-child, p:nth-child(2) {
+    p:first-child {
       margin-top: 0;
-      margin-bottom: 5px;
+    }
+    p {
+      margin-bottom: 0!important;
     }
   }
   #current-awards.v2 {
     table {
-      margin-top:30px;
+      margin-top:20px;
       th {
         padding-bottom: 15px;
         // border-top :1px solid #bfc1c3;
