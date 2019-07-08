@@ -1,169 +1,20 @@
 <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
   
   <h2>Benefits</h2>
+
   <div id="benefit-panel" class="sl-primary-card">  
-    
 
-    <div class="benefit-container">
-      <table id="table1">
-        <tr class="header">
-          <th class="col1">Start date</th>
-          <th class="col2">End date</th>
-          <th class="col3">Benefit</th>
-        </tr>
-        <tr>
-          <td class="ben-dates">10 Apr 2017</td>
-          <td class="ben-dates">25 Jul 2021</td>
-          <td class="ben-title">
-            <span class="strong">Personal Independence Payment</span>&nbsp; · &nbsp;<a>View benefit details</a>
-          </td>
-        </tr>
-      </table>
-    
-      <table class="table2">
-        <tr class="sub-header">
-          <th>Award start</th>
-          <th>Award end</th>
-          <th>Amount</th>
-        </tr>
-        <tr class="ben-first-amounts">
-          <td>8 Apr 2019</td>
-          <td>25 Jul 2021</td>
-          <td>£58.70</td>
-        </tr>
-      </table>
-    
-      <details class="more-payments">
-        <summary>Show all awards</summary>
+    {% include "./benefits-components/pip.html" %}
 
-        <table class="table2">
-          <tr>
-            <td>9 Apr 2018</td>
-            <td>7 Apr 2019</td>
-            <td>£57.30</td>
-          </tr>
-          <tr>
-            <td>10 Apr 2017</td>
-            <td>8 Apr 2018</td>
-            <td>Claim data only</td>
-          </tr>
-        </table>
-      </details>
-  </div> <!-- end of benefit container-->
+    <hr class="mid">
 
-  <hr class="mid">
+    {% include "./benefits-components/uc.html" %}
 
-    <div class="benefit-container">
-      <table id="table1">
-        <tr>
-          <td class="ben-dates">5 Nov 2018</td>
-          <td class="ben-dates bold">-</td>
-          <td class="ben-title">
-            <span class="strong">Universal Credit</span>&nbsp; · &nbsp;<a href="../benefits/uc-v2">View benefit details</a>
-<!--             <span class="claim-status">Joint claim with Hajia Halliman&nbsp; · &nbsp;<a>View account</a></span>
- -->          </td>
-        </tr>
-      </table>
-    
-      <table class="table2">
-        <tr class="sub-header">
-          <th>Award start</th>
-          <th>Award end</th>
-          <th>Amount</th>
-        </tr>
-        <tr class="ben-first-amounts">
-          <td style="border-bottom:none; padding-bottom: 0">5 Nov 2018</td>
-          <td style="border-bottom:none; padding-bottom: 0" class="bold">-</td>
-          <td style="border-bottom:none; padding-bottom: 0">£1,291.66</td>
-        </tr>
-      </table>
-    
-<!--       <details class="more-payments">
-        <summary>Show all awards</summary>
+    <hr class="mid">
 
-        <table class="table2">
-          <tr>
-            <td>9 Apr 2018</td>
-            <td>7 Apr 2019</td>
-            <td>£57.30</td>
-          </tr>
-          <tr>
-            <td>10 Apr 2017</td>
-            <td>8 Apr 2018</td>
-            <td>Claim data only</td>
-          </tr>
-        </table>
-      </details> -->
-  </div> <!-- end of benefit container-->
+    {% include "./benefits-components/previous.html" %}
 
-  <hr class="mid">
-
-    <details>
-      <summary>Show previous benefits</summary>
-          <div class="benefit-container">
-      <table id="table1">
-        <tr>
-          <td class="ben-dates">1 Oct 2013</td>
-          <td class="ben-dates">15 Feb 2019</td>
-          <td class="ben-title">
-            <span class="strong">Carers Allowance</span>&nbsp; · &nbsp;
-            <a href="../benefits/carers-allowance-v2">View benefit details</a>
-            <br><span>No end reason</span>
-          </td>
-        </tr>
-      </table>
-    
-      <table class="table2">
-        <tr class="sub-header">
-          <th>Award start</th>
-          <th>Award end</th>
-          <th>Amount</th>
-        </tr>
-        <tr class="ben-first-amounts">
-          <td>9 Apr 2018</td>
-          <td>29 Oct 2018</td>
-          <td>£64.60</td>
-        </tr>
-      </table>
-    
-      <details class="more-payments">
-        <summary>Show all awards</summary>
-
-        <table class="table2">
-<!--           <tr>
-            <td >9 Apr 2018</td>
-            <td>29 Oct 2018</td>
-            <td>£64.70</td>
-          </tr>
- -->          <tr>
-            <td>10 Apr 2017</td>
-            <td>8 Apr 2018</td>
-            <td>£62.10</td>
-          </tr>
-          <tr>
-            <td>6 Sep 2016</td>
-            <td>9 Apr 2017</td>
-            <td>£62.10</td>
-          </tr>
-          <tr>
-            <td>11 Apr 2016</td>
-            <td>5 Sep 2016</td>
-            <td>£62.10</td>
-          </tr>
-          <tr>
-            <td>6 Apr 2015</td>
-            <td>10 Apr 2016</td>
-            <td>£62.10</td>
-          </tr>
-          <tr>
-            <td>21 Aug 2014</td>
-            <td>5 Apr 2015</td>
-            <td>£61.35</td>
-          </tr>
-        </table>
-      </details>
-   </div> <!-- end of benefit container-->
-    </details>
     
   </div>
+  
 </div>
