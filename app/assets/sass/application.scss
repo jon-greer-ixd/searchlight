@@ -1969,6 +1969,10 @@ table, tr, td, th {
   font-family : "sl-font", Arial, sans-serif!important;
 }
 
+//////////////////////////////
+////  BENEFITS JUNE 2019  ////
+//////////////////////////////
+
 #benefit-panel {
   #heading-benefits {
     color: $searchlight-blue;
@@ -1979,11 +1983,16 @@ table, tr, td, th {
 }
 
 .benefit-container {
+  margin-bottom: 15px;
+  margin-top :15px;
+  &:first-child() {
+    margin-top :0;
+  }
   .benefit-start, .benefit-end, .benefit-name {
     float: left;
   }
   .benefit-start, .benefit-end {
-    width: 18%;
+    width: 15%;
   }
   .benefit-name {
     span{
@@ -1995,7 +2004,7 @@ table, tr, td, th {
   .benefit-payments {
     float: left;
     width: 35%;
-    margin-left: 18%;
+    margin-left: 30%;
     ul {
       margin: 0 0 5px 0;
       &:first-child() {
@@ -2004,10 +2013,10 @@ table, tr, td, th {
         color: $secondary-text-colour;
       }
       &:nth-child(2) {
-        margin-top: 10px;
         padding-bottom: 10px;
         border-bottom: 1px solid #bfc1c3;
         margin-bottom: 10px;
+        margin-top: 10px;
       }
       @include clearfix;
       li {
@@ -2023,87 +2032,24 @@ table, tr, td, th {
       }
     }
   }
-  margin-bottom: 15px;
   &:last-child {
     margin-bottom: 0;
   }
 }
 
-#table1, .table2 {
-  font-size: 19px;
-  td {
-    padding: 14px 0 9px;
-  }
-  tr, td {
-    color: #0b0c0c;
-    -webkit-font-smoothing: antialiased;
-    margin: 0;
-  }
-  tr.header th {
-    font-weight: normal;
-    color: $searchlight-blue;
-    border-color: #898a94;
-  }
-  tr.sub-header th {
-    font-weight: normal;
-    color: #6e777b;
+.benefit-container.noprevious {
+  ul:last-child() {
     border-bottom: none;
-    padding: 0;
-  }
-  tr.ben-first-amounts td{
-    padding: 5px 0 10px 0;
-  }
-  td.ben-title {
-    border-bottom: none;
-    padding-top: 20px;
-    padding-bottom: 4px;
-    span {
-      float: left;
-    }
-    span.claim-status {
-      clear: both;
-      padding-top: 4px;
-    }
-  }
-  td.ben-dates {
-    border-bottom: none;
-    vertical-align: top;
-    padding-top: 20px;
-    padding-bottom: 4px;
-  }
-
-  
-}
-
-#table1 {
-  width: 100%;
-  th {
-    padding: 0 0 8px;
-  }
-  tr {
-    td:nth-child(1), td:nth-child(2) {
-      width: 16.5%;
-    }
-    td:nth-child(3) {
-      width: 67%;
-    }
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
-.table2 {
-  width: 465px;
-  margin-left: 33%;
-  tr {
-    td:nth-child(1) {
-      width: 195px;
-    }
-    td:nth-child(2) {
-      width: 137px;
-    }
-    td:nth-child(3), th:nth-child(3) {
-      width: 137px;
-      text-align: right;
-      padding-right :0;
+.previous-benefits {
+  margin-top: 15px;
+  .benefit-container {
+    .benefit-payments {
+      margin-left: 30%;
     }
   }
 }
