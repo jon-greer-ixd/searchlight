@@ -1,36 +1,28 @@
-<div class="benefit-container noprevious">
+{% extends "./benefit-template-no-previous.html" %}
 
-  <div class="grid-row">
-    <div class="benefit-start">
-      <ul>
-        <li>5 Nov 2018</li>
-      </ul>
-    </div>
-      <div class="benefit-end">
-        &nbsp;
-      </div>
-    <div class="benefit-name title">
-      <ul>
-        <li><span class="strong">Universal Credit</span>&nbsp; · &nbsp;<a href="../benefits/uc-v2">View benefit details</a></li>
-      </ul>
-    </div>
-  </div>
+{% block start_date %}
+  5 Nov 2018
+{% endblock %}
 
-  <div class="grid-row">
 
-    <div class="benefit-payments">
-      <ul>
-        <li>Award start</li>
-        <li>Award end</li>
-        <li>Amount</li>
-      </ul>
-      <ul>
-        <li>5 Nov 2018</li>
-        <li class="bold">-</li>
-        <li>£1,291.66</li>
-      </ul>
-    </div>
+{% block title %}
+  Universal Credit
+{% endblock %}
 
-  </div>
 
-</div>
+{% block href %}
+  href="../benefits/uc-v2"
+{% endblock %}
+
+
+{% block latest_payment %}
+  <ul>
+    <li>5 Nov 2018</li>
+    <li class="bold">-</li>
+    <li>£1,291.66</li>
+  </ul>
+{% endblock %}
+
+
+{% block more_payments %}
+{% endblock %}

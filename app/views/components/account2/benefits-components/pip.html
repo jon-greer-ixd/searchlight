@@ -1,65 +1,41 @@
-<div class="benefit-container">
+{% extends "./benefit-template.html" %}
 
-  <div class="grid-row" id="heading-benefits">
-    <div class="benefit-start">
-      <ul>
-        <li>Benefit start date</li>
-      </ul>
-    </div>
-      <div class="benefit-end">
-        &nbsp;
-      </div>
-    <div class="benefit-name">
-      <ul>
-        <li>Benefit</li>
-      </ul>
-    </div>
-  </div>
+{% block start_date %}
+  8 Apr 2018
+{% endblock %}
 
-  <div class="grid-row">
-    <div class="benefit-start">
-      <ul>
-        <li>8 Apr 2018</li>
-      </ul>
-    </div>
-      <div class="benefit-end">
-        &nbsp;
-      </div>
-    <div class="benefit-name title">
-      <ul>
-        <li><span>Personal Independence Payment</span>&nbsp; · &nbsp;<a>View benefit details</a></li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="grid-row">
+{% block title %}
+  Personal Independence Payment
+{% endblock %}
 
-    <div class="benefit-payments">
-      <ul>
-        <li>Award start</li>
-        <li>Award end</li>
-        <li>Amount</li>
-      </ul>
-      <ul>
-        <li>8 Apr 2019</li>
-        <li>-</li>
-        <li>£58.70</li>
-      </ul>
-      <details class="more-payments">
-        <summary>Show all awards</summary>
-        <ul>
-          <li>9 Apr 2018</li>
-          <li>7 Apr 2019</li>
-          <li>£57.30</li>
-        </ul>
-        <ul>
-          <li>10 Apr 2017</li>
-          <li>8 Apr 2018</li>
-          <li>Claim data only</li>
-        </ul>
-      </details>
-    </div>
 
-  </div>
+{% block href %}
+  /
+{% endblock %}
 
-</div>
+
+{% block latest_payment %}
+  <ul>
+    <li>8 Apr 2019</li>
+    <li>-</li>
+    <li>£58.70</li>
+  </ul>
+{% endblock %}
+
+
+{% block more_payments %}
+  <details class="more-payments">
+    <summary>Show all awards</summary>
+    <ul>
+      <li>9 Apr 2018</li>
+      <li>7 Apr 2019</li>
+      <li>£57.30</li>
+    </ul>
+    <ul>
+      <li>10 Apr 2017</li>
+      <li>8 Apr 2018</li>
+      <li>Claim data only</li>
+    </ul>
+  </details>
+{% endblock %}
