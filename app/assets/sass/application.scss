@@ -84,8 +84,9 @@ $secondary-text-colour: #6e777b;
   height: 65px!important;
   .sl-account-primary-name {
     h1 {
-      font-size: 19px;
+      font-size: 22px;
       float: left;
+      font-weight: bold;
     }
   }
   #sl-account-person-age {
@@ -1973,6 +1974,48 @@ table, tr, td, th {
 ////  BENEFITS JUNE 2019  ////
 //////////////////////////////
 
+
+#simple-name {
+  p {
+    margin: 0;
+    line-height: 65px;
+    color: white;
+    font-size: 19px;
+    .sn-name {
+      font-weight: bold;
+      font-size: 22px;
+    }
+  }
+}
+
+.secondary-text {
+  color: $secondary-text-colour;
+}
+
+.assessment-dates {
+  margin-bottom: 60px;
+}
+
+#sl-account-local-nav .sl-local-nav-menu .sl-local-nav-item .sl-local-nav-anchor,
+#sl-account-local-nav .sl-local-nav-menu .sl-local-nav-item:first-child() {
+    padding-left: 0;
+    margin-left: 0;
+}
+
+#benefit-name {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  padding: 20px;
+  h1 {
+    padding :0;
+    font-size: 2.2em;
+  }
+  p {
+    margin :0;
+  }
+}
+
+
 #benefit-panel {
   #heading-benefits {
     color: $searchlight-blue;
@@ -2053,19 +2096,6 @@ table, tr, td, th {
   }
 }
 
-
-//benefits pages
-#benefit-name {
-  margin-top: -10px;
-  margin-bottom: 30px;
-  h1 {
-    padding :0;
-  }
-  p {
-    margin :0;
-  }
-}
-
 #benefit-detail {
   h2 {
     padding-top: 0;
@@ -2108,11 +2138,21 @@ table, tr, td, th {
     }
   } 
   #current-awards {
+    h4 {
+      font-size: 19px;
+      font-weight :bold;
+      padding: 0;
+      margin: 0;
+    }
+    hr {
+      margin-bottom: 0;
+    }
     table {
       th {
         color:black;
         font-weight: bold;
         padding-bottom: 15px;
+        padding-top: 0;
       }
     }
     tr {
