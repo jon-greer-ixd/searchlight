@@ -1,0 +1,35 @@
+{% macro awarddetails() %}
+<tr>
+	<td>
+		<details>
+			<summary>Award details</summary>
+		</details>
+	</td>
+	<td></td>
+</tr>
+{% endmacro %}
+
+<div class="sl-account-canvas row updater slim-header">
+
+	<div class="sl-primary-card" id="benefit-name">
+
+  	<div class="sl-account-canvas-width">
+
+	 		<h1 class="title">Universal Credit</h1>
+	 		<p>In payment.</p>
+
+  		</div>
+
+  </div>
+
+  <div class="sl-account-canvas-width" id="benefit-detail">
+
+		<div class="grid-row">
+
+			{% include "./current-award-uc.html" %}
+
+			{% include "./key-dates-uc.html" %}
+	     
+	  </div>
+
+</div>

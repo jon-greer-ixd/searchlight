@@ -1,0 +1,62 @@
+{% macro awardDetails(status, start, end, supd) %}
+	<tr>
+		<td>{{start}}</td>
+		<td>{{end}}</td>
+		<td>
+			<span>{{status}}</span>
+			{% if supd %}
+  			<span>Superseded</span>
+			{% endif %}
+		</td>
+	</tr>
+{% endmacro %}
+
+
+<div class="sl-account-canvas row updater slim-header">
+
+	<div class="sl-primary-card" id="benefit-name">
+
+  	<div class="sl-account-canvas-width">
+ 			<h1 class="title">Carer's Allowance</h1>
+	    <p>Ended. No end reason held.</p>
+  	</div>
+
+  </div>
+
+  <div class="sl-account-canvas-width" id="benefit-detail">
+
+		<div class="grid-row">
+
+	  	<div class="column-two-thirds">
+
+	    	<h3>Payment Status</h3>
+
+	     	<div class="sl-primary-card" id="payment-status">
+	     		<table>
+	     			<tr>
+   						<th>Start date</th>
+   						<th>End date</th>
+   						<th>Payment status type</th>
+   					</tr>
+     				{{ awardDetails("Status not relevant", "15 Feb 2019", "-", false) }}
+     				{{ awardDetails("In receipt of ongoing payment", "6 Sep 2016", "14 Feb 2019", true) }}
+     				{{ awardDetails("In receipt of ongoing payment", "21 Aug 2014", "5 Sep 2016", true) }}
+     				{{ awardDetails("Granted underlying entitlement only", "30 Nov 2011", "7 Oct 2012", true) }}
+     				{{ awardDetails("Granted underlying entitlement only", "9 May 2011", "29 Nov 2011", true) }}
+     				{{ awardDetails("Granted underlying entitlement only", "5 May 2011", "8 May 2011", true) }}
+	     		</table>
+	     	</div>		 
+
+  			{% include "./previous-awards.html" %}
+  				
+  			{% include "./decisions.html" %}
+
+	   	</div>
+
+  		{% include "./dates.html" %}
+
+		</div>
+
+ 	</div>
+
+</div>
