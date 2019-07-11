@@ -38,6 +38,7 @@ $path: "/public/images/";
 
 // Colours 2019
 $searchlight-blue: #005ea5;
+$searchlight-black: #0b0c0c;
 $secondary-text-colour: #6e777b;
 $border-grey: #cacacf;
 
@@ -1065,7 +1066,11 @@ a.short-name {
 }
 
 .nav {
-  color: $searchlight-blue;
+  font-weight: bold;
+  color: $searchlight-black;
+  a {
+    font-weight: normal;
+  }
 }
 
 #main-cont {
@@ -1989,7 +1994,8 @@ table, tr, td, th {
 
 #benefit-panel {
   #heading-benefits {
-    color: $searchlight-blue;
+    color: $searchlight-black;
+    font-weight: bold;
     padding-bottom: 15px;
     margin-bottom: 15px;
     border-bottom: 1px solid #cacacf;
@@ -2006,7 +2012,7 @@ table, tr, td, th {
     float: left;
   }
   .benefit-start, .benefit-end {
-    width: 15%;
+    width: 16.25%;
   }
   .benefit-name {
     span{
@@ -2018,7 +2024,7 @@ table, tr, td, th {
   .benefit-payments {
     float: left;
     width: 35%;
-    margin-left: 30%;
+    margin-left: 32.5%;
     margin-top: 4px;
     ul {
       margin: 0 0 5px 0;
@@ -2062,7 +2068,7 @@ table, tr, td, th {
   margin-top: 15px;
   .benefit-container {
     .benefit-payments {
-      margin-left: 30%;
+      margin-left: 32.5%;
     }
   }
 }
@@ -2080,7 +2086,7 @@ table, tr, td, th {
     font-weight :bold;
     padding-top: 0;
     margin-top: 60px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     &:nth-child(1) {
       margin-top :0;
     }
@@ -2183,7 +2189,7 @@ table, tr, td, th {
 
 #payment-status, #previous-awards {
   td, th {
-    width: 14%;
+    width: 16.5%;
     text-align: left;
     vertical-align: top;
     padding: 0.63158em 0;

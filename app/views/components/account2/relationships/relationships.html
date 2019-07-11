@@ -4,7 +4,7 @@
     
     <div class="grid-row">
       <div class="column-one-third">
-        <h3 class="strong">Payee relationships</h3>
+        <p class="strong">Payee relationships</p>
         <p>No payee relationships</p>
       </div>
     </div>    
@@ -13,8 +13,8 @@
     
     <div class="grid-row">
       <div class="column-one-third">
-        <h3 class="strong">Award based relationships</h3>
-        <p>No award based relationships</p>
+        <p class="strong">Award relationships</p>
+        <p>No award relationships</p>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
     
     <div class="grid-row">
       <div class="column-two-thirds">
-        <h3 class="strong">Person relationships</h3>
+        <p class="strong">Person relationships</p>
       </div>
       <div class="column-one-third last-col">
         <ul class="edit-menu">
@@ -37,7 +37,7 @@
     {% if data.miscData.relationships.state == null %}
       <div class="grid-row">
         <div class="column-two-thirds">
-          <p>No award relationships</p>
+          <p>No person relationships</p>
         </div>
       </div>
     {% endif %}
@@ -79,7 +79,7 @@
 
     <!-- Ended -->
     {% if data.miscData.relationships.state == 5 %}
-      <p>No award based relationships</p>
+      <p>No award relationships</p>
       <hr>
       <details>
         <summary>View previous person relationships</summary>
@@ -122,7 +122,7 @@
 
     <!-- Deleted -->
     {% if data.miscData.relationships.state == 6 %}
-      <p>No award based relationships</p>
+      <p>No award relationships</p>
     {% endif %}
     
     {% if data.miscData.relationships.state != 9 %}
