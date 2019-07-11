@@ -35,8 +35,12 @@ $path: "/public/images/";
 @import 'components/progressive-reveal';
 
 
+
+// Colours 2019
 $searchlight-blue: #005ea5;
 $secondary-text-colour: #6e777b;
+$border-grey: #cacacf;
+
 
 
 /////////////
@@ -1115,10 +1119,6 @@ a.short-name {
   margin-bottom: 60px;
 }
 
-hr.light {
-  background: #e6e6e6;
-}
-
 hr.split {
   margin-left :50px;
 }
@@ -1759,18 +1759,6 @@ hr.mid {
   float: left;
 }
 
-#relationships_data {
-  p {
-    margin-bottom: 0;  
-  }
-  .column-one-half {
-    padding: 0 15px 0 0;
-  }
-  .first-row{
-    margin-top: 15px;
-  }
-}
-
 #benefit {
   .column-one-third:nth-child(2) {
     padding: 0 0 0 15px;
@@ -2004,7 +1992,7 @@ table, tr, td, th {
     color: $searchlight-blue;
     padding-bottom: 15px;
     margin-bottom: 15px;
-    border-bottom: 1px solid #bfc1c3;
+    border-bottom: 1px solid #cacacf;
   }
 }
 
@@ -2377,10 +2365,19 @@ ol.app-timeline .today::before {
 ///REVISED STYLES 2019 ///
 //////////////////////////
 
+$searchlight-blue: #005ea5;
+$secondary-text-colour: #6e777b;
 
-////////////
-// Account 2
-////////////
+$border: #a1a1aa;
+
+//////////
+// Account
+//////////
+
+// General
+hr, hr.light, hr.mid {
+  background: $border-grey;
+}
 
 // Navigation
 #address-anchor, #contact-anchor, #interests-anchor, #benefits-anchor, #relationships-anchor   {
@@ -2390,6 +2387,22 @@ ol.app-timeline .today::before {
 #top-anchor {
   position: absolute;
   top: 0px;
+}
+
+// Relationships
+#relationships_data {
+  p {
+    margin-bottom: 0;  
+  }
+  h3 {
+    padding-bottom: 0;  
+  }
+  .column-one-half {
+    padding: 0 15px 0 0;
+  }
+  .first-row{
+    margin-top: 15px;
+  }
 }
 
 

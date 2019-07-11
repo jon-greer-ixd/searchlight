@@ -37,15 +37,15 @@
     {% if data.miscData.relationships.state == null %}
       <div class="grid-row">
         <div class="column-two-thirds">
-          <p>No award based relationships</p>
+          <p>No award relationships</p>
         </div>
       </div>
     {% endif %}
 
     <!-- Added or recovered -->
     {% if data.miscData.relationships.state == 1 or data.miscData.relationships.state == 9 %}
-
-      <div class="grid-row">
+      <br>
+      <div class="grid-row" id="">
         <div class="column-one-third">
           <div class="column-one-half">
             <ul>
