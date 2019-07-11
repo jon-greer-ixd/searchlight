@@ -2109,6 +2109,13 @@ table, tr, td, th {
     }
   } 
   #current-awards {
+    span {
+      float: left;
+      width :100%;
+    }
+    span.sub {
+      color: $secondary-text-colour;
+    }
     h4 {
       font-size: 19px;
       font-weight :bold;
@@ -2130,6 +2137,7 @@ table, tr, td, th {
       td:last-child, th:last-child {
         text-align: right;
         padding-right :0;
+        vertical-align: top;
       }
     }
     tr.break {
@@ -2292,7 +2300,7 @@ ol.app-timeline {
   .app-timeline__entry {
     float: left;
     clear: both;
-    &:last-child() {
+    &.today {
       color: white;
       background: black;
       margin-left: 20px;
@@ -2414,10 +2422,10 @@ hr, hr.light, hr.mid {
 #previous-awards-anchor, #decision-history-anchor  {
   position: relative;
   top: -150px;
-  // height :10px;
-  // width :10px;
-  // background-color: red;
+  height :10px;
+  width :10px;
 }
+
 #top-anchor {
   position: absolute;
   top: 0px;

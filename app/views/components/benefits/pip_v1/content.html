@@ -1,0 +1,47 @@
+
+{% macro awardDetails(status, start, end, supd) %}
+	<tr>
+		<td>{{start}}</td>
+		<td>{{end}}</td>
+		<td>
+			<span>{{status}}</span>
+			{% if supd %}
+  			<span>Superseded</span>
+			{% endif %}
+		</td>
+	</tr>
+{% endmacro %}
+
+
+<div class="sl-account-canvas row updater slim-header">
+
+	<div class="sl-primary-card" id="benefit-name">
+
+  	<div class="sl-account-canvas-width">
+	 		<h1 class="title">Personal Independence Payment</h1>
+	 		<p>Status: Decision Entitled.</p>
+  	</div>
+
+  </div>
+
+  <div class="sl-account-canvas-width" id="benefit-detail">
+
+		<div class="grid-row">
+
+	  	<div class="column-two-thirds">
+
+	  		{% include "./current-award.html" %}
+
+
+	     	<div id="previous-awards-anchor"></div>
+  			{% include "./previous-awards.html" %}
+  			
+	   	</div>
+
+  		{% include "./dates.html" %}
+
+		</div>
+
+ 	</div>
+
+</div>
