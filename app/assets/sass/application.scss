@@ -2383,7 +2383,7 @@ ol.app-timeline .today::before {
 ////////////
 
 // Navigation
-#address-anchor, #contact-anchor, #interests-anchor   {
+#address-anchor, #contact-anchor, #interests-anchor, #benefits-anchor, #relationships-anchor   {
   position: relative;
   top: -250px;
 }
@@ -2423,6 +2423,13 @@ ol.app-timeline .today::before {
       &:nth-child(1), &:nth-child(2), &:nth-child(3) {
         font-weight: bold;
         font-size: 22px;
+      }
+    }
+    a {
+      color: white;
+      &:hover{
+        color: #cbd1e6;
+        text-decoration: none;
       }
     }
   }

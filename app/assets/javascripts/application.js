@@ -791,6 +791,26 @@ if ( document.getElementById("alerts") || document.getElementById("notifications
     }
 }
 
+// Navigation
+var navigationHighlight = function() {
+   this.classList.add("active");
+   for (var x in navigationLinkContainers) {
+      if (navigationLinkContainers[x] !== this) {
+         navigationLinkContainers[x].classList.remove("active");
+      }
+   }
+}
+
+var navigationLinkContainers = document.getElementsByClassName("sl-local-nav-item");
+for (var x in navigationLinkContainers) {
+   navigationLinkContainers[x].addEventListener('click', navigationHighlight);
+}
+
+// when one is clicked
+// get all sl-local-nav-anchor items
+// remove the active class from them all
+// add it to the one clicked
+
 
 
 /*
