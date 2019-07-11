@@ -1970,28 +1970,6 @@ table, tr, td, th {
   font-family : "sl-font", Arial, sans-serif!important;
 }
 
-//////////////////////////////
-////  BENEFITS JUNE 2019  ////
-//////////////////////////////
-
-
-//nav
-#previous-awards-anchor {
-  position: absolute;
-  top: 430px;
-}
-#top-anchor {
-  position: absolute;
-  top: 0px;
-}
-#decision-history-anchor {
-  position: absolute;
-  top: 1300px;
-  // height :10px;
-  // width :10px;
-  // background-color: red;
-}
-
 
 .secondary-text {
   color: $secondary-text-colour;
@@ -2399,7 +2377,41 @@ ol.app-timeline .today::before {
 ///REVISED STYLES 2019 ///
 //////////////////////////
 
-//NAME
+
+////////////
+// Account 2
+////////////
+
+// Navigation
+#address-anchor, #contact-anchor, #interests-anchor   {
+  position: relative;
+  top: -250px;
+}
+#top-anchor {
+  position: absolute;
+  top: 0px;
+}
+
+
+////////////////
+// Benefits page
+////////////////
+
+// Navigation
+#previous-awards-anchor, #decision-history-anchor  {
+  position: relative;
+  top: -150px;
+  // height :10px;
+  // width :10px;
+  // background-color: red;
+}
+#top-anchor {
+  position: absolute;
+  top: 0px;
+}
+
+
+// Name
 #reduced-name {
   p {
     margin: 0;
@@ -2415,6 +2427,8 @@ ol.app-timeline .today::before {
     }
   }
 }
+
+
 
 
 

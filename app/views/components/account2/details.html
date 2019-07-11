@@ -3,16 +3,22 @@
     <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
       <div class="sl-account-canvas-width">
 
+        <div id="top-anchor"></div>
         {% include "components/account2/personal.html" %}
         
+        <div id="address-anchor"></div>
         {% include "components/account2/address.html" %}
         
+        <div id="contact-anchor"></div>
         {% include "components/account2/contact.html" %}
         
+        <div id="interests-anchor"></div>
         {% include "components/interest.html" %}
         
+        <div id="benefits-anchor"></div>
         {% include "components/account2/benefits.html" %}
         
+        <div id="relationships-anchor"></div>
         <div class="last-card">
           {% include "components/account2/relationships/relationships.html" %}
         </div>
