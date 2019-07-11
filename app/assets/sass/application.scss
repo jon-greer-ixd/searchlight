@@ -1992,18 +1992,6 @@ table, tr, td, th {
   // background-color: red;
 }
 
-#simple-name {
-  p {
-    margin: 0;
-    line-height: 65px;
-    color: white;
-    font-size: 19px;
-    .sn-name {
-      font-weight: bold;
-      font-size: 22px;
-    }
-  }
-}
 
 .secondary-text {
   color: $secondary-text-colour;
@@ -2405,3 +2393,31 @@ ol.app-timeline .today::before {
     }
   }
 }
+
+
+//////////////////////////
+///REVISED STYLES 2019 ///
+//////////////////////////
+
+//NAME
+#reduced-name {
+  p {
+    margin: 0;
+    line-height: 65px;
+    color: white;
+    font-size: 19px;
+    span {
+      margin-right: 5px;
+      &:nth-child(1), &:nth-child(2), &:nth-child(3) {
+        font-weight: bold;
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
