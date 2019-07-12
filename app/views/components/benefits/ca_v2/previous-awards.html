@@ -1,5 +1,25 @@
+{% extends "../previous-award-template.html" %}
+
+{% block classes %}
+	class="sl-primary-card"
+{% endblock %}
+
+
+
+{% block awards %}
+
+	{{ previousAwardDetails("9 Apr 2019", "29 Oct 2018", "£64.60" ) }}	  
+	{{ previousAwardDetails("10 Apr 2017", "8 Apr 2018", "£62.70" ) }}	  
+	{{ previousAwardDetails("16 Sep 2016", "9 Apr 2017", "£62.10" ) }}	  
+	{{ previousAwardDetails("1 Apr 2016", "5 Sep 2016", "£62.10" ) }}	  
+	{{ previousAwardDetails("6 Apr 2015", "5 Apr 2016", "£62.10" ) }}	  
+	{{ previousAwardDetails("21 Aug 2014", "5 Apr 2015", "£61.35" ) }}	  
+
+{% endblock %}
+
+
 {% macro previousAwardDetails(start, end, amount) %}
-	<table>
+	<table class="award-table date-table">
 		<tr>
 			<td class="">{{start}}</td>
 			<td>{{end}}</td>
@@ -7,11 +27,10 @@
 		</tr>	
 	</table>	     				
 
-	<div class="previous-awards-data">
-		<details>
-			<summary>Show award details</summary>
- 			<div class="panel panel-border-wide">
-				<table>
+		<details class="award-details">
+			<summary class="awards-summary">Show award details</summary>
+ 			<div class="panel panel-border-wide award-panel">
+				<table class="award-table">
 					<tr>
 						<th>Award component</th>
 						<th>Amount</th>
@@ -22,32 +41,9 @@
 						</td>
 						<td>{{amount}}</td>
 					</tr>
+
 				</table>
 			</div>
 			<hr class="bold">
 		</details>
-	</div>
-	<hr>
 {% endmacro %}
-
-<!--PREVIOUS AWARDS-->
-<h3>Previous awards</h3>
-<div class="sl-primary-card" id="previous-awards">
-	<table>
-		<tr>
-			<th>Start date</th>
-			<th>End date</th>
-			<th>Amount</th>
-		</tr>
-	</table>	     				
-
-<!-- 	<p>There are 6 previous awards from this assessment.</p>
- 	<hr>
- -->
-	{{ previousAwardDetails("9 Apr 2019", "29 Oct 2018", "£64.60" ) }}	  
-	{{ previousAwardDetails("10 Apr 2017", "8 Apr 2018", "£62.70" ) }}	  
-	{{ previousAwardDetails("16 Sep 2016", "9 Apr 2017", "£62.10" ) }}	  
-	{{ previousAwardDetails("1 Apr 2016", "5 Sep 2016", "£62.10" ) }}	  
-	{{ previousAwardDetails("6 Apr 2015", "5 Apr 2016", "£62.10" ) }}	  
-	{{ previousAwardDetails("21 Aug 2014", "5 Apr 2015", "£61.35" ) }}	  
-</div>

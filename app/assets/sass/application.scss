@@ -40,7 +40,7 @@ $path: "/public/images/";
 $searchlight-blue: #005ea5;
 $searchlight-black: #0b0c0c;
 $secondary-text-colour: #6e777b;
-$border-grey: #cacacf;
+$searchlight-borders: #cac9cf;
 
 
 
@@ -636,14 +636,14 @@ hr {
 }
 
 .task-list-item {
-  border-bottom: 1px solid $border-colour;
+  border-bottom: 1px solid $searchlight-borders;
   padding-top: $gutter-one-third;
   padding-bottom: $gutter-one-third;
   @extend %contain-floats;
 }
 
 .task-list-item:first-child {
-  border-top: 1px solid $border-colour;
+  border-top: 1px solid $searchlight-borders;
 }
 
 .task-name {
@@ -2100,7 +2100,7 @@ table, tr, td, th {
       }
     }
   }
-  #payment-status, #previous-awards, #current-awards {
+  #payment-status {
     table {
       td {
         padding-top: 15px;
@@ -2114,80 +2114,9 @@ table, tr, td, th {
       }
     }
   } 
-  #current-awards {
-    span {
-      float: left;
-      width :100%;
-    }
-    span.sub {
-      color: $secondary-text-colour;
-    }
-    h4 {
-      font-size: 19px;
-      font-weight :bold;
-      padding: 0;
-      margin: 0;
-    }
-    hr {
-      margin-bottom: 0;
-    }
-    table {
-      th {
-        color:black;
-        font-weight: bold;
-        padding-bottom: 15px;
-        padding-top: 0;
-      }
-    }
-    tr {
-      td:last-child, th:last-child {
-        text-align: right;
-        padding-right :0;
-        vertical-align: top;
-      }
-    }
-    tr.break {
-      border-bottom: 3px solid black;
-    }
-    p:first-child {
-      margin-top: 0;
-    }
-    p {
-      margin-bottom: 0!important;
-    } 
-  }
-  #current-awards {
-    table {
-      margin-top:20px;
-      th {
-        padding-bottom: 15px;
-        // border-top :1px solid #bfc1c3;
-      }
-    }
-  }
-//   #previous-awards {
-//     tr.date td {
-//       border-bottom: none;
-//       padding-bottom: 2px;
-//       &:last-child() {
-//         text-align: right;
-//         padding-right: 0;
-//       }
-//     }
-//     th {
-
-//     }
-//     p {
-//       margin: 0;
-//     }
-//     hr {
-//       margin-top: 15px;
-//       margin-bottom: 0;
-//     }
-//   }
 }
 
-#payment-status, #previous-awards {
+#payment-status {
   td, th {
     width: 16.5%;
     text-align: left;
@@ -2212,33 +2141,6 @@ table, tr, td, th {
     clear: both;
     &:nth-child(2) {
       color: #6e777b;
-    }
-  }
-}
-
-#previous-awards {
-  .panel {
-    padding-right: 0;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding-bottom :0;
-  }
-  td:last-child(), th:last-child() {
-    width: 50%;
-    text-align: right;
-  }
-  summary {
-    margin-top: 10px;
-    margin-bottom: 0;
-    padding-bottom :0;
-  }
-  hr {
-    margin-top: 10px;
-    margin-bottom :0;
-    &.bold {
-      margin-bottom :30px;
-      height: 3px;
-      background: black;
     }
   }
 }
@@ -2346,23 +2248,6 @@ ol.app-timeline .today::before {
   transform: rotate(45deg);
 }
 
-
-.previous-awards-details {
-  tr {
-    td:nth-child(1) {
-      color: #6e777b;
-      border-bottom: none;
-      padding: 0;
-    }
-  }
-  th, td {
-    font-weight: normal;
-    border-bottom: none;
-    width: 25%;
-  }
-}
-
-
 .decision-details {
   display: block;
   margin-top: 5px;
@@ -2390,7 +2275,7 @@ $border: #a1a1aa;
 
 // General
 hr, hr.light, hr.mid {
-  background: $border-grey;
+  background: $searchlight-borders;
 }
 
 // Navigation
@@ -2437,6 +2322,122 @@ hr, hr.light, hr.mid {
   top: 0px;
 }
 
+
+//awards
+
+.awards {
+  h4 {
+    font-size: 19px;
+    font-weight :bold;
+    padding: 0;
+    margin: 0;
+  }
+  hr {
+    margin-bottom: 0;
+  }
+  span {
+    float: left;
+    width :100%;
+    &.sub {
+      color: $secondary-text-colour;
+    }
+  }
+}
+
+.claim-details {
+  padding-bottom :20px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid $searchlight-borders;
+  h4 {
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 0;
+    padding: 0 0 5px 0;
+  }
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+table {
+  th, td {
+    border-color: $searchlight-borders;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.award-table {
+  margin: 0;
+  tr {
+    th:last-child(), td:last-child() {
+      text-align: right;
+    }
+  }
+  tr:last-child() {
+    td {
+      border-bottom: none;
+      padding-bottom :0;
+    }
+  }
+  th {
+    font-weight: bold;
+    padding: 0 0 15px 0 ;
+    margin-top: 0;
+  }
+  td {
+    padding: 15px 0;
+  }
+  li{ color: $secondary-text-colour;
+    &:first-child() {
+      color: $searchlight-black;
+    }
+  }
+} 
+
+.date-table {
+  tr {
+    td, th {
+      width: 25%;
+      &:last-child() {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.award-details {
+  padding-bottom: 15px;
+  border-bottom: 1px solid $searchlight-borders;
+  &:last-child(){
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  hr {
+    height: 3px;
+    background-color: $searchlight-black
+  }
+}
+
+.award-summary {
+  margin-top: 150px;
+  margin-bottom: 0;
+  padding-bottom :0;
+}
+
+.award-panel {
+  padding-right: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-bottom :0;
+}
+p.disclaimer {
+  color: $secondary-text-colour;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 
 // Name
 #reduced-name {

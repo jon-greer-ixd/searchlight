@@ -1,38 +1,36 @@
-<div class="column-two-thirds">
+{% extends "../current-award-template.html" %}
 
-	<h3>Current award</h3>
+{% block classes %}
+	class="sl-primary-card award last-card"
+{% endblock %}
 
-	<div class="sl-primary-card last-card v2" id="current-awards">
+{% block claim_details %}
+	<p>Started 5 Nov 2018&nbsp; · &nbsp;Single claim&nbsp; · &nbsp;Paid every calendar month</p>
+{% endblock %}
+			
 
-		<h4>Claim details</h4>
-
-		<p>Started 5 Nov 2018&nbsp; · &nbsp;Single claim&nbsp; · &nbsp;Paid every calendar month</p>
-
-		<hr>
-
-		<table class="current-award">
-			<tr>
-				<th>Award component</th>
-				<th>Amount</th>
-			</tr>
-			<tr>
-				<td>Housing allowance</td>
-				<td>£696.76</td>
-			</tr>
-			<tr>
-				<td>Personal allowance</td>
-				<td>£317.82</td>
-			</tr>
-			<tr>
-				<td>Child allowance</td>
-				<td>£277.08</td>
-			</tr>
-			<tr>
-				<td class="strong">Total award amount</td>
-				<td class="strong">£1,291.66</td>
-			</tr>
-		</table>
-		<p class="secondary-text">This is the maximum amount of Universal Credit that can be awarded. It has not been adjusted.</p>
-	</div>
-
-</div>
+{% block award_details %}
+	<table class="award-table">
+		<tr>
+			<th>Award component</th>
+			<th>Amount</th>
+		</tr>
+		<tr>
+			<td>Housing allowance</td>
+			<td>£696.76</td>
+		</tr>
+		<tr>
+			<td>Personal allowance</td>
+			<td>£317.82</td>
+		</tr>
+		<tr>
+			<td>Child allowance</td>
+			<td>£277.08</td>
+		</tr>
+		<tr>
+			<td class="strong">Total award amount</td>
+			<td class="strong">£1,291.66</td>
+		</tr>
+	</table>
+	<p class="disclaimer">This is the maximum amount of Universal Credit that can be awarded. It has not been adjusted.</p>
+{% endblock %}

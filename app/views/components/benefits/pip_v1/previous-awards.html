@@ -1,5 +1,25 @@
+{% extends "../previous-award-template.html" %}
+
+{% block classes %}
+	class="sl-primary-card"
+{% endblock %}
+
+
+{% block awards %}
+
+	{{ previousAwardDetails("9 Apr 2018", "7 Apr 2019", "£57.30" ) }}	  
+	{{ previousAwardDetails("19 Dec 2017", "8 Apr 2018", "£55.65" ) }}	  
+	{{ previousAwardDetails("14 May 2015", "14 May 2015", "0.00" ) }}	  
+
+{% endblock %}
+
+
+
+
+
+
 {% macro previousAwardDetails(start, end, amount) %}
-	<table>
+	<table class="award-table date-table">
 		<tr>
 			<td class="">{{start}}</td>
 			<td>{{end}}</td>
@@ -7,27 +27,30 @@
 		</tr>	
 	</table>	     				
 
-	<div class="previous-awards-data">
-		<details>
-			<summary>Show award details</summary>
- 			<div class="panel panel-border-wide">
-				<table>
+		<details class="award-details">
+			<summary class="awards-summary">Show award details</summary>
+ 			<div class="panel panel-border-wide award-panel">
+				<table class="award-table">
 					<tr>
 						<th>Award component</th>
 						<th>Amount</th>
 					</tr>
  					<tr>
 						<td>
-							<span>Care component</span>
-							<span>Award component: Not applicable</span>
-							<span>Standard rate</span>
+							<ul>
+								<li>Care component</li>
+								<li>Award component: Not applicable</li>
+								<li>Standard rate</li>
+							</ul>
 						</td>
 						<td>{{amount}}</td>
 					</tr>
  					<tr>
 						<td>
-							<span>Mobility component</span>
-							<span>Nil entitlement</span>
+							<ul>
+								<li>Mobility component</li>
+								<li>Nil entitlement</li>
+							</ul>
 						</td>
 						<td>&nbsp;</td>
 					</tr>
@@ -41,25 +64,4 @@
 			</div>
 			<hr class="bold">
 		</details>
-	</div>
-	<hr>
 {% endmacro %}
-
-<!--PREVIOUS AWARDS-->
-<h3>Previous awards</h3>
-<div class="sl-primary-card last-card" id="previous-awards">
-	<table>
-		<tr>
-			<th>Start date</th>
-			<th>End date</th>
-			<th>Amount</th>
-		</tr>
-	</table>	     				
-
-<!-- 	<p>There are 6 previous awards from this assessment.</p>
- 	<hr>
- -->
-	{{ previousAwardDetails("9 Apr 2018", "7 Apr 2019", "£57.30" ) }}	  
-	{{ previousAwardDetails("19 Dec 2017", "8 Apr 2018", "£55.65" ) }}	  
-	{{ previousAwardDetails("14 May 2015", "14 May 2015", "0.00" ) }}	  
-</div>
