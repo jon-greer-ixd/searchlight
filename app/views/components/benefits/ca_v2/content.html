@@ -1,52 +1,27 @@
-{% macro awardDetails(status, start, end, supd) %}
-	<tr>
-		<td>{{start}}</td>
-		<td>{{end}}</td>
-		<td>
-			<span>{{status}}</span>
-			{% if supd %}
-  			<span>Superseded</span>
-			{% endif %}
-		</td>
-	</tr>
-{% endmacro %}
+{% extends "../content-template.html" %}
+
+{% block title %}
+	Carer's Allowance
+{% endblock %}
+
+{% block status %}
+	Status: Ended. No end reason held.
+{% endblock %}
+
+{% block left_column %}
+	{% include "./payment-status.html" %}
+
+	<div id="previous-awards-anchor"></div>
+	{% include "./previous-awards.html" %}
+
+	<div id="decision-history-anchor"></div>
+	{% include "./decisions.html" %}
+{% endblock %}
+
+{% block right_column %}
+	{% include "./dates.html" %}
+{% endblock %}
 
 
-<div class="sl-account-canvas row updater slim-header">
 
-	<div class="sl-primary-card" id="benefit-name">
 
-  	<div class="sl-account-canvas-width">
- 			<h1 class="title">Carer's Allowance</h1>
-	    <p>Status: Ended. No end reason held.</p>
-  	</div>
-
-  </div>
-
-  <div class="sl-account-canvas-width" id="benefit-detail">
-
-		<div class="grid-row">
-
-	  	<div class="column-two-thirds">
-
-  			{% include "./payment-status.html" %}
-
-	     	<div id="previous-awards-anchor"></div>
-  			{% include "./previous-awards.html" %}
-  			
-  			<div id="decision-history-anchor"></div>
-  			{% include "./decisions.html" %}
-
-	   	</div>
-
-	   	<div class="column-one-third">
-
-  			{% include "./dates.html" %}
-
-			</div>
-
-		</div>
-
- 	</div>
-
-</div>

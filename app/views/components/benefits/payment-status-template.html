@@ -1,0 +1,28 @@
+{% macro awardDetails(status, start, end, supd) %}
+	<tr>
+		<td>{{start}}</td>
+		<td>{{end}}</td>
+		<td>
+			<span>{{status}}</span>
+			{% if supd %}
+  			<span>Superseded</span>
+			{% endif %}
+		</td>
+	</tr>
+{% endmacro %}
+
+
+<h3>Payment Status</h3>
+
+	<div {% block classes %}{% endblock %} id="payment-status">
+		<table>
+			<tr>
+				<th>Start date</th>
+				<th>End date</th>
+				<th>Payment status type</th>
+			</tr>
+			{% block awards %}
+			{% endblock %}
+		</table>
+	</div>		
+

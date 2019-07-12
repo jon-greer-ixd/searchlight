@@ -1,46 +1,19 @@
-{% macro awardDetails(status, start, end, supd) %}
-	<tr>
-		<td>{{start}}</td>
-		<td>{{end}}</td>
-		<td>
-			<span>{{status}}</span>
-			{% if supd %}
-  			<span>Superseded</span>
-			{% endif %}
-		</td>
-	</tr>
-{% endmacro %}
+{% extends "../content-template.html" %}
 
+{% block title %}
+	State Pension
+{% endblock %}
 
-<div class="sl-account-canvas row updater slim-header">
+{% block status %}
+	Status: Live.
+{% endblock %}
 
-	<div class="sl-primary-card" id="benefit-name">
+{% block left_column %}
+	{% include "./current-award.html" %}
+	 <div id="payment-status-anchor"></div>
+  {% include "./payment-status.html" %}
+{% endblock %}
 
-  	<div class="sl-account-canvas-width">
-	 		<h1 class="title">State Pension</h1>
-	 		<p>Status: Live.</p>
-  	</div>
-
-  </div>
-
-  <div class="sl-account-canvas-width" id="benefit-detail">
-
-		<div class="grid-row">
-
-	  	<div class="column-two-thirds">
-	  		{% include "./current-award.html" %}
-
-	  		<div id="payment-status-anchor"></div>
-  			{% include "./payment-status.html" %}
-
-	  	</div>
-
-	  	<div class="column-one-third">
-  			{% include "./dates.html" %}
-  		</div>
-  			
-	  </div>
-
-	</div>
-
-</div>
+{% block right_column %}
+	{% include "./dates.html" %}
+{% endblock %}

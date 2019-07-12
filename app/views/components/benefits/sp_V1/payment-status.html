@@ -1,14 +1,9 @@
-<h3>Payment Status</h3>
+{% extends "../payment-status-template.html" %}
 
-	<div class="sl-primary-card" id="payment-status">
-		<table>
-			<tr>
-				<th>Start date</th>
-				<th>End date</th>
-				<th>Payment status type</th>
-			</tr>
-			{{ awardDetails("Live", "6 May 2019", "-", false) }}
+{% block classes %}
+		class="sl-primary-card last-card"
+{% endblock %}
 
-		</table>
-	</div>		
-
+{% block awards %}
+		{{ awardDetails("Live", "6 May 2019", "-", false) }}
+{% endblock %}

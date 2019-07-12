@@ -1,0 +1,30 @@
+<div class="sl-account-canvas row updater slim-header">
+
+	<div class="sl-primary-card" id="benefit-name">
+		<div class="sl-account-canvas-width">
+	 		<h1 class="title">
+		  	{% block title %}
+		    {% endblock %}
+	 		</h1>
+	 		<p>
+		  	{% block status %}
+		    {% endblock %}
+	 		</p>
+  	</div>
+  </div>
+
+  <div class="sl-account-canvas-width" id="benefit-detail">
+  	
+		<div class="grid-row">
+			<div class="column-two-thirds">
+		  	{% block left_column %}
+		    {% endblock %}
+			</div>
+			<div class="column-one-third">
+		  	{% block right_column %}
+		    {% endblock %}
+			</div>
+	  </div>
+	  
+</div>
+

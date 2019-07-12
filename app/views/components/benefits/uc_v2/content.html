@@ -1,21 +1,17 @@
-<div class="sl-account-canvas row updater slim-header">
+{% extends "../content-template.html" %}
 
-	<div class="sl-primary-card" id="benefit-name">
-		<div class="sl-account-canvas-width">
-	 		<h1 class="title">Universal Credit</h1>
-	 		<p>Status: In payment.</p>
-  	</div>
-  </div>
+{% block title %}
+	Universal Credit
+{% endblock %}
 
-  <div class="sl-account-canvas-width" id="benefit-detail">
-  	
-		<div class="grid-row">
-			<div class="column-two-thirds">
-				{% include "./current-award.html" %}
-			</div>
-			<div class="column-one-third">
-				{% include "./dates.html" %}
-			</div>
-	  </div>
-	  
-</div>
+{% block status %}
+	Status: In payment.
+{% endblock %}
+
+{% block left_column %}
+	{% include "./current-award.html" %}
+{% endblock %}
+
+{% block right_column %}
+	{% include "./dates.html" %}
+{% endblock %}
