@@ -1,4 +1,3 @@
-
 {% macro awardDetails(status, start, end, supd) %}
 	<tr>
 		<td>{{start}}</td>
@@ -19,7 +18,7 @@
 
   	<div class="sl-account-canvas-width">
 	 		<h1 class="title">State Pension</h1>
-	 		<!-- <p>Status: Decision Entitled.</p> -->
+	 		<p>Status: Live.</p>
   	</div>
 
   </div>
@@ -29,18 +28,19 @@
 		<div class="grid-row">
 
 	  	<div class="column-two-thirds">
-
 	  		{% include "./current-award.html" %}
 
-	     	<div id="previous-awards-anchor"></div>
-  			{% include "./previous-awards.html" %}
+	  		<div id="payment-status-anchor"></div>
+  			{% include "./payment-status.html" %}
+
+	  	</div>
+
+	  	<div class="column-one-third">
+  			{% include "./dates.html" %}
+  		</div>
   			
-	   	</div>
+	  </div>
 
-  		{% include "./dates.html" %}
-
-		</div>
-
- 	</div>
+	</div>
 
 </div>

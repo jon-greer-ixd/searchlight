@@ -1,37 +1,72 @@
-	<h3>Current award</h3>
+{% extends "../current-award-template.html" %}
 
-	<div class="sl-primary-card" id="current-awards">
-		
-		<h4>Claim details</h4>
+{% block classes %}
+	class="sl-primary-card award"
+{% endblock %}
 
-		<p>Started 8 Apr 2019&nbsp; · &nbsp;Due to end 5 Sep 2020</p>
+{% block claim_details %}
+	<p>Started 6 May 2019&nbsp; · &nbsp;Benefit category ST</p>
+{% endblock %}
+			
 
-		<hr>
+{% block award_details %}
+	<table class="award-table">
+		<tr>
+			<th>Award component</th>
+			<th>Amount</th>
+		</tr>
+		<tr>
+			<td>Personal entitlement</td>
+			<td>£156.70</td>
+		</tr>
+	</table>
 
-		<table class="current-award">
-			<tr>
-				<th>Award component</th>
-				<th>Amount</th>
-			</tr>
-			<tr>
-				<td>
-					<span>Care component</span>
-					<span class="sub">Award component: Not applicable</span>
-					<span class="sub">Standard rate</span>
-				</td>
-				<td>£58.70</td>
-			</tr>
-			<tr>
-				<td>
-					<span>Mobility component</span>
-					<span class="sub">Nil entitlement</span>
-				</td>
-				<td>£0.00</td>
-			</tr>
-			<tr>
-				<td class="strong">Total award amount</td>
-				<td class="strong">£58.70</td>
-			</tr>
-		</table>
+	<details class="award-details">
+		<summary class="awards-summary">View breakdown</summary>
+			<div class="panel panel-border-wide award-panel">
+			<table class="award-table">
+				<tr>
+					<th>Sub award component</th>
+					<th>Amount</th>
+				</tr>
+					<tr>
+					<td>New State Pension</td>
+					<td>£156.70</td>
+				</tr>
+			</table>
+		</div>
+		<hr class="bold">
+	</details>
 
-	</div>
+	<table class="award-table">
+		<tr>
+			<td>AA amount</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>PIP/DLA care amount</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>PIP/DLA mobility amount</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>Positive adjustments</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>Negative adjustments</td>
+			<td>- £0.00</td>
+		</tr>
+		<tr class="reckoner">
+			<td>Award amount</td>
+			<td>£156.70</td>
+		</tr>
+		<tr>
+			<td class="strong">Final payable rate</td>
+			<td class="strong">£156.70</td>
+		</tr>
+	</table>
+	<p class="disclaimer">This award has a basic (UK insurance) calculation with a component sub type of CAT ST.</p>
+{% endblock %}

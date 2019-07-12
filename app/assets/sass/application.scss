@@ -2279,7 +2279,7 @@ hr, hr.light, hr.mid {
 }
 
 // Navigation
-#address-anchor, #contact-anchor, #interests-anchor, #benefits-anchor, #relationships-anchor   {
+#address-anchor, #contact-anchor, #interests-anchor, #benefits-anchor, #relationships-anchor, #payment-status-anchor   {
   position: relative;
   top: -250px;
 }
@@ -2374,6 +2374,9 @@ table {
   tr {
     th:last-child(), td:last-child() {
       text-align: right;
+    }
+    &.reckoner {
+      border-top: 3px solid $searchlight-black;
     }
   }
   tr:last-child() {
