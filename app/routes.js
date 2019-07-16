@@ -19,6 +19,39 @@ var addressFunctions = require('../functions/address.js');
 var contactFunctions = require('../functions/contact.js');
 
 
+
+///////////////
+// July 2019 //
+///////////////
+var guardianRole = false;
+var cis = require('./data/cis.js').cis;
+var nino = "SX170202";
+var citizen = cis[nino];
+//citizen.title);
+
+
+router.get('/account3/account/', function (req, res) {
+  req.session.data.alertData = require('./data/alerts.js').alerts;
+  req.session.data.notificationsData = require('./data/notifications.js').notifications;
+  req.session.data.details = require('./data/details.js').details;
+  req.session.data.miscData = require('./data/miscData.js').miscData;
+  req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
+  req.session.data.bsCustomers = require('./data/bsCustomers.js').bsCustomers;
+  req.session.data.addresses = require('./data/addresses.js').addresses;
+  req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
+  req.session.data.authority = require('./defaults.js').authority;
+  req.session.data.cis = require('./data/cis.js').cis;
+  req.session.data.guardianRole = guardianRole;
+  req.session.data.citizen = citizen;
+  res.render('account3/account')
+})
+
+// given a nino in a href
+// get nino from href
+// find person in database
+// use this persons data in account 3
+
+
 //************
 // Bereavement 
 //************
@@ -26,7 +59,6 @@ var contactFunctions = require('../functions/contact.js');
 router.get(/bereavement-handler/, function (req, res) {
   req.session.data.bsNino = req.query.bsnino.toUpperCase();
   req.session.data.bsPerson = req.session.data.bsCustomers[req.session.data.bsNino];
-  console.log( bsFunctions.getPerson(req.session.data.bsNino, req.session.data.bsCustomers) );
   if( bsFunctions.getPerson(req.session.data.bsNino, req.session.data.bsCustomers) ) {
     res.redirect('/bereavement/account-v2')
   } else {
@@ -83,11 +115,8 @@ function resetToDefaults() {
 }
 
 function printInterests() {
-  console.log(' \n Interests ////');
   for (var x in interests) {
-    console.log(interests[x]);
   }
-  console.log('//// end \n');
 }
 
 var removeInterest = function (interest) {
@@ -109,7 +138,7 @@ var Dates = require('./dates.js');
 var dates = Dates.dates;
 dates.logToday();
 
-console.log(dates.convertDayToString('21/6/1979') )
+// var example = dates.convertDayToString('21/6/1979')
 
 var createJourney = null;
 var ninoVersion = null;
@@ -393,7 +422,6 @@ function managementCheck(check) {
   } else {
     check = true;
   }
-  console.log( `${check}` );
   return check;
 }
 
@@ -453,8 +481,6 @@ router.get(/authority-handler/, function (req, res) {
     }
     if (req.session.data.tempInterest != 'both') {
       req.session.data.authority[req.session.data.tempInterest].state = 'ended';
-      console.log(req.session.data.tempInterest);
-      console.log(req.session.data.authority[req.session.data.tempInterest]);
       req.session.data.authority[req.session.data.tempInterest].show = false;
     }
   }
@@ -540,7 +566,6 @@ router.get(/add-person-handler/, function (req, res) {
   
   personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
   personDetailObject.key = req.session.data.personalDetail;
-  console.log(req.session.data.personalDetail);
   req.session.data.updateType = 1;
   if (req.session.data.personalDetail == 'nifu') {
     req.session.data.personalDetailValue = 'Yes';
@@ -567,7 +592,6 @@ router.get(/adding-detail-handler/, function (req, res) {
 })
 
 router.get(/person-change-handler/, function (req, res) {
-  console.log(req.query.personalDetail);
   req.session.data.toaster = null;
   req.session.data.personalDetail = req.query.personalDetail;
   if (req.session.data.personalDetail == 'sex') {
@@ -604,7 +628,6 @@ router.get(/person-change-handler/, function (req, res) {
 })
 
 router.get(/change-person-type-handler/, function (req, res) {
-  console.log(req.session.data.updateType);
   if (req.session.data.personalDetail == 'nino' || req.session.data.updateType == 4) {
     req.session.data.updateType == 2;
     req.session.data.personalDetail = 'ninoVerificationLevel';
@@ -649,14 +672,12 @@ router.get(/personal-detail-handler/, function (req, res) {
   } else if (req.query.data == 'null') {
     req.session.data.personalDetailValue = 'null';
   }
-  console.log(req.session.data.personalDetailValue);
   res.redirect('/update/person/check')
 })
 
 router.get(/change_pd/, function (req, res) {
   personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
   personDetailObject.key = req.query.personalDetail;
-  console.log(personDetailObject.key);
   if(personDetailObject.key == 'dateOfBirth') {
     req.session.data.updateType = 3;
     res.redirect('/update/person/update')
@@ -721,7 +742,6 @@ router.get(/check-person-handler/, function (req, res) {
 
   } else {
   
-  console.log(req.session.data.updateType);
   var chosenDetail = req.session.data.personalDetail;
   var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
   var chosenValue = req.session.data.personalDetailValue;
@@ -787,14 +807,12 @@ router.get(/nationality-type-handler/, function (req, res) {
 
 //MARITAL
 router.get(/marital-type-handler/, function (req, res) {
-  console.log(req.query);
   req.session.data.maritalState = req.query.data;
   res.redirect('/update/person/marital/update')
 })
 
 //Special customer record level
 router.get(/recordLevel-type-handler/, function (req, res) {
-  console.log(req.query);
   req.session.data.recordLevel.state = req.query.data;
   if(req.session.data.recordLevel.state == 'removing') {
     res.redirect('/update/person/check')
@@ -857,10 +875,8 @@ router.get(/add-gender-handler/, function (req, res) {
 router.get(/gender-type-handler/, function (req, res) {
   if (req.session.data.personalDetails.gra.state === 'updating') {
     req.session.data.personalDetails.gra.state = req.query.data;
-    console.log('gra.state = ' + req.session.data.personalDetails.gra.state);
   } else {
     req.session.data.personalDetails.preGra.state = req.query.data;
-    console.log('preGra.state = ' + req.session.data.personalDetails.preGra.state);
   }
   res.redirect('/update/person/gender/update')
 })
@@ -877,7 +893,6 @@ router.get(/updating-handler/, function (req, res) {
     }
   } else if (req.query.feature == 'disability' || req.query.feature == 'needs' || req.query.feature == 'nifu') {
     res.redirect('/update/person/' + feature + '/type')
-    console.log('/update/person/' + feature + '/type');
   } else {
     // var toPage = '/update/person/' + req.query.feature + '/update';
     res.redirect('/update/person/' + feature + '/update')
@@ -885,7 +900,6 @@ router.get(/updating-handler/, function (req, res) {
 })
 
 router.get(/newupdate-handler/, function (req, res) {
-  console.log(req.query);
   var feature = req.query.feature;
   var featureState = feature+'State';
   req.session.data[feature].state = req.query.state;
@@ -897,7 +911,6 @@ router.get(/newupdate-handler/, function (req, res) {
     }
   } else if (req.query.feature == 'disability' || req.query.feature == 'needs' || req.query.feature == 'nifu' || req.query.feature == 'recordLevel') {
     res.redirect('/update/person/' + feature + '/type')
-    console.log('/update/person/' + feature + '/type');
   } else if (req.query.feature == 'sex') {
     req.session.data.personalDetails.sex = changeSex(req.session.data.personalDetails.sex.value);
     res.redirect('/update/person/check')
@@ -908,7 +921,6 @@ router.get(/newupdate-handler/, function (req, res) {
 })
 
 router.get(/updatecontact-handler/, function (req, res) {
-  console.log(req.query);
   var feature = req.query.feature;
   var state = req.query.state;
   req.session.data[feature].state = state;
