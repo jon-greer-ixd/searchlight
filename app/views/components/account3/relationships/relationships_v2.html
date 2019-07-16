@@ -1,0 +1,146 @@
+<div name="relationships" id="relationships_data">
+  <h2>Relationships</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    
+    <!-- PAYE relationships -->
+    <div class="grid-row">
+      <div class="column-one-third">
+        <h3 class="strong">Paye relationships</h3>
+        <p>No paye relationships</p>
+      </div>
+    </div>
+    <hr class="light">
+
+    <!-- Award relationships -->
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h3 class="strong">Award based relationships</h3>
+      </div>
+    </div>
+    
+    <!-- Header-->
+    <div class="grid-row">
+      <div class="column-one-third">
+        <div class="column-one-half">
+          <ul>
+            <li>Start date</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li>Relationship</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul>
+          <li>Add a relationship</li>
+        </ul>
+      </div>
+      
+    </div>
+        
+    <hr class="light">
+    
+  </div>
+</div>
+
+
+    
+<!--
+
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a class="secondary-link" href="change_relationship/?updateType=1">Add a relationship</a>
+          </li>
+        </ul>
+      </div>
+
+
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h3 class="strong">Award based relationships</h3>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a class="secondary-link" href="change_relationship/?updateType=1">Add a relationship</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+            
+    {% if data.miscData.relationships.state == null %}
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <p>No award based relationships</p>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if data.miscData.relationships.state == 1 %}
+    <div class="grid-row">
+      <div class="column-one-third">
+        <div class="column-one-half">
+          <ul>
+            <li>Start date</li>
+          </ul>
+        </div>
+        <div class="column-one-half">
+          <ul>
+            <li>End date</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="column-one-third">
+        <ul>
+          <li>Relationship</li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="light">
+    
+      {% include "components/account3/relationships/relationship_details.html" %}
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="../update/relationships/type">Change</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if data.miscData.relationships.state == 5 %}
+      <p>No award based relationships</p>
+      <hr>
+<details>
+  <summary>View previous award based relationships</summary>
+
+      {% include "components/account3/relationships/relationship_details.html" %}
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="change_relationship/?updateType=6">Delete this relationship</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+  <hr class="light">
+
+</details>
+    {% endif %}
+
+
+    {% if data.miscData.relationships.state == 6 %}
+      <p>No award based relationships</p>
+    {% endif %}
+
+  </div>
+</div>-->

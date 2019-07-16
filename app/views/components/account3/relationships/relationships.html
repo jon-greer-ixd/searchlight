@@ -1,0 +1,261 @@
+<div name="relationships" id="relationships_data">
+  <h2>Relationships</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p class="strong">Payee relationships</p>
+        <p>No payee relationships</p>
+      </div>
+    </div>    
+
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p class="strong">Award relationships</p>
+        <p>No award relationships</p>
+      </div>
+    </div>
+
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <p class="strong">Person relationships</p>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a class="secondary-link" href="change_relationship/?updateType=1">Add a relationship</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Blank -->
+    {% if data.miscData.relationships.state == null %}
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <p>No person relationships</p>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Added or recovered -->
+    {% if data.miscData.relationships.state == 1 or data.miscData.relationships.state == 9 %}
+      <br>
+      <div class="grid-row" id="">
+        <div class="column-one-third">
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">Start date</li>
+            </ul>
+          </div>
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">End date</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">Relationship</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="light">
+      <div class="grid-row">
+        {% include "components/account3/relationships/relationship_details.html" %}
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="../update/relationships/type">Change</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Ended -->
+    {% if data.miscData.relationships.state == 5 %}
+      <p>No award relationships</p>
+      <hr>
+      <details>
+        <summary>View previous person relationships</summary>
+        <br>
+        <div class="grid-row">
+          <div class="column-one-third">
+            <div class="column-one-half">
+              <ul>
+                <li class="strong">Start date</li>
+              </ul>
+            </div>
+            <div class="column-one-half">
+              <ul>
+                <li class="strong">End date</li>
+              </ul>
+            </div>
+          </div>
+          <div class="column-one-third">
+            <ul>
+              <li class="strong">Relationship</li>
+            </ul>
+          </div>
+        </div>
+        
+        <hr class="light">
+        
+        <div class="grid-row">
+          {% include "components/account3/relationships/relationship_details.html" %}
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a class="secondary-link" href="change_relationship/?updateType=6">Delete this relationship</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </details>
+    {% endif %}
+
+    <!-- Deleted -->
+    {% if data.miscData.relationships.state == 6 %}
+      <p>No award relationships</p>
+    {% endif %}
+    
+    {% if data.miscData.relationships.state != 9 %}
+      <hr class="light">
+
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          &nbsp;
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="recover-relationships-handler">Recover deleted relationships</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+    
+  </div>
+</div>
+
+
+
+
+<!--
+<div name="relationships" id="relationships_data">
+  <h2>Relationships</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <h3 class="strong">Paye relationships</h3>
+        <p>No paye relationships</p>
+      </div>
+    </div>
+    
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h3 class="strong">Award based relationships</h3>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a class="secondary-link" href="change_relationship/?updateType=1">Add a relationship</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+            
+    {% if data.miscData.relationships.state == null %}
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <p>No award based relationships</p>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if data.miscData.relationships.state == 1 %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          <div class="column-one-half">
+            <ul>
+              <li>Start date</li>
+            </ul>
+          </div>
+          <div class="column-one-half">
+            <ul>
+              <li>End date</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="column-one-third">
+          <ul>
+            <li>Relationship</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="light">
+      
+      <div class="grid-row first-row">
+        {% include "components/account3/relationships/relationship_details.html" %}
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="../update/relationships/type">Change</a>
+            </li>
+          </ul>
+        </div>
+      {% endif %}
+
+      {% if data.miscData.relationships.state == 5 %}
+        <p>No award based relationships</p>
+        <hr>
+        <details>
+          <summary>View previous award based relationships</summary>
+
+          {% include "components/account3/relationships/relationship_details.html" %}
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a class="secondary-link" href="change_relationship/?updateType=6">Delete this relationship</a>
+              </li>
+            </ul>
+          </div>
+
+          <hr class="light">
+
+        </details>
+      {% endif %}
+
+      {% if data.miscData.relationships.state == 6 %}
+        <p>No award based relationships</p>
+      {% endif %}
+  
+      <hr class="light">
+    
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          &nbsp;
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="recover-relationships-handler">Recover deleted relationships</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+  </div>
+</div>-->

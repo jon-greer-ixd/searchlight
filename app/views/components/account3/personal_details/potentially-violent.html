@@ -1,0 +1,77 @@
+  <div class="grid-row names">
+    
+<!--    <p>{{data.personalDetails.pv.value}}</p>-->
+
+    {% if data.personalDetails.pv.value == null %}
+      <div class="column-one-third">
+        <ul>
+          <li>Potentially violent status</li>
+        </ul>
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="sl-secondary-text-color sl-metadata">Status removed  ·  {{data.prepopulatedString}}</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          
+          <li>
+            <a data-toggle="modal" data-target="#pv_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="/history/pv-history" class="under-link">View history</a>
+          </li>
+          
+          <li class="under-link">
+            <a href="adding-detail-handler?personalDetail=pv" class="under-link">Add</a>
+          </li>
+          
+        </ul>
+      </div>
+    
+    {% else %}
+
+      <div class="column-two-thirds">
+
+        {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
+          This person, their partner and a member of their household are potentially violent
+
+        {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
+          This person's partner and a member of their household are potentially violent
+
+        {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
+          This person and a member of their household are potentially violent
+
+        {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
+          This person and their partner are potentially violent
+
+        {% elif data.personalDetails.pv.member == true %}
+          A member of this household is potentially violent
+
+        {% elif data.personalDetails.pv.partner == true %}
+          This person's partner is potentially violent
+
+        {% elif data.personalDetails.pv.value == true %}
+          This person is potentially violent
+        {% endif %}
+
+      </div>
+    
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          
+          <li>
+            <a data-toggle="modal" data-target="#pv_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="/history/pv-history" class="under-link">View history</a>
+          </li>
+          
+          <li class="under-link">
+            <a href="person-change-handler/?personalDetail=pv" class="under-link">Change</a>
+          </li>
+          
+        </ul>
+      </div>
+    {% endif %}
+    
+  </div>

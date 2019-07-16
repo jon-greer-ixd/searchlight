@@ -1,0 +1,36 @@
+<div class="benefit-container noprevious">
+
+  <div class="grid-row">
+    <div class="benefit-start">
+      <ul>
+        <li>{% block start_date %}{% endblock %}</li>
+      </ul>
+    </div>
+      <div class="benefit-end">
+        {% block end_date %}{% endblock %}
+      </div>
+    <div class="benefit-name title">
+      <ul>
+        <li><span>{% block title %}{% endblock %}</span>&nbsp; · &nbsp;<a {% block href %}{% endblock %} >View benefit details</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid-row">
+
+    <div class="benefit-payments">
+      <ul>
+        <li>Award start</li>
+        <li>Award end</li>
+        <li>Amount</li>
+      </ul>
+
+      {% block latest_payment %}{% endblock %}
+
+      {% block more_payments %}{% endblock %}
+
+    </div>
+
+  </div>
+
+</div>

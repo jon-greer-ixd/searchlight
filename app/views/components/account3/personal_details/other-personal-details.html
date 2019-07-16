@@ -1,0 +1,100 @@
+<details>
+  <summary>
+    <span class="summary">View more personal details</span>
+  </summary>
+  
+  <div class="personal-details">
+
+    <hr class="light">
+    
+    {% include "components/account3/personal_details/sex.html" %}
+    <hr class="light">
+    
+    {% for items, item in data.personalDetails %}
+      {% if item.show == true %}
+        {% if items == "gender" %}
+          {% include "components/account3/personal_details/gender.html" %}
+          <hr class="light">
+        {% elif items == "INDIndicator" %}
+          {% include "components/account3/personal_details/nationality-interest.html" %}
+          <hr class="light">
+        {% elif items == "preferredLanguage" %}
+          {% include "components/account3/personal_details/preferred-language.html" %}
+          <hr class="light">
+        {% elif items == "spokenLanguage" %}
+          {% include "components/account3/personal_details/spoken-language.html" %}
+          <hr class="light">
+        {% elif items == "nationality" %}
+          {% include "components/account3/personal_details/nationality.html" %}
+          <hr class="light">
+        {% elif items == "immigration" %}
+          {% include "components/account3/personal_details/immigration.njk" %}
+          <hr class="light">
+        {% elif items == "maritalStatus" %}
+          {% include "components/account3/personal_details/marital.html" %}
+          <hr class="light">
+        {% elif items == "idAtRisk" %}
+          {% include "components/account3/personal_details/risk.html" %}
+          <hr class="light">
+        {% elif items == "assetFreeze" %}
+          {% include "components/account3/personal_details/asset-freeze.html" %}
+          <hr class="light">
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    
+<!--
+
+     Spoken language 
+    {% if data.spokenLanguageUpdated == true %}
+      <div class="grid-row">
+        <div class="column-one-third">
+          <p>Spoken language</p>
+        </div>
+        <div class="column-one-third">
+          <p class="strong">English</p>
+        </div>
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+          </ul>
+        </div>
+      </div>
+      <hr class="light">
+    {% endif %}
+-->
+    
+<!--
+      {% include "components/account3/personal_details/postoffice.html" %}
+      <hr class="light">
+-->
+    {{counter}}
+    {% set counter = 0 %}
+    
+    {% for items, item in data.personalDetails %}
+      {% if item.show == false %}
+        {% set counter = counter + 1 %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if counter != 0 %}
+      <div class="grid-row no-margin">
+    <div class="column-one-third">
+      <ul>
+        &nbsp;
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul>
+        <li>&nbsp;</li>
+      </ul>
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li><a href="../update/person/add" class="under-link">Add personal details</a></li>
+      </ul>
+    </div>
+  </div>
+    {% endif %}
+  </div>
+
+</details>

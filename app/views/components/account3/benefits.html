@@ -1,0 +1,69 @@
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  
+  <h2>Benefits</h2>
+
+  <div id="benefit-panel" class="sl-primary-card">  
+
+		<div class="benefit-container">
+		  <div class="grid-row" id="heading-benefits">
+		    <div class="benefit-start">
+		      <ul>
+		        <li>Benefit start date</li>
+		      </ul>
+		    </div>
+		      <div class="benefit-end">
+		        &nbsp;
+		      </div>
+		    <div class="benefit-name">
+		      <ul>
+		        <li>Benefit</li>
+		      </ul>
+		    </div>
+		  </div>
+		</div>  	
+
+    {% include "./benefits-components/uc.html" %}
+
+    <hr class="mid">
+
+     {% include "./benefits-components/pip.html" %}
+
+    <hr class="mid">
+
+
+    <div class="previous-benefits">
+    	
+
+		  <details>
+
+		  	<summary>Show previous benefits</summary>
+
+				<div class="benefit-container">
+				  <div class="grid-row" id="heading-benefits">
+				    <div class="benefit-start">
+				      <ul>
+				        <li>Benefit start date</li>
+				      </ul>
+				    </div>
+				      <div class="benefit-end">
+				      <ul>
+				        <li>Benefit end date</li>
+				      </ul>
+				      </div>
+				    <div class="benefit-name">
+				      <ul>
+				        <li>Benefit</li>
+				      </ul>
+				    </div>
+				  </div>
+				</div>  	
+
+		  	{% include "./benefits-components/ca.html" %}
+
+		  </details>
+
+  	</div>
+
+  </div>
+  
+</div>

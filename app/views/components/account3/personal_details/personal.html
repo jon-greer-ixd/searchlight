@@ -1,0 +1,55 @@
+<div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  
+  <h2>Personal details</h2>
+  
+  <div class="sl-primary-card sl-personal-details-card">
+
+    <div class="personal-details">
+            
+      {% if data.personalDetails.pv.show == true %}
+        {% include "components/account3/personal_details/potentially-violent.html" %}
+        <hr class="light">
+      {% endif %}
+      
+      {% if data.personalDetails.nifu.show == true %}
+        {% include "components/account3/personal_details/nifu.html" %}
+        <hr class="light">
+      {% endif %}
+            
+      {% include "components/account3/personal_details/names.html" %}
+      <hr class="light">
+            
+      {% include "components/account3/personal_details/dob.njk" %}
+      <hr class="light">
+            
+      {% if data.personalDetails.dateOfDeath.show == true %}
+        {% include "components/account3/personal_details/dod.njk" %}
+        <hr class="light">
+      {% endif %}
+      
+      {% if data.personalDetails.disability.show == true %}
+        {% include "components/account3/personal_details/disability.html" %}
+        <hr class="light">
+      {% endif %}
+
+      {% if data.personalDetails.specialNeeds.show == true %}
+        {% include "components/account3/personal_details/special-needs.html" %}
+        <hr class="light">
+      {% endif %}
+
+      {% include "components/account3/personal_details/nino.html" %}
+      <hr class="light">
+      
+      {% include "components/account3/personal_details/creation.html" %}
+      <hr class="light">
+      
+      {% include "components/account3/personal_details/record-level.html" %}
+      <hr class="light">
+            
+      {% include "components/account3/personal_details/other-personal-details.html" %}
+      
+      {% include "components/modals.html" %}
+
+  </div>
+    
+</div>
