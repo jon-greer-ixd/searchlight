@@ -3,10 +3,10 @@
   <div class="sl-account-header row">
         
     {% if(data.toaster != null) %}
-      {% include "components/account3/new-toaster.njk" %}
+      {% include "components/account3/header/new-toaster.njk" %}
     {% endif %}
     
-    {% include "components/account3/toast.html" %}
+    {% include "components/account3/header/toast.html" %}
             
     <div class="sl-primary-name-container-placeholder ng-scope" 
       {% if data.personalDetails.dateOfDeath.show == true %} 

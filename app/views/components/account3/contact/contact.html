@@ -14,7 +14,7 @@
           {% if item.pref == true %}
             {% if item.show == true %}
             {% set counter = counter + 1 %}
-              {% include "components/account3/contact-template.html" %}
+              {% include "components/account3/contact/contact-template.html" %}
               <hr class="light">
             {% endif %}
           {% endif %}
@@ -24,7 +24,7 @@
         {% for list, item in data.contactTypes %}
           {% if item.show == true and item.pref == false %}
             {% set counter = counter + 1 %}
-            {% include "components/account3/contact-template.html" %}
+            {% include "components/account3/contact/contact-template.html" %}
             <hr class="light">
           {% endif %}
         {% endfor %}
