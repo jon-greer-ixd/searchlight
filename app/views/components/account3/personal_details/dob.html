@@ -5,27 +5,21 @@
 
   <div class="column-one-third">
     <ul>
-      <li class="strong">  {{ data.personalDetails.dateOfBirth.value | asString }}  </li>
-<!--
-      <li class="sl-secondary-text-color sl-metadata">
-        Since 5 Jun 2010
-      </li>
--->
+      <li class="strong">{{data.citizen.dob}}</li>
       <li class="multi-dates">
-        {% if data.personalDetails.dateOfBirth.level == "Level 2" %}
+        {% if data.citizen.dobLevel == 2 %}
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata">Verified to level 2</span>
-        {% elif data.personalDetails.dateOfBirth.level == "Level 1" %}
+        {% elif data.citizen.dobLevel == 1 %}
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata">Verified to level 1</span>
-        {% elif data.personalDetails.dateOfBirth.level == "Not verified" %}
+        {% elif data.citizen.dobLevel == 0 %}
           <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata">Not verified</span>
         {% endif %}
       </li>
     </ul>
   </div>
-
 <div class="column-one-third last-col">
   <ul class="edit-menu">
     <li>
@@ -33,9 +27,11 @@
       <span class="pipe"> | </span> 
       <a href="/history/birth-history" class="under-link">View history</a>
     </li>
+    {% if data.guardianRole == true %}
     <li>
       <a href="change_pd/?personalDetail=dateOfBirth" class="under-link">Change</a>
     </li>
+    {% endif %}
   </ul>
 </div>
 </div>
