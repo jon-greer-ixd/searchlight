@@ -1,5 +1,5 @@
 <!-- REQUESTED NAME-->
-  {% if data.citizen.requestedNameFirst != null %}
+  {% if data.citizen.requestedName.first != null %}
 
     <div class="grid-row names">
       <div class="column-one-third">
@@ -10,11 +10,11 @@
       <div class="column-one-third">
         <ul class="">
           <li class="strong">
-            {{data.citizen.requestedNameTitle | upper}}
+            {{data.citizen.requestedName.title | upper}}
             <span class="namespace"> </span>
-            {{data.citizen.requestedNameFirst | upper}}
+            {{data.citizen.requestedName.first | upper}}
             <span class="namespace"> </span>
-            {{data.citizen.requestedNameLast | upper}}
+            {{data.citizen.requestedName.last | upper}}
           </li>
           <li class="sl-secondary-text-color sl-metadata">
             Requested name&nbsp; · &nbsp;since today
@@ -45,11 +45,11 @@
   {% endif %}
 
   <!-- NAME 2 -->
-  {% if data.citizen.nameTwoFirst != null %}
+  {% if data.citizen.nameTwo.first != null %}
     <div class="grid-row names">
       <div class="column-one-third">
         <ul>
-          {% if data.citizen.requestedNameFirst == null %}
+          {% if data.citizen.requestedName.first == null %}
             <li>Current names</li>
           {% else %}
             <li>&nbsp;</li>
@@ -59,11 +59,11 @@
       <div class="column-one-third">
         <ul class="">
           <li class="strong">
-            {% if data.citizen.nameTwoTitle !== null %}
-              {{data.citizen.nameTwoTitle | upper}} 
+            {% if data.citizen.nameTwo.title !== null %}
+              {{data.citizen.nameTwo.title | upper}} 
               <span class="namespace"> </span> 
             {% endif %}
-            {{data.citizen.nameTwoFirst | upper}} <span class="namespace"> </span> {{data.citizen.nameTwoLast | upper}}
+            {{data.citizen.nameTwo.first | upper}} <span class="namespace"> </span> {{data.citizen.nameTwo.last | upper}}
           </li>
           <li class="sl-secondary-text-color sl-metadata">
             Name type 2&nbsp; · &nbsp;since today
@@ -97,7 +97,7 @@
   <div class="grid-row names">
     <div class="column-one-third">
       <ul>
-      {% if data.citizen.requestedNameFirst == null and data.citizen.nameTwoFirst == null %}
+      {% if data.citizen.requestedName.first == null and data.citizen.nameTwo.first == null %}
         <li>Current name</li>
       {% else %}
         <li>&nbsp;</li>
@@ -107,14 +107,14 @@
     <div class="column-one-third">
       <ul>
         <li class="strong">
-          {% if data.citizen.title != null %}
-            {{data.citizen.title | upper}} 
+          {% if data.citizen.nameOne.title != null %}
+            {{data.citizen.nameOne.title | upper}} 
             <span class="namespace"> </span> 
           {% endif %}
-          {{data.citizen.firstName | upper}} <span class="namespace"> </span> {{data.citizen.lastName | upper}}
+          {{data.citizen.nameOne.first | upper}} <span class="namespace"> </span> {{data.citizen.nameOne.last | upper}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
-          {% if data.details.nameTwoFirst == null or data.citizen.requestedNameFirst == null %}
+          {% if data.details.nameTwo.first == null or data.citizen.requestedName.first == null %}
             Name type 1&nbsp; · &nbsp;since
           {% else %}
             Since
@@ -143,7 +143,7 @@
   </div>
 
 
-  {% if data.details.nameTwoFirst == null and data.citizen.requestedNameFirst == null and data.guardianRole == true %}
+  {% if data.details.nameTwo.first == null and data.citizen.requestedName.first == null and data.guardianRole == true %}
     <div class="grid-row no margin">
       <div class="column-one-third">
         &nbsp;
@@ -159,11 +159,11 @@
       <div class="column-one-third">
         <ul>
           <li class="sl-secondary-text-color sl-metadata">
-            {% if data.citizen.nameTwoFirst == null and data.citizen.requestedNameFirst == null %}
+            {% if data.citizen.nameTwo.first == null and data.citizen.requestedName.first == null %}
               Add another name
-            {% elif data.citizen.nameTwoFirst != null and data.citizen.requestedNameFirst != null  %}
+            {% elif data.citizen.nameTwo.first != null and data.citizen.requestedName.first != null  %}
               Add a requested name
-            {% elif data.citizen.nameTwoFirst == null and data.citizen.requestedNameFirst != null  %}
+            {% elif data.citizen.nameTwo.first == null and data.citizen.requestedName.first != null  %}
               Add a name type 2
             {% endif %}
           </li>

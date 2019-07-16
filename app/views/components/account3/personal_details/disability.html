@@ -5,7 +5,7 @@
   <div class="column-one-third">
     <ul>
       <li class="strong">
-        {% if data.personalDetails.disability.value == true %}
+        {% if data.citizen.disability == true %}
           Disabled
         {% else %}
           Not disabled
@@ -13,6 +13,7 @@
       </li>
     </ul>
   </div>
+  {% if data.guardianRole %}
   <div class="column-one-third last-col">
     <ul class="edit-menu">
       <li>                
@@ -20,4 +21,5 @@
       </li>
     </ul>
   </div>
+  {% endif %}
 </div>

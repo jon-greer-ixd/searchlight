@@ -22,17 +22,17 @@
       {% include "components/account3/personal_details/dob.html" %}
       <hr class="light">
             
-      {% if data.personalDetails.dateOfDeath.show == true %}
-        {% include "components/account3/personal_details/dod.njk" %}
+      {% if data.citizen.dod != null %}
+        {% include "components/account3/personal_details/dod.html" %}
         <hr class="light">
       {% endif %}
       
-      {% if data.personalDetails.disability.show == true %}
+      {% if data.citizen.disability != null %}
         {% include "components/account3/personal_details/disability.html" %}
         <hr class="light">
       {% endif %}
 
-      {% if data.personalDetails.specialNeeds.show == true %}
+      {% if data.citizen.specialNeeds != null %}
         {% include "components/account3/personal_details/special-needs.html" %}
         <hr class="light">
       {% endif %}

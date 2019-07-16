@@ -25,7 +25,7 @@ var contactFunctions = require('../functions/contact.js');
 ///////////////
 var guardianRole = false;
 var cis = require('./data/cis.js').cis;
-var nino = "SX170202";
+var nino = "SX170201";
 var citizen = cis[nino];
 //citizen.title);
 

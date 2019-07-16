@@ -1,25 +1,26 @@
 var cis = {
   "SX170201" : { 
-    title : "Mr",
-    firstName : "Alex",
-    lastName : "Campbell",
-    nameTwoTitle : "Mr",
-    nameTwoFirst : "Alexander",
-    nameTwoLast : "Campbell Jones",
-    requestedNameTitle : "Reverend",
-    requestedNameFirst : "Campbell",
-    requestedNameLast : "Jones",
+    // personal details
+    nino: {value : "SX170201", level: 2},
+    nameOne : {title : "Mr", first : "Alex", last : "Campbell"},
+    nameTwo : {title : "Mr", first : "Alexander", last : "Campbell Jones"},
+    requestedName : {title : "Reverend", first : "Campbell", last : "Jones"},
     previousNames : true,
-    dob : "14 May 1963",
-    dobLevel : 2,
+    dob : {value: "1 Dec 1963", level: 2},
+    dod : {value: "14 May 2019", level: 3},
+    recordLevel : "Unrestricted access",
+    // other PD
+    disability : null,
+    // address
     prevAddress : true,
     addressLineOne : "25 Lambton St",
     addressLineTwo : "Chester le Street",
     postCode : "DH3 3NH",
+    // contact
     mobile : "07761 111 111",
     home : "0191 111 111",
     email : "email@address.com",
-    //benefits
+    // benefits
     uc : false,
     dla : false,
     sp : false,
@@ -27,8 +28,6 @@ var cis = {
     ca : false,
     "pecialNeeds" : {state : null, show : false, display : "Additional needs", value : undefined},
      "assetFreeze" : {state : null, show : false, showHistory : false, display : "Asset freeze indicator", value : false, start : null, end : null},
-    "recordLevel" : {state : null, show : true, display : "Customer record level", value : "Unrestricted access"},
-     "disability" : {state : null, show : false, display : "Disability status", value : null},
      "dateOfBirth" : {state : null, show : true, display : "Date of birth", value : "8 Feb 1940", level : "Level 2"},
      "dateOfDeath" : {state : null, show : false, display : "Date of death", value : null, level : null},
      "gender" : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
@@ -37,7 +36,6 @@ var cis = {
      "immigration" : {state : null, show : false, display : "Immigration status", value : null, level : null},
     "INDIndicator" : {state : null, show : false, display : "Immigration and nationality interest", value : false},
       "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null},
-      "nino" : {state : null, show : true, display : "National Insurance number", value : null},
       "ninoVerificationLevel" : {state : null, show : true, display : "National Insurance number verification level", value : "Verified"},
       "nationality" : {state : null, show : false, display : "Nationality", value : null},
       "pv" : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
@@ -62,6 +60,10 @@ var cis = {
     previousNames : false,
     dob : "08 Aug 1956",
     dobLevel : 2,
+    dod : null,
+    dodLevel : null,
+    // other PD
+    disability : true,
     prevAddress : false,
     addressLineOne : "98 Hammerfield Ave",
     addressLineTwo : "Aberdeen",

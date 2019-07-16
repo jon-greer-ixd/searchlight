@@ -5,23 +5,18 @@
 
     <div class="column-one-third">
       <ul>
-      <li class="strong">  {{ data.personalDetails.dateOfDeath.value | asString }}  </li>
-<!--
-        <li class="sl-secondary-text-color sl-metadata">
-          Since 5 Jun 2010
-        </li>
--->
+      <li class="strong">  {{data.citizen.dod.value}}  </li>
         <li class="multi-dates">
-            {% if data.personalDetails.dateOfDeath.level == "Level 3" %}
+            {% if data.citizen.dod.level == 3 %}
               <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
               <span class="sl-metadata">Verified to level 3</span>
-            {% elif data.personalDetails.dateOfDeath.level == "Level 2" %}
+            {% elif data.citizen.dod.level == 2 %}
               <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
               <span class="sl-metadata">Verified to level 2</span>
-            {% elif data.personalDetails.dateOfDeath.level == "Level 1" %}
+            {% elif data.citizen.dod.level == 1 %}
               <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
               <span class="sl-metadata">Verified to level 1</span>
-            {% elif data.personalDetails.dateOfDeath.level == "Not verified" %}
+            {% elif data.citizen.dod.level == 0 %}
               <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
               <span class="sl-metadata">Not verified</span>
             {% endif %}
@@ -36,9 +31,11 @@
         <span class="pipe"> | </span> 
         <a href="/history/death-history" class="under-link">View history</a>
       </li>
+      {% if data.guardianRole == true %}
       <li>
         <a href="change_pd/?personalDetail=dateOfDeath" class="under-link">Change</a>
       </li>
+      {% endif %}
     </ul>
   </div>
 </div>

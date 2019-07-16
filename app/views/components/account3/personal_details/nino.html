@@ -5,15 +5,15 @@
     </div>
     <div class="column-one-third">
       <ul>
-        <li class="strong">SY119284Z</li>
+        <li class="strong">{{data.citizen.nino.value}}</li>
         <li class="multi-dates">
-          {% if data.personalDetails.ninoVerificationLevel.value == "Verified" %}
+          {% if data.citizen.nino.level == 2 %}
             <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
             <span class="sl-metadata">Verified</span>
-          {% elif data.personalDetails.ninoVerificationLevel.value == "Qualified" %}
+          {% elif data.citizen.nino.level == 1 %}
             <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
             <span class="sl-metadata">Qualified</span>
-          {% elif data.personalDetails.ninoVerificationLevel.value == "Unverified" %}
+          {% elif data.citizen.nino.level == 0 %}
             <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
             <span class="sl-metadata">Unverified</span>
           {% endif %}
