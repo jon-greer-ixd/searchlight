@@ -21,11 +21,11 @@ var cis = {
     home : "0191 111 111",
     email : "email@address.com",
     // benefits
-    uc : false,
+    uc : true,
     dla : false,
     sp : false,
-    pip : false,
-    ca : false,
+    pip : true,
+    ca : true,
 
     specialNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
     assetFreeze : {state : null, show : false, showHistory : false, display : "Asset freeze indicator", value : false, start : null, end : null},
@@ -48,7 +48,7 @@ var cis = {
   "SX170202" : { 
     // personal details
     nino: {value : "SX170202", level: 2},
-    nameOne : {title : "Mrs", first : "Sita", last : "Chowdry"},
+    nameOne : {title : "Mrs", first : "Sita", last : "Ania   Chowdry"},
     nameTwo : {title : null, first : null, last : null},
     requestedName : {title : null, first : null, last : null},
     previousNames : false,
@@ -68,10 +68,10 @@ var cis = {
     email : "email@address.com",
     // benefits
     uc : false,
-    dla : false,
+    dla : true,
     sp : false,
     pip : false,
-    ca : false,
+    ca : true,
 
     specialNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
     assetFreeze : {state : null, show : false, showHistory : false, display : "Asset freeze indicator", value : false, start : null, end : null},

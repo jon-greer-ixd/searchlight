@@ -22,13 +22,20 @@
 		  </div>
 		</div>  	
 
-    {% include "./uc.html" %}
+		{% if data.citizen.uc == true %}	
+    	{% include "./uc.html" %}
+    	<hr class="mid">
+    {% endif %}
 
-    <hr class="mid">
+		{% if data.citizen.pip == true %}	
+    	{% include "./pip.html" %}
+    	<hr class="mid">
+    {% endif %}
 
-     {% include "./pip.html" %}
-
-    <hr class="mid">
+		{% if data.citizen.dla == true %}	
+    	{% include "./dla.html" %}
+    	<hr class="mid">
+    {% endif %}
 
 
     <div class="previous-benefits">
@@ -56,9 +63,9 @@
 				      </ul>
 				    </div>
 				  </div>
-				</div>  	
+				</div>  
 
-		  	{% include "./ca.html" %}
+		  {% include "./ca.html" %}
 
 		  </details>
 
