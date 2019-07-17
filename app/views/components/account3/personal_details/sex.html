@@ -20,7 +20,7 @@
         <span class="pipe"> | </span> 
         <a href="../history/sex-history" class="under-link">View history</a>
       </li>
-      {% if data.personalDetails.gender.show != true %}
+      {% if data.personalDetails.gender.show != true and data.guardianRole == true %}
         <li>
           <a class="secondary-link" href="change_pd/?personalDetail=sex">Change</a>
         </li>

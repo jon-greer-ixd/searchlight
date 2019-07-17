@@ -24,29 +24,21 @@ var contactFunctions = require('../functions/contact.js');
 // July 2019 //
 ///////////////
 var guardianRole = false;
-var cis = require('./data/cis.js').cis;
-var nino = "SX170202";
-var citizen = cis[nino];
+
+// var nino = "SX170202";
+// var citizen = cis[nino];
 //citizen.title);
 
-var getCitizen = function(nino) {
+function getCitizen(nino) {
+  var cis = require('./data/cis.js').cis;
   return cis[nino]
-};
+}
 
-router.get('/account3/account/', function (req, res) {
-  req.session.data.alertData = require('./data/alerts.js').alerts;
-  req.session.data.notificationsData = require('./data/notifications.js').notifications;
-  req.session.data.details = require('./data/details.js').details;
-  req.session.data.miscData = require('./data/miscData.js').miscData;
-  req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
-  req.session.data.bsCustomers = require('./data/bsCustomers.js').bsCustomers;
-  req.session.data.addresses = require('./data/addresses.js').addresses;
-  req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
-  req.session.data.authority = require('./defaults.js').authority;
-  req.session.data.cis = require('./data/cis.js').cis;
+router.get('/cis-handler/', function (req, res) {
   req.session.data.guardianRole = guardianRole;
-  req.session.data.citizen = getCitizen( req.query.nino.toUpperCase() )
-  res.render('account3/account')
+  req.session.data.citizen = getCitizen(req.query.nino);
+  console.log("here " + req.query.nino);
+  res.redirect('account3/account')
 })
 
 // given a nino in a href
@@ -329,7 +321,9 @@ router.use('/', main);
       req.session.data[key] = defaults[key];
     }
   }
-    
+  
+  req.session.data.citizen = getCitizen("sx170202");
+
   req.session.data.selectstatus = 'unprocessed';
     
   //data
@@ -342,6 +336,8 @@ router.use('/', main);
   req.session.data.addresses = require('./data/addresses.js').addresses;
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
+  req.session.data.cis = require('./data/cis.js').cis;
+
 
 //  for (var item in contactTypes) {
 //    if (contactTypes.hasOwnProperty(item)) {

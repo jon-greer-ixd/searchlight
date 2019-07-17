@@ -22,7 +22,7 @@
       {% include "components/account3/personal_details/dob.html" %}
       <hr class="light">
             
-      {% if data.citizen.dod != null %}
+      {% if data.citizen.dod.value != null %}
         {% include "components/account3/personal_details/dod.html" %}
         <hr class="light">
       {% endif %}
@@ -32,19 +32,21 @@
         <hr class="light">
       {% endif %}
 
-      {% if data.citizen.specialNeeds != null %}
+      {% if data.citizen.specialNeeds.value != null %}
         {% include "components/account3/personal_details/special-needs.html" %}
         <hr class="light">
       {% endif %}
 
       {% include "components/account3/personal_details/nino.html" %}
       <hr class="light">
-      
-      {% include "components/account3/personal_details/creation.html" %}
-      <hr class="light">
-      
-      {% include "components/account3/personal_details/record-level.html" %}
-      <hr class="light">
+
+      {% if data.guardianRole == true %}
+        {% include "components/account3/personal_details/creation.html" %}
+        <hr class="light">
+        {% include "components/account3/personal_details/record-level.html" %}
+        <hr class="light">
+      {% endif %}
+
             
       {% include "components/account3/personal_details/other-personal-details.html" %}
       

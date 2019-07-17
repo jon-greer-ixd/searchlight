@@ -19,8 +19,9 @@
           {% include "components/account3/personal_details/nationality-interest.html" %}
           <hr class="light">
         {% elif items == "preferredLanguage" %}
-          {% include "components/account3/personal_details/preferred-language.html" %}
-          <hr class="light">
+        <!-- include "components/account3/personal_details/preferred-language.html"           
+        <hr class="light">
+        -->
         {% elif items == "spokenLanguage" %}
           {% include "components/account3/personal_details/spoken-language.html" %}
           <hr class="light">
@@ -76,7 +77,7 @@
       {% endif %}
     {% endfor %}
     
-    {% if counter != 0 %}
+    {% if counter != 0 and data.guardianRole == true %}
       <div class="grid-row no-margin">
     <div class="column-one-third">
       <ul>
