@@ -25,10 +25,13 @@ var contactFunctions = require('../functions/contact.js');
 ///////////////
 var guardianRole = false;
 var cis = require('./data/cis.js').cis;
-var nino = "SX170201";
+var nino = "SX170202";
 var citizen = cis[nino];
 //citizen.title);
 
+var getCitizen = function(nino) {
+  return cis[nino]
+};
 
 router.get('/account3/account/', function (req, res) {
   req.session.data.alertData = require('./data/alerts.js').alerts;
@@ -42,7 +45,7 @@ router.get('/account3/account/', function (req, res) {
   req.session.data.authority = require('./defaults.js').authority;
   req.session.data.cis = require('./data/cis.js').cis;
   req.session.data.guardianRole = guardianRole;
-  req.session.data.citizen = citizen;
+  req.session.data.citizen = getCitizen( req.query.nino.toUpperCase() )
   res.render('account3/account')
 })
 
