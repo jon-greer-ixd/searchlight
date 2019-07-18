@@ -2278,11 +2278,31 @@ hr, hr.light, hr.mid {
   background: $searchlight-borders;
 }
 
+.sl-nino-metadata, .sl-account-age-metadata {
+  opacity: 1;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+#sl-account-primary-name h1 {
+  line-height: 100%;
+  padding-top :25px;
+}
+.sl-account-person-age {
+  padding: 0;
+  margin: 0;
+}
+
+#sl-account .sl-primary-name-container-placeholder {
+  height: 125px;
+}
+
 // Navigation
 #address-anchor, #contact-anchor, #interests-anchor, #benefits-anchor, #relationships-anchor, #payment-status-anchor   {
   position: relative;
-  top: -250px;
+  top: -235px;
 }
+
 #top-anchor {
   position: absolute;
   top: 0px;
