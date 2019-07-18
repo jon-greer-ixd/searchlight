@@ -2,18 +2,23 @@
 <!--   <p><span class="sn-name">MISS &nbsp; ALISHA &nbsp; ADHIRA KHATRI </span> &nbsp; · &nbsp; <span>SY&nbsp; 11&nbsp; 92&nbsp; 84&nbsp; Z</span> &nbsp; · &nbsp; <span>8 Feb 1976</span></p>
  -->  
   <p>
-  	<a href="/account3/account/#benefits-anchor">
-  	<span class="name-title">MR</span>
-  	<span class="name-first">THOMAS</span>
-  	<span class="name-last">SMITH</span>
+  	<a href="/account3/account#benefits-anchor">
+    {% if data.citizen.nameTwo.first != null %} 
+    	<span class="name-title">{{ data.citizen.nameTwo.title | upper }}</span>
+    	<span class="name-first">{{ data.citizen.nameTwo.first | upper }}</span>
+    	<span class="name-last">{{ data.citizen.nameTwo.last | upper }}</span>
+    {% else %}
+      <span class="name-title">{{ data.citizen.nameOne.title | upper }}</span>
+      <span class="name-first">{{ data.citizen.nameOne.first | upper }}</span>
+      <span class="name-last">{{ data.citizen.nameOne.last | upper }}</span>
+    {% endif %}
+  	<span> · </span>
+
+  	<span>{{ data.citizen.nino.value | upper }}</span>
 
   	<span> · </span>
 
-  	<span>SY&nbsp; 11&nbsp; 92&nbsp; 84&nbsp; Z</span>
-
-  	<span> · </span>
-
-  	<span>8 Feb 1940</span>
+  	<span>{{ data.citizen.dob.value }}</span>
   </a>
   </p>
 

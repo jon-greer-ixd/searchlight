@@ -4,13 +4,14 @@ var cis = {
     nino: {value : "SX170201", level: 2},
     nameOne : {title : "Mr", first : "Alex", last : "Campbell"},
     nameTwo : {title : "Mr", first : "Alexander", last : "Campbell Jones"},
-    requestedName : {title : "Reverend", first : "Campbell", last : "Jones"},
+    requestedName : {title : null, first : null, last : null},
     previousNames : false,
     dob : {value: "1 Dec 1963", level: 2},
     dod : {value: null, level: null},
     recordLevel : "Unrestricted access",
     // other PD
     disability : null,
+    sex : "male",
     // address
     prevAddress : true,
     addressLineOne : "25 Lambton St",
@@ -39,7 +40,6 @@ var cis = {
     nationality : {state : null, show : false, display : "Nationality", value : null},
     pv : {state : null, show : false, display : "Potentially violent status", value : null, partner : false, member : false},
     preferredLanguage : {state : 1, show : true, display : "Preferred language", value : "English"},
-    sex : {state : null, show : true, display : "Sex", value : false},
     spokenLanguage : {state : null, show : false, display : "Spoken language", value : null},
     bereavementBenefit : {state : null, show : true, display : "Bereavement Benefit", value : true},
     accountStatus : {state : null, show : false, display : "Account status", value : 'Open'}
@@ -57,6 +57,7 @@ var cis = {
     recordLevel : "Unrestricted access",
     // other PD
     disability : null,
+    sex : "female",
     // address
     prevAddress : false,
     addressLineOne : "98 Hammerfield Ave",

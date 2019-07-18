@@ -37,7 +37,6 @@ function getCitizen(nino) {
 router.get('/cis-handler/', function (req, res) {
   req.session.data.guardianRole = guardianRole;
   req.session.data.citizen = getCitizen(req.query.nino);
-  console.log("here " + req.query.nino);
   res.redirect('account3/account')
 })
 
