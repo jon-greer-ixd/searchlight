@@ -25,9 +25,6 @@ var contactFunctions = require('../functions/contact.js');
 ///////////////
 var guardianRole = false;
 
-// var nino = "SX170202";
-// var citizen = cis[nino];
-//citizen.title);
 
 function getCitizen(nino) {
   var cis = require('./data/cis.js').cis;
@@ -314,6 +311,10 @@ router.use('/', main);
   router.get('/', function (req, res) { 
     
   req.session.data.mcheck = false;
+    
+  //set a nino for account version 3
+  req.session.data.citizen = getCitizen("SX170201");
+
               
   for (var key in defaults) {
     if (defaults.hasOwnProperty(key)) {
