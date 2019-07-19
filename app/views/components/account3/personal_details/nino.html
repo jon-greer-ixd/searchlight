@@ -25,9 +25,11 @@
         <li>
          <a href="/history/nino-history" class="under-link">View history</a>
         </li>
+        {% if data.guardianRole == true %}
         <li>
           <a class="secondary-link" href="../../update/account-status/type">Change</a>
         </li>
+        {% endif %}
       </ul>
     </div>
   </div>
