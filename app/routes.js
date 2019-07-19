@@ -25,15 +25,14 @@ var contactFunctions = require('../functions/contact.js');
 ///////////////
 var guardianRole = false;
 
-
-function getCitizen(nino) {
-  var cis = require('./data/cis.js').cis;
+var getCitizen = function(nino, cis) {
+  console.log(cis[nino].nameOne.first);
   return cis[nino]
 }
 
 router.get('/cis-handler/', function (req, res) {
   req.session.data.guardianRole = guardianRole;
-  req.session.data.citizen = getCitizen(req.query.nino);
+  req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
   res.redirect('account3/account')
 })
 
@@ -313,7 +312,8 @@ router.use('/', main);
   req.session.data.mcheck = false;
     
   //set a nino for account version 3
-  req.session.data.citizen = getCitizen("SX170201");
+  req.session.data.cis = require('./data/cis.js').cis;
+  req.session.data.citizen = getCitizen("SX170202", req.session.data.cis);
 
               
   for (var key in defaults) {
@@ -322,8 +322,6 @@ router.use('/', main);
     }
   }
   
-  req.session.data.citizen = getCitizen("sx170202");
-
   req.session.data.selectstatus = 'unprocessed';
     
   //data
@@ -336,7 +334,6 @@ router.use('/', main);
   req.session.data.addresses = require('./data/addresses.js').addresses;
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
-  req.session.data.cis = require('./data/cis.js').cis;
 
 
 //  for (var item in contactTypes) {
