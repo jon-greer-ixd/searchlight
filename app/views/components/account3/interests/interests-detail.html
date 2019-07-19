@@ -1,0 +1,128 @@
+<!-- <div id="interests">
+
+{% set counter = false %}
+
+{% for int in interests %}
+  {% if int.live == true %}
+    {% set counter = true %}
+  {% endif %}
+{% endfor %}
+
+{% if counter == true %}
+  <div class="grid-row nav">
+    <div class="column-one-third">
+      Start date
+    </div>
+    <div class="column-one-third expanded">
+      Interest
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+            <a href="add-int-handler" class="under-link">Add an interest</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+{% endif %}
+
+{% set counter = false %}
+  
+  {% for int in interests %}
+    {% if int.live == true %}
+      {% include "components/update/interest.html" %}
+      <hr class="light">
+      {% set counter = true %}  
+    {% endif %}  
+  {% endfor %} 
+  
+  {% if counter == false %}
+    <div class="grid-row">
+      <div class="column-one-third">
+        No current interests
+      </div>
+      <div class="column-one-third expanded">
+        &nbsp;
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="add-int-handler" class="under-link">Add an interest</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+  {% endif %}  
+  
+  <details>
+    <summary>Previous interests</summary>
+    
+  {% if counter == false %}
+    <hr class="light">
+    <div class="grid-row nav">
+      <div class="column-one-third">
+        Start date
+      </div>
+      <div class="column-one-third expanded">
+        Interest
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            &nbsp;
+          </li>
+        </ul>
+      </div>
+    </div>
+    <hr class="light">
+
+  {% endif %}  
+    
+    {% for int in interests %}
+      {% if int.live == false %}
+          {% include "components/update/interest.html" %}
+        <hr class="light">
+      {% endif %}  
+    {% endfor %}  
+  </details>
+  
+</div> -->
+
+
+<div id="interests">
+  <div class="grid-row nav">
+    <div class="column-one-third">
+      Start date
+    </div>
+    <div class="column-one-third expanded">
+      Interest
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+            <a href="add-int-handler" class="under-link">Add an interest</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+
+  {% if data.citizen.dla == false %}  
+    {% include "./interest_details/dla.html" %}
+  {% endif %}
+
+    <div class="column-one-third expanded">
+      &nbsp;
+    </div>
+  </div>
+  <hr>
+
+</div>
+
+
+
+
+
+
