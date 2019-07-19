@@ -2,7 +2,88 @@
   <h2>Interests</h2>
   <div id="sl-address-primary-card" class="sl-primary-card">
     <div>      
-      {% include "./interests-detail.html" %}
+      <div id="interests">
+        <div class="grid-row nav">
+          <div class="column-one-third">
+            Start date
+          </div>
+          <div class="column-one-third expanded">
+            Interest
+          </div>
+          <div class="column-one-third last-col">
+            {% if data.guardianRole == true %}
+              <ul class="edit-menu">
+                <li>
+                    <a href="add-int-handler" class="under-link">Add an interest</a>
+                </li>
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+
+        {% if data.citizen.dla == true %}  
+          {% include "./details/dla.html" %}
+          <hr>
+        {% endif %}
+
+        {% if data.citizen.uc == true %}  
+          {% include "./details/uc.html" %}
+          <hr>
+        {% endif %}
+        
+        {% if data.citizen.pip == true %}  
+          {% include "./details/pip.html" %}
+          <hr>
+        {% endif %}
+
+        <div class="column-one-third expanded">
+          &nbsp;
+        </div>
+        
+        <details>
+          <summary>Previous interests</summary>
+
+          <hr class="light">
+          <div class="grid-row nav">
+            <div class="column-one-third">
+              <div class="column-one-half">
+                Start date
+              </div>
+              <div class="column-one-half">
+                End date
+              </div>
+            </div>
+            <div class="column-one-third expanded">
+              Interest
+            </div>
+            <div class="column-one-third last-col">
+              <ul class="edit-menu">
+                <li>
+                  &nbsp;
+                </li>
+              </ul>
+            </div>
+          </div>
+          <hr class="light">
+
+        {% if data.citizen.ca == true %}  
+          {% include "./details/ca.html" %}
+          <hr>
+        {% endif %}
+        <!--
+            {% for int in interests %}
+              {% if int.live == false %}
+                  {% include "components/update/interest.html" %}
+                <hr class="light">
+              {% endif %}  
+            {% endfor %}  
+        -->
+          </details>        
+        
+        
+      </div>
+
     </div>
   </div>
 </div>
