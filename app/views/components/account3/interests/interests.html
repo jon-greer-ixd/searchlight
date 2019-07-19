@@ -36,11 +36,17 @@
           {% include "./details/pip.html" %}
           <hr>
         {% endif %}
+        
+        {% if data.citizen.sp == true %}  
+          {% include "./details/sp.html" %}
+          <hr>
+        {% endif %}
 
         <div class="column-one-third expanded">
           &nbsp;
         </div>
         
+        {% if data.citizen.ca == true %}  
         <details>
           <summary>Previous interests</summary>
 
@@ -67,7 +73,6 @@
           </div>
           <hr class="light">
 
-        {% if data.citizen.ca == true %}  
           {% include "./details/ca.html" %}
           <hr>
         {% endif %}

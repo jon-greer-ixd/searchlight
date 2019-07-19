@@ -20,56 +20,71 @@
 		      </ul>
 		    </div>
 		  </div>
-		</div>  	
+		</div>  
+    
+        {% set hasBenefits = false %}
+    
+		{% if data.citizen.uc == true %}
+          {% set hasBenefits = true %}
+          {% include "./uc.html" %}
+          <hr class="mid">
+        {% endif %}
 
-		{% if data.citizen.uc == true %}	
-    	{% include "./uc.html" %}
-    	<hr class="mid">
-    {% endif %}
+		{% if data.citizen.pip == true %}
+          {% set hasBenefits = true %}
+          {% include "./pip.html" %}
+          <hr class="mid">
+        {% endif %}
 
-		{% if data.citizen.pip == true %}	
-    	{% include "./pip.html" %}
-    	<hr class="mid">
-    {% endif %}
+		{% if data.citizen.dla == true %}
+          {% set hasBenefits = true %}
+          {% include "./dla.html" %}
+          <hr class="mid">
+        {% endif %}
+    
+		{% if data.citizen.sp == true %}
+          {% set hasBenefits = true %}
+          {% include "./sp.html" %}
+          <hr class="mid">
+        {% endif %}
+    
+        {% if hasBenefits == false %}
+          No current benefits
+        {% endif %}
 
-		{% if data.citizen.dla == true %}	
-    	{% include "./dla.html" %}
-    	<hr class="mid">
-    {% endif %}
+		{% if data.citizen.ca == true %}
+          {% set hasBenefits = true %}
+          <div class="previous-benefits">
 
+            <details>
+              <summary>Show previous benefits</summary>
 
-    <div class="previous-benefits">
-    	
+              <div class="benefit-container">
+                <div class="grid-row" id="heading-benefits">
+                  <div class="benefit-start">
+                    <ul>
+                      <li>Benefit start date</li>
+                    </ul>
+                  </div>
+                    <div class="benefit-end">
+                    <ul>
+                      <li>Benefit end date</li>
+                    </ul>
+                    </div>
+                  <div class="benefit-name">
+                    <ul>
+                      <li>Benefit</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>  
 
-		  <details>
+              {% include "./ca.html" %}
 
-		  	<summary>Show previous benefits</summary>
+            </details>
 
-				<div class="benefit-container">
-				  <div class="grid-row" id="heading-benefits">
-				    <div class="benefit-start">
-				      <ul>
-				        <li>Benefit start date</li>
-				      </ul>
-				    </div>
-				      <div class="benefit-end">
-				      <ul>
-				        <li>Benefit end date</li>
-				      </ul>
-				      </div>
-				    <div class="benefit-name">
-				      <ul>
-				        <li>Benefit</li>
-				      </ul>
-				    </div>
-				  </div>
-				</div>  
-
-		  {% include "./ca.html" %}
-
-		  </details>
-
-  	</div>
+  	   </div>
+        {% endif %}
 
   </div>
   
