@@ -1,0 +1,43 @@
+{% extends "../current-award-template.html" %}
+
+{% block classes %}
+	class="sl-primary-card award"
+{% endblock %}
+
+{% block claim_details %}
+	<p>Started 8 Apr 2019&nbsp;</p>
+{% endblock %}
+			
+
+{% block award_details %}
+	<table class="award-table">
+		<tr>
+			<th>Award component</th>
+			<th>Amount</th>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li>Care component</li>
+					<li class="sub">Award component: High. Night and day attention</li>
+					<li class="sub">High</li>
+				</ul>
+			</td>
+			<td>£87.65</td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li>Mobility component</li>
+					<li class="sub">Award component: High. Virtually unable to walk</li>
+					<li class="sub">High</li>
+				</ul>
+			</td>
+			<td>£61.20</td>
+		</tr>
+		<tr>
+			<td class="strong">Total award amount</td>
+			<td class="strong">£148.85</td>
+		</tr>
+	</table>
+{% endblock %}

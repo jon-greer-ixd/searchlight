@@ -1,0 +1,17 @@
+{% extends "../content-template.html" %}
+
+{% block title %}
+	Universal Credit
+{% endblock %}
+
+{% block status %}
+	Status: In payment.
+{% endblock %}
+
+{% block left_column %}
+	{% include "./current-award.html" %}
+{% endblock %}
+
+{% block right_column %}
+	{% include "./dates.html" %}
+{% endblock %}

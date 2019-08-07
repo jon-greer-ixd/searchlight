@@ -1,0 +1,20 @@
+{% extends "../content-template.html" %}
+
+{% block title %}
+	Personal Independence Payment
+{% endblock %}
+
+{% block status %}
+	Status: Decision Entitled.
+{% endblock %}
+
+{% block left_column %}
+	{% include "./current-award.html" %}
+
+	<div id="previous-awards-anchor"></div>
+	{% include "./previous-awards.html" %}
+{% endblock %}
+
+{% block right_column %}
+	{% include "./dates.html" %}
+{% endblock %}

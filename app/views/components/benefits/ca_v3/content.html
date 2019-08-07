@@ -1,0 +1,27 @@
+{% extends "../content-template.html" %}
+
+{% block title %}
+	Carer's Allowance
+{% endblock %}
+
+{% block status %}
+	Status: Ended. No end reason held.
+{% endblock %}
+
+{% block left_column %}
+	{% include "./payment-status.html" %}
+
+	<div id="previous-awards-anchor"></div>
+	{% include "./previous-awards.html" %}
+
+	<div id="decision-history-anchor"></div>
+	{% include "./decisions.html" %}
+{% endblock %}
+
+{% block right_column %}
+	{% include "./dates.html" %}
+{% endblock %}
+
+
+
+
