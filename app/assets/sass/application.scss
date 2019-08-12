@@ -2425,10 +2425,11 @@ table {
     td, th {
       width: 15%;
       &:nth-child(1) {
-        width: 42%;
+        width: 45%;
       }
       &:nth-child(5) {
-        width: 13%;
+        width: 10%;
+        text-align: left;
       }
     }
   }
