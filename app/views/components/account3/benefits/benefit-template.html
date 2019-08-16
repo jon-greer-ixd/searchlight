@@ -12,7 +12,9 @@
     <div class="benefit-name title">
       <ul>
         <li><span>{% block title %}{% endblock %}</span>&nbsp; · &nbsp;<a {% block href %}{% endblock %} >View benefit details</a></li>
-        <li class="end-reason">End reason&nbsp; ·&nbsp;{% block end_reason %}{% endblock %}</li>
+        {% if end_reason == true %}
+          <li class="end-reason">End reason&nbsp; ·&nbsp;{% block end_reason %}{% endblock %}</li>
+        {% endif %}
       </ul>
     </div>
   </div>
