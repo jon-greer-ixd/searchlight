@@ -2546,5 +2546,51 @@ p.disclaimer {
 }
 
 
+#alerts table.dap-options {
+  th, td {
+    &:nth-child(1){
+      width: 2.5%;
+    }
+    &:nth-child(2){
+      width: 8%;
+    }
+    &:nth-child(3){
+      width: 12%;
+    }
+    &:nth-child(4){
+      width: 8%;
+    }
+    &:nth-child(5){
+      width: 16%;
+    }
+    &:nth-child(6){
+      width: 8%;
+    }
+    &:nth-child(7){
+      width: 8%;
+    }
+    &:nth-child(8){
+      width: 1%;
+      text-align: right;
+    }
+  }
+  th {
+    padding-bottom: 14px;
+  }
+  td {
+    padding: 18px 0 2px 0;
+    line-height: 100%;
+    border-bottom: none!important;
+  }
+}
+
+.dap-disc {
+  padding-bottom: 8px;
+  border-bottom: 1px solid $searchlight-borders;
+  padding-bottom: 14px;
+}
+
+
+
 
 
