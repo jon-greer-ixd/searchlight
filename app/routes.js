@@ -310,6 +310,8 @@ router.use('/', main);
   router.get('/', function (req, res) { 
     
   req.session.data.mcheck = false;
+
+  req.session.data.showDapResults = false;
     
   //set a nino for account version 3
   req.session.data.cis = require('./data/cis.js').cis;
@@ -489,6 +491,14 @@ router.get(/authority-handler/, function (req, res) {
 /*************/
 /** CONTACT **/
 /*************/
+
+router.get(/dap-results-handler/, function (req, res) {
+  req.session.data.showDapResults = true;
+  console.log();
+  res.redirect('./notifications-search')
+})
+
+
 
 router.get(/contact-change-handler/, function (req, res) {
   req.session.data.toaster = null;

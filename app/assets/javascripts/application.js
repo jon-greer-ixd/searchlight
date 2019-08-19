@@ -18,6 +18,14 @@ if (
   window.sessionStorage.setItem('prototypeWarning', true)
 }
 
+//DAP
+var dapResults = false;
+var showDapResults = function() {
+   dapResults = true;
+   console.log(dapResults);
+}
+
+
 $(document).ready(function () {
   // Use GOV.UK shim-links-with-button-role.js to trigger a link styled to look like a button,
   // with role="button" when the space key is pressed.
@@ -818,7 +826,7 @@ for (var x in navigationLinkContainers) {
   checkLink
   unLink
   button
-  checkboxes
+  checkboxes 
 
   checkLink.onclick(function)
   unLink.onclick(function)
@@ -835,7 +843,6 @@ for (var x in navigationLinkContainers) {
     }
   }
   */
-
 
 
 
