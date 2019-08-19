@@ -4,7 +4,21 @@
   </label>
   
   <select name="systemid" class="form-control notification" name="Country" id="none" autofocus="autofocus" autocorrect="off" autocomplete="off">
-    <option value="" selected="selected">Select notification type</option>
+   
+    <option selected="selected"
+        {% if data.showDapResults %} 
+            value={{data.dap_type}} 
+        {% else %} 
+            value="Select notification type" 
+        {% endif %}>
+
+        {% if data.showDapResults %} 
+            {{data.dap_type}} 
+        {% else %} 
+        Select notification type
+        {% endif %}
+    </option>
+
     <option value="2134 Change of Name Data">2134 Change of Name Data</option> 
     <option value="2135 Change of Contact Details">2135 Change of Contact Details</option> 
     <option value="2136 Nino Supersession Data">2136 Nino Supersession Data </option> 

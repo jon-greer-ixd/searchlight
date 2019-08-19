@@ -26,7 +26,6 @@ var contactFunctions = require('../functions/contact.js');
 var guardianRole = false;
 
 var getCitizen = function(nino, cis) {
-  console.log(cis[nino].nameOne.first);
   return cis[nino]
 }
 
@@ -311,7 +310,10 @@ router.use('/', main);
     
   req.session.data.mcheck = false;
 
+  //dap
   req.session.data.showDapResults = false;
+  req.session.data.dap_type = null;
+  req.session.data.dap_date = null;
     
   //set a nino for account version 3
   req.session.data.cis = require('./data/cis.js').cis;
@@ -488,16 +490,21 @@ router.get(/authority-handler/, function (req, res) {
 })
 
 
-/*************/
-/** CONTACT **/
-/*************/
+/********************************************/
+/** Bereavement - Death arrears payee data **/
+/********************************************/
 
 router.get(/dap-results-handler/, function (req, res) {
   req.session.data.showDapResults = true;
-  console.log();
+  req.session.data.dap_date = req.query.not_date;
+  req.session.data.dap_type = req.query.systemid;
   res.redirect('./notifications-search')
 })
 
+
+/*************/
+/** CONTACT **/
+/*************/
 
 
 router.get(/contact-change-handler/, function (req, res) {
