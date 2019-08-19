@@ -311,7 +311,7 @@ router.use('/', main);
   req.session.data.mcheck = false;
 
   //dap
-  req.session.data.showDapResults = false;
+  req.session.data.showDapResults = null;
   req.session.data.dap_type = null;
   req.session.data.dap_date = null;
     
@@ -498,6 +498,11 @@ router.get(/dap-results-handler/, function (req, res) {
   req.session.data.showDapResults = true;
   req.session.data.dap_date = req.query.not_date;
   req.session.data.dap_type = req.query.systemid;
+  res.redirect('./notifications-search')
+})
+
+router.get(/dap_process_handler/, function (req, res) {
+  req.session.data.showDapResults = false;
   res.redirect('./notifications-search')
 })
 
