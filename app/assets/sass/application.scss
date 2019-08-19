@@ -2510,9 +2510,40 @@ p.disclaimer {
   }
 }
 
-
-
-
+//dap-data
+.dap-data {
+  border-bottom: 4px solid $searchlight-black;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  table {
+    margin-bottom: 30px;
+    caption {
+      color: $searchlight-black;
+      font-weight :bold;
+      font-size: 36px;
+      border-bottom: 4px solid $searchlight-blue;
+      margin-bottom: 30px;
+    }
+    tr {
+      td, th {
+        line-height: auto;
+        padding: 14px 0;
+      }
+      th {
+        width: 60%;
+      }
+      td {
+        width: 40%;
+      }
+    }
+    &:nth-child(2){
+      margin-top: 60px;
+    }
+  }
+}
+#alerts table tr td:last-child() {
+   border-bottom: 1px solid #bfc1c3;
+}
 
 
 
