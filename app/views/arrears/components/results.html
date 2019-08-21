@@ -1,91 +1,47 @@
-    <form>
-      <div class="form-group">
-        <table class="dap-options">
-          <tr>
-            <th>No</th>
-            <th>Date </th>
-            <th>Type</th>
-            <th>NINO</th>
-            <th>Surname</th>
-            <th>Date of birth</th>
-            <th>Processed date</th>
-            <th class="strong check">Select</th>
-          </tr>
+<form>
+  <div class="form-group">
+    <table class="dap-options">
+      <tr>
+        <th>No</th>
+        <th>Date </th>
+        <th>Type</th>
+        <th>NINO</th>
+        <th>Surname</th>
+        <th>Date of birth</th>
+        <th>Processed date</th>
+        <th class="strong check">Select</th>
+      </tr>
+    </table>
 
-          <tr>
-            <td class="">1</td>
-            <td class="">21 Aug 2019</td>
-            <td class="">{{ data.dap_type }}</td>
-            <td class="">AA123456X</td>
-            <td class="">Smith</td>
-            <td class="">01 Jan 1989</td>
-            <td class=""></td>
-            <td class="check">
-              <div class="multiple-choice">
-                <input id="one" name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true">
-                <label for="one"></label>
-              </div>
-            </td>
-          </tr>
-        </table>
+    {% set dapCounter = 1%}
+    {% for item in data.dapNotifications %}
+   
+      <table class="dap-options">
+        <tr>
+          <td class="">{{dapCounter}}</td>
+          <td class="">21 Aug 2019</td>
+          <td class="">{{ data.dap_type }}</td>
+          <td class="">{{ item.nino }}</td>
+          <td class="">{{ item.surname }}</td>
+          <td class="">{{ item.dob }}</td>
+          <td class=""></td>
+          <td class="check">
+            <div class="multiple-choice">
+              <input id="one" name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true">
+              <label for="one"></label>
+            </div>
+          </td>
+        </tr>
+    </table>
 
-          <details class="dap-disc">
-            <summary>View notification details</summary>
-            <div class="panel panel-border-wide">
-            {% include "./data.html" %}
-          </div>
-          </details>
-
-        <table class="dap-options">
-          <tr>
-            <td class="">2</td>
-            <td class="">21 Aug 2019</td>
-            <td class="">{{ data.dap_type }}</td>
-            <td class="">SX170201</td>
-            <td class="">Jones</td>
-            <td class="">21 Feb 1959</td>
-            <td class=""></td>
-            <td class="check">
-              <div class="multiple-choice">
-                <input id="two" name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true">
-                <label for="two"></label>
-              </div>
-            </td>
-          </tr>
-        </table>
-
-          <details class="dap-disc">
-            <summary>View notification details</summary>
-            <div>
-            {% include "./data.html" %}
-          </div>
-          </details>
-
-        <table class="dap-options">
-          <tr>
-            <td class="">3</td>
-            <td class="">21 Aug 2019</td>
-            <td class="">{{ data.dap_type }}</td>
-            <td class="">SX170201</td>
-            <td class="">Johnson</td>
-            <td class="">29 Aug 1952</td>
-            <td class=""></td>
-            <td class="check">
-              <div class="multiple-choice">
-                <input id="two" name="contact-by-text-phone" class="process-boxes" type="checkbox" value="true">
-                <label for="two"></label>
-              </div>
-            </td>
-          </tr>
-
-        </table>
-
-          <details class="dap-disc">
-            <summary>View notification details</summary>
-            <div>
-            {% include "./data.html" %}
-          </div>
-          </details>
-
+    <details class="dap-disc">
+      <summary>View notification details</summary>
+      <div class="panel panel-border-wide">
+        {% include "./data.html" %}
       </div>
-    </form>
+    </details>
+    {% set dapCounter = dapCounter + 1%}
+    {% endfor %}
+
+  </div>
+</form>

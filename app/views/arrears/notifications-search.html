@@ -53,9 +53,16 @@
 
           {% endif %}
 
-        {% if data.showDapResults == false %}
-          {% include "./components/no-results.html" %}
-        {% endif %}
+          {% if data.showDapResults == false %}
+
+            <div class="column-full">
+              <div class="sl-primary-card last-card no-results">
+                {% include "./components/no-results.html" %}
+              </div>
+            </div>
+
+          {% endif %}
+
       </div>
 
     </div>

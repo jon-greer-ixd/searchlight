@@ -41,6 +41,7 @@ $searchlight-blue: #005ea5;
 $searchlight-black: #0b0c0c;
 $secondary-text-colour: #6e777b;
 $searchlight-borders: #cac9cf;
+$sl-cream: #fff3db;
 
 
 
@@ -2590,6 +2591,15 @@ p.disclaimer {
   padding-bottom: 14px;
 }
 
+
+.no-results {
+  background-color: $sl-cream;
+  p {
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+  }
+}
 
 
 

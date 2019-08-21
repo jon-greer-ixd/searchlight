@@ -314,7 +314,8 @@ router.use('/', main);
   req.session.data.showDapResults = null;
   req.session.data.dap_type = null;
   req.session.data.dap_date = null;
-    
+  req.session.data.dapNotifications = require('./data/dapNotifications.js').dapNotifications;
+
   //set a nino for account version 3
   req.session.data.cis = require('./data/cis.js').cis;
   req.session.data.citizen = getCitizen("SX170202", req.session.data.cis);
