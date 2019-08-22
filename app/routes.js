@@ -495,14 +495,17 @@ router.get(/authority-handler/, function (req, res) {
 /** Bereavement - Death arrears payee data **/
 /********************************************/
 
-router.get(/dap-results-handler/, function (req, res) {
+router.get(/dap-search-handler/, function (req, res) {
   req.session.data.showDapResults = true;
   req.session.data.dap_date = req.query.not_date;
   req.session.data.dap_type = req.query.systemid;
   res.redirect('./notifications-search')
 })
 
-router.get(/dap_process_handler/, function (req, res) {
+router.get(/dap-process-handler/, function (req, res) {
+  for (var item in req.query) {
+    console.log("here " + item)
+  }
   req.session.data.showDapResults = false;
   res.redirect('./notifications-search')
 })
