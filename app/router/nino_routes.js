@@ -625,4 +625,225 @@ router.get('/nino/2/task-list/', function (req, res) {
   })
 })
 
+
+//************
+//All versions
+//************
+
+
+//special-needs
+router.get(/check-handler/, function (req, res) {
+  if(trace === true) {
+    res.redirect('trace')
+  } else {
+    res.redirect('done')
+  }
+})
+
+//other-name-handler
+router.get(/other-name-handler/, function (req, res) {
+  var next = 'dob';
+  if (req.query.requested[0] === 'true') {
+    person.rfa_name = true;
+    next = 'name-requested';
+  }
+  if (req.query.previous[0] === 'true') {
+    person.previous_name = true;
+    next = 'name-previous';
+  }
+  if (req.query.alternative[0] === 'true') {
+    person.alternative_name = true;
+    next = 'name-alternative';
+  }
+  res.redirect(next)
+})
+
+//alternative-name-handler
+router.get(/alternative-name-handler/, function (req, res) {
+  var next = 'dob';
+  if (person.rfa_name === true) {
+    next = 'name-requested';
+  }
+  if (person.previous_name === true) {
+    next = 'name-previous';
+  }
+  res.redirect(next)
+})
+
+//previous-question-handler
+router.get(/previous-question-handler/, function (req, res) {
+  if (req.query.data === 'yes') {
+    person.previous_name_count++;
+    res.redirect('name-previous')
+  } else if (person.rfa_name === true) {
+    res.redirect('name-requested')
+  } else {
+    res.redirect('dob')
+  }
+})
+
+//correspondence-address-handler
+router.get(/correspondence-address-handler/, function (req, res) {
+  if (req.query.data === 'yes') {
+    res.redirect('search-correspondence')
+  } else {
+    person.correspondence_address = false;
+    res.redirect('address-question')
+  }
+})
+
+//manual-address-handler
+router.get(/manual-handler/, function (req, res) {
+  if (person.previous_address != null) {
+    res.redirect('contact-question')
+  } else {
+    res.redirect('address-question')
+  }
+})
+
+
+//correspondence-address-handler
+router.get(/correspondence-results-handler/, function (req, res) {
+  if(person.previous_address === null) {
+    res.redirect('address-question')
+  } else {
+    res.redirect('contact-question')
+  }
+})
+
+//search-results-handler
+router.get(/address-stat-handler/, function (req, res) {
+  if (req.query.data === 'live' || req.query.data === 'dlo') {
+    res.redirect('address-search')
+  } else {
+    res.redirect('search-correspondence')
+  }  
+})
+
+//search-handler
+router.get(/add-man-handler/, function (req, res) {
+  if (req.query.uk === 'no') {
+    res.redirect('dates')
+  } else {
+    res.redirect('search-results')
+  }
+})
+
+//search-handler
+router.get(/search-handler/, function (req, res) {
+  if (req.query.uk === 'no') {
+    res.redirect('correspondence-question')
+  } else {
+    res.redirect('search-results')
+  }
+})
+
+//search-handler
+router.get(/mauual-previous-handler/, function (req, res) {
+  person.previous_address_count++;
+  res.redirect('address-question')
+})
+
+//search-previous-handler
+router.get(/s-previous-handler/, function (req, res) {
+  if (req.query.uk === 'no') {
+    res.redirect('contact-question')
+  } else {
+    res.redirect('previous-results')
+  }
+})
+
+//search-previous-handler
+router.get(/s-correspondence-handler/, function (req, res) {
+  person.correspondence_address = true;
+  if (req.query.uk === 'no') {
+    if (person.previous_address === null) {
+      res.redirect('address-question')
+    } else {
+      res.redirect('contact-question')
+    }
+  } else {
+    res.redirect('correspondence-results')
+  }
+})
+
+//previous-address-handler
+router.get(/previous-address-handler/, function (req, res) {
+  var next;
+  if (person.previous_address_count === 0) {
+    if (req.query.data === 'yes') {
+      person.previous_address = true;
+    } else {
+      person.previous_address = false;
+    }
+    person.previous_address_count++;
+  }
+  if (req.query.data === 'yes') {
+    next = 'search-previous';
+  } else if (person.correspondence_address === null) {
+    next = 'correspondence-question';
+  } else {
+    next = 'contact-question';
+  }
+  res.redirect(next)
+})
+
+//contact-handler
+router.get(/contact-handler/, function (req, res) {
+  if (req.query.data === 'telephone') {
+    res.redirect('telephone')
+  } else if (req.query.data === 'email') {
+    res.redirect('email')
+  } else {
+    res.redirect('mobile')
+  }
+})
+
+//requested-name-handler
+router.get(/requested-name-handler/, function (req, res) {
+  if (req.query.data === 'yes') {
+    person.requested_name = true;
+    res.redirect('name-requested')
+  } else {
+    person.requested_name = false;
+    res.redirect('previous-name')
+  }
+})
+
+//ethnic-handler
+router.get(/ethnic-origin-handler/, function (req, res) {
+  person.ethnic_origin = true;
+  res.redirect('task-list')
+})
+
+//immigration-handler
+router.get(/immigration-handler/, function (req, res) {
+  person.immigration = true;
+  res.redirect('task-list')
+})
+
+//preferred-language-handler
+router.get(/preferred-language-handler/, function (req, res) {
+  person.preferred_language = true;
+  res.redirect('task-list')
+})
+
+//spoken-language-handler
+router.get(/spoken-language-handler/, function (req, res) {
+  person.spoken_language = true;
+  res.redirect('task-list')
+})
+
+//disability-handler
+router.get(/disability-handler/, function (req, res) {
+  person.disability = true;
+  res.redirect('task-list')
+})
+
+//special-needs-handler
+router.get(/special-needs-handler/, function (req, res) {
+  person.special_needs = true;
+  res.redirect('task-list')
+})
+
 module.exports = router
