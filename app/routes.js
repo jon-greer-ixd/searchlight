@@ -231,6 +231,7 @@ var settlementStatusRoutes = require('./router/settlementStatus_routes');
 var getDetailsAboutADeathRoutes = require('./router/getDetailsAboutADeath_routes');
 var bereavementRoutes = require('./router/bereavement_routes');
 var localAuthorityRoutes = require('./router/local_authority_routes');
+var notificationsRoutes = require('./router/notifications_routes');
 
 
 // search page
@@ -296,7 +297,8 @@ router.use('/', main,
                 getDetailsAboutADeathRoutes, 
                 settlementStatusRoutes, 
                 bereavementRoutes,
-                localAuthorityRoutes);
+                localAuthorityRoutes,
+                notificationsRoutes);
   // Route index page
   router.get('/', function (req, res) { 
     
@@ -2383,25 +2385,6 @@ router.get('/alerts/v2/page-one', function (req, res) {
 })
 
 
-/*******************/
-/** notifications **/
-/*******************/
-
-router.get('/notifications/page-one', function (req, res) {
-  res.render('notifications/page-one.njk')
-})
-
-router.get('/notifications/v2/page-one', function (req, res) {
-  res.render('notifications/v2/page-one.njk')
-})
-
-router.get('/notifications/v3/page-one', function (req, res) {
-  res.render('notifications/v3/page-one.njk')
-})
-
-router.get('/notifications/search', function (req, res) {
-  res.render('notifications/search.njk')
-})
 
 
 
