@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
+var trace = false;
 var underSixteen = false;
 
 var setTrace = function(y) {
