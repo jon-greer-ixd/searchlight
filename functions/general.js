@@ -44,4 +44,5 @@ function setToasterMessage(item, type, updateType) {
   return message
 }
 
+
 module.exports.setToasterMessage = setToasterMessage;

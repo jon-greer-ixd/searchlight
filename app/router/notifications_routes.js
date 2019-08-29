@@ -2,7 +2,7 @@
 var express = require('express')
 var router = express.Router()
 
-
+//notifications
 router.get('/notifications/page-one', function (req, res) {
     res.render('notifications/page-one.njk')
   })

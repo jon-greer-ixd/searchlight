@@ -1,11 +1,21 @@
 var express = require('express')
 var router = express.Router()
 
-// function setTrace(y) {
-//   if(y == 'true') {
-//     trace = true;
-//   }
-// }
+var underSixteen = false;
+
+var setTrace = function(y) {
+  if(y == 'true') {
+    return true;
+  }
+}
+
+var setCreateJourney = function(x) {
+  if (x == 'create' ) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 //name
 router.get('/nino/2/name/', function (req, res) {
@@ -23,35 +33,35 @@ router.get(/v1-type-handler/, function (req, res) {
 
 router.get(/v2-type-handler/, function (req, res) {
   ninoVersion = 2;
-  if ((req.query.trace[0]) == 'true') true;
+  trace = setTrace(req.query.trace[0]);
   req.session.data.createJourney = setCreateJourney(req.query.data);
   res.redirect('../../search')
 })
 
 router.get(/v3-type-handler/, function (req, res) {
-  // ninoVersion = 3;
-  if ((req.query.trace[0]) == 'true') trace = true;
+  ninoVersion = 3;
+  trace = setTrace(req.query.trace[0]);
   req.session.data.createJourney = setCreateJourney(req.query.data);
   res.redirect('../../search')
 })
 
 router.get(/v4-type-handler/, function (req, res) {
   ninoVersion = 4;
-  if ((req.query.trace[0]) == 'true') trace = true;
+  trace = setTrace(req.query.trace[0]);
   req.session.data.createJourney = setCreateJourney(req.query.data);
   res.redirect('../../search')
 })
 
 router.get(/v5-type-handler/, function (req, res) {
   ninoVersion = 5;
-  if ((req.query.trace[0]) == 'true') trace = true;
+  trace = setTrace(req.query.trace[0]);
   req.session.data.createJourney = setCreateJourney(req.query.data);
   res.redirect('../../search')
 })
 
 router.get(/v6-type-handler/, function (req, res) {
   ninoVersion = 6;
-  if ((req.query.trace[0]) == 'true') trace = true;
+  trace = setTrace(req.query.trace[0]);
   req.session.data.createJourney = setCreateJourney(req.query.data);
   res.redirect('../../search')
 })
