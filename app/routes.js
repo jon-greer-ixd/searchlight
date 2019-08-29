@@ -13,7 +13,6 @@ var flip = require('./defaults.js').flip;
 var setState = require('./defaults.js').setState;
 var changeSex = require('./defaults.js').changeSex;
 var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
-var bsFunctions = require('../functions/bsFunctions.js');
 var generalFunctions = require('../functions/general.js');
 var addressFunctions = require('../functions/address.js');
 var contactFunctions = require('../functions/contact.js');
@@ -22,7 +21,7 @@ var contactFunctions = require('../functions/contact.js');
 
 ///////////////
 // July 2019 //
-///////////////
+/////////////// 
 var guardianRole = false;
 
 var getCitizen = function(nino, cis) {
@@ -35,25 +34,7 @@ router.get('/cis-handler/', function (req, res) {
   res.redirect('account3/account')
 })
 
-// given a nino in a href
-// get nino from href
-// find person in database
-// use this persons data in account 3
 
-
-//************
-// Bereavement 
-//************
-
-router.get(/bereavement-handler/, function (req, res) {
-  req.session.data.bsNino = req.query.bsnino.toUpperCase();
-  req.session.data.bsPerson = req.session.data.bsCustomers[req.session.data.bsNino];
-  if( bsFunctions.getPerson(req.session.data.bsNino, req.session.data.bsCustomers) ) {
-    res.redirect('/bereavement/account-v2')
-  } else {
-    res.redirect('/search-v8')
-  }
-})
 
 
 
@@ -243,7 +224,14 @@ var dataState = {
   statusCorrected : false
 };
 
+
+//routes
 var main = require('./main/routes');
+var settlementStatusRoutes = require('./router/settlementStatus_routes');
+var getDetailsAboutADeathRoutes = require('./router/getDetailsAboutADeath_routes');
+var bereavementRoutes = require('./router/bereavement_routes');
+var localAuthorityRoutes = require('./router/local_authority_routes');
+
 
 // search page
 router.get('/search', function (req, res) {
@@ -304,7 +292,11 @@ router.get('/search-v9', function (req, res) {
 
 var tempInterest;
 
-router.use('/', main);
+router.use('/', main, 
+                getDetailsAboutADeathRoutes, 
+                settlementStatusRoutes, 
+                bereavementRoutes,
+                localAuthorityRoutes);
   // Route index page
   router.get('/', function (req, res) { 
     
@@ -431,84 +423,8 @@ function managementCheck(check) {
 /** UPDATE **/
 /************/
 
-/***************/
-/** AUTHORITY **/
-/***************/
-
-//add
-router.get(/interest-change-handler/, function (req, res) {
-  req.session.data.tempInterest = req.query.interest;
-  req.session.data.interestState = req.query.state;
-  if (req.query.state == 'ending' && req.query.interest != 'both') {
-    res.redirect('/update/auth-interests/check')
-  } else {
-    res.redirect('/update/auth-interests/interest-detail')
-  }
-})
-
-//check
-router.get(/authority-handler/, function (req, res) {
-  for (var y in req.session.data.authority) {
-    if ( req.session.data.authority[y].state == 'added') {
-      req.session.data.authority[y].state = 'existing';
-    }
-    if ( req.session.data.authority[y].state == 'ended') {
-      req.session.data.authority[y].state = 'old';
-    }
-  }
-  //adding
-  if(req.session.data.interestState == 'adding') {
-    if (req.session.data.ctr == 'true') {
-      req.session.data.authority.councilTaxReduction.state = 'added';
-      req.session.data.authority.councilTaxReduction.show = true;
-    }
-    if (req.session.data.hb == 'true') {
-      req.session.data.authority.housingBenefit.state = 'added';
-      req.session.data.authority.housingBenefit.show = true;
-    }
-  //updating
-  } else if (req.session.data.interestState == 'updating') {
-    req.session.data.authority[req.session.data.tempInterest].state = 'added';
-    req.session.data.authority[req.session.data.tempInterest].show = true;
-  //ending
-  } else { //ending
-    if (req.session.data.ctr == 'true') {
-      req.session.data.authority.councilTaxReduction.state = 'ended';
-      req.session.data.authority.councilTaxReduction.show = false;
-    }
-    if (req.session.data.hb == 'true') {
-      req.session.data.authority.housingBenefit.state = 'ended';
-      req.session.data.authority.housingBenefit.show = false;
-    }
-    if (req.session.data.tempInterest != 'both') {
-      req.session.data.authority[req.session.data.tempInterest].state = 'ended';
-      req.session.data.authority[req.session.data.tempInterest].show = false;
-    }
-  }
-  req.session.data.ctr = null;
-  req.session.data.hb = null;
-  res.redirect('authority-account')
-})
 
 
-/********************************************/
-/** Bereavement - Death arrears payee data **/
-/********************************************/
-
-router.get(/dap-search-handler/, function (req, res) {
-  req.session.data.showDapResults = true;
-  req.session.data.dap_date = req.query.not_date;
-  req.session.data.dap_type = req.query.systemid;
-  res.redirect('./notifications-search')
-})
-
-router.get(/dap-process-handler/, function (req, res) {
-  for (var item in req.query) {
-    console.log("here " + item)
-  }
-  req.session.data.showDapResults = false;
-  res.redirect('./notifications-search')
-})
 
 
 /*************/
