@@ -2601,6 +2601,46 @@ p.disclaimer {
   }
 }
 
-
+.trace-background {
+  background: #f1f1f1;
+  padding: 30px 0;
+}
+#mainsearchform {
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.2), 0 1px 3px 0 rgba(0,0,0,.1);
+  padding: 30px;
+  background:white;
+  max-width: 1310px;
+  margin: 0 auto;
+  .form-group {
+    width: 47%;
+    margin-right: 3%;
+    input {
+      width: 100%;
+    }
+  }
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+  .short {
+    width: 30.3%;
+    float: left;
+  }
+  .form-col-large {
+    width: 70%;
+    float :left;
+  }
+  .form-col-small {
+    width: 30%;
+    float :left;
+  }
+  .inline {
+    width: 40%;
+    float: left;
+    clear: none;
+  }
+}
 
 
