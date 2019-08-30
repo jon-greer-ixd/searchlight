@@ -506,7 +506,7 @@ var bsCustomers = {
           }
         }
         preview.classList.add("visible");
-        managementCheck.classList.add("visible");
+        // managementCheck.classList.add("visible");
       } else {
         preview.classList.remove("visible");
       }

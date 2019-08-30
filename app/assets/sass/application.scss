@@ -2702,9 +2702,23 @@ a.sl-secondary-button {
   }
 }
 
-
 #search .sl-home-search-input-container {
   padding-bottom: 60px;
 }
 
-
+.sl-user-search-container {
+  padding: 20px;
+  height: auto;
+  width: 91.6%;
+  h3 {
+    color: $searchlight-blue;
+    font-size: 1.69em;
+    font-weight: 700;  
+    padding: 0;
+  }
+  p {
+    padding: 0 0 5px 0;
+    margin: 0;
+    color: $searchlight-black;
+  }
+}
