@@ -70,7 +70,6 @@ var resetInterests = function () {
   addInterest(esa);
 }
 
-
 function resetTempInterest(interest) {
   tempInterest = Interest.createInterest();
   interest = tempInterest;
@@ -222,6 +221,7 @@ var notificationsRoutes = require('./router/notifications_routes');
 var ninoRoutes = require('./router/nino_routes');
 var contactRoutes = require('./router/contact_routes');
 var interestRoutes = require('./router/contact_routes');
+var traceRoutes = require('./router/trace_routes');
 
 
 // search page
@@ -291,7 +291,8 @@ router.use('/', main,
                 notificationsRoutes,
                 ninoRoutes,
                 contactRoutes,
-                interestRoutes);
+                interestRoutes,
+                traceRoutes);
                 
   // Route index page
   router.get('/', function (req, res) { 
