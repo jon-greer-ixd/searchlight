@@ -1,0 +1,12 @@
+[
+  {
+    "nino" : "SX170201",
+    "ninoLevel" : 2,
+    "nameOneTitle" : "Mr", "nameOneFirst" : "Alex", "nameOneLast" : "Campbell"
+  },
+  {
+    "nino" : "SX170202",
+    "ninoLevel" : 2,
+    "nameOneTitle" : "Mrs", "nameOneFirst" : "James", "nameOneLast" : "Smith"
+  }
+]

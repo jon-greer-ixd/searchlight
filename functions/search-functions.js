@@ -1,14 +1,13 @@
 function getCitizen(nino, list) {
   nino = nino.toUpperCase();
-  for (person in list) {
-    if(person == nino ) {
-      console.log(`Found! person = ${person}`);
-      return person;
-    } else {
-      console.log(`Not found`);
-      return null;
+  var result = null;
+  for (var person in list) {
+    if(person == nino) {
+      console.log(`Found! person = ${list[person].nameOne.first}`);
+      result = list[person];
     }
   }
+  return result;
 };
 
 module.exports.getCitizen = getCitizen;

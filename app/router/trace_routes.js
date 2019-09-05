@@ -16,9 +16,9 @@ router.get(/trace-handler/, function (req, res) {
 
 router.get(/preview-handler/, function (req, res) {
   req.session.data.nino = req.query.nino.toUpperCase();
-  getCitizen(req.session.data.nino, req.session.data.cis)
-    res.redirect('/account3/account')
+  req.session.data.citizen = getCitizen(req.session.data.nino, req.session.data.cis);
+  res.redirect('/account3/account')
 })
+
   
-    
 module.exports = router
