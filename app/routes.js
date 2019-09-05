@@ -6,6 +6,8 @@ var addressTwo = '2 New Street';
 var addressThree = '7 Post Street';
 var addressFour = 'Gateshead, Tyne and Wear NE1 1HH';
 
+var getCitizen = require('../functions/search-functions.js').getCitizen;
+
 var content = require('./content.js').content;
 var Interest = require('./interest.js');
 var defaults = require('./defaults.js').defaults;
@@ -23,9 +25,9 @@ var addressFunctions = require('../functions/address.js');
 /////////////// 
 var guardianRole = false;
 
-var getCitizen = function(nino, cis) {
-  return cis[nino]
-}
+// var getCitizen = function(nino, cis) {
+//   return cis[nino]
+// }
 
 router.get('/cis-handler/', function (req, res) {
   req.session.data.guardianRole = guardianRole;

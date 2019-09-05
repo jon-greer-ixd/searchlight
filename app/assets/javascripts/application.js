@@ -485,32 +485,7 @@ var bsCustomers = {
     var inputvalue;
   
   
-    bsInput.oninput = function(){
-      counter = bsInput.value.length;
-      console.log(counter);
-      if (counter == 8 || counter == 9) {
-        inputvalue = bsInput.value.toUpperCase();
-        console.log(inputvalue);
-        for (person in bsCustomers) {
-          if (inputvalue == person) {
-           console.log("TEST found");
-            document.getElementById("bsfirstname").innerHTML = bsCustomers[person].firstName.toUpperCase();
-            document.getElementById("bslastname").innerHTML = bsCustomers[person].lastName.toUpperCase();
-            document.getElementById("bspostcode").innerHTML = bsCustomers[person].postCode;
-            if(bsCustomers[person].title != "") {
-              document.getElementById("bstitle").innerHTML = bsCustomers[person].title.toUpperCase() + " ";
-            } else {
-              document.getElementById("bstitle").innerHTML = "";
-            }
-            document.getElementById("bsDob").innerHTML = bsCustomers[person].dob;
-          }
-        }
-        preview.classList.add("visible");
-        // managementCheck.classList.add("visible");
-      } else {
-        preview.classList.remove("visible");
-      }
-    };
+    
   }
   
 })

@@ -728,8 +728,6 @@ h1.question-title {
         border-right: 1px solid #BFC1C3;
         border-left: 1px solid #BFC1C3;
       }
-      &:last-child {
-      }
     }
   }
 }
@@ -2704,6 +2702,11 @@ a.sl-secondary-button {
 
 #search .sl-home-search-input-container {
   padding-bottom: 60px;
+}
+
+#preview {
+  padding: 0;
+  margin: 0;
 }
 
 .sl-user-search-container {
