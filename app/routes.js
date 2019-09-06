@@ -225,6 +225,7 @@ var contactRoutes = require('./router/contact_routes');
 var interestRoutes = require('./router/contact_routes');
 var traceRoutes = require('./router/trace_routes');
 
+  
 
 // search page
 router.get('/search', function (req, res) {
@@ -279,6 +280,12 @@ router.get('/search-v8', function (req, res) {
 
 router.get('/search-v9', function (req, res) {
   res.render('pages/search-v9.njk', {
+    ninoversion : ninoVersion
+  })
+})
+
+router.get('/search-v11', function (req, res) {
+  res.render('pages/search-v11.njk', {
     ninoversion : ninoVersion
   })
 })
