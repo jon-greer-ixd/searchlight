@@ -19,29 +19,30 @@ function processNotifications(selectedNotifications, notifications) {
 }
 
 function getNotifications(status, date, notifications) {
-  console.log(status);
+  var tempNotifications = [];
   var notificationsToShow = [];
-  //setup the notifications
-  if (date == "1/9/2019") {
-    notifications = notifications.slice(0, 1);
-  } else {
-    notifications = notifications.slice(1, 4);
+  //get by date
+  for (var item in notifications) {
+    if (notifications[item].notifiedDate == date) {
+      tempNotifications.push(notifications[item]);
+    }
   }
   //get by status
-  for (var item in notifications) {
-    if (status == "all") {
-      notificationsToShow.push(notifications[item]);
-    } else if (notifications[item].processed == false && status == "unprocessed") {
-      notificationsToShow.push(notifications[item]);
-    } else if (notifications[item].processed == true && status == "processed") {
-      notificationsToShow.push(notifications[item]);
+  for (var item in tempNotifications) {
+    if (status == "unprocessed") {
+      if (tempNotifications[item].processed == false ) {
+        notificationsToShow.push(tempNotifications[item]);
+      }
+    } else if (status == "processed") {
+      if (tempNotifications[item].processed == true) {
+        notificationsToShow.push(tempNotifications[item]);
+      }
     }
   }
   return notificationsToShow;
 }
 
 router.get(/get-daps-handler/, function (req, res) {
-  console.log(req.query);
     req.session.data.showDapResults = true;
     req.session.data.dapNotificationstoShow = getNotifications(req.session.data.notificationStatus, req.query.not_date, req.session.data.dapNotifications);
     req.session.data.dapDateAsString = dates.convertDayToString(req.query.not_date);
