@@ -23,7 +23,7 @@
         {% if data.showDapResults == true %}
           {% if data.dapNotificationstoShow == '' %}
           <div class="sl-primary-card last-card no-results">
-            {% include "./components/no-results.html" %}
+            <p>No {{ data.notificationStatus }} notifications for {{ data.requestedDateAsString }}</p>
             </div>
           {% else %}
             {% include "./components/results.html" %}
@@ -33,7 +33,7 @@
         {% if data.showDapResults == false %}
           <div class="column-full">
             <div class="sl-primary-card last-card no-results">
-              {% include "./components/no-results.html" %}
+              <p>No {{ data.notificationStatus }} notifications for {{ data.requestedDateAsString }}</p>
             </div>
           </div>
         {% endif %}

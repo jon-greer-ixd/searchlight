@@ -2,6 +2,7 @@
 
   <div class="sl-primary-card" id="alerts">
 
+    <h3 class="strong">{{ data.notificationStatus | capitalize }} notifications for {{ data.requestedDateAsString }}</h3>
     <p>Page 1 of 1</p>
     <form id="alert-search-form" action="dap-process-handler">
       <div class="form-group">
@@ -23,7 +24,7 @@
             <table class="dap-options">
               <tr id={dapCounter}}>
                 <td class="">{{dapCounter}}</td>
-                <td class="">{{data.dapDateAsString}}</td>
+                <td class="">{{data.requestedDateAsString}}</td>
                 <td class="">{{ data.dap_type }}</td>
                 <td class="">{{ item.nino }}</td>
                 <td class="">{{ item.surname }}</td>

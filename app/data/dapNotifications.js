@@ -1,7 +1,7 @@
 var dates = require('../dates.js').dates;
 
 var dateToday = "8/9/2019";
-var dateYesterday = "10/9/2019";
+var dateYesterday = "7/9/2019";
 
 var dapNotifications = [
 	{"nino" : "SX170204", notifiedDate: dateYesterday, "surname" : "Harrison", "dob" : "25 February 1943", "processed" : false, date: null},

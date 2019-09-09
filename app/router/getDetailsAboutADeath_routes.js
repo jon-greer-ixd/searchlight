@@ -37,6 +37,8 @@ function getNotifications(status, date, notifications) {
       if (tempNotifications[item].processed == true) {
         notificationsToShow.push(tempNotifications[item]);
       }
+    } else if (status == "all") {
+      notificationsToShow.push(tempNotifications[item]);
     }
   }
   return notificationsToShow;
@@ -45,7 +47,7 @@ function getNotifications(status, date, notifications) {
 router.get(/get-daps-handler/, function (req, res) {
     req.session.data.showDapResults = true;
     req.session.data.dapNotificationstoShow = getNotifications(req.session.data.notificationStatus, req.query.not_date, req.session.data.dapNotifications);
-    req.session.data.dapDateAsString = dates.convertDayToString(req.query.not_date);
+    req.session.data.requestedDateAsString = dates.convertDayToString(req.query.not_date);
     req.session.data.dap_type = req.query.systemid;
     res.redirect('./notifications-search')
   })
