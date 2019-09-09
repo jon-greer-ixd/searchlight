@@ -715,7 +715,6 @@ if (document.getElementById("day-number")) {
 }
 
 if ( document.getElementById("alerts") || document.getElementById("notifications") ) {
-    console.log('here');
     var processButton = document.getElementById("processButton");
     var unprocessButton = document.getElementById("unprocessButton");
     var processBoxes = document.getElementsByClassName("process-boxes");

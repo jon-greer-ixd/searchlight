@@ -59,6 +59,9 @@ var dates = {
       return (date);
     }
   },
+  yesterdayAsString : function() {
+    return (today.getDate() - 1) + " " + monthAsString + " " + year;
+  },
   todayAsString : function() {
     return dayOfTheMonth + " " + monthAsString + " " + year;
   },

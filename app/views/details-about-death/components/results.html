@@ -23,12 +23,12 @@
             <table class="dap-options">
               <tr id={dapCounter}}>
                 <td class="">{{dapCounter}}</td>
-                <td class="">{{data.dap_date_as_string}}</td>
+                <td class="">{{data.dapDateAsString}}</td>
                 <td class="">{{ data.dap_type }}</td>
                 <td class="">{{ item.nino }}</td>
                 <td class="">{{ item.surname }}</td>
                 <td class="">{{ item.dob }}</td>
-                <td class=""></td>
+                <td class=""> {{ item.date }} </td>
                 <td class="check">
                   <div class="multiple-choice">
                     <input id={{item.nino}} name={{item.nino}} class="process-boxes" type="checkbox" value=true>
@@ -57,8 +57,12 @@
 
       <div class="form-group">
         <fieldset>
+        {% if data.notificationStatus == 'unprocessed' or data.notificationStatus == 'all' %}
           <button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
+        {% endif %}
+        {% if data.notificationStatus == 'processed' or data.notificationStatus == 'all' %}
           <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as unprocessed</button></a>
+        {% endif %}
         </fieldset>
       </div>
         

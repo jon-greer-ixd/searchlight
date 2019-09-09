@@ -8,7 +8,7 @@
             For example 21/10/2018
           </span>
         </label>
-        <input class="form-control box-three" id="not_date" type="text" name="not_date" value={{data.dap_date}}>
+        <input class="form-control box-three" id="not_date" type="text" name="not_date" value={{data.not_date}}>
         <a class="populate-link-three">Use yesterday's date</a>
       </div>
     </div>
@@ -65,15 +65,15 @@
               <fieldset>
                 <label class="form-label" for="full-name-f1">Status</label>
                 <div class="multiple-choice">
-                  <input id="unprocessed" type="radio" name="notification_status" value="unprocessed" checked=checked>
+                  <input id="unprocessed" type="radio" name="notificationStatus" value="unprocessed" {% if data.notificationStatus == 'unprocessed'  %} checked=checked {% endif %}>
                   <label for="unprocessed">Unprocessed</label>
                 </div>
                 <div class="multiple-choice">
-                  <input id="processed" type="radio" name="notification_status" value="processed">
+                  <input id="processed" type="radio" name="notificationStatus" value="processed" {% if data.notificationStatus == 'processed'  %} checked=checked {% endif %}>
                   <label for="processed">Processed</label>
                 </div>
                 <div class="multiple-choice">
-                  <input id="all" type="radio" name="notification_status" value="all">
+                  <input id="all" type="radio" name="notificationStatus" value="all" {% if data.notificationStatus == 'all'  %} checked=checked {% endif %}>
                   <label for="radio-3">All</label>
                 </div>
               </fieldset>

@@ -1546,13 +1546,18 @@ hr.mid {
   max-width: 1555px;
 }
 
-
 // alerts //
 .options {
   @include clearfix;
+  float: left;
   width: 100%;
   display: block;
   margin-bottom: 20px;
+  ul {
+    display: block;
+    @include clearfix;
+    margin-bottom: 15px;
+  }
   li {
     margin-right: 25px;
     float :left;
@@ -1581,6 +1586,7 @@ hr.mid {
     table-layout: auto;
     .multiple-choice {
       position: relative;
+      float: right;
       left: 20px;
       top: 3px;
       [type=checkbox] + label::before {
@@ -2515,6 +2521,7 @@ p.disclaimer {
   border-bottom: 4px solid $searchlight-black;
   margin-bottom: 30px;
   margin-top: 30px;
+  margin-left: 20px;
   table {
     margin-bottom: 30px;
     caption {
@@ -2548,28 +2555,28 @@ p.disclaimer {
 #alerts table.dap-options {
   th, td {
     &:nth-child(1){
-      width: 2.5%;
+      width: 4%;
     }
     &:nth-child(2){
-      width: 8%;
-    }
-    &:nth-child(3){
       width: 12%;
     }
+    &:nth-child(3){
+      width: 27%;
+    }
     &:nth-child(4){
-      width: 8%;
+      width: 9%;
     }
     &:nth-child(5){
-      width: 16%;
+      width: 15%;
     }
     &:nth-child(6){
-      width: 8%;
+      width: 11%;
     }
     &:nth-child(7){
-      width: 8%;
+      width: 11%;
     }
     &:nth-child(8){
-      width: 1%;
+      width: 11%;
       text-align: right;
     }
   }
