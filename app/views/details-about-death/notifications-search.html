@@ -19,9 +19,18 @@
        <br>
 
       <div id="search-results" class="grid-row">
+
         {% if data.showDapResults == true %}
-          {% include "./components/results.html" %}
-        {% elif data.showDapResults == false %}
+          {% if data.dapNotificationstoShow == '' %}
+          <div class="sl-primary-card last-card no-results">
+            {% include "./components/no-results.html" %}
+            </div>
+          {% else %}
+            {% include "./components/results.html" %}
+          {% endif %}
+        {% endif %}
+
+        {% if data.showDapResults == false %}
           <div class="column-full">
             <div class="sl-primary-card last-card no-results">
               {% include "./components/no-results.html" %}
@@ -30,6 +39,7 @@
         {% endif %}
       </div>
     </div>
+  </div>
   </div>
 
 

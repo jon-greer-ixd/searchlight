@@ -2,27 +2,34 @@
 var express = require('express')
 var router = express.Router()
 
+var dates = require('../dates.js').dates;
 
 function processNotifications(selectedNotifications, notifications) {
   //for every marked nino
-  console.log("+++++++++++++++++++");
   for (var item in selectedNotifications) {
     if (selectedNotifications[item][0] == 'true') {
-      console.log(item);
       for (var x in notifications) {
         if(notifications[x].nino == item) {
           notifications[x].processed = true;
-          console.log(notifications[x]);
         }
       }
     }
   }
 }
 
-function getNotifications(notifications) {
+function getNotifications(status, date, notifications) {
   var notificationsToShow = [];
+  if (date == "1/9/2019") {
+    notifications = notifications.slice(0, 1);
+  } else {
+    notifications = notifications.slice(1, 4);
+  }
   for (var item in notifications) {
-    if (notifications[item].processed == false) {
+    if (status == "all") {
+      notificationsToShow.push(notifications[item]);
+    } else if (notifications[item].processed == false && status == "unprocessed") {
+      notificationsToShow.push(notifications[item]);
+    } else if (notifications[item].processed == true && status == "processed") {
       notificationsToShow.push(notifications[item]);
     }
   }
@@ -30,17 +37,17 @@ function getNotifications(notifications) {
 }
 
 router.get(/get-daps-handler/, function (req, res) {
+    console.log(req.query.notification_status)
     req.session.data.showDapResults = true;
-    req.session.data.dap_date = req.query.not_date;
+    req.session.data.dapNotificationstoShow = getNotifications(req.session.data.notification_status, req.query.not_date, req.session.data.dapNotifications);
+    req.session.data.dap_date_as_string = dates.convertDayToString(req.query.not_date);
     req.session.data.dap_type = req.query.systemid;
-    req.session.data.dapNotificationstoShow = getNotifications(req.session.data.dapNotifications);
-    // console.log(req.session.data.dapNotifications);
     res.redirect('./notifications-search')
   })
   
 router.get(/dap-process-handler/, function (req, res) {
     processNotifications(req.query, req.session.data.dapNotifications)
-    req.session.data.dapNotificationstoShow = getNotifications(req.session.data.dapNotifications);
+    req.session.data.dapNotificationstoShow = getNotifications(req.session.data.notification_status, req.session.data.dap_date, req.session.data.dapNotifications);
     res.redirect('./notifications-search')
   })
     
