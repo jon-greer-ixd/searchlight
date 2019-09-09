@@ -19,9 +19,9 @@
        <br>
 
       <div id="search-results" class="grid-row">
-        {% if data.showDapResults %}
+        {% if data.showDapResults == true %}
           {% include "./components/results.html" %}
-        {% else %}
+        {% elif data.showDapResults == false %}
           <div class="column-full">
             <div class="sl-primary-card last-card no-results">
               {% include "./components/no-results.html" %}

@@ -37,19 +37,6 @@ $(document).ready(function () {
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
   
-  //prepopulate date
-  var btnOne = $('.populate-link-one');
-  var boxOne = $('.box-one');
-  $(btnOne).click(function() {
-    boxOne.val(dayOfTheMonth + "/" + (thisMonth + 1) + "/" + year);
-  });
-  
-  var btnTwo = $('.populate-link-two');
-  var boxTwo = $('.box-two');
-  $(btnTwo).click(function() {
-    boxTwo.val(dayOfTheMonth + "/" + (thisMonth + 1) + "/" + year);
-  });
-  
 //bereavement support preview
 if (document.getElementById("maincontent") ) {
 var bsCustomers = {

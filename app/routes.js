@@ -310,6 +310,7 @@ router.use('/', main,
 
   //dap
   req.session.data.showDapResults = null;
+  console.log( `${req.session.data.showDapResults}` );
   req.session.data.dap_type = null;
   req.session.data.dap_date = null;
   req.session.data.dapNotifications = require('./data/dapNotifications.js').dapNotifications;
