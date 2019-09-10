@@ -6,38 +6,38 @@
   <div class="personal-details">
 
     <hr class="light">
-    {% include "components/account3/personal_details/sex.html" %}
+    {% include "./sex.html" %}
     <hr class="light">
     
     {% for items, item in data.personalDetails %}
       {% if item.show == true %}
         {% if items == "gender" %}
-          {% include "components/account3/personal_details/gender.html" %}
+          {% include "./gender.html" %}
           <hr class="light">
         {% elif items == "INDIndicator" %}
-          {% include "components/account3/personal_details/nationality-interest.html" %}
+          {% include "./nationality-interest.html" %}
           <hr class="light">
         {% elif items == "preferredLanguage" %}
-        <!-- include "components/account3/personal_details/preferred-language.html"           
+        <!-- include "./preferred-language.html"           
         <hr class="light">
         -->
         {% elif items == "spokenLanguage" %}
-          {% include "components/account3/personal_details/spoken-language.html" %}
+          {% include "./spoken-language.html" %}
           <hr class="light">
         {% elif items == "nationality" %}
-          {% include "components/account3/personal_details/nationality.html" %}
+          {% include "./nationality.html" %}
           <hr class="light">
         {% elif items == "immigration" %}
-          {% include "components/account3/personal_details/immigration.njk" %}
+          {% include "./immigration.njk" %}
           <hr class="light">
         {% elif items == "maritalStatus" %}
-          {% include "components/account3/personal_details/marital.html" %}
+          {% include "./marital.html" %}
           <hr class="light">
         {% elif items == "idAtRisk" %}
-          {% include "components/account3/personal_details/risk.html" %}
+          {% include "./risk.html" %}
           <hr class="light">
         {% elif items == "assetFreeze" %}
-          {% include "components/account3/personal_details/asset-freeze.html" %}
+          {% include "./asset-freeze.html" %}
           <hr class="light">
         {% endif %}
       {% endif %}
@@ -64,7 +64,7 @@
 -->
     
 <!--
-      {% include "components/account3/personal_details/postoffice.html" %}
+      {% include "./postoffice.html" %}
       <hr class="light">
 -->
     {{counter}}
