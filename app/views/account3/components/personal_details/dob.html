@@ -5,15 +5,15 @@
 
   <div class="column-one-third">
     <ul>
-      <li class="strong">{{data.citizen.dob.value}}</li>
+      <li class="strong">{{data.citizen.dobValue}}</li>
       <li class="multi-dates">
-        {% if data.citizen.dob.level == 2 %}
+        {% if data.citizen.dobLevel == 2 %}
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata">Verified to level 2</span>
-        {% elif data.citizen.dob.level == 1 %}
+        {% elif data.citizen.dobLevel == 1 %}
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata">Verified to level 1</span>
-        {% elif data.citizen.dob.level == 0 %}
+        {% elif data.citizen.dobLevel == 0 %}
           <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata">Not verified</span>
         {% endif %}

@@ -11,7 +11,7 @@
     <div class="sl-primary-name-container-placeholder ng-scope" 
       {% if data.personalDetails.dateOfDeath.show == true %} 
         id="mort" 
-      {% elif data.personalDetails.pv.value == true or data.personalDetails.pv.partner == true or data.personalDetails.pv.member == true %} 
+      {% elif data.citizen.pv.value == true or data.citizen.pv.partner == true or data.citizen.pv.member == true %} 
         id="pv" 
       {% endif %}>
       {% include "./name-details.html" %}        

@@ -6,42 +6,39 @@
         <span class="sl-primary-name-and-age">
           <span id="sl-account-primary-name" class="spacing-top-mid sl-account-primary-name">
             <h1 ng-if="data.name.primaryName" class="sl-primary-card-name sl-page-color ng-binding ng-scope">
-              {% if data.citizen.nameTwo.first != null %}
-                {% if data.citizen.nameTwo.title != null %}
-                  {{data.citizen.nameTwo.title | upper}} 
+              {% if data.citizen.nameOneFirst != null %}
+                {% if data.citizen.nameOneTitle != null %}
+                  {{data.citizen.nameOneTitle | upper}} 
                   <span class="namespace"> </span> 
                 {% endif %}
-                {{data.citizen.nameTwo.first | upper}} <span class="namespace"> </span> {{data.citizen.nameTwo.last | upper}}
+                {{data.citizen.nameOneFirst | upper}} <span class="namespace"> </span> {{data.citizen.nameOneLast | upper}}
               {% else %}
-                {% if data.citizen.nameOne.title != null %}
-                  {{data.citizen.nameOne.title | upper}} 
+                {% if data.citizen.nameOneTitle != null %}
+                  {{data.citizen.nameOneTitle | upper}} 
                   <span class="namespace"> </span> 
                 {% endif %}
-                {{data.citizen.nameOne.first | upper}} <span class="namespace"> </span> {{data.citizen.nameOne.last| upper}}
+                {{data.citizen.nameOneFirst | upper}} <span class="namespace"> </span> {{data.citizen.nameOneLast| upper}}
               {% endif %}
               
             </h1>
           </span>
           <div id="sl-account-person-age" class="spacing-bottom-mid sl-account-person-age sl-third-heading ng-scope" ng-if="data.person.person[0].birthDateGroup[0]">
             <span class="sl-nino-metadata">
-              <span ng-bind-html="data.nino + data.person.person[0].ninoGroup[0].ninoSuffix | nino" class="ng-binding">
+              <spacing>
                 <span> 
-                  <span class="nino-separator">{{data.citizen.nino.value }}</span>
+                  <span class="nino-separator">{{data.citizen.nino}}</span>
                   <span>&nbsp; · &nbsp;</span>
                 </span>
               </span>
             </span>
             <span class="sl-age-metadata">
-              <sl-age-info ng-if="data.person.person[0].deathDateGroup[0].deathDate" dates="{dateOfBirth: data.person.person[0].birthDateGroup[0].birthDate,
-        dateOfDeath: data.person.person[0].deathDateGroup[0].deathDate,  accountFlag: true}" class="ng-scope ng-isolate-scope">
+              <sl-age-info class="ng-scope ng-isolate-scope">
                 <span id="birth-death-date">
                 <!-- ngIf: dob -->
                   <span id="sl-date-of-birth" ng-if="dob" class="ng-scope">
-                    <!-- ngIf: !dod -->
-                    <!-- ngIf: dod -->
-                    <span ng-class="{'sl-person-age': !dates.accountFlag, 'sl-account-age-metadata': dates.accountFlag}" ng-if="dod" class="ng-scope sl-account-age-metadata">
-                      <span class="ng-binding">{{data.citizen.dob.value}}</span> 
-                      <span ng-class="{'sl-warning-text-red':dates.bold}" class="ng-binding"> </span>
+                    <span class="ng-scope sl-account-age-metadata">
+                      <span class="ng-binding">{{data.citizen.dobValue}}</span> 
+                      <span class="ng-binding"> </span>
                     </span>
                   </span>
                 </span>

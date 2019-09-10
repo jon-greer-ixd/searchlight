@@ -4,18 +4,18 @@
   <p>
   	<a href="/account3/account#benefits-anchor">
       <span class="back"> <img src="../../../public/images/chevron.svg"> </span>
-    {% if data.citizen.nameTwo.first != null %} 
-    	<span class="name-title">{{ data.citizen.nameTwo.title | upper }}</span>
-    	<span class="name-first">{{ data.citizen.nameTwo.first | upper }}</span>
+    {% if data.citizen.nameOneFirst != null %} 
+    	<span class="name-title">{{ data.citizen.nameOneTitle | upper }}</span>
+    	<span class="name-first">{{ data.citizen.nameOneFirst | upper }}</span>
     	<span class="name-last">{{ data.citizen.nameTwo.last | upper }}</span>
     {% else %}
-      <span class="name-title">{{ data.citizen.nameOne.title | upper }}</span>
-      <span class="name-first">{{ data.citizen.nameOne.first | upper }}</span>
+      <span class="name-title">{{ data.citizen.nameOneTitle | upper }}</span>
+      <span class="name-first">{{ data.citizen.nameOneFirst | upper }}</span>
       <span class="name-last">{{ data.citizen.nameOne.last | upper }}</span>
     {% endif %}
   	<span> · </span>
 
-  	<span>{{ data.citizen.nino.value | upper }}</span>
+  	<span>{{ data.citizen.nino | upper }}</span>
 
   	<span> · </span>
 

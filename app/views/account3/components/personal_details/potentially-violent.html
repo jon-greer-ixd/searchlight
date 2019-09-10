@@ -1,8 +1,8 @@
   <div class="grid-row names">
     
-<!--    <p>{{data.personalDetails.pv.value}}</p>-->
+<!--    <p>{{data.citizen.pv.value}}</p>-->
 
-    {% if data.personalDetails.pv.value == null %}
+    {% if data.citizen.pv.value == null %}
       <div class="column-one-third">
         <ul>
           <li>Potentially violent status</li>
@@ -33,25 +33,25 @@
 
       <div class="column-two-thirds">
 
-        {% if data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true and data.personalDetails.pv.value == true %}
+        {% if data.citizen.pv.partner == true and data.citizen.pv.member == true and data.citizen.pv.value == true %}
           This person, their partner and a member of their household are potentially violent
 
-        {% elif data.personalDetails.pv.partner == true and data.personalDetails.pv.member == true %}
+        {% elif data.citizen.pv.partner == true and data.citizen.pv.member == true %}
           This person's partner and a member of their household are potentially violent
 
-        {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.member == true %}
+        {% elif data.citizen.pv.value == true and data.citizen.pv.member == true %}
           This person and a member of their household are potentially violent
 
-        {% elif data.personalDetails.pv.value == true and data.personalDetails.pv.partner == true %}
+        {% elif data.citizen.pv.value == true and data.citizen.pv.partner == true %}
           This person and their partner are potentially violent
 
-        {% elif data.personalDetails.pv.member == true %}
+        {% elif data.citizen.pv.member == true %}
           A member of this household is potentially violent
 
-        {% elif data.personalDetails.pv.partner == true %}
+        {% elif data.citizen.pv.partner == true %}
           This person's partner is potentially violent
 
-        {% elif data.personalDetails.pv.value == true %}
+        {% elif data.citizen.pv.value == true %}
           This person is potentially violent
         {% endif %}
 

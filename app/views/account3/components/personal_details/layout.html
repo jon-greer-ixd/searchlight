@@ -1,4 +1,4 @@
-<div name="Personal" id="Personal" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+<div name="Personal" id="Personal">
   
   <h2>Personal details</h2>
   
@@ -6,12 +6,12 @@
 
     <div class="personal-details">
             
-      {% if data.personalDetails.pv.show == true %}
+      {% if data.citizen.pv.show == true %}
         {% include "./potentially-violent.html" %}
         <hr class="light">
       {% endif %}
       
-      {% if data.personalDetails.nifu.show == true %}
+      {% if data.citizen.nifu.show == true %}
         {% include "./nifu.html" %}
         <hr class="light">
       {% endif %}
