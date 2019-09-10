@@ -23,7 +23,7 @@ var addressFunctions = require('../functions/address.js');
 ///////////////
 // July 2019 //
 /////////////// 
-var guardianRole = false;
+var guardianRole = true;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]
