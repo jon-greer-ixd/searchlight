@@ -29,7 +29,8 @@
     "sp" : false,
     "pip" : true,
     "ca" : true,
-    "nationality": null
+    "nationality": null, 
+    "accountStatus": "Open"
   },
   {
     "nino" : "SX170202",
@@ -61,7 +62,8 @@
     "sp" : false,
     "pip" : false,
     "ca" : true,
-    "nationality": null
+    "nationality": null, 
+    "accountStatus": "Open"
   },
   {
     "nino" : "SX170203",
@@ -93,7 +95,8 @@
     "sp" : true,
     "pip" : false,
     "ca" : false,
-    "nationality": null
+    "nationality": null, 
+    "accountStatus": "Open"
   },
   {
     "nino" : "SX170204",
@@ -125,6 +128,7 @@
     "sp" : false,
     "pip" : false,
     "ca" : false,
-    "nationality": "Chilean"
+    "nationality": "Chilean",
+    "accountStatus": "Open"
   }
 ]

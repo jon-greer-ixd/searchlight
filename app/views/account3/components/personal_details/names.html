@@ -161,9 +161,9 @@
           <li class="sl-secondary-text-color sl-metadata">
             {% if data.citizen.nameTwoFirst == null and data.citizen.requestedNameFirst == null %}
               Add another name
-            {% elif data.citizen.nameTwoFirst != null and data.citizen.requestedNameFirst != null  %}
+            {% elif data.citizen.nameTwoFirst != null and data.citizen.requestedNameFirst == null  %}
               Add a requested name
-            {% elif data.citizen.nameOneFirst == null and data.citizen.requestedNameFirst != null  %}
+            {% elif data.citizen.nameTwoFirst == null and data.citizen.requestedNameFirst != null  %}
               Add a name type 2
             {% endif %}
           </li>
