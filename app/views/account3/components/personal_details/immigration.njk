@@ -1,4 +1,4 @@
-{% if data.personalDetails.immigration.state == "removed" %}
+{% if data.citizen.immigration.state == "removed" %}
   <div class="grid-row no-margin">
     <div class="column-one-third">
       <ul>
@@ -33,8 +33,8 @@
 
   <div class="column-one-third">
     <ul>
-      <li class="strong">{{data.personalDetails.immigration.value}}</li>
-      <li class="sl-secondary-text-color sl-metadata">Reference &nbsp; · &nbsp;{{data.personalDetails.immigration.level}}</li>
+      <li class="strong">{{data.citizen.immigration.value}}</li>
+      <li class="sl-secondary-text-color sl-metadata">Reference &nbsp; · &nbsp;{{data.citizen.immigration.level}}</li>
     </ul>
   </div>
 

@@ -9,34 +9,35 @@
     {% include "./sex.html" %}
     <hr class="light">
     
-    {% for items, item in data.personalDetails %}
-      {% if item.show == true %}
-        {% if items == "gender" %}
+    {% for detailName, value in data.citizen %}
+
+      {% if value != null %}
+        {% if detailName == "gender" %}
           {% include "./gender.html" %}
           <hr class="light">
-        {% elif items == "INDIndicator" %}
+        {% elif detailName == "INDIndicator" %}
           {% include "./nationality-interest.html" %}
           <hr class="light">
-        {% elif items == "preferredLanguage" %}
+        {% elif detailName == "preferredLanguage" %}
         <!-- include "./preferred-language.html"           
         <hr class="light">
         -->
-        {% elif items == "spokenLanguage" %}
+        {% elif detailName == "spokenLanguage" %}
           {% include "./spoken-language.html" %}
           <hr class="light">
-        {% elif items == "nationality" %}
+        {% elif detailName == "nationality" %}
           {% include "./nationality.html" %}
           <hr class="light">
-        {% elif items == "immigration" %}
+        {% elif detailName == "immigration" %}
           {% include "./immigration.njk" %}
           <hr class="light">
-        {% elif items == "maritalStatus" %}
+        {% elif detailName == "maritalStatus" %}
           {% include "./marital.html" %}
           <hr class="light">
-        {% elif items == "idAtRisk" %}
+        {% elif detailName == "idAtRisk" %}
           {% include "./risk.html" %}
           <hr class="light">
-        {% elif items == "assetFreeze" %}
+        {% elif detailName == "assetFreeze" %}
           {% include "./asset-freeze.html" %}
           <hr class="light">
         {% endif %}
@@ -70,7 +71,7 @@
     {{counter}}
     {% set counter = 0 %}
     
-    {% for items, item in data.personalDetails %}
+    {% for detailName, item in data.personalDetails %}
       {% if item.show == false %}
         {% set counter = counter + 1 %}
       {% endif %}

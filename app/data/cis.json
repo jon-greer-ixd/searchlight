@@ -28,7 +28,8 @@
     "dla" : false,
     "sp" : false,
     "pip" : true,
-    "ca" : true
+    "ca" : true,
+    "nationality": null
   },
   {
     "nino" : "SX170202",
@@ -59,7 +60,8 @@
     "dla" : true,
     "sp" : false,
     "pip" : false,
-    "ca" : true
+    "ca" : true,
+    "nationality": null
   },
   {
     "nino" : "SX170203",
@@ -90,7 +92,8 @@
     "dla" : false,
     "sp" : true,
     "pip" : false,
-    "ca" : false
+    "ca" : false,
+    "nationality": null
   },
   {
     "nino" : "SX170204",
@@ -121,6 +124,7 @@
     "dla" : false,
     "sp" : false,
     "pip" : false,
-    "ca" : false
+    "ca" : false,
+    "nationality": "Chilean"
   }
 ]

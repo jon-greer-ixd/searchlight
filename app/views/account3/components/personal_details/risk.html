@@ -9,7 +9,7 @@
   <div class="column-one-third">
     <ul>
       <li class="bold">
-        {% if data.personalDetails.idAtRisk.value == true %}
+        {% if data.citizen.idAtRisk.value == true %}
           Yes
         {% else %}
           No
@@ -48,14 +48,14 @@
   <div class="column-one-third">
     <ul>
       <li class="bold">
-        {% if data.personalDetails.idAtRisk.value == true %}
+        {% if data.citizen.idAtRisk.value == true %}
           Yes
         {% else %}
           No
         {% endif %}
       </li>
       <li class="sl-secondary-text-color sl-metadata">
-        {% if data.personalDetails.idAtRisk.value == true %}
+        {% if data.citizen.idAtRisk.value == true %}
           Since 3 Dec 2018
         {% endif %}
       </li>
@@ -81,7 +81,7 @@
 </div>  
 -->
 
-{% if data.personalDetails.idAtRisk.value == false %}
+{% if data.citizen.idAtRisk.value == false %}
   <div class="grid-row">
     <div class="column-one-third">
       <ul>

@@ -34,7 +34,7 @@
     </div>
   </div>
        
-  {% if data.personalDetails.accountStatus.value == 'Superseded' %}
+  {% if data.citizen.accountStatus.value == 'Superseded' %}
     <div class="grid-row">
       <div class="column-one-third">
         Superseding National Insurance number
@@ -51,14 +51,14 @@
     </div>
   {% endif %}
   
-  {% if data.personalDetails.accountStatus.value != 'Open' %}
+  {% if data.citizen.accountStatus.value != 'Open' %}
     <div class="grid-row">
       <div class="column-one-third">
         National Insurance number status
       </div>
       <div class="column-one-third">
         <ul>
-          <li class="strong">{{data.personalDetails.accountStatus.value}}</li>
+          <li class="strong">{{data.citizen.accountStatus.value}}</li>
         </ul>
       </div>
       <div class="column-one-third last-col">

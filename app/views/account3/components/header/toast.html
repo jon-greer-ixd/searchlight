@@ -24,27 +24,27 @@
     {% endif %}
     
     <!-- gender -->
-    {% if data.personalDetails.gra.state == "added" %}
+    {% if data.citizen.gra.state == "added" %}
       {% include "components/update/toasters/gender-added.html" %}
     {% endif %}
     
-    {% if data.personalDetails.preGra.state == "added" %}
+    {% if data.citizen.preGra.state == "added" %}
       {% include "components/update/toasters/gender-added.html" %}
     {% endif %}
     
-    {% if data.personalDetails.gra.state === "updated" %}
+    {% if data.citizen.gra.state === "updated" %}
       {% include "components/update/toasters/gender-updated.html" %}
     {% endif %}
     
-    {% if data.personalDetails.preGra.state === "updated" %}
+    {% if data.citizen.preGra.state === "updated" %}
       {% include "components/update/toasters/gender-updated.html" %}
     {% endif %}
     
-    {% if data.personalDetails.gra.state === "corrected" %}
+    {% if data.citizen.gra.state === "corrected" %}
       {% include "components/update/toasters/gender-corrected.html" %}
     {% endif %}
     
-    {% if data.personalDetails.preGra.state === "corrected" %}
+    {% if data.citizen.preGra.state === "corrected" %}
       {% include "components/update/toasters/gender-corrected.html" %}
     {% endif %}
 
