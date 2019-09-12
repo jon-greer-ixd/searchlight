@@ -7,7 +7,7 @@
       <li class="strong">
         {% if data.citizen.disability == true %}
           Disabled
-        {% else %}
+        {% elif data.citizen.disability == false %}
           Not disabled
         {% endif %}
       </li>

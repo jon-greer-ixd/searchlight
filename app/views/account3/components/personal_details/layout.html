@@ -21,8 +21,8 @@
             
       {% include "./dob.html" %}
       <hr class="light">
-            
-      {% if data.citizen.dod.value != null %}
+
+      {% if data.citizen.dodValue != null or data.guardianRole == true %}
         {% include "./dod.html" %}
         <hr class="light">
       {% endif %}
@@ -32,8 +32,8 @@
         <hr class="light">
       {% endif %}
 
-      {% if data.citizen.specialNeeds.value != null %}
-        {% include "./special-needs.html" %}
+      {% if data.citizen.additionalNeeds != null %}
+        {% include "./needs.html" %}
         <hr class="light">
       {% endif %}
 
