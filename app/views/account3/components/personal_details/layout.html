@@ -6,7 +6,7 @@
 
     <div class="personal-details">
             
-      {% if data.citizen.pv.show == true %}
+      {% if data.citizen.pv == true or data.citizen.pvMember == true or data.citizen.pvPartner == true %}
         {% include "./potentially-violent.html" %}
         <hr class="light">
       {% endif %}

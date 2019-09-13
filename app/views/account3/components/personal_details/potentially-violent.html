@@ -1,8 +1,8 @@
   <div class="grid-row names">
     
-<!--    <p>{{data.citizen.pv.value}}</p>-->
+<!--    <p>{{data.citizen.pv}}</p>-->
 
-    {% if data.citizen.pv.value == null %}
+    {% if data.citizen.pv == null %}
       <div class="column-one-third">
         <ul>
           <li>Potentially violent status</li>
@@ -33,25 +33,25 @@
 
       <div class="column-two-thirds">
 
-        {% if data.citizen.pv.partner == true and data.citizen.pv.member == true and data.citizen.pv.value == true %}
+        {% if data.citizen.pvPartner == true and data.citizen.pvMember == true and data.citizen.pv == true %}
           This person, their partner and a member of their household are potentially violent
 
-        {% elif data.citizen.pv.partner == true and data.citizen.pv.member == true %}
+        {% elif data.citizen.pvPartner == true and data.citizen.pvMember == true %}
           This person's partner and a member of their household are potentially violent
 
-        {% elif data.citizen.pv.value == true and data.citizen.pv.member == true %}
+        {% elif data.citizen.pv == true and data.citizen.pvMember == true %}
           This person and a member of their household are potentially violent
 
-        {% elif data.citizen.pv.value == true and data.citizen.pv.partner == true %}
+        {% elif data.citizen.pv == true and data.citizen.pvPartner == true %}
           This person and their partner are potentially violent
 
-        {% elif data.citizen.pv.member == true %}
+        {% elif data.citizen.pvMember == true %}
           A member of this household is potentially violent
 
-        {% elif data.citizen.pv.partner == true %}
+        {% elif data.citizen.pvPartner == true %}
           This person's partner is potentially violent
 
-        {% elif data.citizen.pv.value == true %}
+        {% elif data.citizen.pv == true %}
           This person is potentially violent
         {% endif %}
 

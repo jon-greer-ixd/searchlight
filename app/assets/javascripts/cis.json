@@ -34,7 +34,11 @@
     "accountStatus": "Open",
     "additionalNeeds" : true,
     "disability" : true,
-    "assetFreeze" : true
+    "assetFreeze" : true,
+    "spokenLanguage" : null,
+    "pvPartner" : false, 
+    "pvMember" : false,
+    "pv" : false
   },
   {
     "nino" : "SX170202",
@@ -71,7 +75,11 @@
     "accountStatus": "Open",
     "additionalNeeds" : false,
     "disability" : null,
-    "assetFreeze" : false
+    "assetFreeze" : false,
+    "spokenLanguage" : null,
+    "pvPartner" : false, 
+    "pvMember" : false,
+    "pv" : false
   },
   {
     "nino" : "SX170203",
@@ -108,7 +116,11 @@
     "accountStatus": "Open",
     "additionalNeeds" : false,
     "disability" : null,
-    "assetFreeze" : false
+    "assetFreeze" : false,
+    "spokenLanguage" : null,
+    "pvPartner" : false, 
+    "pvMember" : false,
+    "pv" : false
   },
   {
     "nino" : "SX170204",
@@ -145,7 +157,11 @@
     "accountStatus": "Open",
     "additionalNeeds" : false,
     "disability" : null,
-    "assetFreeze" : false
+    "assetFreeze" : false,
+    "spokenLanguage" : null,
+    "pvPartner" : false, 
+    "pvMember" : false,
+    "pv" : false
   },
   {
     "nino" : "SX170205",
@@ -178,10 +194,14 @@
     "sp" : false,
     "pip" : true,
     "ca" : true,
-    "nationality": null, 
+    "nationality": "French", 
     "accountStatus": "Open",
     "additionalNeeds" : true,
     "disability" : null,
-    "assetFreeze" : true
+    "assetFreeze" : true,
+    "spokenLanguage" : "French",
+    "pvPartner" : true, 
+    "pvMember" : true,
+    "pv" : true
   }
 ]
