@@ -4,14 +4,11 @@
   </div>
   <div class="column-one-third">
     <ul>
+    {% for need in data.citizen.additionalNeeds %}
       <li class="strong"> 
-        Audio forms
+        {{need}}
       </li>
-{#    {% for need in data.citizen.specialNeeds.value %}-->
-        <li class="strong"> 
-          Audio forms
-        </li>
-#}
+    {% endfor %}
     </ul>
   </div>
   <div class="column-one-third last-col">

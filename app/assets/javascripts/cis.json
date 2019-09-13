@@ -32,7 +32,7 @@
     "ca" : true,
     "nationality": null, 
     "accountStatus": "Open",
-    "additionalNeeds" : true,
+    "additionalNeeds" : false,
     "disability" : true,
     "assetFreeze" : true,
     "spokenLanguage" : null,
@@ -196,12 +196,25 @@
     "ca" : true,
     "nationality": "French", 
     "accountStatus": "Open",
-    "additionalNeeds" : true,
+    "additionalNeeds" : ["Audio forms", "A lift", "A ramp"],
     "disability" : null,
     "assetFreeze" : true,
     "spokenLanguage" : "French",
     "pvPartner" : true, 
     "pvMember" : true,
-    "pv" : true
+    "pv" : true,
+    "maritalStatus" : "Married",
+    "immigration" : "Leave to remain",
+    "indInterest" : true,
+    "idAtRisk" : true,
+    "genderPre" : true,
+    "nifu"  : true,
+    "indIndicator" : true,
+    "preferredLanguage" : "Welsh"
+
   }
 ]
+
+
+
+  
