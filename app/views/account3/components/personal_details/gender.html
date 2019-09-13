@@ -1,4 +1,4 @@
-{% if data.citizen.gender.gra == true and data.citizen.gender.preGra == true %}
+{% if data.citizen.genderGra == true and data.citizen.genderPreGra == true %}
   <div class="grid-row no-margin">
     <div class="column-one-third">
       <p>Gender recognition</p>
@@ -58,7 +58,7 @@
 
 
 
-{% if data.citizen.gender.gra == true and data.citizen.gender.preGra == false %}
+{% if data.citizen.genderGra == true and data.citizen.genderPreGra == null %}
   <div class="grid-row no-margin">
     <div class="column-one-third">
       <p>Gender recognition</p>
@@ -84,7 +84,7 @@
 
 {% endif %}
 
-{% if data.citizen.gender.gra == false and data.citizen.gender.preGra == true %}
+{% if data.citizen.genderGra == null and data.citizen.genderPreGra == true %}
   <div class="grid-row no-margin">
     <div class="column-one-third">
       <p>Gender recognition</p>

@@ -38,7 +38,16 @@
     "spokenLanguage" : null,
     "pvPartner" : false, 
     "pvMember" : false,
-    "pv" : false
+    "pv" : false,    
+    "maritalStatus" : null,
+    "immigration" : null,
+    "indInterest" : null,
+    "idAtRisk" : null,
+    "nifu"  : null,
+    "indIndicator" : null,
+    "preferredLanguage" : null,
+    "genderPreGra" : null,
+    "genderGra" : null
   },
   {
     "nino" : "SX170202",
@@ -79,7 +88,16 @@
     "spokenLanguage" : null,
     "pvPartner" : false, 
     "pvMember" : false,
-    "pv" : false
+    "pv" : false,    
+    "maritalStatus" : null,
+    "immigration" : null,
+    "indInterest" : null,
+    "idAtRisk" : null,
+    "nifu"  : null,
+    "indIndicator" : null,
+    "preferredLanguage" : null,
+    "genderPreGra" : null,
+    "genderGra" : null
   },
   {
     "nino" : "SX170203",
@@ -120,7 +138,16 @@
     "spokenLanguage" : null,
     "pvPartner" : false, 
     "pvMember" : false,
-    "pv" : false
+    "pv" : false,    
+    "maritalStatus" : null,
+    "immigration" : null,
+    "indInterest" : null,
+    "idAtRisk" : null,
+    "nifu"  : null,
+    "indIndicator" : null,
+    "preferredLanguage" : null,
+    "genderPreGra" : null,
+    "genderGra" : null
   },
   {
     "nino" : "SX170204",
@@ -161,7 +188,16 @@
     "spokenLanguage" : null,
     "pvPartner" : false, 
     "pvMember" : false,
-    "pv" : false
+    "pv" : false,
+    "maritalStatus" : null,
+    "immigration" : null,
+    "indInterest" : null,
+    "idAtRisk" : null,
+    "nifu"  : null,
+    "indIndicator" : null,
+    "preferredLanguage" : null,
+    "genderPreGra" : null,
+    "genderGra" : null
   },
   {
     "nino" : "SX170205",
@@ -207,14 +243,10 @@
     "immigration" : "Leave to remain",
     "indInterest" : true,
     "idAtRisk" : true,
-    "genderPre" : true,
     "nifu"  : true,
     "indIndicator" : true,
-    "preferredLanguage" : "Welsh"
-
+    "preferredLanguage" : "Welsh",
+    "genderPreGra" : true,
+    "genderGra" : null
   }
 ]
-
-
-
-  

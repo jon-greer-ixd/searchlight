@@ -8,14 +8,16 @@
     <hr class="light">
     {% include "./sex.html" %}
     <hr class="light">
+
+    {% if data.citizen.genderPreGra != null or data.citizen.genderGra != null %}
+      {% include "./gender.html" %}
+      <hr class="light">
+    {% endif %}
     
     {% for detailName, value in data.citizen %}
 
       {% if value != null %}
-        {% if detailName == "gender" %}
-          {% include "./gender.html" %}
-          <hr class="light">
-        {% elif detailName == "indIndicator" %}
+        {% if detailName == "indIndicator" %}
           {% include "./nationality-interest.html" %}
           <hr class="light">
         {% elif detailName == "preferredLanguage" %}
