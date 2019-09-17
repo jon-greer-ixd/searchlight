@@ -42,7 +42,15 @@
             <details class="dap-disc">
               <summary>View notification details</summary>
               <div class="panel panel-border-wide">
-                {% include "./data.html" %}
+              {% if item.nino == "SX170201" %}
+                {% include "./data/sx170201.html" %}
+              {% elif item.nino == "SX170202" %}
+                {% include "./data/sx170202.html" %}
+              {% elif item.nino == "SX170203" %}
+                {% include "./data/sx170203.html" %}
+              {% elif item.nino == "SX170204" %}
+                {% include "./data/sx170204.html" %}
+              {% endif %}
               </div>
             </details>
             {% set dapCounter = dapCounter + 1%}
