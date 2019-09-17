@@ -19,6 +19,7 @@ function processNotifications(selectedNotifications, notifications) {
 }
 
 function getNotifications(status, date, notifications) {
+  console.log('req.query.not_date' + date);
   var tempNotifications = [];
   var notificationsToShow = [];
   //get by date
@@ -54,7 +55,7 @@ router.get(/get-daps-handler/, function (req, res) {
   
 router.get(/dap-process-handler/, function (req, res) {
     processNotifications(req.query, req.session.data.dapNotifications)
-    req.session.data.dapNotificationstoShow = getNotifications(req.session.data.notificationStatus, req.session.data.dap_date, req.session.data.dapNotifications);
+    req.session.data.dapNotificationstoShow = getNotifications(req.session.data.notificationStatus, req.session.data.not_date, req.session.data.dapNotifications);
     res.redirect('./notifications-search')
   })
     
