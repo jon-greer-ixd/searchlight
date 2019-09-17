@@ -65,11 +65,25 @@ var dates = {
   todayAsString : function() {
     return dayOfTheMonth + " " + monthAsString + " " + year;
   },
-    todayAsFigure : function(separator) {
+  todayAsFigure : function(separator) {
     if (separator != null) {
       return dayOfTheMonth + separator + (thisMonth+1) + separator + year;
     } else {
       return dayOfTheMonth + " " + (thisMonth+1) + " " + year;
+    }
+  },
+  yesterdayAsFigure : function(separator) {
+    if (separator != null) {
+      return (dayOfTheMonth-1) + separator + (thisMonth+1) + separator + year;
+    } else {
+      return (dayOfTheMonth-1) + " " + (thisMonth+1) + " " + year;
+    }
+  },
+  dayDeforeYesterdayAsFigure : function(separator) {
+    if (separator != null) {
+      return (dayOfTheMonth-2) + separator + (thisMonth+1) + separator + year;
+    } else {
+      return (dayOfTheMonth-2) + " " + (thisMonth+1) + " " + year;
     }
   },
   logToday : function() {
