@@ -4,6 +4,28 @@ var router = express.Router()
 var trace = false;
 var underSixteen = false;
 
+var person = {
+  reset : function () {
+    //address
+    this.previous_address = null;
+    this.previous_address_count = 0;
+    this.correspondence_address = null;
+    //names
+    this.previous_name = null;
+    this.previous_name_count = 0;
+    this.alternative_name = null;
+    this.rfa_name = null;
+    //other
+    this.ethnic_origin = null;
+    this.immigration = null;
+    this.preferred_language = null;
+    this.spoken_language = null;
+    this.disability = null;
+    this.special_needs = null;
+  }
+};
+person.reset();
+
 var setTrace = function(y) {
   if(y == 'true') {
     return true;
