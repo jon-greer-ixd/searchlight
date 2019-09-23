@@ -1,0 +1,19 @@
+<div class="grid-row">
+  <div class="column-one-third">
+    Access to public funds
+  </div>
+  <div class="column-one-third">
+    <ul>
+    {% if data.citizen.publicFunds == true %}
+      <li class="strong">Yes</li>
+    {% endif %}
+    </ul>
+  </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+          <a href="change_pd/?personalDetail=publicfunds">Change</a>
+        </li>
+      </ul>
+  </div>
+</div>

@@ -13,7 +13,8 @@
       {% include "./gender.html" %}
       <hr class="light">
     {% endif %}
-    
+
+
     {% for detailName, value in data.citizen %}
 
       {% if value != null %}
@@ -29,6 +30,9 @@
           <hr class="light">
         {% elif detailName == "nationality" %}
           {% include "./nationality.html" %}
+          <hr class="light">
+        {% elif detailName == "publicFunds" %}
+          {% include "./publicfunds.html" %}
           <hr class="light">
         {% elif detailName == "immigration" %}
           {% include "./immigration.njk" %}
