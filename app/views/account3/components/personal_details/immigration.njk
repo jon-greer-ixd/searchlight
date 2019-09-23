@@ -45,9 +45,11 @@
         <span class="pipe"> | </span> 
           <a href="/history/immigration" class="under-link">View history</a>
       </li>
+      {% if data.guardianRole %}
       <li>
         <a href="change_pd/?personalDetail=immigration" class="under-link">Change</a>
       </li>
+      {% endif %}
     </ul>
   </div>
 </div>
