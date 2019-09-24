@@ -1722,6 +1722,10 @@ hr.mid {
   width: 75%;
 }
 
+.column-one-quater {
+  width: 25%;
+}
+
 #ledger {
   div {
     margin-right :5%;
@@ -2730,5 +2734,18 @@ a.sl-secondary-button {
     padding: 0 0 5px 0;
     margin: 0;
     color: $searchlight-black;
+  }
+}
+
+#search-results {
+  background-color: $sl-background-gray;
+  .column-one-quater:first-child() {
+    @include clearfix;
+    background-color: white;
+    padding :15px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    .form-control {
+      width: 100%;
+    }
   }
 }
