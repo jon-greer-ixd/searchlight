@@ -2739,13 +2739,43 @@ a.sl-secondary-button {
 
 #search-results {
   background-color: $sl-background-gray;
-  .column-one-quater:first-child() {
+  .column-three-quaters,
+  .column-one-quater {
+    width: 23%;
+    float: left;
     @include clearfix;
     background-color: white;
     padding :15px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.15);
     .form-control {
       width: 100%;
+    }
+  }
+  .column-three-quaters {
+    float :right;
+    width: 75%;
+  }
+  .results {
+    @include clearfix;
+    .result {
+      p{
+        &.name {
+        margin: 20px 0 0 0;
+        padding: 0;
+        color: $searchlight-blue;
+        font-weight: bold;
+        }
+      }
+      @include clearfix;
+      width :100%;
+      border-top :1px solid $searchlight-borders;
+      .left, .right {
+        float: left;
+        width :50%;
+      }
+      .right {
+        text-align: right;
+      }
     }
   }
 }
