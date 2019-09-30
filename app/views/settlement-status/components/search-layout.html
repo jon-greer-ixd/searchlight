@@ -2,6 +2,11 @@
 
 {% block head %}
   {% include "includes/head.html" %}
+    
+  {# <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ #}
+
 {% endblock %}
 
 {% block cookie_message %}
@@ -33,10 +38,16 @@
     {% include "includes/scripts.html" %}
     {% block page_scripts %}{% endblock %}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   {% endblock %}
   {% include "components/footer.njk" %}
+    
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+
 {% endblock %}
 
