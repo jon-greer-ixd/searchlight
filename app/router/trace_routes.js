@@ -11,7 +11,12 @@ router.get(/trace-handler/, function (req, res) {
   // mainsearch_firstline: 'none',
   // mainsearch_town: 'consett',
   // mainsearch_postcode: 'dh85ye'
-  res.render('pages/search-v3.njk')
+  res.render('#')
+})
+
+router.get('/home-office-handler/', function (req, res) {
+  req.session.data.citizen = getCitizen('SX170204', req.session.data.cis);
+  res.redirect('account4/account')
 })
 
 router.get(/preview-handler/, function (req, res) {
