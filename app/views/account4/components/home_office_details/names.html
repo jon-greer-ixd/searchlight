@@ -1,107 +1,8 @@
-<!-- REQUESTED NAME-->
-  {% if data.citizen.requestedNameFirst != null %}
-
-    <div class="grid-row names">
-      <div class="column-one-third">
-        <ul>
-          <li>Current names</li>
-        </ul>
-      </div>
-      <div class="column-one-third">
-        <ul class="">
-          <li class="strong">
-            {{data.citizen.requestedName.title | upper}}
-            <span class="namespace"> </span>
-            {{data.citizen.requestedNameFirst | upper}}
-            <span class="namespace"> </span>
-            {{data.citizen.requestedName.last | upper}}
-          </li>
-          <li class="sl-secondary-text-color sl-metadata">
-            Requested name&nbsp; · &nbsp;since today
-          </li>
-        </ul> 
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a data-toggle="modal" data-target="#requested_name_modal" class="under-link">View maintenance</a> 
-          </li>
-          {% if guardianRole %}
-          <li>
-            <a class="secondary-link" href="name-change-handler/?nameType=requestedName">Change</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </div>
-    <div class="grid-row names">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="light">
-      </div>
-    </div>
-  {% endif %}
-
-  <!-- NAME 2 -->
-  {% if data.citizen.nameTwoFirst != null %}
-    <div class="grid-row names">
-      <div class="column-one-third">
-        <ul>
-          {% if data.citizen.requestedNameFirst == null %}
-            <li>Current names</li>
-          {% else %}
-            <li>&nbsp;</li>
-          {% endif %}
-        </ul>
-      </div>
-      <div class="column-one-third">
-        <ul class="">
-          <li class="strong">
-            {% if data.citizen.nameTwoTitle !== null %}
-              {{data.citizen.nameTwoTitle | upper}} 
-              <span class="namespace"> </span> 
-            {% endif %}
-            {{data.citizen.nameTwoFirst | upper}} <span class="namespace"> </span> {{data.citizen.nameTwoLast | upper}}
-          </li>
-          <li class="sl-secondary-text-color sl-metadata">
-            Name type 2&nbsp; · &nbsp;since today
-          </li>
-        </ul> 
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a data-toggle="modal" data-target="#name_two_modal" class="under-link">View maintenance</a> 
-          </li>
-          {% if guardianRole %}
-          <li>
-            <a class="secondary-link" href="name-change-handler/?nameType=nameTwo">Change</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </div>
-    <div class="grid-row names">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="light">
-      </div>
-    </div>
-  {% endif %}
-
-  <!-- NAME 1 -->
+<!-- NAME 1 -->
   <div class="grid-row names">
     <div class="column-one-third">
       <ul>
-      {% if data.citizen.requestedNameFirst == null and data.citizen.nameOneFirst == null %}
         <li>Current name</li>
-      {% else %}
-        <li>&nbsp;</li>
-      {% endif %}
       </ul>
     </div>
     <div class="column-one-third">
@@ -114,71 +15,9 @@
           {{data.citizen.nameOneFirst | upper}} <span class="namespace"> </span> {{data.citizen.nameOneLast | upper}}
         </li>
         <li class="sl-secondary-text-color sl-metadata">
-          {% if data.details.nameOneFirst == null or data.citizen.requestedNameFirst == null %}
-            Name type 1&nbsp; · &nbsp;since
-          {% else %}
-            Since
-          {% endif %}
-
-          {% if data.name.state == "updated" %}
-            today
-          {% else %}
-            12 Nov 2017
-          {% endif %}
         </li>
       </ul> 
     </div>
     <div class="column-one-third last-col">
-      <ul class="edit-menu">
-        <li>
-          <a data-toggle="modal" data-target="#name_one_modal" class="under-link">View maintenance</a> 
-        </li>
-        {% if guardianRole %}
-        <li>
-          <a class="secondary-link" href="name-change-handler/?nameType=name">Change</a>
-        </li>
-        {% endif %}
-      </ul>
     </div>
   </div>
-
-
-  {% if data.details.nameOneFirst == null and data.citizen.requestedNameFirst == null and data.guardianRole == true %}
-    <div class="grid-row no margin">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-two-thirds">
-        <hr class="light">
-      </div>
-    </div>
-    <div class="grid-row no-margin">
-      <div class="column-one-third">
-        &nbsp;
-      </div>
-      <div class="column-one-third">
-        <ul>
-          <li class="sl-secondary-text-color sl-metadata">
-            {% if data.citizen.nameTwoFirst == null and data.citizen.requestedNameFirst == null %}
-              Add another name
-            {% elif data.citizen.nameTwoFirst != null and data.citizen.requestedNameFirst == null  %}
-              Add a requested name
-            {% elif data.citizen.nameTwoFirst == null and data.citizen.requestedNameFirst != null  %}
-              Add a name type 2
-            {% endif %}
-          </li>
-        </ul>
-      </div>
-      <div class="column-one-third last-col">
-        <ul class="edit-menu">
-          <li>
-            <a class="secondary-link" href="add-handler">Add</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  {% endif %}
-
-  {% if data.citizen.previousNames == true %}
-    {% include "./components/personal_details/previous-names.html" %}
-  {% endif %}

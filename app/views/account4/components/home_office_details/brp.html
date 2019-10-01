@@ -1,0 +1,87 @@
+<div class="extra-margin">
+  <div class="grid-row">
+    <div class="column-one-third">
+      Biometric residence permit
+    </div>
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">1177886666</li>
+        {# <li>
+          {% if data.citizen.ninoLevel == 2 %}
+            <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+            <span class="sl-metadata">Verified</span>
+          {% elif data.citizen.ninoLevel == 1 %}
+            <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+            <span class="sl-metadata">Qualified</span>
+          {% elif data.citizen.ninoLevel == 0 %}
+            <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+            <span class="sl-metadata">Unverified</span>
+          {% endif %}
+          </li> #}
+      </ul>
+    </div>
+    <div class="column-one-third last-col">
+      {# <ul class="edit-menu">
+        <li>
+         <a href="/history/nino-history" class="under-link">View history</a>
+        </li>
+        {% if data.guardianRole == true %}
+        <li>
+          <a class="secondary-link" href="../../update/account-status/type">Change</a>
+        </li>
+        {% endif %}
+      </ul> #}
+    </div>
+  </div>
+       
+  {% if data.citizen.accountStatus == 'Superseded' %}
+    <div class="grid-row">
+      <div class="column-one-third">
+        Superseding National Insurance number
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong"><a class="under-link">SY119284Z</a></li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+        </ul>
+      </div>
+    </div>
+  {% endif %}
+  
+  {% if data.citizen.accountStatus != 'Open' %}
+    <div class="grid-row">
+      <div class="column-one-third">
+        National Insurance number status
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">{{data.citizen.accountStatus}}</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid-row">
+      <div class="column-one-third">
+        National Insurance number usage status
+      </div>
+      <div class="column-one-third">
+        <ul>
+          <li class="strong">Deleted</li>
+        </ul>
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+        </ul>
+      </div>
+    </div>   
+  {% endif %}
+
+
+</div>  

@@ -1,5 +1,9 @@
-<div name="Personal" id="Personal">
-  
+<div id="ho_back">   
+  <a class="link-back" onCLick="history.back()">Back</a>
+</div>
+
+
+<div name="Personal" id="Personal">  
   <h2>Home Office details</h2>
   
   <div class="sl-primary-card sl-personal-details-card">
@@ -22,31 +26,28 @@
       {% include "./dob.html" %}
       <hr class="light">
 
-      {% if data.citizen.dodValue != null or data.guardianRole == true %}
+      {# {% if data.citizen.dodValue != null or data.guardianRole == true %}
         {% include "./dod.html" %}
         <hr class="light">
-      {% endif %}
+      {% endif %} #}
       
-      {% if data.citizen.disability != null %}
+      {# {% if data.citizen.disability != null %}
         {% include "./disability.html" %}
         <hr class="light">
-      {% endif %}
+      {% endif %} #}
 
-      {% if data.citizen.additionalNeeds != null %}
-        {% include "./needs.html" %}
-        <hr class="light">
-      {% endif %}
+      {# {% include "./nino.html" %}
+      <hr class="light"> #}
 
-      {% include "./nino.html" %}
+      {% include "./brp.html" %}
       <hr class="light">
 
-      {% if data.guardianRole == true %}
+      {# {% if data.guardianRole == true %}
         {% include "./creation.html" %}
         <hr class="light">
         {% include "./record-level.html" %}
         <hr class="light">
-      {% endif %}
-
+      {% endif %} #}
             
       {% include "./nationality.html" %}
       <hr class="light">
@@ -55,9 +56,9 @@
       <hr class="light">
       
       {% include "./immigration.njk" %}
-      <hr class="light">
+      {# <hr class="light"> #}
       
-      {% include "../modals/modals.html" %}
+      {# {% include "../modals/modals.html" %} #}
 
   </div>
     

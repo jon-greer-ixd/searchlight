@@ -25,10 +25,10 @@
           <div id="sl-account-person-age" class="spacing-bottom-mid sl-account-person-age sl-third-heading ng-scope" ng-if="data.person.person[0].birthDateGroup[0]">
             <span class="sl-nino-metadata">
               <spacing>
-                <span> 
+                {# <span> 
                   <span class="nino-separator">{{data.citizen.nino}}</span>
                   <span>&nbsp; · &nbsp;</span>
-                </span>
+                </span> #}
               </span>
             </span>
             <span class="sl-age-metadata">
@@ -39,6 +39,8 @@
                     <span class="ng-scope sl-account-age-metadata">
                       <span class="ng-binding">{{data.citizen.dobValue}}</span> 
                       <span class="ng-binding"> </span>
+                                      <span> &nbsp; &nbsp; • &nbsp; &nbsp; Age 45</span>
+
                     </span>
                   </span>
                 </span>

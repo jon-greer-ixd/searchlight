@@ -1,12 +1,12 @@
 <div class="grid-row">
   <div class="column-one-third">
-    <p>Date of birth</p>
+    Date of birth
   </div>
 
   <div class="column-one-third">
     <ul>
       <li class="strong">{{data.citizen.dobValue}}</li>
-      <li>
+      {# <li>
         {% if data.citizen.dobLevel == 2 %}
           <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata sl-secondary-text-color">Verified to level 2</span>
@@ -17,11 +17,11 @@
           <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
           <span class="sl-metadata sl-secondary-text-color">Not verified</span>
         {% endif %}
-      </li>
+      </li> #}
     </ul>
   </div>
 <div class="column-one-third last-col">
-  <ul class="edit-menu">
+  {# <ul class="edit-menu">
     <li>
       <a data-toggle="modal" data-target="#birth_modal" class="under-link">View maintenance</a> 
       <span class="pipe"> | </span> 
@@ -32,6 +32,6 @@
       <a href="change_pd/?personalDetail=dateOfBirth" class="under-link">Change</a>
     </li>
     {% endif %}
-  </ul>
+  </ul> #}
 </div>
 </div>
