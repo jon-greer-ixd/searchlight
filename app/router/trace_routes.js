@@ -20,10 +20,13 @@ router.get('/home-office-handler/', function (req, res) {
 })
 
 router.get(/preview-handler/, function (req, res) {
-  console.log('preview handler');
   req.session.data.nino = req.query.nino.toUpperCase();
   req.session.data.citizen = getCitizen(req.session.data.nino, req.session.data.cis);
-  res.redirect('/account3/account')
+  if (req.session.data.nino == 'PA807930') {
+    res.redirect('/account4/account')
+  } else {
+    res.redirect('/account3/account')
+  }
 })
 
   

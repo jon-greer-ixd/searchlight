@@ -1,7 +1,8 @@
 <div class="container-fluid ng-scope">  
   <div id="search" class="row">
     <div class="sl-account-canvas-width">
-      <h2 id="sl-title" class="">Enter a National Insurance number or Organisation number</h2>
+      <h2 id="sl-title" class="new-hint">Search using a reference number</h2>
+      <p class="search-hint">National Insurance, Passport, Organisation, Residence Permit or National Identity number</p>
         <div class="spacing-top-single sl-home-search-input-container input-group" ng-class="{'sl-home-search-input-reduced-padding': nino.length>7, 'sl-search-input-align': !showTrace.personTrace}">
           <div id="sl-search" ng-keydown="toggleHover($event.keyCode, $event)" ng-class="{'sl-account-search-container': state.current.name !=='search', 'spacing-top-sixth': state.current.name !== 'search'}">
             <form action="preview-handler">
@@ -11,7 +12,7 @@
                 </div>
               </div>
               <div class="sl-header-btn">
-                <a class="sl-search-btn">Look up<span class="search-icon search"></span></a>
+                <a href="/income/account" class="sl-search-btn">Look up<span class="search-icon search"></span></a>
                 <button id="preview">
                   {% include "./preview.njk" %}
                 </button>
