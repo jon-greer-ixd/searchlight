@@ -11,13 +11,13 @@ if (document.getElementById("maincontent")) {
         var title = citizen.nameOneTitle;
         var firstName = citizen.nameOneFirst;
         var lastName = citizen.nameOneLast;
-        var dateOfBirth = citizen.dateOfBirth;
+        var dateOfBirth = citizen.dobValue;
         var postCode =  citizen.postCode;
         document.getElementById("bsfirstname").innerHTML = firstName.toUpperCase();
         document.getElementById("bslastname").innerHTML = lastName.toUpperCase();
-        document.getElementById("bsDob").innerHTML = bsCustomers[person].dateOfBirth;
-        // document.getElementById("bsPostcode").innerHTML = bsCustomers[person].postCode;
-        document.getElementById("nino").innerHTML = bsCustomers[person].nino;
+        document.getElementById("bsDob").innerHTML = dateOfBirth;
+        document.getElementById("bsPostcode").innerHTML = postCode;
+        document.getElementById("nino").innerHTML = citizen.nino;
         if(bsCustomers[person].title != "") {
           document.getElementById("bstitle").innerHTML = title.toUpperCase();
         } else {

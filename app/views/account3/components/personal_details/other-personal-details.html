@@ -1,11 +1,11 @@
-<details>
+{# <details>
   <summary>
     <span class="summary">View more personal details</span>
-  </summary>
+  </summary> #}
   
   <div class="personal-details">
 
-    <hr class="light">
+    {# <hr class="light"> #}
     {% include "./sex.html" %}
     <hr class="light">
 
@@ -13,7 +13,6 @@
       {% include "./gender.html" %}
       <hr class="light">
     {% endif %}
-
 
     {% for detailName, value in data.citizen %}
 
@@ -104,4 +103,4 @@
     {% endif %}
   </div>
 
-</details>
+{# </details> #}

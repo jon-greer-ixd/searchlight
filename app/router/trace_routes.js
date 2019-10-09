@@ -20,6 +20,7 @@ router.get('/home-office-handler/', function (req, res) {
 })
 
 router.get(/preview-handler/, function (req, res) {
+  console.log('preview handler');
   req.session.data.nino = req.query.nino.toUpperCase();
   req.session.data.citizen = getCitizen(req.session.data.nino, req.session.data.cis);
   res.redirect('/account3/account')
