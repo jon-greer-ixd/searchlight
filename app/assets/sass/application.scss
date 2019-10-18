@@ -2804,3 +2804,40 @@ a.sl-secondary-button {
   margin-top: 0;
   font-size: 20px;
 }
+
+#tabsversion2 {
+  .tabs ul li.ui-state-default  {
+    font-size: 19px;
+    height: 50px;
+    margin-top :5px;
+    background: #C9C9C9; //$searchlight-blue;
+    border: none;
+    margin-right: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    a {
+      padding-top:5px;
+      padding-left: 20px;
+      padding-right: 20px;
+      display :block;
+      color: black;
+      text-decoration: underline;
+    }
+  }
+  .tabs ul li.ui-tabs-tab.ui-state-active {
+    height: 60px;
+    margin-top: 0;
+    padding-top:5px;
+    background: white;
+    border-top: 1px solid #BFC1C3;
+    border-right: 1px solid #BFC1C3;
+    border-left: 1px solid #BFC1C3;
+    a {
+      text-decoration: none;
+      color: $searchlight-black;
+    }
+  }
+  #tabs1, #tabs2 {
+    margin-top: 20px;
+  }
+}
