@@ -25,8 +25,8 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 ///////////////
 // July 2019 //
 /////////////// 
-var guardianRole = false;
-let refactor = false;
+var guardianRole = true;
+let refactor = true;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]

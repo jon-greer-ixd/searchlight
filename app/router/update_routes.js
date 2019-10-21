@@ -89,6 +89,10 @@ router.get(/check-person-handler/, function (req, res) {
 
 
 router.get(/add-detail-handler/, function (req, res) {
+  let personalDetail= req.session.data.personalDetail;
+  let personalDetailValue= req.session.data.personalDetailValue;
+  console.log(`${personalDetail} : ${personalDetailValue}`);
+  req.session.data.citizen[personalDetail] = personalDetailValue;
   res.redirect('/account3/account')
 })
 
