@@ -119,5 +119,40 @@ router.get(/add-detail-handler/, function (req, res) {
   res.redirect('/account3/account')
 })
 
+router.get(/check-gender-handler/, function (req, res) {
+  if (req.session.data.refactor == false) {
+    if (req.session.data.personalDetail == 'gra') {
+      req.session.data.personalDetails.gender.gra = true;
+    } else {    
+      req.session.data.personalDetails.gender.preGra = true;
+    }
+    req.session.data.personalDetails.gender.show = true;
+    req.session.data.toaster = generalFunctions.setToasterMessage('Gender recognition details', null, 'added');
+    if (req.session.data.sexValue == 'Male') {
+      req.session.data.personalDetails.sex.value = true;
+    } else if (req.session.data.sexValue == 'Female'){
+      req.session.data.personalDetails.sex.value = false;
+    }
+    req.session.data.sexValue = null;
+    res.redirect('/account2/account')
+  } else {
+    //refactor
+    let personalDetail= req.session.data.personalDetail;
+    let personalDetailValue = req.session.data.personalDetailValue;  
+    if (personalDetail == 'gra') {
+      req.session.data.citizen.genderGra = true;
+    } else {    
+      req.session.data.citizen.genderPreGra = true;
+    }
+    req.session.data.toaster = generalFunctions.setToasterMessage('Gender recognition details', null, 'added');
+    if (req.session.data.sexValue == 'Male') {
+      req.session.data.citizen.sex = 'male';
+    } else if (req.session.data.sexValue == 'Female'){
+      req.session.data.citizen.sex = 'female';
+    }
+    req.session.data.sexValue = null;
+    res.redirect('/account3/account')
+  }
+})
 
 module.exports = router

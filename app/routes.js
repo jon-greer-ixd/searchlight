@@ -694,22 +694,6 @@ router.get(/updatecontact-handler/, function (req, res) {
   res.redirect('/update/person/contact/' + feature)
 })
 
-router.get(/check-gender-handler/, function (req, res) {
-  if (req.session.data.personalDetail == 'gra') {
-    req.session.data.personalDetails.gender.gra = true;
-  } else {    
-    req.session.data.personalDetails.gender.preGra = true;
-  }
-  req.session.data.personalDetails.gender.show = true;
-  req.session.data.toaster = generalFunctions.setToasterMessage('Gender recognition details', null, 'added');
-  if (req.session.data.sexValue == 'Male') {
-    req.session.data.personalDetails.sex.value = true;
-  } else if (req.session.data.sexValue == 'Female'){
-    req.session.data.personalDetails.sex.value = false;
-  }
-  req.session.data.sexValue = null;
-  res.redirect('/account2/account')
-})
 
 
 /*********/
