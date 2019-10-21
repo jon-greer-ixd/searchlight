@@ -90,7 +90,12 @@ router.get(/check-person-handler/, function (req, res) {
 
 router.get(/add-detail-handler/, function (req, res) {
   let personalDetail= req.session.data.personalDetail;
-  let personalDetailValue= req.session.data.personalDetailValue;
+  let personalDetailValue = req.session.data.personalDetailValue;
+  if (personalDetailValue == 'true') {
+    personalDetailValue = true;
+  } else if (personalDetailValue == 'false') {
+    personalDetailValue = false;
+  }
   console.log(`${personalDetail} : ${personalDetailValue}`);
   req.session.data.citizen[personalDetail] = personalDetailValue;
   req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, 1);
