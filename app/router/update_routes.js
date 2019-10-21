@@ -93,7 +93,7 @@ router.get(/add-detail-handler/, function (req, res) {
   let personalDetailValue= req.session.data.personalDetailValue;
   console.log(`${personalDetail} : ${personalDetailValue}`);
   req.session.data.citizen[personalDetail] = personalDetailValue;
-  req.session.data.toaster = generalFunctions.setToasterMessage(personalDetail, null, "added");
+  req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, 1);
   res.redirect('/account3/account')
 })
 
