@@ -481,11 +481,11 @@ router.get(/change-person-type-handler/, function (req, res) {
     req.session.data.personalDetail = 'ninoVerificationLevel';
     res.redirect('/update/person/update')
   }
-  if (req.session.data.personalDetail == 'specialNeeds' && req.session.data.updateType == 3) {
-    if (req.session.data.personalDetails.specialNeeds.value.length > 1) {
+  if (req.session.data.personalDetail == 'additionalNeeds' && req.session.data.updateType == 3) {
+    if (req.session.data.personalDetails.additionalNeeds.value.length > 1) {
       res.redirect('/update/person/correct-needs/select-need')
     } else {
-      req.session.data.personalDetailValue = req.session.data.personalDetails.specialNeeds.value[0] ;
+      req.session.data.personalDetailValue = req.session.data.personalDetails.additionalNeeds.value[0] ;
       res.redirect('/update/person/correct-needs/all-needs')
     }
   } else if (req.session.data.personalDetail == 'preferredLanguage') {
@@ -603,10 +603,10 @@ router.get(/sneeds-handler/, function (req, res) {
 //NEEDS
 router.get(/sneeds-type-handler/, function (req, res) {
   if (req.query.data === 'update') {
-    req.session.data.specialNeeds.state = 'updating'
+    req.session.data.additionalNeeds.state = 'updating'
     res.redirect('/update/person/needs/update')
   } else {
-    req.session.data.specialNeeds.state = 'correcting'
+    req.session.data.additionalNeeds.state = 'correcting'
     res.redirect('/update/person/needs/update')
   }
 })

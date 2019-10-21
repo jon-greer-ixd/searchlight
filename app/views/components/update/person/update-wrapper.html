@@ -11,7 +11,7 @@
                                     
             {% if data.updateType == 1 %}
               Add 
-              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "specialNeeds" %}
+              {% if data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "additionalNeeds" %}
                 an
               {% else %}
                 a
@@ -33,7 +33,7 @@
 
             {% endif %}
             
-            {% if data.personalDetail == "specialNeeds" %}
+            {% if data.personalDetail == "additionalNeeds" %}
               additional need
             {% else %}
               {{ data.personalDetails[data.personalDetail].display | lower }}
@@ -45,8 +45,8 @@
             <div id="address-pane">
               {% if data.personalDetail == "nationality" %}
                 {% include "components/update/person/details/nationality.njk" %}
-              {% elif data.personalDetail == "specialNeeds" %}
-                {% include "components/update/person/details/specialNeeds.njk" %}
+              {% elif data.personalDetail == "additionalNeeds" %}
+                {% include "components/update/person/details/additionalNeeds.njk" %}
               {% elif data.personalDetail == "maritalStatus" %}
                 {% include "components/update/person/details/maritalstatus.njk" %}
               {% elif data.personalDetail == "recordLevel" %}

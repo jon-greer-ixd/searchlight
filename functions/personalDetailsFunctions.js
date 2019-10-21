@@ -52,9 +52,9 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
     return setPV(detailObject, chosenValue);
   } else if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
     return setIndicatorValue(detailObject, updateType);
-  } else if (chosenDetail == 'specialNeeds') {
+  } else if (chosenDetail == 'additionalNeeds') {
     if (updateType == 3) {
-      return correctspecialNeeds(detailObject, chosenValue, tempValue);
+      return correctadditionalNeeds(detailObject, chosenValue, tempValue);
     } else {
       return setNeeds(detailObject, chosenValue);
     }
@@ -64,7 +64,7 @@ function setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType
   }
 };
 
-function correctspecialNeeds (detailObject, chosenValue, tempValue) {
+function correctadditionalNeeds (detailObject, chosenValue, tempValue) {
   if (typeof detailObject.value == 'string') {
     detailObject.value = tempValue;
   } else {
@@ -180,7 +180,7 @@ module.exports.setVerificationLevel = setVerificationLevel;
 
 module.exports.setDates = setDates;
 module.exports.setNeeds = setNeeds;
-module.exports.correctspecialNeeds = correctspecialNeeds;
+module.exports.correctadditionalNeeds = correctadditionalNeeds;
 module.exports.flipValue = flipValue;
 module.exports.setDisplay = setDisplay;
 module.exports.setPV = setPV;

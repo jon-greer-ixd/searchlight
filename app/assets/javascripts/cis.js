@@ -29,7 +29,7 @@ var cis = {
     pip : true,
     ca : true,
 
-    specialNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
+    additionalNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
     assetFreeze : {state : null, show : false, showHistory : false, display : "Asset freeze indicator", value : false, start : null, end : null},
     gender : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
     nifu : {state : null, show : false, display : "Identity fraud interest", value : null},
@@ -76,7 +76,7 @@ var cis = {
     pip : false,
     ca : true,
 
-    specialNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
+    additionalNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
     assetFreeze : {state : null, show : false, showHistory : false, display : "Asset freeze indicator", value : false, start : null, end : null},
     gender : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
     nifu : {state : null, show : false, display : "Identity fraud interest", value : null},
@@ -124,7 +124,7 @@ var cis = {
     pip : false,
     ca : false,
 
-    specialNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
+    additionalNeeds : {state : null, show : false, display : "Additional needs", value : undefined},
     assetFreeze : {state : null, show : false, showHistory : false, display : "Asset freeze indicator", value : false, start : null, end : null},
     gender : {state : null, show : false, display : "Gender recognition details", value : null, gra : false, preGra : false},
     nifu : {state : null, show : false, display : "Identity fraud interest", value : null},

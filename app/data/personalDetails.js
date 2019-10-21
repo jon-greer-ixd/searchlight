@@ -1,5 +1,5 @@
 var personalDetails = {
-  "specialNeeds" : {state : null, show : false, display : "Additional needs", value : undefined},
+  "additionalNeeds" : {state : null, show : false, display : "Additional needs", value : undefined},
   "assetFreeze" : {state : null, show : false, showHistory : false, display : "Asset freeze indicator", value : false, start : null, end : null},
   "recordLevel" : {state : null, show : true, display : "Customer record level", value : "Unrestricted access"},
   "disability" : {state : null, show : false, display : "Disability status", value : null},

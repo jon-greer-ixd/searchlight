@@ -31,7 +31,7 @@
               {% include "components/update/person/check/disability.njk" %}
             {% endif %}
           <!--  Additional needs -->
-            {% if data.personalDetail == 'specialNeeds' %}
+            {% if data.personalDetail == 'additionalNeeds' %}
               {% include "components/update/person/check/needs.njk" %}
             {% endif %}
           <!--  Nationality -->
@@ -88,7 +88,7 @@
       <a href="/account2/account">Cancel</a>
 
       {% else %}
-      
+
         <form method="get" action="check-person-handler">
         <div class="form-group">
           <input class="button" type="submit" value="Submit">

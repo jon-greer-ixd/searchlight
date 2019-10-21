@@ -653,7 +653,7 @@ router.get('/nino/2/task-list/', function (req, res) {
 //************
 
 
-//special-needs
+//additional-needs
 router.get(/check-handler/, function (req, res) {
   if(trace === true) {
     res.redirect('trace')
@@ -862,8 +862,8 @@ router.get(/disability-handler/, function (req, res) {
   res.redirect('task-list')
 })
 
-//special-needs-handler
-router.get(/special-needs-handler/, function (req, res) {
+//additional-needs-handler
+router.get(/additional-needs-handler/, function (req, res) {
   person.special_needs = true;
   res.redirect('task-list')
 })

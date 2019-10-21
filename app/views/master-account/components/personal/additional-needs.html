@@ -4,7 +4,7 @@
   </div>
   <div class="column-one-third">
     <ul>
-      {% for need in data.personalDetails.specialNeeds.value %}
+      {% for need in data.personalDetails.additionalNeeds.value %}
         <li class="strong"> 
           {{need}}
         </li>
@@ -14,7 +14,7 @@
   <div class="column-one-third last-col">
     <ul class="edit-menu">
       <li>                
-        <a href="person-change-handler/?personalDetail=specialNeeds" class="under-link">Change</a>
+        <a href="person-change-handler/?personalDetail=additionalNeeds" class="under-link">Change</a>
       </li>
     </ul>
   </div>
