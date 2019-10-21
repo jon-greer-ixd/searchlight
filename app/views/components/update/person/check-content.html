@@ -79,12 +79,23 @@
 
         </table>
       <br>
-      <form method="get" action="check-person-handler">
+      {% if data.refactor %}
+        <form method="get" action="add-detail-handler">
         <div class="form-group">
           <input class="button" type="submit" value="Submit">
         </div>
       </form>
       <a href="/account2/account">Cancel</a>
+
+      {% else %}
+      
+        <form method="get" action="check-person-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="/account3/account">Cancel</a>
+      {% endif %}
     </div>
   </div>
 

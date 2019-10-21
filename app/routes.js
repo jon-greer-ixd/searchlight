@@ -22,7 +22,6 @@ var dates = require('./dates.js').dates;
 console.log(`yesterdayAsFigure ${dates.yesterdayAsFigure('/')}`);
 console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 
-
 ///////////////
 // July 2019 //
 /////////////// 

@@ -83,12 +83,13 @@ router.get(/check-person-handler/, function (req, res) {
   //RESET
   req.session.data.personalDetailValue = null;
   // NEXT
-  if (req.session.data.refactor == true) {
-    res.redirect('/account3/account')
-  } else {
-    res.redirect('/account2/account')
-  }
+  res.redirect('/account2/account')
+})
 
+
+
+router.get(/add-detail-handler/, function (req, res) {
+  res.redirect('/account3/account')
 })
 
 
