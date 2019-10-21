@@ -6,20 +6,21 @@ var generalFunctions = require('../../functions/general.js');
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
-  if(req.session.data.personDetailObject.key == 'disability' ||
-     req.session.data.personDetailObject.key == 'dateOfBirth' ||
-     req.session.data.personDetailObject.key == 'dateOfDeath' ||
-     req.session.data.personDetailObject.key == 'recordLevel' ||
-     req.session.data.personDetailObject.key == 'preferredLanguage' ||
-     req.session.data.personDetailObject.key == 'nifu' ||
-     req.session.data.personDetailObject.key == 'immigration' ||
-     req.session.data.personDetailObject.key == 'INDIndicator' ||
-     req.session.data.personDetailObject.key == 'maritalStatus' ||
-     req.session.data.personDetailObject.key == 'nationality' ||
-     req.session.data.personDetailObject.key == 'spokenLanguage' ||
-     req.session.data.personDetailObject.key == 'assetFreeze' ||
-     req.session.data.personDetailObject.key == 'idAtRisk' ||
-     req.session.data.personDetailObject.key == 'sex') {
+  let objectKey = req.session.data.personDetailObject.key;
+  if(objectKey == 'disability' ||
+    objectKey == 'dateOfBirth' ||
+    objectKey == 'dateOfDeath' ||
+    objectKey == 'recordLevel' ||
+    objectKey == 'preferredLanguage' ||
+    objectKey == 'nifu' ||
+    objectKey == 'immigration' ||
+    objectKey == 'INDIndicator' ||
+    objectKey == 'maritalStatus' ||
+    objectKey == 'nationality' ||
+    objectKey == 'spokenLanguage' ||
+    objectKey == 'assetFreeze' ||
+    objectKey == 'idAtRisk' ||
+    objectKey == 'sex') {
     var personalDetailValue = req.session.data.personalDetailValue;
     var verificationlevel = req.session.data.verificationlevel;
     req.session.data.personDetailObject = personalDetailsFunctions.setPDValue(req.session.data.personDetailObject, personalDetailValue);
