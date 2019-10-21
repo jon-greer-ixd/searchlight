@@ -416,15 +416,15 @@ router.get(/add-person-handler/, function (req, res) {
   req.session.data.personDetailObject.key = req.session.data.personalDetail;
   req.session.data.updateType = 1;
   if (req.session.data.personalDetail == 'nifu') {
-    req.session.data.personalDetailValue = 'Yes';
+    req.session.data.personalDetailValue = true;
     res.redirect('/update/person/check');
   } else if (req.session.data.personalDetail == 'gender') {
     res.redirect('/update/person/gender/add');
   } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
     req.session.data.personalDetailValue = true;
     res.redirect('/update/person/dates');
-  } else if (req.session.data.personalDetail == 'INDIndicator') {
-    req.session.data.personalDetailValue = 'INDIndicator';
+  } else if (req.session.data.personalDetail == 'indIndicator') {
+    req.session.data.personalDetailValue = 'indIndicator';
     req.session.data.personalDetailValue = true;
     res.redirect('/update/person/check');
   } else {
@@ -455,7 +455,7 @@ router.get(/person-change-handler/, function (req, res) {
   } else if (req.session.data.personalDetail == 'recordLevel') {
     req.session.data.updateType = 2;
     res.redirect('/update/person/update')
-  } else if (req.session.data.personalDetail == 'INDIndicator') {
+  } else if (req.session.data.personalDetail == 'indIndicator') {
     req.session.data.updateType = 2;
     req.session.data.personalDetailValue = 'null';
     res.redirect('/update/person/check')
@@ -538,7 +538,7 @@ router.get(/change_pd/, function (req, res) {
     req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
     req.session.data.updateType = 3;
     res.redirect('/update/person/check')
-  } else if (req.session.data.personDetailObject.key == 'INDIndicator') {
+  } else if (req.session.data.personDetailObject.key == 'indIndicator') {
     req.session.data.personalDetailValue = null;
     req.session.data.updateType = 2;
     res.redirect('/update/person/check')

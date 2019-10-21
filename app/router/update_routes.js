@@ -14,7 +14,7 @@ router.get(/check-person-handler/, function (req, res) {
     objectKey == 'preferredLanguage' ||
     objectKey == 'nifu' ||
     objectKey == 'immigration' ||
-    objectKey == 'INDIndicator' ||
+    objectKey == 'indIndicator' ||
     objectKey == 'maritalStatus' ||
     objectKey == 'nationality' ||
     objectKey == 'spokenLanguage' ||
@@ -97,7 +97,24 @@ router.get(/add-detail-handler/, function (req, res) {
     personalDetailValue = false;
   }
   console.log(`${personalDetail} : ${personalDetailValue}`);
-  req.session.data.citizen[personalDetail] = personalDetailValue;
+  if (personalDetail == 'additionalNeeds') {
+    req.session.data.citizen.additionalNeeds = [personalDetailValue];
+  } else if (personalDetail == 'dateOfDeath') {
+    req.session.data.citizen.dodValue = personalDetailValue;
+  } else if(personalDetail == 'pv') {
+    req.session.data.citizen[personalDetail] = personalDetailValue;
+    for (let x in personalDetailValue ) {
+      if(personalDetailValue[x] == "The person" ) {
+        req.session.data.citizen.pv = true;
+      } else if(personalDetailValue[x] == "The person's partner" ) {
+        req.session.data.citizen.pvPartner = true;
+      } else if(personalDetailValue[x] == "Someone else in the household" ) {
+        req.session.data.citizen.pvMember = true;
+      } 
+    } 
+  } else {
+    req.session.data.citizen[personalDetail] = personalDetailValue;
+  }
   req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, 1);
   res.redirect('/account3/account')
 })

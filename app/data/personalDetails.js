@@ -9,7 +9,7 @@ var personalDetails = {
   "nifu" : {state : null, show : false, display : "Identity fraud interest", value : null},
   "idAtRisk" : {state : null, show : false, showHistory : false, display : "Identity at risk indicator", value : false, start : null, end : null},
   "immigration" : {state : null, show : false, display : "Immigration status", value : null, level : null},
-  "INDIndicator" : {state : null, show : false, display : "Immigration and nationality interest", value : false},
+  "indIndicator" : {state : null, show : false, display : "Immigration and nationality interest", value : false},
   "maritalStatus" : {state : null, show : false, display : "Marital or Civil Partnership status", value : null},
   "nino" : {state : null, show : true, display : "National Insurance number", value : null},
   "ninoVerificationLevel" : {state : null, show : true, display : "National Insurance number verification level", value : "Verified"},

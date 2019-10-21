@@ -61,7 +61,7 @@ let convertDetailToString = (detail) => {
 
     break;
 
-    case 'INDIndicator':
+    case 'indIndicator':
 
       return 'Immigration and nationality interest';
 
