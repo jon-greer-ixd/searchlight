@@ -27,6 +27,7 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 // July 2019 //
 /////////////// 
 var guardianRole = false;
+let refactor = false;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]
@@ -633,7 +634,11 @@ router.get(/check-person-handler/, function (req, res) {
   //RESET
   req.session.data.personalDetailValue = null;
   // NEXT
-  res.redirect('/account2/account')
+  if (refactor == true) {
+    res.redirect('/account3/account')
+  } else {
+    res.redirect('/account2/account')
+  }
 
 })
 
