@@ -34,6 +34,7 @@ let refactor = false;
 // }
 
 router.get('/cis-handler/', function (req, res) {
+  req.session.data.refactor = refactor;
   req.session.data.guardianRole = guardianRole;
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
   res.redirect('account3/account')
@@ -204,6 +205,8 @@ var ninoRoutes = require('./router/nino_routes');
 var contactRoutes = require('./router/contact_routes');
 var interestRoutes = require('./router/contact_routes');
 var traceRoutes = require('./router/trace_routes');
+var updateRoutes = require('./router/update_routes');
+
 
   
 
@@ -281,6 +284,7 @@ router.use('/', main,
                 ninoRoutes,
                 contactRoutes,
                 interestRoutes,
+                updateRoutes,
                 traceRoutes);
                 
   // Route index page
@@ -407,13 +411,10 @@ function managementCheck(check) {
 }
 
 
-var personDetailObject;
-
 //PERSON
 router.get(/add-person-handler/, function (req, res) {
-  
-  personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
-  personDetailObject.key = req.session.data.personalDetail;
+  req.session.data.personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
+  req.session.data.personDetailObject.key = req.session.data.personalDetail;
   req.session.data.updateType = 1;
   if (req.session.data.personalDetail == 'nifu') {
     req.session.data.personalDetailValue = 'Yes';
@@ -524,26 +525,26 @@ router.get(/personal-detail-handler/, function (req, res) {
 })
 
 router.get(/change_pd/, function (req, res) {
-  personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
-  personDetailObject.key = req.query.personalDetail;
-  if(personDetailObject.key == 'dateOfBirth') {
+  req.session.data.personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
+  req.session.data.personDetailObject.key = req.query.personalDetail;
+  if(req.session.data.personDetailObject.key == 'dateOfBirth') {
     req.session.data.updateType = 3;
     res.redirect('/update/person/update')
-  } else if (personDetailObject.key == 'recordLevel') {
+  } else if (req.session.data.personDetailObject.key == 'recordLevel') {
     req.session.data.updateType = 2;
     res.redirect('/update/person/update')
-  } else if (personDetailObject.key == 'dateOfDeath') {
+  } else if (req.session.data.personDetailObject.key == 'dateOfDeath') {
     res.redirect('/update/person/dod-options')
-  } else if (personDetailObject.key == 'sex') {
+  } else if (req.session.data.personDetailObject.key == 'sex') {
     req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
     req.session.data.updateType = 3;
     res.redirect('/update/person/check')
-  } else if (personDetailObject.key == 'INDIndicator') {
+  } else if (req.session.data.personDetailObject.key == 'INDIndicator') {
     req.session.data.personalDetailValue = null;
     req.session.data.updateType = 2;
     res.redirect('/update/person/check')
-  } else if (personDetailObject.key == 'assetFreeze'|| personDetailObject.key == 'idAtRisk') {
-    if (personDetailObject.state == 1) {
+  } else if (req.session.data.personDetailObject.key == 'assetFreeze'|| req.session.data.personDetailObject.key == 'idAtRisk') {
+    if (req.session.data.personDetailObject.state == 1) {
       req.session.data.updateType = 5;
       req.session.data.personalDetailValue = false;
     } else {
@@ -556,91 +557,6 @@ router.get(/change_pd/, function (req, res) {
   }
 })
 
-//check-person-handler
-router.get(/check-person-handler/, function (req, res) {
-  if(personDetailObject.key == 'disability' ||
-     personDetailObject.key == 'dateOfBirth' ||
-     personDetailObject.key == 'dateOfDeath' ||
-     personDetailObject.key == 'recordLevel' ||
-     personDetailObject.key == 'preferredLanguage' ||
-     personDetailObject.key == 'nifu' ||
-     personDetailObject.key == 'immigration' ||
-     personDetailObject.key == 'INDIndicator' ||
-     personDetailObject.key == 'maritalStatus' ||
-     personDetailObject.key == 'nationality' ||
-     personDetailObject.key == 'spokenLanguage' ||
-     personDetailObject.key == 'assetFreeze' ||
-     personDetailObject.key == 'idAtRisk' ||
-     personDetailObject.key == 'sex') {
-    var personalDetailValue = req.session.data.personalDetailValue;
-    var verificationlevel = req.session.data.verificationlevel;
-    personDetailObject = personalDetailsFunctions.setPDValue(personDetailObject, personalDetailValue);
-    personDetailObject = personalDetailsFunctions.setVerificationLevel(personDetailObject, verificationlevel);
-    
-//    if (personDetailObject.key == 'assetFreeze' || personDetailObject.key == 'idAtRisk') {
-//      var endDate = personDetailObject.key + 'End';
-//      var startDate = personDetailObject.key + 'Start';
-//      personDetailObject = personalDetailsFunctions.setDates(personDetailObject, req.session.data[startDate], req.session.data[endDate]);
-//    }
-
-    personDetailObject = personalDetailsFunctions.setPDView(personDetailObject);
-    personDetailObject.state = req.session.data.updateType;
-    req.session.data.personalDetails[personDetailObject.key] = personDetailObject;
-    req.session.data.toaster = generalFunctions.setToasterMessage(personDetailObject.display, null, personDetailObject.state);
-
-  } else {
-  
-  var chosenDetail = req.session.data.personalDetail;
-  var detailObject = req.session.data.personalDetails[req.session.data.personalDetail];
-  var chosenValue = req.session.data.personalDetailValue;
-  var tempValue = req.session.data.tempValue;
-  var updateType = req.session.data.updateType;
-  var verificationlevel = req.session.data.verificationlevel;
-  // SET VALUES  
-  if(req.session.data.updateType == 4 || req.session.data.updateType == 5) {
-    req.session.data.personalDetails[req.session.data.personalDetail].value = null;   
-  } else { 
-    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setValue(chosenDetail, detailObject, chosenValue, tempValue, updateType);
-  }
-  // SET VERIFICATION LEVEL  
-  if (req.session.data.verificationlevel != null) {
-    req.session.data.personalDetails[req.session.data.personalDetail].level = verificationlevel;  
-  }
-  // SET DATES FOR ASSET FREEZE AND ID AT RISK
-  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
-    var endDate = chosenDetail + 'End';
-    var startDate = chosenDetail + 'Start';
-    req.session.data.personalDetails[chosenDetail] = personalDetailsFunctions.setDates(detailObject, req.session.data[startDate], req.session.data[endDate]);
-  }
-  // SET STATE
-  req.session.data.personalDetails[req.session.data.personalDetail].state = updateType;
-  // SET DISPLAY
-  if (req.session.data.personalDetail != 'sex' && req.session.data.personalDetail != 'dob' ) {   
-    req.session.data.personalDetails[req.session.data.personalDetail] = personalDetailsFunctions.setDisplay(chosenDetail, detailObject);
-  }
-  // SET MESSAGE
-  req.session.data.toaster = generalFunctions.setToasterMessage(detailObject.display, null, detailObject.state);
-  
-  //ASSET FREEZE
-  if (chosenDetail == 'assetFreeze' || chosenDetail == 'idAtRisk') {
-    if (req.session.data.assetFreezeEnd != '') {
-      req.session.data.personalDetails.assetFreeze.state = 5;
-    }
-  }
-  
-    
-    
-}
-  //RESET
-  req.session.data.personalDetailValue = null;
-  // NEXT
-  if (refactor == true) {
-    res.redirect('/account3/account')
-  } else {
-    res.redirect('/account2/account')
-  }
-
-})
 
 //DISABILITY
 router.get(/disability-type-handler/, function (req, res) {
