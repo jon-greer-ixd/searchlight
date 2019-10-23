@@ -2,7 +2,7 @@
     
 <!--    <p>{{data.citizen.pv}}</p>-->
 
-    {% if data.citizen.pv == null %}
+    {% if data.citizen.pv == false or data.citizen.pvPartner == false or data.citizen.pvMember == false %}
       <div class="column-one-third">
         <ul>
           <li>Potentially violent status</li>

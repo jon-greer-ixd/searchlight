@@ -87,10 +87,34 @@ router.get(/check-person-handler/, function (req, res) {
 })
 
 
+//which verification level should be updated?
+//what is the level?
+// req.session.[{verification level}] = {level}
+function getVerificationType(personalDetail) {
+  if (personalDetail == 'dateOfDeath') {
+    console.log(`${personalDetail} returning dodLevel`);
+    return 'dodLevel';
+  }
+}
 
 router.get(/add-detail-handler/, function (req, res) {
-  let personalDetail= req.session.data.personalDetail;
+  let personalDetail = req.session.data.personalDetail;
   let personalDetailValue = req.session.data.personalDetailValue;
+  let verificationlevel = req.session.data.verificationlevel;
+  if (verificationlevel == 'Level 3') {
+    verificationlevel = 3;
+  } else if (verificationlevel == 'Level 2') {
+    verificationlevel = 2;
+  } else if (verificationlevel == 'Level 1') {
+    verificationlevel = 1;
+  } else if (verificationlevel == 'Level 0') {
+    verificationlevel = 0;
+  }
+  // update verification level
+  if (verificationlevel != null) {
+    req.session.data.citizen[getVerificationType(personalDetail)] = verificationlevel;
+    console.log(` dodLevel : ${req.session.data.citizen.dodLevel} `);
+  }
   if (personalDetailValue == 'true') {
     personalDetailValue = true;
   } else if (personalDetailValue == 'false') {
@@ -104,7 +128,10 @@ router.get(/add-detail-handler/, function (req, res) {
   } else if (personalDetail == 'dateOfDeath') {
     req.session.data.citizen.dodValue = personalDetailValue;
   } else if(personalDetail == 'pv') {
-    req.session.data.citizen[personalDetail] = personalDetailValue;
+    req.session.data.citizen.pv = null;
+    req.session.data.citizen.pvPartner = null;
+    req.session.data.citizen.pvMember = null;
+    // req.session.data.citizen[personalDetail] = personalDetailValue;
     for (let x in personalDetailValue ) {
       if(personalDetailValue[x] == "The person" ) {
         req.session.data.citizen.pv = true;
@@ -118,6 +145,7 @@ router.get(/add-detail-handler/, function (req, res) {
     req.session.data.citizen[personalDetail] = personalDetailValue;
   }
   req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, req.session.data.updateType);
+  req.session.data.verificationlevel = null;
   res.redirect('/account3/account')
 })
 

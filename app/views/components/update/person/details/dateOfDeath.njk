@@ -8,26 +8,26 @@
             For example 31/8/1979
           </span>
         </label>
-        <input class="form-control" id="date" type="text" name="personalDetailValue" {% if data.updateType == 3 %} value={{data.personalDetails.dateOfDeath.value}} {% endif %}>
+        <input class="form-control" id="date" type="text" name="personalDetailValue" {% if data.updateType == 3 %} value={{data.citizen.dodValue}} {% endif %}>
       </fieldset>
       <fieldset class="form-group">
         <legend>
           <p class="bold">What level has their date of death been verified to?</p>
         </legend>
         <div class="multiple-choice">
-          <input id="three" type="radio" name="verificationlevel" value="Level 3" {% if data.updateType == 3 and data.personalDetails.dateOfDeath.level == "Level 3" %} checked="checked" {% endif %}>
+          <input id="three" type="radio" name="verificationlevel" value="Level 3" {% if data.updateType == 3 and data.citizen.dodLevel == 3 %} checked="checked" {% endif %}>
           <label for="three">Verified to level 3</label>
         </div>
         <div class="multiple-choice">
-          <input id="two" type="radio" name="verificationlevel" value="Level 2" {% if data.updateType == 3 and data.personalDetails.dateOfDeath.level == "Level 2" %} checked="checked" {% endif %}>
+          <input id="two" type="radio" name="verificationlevel" value="Level 2" {% if data.updateType == 3 and data.citizen.dodLevel == 2 %} checked="checked" {% endif %}>
           <label for="two">Verified to level 2</label>
         </div>
         <div class="multiple-choice">
-          <input id="one" type="radio" name="verificationlevel" value="Level 1" {% if data.updateType == 3 and data.personalDetails.dateOfDeath.level == "Level 1" %} checked="checked" {% endif %}>
+          <input id="one" type="radio" name="verificationlevel" value="Level 1" {% if data.updateType == 3 and data.citizen.dodLevel == 1 %} checked="checked" {% endif %}>
           <label for="one">Verified to level 1</label>
         </div>
         <div class="multiple-choice">
-          <input id="none" type="radio" name="verificationlevel" value="Not verified" {% if data.updateType == 3 and data.personalDetails.dateOfDeath.level == "Not verified" %} checked="checked" {% endif %}>
+          <input id="none" type="radio" name="verificationlevel" value="Not verified" {% if data.updateType == 3 and data.citizen.dodLevel == 0 %} checked="checked" {% endif %}>
           <label for="none">Not verified</label>
         </div>
       </fieldset>
