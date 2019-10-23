@@ -97,23 +97,26 @@ function getVerificationType(personalDetail) {
   }
 }
 
+function setVerificationLevel(verificationlevel) {
+  if (verificationlevel == 'Level 3') {
+    return 3;
+  } else if (verificationlevel == 'Level 2') {
+    return 2;
+  } else if (verificationlevel == 'Level 1') {
+    return 1;
+  } else if (verificationlevel == 'Level 0') {
+    return 0;
+  }  
+  return verificationlevel;
+}
+
 router.get(/add-detail-handler/, function (req, res) {
   let personalDetail = req.session.data.personalDetail;
   let personalDetailValue = req.session.data.personalDetailValue;
-  let verificationlevel = req.session.data.verificationlevel;
-  if (verificationlevel == 'Level 3') {
-    verificationlevel = 3;
-  } else if (verificationlevel == 'Level 2') {
-    verificationlevel = 2;
-  } else if (verificationlevel == 'Level 1') {
-    verificationlevel = 1;
-  } else if (verificationlevel == 'Level 0') {
-    verificationlevel = 0;
-  }
-  // update verification level
-  if (verificationlevel != null) {
-    req.session.data.citizen[getVerificationType(personalDetail)] = verificationlevel;
-    console.log(` dodLevel : ${req.session.data.citizen.dodLevel} `);
+  let verificationlevel;
+  if (req.session.data.verificationlevel != null) {
+    verificationlevel = req.session.data.verificationlevel;
+    req.session.data.citizen[getVerificationType(personalDetail)] = setVerificationLevel(verificationlevel);
   }
   if (personalDetailValue == 'true') {
     personalDetailValue = true;
@@ -126,7 +129,11 @@ router.get(/add-detail-handler/, function (req, res) {
   if (personalDetail == 'additionalNeeds') {
     req.session.data.citizen.additionalNeeds = [personalDetailValue];
   } else if (personalDetail == 'dateOfDeath') {
-    req.session.data.citizen.dodValue = personalDetailValue;
+    if (req.session.data.updateType == 4) {
+      req.session.data.citizen.dodValue = null;
+    } else {
+      req.session.data.citizen.dodValue = personalDetailValue;
+    }
   } else if(personalDetail == 'pv') {
     req.session.data.citizen.pv = null;
     req.session.data.citizen.pvPartner = null;
