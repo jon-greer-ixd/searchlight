@@ -95,6 +95,8 @@ router.get(/add-detail-handler/, function (req, res) {
     personalDetailValue = true;
   } else if (personalDetailValue == 'false') {
     personalDetailValue = false;
+  } else if (personalDetailValue == 'null') {
+    personalDetailValue = null;
   }
   console.log(`${personalDetail} : ${personalDetailValue}`);
   if (personalDetail == 'additionalNeeds') {
@@ -115,7 +117,7 @@ router.get(/add-detail-handler/, function (req, res) {
   } else {
     req.session.data.citizen[personalDetail] = personalDetailValue;
   }
-  req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, 1);
+  req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, req.session.data.updateType);
   res.redirect('/account3/account')
 })
 

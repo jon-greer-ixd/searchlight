@@ -10,17 +10,17 @@
         </legend>
         
         <div class="multiple-choice">
-          <input id="asylum-seeker" type="radio" class="clearRadio" name="personalDetailValue" value="Asylum seeker" {% if data.personalDetails.immigration.value == "Asylum seeker" %} checked {% endif %}>
+          <input id="asylum-seeker" type="radio" class="clearRadio" name="personalDetailValue" value="Asylum seeker" {% if data.citizen.immigration == "Asylum seeker" %} checked {% endif %}>
           <label for="asylum-seeker">Asylum seeker</label>
         </div>
         
         <div class="multiple-choice">
-          <input id="exceptional-leave" type="radio" class="clearRadio" name="personalDetailValue" value="Exceptional leave to remain" {% if data.personalDetails.immigration.value == "Exceptional leave to remain" %} checked {% endif %}>
+          <input id="exceptional-leave" type="radio" class="clearRadio" name="personalDetailValue" value="Exceptional leave to remain" {% if data.citizen.immigration == "Exceptional leave to remain" %} checked {% endif %}>
           <label for="exceptional-leave">Exceptional leave to remain</label>
         </div>
 
         <div class="multiple-choice">
-          <input id="indefinite" type="radio" class="clearRadio" name="personalDetailValue" value="Indefinite leave to remain" {% if data.personalDetails.immigration.value == "Indefinite leave to remain" %} checked {% endif %}>
+          <input id="indefinite" type="radio" class="clearRadio" name="personalDetailValue" value="Indefinite leave to remain" {% if data.citizen.immigration == "Indefinite leave to remain" %} checked {% endif %}>
           <label for="indefinite">Indefinite leave to remain</label>
         </div>
         
@@ -29,7 +29,7 @@
       <fieldset class="form-group">
         <legend class="visuallyhidden">Immigration number</legend>
         <label class="form-label" for="iref">Immigration reference number</label>
-        <input class="form-control" id="imref" type="text" name="verificationlevel" {% if data.updateType != 1 %} value={{data.personalDetails.immigration.level}} {% endif %}>
+        <input class="form-control" id="imref" type="text" name="verificationlevel" {% if data.updateType != 1 %} value="8787868766" {% endif %}>
       </fieldset>
       
       {% if data.updateType != 1 %}
