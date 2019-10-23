@@ -109,21 +109,28 @@ function setVerificationLevel(verificationlevel) {
   }  
   return verificationlevel;
 }
+var checkBoolForString = function(personalDetailValue){
+  if (personalDetailValue == 'true') {
+    return true;
+  } else if (personalDetailValue == 'false') {
+    return false;
+  } else if (personalDetailValue == 'null') {
+    return null;
+  } else {
+    return personalDetailValue;
+  }
+}
 
 router.get(/add-detail-handler/, function (req, res) {
   let personalDetail = req.session.data.personalDetail;
   let personalDetailValue = req.session.data.personalDetailValue;
   let verificationlevel;
+  console.log(personalDetailValue);
+  personalDetailValue = checkBoolForString(personalDetailValue);
+  console.log(`${personalDetailValue}`);
   if (req.session.data.verificationlevel != null) {
     verificationlevel = req.session.data.verificationlevel;
     req.session.data.citizen[getVerificationType(personalDetail)] = setVerificationLevel(verificationlevel);
-  }
-  if (personalDetailValue == 'true') {
-    personalDetailValue = true;
-  } else if (personalDetailValue == 'false') {
-    personalDetailValue = false;
-  } else if (personalDetailValue == 'null') {
-    personalDetailValue = null;
   }
   console.log(`${personalDetail} : ${personalDetailValue}`);
   if (personalDetail == 'additionalNeeds') {
