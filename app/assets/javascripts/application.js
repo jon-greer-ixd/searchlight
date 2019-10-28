@@ -770,10 +770,37 @@ var navigationHighlight = function() {
    }
 }
 
-var navigationLinkContainers = document.getElementsByClassName("sl-local-nav-item");
-for (var x in navigationLinkContainers) {
-   navigationLinkContainers[x].addEventListener('click', navigationHighlight);
+
+
+if ( document.getElementsByClassName("new-reveal") ) {
+  let toggle = function() {
+    if(otherPersonalDetails.classList.contains("active")) {
+      otherPersonalDetails.classList.toggle("active", false);
+      bar.classList.toggle("active", false);
+      // revealText.innerHTML = "Show immigration and nationality details";
+    } else {
+      otherPersonalDetails.classList.toggle("active", true);
+      bar.classList.toggle("active", true);
+      // revealText.innerHTML = "Hide immigration and nationality details";
+    }
+  }
+  let reveal = document.getElementsByClassName("new-reveal")[0];
+  let revealText = document.getElementById("reveal-text");
+  let otherPersonalDetails = document.getElementById("other-personal-details");
+  let bar = document.getElementById("bar");
+  reveal.addEventListener('click', toggle);
 }
+
+if( document.getElementsByClassName("sl-local-nav-item") ) {
+  var navigationLinkContainers = document.getElementsByClassName("sl-local-nav-item");
+  for (var x in navigationLinkContainers) {
+    navigationLinkContainers[x].addEventListener('click', navigationHighlight);
+  }
+}
+
+
+
+
 
 // when one is clicked
 // get all sl-local-nav-anchor items
@@ -804,8 +831,6 @@ for (var x in navigationLinkContainers) {
     }
   }
   */
-
-
 
 
 
