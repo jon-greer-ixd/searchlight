@@ -41,18 +41,18 @@
   </div>
 
   <div class="column-one-third last-col">
-    <ul class="edit-menu">
-      <li>
-        <a data-toggle="modal" data-target="#ho_immigration_modal" class="under-link">View maintenance</a> 
-        <span class="pipe"> | </span> 
-          <a href="/history/immigration" class="under-link">View history</a>
-      </li>
-      {% if data.guardianRole %}
-      <li>
-        <a href="change_pd/?personalDetail=immigration" class="under-link">Change</a>
-      </li>
-      {% endif %}
-    </ul>
+    {% if data.guardianRole %}
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#ho_immigration_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+            <a href="/history/immigration" class="under-link">View history</a>
+        </li>
+        <li>
+          <a href="change_pd/?personalDetail=immigration" class="under-link">Change</a>
+        </li>
+      </ul>
+    {% endif %}
   </div>
 </div>
 
