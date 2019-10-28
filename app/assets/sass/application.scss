@@ -2841,3 +2841,43 @@ a.sl-secondary-button {
     margin-top: 20px;
   }
 }
+
+.new-reveal {
+  font-weight: normal;
+  text-decoration: underline;
+  padding-left: 10px;
+}
+
+.plus {
+  margin-top: 4px;
+  float: left;
+  width: 15px;
+  height: 15px;
+  span {
+    background-color:#005ea5;
+    display: block;
+  }
+  span:nth-child(1) {
+    height: 100%;
+    width: 3px;
+    margin: 0 0 0 40%;
+  }
+  span:nth-child(2) {
+    width: 100%;
+    height: 3px;
+    margin: -9px 0 0 0;
+  }
+}
+
+#other-personal-details {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+#bar {
+  &.active {
+    background: none;
+  }
+}
