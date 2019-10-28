@@ -75,10 +75,7 @@ router.get(/check-person-handler/, function (req, res) {
     if (req.session.data.assetFreezeEnd != '') {
       req.session.data.personalDetails.assetFreeze.state = 5;
     }
-  }
-  
-    
-    
+  } 
 }
   //RESET
   req.session.data.personalDetailValue = null;
@@ -125,14 +122,12 @@ router.get(/add-detail-handler/, function (req, res) {
   let personalDetail = req.session.data.personalDetail;
   let personalDetailValue = req.session.data.personalDetailValue;
   let verificationlevel;
-  console.log(personalDetailValue);
+  //check for bool or null as a string
   personalDetailValue = checkBoolForString(personalDetailValue);
-  console.log(`${personalDetailValue}`);
   if (req.session.data.verificationlevel != null) {
     verificationlevel = req.session.data.verificationlevel;
     req.session.data.citizen[getVerificationType(personalDetail)] = setVerificationLevel(verificationlevel);
   }
-  console.log(`${personalDetail} : ${personalDetailValue}`);
   if (personalDetail == 'additionalNeeds') {
     req.session.data.citizen.additionalNeeds = [personalDetailValue];
   } else if (personalDetail == 'dateOfDeath') {

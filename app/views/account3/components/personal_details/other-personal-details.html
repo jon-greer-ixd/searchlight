@@ -1,14 +1,9 @@
-{# <details>
-  <summary>
-    <span class="summary">View more personal details</span>
-  </summary> #}
   
   <div class="personal-details">
 
-    {# <hr class="light"> #}
     {% include "./sex.html" %}
-    <hr class="light">
 
+    <hr class="light">
     {% if data.citizen.genderPreGra != null or data.citizen.genderGra != null %}
       {% include "./gender.html" %}
       <hr class="light">
@@ -17,24 +12,12 @@
     {% for detailName, value in data.citizen %}
 
       {% if value != null %}
-        {% if detailName == "indIndicator" %}
-          {% include "./nationality-interest.html" %}
-          <hr class="light">
-        {% elif detailName == "preferredLanguage" %}
+        {% if detailName == "preferredLanguage" %}
         <!-- include "./preferred-language.html"           
         <hr class="light">
         -->
         {% elif detailName == "spokenLanguage" %}
           {% include "./spoken-language.html" %}
-          <hr class="light">
-        {% elif detailName == "nationality" %}
-          {% include "./nationality.html" %}
-          <hr class="light">
-        {% elif detailName == "publicFunds" %}
-          {% include "./publicfunds.html" %}
-          <hr class="light">
-        {% elif detailName == "immigration" %}
-          {% include "./immigration.njk" %}
           <hr class="light">
         {% elif detailName == "maritalStatus" %}
           {% include "./marital.html" %}
@@ -44,6 +27,43 @@
           <hr class="light">
         {% elif detailName == "assetFreeze" %}
           {% include "./asset-freeze.html" %}
+          <hr class="light">
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+  {% if data.homeOfficeRole == true %}
+    <div class="grid-row">
+      <div class="column-one-third reveal">
+      
+      <a role="button" class="new-reveal"> 
+        <div class="plus">
+          <span id="bar"></span>
+          <span></span>
+        </div>
+        <span id="reveal-text">Show immigration and nationality details</span></a>
+      </div>
+    </div>
+  {% endif %}
+
+<div id="other-personal-details">
+
+    <hr class="light">
+
+    {% for detailName, value in data.citizen %}
+
+      {% if value != null %}
+        {% if detailName == "indIndicator" %}
+          {% include "./nationality-interest.html" %}
+          <hr class="light">
+        {% elif detailName == "nationality" %}
+          {% include "./nationality.html" %}
+          <hr class="light">
+        {% elif detailName == "publicFunds" %}
+          {% include "./publicfunds.html" %}
+          <hr class="light">
+        {% elif detailName == "immigration" %}
+          {% include "./immigration.njk" %}
           <hr class="light">
         {% endif %}
       {% endif %}
@@ -82,7 +102,9 @@
       {% endif %}
     {% endfor %}
     
-    {% if counter != 0 and data.guardianRole == true %}
+  </div>
+ 
+     {% if counter != 0 and data.guardianRole == true %}
       <div class="grid-row no-margin">
     <div class="column-one-third">
       <ul>
@@ -101,6 +123,7 @@
     </div>
   </div>
     {% endif %}
-  </div>
 
-{# </details> #}
+
+
+  </div>

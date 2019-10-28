@@ -25,8 +25,9 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 ///////////////
 // July 2019 //
 /////////////// 
-var guardianRole = true;
+var guardianRole = false;
 let refactor = true;
+let homeOfficeRole = true;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]
@@ -34,6 +35,7 @@ let refactor = true;
 
 router.get('/cis-handler/', function (req, res) {
   req.session.data.refactor = refactor;
+  req.session.data.homeOfficeRole = homeOfficeRole;
   req.session.data.guardianRole = guardianRole;
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
   res.redirect('account3/account')
