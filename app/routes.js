@@ -36,6 +36,7 @@ let homeOfficeRole = true;
 
 router.get('/cis-handler/', function (req, res) {
   req.session.data.refactor = refactor;
+  req.session.data.homeOfficeRole = homeOfficeRole;
   req.session.data.guardianRole = guardianRole;
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
   res.redirect('account3/account')
