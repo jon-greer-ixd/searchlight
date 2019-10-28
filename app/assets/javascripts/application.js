@@ -777,11 +777,11 @@ if ( document.getElementsByClassName("new-reveal") ) {
     if(otherPersonalDetails.classList.contains("active")) {
       otherPersonalDetails.classList.toggle("active", false);
       bar.classList.toggle("active", false);
-      // revealText.innerHTML = "Show immigration and nationality details";
+      revealText.innerHTML = "Show immigration and nationality details";
     } else {
       otherPersonalDetails.classList.toggle("active", true);
       bar.classList.toggle("active", true);
-      // revealText.innerHTML = "Hide immigration and nationality details";
+      revealText.innerHTML = "Hide immigration and nationality details";
     }
   }
   let reveal = document.getElementsByClassName("new-reveal")[0];
