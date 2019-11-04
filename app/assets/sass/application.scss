@@ -345,12 +345,9 @@ form, .heading-medium, .question, label, .form-label, .form-label-bold, .form-la
   }
 }
 
-summary {
-  .summary {
-    text-decoration: none;
-  }
+.awards-summary {
+  text-decoration: underline!important;
 }
-
 //.previous-addresses {
 //  margin-top: 10px;
 //}
@@ -771,7 +768,11 @@ input.short-field {
 }
 
 #sl-header .sl-link:hover {
-  text-decoration: none!important;
+  color: #dee0e2;
+}
+
+details .summary {
+  text-decoration: underline;
 }
 
 #sl-header a.sl-main-heading:hover {
@@ -2884,4 +2885,13 @@ a.sl-secondary-button {
 
 .data-source {
   padding-top: 10px;
+}
+
+.relationship-name span {
+  font-weight: bold;
+  color: $searchlight-black;
+  a {
+    font-weight: normal;
+    text-decoration: underline!important;
+  }
 }
