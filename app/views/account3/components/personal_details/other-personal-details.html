@@ -32,7 +32,7 @@
       {% endif %}
     {% endfor %}
 
-  {% if data.homeOfficeRole == true %}
+  {# {% if data.homeOfficeRole == true %}
     <div class="grid-row">
       <div class="column-one-third reveal">
       
@@ -44,31 +44,40 @@
         <span id="reveal-text">Show immigration and nationality details</span></a>
       </div>
     </div>
-  {% endif %}
+  {% endif %} #}
 
-<div id="other-personal-details">
-    <p class="data-source sl-secondary-text-color sl-metadata">Data from the Home Office</p>
-    <hr class="light">
+  {% if data.homeOfficeRole == true %}  
+ 
+    <details>
+      <summary>
+        <span class="summary">Show immigration and nationality details</span>
+      </summary>
 
-
-    {% for detailName, value in data.citizen %}
-
-      {% if value != null %}
-        {% if detailName == "indIndicator" %}
-          {% include "./nationality-interest.html" %}
-          <hr class="light">
-        {% elif detailName == "nationality" %}
-          {% include "./nationality.html" %}
-          <hr class="light">
-        {% elif detailName == "publicFunds" %}
-          {% include "./publicfunds.html" %}
-          <hr class="light">
-        {% elif detailName == "immigration" %}
-          {% include "./immigration.njk" %}
-          <hr class="light">
+      <p class="data-source sl-secondary-text-color sl-metadata">Data from the Home Office</p>
+      <hr class="light">
+      {% for detailName, value in data.citizen %}
+        {% if value != null %}
+          {% if detailName == "indIndicator" %}
+            {% include "./nationality-interest.html" %}
+            <hr class="light">
+          {% elif detailName == "nationality" %}
+            {% include "./nationality.html" %}
+            <hr class="light">
+          {% elif detailName == "publicFunds" %}
+            {% include "./publicfunds.html" %}
+            <hr class="light">
+          {% elif detailName == "immigration" %}
+            {% include "./immigration.njk" %}
+            <hr class="light">
+          {% endif %}
         {% endif %}
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+    {% endif %}
+    </details>
+
+  <div id="other-personal-details">
+
+    
     
 <!--
 
