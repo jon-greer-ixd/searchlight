@@ -25,6 +25,7 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 ///////////////
 // July 2019 //
 /////////////// 
+
 var guardianRole = false;
 let refactor = false;
 let homeOfficeRole = true;
