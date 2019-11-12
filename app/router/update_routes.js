@@ -152,6 +152,8 @@ router.get(/add-detail-handler/, function (req, res) {
         req.session.data.citizen.pvMember = true;
       } 
     } 
+  } else if(personalDetail == 'dateOfBirth') {
+    req.session.data.citizen.dobValue = personalDetailValue;
   } else {
     req.session.data.citizen[personalDetail] = personalDetailValue;
     console.log(`${personalDetail} = ${personalDetailValue}`);
@@ -253,7 +255,7 @@ router.get(/check-name-handler/, function (req, res) {
       if (updatetype != 5) {
         req.session.data.citizen.requestedNameFirst = req.session.data.requestedName;
       } else { 
-        req.session.data.citizen.requestedNameFirst = null
+        req.session.data.citizen.requestedNameFirst = null;
       }
     }
     req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(nametype), null, updatetype);
@@ -300,6 +302,56 @@ router.get(/add-handler/, function (req, res) {
     res.redirect('../../update/name/add')
   }
 })
+
+router.get(/change_pd/, function (req, res) {
+  req.session.data.personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
+  req.session.data.personDetailObject.key = req.query.personalDetail;
+  if(req.session.data.personDetailObject.key == 'dateOfBirth') {
+    req.session.data.updateType = 3;
+    res.redirect('/update/person/update')
+  } else if (req.session.data.personDetailObject.key == 'recordLevel') {
+    req.session.data.updateType = 2;
+    res.redirect('/update/person/update')
+  } else if (req.session.data.personDetailObject.key == 'dateOfDeath') {
+    res.redirect('/update/person/dod-options')
+  } else if (req.session.data.personDetailObject.key == 'sex') {
+    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
+    req.session.data.updateType = 3;
+    res.redirect('/update/person/check')
+  } else if (req.session.data.personDetailObject.key == 'indIndicator') {
+    req.session.data.personalDetailValue = null;
+    req.session.data.updateType = 2;
+    res.redirect('/update/person/check')
+  } else if (req.session.data.personDetailObject.key == 'assetFreeze'|| req.session.data.personDetailObject.key == 'idAtRisk') {
+    if (req.session.data.personDetailObject.state == 1) {
+      req.session.data.updateType = 5;
+      req.session.data.personalDetailValue = false;
+    } else {
+      req.session.data.updateType = 1;
+      req.session.data.personalDetailValue = true;
+    }
+    res.redirect('/update/person/dates')
+  } else {
+    res.redirect('/update/person/type')
+  }
+})
+
+router.get(/check-nino-handler/, function (req, res) {
+  if (req.session.data.updateType == 3) {
+    req.session.data.citizen.ninoLevel = req.session.data.verificationLevel;
+    console.log(req.session.data.verificationLevel);
+    req.session.data.toaster = generalFunctions.setToasterMessage('National Insurance number verification type', null, 2);
+  } else if (req.session.data.updateType == 1) {
+    req.session.data.toaster = generalFunctions.setToasterMessage('Any available data has been recovered', null, ' ');
+  } else {
+    req.session.data.citizen.accountStatus = req.session.data.tempAccountStatus;
+    req.session.data.toaster = generalFunctions.setToasterMessage('Account status', null, 2);
+  }
+  req.session.data.tempawards = null;
+  req.session.data.temprelationships = null;
+  res.redirect('/account3/account')
+})
+
 
 
 module.exports = router

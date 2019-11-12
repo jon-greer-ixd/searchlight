@@ -6,17 +6,17 @@
         <div class="form-group">
          <fieldset data-required data-error="Choose a title">
             <div class="multiple-choice">
-              <input id="None" type="radio" name="verificationLevel" value="Verified" {% if data.personalDetails.ninoVerificationLevel.value == "Verified" %} checked="checked" {% endif %}>
+              <input id="None" type="radio" name="verificationLevel" value="2" {% if data.citizen.ninoLevel == 2 %} checked="checked" {% endif %}>
               <label for="None">Verified</label>
             </div>
            
             <div class="multiple-choice">
-              <input id="mr" type="radio" name="verificationLevel" value="Qualified" {% if data.personalDetails.ninoVerificationLevel.value == "Qualified" %} checked="checked" {% endif %}>
+              <input id="mr" type="radio" name="verificationLevel" value="1" {% if data.citizen.ninoLevel == 1 %} checked="checked" {% endif %}>
               <label for="mr">Qualified</label>
             </div>
            
             <div class="multiple-choice">
-              <input id="mrs" type="radio" name="verificationLevel" value="Unverified" {% if data.personalDetails.ninoVerificationLevel.value == "Unverified" %} checked="checked" {% endif %}>
+              <input id="mrs" type="radio" name="verificationLevel" value="0" {% if data.citizen.ninoLevel == 0 %} checked="checked" {% endif %}>
               <label for="mrs">Unverified</label>
             </div>
           </fieldset>

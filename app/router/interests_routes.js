@@ -1,12 +1,14 @@
-//test
 var express = require('express')
 var router = express.Router()
 
-router.get(/add-int-handler/, function (req, res) {
-  res.redirect('/update/interests/add-interest');
-})
+var Interest = require('../interest.js');
+var dates = require('../dates.js').dates;
 
 var counter;
+
+function resetToDefaults() {
+  tempInterest = Interest.createInterest();
+}
 
 router.get(/add-interest-handler/, function (req, res) {
   req.session.data.updateType = 'addInterest';
@@ -37,7 +39,7 @@ router.get(/interest-check-handler/, function (req, res) {
 //  if (req.session.data.updateType === 'transferInterest') {
 //    dataState.interestTransfered = true;
 //  }
-  res.redirect('/account2/account');
+  res.redirect('/account3/account');
 })
 
 router.get(/change-interest-handler/, function (req, res) {

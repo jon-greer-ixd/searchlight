@@ -56,6 +56,13 @@ let convertDetailToString = (detail) => {
     case 'requestedName':
       return 'Requested name';
     break;
+    case 'dateOfBirth':
+      return 'Date of birth';
+    break;
+    case 'homeEmail':
+      return 'Home email address';
+    break;
+    
     default:
       return null;
   }
