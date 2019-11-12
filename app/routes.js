@@ -25,9 +25,9 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 ///////////////
 // July 2019 //
 /////////////// 
-var guardianRole = false;
-let refactor = false;
-let homeOfficeRole = true;
+var guardianRole = true;
+let refactor = true;
+let homeOfficeRole = false;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]
@@ -737,64 +737,7 @@ router.get(/check-sex-handler/, function (req, res) {
 })
 
 
-/**********/
-/** NAME **/
-/**********/
 
-router.get(/add-handler/, function (req, res) {
-  req.session.data.updateType = 'add';
-  if(req.session.data.details.nameTwo.show == true) {
-    req.session.data.nameType = 'requestedName';
-    res.redirect('../../update/name/update-name')
-  } else if(req.session.data.details.requestedName.show == true) {
-    req.session.data.nameType = 'nameTwo';
-    res.redirect('../../update/name/update-name')
-  } else {
-    res.redirect('../../update/name/add')
-  }
-})
-
-router.get(/name-change-handler/, function (req, res) {
-  req.session.data.toaster = null;
-  req.session.data.updateType = 'change';
-  res.redirect('/update/name/update')
-})
-
-//change name
-router.get(/change-name-type-handler/, function (req, res) {
-  if(req.session.data.updateType == 'end') {
-    res.redirect('remove')
-  } else {
-    res.redirect('update-name')
-  }
-})
-
-//check name
-router.get(/check-name-handler/, function (req, res) {
-  req.session.data.toaster = null;  
-  if (req.session.data.nameType == 'name' || req.session.data.nameType == 'nameTwo') {
-    if (req.session.data.updateType != 'end') {
-      req.session.data.details[req.session.data.nameType].title = req.session.data.title;
-      req.session.data.details[req.session.data.nameType].first = req.session.data.firstname;
-      req.session.data.details[req.session.data.nameType].last = req.session.data.lastname;
-      req.session.data.details[req.session.data.nameType].suffix = req.session.data.suffix;
-      req.session.data.details[req.session.data.nameType].show = true;
-    } else { 
-      req.session.data.details.nameTwo.show = false;
-    }
-  }
-  if (req.session.data.nameType == 'requestedName') {
-    if (req.session.data.updateType != 'end') {
-      req.session.data.details.requestedName.value = req.session.data.requestedName;
-      req.session.data.details[req.session.data.nameType].show = true;
-    } else { 
-      req.session.data.details.requestedName.show = false;
-    }
-  }
-  req.session.data.details[req.session.data.nameType].state = setState(req.session.data.updateType);
-  req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
-  res.redirect('../../account2/account')
-})
 
 
 

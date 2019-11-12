@@ -3,6 +3,8 @@ var router = express.Router()
 
 var personalDetailsFunctions = require('../../functions/personalDetailsFunctions.js');
 var generalFunctions = require('../../functions/general.js');
+var setState = require('../defaults.js').setState;
+
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
@@ -152,6 +154,7 @@ router.get(/add-detail-handler/, function (req, res) {
     } 
   } else {
     req.session.data.citizen[personalDetail] = personalDetailValue;
+    console.log(`${personalDetail} = ${personalDetailValue}`);
   }
   req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, req.session.data.updateType);
   req.session.data.verificationlevel = null;
@@ -193,5 +196,110 @@ router.get(/check-gender-handler/, function (req, res) {
     res.redirect('/account3/account')
   }
 })
+
+//check name
+router.get(/check-name-handler/, function (req, res) {
+  if (req.session.data.refactor == false) {
+    req.session.data.toaster = null;  
+    if (req.session.data.nameType == 'name' || req.session.data.nameType == 'nameTwo') {
+      if (req.session.data.updateType != 'end') {
+        req.session.data.details[req.session.data.nameType].title = req.session.data.title;
+        req.session.data.details[req.session.data.nameType].first = req.session.data.firstname;
+        req.session.data.details[req.session.data.nameType].last = req.session.data.lastname;
+        req.session.data.details[req.session.data.nameType].suffix = req.session.data.suffix;
+        req.session.data.details[req.session.data.nameType].show = true;
+      } else { 
+        req.session.data.details.nameTwo.show = false;
+      }
+    }
+    if (req.session.data.nameType == 'requestedName') {
+      if (req.session.data.updateType != 'end') {
+        req.session.data.details.requestedName.value = req.session.data.requestedName;
+        req.session.data.details[req.session.data.nameType].show = true;
+      } else { 
+        req.session.data.details.requestedName.show = false;
+      }
+    }
+    req.session.data.details[req.session.data.nameType].state = setState(req.session.data.updateType);
+    req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
+    res.redirect('../../account2/account')
+  } else {
+    //new
+    req.session.data.toaster = null;  
+    var updatetype = req.session.data.updateType
+    var nametype = req.session.data.nameType
+    var title = (nametype + "Title");
+    var first = (nametype+ "First");
+    var last = (nametype + "Last");
+    var suffix = (nametype+ "Suffix");
+    if (nametype == 'nameOne' || nametype == 'nameTwo') {
+      if (updatetype != 5) {
+        if(req.session.data.title.toUpperCase() == "NONE") {
+          req.session.data.citizen[title] = "";
+        } else {
+          req.session.data.citizen[title] = req.session.data.title;
+        }
+        req.session.data.citizen[first] = req.session.data.firstname;
+        req.session.data.citizen[last] = req.session.data.lastname;
+        req.session.data.citizen[suffix] = req.session.data.suffix;
+      } else { 
+        req.session.data.citizen[title] = null;
+        req.session.data.citizen[first] = null;
+        req.session.data.citizen[last] = null;
+        req.session.data.citizen[suffix] = null;
+      }
+    }
+    if (req.session.data.nameType == 'requestedName') {
+      if (updatetype != 5) {
+        req.session.data.citizen.requestedNameFirst = req.session.data.requestedName;
+      } else { 
+        req.session.data.citizen.requestedNameFirst = null
+      }
+    }
+    req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(nametype), null, updatetype);
+    res.redirect('../../account3/account')
+  }
+})
+
+//change name
+router.get(/change-name-type-handler/, function (req, res) {
+  if(req.session.data.updateType == 5) {
+    res.redirect('remove')
+  } else {
+    res.redirect('update-name')
+  }
+})
+
+router.get(/name-change-handler/, function (req, res) {
+  req.session.data.toaster = null;
+  req.session.data.updateType = 0;
+  var title = req.session.data.nameType + "Title";
+  var firstName = req.session.data.nameType + "First";
+  var lastName = req.session.data.nameType + "Last";
+  var suffix = req.session.data.nameType + "Suffix";
+  req.session.data.selectedNameTitle = req.session.data.citizen[title];
+  req.session.data.selectedNameFirst = req.session.data.citizen[firstName];
+  req.session.data.selectedNameLast = req.session.data.citizen[lastName];
+  req.session.data.selectedNameSuffix = req.session.data.citizen[suffix];
+  res.redirect('/update/name/update')
+})
+
+/**********/
+/** NAME **/
+/**********/
+
+router.get(/add-handler/, function (req, res) {
+  req.session.data.updateType = 1;
+  if(req.session.data.citizen.nameTwoFirst != null) {
+    req.session.data.nameType = 'requestedName';
+    res.redirect('../../update/name/update-name')
+  } else if(req.session.data.citizen.requestedNameFirst != null) {
+    req.session.data.nameType = 'nameTwo';
+    res.redirect('../../update/name/update-name')
+  } else {
+    res.redirect('../../update/name/add')
+  }
+})
+
 
 module.exports = router
