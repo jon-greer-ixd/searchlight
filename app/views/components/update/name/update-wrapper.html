@@ -8,19 +8,26 @@
           <a class="link-back" onCLick="history.back()">Back</a>
           
           <h2 class="title">
-            {% if data.updateType == "add" %} 
+            {% if data.updateType == 1 %} 
               Add a
-            {% elif data.updateType == "update" %}
+            {% elif data.updateType == 2 %}
               Update
-            {% elif data.updateType == "correct" %}
+            {% elif data.updateType == 3 %}
               Correct 
-            {% elif data.updateType == "end" %}
+            {% elif data.updateType == 5 %}
               End
             {% else %}
-              Change
+              Change their
             {% endif %}
-            
-            {{data.details[data.nameType].display | lower}} 
+
+            {% if data.nameType == "nameOne" %} 
+              name type 1
+            {% elif data.nameType == "nameTwo" %}
+              name type 2
+            {% elif data.nameType == "requestedName" %}
+              requested name
+            {% endif %}
+
           </h2>
           
 

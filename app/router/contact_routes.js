@@ -10,7 +10,7 @@ router.get(/contact-change-handler/, function (req, res) {
   res.redirect('/update/contact/update-type')
 })
 
-router.get(/update-contact-handler/, function (req, res) {
+router.get(/update-contact-new/, function (req, res) {
   var next = 'contact-details';
   if (req.query.updateType == 5) {
     next = 'end';
@@ -28,7 +28,7 @@ router.get(/pref-handler/, function (req, res) {
 })
 
 //check-contact-handler
-router.get(/check-contact-handler/, function (req, res) {  
+router.get(/check-contact-new/, function (req, res) {  
   var chosenContact = req.session.data.contactType;
   var contactObject = req.session.data.contactTypes[chosenContact];
   var contactTypes = req.session.data.contactTypes;

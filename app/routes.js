@@ -27,20 +27,31 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 /////////////// 
 
 var guardianRole = false;
-let refactor = false;
-let homeOfficeRole = true;
+let refactor = true;
+let homeOfficeRole = false;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]
 // }
 
 router.get('/cis-handler/', function (req, res) {
+  console.log('here');
   req.session.data.refactor = refactor;
   req.session.data.homeOfficeRole = homeOfficeRole;
   req.session.data.guardianRole = guardianRole;
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
+  if (req.session.data.citizen.appointee != null) {
+    req.session.data.appointee = getCitizen(req.session.data.citizen.appointee, req.session.data.cis);
+    console.log(`Apointee = ${req.session.data.appointee.nameOneFirst} ${req.session.data.appointee.nameOneLast}`)
+  }
   res.redirect('account3/account')
 })
+
+router.get('/appointee-handler/', function (req, res) {
+  res.redirect('cis-handler?nino=' + req.session.data.appointee.nino)
+})
+
+
 
 
 //***********
@@ -82,10 +93,6 @@ var resetInterests = function () {
 function resetTempInterest(interest) {
   tempInterest = Interest.createInterest();
   interest = tempInterest;
-}
-
-function resetToDefaults() {
-  tempInterest = Interest.createInterest();
 }
 
 function printInterests() {
@@ -205,7 +212,7 @@ var localAuthorityRoutes = require('./router/local_authority_routes');
 var notificationsRoutes = require('./router/notifications_routes');
 var ninoRoutes = require('./router/nino_routes');
 var contactRoutes = require('./router/contact_routes');
-var interestRoutes = require('./router/contact_routes');
+var interestRoutes = require('./router/interests_routes');
 var traceRoutes = require('./router/trace_routes');
 var updateRoutes = require('./router/update_routes');
 
@@ -526,39 +533,6 @@ router.get(/personal-detail-handler/, function (req, res) {
   res.redirect('/update/person/check')
 })
 
-router.get(/change_pd/, function (req, res) {
-  req.session.data.personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
-  req.session.data.personDetailObject.key = req.query.personalDetail;
-  if(req.session.data.personDetailObject.key == 'dateOfBirth') {
-    req.session.data.updateType = 3;
-    res.redirect('/update/person/update')
-  } else if (req.session.data.personDetailObject.key == 'recordLevel') {
-    req.session.data.updateType = 2;
-    res.redirect('/update/person/update')
-  } else if (req.session.data.personDetailObject.key == 'dateOfDeath') {
-    res.redirect('/update/person/dod-options')
-  } else if (req.session.data.personDetailObject.key == 'sex') {
-    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
-    req.session.data.updateType = 3;
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personDetailObject.key == 'indIndicator') {
-    req.session.data.personalDetailValue = null;
-    req.session.data.updateType = 2;
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personDetailObject.key == 'assetFreeze'|| req.session.data.personDetailObject.key == 'idAtRisk') {
-    if (req.session.data.personDetailObject.state == 1) {
-      req.session.data.updateType = 5;
-      req.session.data.personalDetailValue = false;
-    } else {
-      req.session.data.updateType = 1;
-      req.session.data.personalDetailValue = true;
-    }
-    res.redirect('/update/person/dates')
-  } else {
-    res.redirect('/update/person/type')
-  }
-})
-
 
 //DISABILITY
 router.get(/disability-type-handler/, function (req, res) {
@@ -738,64 +712,7 @@ router.get(/check-sex-handler/, function (req, res) {
 })
 
 
-/**********/
-/** NAME **/
-/**********/
 
-router.get(/add-handler/, function (req, res) {
-  req.session.data.updateType = 'add';
-  if(req.session.data.details.nameTwo.show == true) {
-    req.session.data.nameType = 'requestedName';
-    res.redirect('../../update/name/update-name')
-  } else if(req.session.data.details.requestedName.show == true) {
-    req.session.data.nameType = 'nameTwo';
-    res.redirect('../../update/name/update-name')
-  } else {
-    res.redirect('../../update/name/add')
-  }
-})
-
-router.get(/name-change-handler/, function (req, res) {
-  req.session.data.toaster = null;
-  req.session.data.updateType = 'change';
-  res.redirect('/update/name/update')
-})
-
-//change name
-router.get(/change-name-type-handler/, function (req, res) {
-  if(req.session.data.updateType == 'end') {
-    res.redirect('remove')
-  } else {
-    res.redirect('update-name')
-  }
-})
-
-//check name
-router.get(/check-name-handler/, function (req, res) {
-  req.session.data.toaster = null;  
-  if (req.session.data.nameType == 'name' || req.session.data.nameType == 'nameTwo') {
-    if (req.session.data.updateType != 'end') {
-      req.session.data.details[req.session.data.nameType].title = req.session.data.title;
-      req.session.data.details[req.session.data.nameType].first = req.session.data.firstname;
-      req.session.data.details[req.session.data.nameType].last = req.session.data.lastname;
-      req.session.data.details[req.session.data.nameType].suffix = req.session.data.suffix;
-      req.session.data.details[req.session.data.nameType].show = true;
-    } else { 
-      req.session.data.details.nameTwo.show = false;
-    }
-  }
-  if (req.session.data.nameType == 'requestedName') {
-    if (req.session.data.updateType != 'end') {
-      req.session.data.details.requestedName.value = req.session.data.requestedName;
-      req.session.data.details[req.session.data.nameType].show = true;
-    } else { 
-      req.session.data.details.requestedName.show = false;
-    }
-  }
-  req.session.data.details[req.session.data.nameType].state = setState(req.session.data.updateType);
-  req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.details[req.session.data.nameType].display, null, req.session.data.details[req.session.data.nameType].state);
-  res.redirect('../../account2/account')
-})
 
 
 
@@ -972,7 +889,7 @@ router.get(/check-address-handler/, function (req, res) {
   req.session.data.addressType, req.session.data.updateType, req.session.data.tempValue, req.session.data.cherishStatus = null;
   
   // REDIRECT
-  res.redirect('/account2/account')
+  res.redirect('/account3/account')
 })
 
 
@@ -1055,32 +972,6 @@ router.get(/nino-level-handler/, function (req, res) {
   }
 })
 
-router.get(/check-nino-handler/, function (req, res) {
-  if (req.session.data.updateType == 3) {
-//  var tempmessage;
-    req.session.data.personalDetails.ninoVerificationLevel.value = req.session.data.verificationLevel;
-    req.session.data.toaster = generalFunctions.setToasterMessage('National Insurance number verification type', null, 2);
-  } else if (req.session.data.updateType == 1) {
-//    if (req.session.data.tempawards == 'true' && req.session.data.temprelationships == 'true') {
-//      tempmessage = 'Awards and relationship data recovered';
-//    } else if (req.session.data.tempawards == 'true') {
-//      tempmessage = 'Awards data recovered';
-//    } else if (req.session.data.temprelationships == 'true') {
-//      tempmessage = 'Relationship data recovered';
-//    }
-    req.session.data.toaster = generalFunctions.setToasterMessage('Any available data has been recovered', null, ' ');
-  } else {
-    req.session.data.personalDetails.accountStatus.value = req.session.data.tempAccountStatus;
-    req.session.data.toaster = generalFunctions.setToasterMessage('Account status', null, 2);
-  }
-  req.session.data.tempawards = null;
-  req.session.data.temprelationships = null;
-//  tempmessage = null;
-  res.redirect('/account2/account')
-})
-
-// Available data has been recovered
-
 
 //relationships
 router.get(/cancel-handler/, function (req, res) {
@@ -1097,7 +988,7 @@ router.get(/relationship-handler/, function (req, res) {
   req.session.data.miscData.relationships.state = req.session.data.updateType;
   req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
   req.session.updateType = null;
-  res.redirect('/account2/account')
+  res.redirect('/account3/account')
 })
 
 router.get(/change_relationship/, function (req, res) {

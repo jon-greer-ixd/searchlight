@@ -26,7 +26,7 @@
           <li>
             <a data-toggle="modal" data-target="#requested_name_modal" class="under-link">View maintenance</a> 
           </li>
-          {% if guardianRole %}
+          {% if data.guardianRole %}
           <li>
             <a class="secondary-link" href="name-change-handler/?nameType=requestedName">Change</a>
           </li>
@@ -75,7 +75,7 @@
           <li>
             <a data-toggle="modal" data-target="#name_two_modal" class="under-link">View maintenance</a> 
           </li>
-          {% if guardianRole %}
+          {% if data.guardianRole %}
           <li>
             <a class="secondary-link" href="name-change-handler/?nameType=nameTwo">Change</a>
           </li>
@@ -133,9 +133,9 @@
         <li>
           <a data-toggle="modal" data-target="#name_one_modal" class="under-link">View maintenance</a> 
         </li>
-        {% if guardianRole %}
+        {% if data.guardianRole %}
         <li>
-          <a class="secondary-link" href="name-change-handler/?nameType=name">Change</a>
+          <a class="secondary-link" href="name-change-handler/?nameType=nameOne">Change</a>
         </li>
         {% endif %}
       </ul>

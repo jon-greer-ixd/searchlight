@@ -4,41 +4,35 @@
     
     <form method="get" action="change-name-type-handler">
       
-        <legend class="visually-hidden">
-          <p>
-            What kind of change do you need to make?
-          </p>
-        </legend>
-      
         <div class="form-group">
           <div class="multiple-choice">
-            <input id="update" type="radio" name="updateType" value="update">
+            <input id="update" type="radio" name="updateType" value=2>
             <label for="update">Update 
-              {% if data.nameType == "name" %} 
-                the name type 1
+              {% if data.nameType == "nameOne" %} 
+                their name type 1
               {% elif data.nameType == "nameTwo" %} 
-                the name type 2
+                their name type 2
               {% elif data.nameType == "requestedName" %} 
-                the requested name
+                their requested name
               {% endif %} 
             </label>
           </div>
           <div class="multiple-choice">
-            <input id="correct" type="radio" name="updateType" value="correct">
+            <input id="correct" type="radio" name="updateType" value=3>
             <label for="correct">Correct a mistake</label>
           </div>
           
           {% if data.nameType == "nameTwo"%}
           <div class="multiple-choice">
-            <input id="remove" type="radio" name="updateType" value="end">
-            <label for="remove">End the name type 2</label>
+            <input id="remove" type="radio" name="updateType" value=5>
+            <label for="remove">End their name type 2</label>
           </div>
           {% endif %}
           
           {% if data.nameType == "requestedName" %}
           <div class="multiple-choice">
-            <input id="remove" type="radio" name="updateType" value="end">
-            <label for="remove">End the requested name</label>
+            <input id="remove" type="radio" name="updateType" value=5>
+            <label for="remove">End their requested name</label>
           </div>
           {% endif %}
           
