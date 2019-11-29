@@ -1,3 +1,8 @@
+    {% if data.citizen.appointeeToaster == true %}
+      {% include "components/update/toasters/appointee.html" %}
+    {% endif %}
+   
+   
     {% if updated === true or cherished === true or statusupdated === true or statuscorrected === true or addresscorrected === true or cherishedlinecorrected === true %}
       {% include "components/update/toasters/address-updated.html" %}
     {% endif %}

@@ -25,16 +25,18 @@
         <p class="strong">Person relationships</p>
       </div>
       <div class="column-one-third last-col">
+            {% if data.guardianRole == true %}
         <ul class="edit-menu">
           <li>
             <a class="secondary-link" href="change_relationship/?updateType=1">Add a relationship</a>
           </li>
         </ul>
+        {% endif %}
       </div>
     </div>
 
     <!-- Blank -->
-    {% if data.miscData.relationships.state == null %}
+    {% if data.miscData.relationships.state == null and data.citizen.appointee == null %}
       <div class="grid-row">
         <div class="column-two-thirds">
           <p>No person relationships</p>
@@ -66,7 +68,7 @@
       </div>
       <hr class="light">
       <div class="grid-row">
-        {% include "./components/relationships/relationship_details.html" %}
+        {% include "./relationship_details.html" %}
         <div class="column-one-third last-col">
           <ul class="edit-menu">
             <li>
@@ -107,7 +109,7 @@
         <hr class="light">
         
         <div class="grid-row">
-          {% include "./components/relationships/relationship_details.html" %}
+          {% include "./relationship_details.html" %}
           <div class="column-one-third last-col">
             <ul class="edit-menu">
               <li>
@@ -124,23 +126,61 @@
     {% if data.miscData.relationships.state == 6 %}
       <p>No award relationships</p>
     {% endif %}
-    
-    {% if data.miscData.relationships.state != 9 %}
-      <hr class="light">
+    {% if data.guardianRole == true %}
+      {% if data.miscData.relationships.state != 9 %}
+        <hr class="light">
 
-      <div class="grid-row">
-        <div class="column-two-thirds">
-          &nbsp;
+        <div class="grid-row">
+          <div class="column-two-thirds">
+            &nbsp;
+          </div>
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a class="secondary-link" href="recover-relationships-handler">Recover deleted relationships</a>
+              </li>
+            </ul>
+          </div>
         </div>
+      {% endif %}
+    {% endif %}
+
+    <!-- Appointee -->
+    {% if data.citizen.appointee != null %}
+      <br>
+      <div class="grid-row" id="">
+        <div class="column-one-third">
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">Start date</li>
+            </ul>
+          </div>
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">End date</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">Relationship</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="light">
+      <div class="grid-row">
+        {% include "./relationship_details_2.html" %}
         <div class="column-one-third last-col">
           <ul class="edit-menu">
             <li>
-              <a class="secondary-link" href="recover-relationships-handler">Recover deleted relationships</a>
+              <a class="secondary-link" href="../update/relationships/type">Change</a>
             </li>
           </ul>
         </div>
       </div>
     {% endif %}
+
+
     
   </div>
 </div>

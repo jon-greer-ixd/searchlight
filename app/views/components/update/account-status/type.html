@@ -10,7 +10,7 @@
           <label for="correct">Update the verification type</label>
         </div>
         
-        {% if data.personalDetails.accountStatus.value == 'Deleted' %}
+        {% if data.citizen.accountStatus == 'Deleted' %}
           <div class="multiple-choice">
             <input id="update" type="radio" name="updateType" value=0>
             <label for="update">Update the account status to open</label>

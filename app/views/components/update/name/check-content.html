@@ -4,7 +4,7 @@
         
         <table class="table"> 
           
-          {% if data.updateType == "correct" %}
+          {% if data.updateType == 3 %}
             {% if data.nameType != "requestedName" %}
               <tr>
                 <td><span class="strong">Title</span></td>
@@ -36,7 +36,7 @@
           {% endif %}
           
           
-          {% if data.updateType == "update" %}
+          {% if data.updateType == 2 %}
             {% if data.nameType != "requestedName" %}
               <tr>
                 <td><span class="strong">Title</span></td>
@@ -82,7 +82,7 @@
           {% endif %}
           
           
-          {% if data.updateType == "add" and data.nameType == "nameTwo" %}
+          {% if data.updateType == 1 and data.nameType == "nameTwo" %}
             <tr>
               <td><span class="strong">Title</span></td>
               <td>{{data.title | capitalize }}</td>
@@ -117,7 +117,7 @@
           {% endif %}
           
           
-          {% if data.updateType == "add" and data.nameType == "requestedName" %}
+          {% if data.updateType == 1 and data.nameType == "requestedName" %}
             <tr>
               <td><span class="strong">Requested name</span></td>
               <td>{{data.requestedName}}</td>
@@ -131,7 +131,7 @@
             </tr>
           {% endif %}
           
-          {% if data.updateType == "end" %}
+          {% if data.updateType == 5 %}
             <tr>
               <td><span class="strong">End date</span></td>
               <td>{{data['prepopulatedDate']}}</td>
