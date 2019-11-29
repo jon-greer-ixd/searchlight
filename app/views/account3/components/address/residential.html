@@ -3,7 +3,7 @@
     <ul>
       <li>Residential address</li>
       <li class="sl-secondary-text-color sl-metadata">
-          {{data.addresses.residential.startDate}} – present
+        {{ data.citizen.addressStartDate }} – present
       </li>
     </ul>
   </div>
@@ -14,10 +14,9 @@
         Flat A<br>
       {% endif %}
       {% if data.addresses.residential.status == "live" or data.addresses.residential.status == "dlo" %}
-        {{data.addresses.residential.lineOne}}<br>
-        Gateshead<br>
-        Tyne and wear<br>
-        NE1 1HH<br>
+        {{ data.citizen.addressLineOne }}<br>
+        {{ data.citizen.addressLineTwo }}<br>
+        {{ data.citizen.postcode }}<br>
         England
       {% endif %}
     </p>

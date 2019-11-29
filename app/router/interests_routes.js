@@ -1,14 +1,73 @@
 var express = require('express')
 var router = express.Router()
 
-var Interest = require('../interest.js');
 var dates = require('../dates.js').dates;
+var interests = [];
+
+class Interest {
+  constructor(live, title, startDate, system) {
+    this.live = live;
+    this.title = title;
+    this.startDate = startDate;
+    this.system = system;
+  }
+  //
+  printInterest () {
+    console.log("Interest = " + this.system + ", " + this.title + " " +  this.startDate + " " +  this.systemRef);
+  }
+  reset() {
+    this.system = null; 
+    this.title = null;
+    this.startDate = null; 
+    this.systemRef = null;
+  }  
+  createInterest() {
+    return new Interest();
+  }
+}
+
+let myInterest = new Interest();
+myInterest.live = false;
+myInterest.title = "State pension";
+myInterest.startDate = "01 Jan 2019";
+myInterest.system = true;
+myInterest.printInterest();
+myInterest.reset();
+myInterest.printInterest();
 
 var counter;
 
 function resetToDefaults() {
   tempInterest = Interest.createInterest();
 }
+
+function addInterest(interest) {
+  interests.unshift(interest);
+}
+
+function resetTempInterest(interest) {
+  tempInterest = Interest.createInterest();
+  interest = tempInterest;
+}
+
+var dataState = {
+  correctionType: 'toNew',
+  currentStatus : 'live',//dlo, pwa, nfa
+  newStatus : 'live',//dlo, pwa, nfa
+  correspondenceAdded: false,
+  correspondenceRemoved: false,
+  updatedToNewAddress : false,
+  cherished : false,
+  cherishedLineCorrected : false,
+  statusUpdated : false,
+  dateIsUpdated : false,
+  interestAdded : false,
+  interestRemoved : false,
+  typeTwoAdded : false,
+  interestTransfered : false,
+  addressCorrected : false,
+  statusCorrected : false
+};
 
 router.get(/add-interest-handler/, function (req, res) {
   req.session.data.updateType = 'addInterest';
@@ -30,15 +89,12 @@ router.get(/add-interest-handler/, function (req, res) {
   }
 })
 
-router.get(/interest-check-handler/, function (req, res) {
+router.get(/interest-checkpage-handler/, function (req, res) {
   if (req.session.data.updateType == 'addInterest') {
     addInterest(tempInterest);
     dataState.interestAdded = true;   
   }
   resetTempInterest(req.session.data.tempInterest);
-//  if (req.session.data.updateType === 'transferInterest') {
-//    dataState.interestTransfered = true;
-//  }
   res.redirect('/account3/account');
 })
 
