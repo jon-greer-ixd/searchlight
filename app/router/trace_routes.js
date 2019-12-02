@@ -26,7 +26,7 @@ router.get(/trace-result-handler/, function (req, res) {
 
 
 router.get('/home-office-handler/', function (req, res) {
-  req.session.data.citizen = getCitizen('SX170207', req.session.data.cis);
+  req.session.data.citizen = getCitizen('PA807930', req.session.data.cis);
   res.redirect('account4/account')
 })
 
