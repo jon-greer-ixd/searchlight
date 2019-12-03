@@ -26,7 +26,8 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 // July 2019 //
 /////////////// 
 
-var guardianRole = false;
+//ho, dg, none
+var guardianRole = true;
 let refactor = true;
 let homeOfficeRole = false;
 
@@ -35,10 +36,19 @@ let homeOfficeRole = false;
 // }
 
 router.get('/cis-handler/', function (req, res) {
-  console.log('here');
+  if (req.query.role == 'dg') {
+    req.session.data.guardianRole = true;
+    req.session.data.homeOfficeRole = false;
+  } else if (req.query.role == 'ho') {
+    req.session.data.guardianRole = false;
+    req.session.data.homeOfficeRole = true;
+  } else {
+    req.session.data.guardianRole = guardianRole;
+    req.session.data.homeOfficeRole = homeOfficeRole;
+  }
+  console.log('guardianRole' == req.session.data.guardianRole);
+  console.log('homeOfficeRole' == req.session.data.homeOfficeRole);
   req.session.data.refactor = refactor;
-  req.session.data.homeOfficeRole = homeOfficeRole;
-  req.session.data.guardianRole = guardianRole;
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
   if (req.session.data.citizen.appointee != null) {
     req.session.data.appointee = getCitizen(req.session.data.citizen.appointee, req.session.data.cis);
