@@ -3,7 +3,6 @@ var router = express.Router()
 
 var bsFunctions = require('../../functions/bsFunctions.js');
 
-
 router.get(/bereavement-handler/, function (req, res) {
     req.session.data.bsNino = req.query.bsnino.toUpperCase();
     req.session.data.bsPerson = req.session.data.bsCustomers[req.session.data.bsNino];

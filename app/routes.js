@@ -221,6 +221,7 @@ var main = require('./main/routes');
 var settlementStatusRoutes = require('./router/settlementStatus_routes');
 var getDetailsAboutADeathRoutes = require('./router/getDetailsAboutADeath_routes');
 var bereavementRoutes = require('./router/bereavement_routes');
+var relationshipRoutes = require('./router/relationship_routes');
 var localAuthorityRoutes = require('./router/local_authority_routes');
 var notificationsRoutes = require('./router/notifications_routes');
 var ninoRoutes = require('./router/nino_routes');
@@ -230,7 +231,6 @@ var traceRoutes = require('./router/trace_routes');
 var updateRoutes = require('./router/update_routes');
 
 
-  
 
 // search page
 router.get('/search', function (req, res) {
@@ -306,6 +306,7 @@ router.use('/', main,
                 ninoRoutes,
                 contactRoutes,
                 interestRoutes,
+                relationshipRoutes,
                 updateRoutes,
                 traceRoutes);
                 
@@ -985,37 +986,11 @@ router.get(/nino-level-handler/, function (req, res) {
   }
 })
 
-
-//relationships
 router.get(/cancel-handler/, function (req, res) {
   req.session.data.toaster = null;
   res.redirect('/account2/account')
 })
 
-router.get(/add-relationships-handler/, function (req, res) {
-  req.session.data.updateType = 1;
-  res.redirect('check')
-})
-
-router.get(/relationship-handler/, function (req, res) {
-  req.session.data.miscData.relationships.state = req.session.data.updateType;
-  req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
-  req.session.updateType = null;
-  res.redirect('/account3/account')
-})
-
-router.get(/change_relationship/, function (req, res) {
-  if(req.session.data.updateType == 1) {
-    res.redirect('/update/relationships/add')
-  } else {
-    res.redirect('/update/relationships/check')
-  }
-})
-
-router.get(/recover-relationships-handler/, function (req, res) {
-  req.session.data.updateType = 9;
-  res.redirect('/update/relationships/check')
-})
 
 
 //*********

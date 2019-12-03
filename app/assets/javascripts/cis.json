@@ -50,7 +50,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "SX170202",
@@ -103,7 +105,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "SX170203",
@@ -156,7 +160,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
+
   },
   {
     "nino" : "SX170204",
@@ -209,7 +216,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "SX170205",
@@ -262,7 +271,9 @@
     "genderPreGra" : true,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "SX170207",
@@ -315,7 +326,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "QQ123456",
@@ -368,7 +381,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "PA807930",
@@ -421,7 +436,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "QQ123456",
@@ -474,7 +491,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "SX170206",
@@ -527,7 +546,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : false,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null
   },
   {
     "nino" : "SX170207",
@@ -581,7 +602,8 @@
     "genderGra" : null,
     "publicFunds" : false,
     "appointee" : "SX170208",
-    "appointeeToaster" : true
+    "appointeeToaster" : true,
+    "relationship" : null
   },
   {
     "nino" : "SX170208",
@@ -634,6 +656,8 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : false,
-    "appointee" : "SX170207"
+    "appointee" : "SX170207",
+    "appointeeToaster" : false,
+    "relationship" : null
   }
 ]
