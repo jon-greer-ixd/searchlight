@@ -28,7 +28,6 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 
 //ho, dg, none
 var guardianRole = true;
-let refactor = true;
 let homeOfficeRole = false;
 
 // var getCitizen = function(nino, cis) {
@@ -52,7 +51,6 @@ router.get('/cis-handler/', function (req, res) {
   }
   console.log('guardianRole' == req.session.data.guardianRole);
   console.log('homeOfficeRole' == req.session.data.homeOfficeRole);
-  req.session.data.refactor = refactor;
   if (req.session.data.citizen.appointee != null) {
     req.session.data.appointee = getCitizen(req.session.data.citizen.appointee, req.session.data.cis);
     console.log(`Apointee = ${req.session.data.appointee.nameOneFirst} ${req.session.data.appointee.nameOneLast}`)
