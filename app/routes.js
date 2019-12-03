@@ -42,6 +42,9 @@ router.get('/cis-handler/', function (req, res) {
   } else if (req.query.role == 'ho') {
     req.session.data.guardianRole = false;
     req.session.data.homeOfficeRole = true;
+  } else if (req.query.role == 'none') {
+    req.session.data.guardianRole = false;
+    req.session.data.homeOfficeRole = false;
   } else {
     req.session.data.guardianRole = guardianRole;
     req.session.data.homeOfficeRole = homeOfficeRole;
