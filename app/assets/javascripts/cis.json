@@ -52,7 +52,8 @@
     "publicFunds" : null,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170202",
@@ -107,7 +108,8 @@
     "publicFunds" : null,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170203",
@@ -162,8 +164,8 @@
     "publicFunds" : null,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
-
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170204",
@@ -218,7 +220,8 @@
     "publicFunds" : true,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "SX170205",
@@ -273,7 +276,8 @@
     "publicFunds" : null,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "dg"
   },
   {
     "nino" : "SX170207",
@@ -328,7 +332,8 @@
     "publicFunds" : true,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "QQ123456",
@@ -383,7 +388,8 @@
     "publicFunds" : true,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "PA807930",
@@ -438,7 +444,8 @@
     "publicFunds" : true,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "QQ123456",
@@ -493,7 +500,8 @@
     "publicFunds" : true,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "SX170206",
@@ -548,7 +556,8 @@
     "publicFunds" : false,
     "appointee" : null,
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "dg"
   },
   {
     "nino" : "SX170207",
@@ -603,7 +612,8 @@
     "publicFunds" : false,
     "appointee" : "SX170208",
     "appointeeToaster" : true,
-    "relationship" : null
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170208",
@@ -658,6 +668,7 @@
     "publicFunds" : false,
     "appointee" : "SX170207",
     "appointeeToaster" : false,
-    "relationship" : null
+    "relationship" : null,
+    "role": "none"
   }
 ]

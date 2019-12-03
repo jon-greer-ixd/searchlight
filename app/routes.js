@@ -36,13 +36,14 @@ let homeOfficeRole = false;
 // }
 
 router.get('/cis-handler/', function (req, res) {
-  if (req.query.role == 'dg') {
+  req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
+  if (req.query.role == 'dg' || req.session.data.citizen.role == 'dg') {
     req.session.data.guardianRole = true;
     req.session.data.homeOfficeRole = false;
-  } else if (req.query.role == 'ho') {
+  } else if (req.query.role == 'ho' || req.session.data.citizen.role == 'ho') {
     req.session.data.guardianRole = false;
     req.session.data.homeOfficeRole = true;
-  } else if (req.query.role == 'none') {
+  } else if (req.query.role == 'none' || req.session.data.citizen.role == 'none') {
     req.session.data.guardianRole = false;
     req.session.data.homeOfficeRole = false;
   } else {
@@ -52,7 +53,6 @@ router.get('/cis-handler/', function (req, res) {
   console.log('guardianRole' == req.session.data.guardianRole);
   console.log('homeOfficeRole' == req.session.data.homeOfficeRole);
   req.session.data.refactor = refactor;
-  req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
   if (req.session.data.citizen.appointee != null) {
     req.session.data.appointee = getCitizen(req.session.data.citizen.appointee, req.session.data.cis);
     console.log(`Apointee = ${req.session.data.appointee.nameOneFirst} ${req.session.data.appointee.nameOneLast}`)
