@@ -649,7 +649,7 @@
     "ca" : false,
     "nationality": null, 
     "accountStatus": "Open",
-    "additionalNeeds" : ["Sign language"],
+    "additionalNeeds" : null,
     "disability" : null,
     "assetFreeze" : null,
     "spokenLanguage" : null,
