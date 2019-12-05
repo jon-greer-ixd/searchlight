@@ -27,8 +27,8 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 /////////////// 
 
 var guardianRole = false;
-let refactor = true;
-let homeOfficeRole = false;
+let refactor = false;
+let homeOfficeRole = true;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]
