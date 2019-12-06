@@ -24,8 +24,9 @@
     "postCode" : "DH3 3NH",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "07761 111 111",
-    "home" : "0191 111 111",
+    "homeTelephone" : "0191 111 111",
     "homeEmail" : "email@address.com",
+    "contactPreference" : "homeTelephone",
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -50,7 +51,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170202",
@@ -77,8 +81,9 @@
     "postCode" : "AB10 7FE",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "07761 111 111",
-    "home" : "0191 111 111",
+    "homeTelephone" : "0191 111 111",
     "homeEmail" : "email@address.com",
+    "contactPreference" : "homeEmail",
     "uc" : false,
     "dla" : true,
     "sp" : false,
@@ -103,7 +108,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170203",
@@ -130,8 +138,9 @@
     "postCode" : "AB10 7FE",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "07761 111 111",
-    "home" : "0191 111 111",
+    "homeTelephone" : "0191 111 111",
     "homeEmail" : "email@address.com",
+    "contactPreference" : "homeEmail",
     "uc" : false,
     "dla" : false,
     "sp" : true,
@@ -156,7 +165,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170204",
@@ -183,8 +195,9 @@
     "postCode" : "AB10 7FE",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "07761 111 111",
-    "home" : "0191 111 111",
+    "homeTelephone" : "0191 111 111",
     "homeEmail" : "email@address.com",
+    "contactPreference" : "homeEmail",
     "uc" : false,
     "dla" : false,
     "sp" : false,
@@ -209,7 +222,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "SX170205",
@@ -236,8 +252,9 @@
     "postCode" : "DH3 3NH",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "07761 111 111",
-    "home" : "0191 111 111",
+    "homeTelephone" : "0191 111 111",
     "homeEmail" : "email@address.com",
+    "contactPreference" : "mobile",
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -262,7 +279,10 @@
     "genderPreGra" : true,
     "genderGra" : null,
     "publicFunds" : null,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "dg"
   },
   {
     "nino" : "SX170207",
@@ -289,8 +309,9 @@
     "postCode" : "NE19 9BA",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "0758 9742 251",
-    "home" : null,
+    "homeTelephone" : null,
     "homeEmail" : null,
+    "contactPreference" : "mobile",
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -315,7 +336,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "QQ123456",
@@ -342,8 +366,9 @@
     "postCode" : "NE19 9BA",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "0758 9742 251",
-    "home" : null,
+    "homeTelephone" : null,
     "homeEmail" : null,
+    "contactPreference" : null,
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -368,7 +393,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "PA807930",
@@ -395,8 +423,9 @@
     "postCode" : "NE19 9BA",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "0758 9742 251",
-    "home" : null,
+    "homeTelephone" : null,
     "homeEmail" : null,
+    "contactPreference" : null,
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -421,7 +450,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "QQ123456",
@@ -448,8 +480,9 @@
     "postCode" : "NE19 9BA",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "0758 9742 251",
-    "home" : null,
+    "homeTelephone" : null,
     "homeEmail" : null,
+    "contactPreference" : null,
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -474,7 +507,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : true,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "ho"
   },
   {
     "nino" : "SX170206",
@@ -501,8 +537,9 @@
     "postCode" : "NE19 9BA",
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "0758 9742 251",
-    "home" : null,
+    "homeTelephone" : null,
     "homeEmail" : null,
+    "contactPreference" : null,
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -527,7 +564,10 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : false,
-    "appointee" : null
+    "appointee" : null,
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "dg"
   },
   {
     "nino" : "SX170207",
@@ -554,8 +594,9 @@
     "postCode" : "B1 1EQ",
     "addressStartDate" : "20 June 2017",
     "mobile" : "07192 838 482",
-    "home" : null,
+    "homeTelephone" : null,
     "homeEmail" : "tommy95@gmail.com",
+    "contactPreference" : "homeEmail",
     "uc" : true,
     "dla" : false,
     "sp" : false,
@@ -581,7 +622,9 @@
     "genderGra" : null,
     "publicFunds" : false,
     "appointee" : "SX170208",
-    "appointeeToaster" : true
+    "appointeeToaster" : true,
+    "relationship" : null,
+    "role": "none"
   },
   {
     "nino" : "SX170208",
@@ -607,17 +650,18 @@
     "addressLineTwo" : "Coventry",
     "postCode" : "CV3 6JH",
     "addressStartDate" : "23 March 1979",
-    "mobile" : "07773 334 195",
-    "home" : "02475 554 223",
-    "homeEmail" : "tommy95@gmail.com",
-    "uc" : true,
+    "mobile" : null,
+    "homeTelephone" : "02475 554 223",
+    "homeEmail" : null,
+    "contactPreference" : "homeTelephone",
+    "uc" : false,
     "dla" : false,
     "sp" : false,
-    "pip" : true,
-    "ca" : true,
+    "pip" : false,
+    "ca" : false,
     "nationality": null, 
     "accountStatus": "Open",
-    "additionalNeeds" : ["Sign language"],
+    "additionalNeeds" : null,
     "disability" : null,
     "assetFreeze" : null,
     "spokenLanguage" : null,
@@ -634,6 +678,9 @@
     "genderPreGra" : null,
     "genderGra" : null,
     "publicFunds" : false,
-    "appointee" : "SX170207"
+    "appointee" : "SX170207",
+    "appointeeToaster" : false,
+    "relationship" : null,
+    "role": "none"
   }
 ]

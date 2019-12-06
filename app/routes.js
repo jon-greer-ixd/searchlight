@@ -26,20 +26,31 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 // July 2019 //
 /////////////// 
 
-var guardianRole = false;
-let refactor = false;
-let homeOfficeRole = true;
+//ho, dg, none
+var guardianRole = true;
+let homeOfficeRole = false;
 
 // var getCitizen = function(nino, cis) {
 //   return cis[nino]
 // }
 
 router.get('/cis-handler/', function (req, res) {
-  console.log('here');
-  req.session.data.refactor = refactor;
-  req.session.data.homeOfficeRole = homeOfficeRole;
-  req.session.data.guardianRole = guardianRole;
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
+  if (req.query.role == 'dg' || req.session.data.citizen.role == 'dg') {
+    req.session.data.guardianRole = true;
+    req.session.data.homeOfficeRole = false;
+  } else if (req.query.role == 'ho' || req.session.data.citizen.role == 'ho') {
+    req.session.data.guardianRole = false;
+    req.session.data.homeOfficeRole = true;
+  } else if (req.query.role == 'none' || req.session.data.citizen.role == 'none') {
+    req.session.data.guardianRole = false;
+    req.session.data.homeOfficeRole = false;
+  } else {
+    req.session.data.guardianRole = guardianRole;
+    req.session.data.homeOfficeRole = homeOfficeRole;
+  }
+  console.log('guardianRole' == req.session.data.guardianRole);
+  console.log('homeOfficeRole' == req.session.data.homeOfficeRole);
   if (req.session.data.citizen.appointee != null) {
     req.session.data.appointee = getCitizen(req.session.data.citizen.appointee, req.session.data.cis);
     console.log(`Apointee = ${req.session.data.appointee.nameOneFirst} ${req.session.data.appointee.nameOneLast}`)
@@ -208,6 +219,7 @@ var main = require('./main/routes');
 var settlementStatusRoutes = require('./router/settlementStatus_routes');
 var getDetailsAboutADeathRoutes = require('./router/getDetailsAboutADeath_routes');
 var bereavementRoutes = require('./router/bereavement_routes');
+var relationshipRoutes = require('./router/relationship_routes');
 var localAuthorityRoutes = require('./router/local_authority_routes');
 var notificationsRoutes = require('./router/notifications_routes');
 var ninoRoutes = require('./router/nino_routes');
@@ -217,7 +229,6 @@ var traceRoutes = require('./router/trace_routes');
 var updateRoutes = require('./router/update_routes');
 
 
-  
 
 // search page
 router.get('/search', function (req, res) {
@@ -293,6 +304,7 @@ router.use('/', main,
                 ninoRoutes,
                 contactRoutes,
                 interestRoutes,
+                relationshipRoutes,
                 updateRoutes,
                 traceRoutes);
                 
@@ -972,37 +984,11 @@ router.get(/nino-level-handler/, function (req, res) {
   }
 })
 
-
-//relationships
 router.get(/cancel-handler/, function (req, res) {
   req.session.data.toaster = null;
   res.redirect('/account2/account')
 })
 
-router.get(/add-relationships-handler/, function (req, res) {
-  req.session.data.updateType = 1;
-  res.redirect('check')
-})
-
-router.get(/relationship-handler/, function (req, res) {
-  req.session.data.miscData.relationships.state = req.session.data.updateType;
-  req.session.data.toaster = generalFunctions.setToasterMessage("Relationship", null, req.session.data.updateType);
-  req.session.updateType = null;
-  res.redirect('/account3/account')
-})
-
-router.get(/change_relationship/, function (req, res) {
-  if(req.session.data.updateType == 1) {
-    res.redirect('/update/relationships/add')
-  } else {
-    res.redirect('/update/relationships/check')
-  }
-})
-
-router.get(/recover-relationships-handler/, function (req, res) {
-  req.session.data.updateType = 9;
-  res.redirect('/update/relationships/check')
-})
 
 
 //*********
