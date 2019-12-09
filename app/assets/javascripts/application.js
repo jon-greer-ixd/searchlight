@@ -770,6 +770,21 @@ var navigationHighlight = function() {
    }
 }
 
+if(document.getElementById("id_doc") ) {
+  var idDoc = document.getElementById("id_doc");
+  var idSearch = document.getElementById("id_search");
+  var label = document.getElementById("id_label");
+  function idSelection() {
+    if(idDoc.value != "") {
+      idSearch.classList.add("active", false);
+    } else {
+      idSearch.classList.remove("active", false);
+    }
+    label.innerHTML = idDoc.value;
+    console.log(idDoc.value);
+  }
+  idDoc.addEventListener('change', idSelection);
+}
 
 
 if ( document.getElementsByClassName("new-reveal") ) {
@@ -797,6 +812,7 @@ if( document.getElementsByClassName("sl-local-nav-item") ) {
     navigationLinkContainers[x].addEventListener('click', navigationHighlight);
   }
 }
+
 
 
 

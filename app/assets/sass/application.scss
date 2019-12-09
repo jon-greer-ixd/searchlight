@@ -2908,3 +2908,14 @@ a.sl-secondary-button {
 .result-header {
   font-weight: bold;
 }
+
+#id_search {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.idlabel {
+  padding-bottom: 3px;
+}
