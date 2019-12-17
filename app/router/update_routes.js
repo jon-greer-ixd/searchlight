@@ -5,6 +5,105 @@ var personalDetailsFunctions = require('../../functions/personalDetailsFunctions
 var generalFunctions = require('../../functions/general.js');
 var setState = require('../defaults.js').setState;
 
+function setVerificationLevel(verificationlevel) {
+  if (verificationlevel == 'Level 3') {
+    return 3;
+  } else if (verificationlevel == 'Level 2') {
+    return 2;
+  } else if (verificationlevel == 'Level 1') {
+    return 1;
+  } else if (verificationlevel == 'Level 0') {
+    return 0;
+  }  
+  return verificationlevel;
+}
+
+var checkBoolForString = function(personalDetailValue){
+  if (personalDetailValue == 'true') {
+    return true;
+  } else if (personalDetailValue == 'false') {
+    return false;
+  } else if (personalDetailValue == 'null') {
+    return null;
+  } else {
+    return personalDetailValue;
+  }
+}
+
+router.get(/add-detail-handler/, function (req, res) {
+  let personalDetail = req.session.data.personalDetail;
+  let personalDetailValue = req.session.data.personalDetailValue;
+  let verificationlevel;
+  //check for bool or null as a string
+  personalDetailValue = checkBoolForString(personalDetailValue);
+  if (req.session.data.verificationlevel != null) {
+    verificationlevel = req.session.data.verificationlevel;
+    req.session.data.citizen[getVerificationType(personalDetail)] = setVerificationLevel(verificationlevel);
+  }
+  if (personalDetail == 'additionalNeeds') {
+    req.session.data.citizen.additionalNeeds = [personalDetailValue];
+  } else if (personalDetail == 'dateOfDeath') {
+    if (req.session.data.updateType == 4) {
+      req.session.data.citizen.dodValue = null;
+    } else {
+      req.session.data.citizen.dodValue = personalDetailValue;
+    }
+  } else if(personalDetail == 'pv') {
+    req.session.data.citizen.pv = null;
+    req.session.data.citizen.pvPartner = null;
+    req.session.data.citizen.pvMember = null;
+    // req.session.data.citizen[personalDetail] = personalDetailValue;
+    for (let x in personalDetailValue ) {
+      if(personalDetailValue[x] == "The person" ) {
+        req.session.data.citizen.pv = true;
+      } else if(personalDetailValue[x] == "The person's partner" ) {
+        req.session.data.citizen.pvPartner = true;
+      } else if(personalDetailValue[x] == "Someone else in the household" ) {
+        req.session.data.citizen.pvMember = true;
+      } 
+    } 
+  } else if(personalDetail == 'dateOfBirth') {
+    req.session.data.citizen.dobValue = personalDetailValue;
+  } else {
+    req.session.data.citizen[personalDetail] = personalDetailValue;
+    console.log(`${personalDetail} = ${personalDetailValue}`);
+  }
+  req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, req.session.data.updateType);
+  req.session.data.verificationlevel = null;
+  res.redirect('/account3/account')
+})
+
+router.get(/change_pd/, function (req, res) {
+  if(req.session.data.personalDetail == 'dateOfBirth') {
+    req.session.data.updateType = 3;
+    res.redirect('/update/person/update')
+  } else if (req.session.data.personalDetail == 'recordLevel') {
+    req.session.data.updateType = 2;
+    res.redirect('/update/person/update')
+  } else if (req.session.data.personalDetail == 'dateOfDeath') {
+    res.redirect('/update/person/dod-options')
+  } else if (req.session.data.personalDetail == 'sex') {
+    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
+    req.session.data.updateType = 3;
+    res.redirect('/update/person/check')
+  } else if (req.session.data.personalDetail == 'indIndicator') {
+    req.session.data.personalDetailValue = null;
+    req.session.data.updateType = 2;
+    res.redirect('/update/person/check')
+  } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
+    console.log(`req.session.data.personalDetail ${req.session.data.personalDetail}`);
+    if (req.session.data.citizen[req.session.data.personalDetail] != null) {
+      req.session.data.updateType = 5;
+      req.session.data.personalDetailValue = false;
+    } else {
+      req.session.data.updateType = 1;
+      req.session.data.personalDetailValue = true;
+    }
+    res.redirect('/update/person/dates')
+  } else {
+    res.redirect('/update/person/type')
+  }
+})
 
 //check-person-handler
 router.get(/check-person-handler/, function (req, res) {
@@ -95,73 +194,6 @@ function getVerificationType(personalDetail) {
     return 'dodLevel';
   }
 }
-
-function setVerificationLevel(verificationlevel) {
-  if (verificationlevel == 'Level 3') {
-    return 3;
-  } else if (verificationlevel == 'Level 2') {
-    return 2;
-  } else if (verificationlevel == 'Level 1') {
-    return 1;
-  } else if (verificationlevel == 'Level 0') {
-    return 0;
-  }  
-  return verificationlevel;
-}
-var checkBoolForString = function(personalDetailValue){
-  if (personalDetailValue == 'true') {
-    return true;
-  } else if (personalDetailValue == 'false') {
-    return false;
-  } else if (personalDetailValue == 'null') {
-    return null;
-  } else {
-    return personalDetailValue;
-  }
-}
-
-router.get(/add-detail-handler/, function (req, res) {
-  let personalDetail = req.session.data.personalDetail;
-  let personalDetailValue = req.session.data.personalDetailValue;
-  let verificationlevel;
-  //check for bool or null as a string
-  personalDetailValue = checkBoolForString(personalDetailValue);
-  if (req.session.data.verificationlevel != null) {
-    verificationlevel = req.session.data.verificationlevel;
-    req.session.data.citizen[getVerificationType(personalDetail)] = setVerificationLevel(verificationlevel);
-  }
-  if (personalDetail == 'additionalNeeds') {
-    req.session.data.citizen.additionalNeeds = [personalDetailValue];
-  } else if (personalDetail == 'dateOfDeath') {
-    if (req.session.data.updateType == 4) {
-      req.session.data.citizen.dodValue = null;
-    } else {
-      req.session.data.citizen.dodValue = personalDetailValue;
-    }
-  } else if(personalDetail == 'pv') {
-    req.session.data.citizen.pv = null;
-    req.session.data.citizen.pvPartner = null;
-    req.session.data.citizen.pvMember = null;
-    // req.session.data.citizen[personalDetail] = personalDetailValue;
-    for (let x in personalDetailValue ) {
-      if(personalDetailValue[x] == "The person" ) {
-        req.session.data.citizen.pv = true;
-      } else if(personalDetailValue[x] == "The person's partner" ) {
-        req.session.data.citizen.pvPartner = true;
-      } else if(personalDetailValue[x] == "Someone else in the household" ) {
-        req.session.data.citizen.pvMember = true;
-      } 
-    } 
-  } else if(personalDetail == 'dateOfBirth') {
-    req.session.data.citizen.dobValue = personalDetailValue;
-  } else {
-    req.session.data.citizen[personalDetail] = personalDetailValue;
-    console.log(`${personalDetail} = ${personalDetailValue}`);
-  }
-  req.session.data.toaster = generalFunctions.setToasterMessage(generalFunctions.convertDetailToString(personalDetail), null, req.session.data.updateType);
-  req.session.data.verificationlevel = null;
-  res.redirect('/account3/account')
-})
 
 router.get(/check-gender-handler/, function (req, res) {
   let personalDetail= req.session.data.personalDetail;
@@ -255,39 +287,6 @@ router.get(/add-handler/, function (req, res) {
     res.redirect('../../update/name/update-name')
   } else {
     res.redirect('../../update/name/add')
-  }
-})
-
-router.get(/change_pd/, function (req, res) {
-  req.session.data.personDetailObject = req.session.data.personalDetails[req.query.personalDetail];
-  req.session.data.personDetailObject.key = req.query.personalDetail;
-  if(req.session.data.personDetailObject.key == 'dateOfBirth') {
-    req.session.data.updateType = 3;
-    res.redirect('/update/person/update')
-  } else if (req.session.data.personDetailObject.key == 'recordLevel') {
-    req.session.data.updateType = 2;
-    res.redirect('/update/person/update')
-  } else if (req.session.data.personDetailObject.key == 'dateOfDeath') {
-    res.redirect('/update/person/dod-options')
-  } else if (req.session.data.personDetailObject.key == 'sex') {
-    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetailValue);
-    req.session.data.updateType = 3;
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personDetailObject.key == 'indIndicator') {
-    req.session.data.personalDetailValue = null;
-    req.session.data.updateType = 2;
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personDetailObject.key == 'assetFreeze'|| req.session.data.personDetailObject.key == 'idAtRisk') {
-    if (req.session.data.personDetailObject.state == 1) {
-      req.session.data.updateType = 5;
-      req.session.data.personalDetailValue = false;
-    } else {
-      req.session.data.updateType = 1;
-      req.session.data.personalDetailValue = true;
-    }
-    res.redirect('/update/person/dates')
-  } else {
-    res.redirect('/update/person/type')
   }
 })
 
