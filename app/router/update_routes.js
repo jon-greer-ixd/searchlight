@@ -91,7 +91,6 @@ router.get(/change_pd/, function (req, res) {
     req.session.data.updateType = 2;
     res.redirect('/update/person/check')
   } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
-    console.log(`req.session.data.personalDetail ${req.session.data.personalDetail}`);
     if (req.session.data.citizen[req.session.data.personalDetail] != null) {
       req.session.data.updateType = 5;
       req.session.data.personalDetailValue = false;
