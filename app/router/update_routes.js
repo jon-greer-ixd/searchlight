@@ -30,6 +30,22 @@ var checkBoolForString = function(personalDetailValue){
   }
 }
 
+var changeCitizenDetails = function(itemToChange, newValue, updateLevel, typeOfChange, citizen) {
+  //add, correct or change
+  if (typeOfChange == 1 || typeOfChange == 2 || typeOfChange == 3) {
+    citizen[itemToChange] = newValue;
+  }
+  //Remove
+  if (typeOfChange == 4 || typeOfChange == 6) {
+    citizen[itemToChange] = null;
+  }
+  //End
+  if (typeOfChange == 5) {
+    citizen[itemToChange] = false;
+  }
+  return citizen
+}
+
 router.get(/add-detail-handler/, function (req, res) {
   let personalDetail = req.session.data.personalDetail;
   let personalDetailValue = req.session.data.personalDetailValue;
