@@ -22,6 +22,10 @@ var dates = require('./dates.js').dates;
 console.log(`yesterdayAsFigure ${dates.yesterdayAsFigure('/')}`);
 console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 
+//reference
+var additionalNeeds = require('./data/additionalNeeds.json');
+
+
 ///////////////
 // July 2019 //
 /////////////// 
@@ -321,6 +325,9 @@ router.use('/', main,
   req.session.data.not_date = null;
   req.session.data.notificationStatus = 'unprocessed';
   req.session.data.dapNotifications = require('./data/dapNotifications.js').dapNotifications;
+
+  //list of additional needs
+  req.session.data.additionalNeeds = additionalNeeds;
 
   //set a nino for account version 3
   req.session.data.cis = require('../public/javascripts/cis.json');
