@@ -67,6 +67,15 @@
       </legend>
       
       <div class="form-group">
+        {% if data.personalDetail == "additionalNeeds" %}
+          <div class="multiple-choice">
+            <input id="example-contact-by-text" type="radio" name="updateType" value=1>
+            <label for="example-contact-by-text">
+              Add an additional need
+            </label>
+          </div>
+        {% endif %}
+
         <div class="multiple-choice">
           <input id="update" type="radio" name="updateType" value=2>
           <label for="update">
@@ -85,7 +94,7 @@
           <div class="multiple-choice">
             <input id="example-contact-by-text" type="radio" name="updateType" value=4>
             <label for="example-contact-by-text">
-              Update the verification level 
+              Update the verification level
             </label>
           </div>
        {% endif %}

@@ -139,6 +139,12 @@ module.exports = function (env) {
     }
   }
 
+  //remove whitespace
+  filters.removeWhitespace = function(term) {
+    term = term.replace(/\s/g, "");
+    return term;
+  }
+
   return filters
 }
 

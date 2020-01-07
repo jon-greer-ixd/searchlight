@@ -441,6 +441,7 @@ function managementCheck(check) {
 
 //PERSON
 router.get(/add-person-handler/, function (req, res) {
+  console.log(req.session.data.personalDetail);
   req.session.data.personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
   req.session.data.personDetailObject.key = req.session.data.personalDetail;
   req.session.data.updateType = 1;
