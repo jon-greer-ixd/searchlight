@@ -4,22 +4,38 @@
 
     <ul class="">
       <li>Date received</li>
-      <li>{{data.personalDetails.dateOfBirth.value}}</li>
+      {% for application in data. ninoApplications %}
+        <li>{{application.received}}</li>
+      {% endfor %}
     </ul>
 
     <ul class="">
       <li>Name</li>
-      <li>Guthree Govan</li>
+      {% for application in data. ninoApplications %}
+        <li>{{application.nameOneFirst}} {{application.nameOneLast}}</li>
+      {% endfor %}
     </ul>
 
     <ul>
       <li>Status</li>
-      <li>Not started</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status == 0 %}
+          <li>Open</li>
+        {% elif application.status == 1 %}
+          <li>In Progress</li>
+        {% elif application.status == 2 %}
+          <li>Closed - allocated</li>
+        {% elif application.status == 3 %}
+          <li>Closed - not allocated</li>
+        {% endif %}
+      {% endfor %}
     </ul>
 
     <ul>
       <li>Action</li>
-      <li><a href="./verify">Start</a></li>
+      {% for application in data. ninoApplications %}
+        <li> <a href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+      {% endfor %}
     </ul>
 
   </div>

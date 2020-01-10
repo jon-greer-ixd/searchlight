@@ -139,6 +139,18 @@ module.exports = function (env) {
     }
   }
 
+  
+  //remove whitespace
+  filters.convertStatus = function(status) {
+    if (status == 0) {
+      return "Open";
+    } else if (status == 1) {
+      return "In progress";
+    } else if (status == 2) {
+    return "Allocated";
+    }
+}
+
   //remove whitespace
   filters.removeWhitespace = function(term) {
     term = term.replace(/\s/g, "");

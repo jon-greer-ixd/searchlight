@@ -1,15 +1,32 @@
-<!--<h2 class="heading-medium question">Previous names</h2>-->
-  <div class="personal-details">
-    
-    <div class="">
-      <ul class="">
-        <li>Data check</li>
-        <li>Right to work</li>
-      </ul>
-    </div>
+<div class="personal-details">
+  
+  <div class="">
 
-    <a href="./trace">Allocate</a>
+    <ul class="">
+      <li>Identity check</li>
+      {% if data.ninoApplication.HomeOfficeMatch == true %}
+        <li class="strong">Pass</li>
+      {% else %}
+        <li class="strong">Fail</li>
+      {% endif %}
+    </ul>
     
+    <br>
+
+    <ul class="">
+      <li>Right to work</li>
+      {% if data.ninoApplication.rightToWork == true %}
+        <li class="strong">Pass</li>
+      {% else %}
+        <li class="strong">Fail</li>
+      {% endif %}
+    </ul>
+
   </div>
 
-  {% include "components/modals.html" %}
+  <a href="verify-data-handler?allocate=true">Allocate</a>
+  <a href="verify-data-handler?allocate=false">Don't allocate</a>
+  
+</div>
+
+{% include "components/modals.html" %}

@@ -8,6 +8,10 @@ var addressFour = 'Gateshead, Tyne and Wear NE1 1HH';
 
 var getCitizen = require('../functions/search-functions.js').getCitizen;
 
+var ninoApplications = require('../public/javascripts/nino_applications.json')
+var getApplication = require('../functions/search-functions.js').getApplication;
+var application = getApplication(10001, ninoApplications);
+
 var content = require('./content.js').content;
 var Interest = require('./interest.js');
 var defaults = require('./defaults.js').defaults;
@@ -231,7 +235,7 @@ var contactRoutes = require('./router/contact_routes');
 var interestRoutes = require('./router/interests_routes');
 var traceRoutes = require('./router/trace_routes');
 var updateRoutes = require('./router/update_routes');
-var applyroutes = require('./router/apply_routes');
+var applyRoutes = require('./router/apply_routes');
 
 
 
@@ -311,7 +315,8 @@ router.use('/', main,
                 interestRoutes,
                 relationshipRoutes,
                 updateRoutes,
-                traceRoutes);
+                traceRoutes,
+                applyRoutes);
                 
   // Route index page
   router.get('/', function (req, res) { 
@@ -330,10 +335,11 @@ router.use('/', main,
   //list of additional needs
   req.session.data.additionalNeeds = additionalNeeds;
 
-  //set a nino for account version 3
   req.session.data.cis = require('../public/javascripts/cis.json');
+  req.session.data.ninoApplications = ninoApplications;
   req.session.data.citizen = getCitizen("SX170202", req.session.data.cis);
-              
+
+  
   for (var key in defaults) {
     if (defaults.hasOwnProperty(key)) {
       req.session.data[key] = defaults[key];

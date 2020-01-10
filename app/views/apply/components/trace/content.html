@@ -1,7 +1,6 @@
-<!--<h2 class="heading-medium question">Previous names</h2>-->
   <div class="personal-details">
 
-          <p>Check these accounts do not belong to this person before creating a new account</p>
+    <p>Check these accounts do not belong to this person before creating a new account</p>
 
     
 <div class="grid-row">
@@ -45,13 +44,13 @@
           </ul>
         </div>
       </div>
-      
-      <form class="form" method="get" action="cases">
-        <div class="form-group">
-          <input class="button" type="submit" value="Create account">
-        </div>
-      </form>
-      <a href="cases">Cancel</a>
+          
+      <a href="check-accounts-handler?status=2">These don't match, allocate a NINO</a>
+
+      <a href="check-accounts-handler?status=1">More investigation needed</a>
+
+      <a href="check-accounts-handler?status=3">One or more of these account matches, don't allocate a nino</a>
+
     </div>
   </div>
      
