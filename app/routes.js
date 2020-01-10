@@ -231,6 +231,7 @@ var contactRoutes = require('./router/contact_routes');
 var interestRoutes = require('./router/interests_routes');
 var traceRoutes = require('./router/trace_routes');
 var updateRoutes = require('./router/update_routes');
+var applyroutes = require('./router/apply_routes');
 
 
 
