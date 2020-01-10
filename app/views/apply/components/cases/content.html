@@ -33,9 +33,22 @@
 
     <ul>
       <li>Action</li>
-      {% for application in data. ninoApplications %}
+      {# {% for application in data. ninoApplications %}
         <li> <a href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+      {% endfor %} #}
+
+      {% for application in data.ninoApplications %}
+        {% if application.status == 0 %}
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+        {% elif application.status == 1 %}
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </li>
+        {% elif application.status == 2 %}
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View</a> </li>
+        {% elif application.status == 3 %}
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View</a> </li>
+        {% endif %}
       {% endfor %}
+      
     </ul>
 
   </div>

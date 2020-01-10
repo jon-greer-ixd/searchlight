@@ -24,9 +24,17 @@
 
   </div>
 
-  <a href="verify-data-handler?allocate=true">Allocate</a>
-  <a href="verify-data-handler?allocate=false">Don't allocate</a>
-  
+  {% if data.ninoApplication.status <= 1 %}
+    <br>
+    <a class="under-link" href="verify-data-handler?allocate=true">Allocate</a>
+    <br>
+    <br>
+    <a class="under-link" href="verify-data-handler?allocate=false">Don't allocate</a>
+  {% else %}
+    <br>
+    <a class="under-link" href="verify-data-handler?allocate=false">Back to all cases</a>
+  {% endif %}
+    
 </div>
 
 {% include "components/modals.html" %}
