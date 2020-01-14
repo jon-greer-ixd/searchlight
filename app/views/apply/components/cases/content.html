@@ -1,56 +1,18 @@
 <div class="personal-details">
 
-  <div class="history dob-history">
+  <div class="applications-list">
+    <h3 class="strong">In progress</h3>
+    {% include "./progress.html" %}
+  </div>
 
-    <ul class="">
-      <li>Date received</li>
-      {% for application in data. ninoApplications %}
-        <li>{{application.received}}</li>
-      {% endfor %}
-    </ul>
+  <div class="applications-list">
+    <h3 class="strong">New applications</h3>
+    {% include "./applications.html" %}
+  </div>
 
-    <ul class="">
-      <li>Name</li>
-      {% for application in data. ninoApplications %}
-        <li>{{application.nameOneFirst}} {{application.nameOneLast}}</li>
-      {% endfor %}
-    </ul>
-
-    <ul>
-      <li>Status</li>
-      {% for application in data.ninoApplications %}
-        {% if application.status == 0 %}
-          <li>Open</li>
-        {% elif application.status == 1 %}
-          <li>In Progress</li>
-        {% elif application.status == 2 %}
-          <li>Closed - allocated</li>
-        {% elif application.status == 3 %}
-          <li>Closed - not allocated</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-
-    <ul>
-      <li>Action</li>
-      {# {% for application in data. ninoApplications %}
-        <li> <a href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
-      {% endfor %} #}
-
-      {% for application in data.ninoApplications %}
-        {% if application.status == 0 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
-        {% elif application.status == 1 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </li>
-        {% elif application.status == 2 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View</a> </li>
-        {% elif application.status == 3 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View</a> </li>
-        {% endif %}
-      {% endfor %}
-      
-    </ul>
-
+  <div class="applications-list">
+    <h3 class="strong">Recently completed</h3>
+    {% include "./completed.html" %}
   </div>
 
 </div>

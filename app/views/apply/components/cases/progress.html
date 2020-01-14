@@ -1,0 +1,53 @@
+{% set openApplications = false %}
+{% for application in data. ninoApplications %}
+  {% if application.status == 1 %}
+    {% set openApplications = true %}
+  {% endif %}
+{% endfor %}
+
+<div class="history dob-history">
+  {% if openApplications == true %}
+    <ul class="">
+      <li>Date received</li>
+      {% for application in data. ninoApplications %}
+        {% if application.status == 1 %}
+          <li>{{application.received}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="">
+      <li>Name</li>
+      {% for application in data. ninoApplications %}
+        {% if application.status == 1 %}
+          <li class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul>
+      <li>Status</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status == 1 %}
+          <li>Matching CIS accounts</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul>
+      <li>&nbsp;</li>
+      {# {% for application in data. ninoApplications %}
+        <li> <a href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+      {% endfor %} #}
+
+      {% for application in data.ninoApplications %}
+        {% if application.status == 1 %}
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </li>
+        {% endif %}
+      {% endfor %}
+      
+    </ul>
+  {% else %}
+    <p class="no-items">There are no applications in progress</p>
+  {% endif %}
+</div>
