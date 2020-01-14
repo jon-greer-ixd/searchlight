@@ -1,0 +1,55 @@
+{% set closedApplications = false %}
+{% for application in data.ninoApplications %}
+  {% if application.status >= 2 %}
+    {% set closedApplications = true %}
+  {% endif %}
+{% endfor %}
+    
+{% if closedApplications == true %}
+  <div class="history dob-history">
+
+    <ul class="">
+      <li>Date received</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li>{{application.received}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="">
+      <li>Name</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul>
+      <li>Status</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status == 2 %}
+          <li>In Progress</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul>
+      <li>&nbsp;</li>
+      {# {% for application in data. ninoApplications %}
+        <li> <a href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+      {% endfor %} #}
+
+      {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View</a> </li>
+        {% endif %}
+      {% endfor %}
+      
+    </ul>
+  {% else %}
+    <p class="no-items">There are no closed cases</p>
+  </div>
+
+{% endif %}
