@@ -4,9 +4,9 @@
     {% set openApplications = true %}
   {% endif %}
 {% endfor %}
-    
-{% if openApplications == true %}
-  <div class="history dob-history">
+
+<div class="history dob-history">
+  {% if openApplications == true %}
     <ul class="">
       <li>Date received</li>
       {% for application in data. ninoApplications %}
@@ -48,6 +48,6 @@
       
     </ul>
   {% else %}
-    <p class="no-items">There are no cases in progress</p>
-  </div>
-{% endif %}
+    <p class="no-items">There are no applications in progress</p>
+  {% endif %}
+</div>

@@ -4,10 +4,9 @@
     {% set closedApplications = true %}
   {% endif %}
 {% endfor %}
-    
-{% if closedApplications == true %}
-  <div class="history dob-history">
-
+     
+<div class="history dob-history">
+  {% if closedApplications == true %}
     <ul class="">
       <li>Date received</li>
       {% for application in data.ninoApplications %}
@@ -30,7 +29,9 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 2 %}
-          <li>In Progress</li>
+          <li>NINO allocated</li>
+        {% elif application.status == 3 %}
+          <li>Not allocated</li>
         {% endif %}
       {% endfor %}
     </ul>
@@ -48,8 +49,7 @@
       {% endfor %}
       
     </ul>
-  {% else %}
-    <p class="no-items">There are no closed cases</p>
-  </div>
-
-{% endif %}
+    {% else %}
+    <p class="no-items">There are no closed applications</p>
+  {% endif %}
+</div>
