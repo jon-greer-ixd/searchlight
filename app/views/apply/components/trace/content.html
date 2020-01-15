@@ -1,63 +1,67 @@
-  <div class="personal-details">
+<p>Check these accounts do not belong to this person before creating a new account</p>
 
-    <p>Check these accounts do not belong to this person before creating a new account</p>
+{# <div class="grid-row">
+  <div class="column-two-thirds">
+    <ul>
+      <li>2 people found</li>
+    </ul>
+  </div>
+</div> #}
 
-    
+
 <div class="grid-row">
     <div class="column-two-thirds">
-      
-      <div id="trace-menu">
-        <ul>
-          <li>2 customers found</li>
-        </ul>
-        <ul>
-<!--
-          <li><span>Sort by:</span> <a>First name</a></li>
-          <li><a>Last name</a></li>
-          <li><a>Date of birth</a></li>
--->
-        </ul>
-      </div>
-      
-      <div id="trace-results">
-        <div>
-          <p><a target="_blank" href="/cis-handler?nino=SX170209&role=ho">Mr Matheo Bangalter</a></p>
-          <ul>
-            <li>AB119445Z</li>
-            <li>·</li>
-            <li>1 Feb 2004</li>
-            <li>·</li>
-            <li>Born 37 years ago</li>
-            <li>8 Old Lane, CH1 234</li>
-          </ul>
-        </div>
-        
-        <div>
-          <p><a target="_blank" href="/cis-handler?nino=SX170210&role=ho">Mr Matheo Bangalter</a></p>
-          <ul>
-            <li>SY119284Z</li>
-            <li>·</li>
-            <li>1 Jan 2004</li>
-            <li>·</li>
-            <li>Born 37 years ago</li>
-            <li>10 Some Street, GL4 987</li>
-          </ul>
-        </div>
-      </div>
+
+    <hr>
+
+        <div class="trace-result">
+            <div class="left">
+                <ul>
+                  <li><a class="strong under-link" target="_blank" href="/cis-handler?nino=SX170209&role=ho">Mr Matheo Bangalter</a></li>
+                  <li>8 Old Lane, CH1 234</li>
+                </ul>
+            </div>
             
-      <a href="check-accounts-handler?status=2">These don't match, allocate a NINO</a>
-      <br>
-      <br>
-      <a href="check-accounts-handler?status=1">More investigation needed</a>
-      <br>
-      <br>
-      <a href="check-accounts-handler?status=3">Don't allocate a NINO, one of these account matches</a>
+            <div class="right">
+                <ul>
+                  <li><a class="under-link">View account<a></li>
+                  <li><a class="under-link">This account matches ther application<a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="grid-row">
+    <div class="column-two-thirds">
+        <div class="trace-result">
+            <div class="left">
+                <ul>
+                  <li><a class="strong under-link" target="_blank" href="/cis-handler?nino=SX170210&role=ho">Mr Matheo Bangalter</a></li>
+                  <li>8 Old Lane, CH1 234</li>
+                </ul>
+            </div>
+            
+            <div class="right">
+                <ul>
+                  <li><a class="under-link">View account<a></li>
+                  <li><a class="under-link">This account matches ther application<a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <ul>
+        <li><a class="button" href="check-accounts-handler?status=2">Create a CIS account</a></li>
+        <li>&nbsp;</li>
+        <li><a class="under-link" href="check-accounts-handler?status=1">More investigation needed</a></li>
+      </ul>
 
     </div>
   </div>
-     
-
-    
-  </div>
-
-  {% include "components/modals.html" %}
+  
+</div>
+</div>
