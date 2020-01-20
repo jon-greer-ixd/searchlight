@@ -87,8 +87,13 @@
     "mobile" : "07654 777 888",
     "homeEmail" : "Mateo@gmail.com",
     "matchInCis" : true,
-    "HomeOfficeMatch" : true,
+    "passportMatch" : true,
+    "BRPMatch" : true,
+    "nameMatch": true,
+    "dobMatch": true,
     "rightToWork" : true,
     "status" : 0
   }
 ]
+
+//HomeOfficeMatch
