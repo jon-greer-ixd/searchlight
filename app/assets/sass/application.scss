@@ -2957,3 +2957,33 @@ a.sl-secondary-button {
 .name-tab {
   padding-right: 20px;
 }
+
+.trace-result {
+  @include clearfix;
+  border-bottom: 1px solid lightgrey;
+  padding-bottom: 10px;
+  li {
+    line-height: 1.5;
+  }
+  .left, .right {
+    float: left;
+  }
+  .left {
+    width: 30%;
+  }
+  .right {
+    text-align: right;
+    width: 50%;
+  }
+}
+
+.application-wrong {
+  background: #F3DBDD;
+  border-left: 10px solid #B10E1E;
+  td {
+    font-weight: bold;
+    &:first-child{
+      padding-left: 15px!important;
+    }  
+  }
+}
