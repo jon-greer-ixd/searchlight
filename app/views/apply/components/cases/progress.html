@@ -29,7 +29,7 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 1 %}
-          <li>Matching CIS accounts</li>
+          <li>{{data.applyScenario | convertScenario}}</li>
         {% endif %}
       {% endfor %}
     </ul>

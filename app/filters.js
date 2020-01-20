@@ -157,8 +157,25 @@ module.exports = function (env) {
     return term;
   }
 
+    //remove whitespace
+    filters.convertScenario = function(status) {
+      if (status == 7) {
+        return "Name mismatch";
+      }
+    }
+  
+
   return filters
 }
+
+
+      // {# scenario 2 - no right to work  #}
+      // {# scenario 3 - BRP mismatch  #}
+      // {# scenario 4 - BRP mismatch and name mismatch  #}
+      // {# scenario 5 - Passport mismatch #}
+      // {# scenario 6 - Passport mismatch and name mismatch  #}
+      // {# scenario 7 - Name mismatch  #}
+      // {# scenario 8 - DOB, Nationality mismatch  #}
 
 
 // if no contacts set to show - show no contacts

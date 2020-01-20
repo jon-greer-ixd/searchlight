@@ -1,0 +1,52 @@
+<table class="table">
+  <tr>
+    <td>Nationality</td>
+    <td>{{data.ninoApplication.nationality}}</td>
+  </tr>
+  <tr {% if data.applyScenario == 3 %}class="application-wrong" {% endif %} >
+    <td>Biometric Residence Permit</td>
+    <td>{{data.ninoApplication.BRP}}</td>
+  </tr>
+  <tr>
+    <td>Passport Number</td>
+    <td>{{data.ninoApplication.passportNumber}}</td>
+  </tr>
+  <tr {% if data.applyScenario == 7 %}class="application-wrong" {% endif %}>
+    <td>First name</td>
+    <td>{{data.ninoApplication.nameOneFirst}}</td>
+  </tr>
+  <tr {% if data.applyScenario == 7 %}class="application-wrong" {% endif %}>
+    <td>Last name</td>
+    <td>{{data.ninoApplication.nameOneLast}}</td>
+  </tr>
+  <tr>
+    <td>Previous name</td>
+    <td>None</td>
+  </tr>
+  <tr>
+    <td>Arrival date</td>
+    <td>{{data.ninoApplication.arriveDate}}</td>
+  </tr>
+  <tr>
+    <td>Sex</td>
+    <td>{{data.ninoApplication.arriveDate}}</td>
+  <tr>
+    <td>Address</td>
+    <td>
+      {{data.ninoApplication.addressLineOne}}<br>
+      {{data.ninoApplication.addressLineTwo}}
+    </td>
+  </tr>
+  <tr>
+    <td>Post code</td>
+    <td>{{data.ninoApplication.postCode}}</td>
+  </tr>
+  <tr>
+    <td>Mobile number</td>
+    <td>{{data.ninoApplication.mobile}}</td>
+  </tr>
+  <tr>
+    <td>Email address</td>
+    <td>{{data.ninoApplication.email}}</td>
+  </tr>
+</table>

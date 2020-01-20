@@ -2976,3 +2976,14 @@ a.sl-secondary-button {
     width: 50%;
   }
 }
+
+.application-wrong {
+  background: #F3DBDD;
+  border-left: 10px solid #B10E1E;
+  td {
+    font-weight: bold;
+    &:first-child{
+      padding-left: 15px!important;
+    }  
+  }
+}
