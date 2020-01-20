@@ -3,6 +3,14 @@ var router = express.Router()
 
 var getApplication = require('../../functions/search-functions.js').getApplication;
 
+var setApplyScenario = function(application) {
+  if (application.rightToWork == true) {
+    return 1;
+  } else {
+    return 2;
+  }
+}
+
 var updateStatus = function(ninoApplicationNumber, ninoApplications, status) {
   for (var location in ninoApplications) {
     if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
@@ -17,6 +25,7 @@ var updateStatus = function(ninoApplicationNumber, ninoApplications, status) {
 router.get(/get-cases-handler/, function (req, res) {
   req.session.data.ninoApplication = getApplication(req.query.applicationNumber, req.session.data.ninoApplications);
   req.session.data.ninoApplicationNumber = req.session.data.ninoApplication.applicationNumber;
+  req.session.data.applyScenario = setApplyScenario(req.session.data.ninoApplication);
   res.redirect('./verify')
 })
 
