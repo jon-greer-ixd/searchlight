@@ -1,0 +1,9 @@
+<p>You should compare the application to the home office database.</p>
+
+<div class="panel panel-border-wide">
+  <p>Home office holds: <span class="bold">{{data.ninoApplication.nameOneFirst | lower }}arlo{{data.ninoApplication.nameOneLast | lower}}</span</p>
+</div>
+
+{% include "../application/application_details.html" %}
+
+<a class="button" href="options">Next</a>
