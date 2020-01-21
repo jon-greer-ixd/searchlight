@@ -158,19 +158,25 @@ module.exports = function (env) {
   }
 
     //remove whitespace
-    filters.convertNote = function(status) {
-      if (status == 0) {
+    filters.convertApplicationScenario = function(status) {
+      if (status == 1) {
         return "All data matched.";
-      } else if (status == 1) {
-        return "Name mis-match.";
       } else if (status == 2) {
-        return "Name updated.";
+        return "No right to work.";
       } else if (status == 3) {
         return "BRP mis-match.";
       } else if (status == 4) {
-        return "Passport mis-match.";
+        return "BRP and name mis-matched.";
+      } else if (status == 5) {
+        return "Passport mismatch.";
+      } else if (status == 6) {
+        return "Passport and name mis-matched.";
+      } else if (status == 7) {
+        return "Name mis-matched.";
+      } else if (status == 8) {
+        return "No data could be matched";
       } else {
-        return status + "convertScenario filter";
+        return "";
       }
     }
   
@@ -179,6 +185,7 @@ module.exports = function (env) {
 }
 
 
+      // {# scenario 1 - all match4  #}
       // {# scenario 2 - no right to work  #}
       // {# scenario 3 - BRP mismatch  #}
       // {# scenario 4 - BRP mismatch and name mismatch  #}

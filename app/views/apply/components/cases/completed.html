@@ -29,9 +29,9 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 2 %}
-          <li>NINO allocated</li>
+          <li>NINO allocated. {{application.applicationScenario | convertApplicationScenario}}</li>
         {% elif application.status == 3 %}
-          <li>Not allocated</li>
+          <li>Not allocated. {{application.applicationScenario | convertApplicationScenario}}</li>
         {% endif %}
       {% endfor %}
     </ul>

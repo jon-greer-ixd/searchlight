@@ -4,7 +4,7 @@ var router = express.Router()
 var getApplication = require('../../functions/search-functions.js').getApplication;
 
 var setApplyScenario = function(application) {
-  var applyScenario = 0;
+  var applyScenario;
   if (application.rightToWork == false) {
     // {# scenario 2 - no right to work  #}
     applyScenario = 2;
@@ -44,11 +44,11 @@ var updateStatus = function(ninoApplicationNumber, ninoApplications, status) {
   return ninoApplications;
 }
 
-var updateNote = function(ninoApplicationNumber, ninoApplications) {
+var updateApplyScenario = function(ninoApplicationNumber, ninoApplications) {
   for (var location in ninoApplications) {
     if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
-      ninoApplications[location].note = 1;
-      console.log("here   " + ninoApplications[location].note)
+      ninoApplications[location].applicationScenario = setApplyScenario(ninoApplications[location]);
+      console.log(ninoApplications[location].applicationScenario);
     }
   }
   return ninoApplications;
@@ -79,6 +79,7 @@ router.get(/verify-data-handler/, function (req, res) {
     //allocate
     if(req.session.data.ninoApplication.nameMatch == true) {
       req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
+      req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')
     } else {
       res.redirect('./data')
@@ -86,11 +87,12 @@ router.get(/verify-data-handler/, function (req, res) {
   } else if (req.query.allocate == "false") {
     //dont allocate  
       req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 3);
+      req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')
   } else {
     //hold
       req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 1);
-      req.session.data.ninoApplications = updateNote(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
+      req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')
     }
   })
@@ -98,7 +100,7 @@ router.get(/verify-data-handler/, function (req, res) {
 //trace-handler
 router.get(/check-accounts-handler/, function (req, res) {
   var status = parseInt(req.query.status);
-    req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, status);
+    // req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, status);
     res.redirect('./cases')
 })
 
@@ -110,6 +112,7 @@ router.get(/nameentry-handler/, function (req, res) {
                                                     req.session.data.ninoapplication_lastname);
                                                     
     req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
+    req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
     res.redirect('./cases')
 })
 
