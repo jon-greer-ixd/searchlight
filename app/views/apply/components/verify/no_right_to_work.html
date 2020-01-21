@@ -2,9 +2,16 @@
   <p>{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}</p>
 </div> #}
 
-<p>The home office have verified <span class="strong">{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}'s</span> identity.</p>
+{% if data.ninoApplication.status != 2 %}
 
+<p>The home office have verified <span class="strong">{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}'s</span> identity.</p>
 
 <p>They do not have the right to work.</p>
 
 <a class="button" href="verify-data-handler?allocate=false">Do not allocate a NINO</a>
+
+{% else %}
+      
+    {% include "../application/application_details.html" %}
+
+{% endif %}
