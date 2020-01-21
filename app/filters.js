@@ -159,8 +159,14 @@ module.exports = function (env) {
 
     //remove whitespace
     filters.convertScenario = function(status) {
-      if (status == 7) {
+      if (status == 3) {
+        return "BRP mismatch";
+      } else if (status == 5) {
+        return "Nino allocated, name corrected";
+      } else if (status == 7) {
         return "Name mismatch";
+      } else {
+        return "convertScenario filter";
       }
     }
   
