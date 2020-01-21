@@ -44,6 +44,27 @@ var updateStatus = function(ninoApplicationNumber, ninoApplications, status) {
   return ninoApplications;
 }
 
+var updateNote = function(ninoApplicationNumber, ninoApplications) {
+  for (var location in ninoApplications) {
+    if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
+      ninoApplications[location].note = 1;
+      console.log("here   " + ninoApplications[location].note)
+    }
+  }
+  return ninoApplications;
+}
+
+var updateName = function(ninoApplicationNumber, ninoApplications, firstnames, lastname) {
+  for (var location in ninoApplications) {
+    if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
+      ninoApplications[location].nameOneFirst = firstnames;
+      ninoApplications[location].nameOneLast = lastname;
+      console.log(`Name updated! ${ninoApplications[location].nameOneFirst} ${ninoApplications[location].nameOneLast}` )
+    }
+  }
+  return ninoApplications;
+}
+
 //get cases
 router.get(/get-cases-handler/, function (req, res) {
   req.session.data.ninoApplication = getApplication(req.query.applicationNumber, req.session.data.ninoApplications);
@@ -56,20 +77,20 @@ router.get(/get-cases-handler/, function (req, res) {
 router.get(/verify-data-handler/, function (req, res) {
   if (req.query.allocate == "true") {
     //allocate
-    if(req.session.data.ninoApplication.matchInCis == true) {
-      req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 1);
-      res.redirect('./trace')
-    } else {
+    if(req.session.data.ninoApplication.nameMatch == true) {
       req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
       res.redirect('./cases')
+    } else {
+      res.redirect('./data')
     }
   } else if (req.query.allocate == "false") {
     //dont allocate  
       req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 3);
       res.redirect('./cases')
   } else {
-    //hold  
+    //hold
       req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 1);
+      req.session.data.ninoApplications = updateNote(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')
     }
   })
@@ -78,6 +99,17 @@ router.get(/verify-data-handler/, function (req, res) {
 router.get(/check-accounts-handler/, function (req, res) {
   var status = parseInt(req.query.status);
     req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, status);
+    res.redirect('./cases')
+})
+
+
+router.get(/nameentry-handler/, function (req, res) {
+    req.session.data.ninoApplications = updateName(req.session.data.ninoApplicationNumber, 
+                                                    req.session.data.ninoApplications, 
+                                                    req.session.data.ninoapplication_firstnames, 
+                                                    req.session.data.ninoapplication_lastname);
+                                                    
+    req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
     res.redirect('./cases')
 })
 

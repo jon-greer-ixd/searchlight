@@ -158,9 +158,19 @@ module.exports = function (env) {
   }
 
     //remove whitespace
-    filters.convertScenario = function(status) {
-      if (status == 7) {
-        return "Name mismatch";
+    filters.convertNote = function(status) {
+      if (status == 0) {
+        return "All data matched.";
+      } else if (status == 1) {
+        return "Name mis-match.";
+      } else if (status == 2) {
+        return "Name updated.";
+      } else if (status == 3) {
+        return "BRP mis-match.";
+      } else if (status == 4) {
+        return "Passport mis-match.";
+      } else {
+        return status + "convertScenario filter";
       }
     }
   
