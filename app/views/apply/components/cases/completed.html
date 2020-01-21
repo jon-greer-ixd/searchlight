@@ -11,7 +11,7 @@
       <li>Date received</li>
       {% for application in data.ninoApplications %}
         {% if application.status >= 2 %}
-          <li>{{application.received}}</li>
+          <li class="receiveddate">{{application.received}}</li>
         {% endif %}
       {% endfor %}
     </ul>
@@ -44,10 +44,16 @@
 
       {% for application in data.ninoApplications %}
         {% if application.status >= 2 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View</a> </li>
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View application</a></li>
         {% endif %}
       {% endfor %}
-      
+
+      {# {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View CIS account</a></li>
+        {% endif %}
+      {% endfor %} #}
+
     </ul>
     {% else %}
     <p class="no-items">There are no closed applications</p>
