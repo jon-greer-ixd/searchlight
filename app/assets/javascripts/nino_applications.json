@@ -24,8 +24,9 @@
     "nationalityMatch": true,
     "rightToWork" : true,
     "matchInCis" : false,
-    "status" : 0
-  },
+    "status" : 0,
+    "note" : 0
+    },
   {
     "applicationNumber" : "10002",
     "received" : "10 Jan 2019",
@@ -51,7 +52,8 @@
     "nationalityMatch": true,
     "rightToWork" : false,
     "matchInCis" : false,
-    "status" : 0
+    "status" : 0,
+    "note" : 0
   },
   {
     "applicationNumber" : "10003",
@@ -78,7 +80,8 @@
     "nationalityMatch": true,
     "rightToWork" : true,
     "matchInCis" : false,
-    "status" : 0
+    "status" : 0,
+    "note" : 0
   },
   {
     "applicationNumber" : "10004",
@@ -105,6 +108,7 @@
     "nationalityMatch": true,
     "rightToWork" : true,
     "matchInCis" : true,
-    "status" : 0
+    "status" : 0,
+    "note" : 0
   }
 ]
