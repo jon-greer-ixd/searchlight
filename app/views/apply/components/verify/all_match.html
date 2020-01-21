@@ -2,6 +2,8 @@
   <p>{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}</p>
 </div> #}
 
+{% if data.ninoApplication.status != 2 %}
+
 <p>The home office has verified <span class="strong">{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}'s:</span></p>
 <ul class="list list-bullet">
   <li>identity</li>
@@ -11,3 +13,9 @@
 </ul>
 
 <a class="button" href="verify-data-handler?allocate=true">Allocate a NINO</a>
+
+{% else %}
+
+{% include "../application/application_details.html" %}
+
+{% endif %}
