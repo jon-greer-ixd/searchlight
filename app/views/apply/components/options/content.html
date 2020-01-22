@@ -7,9 +7,11 @@
       <label for="yes">
         Allocate a nino<br>
         {% if data.applyScenario == 3 %}
-          Their Biometric Residence Permit has been mis-typed
+          Their application matches the home office data
+        {% elif data.applyScenario == 8 %}
+          Their application matches the home office data
         {% else %}
-          Their name is a close match
+          Their name matches the home office data
         {% endif %}
       </label>
     </div>
@@ -28,6 +30,8 @@
         Do not allocate<br>
         {% if data.applyScenario == 3 %}
           Their Biometric Residence Permit is completely different
+        {% elif data.applyScenario == 8 %}
+          Their documents are completely different
         {% else %}
           Their name is completely different
         {% endif %}

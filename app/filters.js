@@ -164,17 +164,17 @@ module.exports = function (env) {
       } else if (status == 2) {
         return "No right to work.";
       } else if (status == 3) {
-        return "BRP mis-match.";
+        return "BRP mismatch.";
       } else if (status == 4) {
-        return "BRP and name mis-matched.";
+        return "BRP and name mismatched.";
       } else if (status == 5) {
         return "Passport mismatch.";
       } else if (status == 6) {
-        return "Passport and name mis-matched.";
+        return "Passport and name mismatched.";
       } else if (status == 7) {
-        return "Name mis-matched.";
+        return "Name mismatched.";
       } else if (status == 8) {
-        return "No data could be matched";
+        return "Passport and BRP mismatched.";
       } else {
         return "";
       }

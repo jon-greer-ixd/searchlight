@@ -1,6 +1,6 @@
 <div class="personal-details">
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-one-half">
 
     {# scenario 1 - all match  #}
       {% if data.applyScenario == 1 %}
@@ -18,6 +18,8 @@
       {% elif data.applyScenario == 7 %}
       {% include "./name_only_mismatch.html" %}
     {# scenario 8 - DOB, Nationality mismatch  #}
+      {% elif data.applyScenario == 8 %}
+        {% include "./passport_brp_mismatch.html" %}
       {% endif %}
 
     </div>
