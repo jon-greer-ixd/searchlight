@@ -3,11 +3,11 @@
     <td>Nationality</td>
     <td>{{data.ninoApplication.nationality}}</td>
   </tr>
-  <tr {% if data.applyScenario == 3 %}class="application-wrong" {% endif %} >
+  <tr {% if data.applyScenario == 3 or data.applyScenario == 8 %}class="application-wrong" {% endif %} >
     <td>Biometric Residence Permit</td>
     <td>{{data.ninoApplication.BRP}}</td>
   </tr>
-  <tr>
+  <tr {% if data.applyScenario == 8 %}class="application-wrong" {% endif %}>
     <td>Passport Number</td>
     <td>{{data.ninoApplication.passportNumber}}</td>
   </tr>
