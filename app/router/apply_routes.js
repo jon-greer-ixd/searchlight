@@ -71,6 +71,11 @@ router.get(/get-cases-handler/, function (req, res) {
   req.session.data.ninoApplication = getApplication(req.query.applicationNumber, req.session.data.ninoApplications);
   req.session.data.ninoApplicationNumber = req.session.data.ninoApplication.applicationNumber;
   req.session.data.applyScenario = setApplyScenario(req.session.data.ninoApplication);
+  if(req.session.data.ninoApplication.matchInCis == true) {
+    req.session.data.matchInCis = true;
+  } else {
+    req.session.data.matchInCis = false;
+  }
   res.redirect('./verify')
 })
 

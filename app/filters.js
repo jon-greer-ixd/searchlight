@@ -175,15 +175,15 @@ module.exports = function (env) {
         return "Name mismatched.";
       } else if (status == 8) {
         return "Passport and BRP mismatched.";
+      } else if (status == 9) {
+        return "Matched accounts in CIS.";
       } else {
         return "";
       }
     }
   
-
   return filters
 }
-
 
       // {# scenario 1 - all match4  #}
       // {# scenario 2 - no right to work  #}
@@ -193,7 +193,7 @@ module.exports = function (env) {
       // {# scenario 6 - Passport mismatch and name mismatch  #}
       // {# scenario 7 - Name mismatch  #}
       // {# scenario 8 - DOB, Nationality mismatch  #}
-
+      // {# scenario 9 - Matched accounts in CIS  #}
 
 // if no contacts set to show - show no contacts
 // if any contact set to not show - hide the link
