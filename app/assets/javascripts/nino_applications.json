@@ -107,7 +107,7 @@
     "dobMatch": true,
     "nationalityMatch": true,
     "rightToWork" : true,
-    "matchInCis" : true,
+    "matchInCis" : false,
     "status" : 0,
     "applicationScenario" : 0
   },
