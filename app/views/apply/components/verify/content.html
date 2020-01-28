@@ -54,13 +54,13 @@
 
   {% if data.ninoApplication.status <= 1 %}
     <br>
-    <a class="button" href="verify-data-handler?allocate=true">Allocate a NINO</a>
+    <a class="button" href="nino-master-router?allocate=true">Allocate a NINO</a>
     <br>
     <br>
-    <a class="under-link" href="verify-data-handler?allocate=false">Do not allocate</a>
+    <a class="under-link" href="nino-master-router?allocate=false">Do not allocate</a>
   {% else %}
     <br>
-    <a class="under-link" href="verify-data-handler?allocate=false">Back to all applications</a>
+    <a class="under-link" href="nino-master-router?allocate=false">Back to all applications</a>
   {% endif %}
     
 </div>

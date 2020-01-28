@@ -25,7 +25,7 @@
     "rightToWork" : true,
     "matchInCis" : false,
     "status" : 0,
-    "applicationScenario" : 0
+    "satusDescription" : 0
     },
   {
     "applicationNumber" : "10002",
@@ -53,7 +53,7 @@
     "rightToWork" : false,
     "matchInCis" : false,
     "status" : 0,
-    "applicationScenario" : 0
+    "satusDescription" : 0
   },
   {
     "applicationNumber" : "10003",
@@ -81,7 +81,7 @@
     "rightToWork" : true,
     "matchInCis" : false,
     "status" : 0,
-    "applicationScenario" : 0
+    "satusDescription" : 0
   },
   {
     "applicationNumber" : "10004",
@@ -109,7 +109,7 @@
     "rightToWork" : true,
     "matchInCis" : false,
     "status" : 0,
-    "applicationScenario" : 0
+    "satusDescription" : 0
   },
   {
     "applicationNumber" : "10005",
@@ -137,7 +137,7 @@
     "rightToWork" : null,
     "matchInCis" : null,
     "status" : 0,
-    "applicationScenario" : 0
+    "satusDescription" : 0
   },
   {
     "applicationNumber" : "10006",
@@ -165,7 +165,7 @@
     "rightToWork" : true,
     "matchInCis" : true,
     "status" : 0,
-    "applicationScenario" : 0
+    "satusDescription" : 0
   }
 
 

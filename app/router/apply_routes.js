@@ -3,7 +3,7 @@ var router = express.Router()
 
 var getApplication = require('../../functions/search-functions.js').getApplication;
 
-var setApplyScenario = function(application) {
+var setsatusDescription = function(application) {
   var applyScenario;
   if (application.rightToWork == false) {
     // {# scenario 2 - no right to work  #}
@@ -45,11 +45,20 @@ var updateStatus = function(ninoApplicationNumber, ninoApplications, status) {
   return ninoApplications;
 }
 
+var updateCisMatch = function(ninoApplicationNumber, ninoApplications) {
+  for (var location in ninoApplications) {
+    if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
+      ninoApplications[location].matchInCis = false;
+    }
+  }
+  console.log(`CISMatch updated! ${ninoApplications[location].matchInCis}` )
+  return ninoApplications;
+}
 var updateApplyScenario = function(ninoApplicationNumber, ninoApplications) {
   for (var location in ninoApplications) {
     if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
-      ninoApplications[location].applicationScenario = setApplyScenario(ninoApplications[location]);
-      console.log(ninoApplications[location].applicationScenario);
+      ninoApplications[location].satusDescription = setsatusDescription(ninoApplications[location]);
+      console.log(ninoApplications[location].satusDescription);
     }
   }
   return ninoApplications;
@@ -67,10 +76,10 @@ var updateName = function(ninoApplicationNumber, ninoApplications, firstnames, l
 }
 
 //get cases
-router.get(/get-cases-handler/, function (req, res) {
+router.get(/get-case-handler/, function (req, res) {
   req.session.data.ninoApplication = getApplication(req.query.applicationNumber, req.session.data.ninoApplications);
   req.session.data.ninoApplicationNumber = req.session.data.ninoApplication.applicationNumber;
-  req.session.data.applyScenario = setApplyScenario(req.session.data.ninoApplication);
+  req.session.data.applyScenario = setsatusDescription(req.session.data.ninoApplication);
   if(req.session.data.ninoApplication.matchInCis == true) {
     req.session.data.matchInCis = true;
   } else {
@@ -80,10 +89,14 @@ router.get(/get-cases-handler/, function (req, res) {
 })
 
 //verify case
-router.get(/verify-data-handler/, function (req, res) {
+router.get(/nino-master-router/, function (req, res) {
   if (req.query.allocate == "true") {
     //allocate
-    if(req.session.data.ninoApplication.nameMatch != false) {
+    if(req.session.data.ninoApplication.matchInCis == true) {
+      req.session.data.ninoApplication.matchInCis == false
+      req.session.data.ninoApplications = updateCisMatch(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
+      res.redirect('./trace')
+    } else if(req.session.data.ninoApplication.nameMatch != false) {
       req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
       req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')

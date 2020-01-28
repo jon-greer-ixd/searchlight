@@ -158,7 +158,7 @@ module.exports = function (env) {
   }
 
     //remove whitespace
-    filters.convertApplicationScenario = function(status) {
+    filters.convertsatusDescription = function(status) {
       if (status == 1) {
         return "All data matched.";
       } else if (status == 2) {
