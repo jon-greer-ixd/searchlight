@@ -1,7 +1,16 @@
 var express = require('express')
 var router = express.Router()
 
-var getApplication = require('../../functions/search-functions.js').getApplication;
+function getApplication(applicationNumber, applications) {
+  var result = null;
+  for (var application in applications) {
+    if(applications[application].applicationNumber == applicationNumber) {
+      console.log(`Found! application = ${applications[application].nameOneFirst}`);
+      result = applications[application];
+    }
+  }
+  return result;
+}
 
 var setsatusDescription = function(application) {
   var applyScenario;
@@ -35,7 +44,7 @@ var setsatusDescription = function(application) {
   return applyScenario;
 }
 
-var updateStatus = function(ninoApplicationNumber, ninoApplications, status) {
+var updateApplicationStatus = function(ninoApplicationNumber, ninoApplications, status) {
   for (var location in ninoApplications) {
     if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
       ninoApplications[location].status = status;
@@ -54,7 +63,7 @@ var updateCisMatch = function(ninoApplicationNumber, ninoApplications) {
   console.log(`CISMatch updated! ${ninoApplications[location].matchInCis}` )
   return ninoApplications;
 }
-var updateApplyScenario = function(ninoApplicationNumber, ninoApplications) {
+var updateApplicationScenario = function(ninoApplicationNumber, ninoApplications) {
   for (var location in ninoApplications) {
     if (ninoApplications[location].applicationNumber == ninoApplicationNumber) {
       ninoApplications[location].satusDescription = setsatusDescription(ninoApplications[location]);
@@ -97,21 +106,21 @@ router.get(/nino-master-router/, function (req, res) {
       req.session.data.ninoApplications = updateCisMatch(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./trace')
     } else if(req.session.data.ninoApplication.nameMatch != false) {
-      req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
-      req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
+      req.session.data.ninoApplications = updateApplicationStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
+      req.session.data.ninoApplications = updateApplicationScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')
     } else {
       res.redirect('./data')
     }
   } else if (req.query.allocate == "false") {
     //dont allocate  
-      req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
-      req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
+      req.session.data.ninoApplications = updateApplicationStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
+      req.session.data.ninoApplications = updateApplicationScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')
   } else {
     //hold
-      req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 1);
-      req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
+      req.session.data.ninoApplications = updateApplicationStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 1);
+      req.session.data.ninoApplications = updateApplicationScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
       res.redirect('./cases')
     }
   })
@@ -119,7 +128,7 @@ router.get(/nino-master-router/, function (req, res) {
 //trace-handler
 router.get(/check-accounts-handler/, function (req, res) {
   var status = parseInt(req.query.status);
-    // req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, status);
+    // req.session.data.ninoApplications = updateApplicationStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, status);
     res.redirect('./cases')
 })
 
@@ -130,10 +139,43 @@ router.get(/nameentry-handler/, function (req, res) {
                                                     req.session.data.ninoapplication_firstnames, 
                                                     req.session.data.ninoapplication_lastname);
                                                     
-    req.session.data.ninoApplications = updateStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
-    req.session.data.ninoApplications = updateApplyScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
+    req.session.data.ninoApplications = updateApplicationStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
+    req.session.data.ninoApplications = updateApplicationScenario(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
     res.redirect('./cases')
 })
+
+
+//getApplication
+// get the next case (with an optional ref)
+  // given a list of cases 
+  // cycle through
+  // if the status is open - return this case to local
+
+
+//mark status
+  // given a case
+  // mark its status as 1 - done allocated
+  // mark its status as 2 - done not allocated
+  // mark its status as 3 - hold
+
+
+//set the application note
+  // given a case
+  // mark its statusDescription as
+  // 1 - all match
+  // 2 - no right to work
+  // 3 - BRP mismatch
+  // 4 - BRP mismatch and name mismatch
+  // 5 - Passport mismatch
+  // 6 - Passport mismatch and name mismatch
+  // 7 - Name mismatch
+  // 8 - DOB, Nationality mismatch
+  // 9 - Matched accounts in CIS
+
+
+
+
+
 
 
 
