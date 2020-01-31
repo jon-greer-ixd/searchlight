@@ -3,19 +3,19 @@
     <td>Nationality</td>
     <td>{{data.ninoApplication.nationality}}</td>
   </tr>
-  <tr {% if data.applyScenario == 3 or data.applyScenario == 8 %}class="application-wrong" {% endif %} >
+  <tr {% if data.ninoApplication.statusDescription == 3 or data.ninoApplication.statusDescription == 8 %}class="application-wrong" {% endif %} >
     <td>Biometric Residence Permit</td>
     <td>{{data.ninoApplication.BRP}}</td>
   </tr>
-  <tr {% if data.applyScenario == 8 %}class="application-wrong" {% endif %}>
+  <tr {% if data.ninoApplication.statusDescription == 8 %}class="application-wrong" {% endif %}>
     <td>Passport Number</td>
     <td>{{data.ninoApplication.passportNumber}}</td>
   </tr>
-  <tr {% if data.applyScenario == 7 %}class="application-wrong" {% endif %}>
+  <tr {% if data.ninoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
     <td>First name</td>
     <td>{{data.ninoApplication.nameOneFirst}}</td>
   </tr>
-  <tr {% if data.applyScenario == 7 %}class="application-wrong" {% endif %}>
+  <tr {% if data.ninoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
     <td>Last name</td>
     <td>{{data.ninoApplication.nameOneLast}}</td>
   </tr>

@@ -1,4 +1,4 @@
-{% if data.ninoApplication.status != 2 %}
+{% if data.ninoApplication.status >= 1 %}
   <h1 class="question-title">
     {% if data.ninoApplication.statusDescription == 1 %}
       Ready to allocate

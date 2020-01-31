@@ -1,6 +1,5 @@
 {% set closedApplications = false %}
 {% for application in data.ninoApplications %}
-{{application.status}}
   {% if application.status >= 2 %}
     {% set closedApplications = true %}
   {% endif %}

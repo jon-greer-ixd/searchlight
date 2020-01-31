@@ -1,0 +1,15 @@
+{% set newApplications = false %}
+{% for application in data.ninoApplications %}
+  {% if application.status == 0 %}
+    {% set newApplications = true %}
+  {% endif %}
+{% endfor %}
+
+  
+{% if newApplications %}
+
+  <a href="next-case-handler" class="button">Get next application</a> 
+
+{% else %}
+  <p class="no-items">There are no new applications</p>
+{% endif %}

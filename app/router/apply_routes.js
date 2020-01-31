@@ -73,9 +73,7 @@ var setStatusDescription = function(ninoApplicationNumber, ninoApplications) {
   }
   return ninoApplications;
 }
-
-
-
+    
 //get next case
 router.get(/next-case-handler/, function (req, res) {
   req.session.data.ninoApplication = getNextApplication(req.session.data.ninoApplications);
@@ -85,9 +83,26 @@ router.get(/next-case-handler/, function (req, res) {
   res.redirect('./verify')
 })
 
+router.get(/get-case-handler/, function (req, res) {
+  req.session.data.ninoApplication = getApplication(req.query.applicationNumber, req.session.data.ninoApplications);
+  req.session.data.ninoApplicationNumber = req.session.data.ninoApplication.applicationNumber;
+  req.session.data.ninoApplications = setStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 1);
+  req.session.data.ninoApplication.statusDescription = getStatusDescription(req.session.data.ninoApplication);
+  res.redirect('./verify')
+})
+
 //set details
 router.get(/set-case-handler/, function (req, res) {
-  req.session.data.ninoApplications = setStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, 2);
+  console.log(req.query);
+  var allocate = req.query.allocate;
+  if (allocate == 'true') {
+    status = 2;
+  } else if (allocate == 'null') {
+    status = 1;
+  } else {
+    status = 3;
+  }
+  req.session.data.ninoApplications = setStatus(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications, status);
   req.session.data.ninoApplications = setStatusDescription(req.session.data.ninoApplicationNumber, req.session.data.ninoApplications);
   res.redirect('./cases')
 })

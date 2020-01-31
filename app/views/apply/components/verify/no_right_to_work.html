@@ -3,13 +3,13 @@
 </div> #}
 
 
-{% if data.ninoApplication.status != 2 %}
+{% if data.ninoApplication.status >= 1 %}
 
 <p>The home office have verified <span class="strong">{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}'s</span> identity.</p>
 
 <p>They do not have the right to work.</p>
 
-<a class="button" href="nino-master-router?allocate=false">Do not allocate a NINO</a>
+<a class="button" href="set-case-handler?allocate=false">Do not allocate a NINO</a>
 
 {% else %}
       
