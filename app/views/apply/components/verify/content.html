@@ -1,30 +1,31 @@
 <div class="personal-details">
   <div class="grid-row">
     <div class="column-one-half">
-
     {# scenario 1 - all match  #}
-      {% if data.applyScenario == 1 %}
+      {% if data.ninoApplication.statusDescription == 1 %}
         {% include "./all_match.html" %}
     {# scenario 2 - no right to work  #}
-      {% elif data.applyScenario == 2 %}
+      {% elif data.ninoApplication.statusDescription == 2 %}
       {% include "./no_right_to_work.html" %}
     {# scenario 3 - BRP mismatch  #}
-      {% elif data.applyScenario == 3 %}
+      {% elif data.ninoApplication.statusDescription == 3 %}
       {% include "./brp_mismatch.html" %}
     {# scenario 4 - BRP mismatch and name mismatch  #}
     {# scenario 5 - Passport mismatch #}
     {# scenario 6 - Passport mismatch and name mismatch  #}
     {# scenario 7 - Name mismatch  #}
-      {% elif data.applyScenario == 7 %}
+      {% elif data.ninoApplication.statusDescription == 7 %}
       {% include "./name_only_mismatch.html" %}
     {# scenario 8 - DOB, Nationality mismatch  #}
-      {% elif data.applyScenario == 8 %}
+      {% elif data.ninoApplication.statusDescription == 8 %}
         {% include "./passport_brp_mismatch.html" %}
+      {% elif data.ninoApplication.statusDescription == 0 %}
+        null
       {% endif %}
 
     </div>
   </div>
-</div>
+</div>      
 {# 
 
       <div class="panel panel-border-wide">

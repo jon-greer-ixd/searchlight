@@ -158,30 +158,29 @@ module.exports = function (env) {
   }
 
     //remove whitespace
-    filters.convertsatusDescription = function(status) {
-      if (status == 1) {
+    filters.convertstatusDescription = function(statusDescription) {
+      if (statusDescription == 1) {
         return "All data matched.";
-      } else if (status == 2) {
+      } else if (statusDescription == 2) {
         return "No right to work.";
-      } else if (status == 3) {
+      } else if (statusDescription == 3) {
         return "BRP mismatch.";
-      } else if (status == 4) {
+      } else if (statusDescription == 4) {
         return "BRP and name mismatched.";
-      } else if (status == 5) {
+      } else if (statusDescription == 5) {
         return "Passport mismatch.";
-      } else if (status == 6) {
+      } else if (statusDescription == 6) {
         return "Passport and name mismatched.";
-      } else if (status == 7) {
+      } else if (statusDescription == 7) {
         return "Name mismatched.";
-      } else if (status == 8) {
+      } else if (statusDescription == 8) {
         return "Passport and BRP mismatched.";
-      } else if (status == 9) {
+      } else if (statusDescription == 9) {
         return "Matched accounts in CIS.";
       } else {
-        return "";
+        return "NAN";
       }
     }
-  
   return filters
 }
 

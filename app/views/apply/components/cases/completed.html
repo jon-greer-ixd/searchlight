@@ -1,5 +1,6 @@
 {% set closedApplications = false %}
 {% for application in data.ninoApplications %}
+{{application.status}}
   {% if application.status >= 2 %}
     {% set closedApplications = true %}
   {% endif %}
@@ -29,9 +30,9 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 2 %}
-          <li>NINO allocated. {{application.satusDescription | convertsatusDescription}}</li>
+          <li>NINO allocated. {{application.statusDescription | convertstatusDescription}}</li>
         {% elif application.status == 3 %}
-          <li>Not allocated. {{application.satusDescription | convertsatusDescription}}</li>
+          <li>Not allocated. {{application.statusDescription | convertstatusDescription}}</li>
         {% endif %}
       {% endfor %}
     </ul>
