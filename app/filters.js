@@ -176,7 +176,7 @@ module.exports = function (env) {
       } else if (statusDescription == 8) {
         return "Passport and BRP mismatched.";
       } else if (statusDescription == 9) {
-        return "Matched accounts in CIS.";
+        return "Home office data matched but matched accounts in CIS.";
       } else {
         return "NAN";
       }

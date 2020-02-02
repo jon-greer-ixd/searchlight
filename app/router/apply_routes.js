@@ -13,6 +13,16 @@ var getStatus = function (allocate) {
   return status;
 }
 
+function getApplication(applicationNumber, applications) {
+  var result = null;
+  for (var application in applications) {
+    if(applications[application].applicationNumber == applicationNumber) {
+      console.log(`Found! application = ${applications[application].nameOneFirst}`);
+      result = applications[application];
+    }
+  }
+  return result;
+}
 
 var getStatusDescription = function(application) {
   var statusDescription;
@@ -56,6 +66,7 @@ var updateApplications = function(applications, application) {
     for (var x in applications) {
     if(applications[x].applicationNumber == application.applicationNumber) {
       applications[x] = application;
+      console.log("here " + applications[x].status);
     }
   }
   return applications;
@@ -82,15 +93,30 @@ router.get(/next-case-handler/, function (req, res) {
   res.redirect('./verify')
 })
 
+//get specific case
+router.get(/get-case-handler/, function (req, res) {
+  req.session.data.currentNinoApplication = getApplication(req.query.applicationNumber, req.session.data.ninoApplications);
+  req.session.data.currentApplicationNumber = req.session.data.currentNinoApplication.applicationNumber;
+  console.log(req.session.data.currentNinoApplication.nameOneFirst)
+  console.log(req.session.data.currentNinoApplication.status)
+  console.log(req.session.data.currentNinoApplication.statusDescription)
+  console.log(req.session.data.currentNinoApplication.matchInCis)
+  if(req.session.data.currentNinoApplication.matchInCis == true) {
+    res.redirect('./trace')
+  } else {
+    res.redirect('./verify')
+  }
+})
+
 router.get(/check-cis-handler/, function (req, res) {
   if(req.query.allocate == 'true') {
     if(req.session.data.currentNinoApplication.matchInCis == true) {
       res.redirect('./trace')
     } else {
-      res.redirect('set-case-handler')
+      res.redirect('set-case-handler?allocate=true')
     }  
   } else {
-    res.redirect('set-case-handler')
+    res.redirect('set-case-handler?allocate=false')
   }
 })
 
@@ -98,7 +124,7 @@ router.get(/trace-options-handler/, function (req, res) {
   var status = getStatus(req.query.allocate);
   req.session.data.currentNinoApplication.statusDescription = 9;
   if(req.query.allocate == 'true') {
-    req.session.data.currentNinoApplication.matchInCis = false;
+    req.session.data.currentNinoApplication.matchInCis = false; 
   }
   req.session.data.currentNinoApplication.status = status;
   req.session.data.currentNinoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
@@ -110,10 +136,9 @@ router.get(/set-case-handler/, function (req, res) {
   var status = getStatus(req.query.allocate);
   req.session.data.currentNinoApplication.status = status;
   req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
-  req.session.data.currentNinoApplications = updateApplications(req.session.ninoApplications, req.session.data.currentNinoApplication)
+  req.session.data.currentNinoApplications = updateApplications(req.session.data. ninoApplications, req.session.data.currentNinoApplication)
   res.redirect('./cases')
 })
-
 
 module.exports = router
 
