@@ -1,16 +1,16 @@
 {# <div class="panel panel-border-wide">
-  <p>{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}</p>
+  <p>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</p>
 </div> #}
-{% if data.ninoApplication.status >= 1 %}
+{% if data.currentNinoApplication.status >= 1 %}
 
-  <p>The home office has verified <span class="strong">{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}'s:</span></p>
+  <p>The home office has verified <span class="strong">{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}'s:</span></p>
   <ul class="list list-bullet">
     <li>identity</li>
     <li>name</li>
     <li>right to work</li>
   </ul>
 
-  <a class="button" href="set-case-handler?allocate=true">Allocate a NINO</a>
+  <a class="button" href="check-cis-handler?allocate=true">Allocate a NINO</a>
 
 {% else %}
 

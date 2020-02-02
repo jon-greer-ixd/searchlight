@@ -1,10 +1,10 @@
-{% if data.ninoApplication.status != 2 %}
+{% if data.currentNinoApplication.status != 2 %}
 
 
 <p>You should compare the application to the home office database.</p>
 
 <div class="panel panel-border-wide">
-  <p>Home office holds: <span class="bold">{{data.ninoApplication.nameOneFirst | lower }}arlo{{data.ninoApplication.nameOneLast | lower}}</span</p>
+  <p>Home office holds: <span class="bold">{{data.currentNinoApplication.nameOneFirst | lower }}arlo{{data.currentNinoApplication.nameOneLast | lower}}</span</p>
 </div>
 
 {% include "../application/application_details.html" %}

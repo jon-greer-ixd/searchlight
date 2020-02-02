@@ -1,4 +1,4 @@
-{% if data.ninoApplication.status != 2 %}
+{% if data.currentNinoApplication.status != 2 %}
   <h1 class="question-title">
     {% if data.applyScenario == 1 %}
       Ready to allocate
@@ -15,7 +15,7 @@
 
 {% else %}
   <h1 class="question-title">
-    Application {{data.ninoApplication.passportNumber}}{{data.ninoApplication.BRP}}
+    Application {{data.currentNinoApplication.passportNumber}}{{data.currentNinoApplication.BRP}}
   </h1>    
 {% endif %}
 
