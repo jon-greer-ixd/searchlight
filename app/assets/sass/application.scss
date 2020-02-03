@@ -3001,3 +3001,37 @@ a.sl-secondary-button {
   margin-bottom: 30px;
   border-bottom: 1px solid lightgrey;
 }
+
+.col_one {
+  width: 28%;
+}
+
+.col_two {
+  width: 50%;
+}
+
+.col_three {
+  width: 22%;
+  &.last-col{
+    float: right;
+  }
+}
+
+.compare-list {
+  float:left;
+  width:50%;
+}
+
+.grid-row {
+  &.wider-columns {
+    .column-one-third:nth-child(1){
+      width: 28%;
+    }
+    .column-one-third:nth-child(2){
+      width: 50%;
+    }
+    .column-one-third:nth-child(3){
+      width: 22%;
+    }
+  }
+}

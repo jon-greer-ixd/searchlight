@@ -7,7 +7,7 @@
       <div id="address-pane">
 
       {% if data.citizen.mobile !=null %}
-        <div class="grid-row">
+        <div class="grid-row wider-columns">
           <div class="column-one-third">
             <ul>
               <li>Mobile telephone number</li>
@@ -42,7 +42,7 @@
       {% endif %}    
       
       {% if data.citizen.homeTelephone !=null %}
-        <div class="grid-row">
+        <div class="grid-row wider-columns">
           <div class="column-one-third">
             <ul>
               <li>Home telephone number</li>
@@ -101,7 +101,7 @@
           {% endif %}
         {% endfor %} #}
         
-        {# <div class="grid-row">
+        {# <div class="grid-row wider-columns">
           <div class="column-one-third">
             {% if counter == 0 %}
               No contact details held for this customer.

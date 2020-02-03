@@ -1,13 +1,13 @@
 <!-- REQUESTED NAME-->
   {% if data.citizen.requestedNameFirst != null %}
 
-    <div class="grid-row names">
-      <div class="column-one-third">
+    <div class="grid-row names wider-columns">
+  <div class="column-one-third">
         <ul>
           <li>Current names</li>
         </ul>
       </div>
-      <div class="column-one-third">
+  <div class="column-one-third">
         <ul class="">
           <li class="strong">
             {{data.citizen.requestedName.title | upper}}
@@ -34,20 +34,22 @@
         </ul>
       </div>
     </div>
-    <div class="grid-row names">
-      <div class="column-one-third">
+    <div class="grid-row names wider-columns">
+  <div class="column-one-third">
         &nbsp;
       </div>
-      <div class="column-two-thirds">
+      <div class="column-two-thirds col_two">
         <hr class="light">
       </div>
     </div>
   {% endif %}
 
+
+
   <!-- NAME 2 -->
   {% if data.citizen.nameTwoFirst != null %}
-    <div class="grid-row names">
-      <div class="column-one-third">
+    <div class="grid-row names wider-columns">
+  <div class="column-one-third">
         <ul>
           {% if data.citizen.requestedNameFirst == null %}
             <li>Current names</li>
@@ -56,7 +58,7 @@
           {% endif %}
         </ul>
       </div>
-      <div class="column-one-third">
+  <div class="column-one-third">
         <ul class="">
           <li class="strong">
             {% if data.citizen.nameTwoTitle !== null %}
@@ -83,19 +85,21 @@
         </ul>
       </div>
     </div>
-    <div class="grid-row names">
-      <div class="column-one-third">
+    <div class="grid-row names wider-columns">
+  <div class="column-one-third">
         &nbsp;
       </div>
-      <div class="column-two-thirds">
+      <div class="column-two-thirds col_two">
         <hr class="light">
       </div>
     </div>
   {% endif %}
 
+
+
   <!-- NAME 1 -->
-  <div class="grid-row names">
-    <div class="column-one-third">
+  <div class="grid-row names wider-columns">
+  <div class="column-one-third">
       <ul>
       {% if data.citizen.requestedNameFirst == null and data.citizen.nameTwoFirst == null %}
         <li>Current name</li>
@@ -104,7 +108,7 @@
       {% endif %}
       </ul>
     </div>
-    <div class="column-one-third">
+  <div class="column-one-third">
       <ul>
         <li class="strong">
           {% if data.citizen.nameOneTitle != null %}
@@ -152,7 +156,7 @@
         <hr class="light">
       </div>
     </div>
-    <div class="grid-row no-margin">
+    <div class="grid-row no-margin wider-columns">
       <div class="column-one-third">
         &nbsp;
       </div>
