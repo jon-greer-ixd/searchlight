@@ -1,9 +1,9 @@
 <div class="extra-margin">
-  <div class="grid-row">
-    <div class="column-one-third">
+  <div class="grid-row wider-columns">
+  <div class="column-one-third">
       National Insurance number
     </div>
-    <div class="column-one-third">
+  <div class="column-one-third">
       <ul>
         <li class="strong">{{data.citizen.nino}}</li>
         <li>
@@ -35,7 +35,7 @@
   </div>
        
   {% if data.citizen.accountStatus == 'Superseded' %}
-    <div class="grid-row">
+    <div class="grid-row wider-columns">
       <div class="column-one-third">
         Superseding National Insurance number
       </div>
@@ -52,7 +52,7 @@
   {% endif %}
   
   {% if data.citizen.accountStatus != 'Open' %}
-    <div class="grid-row">
+    <div class="grid-row wider-columns">
       <div class="column-one-third">
         National Insurance number status
       </div>
@@ -67,7 +67,7 @@
       </div>
     </div>
 
-    <div class="grid-row">
+    <div class="grid-row wider-columns">
       <div class="column-one-third">
         National Insurance number usage status
       </div>

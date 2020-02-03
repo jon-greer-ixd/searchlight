@@ -1,0 +1,95 @@
+<hr class="light">
+
+<div class="grid-row wider-columns">
+
+  <div class="column-one-third">
+    Nationality
+  </div>
+
+  <div class="column-one-third">
+    <ul style="float:left;width:50%;">
+      <li class="multi-dates">
+      <span class="strong">{{data.citizen.nationality}}<br></span>
+      <span class="sl-secondary-text-color">Source &nbsp;•&nbsp; DWP</span>
+      </li>
+    </ul>
+
+    <ul style="float:left;width:50%;">
+      <li class="multi-dates">
+      <span class="strong">{{data.citizen.nationality}}<br></span>
+      <span class="sl-secondary-text-color">Source &nbsp;•&nbsp; Home Office</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a data-toggle="modal" data-target="#nationality_modal" class="under-link">View maintenance</a> 
+      </li>
+    </ul>
+  </div>
+</div>
+
+<hr class="light">
+
+<div class="grid-row wider-columns">
+  <div class="column-one-third">
+    Immigration status
+  </div>
+
+  <div class="column-one-third">
+
+    <ul class="compare-list">
+      <li class="strong">{{data.citizen.immigration}}</li>
+      <li class="sl-secondary-text-color">Source &nbsp;•&nbsp; DWP</li>
+      <li><a data-toggle="modal" data-target="#immigration_modal" class="under-link">View DWP maintenance</a></li>
+    </ul>
+    
+    <ul class="compare-list">
+      <li class="strong">{{data.citizen.immigration}}</li>
+      <li class="sl-secondary-text-color">Source &nbsp;•&nbsp; Home office</li>
+    </ul>
+    
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{# 
+
+
+
+<details>
+  <summary>
+    <span class="summary">Show immigration and nationality details</span>
+  </summary>
+
+  <p class="data-source sl-secondary-text-color sl-metadata">Data from the Home Office</p>
+    <hr class="light">
+    {% for detailName, value in data.citizen %}
+      {% if value != null %}
+        {% if detailName == "indIndicator" %}
+          {% include "./nationality-interest.html" %}
+          <hr class="light">
+        {% elif detailName == "nationality" %}
+          {% include "./nationality.html" %}
+          <hr class="light">
+        {% elif detailName == "publicFunds" %}
+          {% include "./publicfunds.html" %}
+          <hr class="light">
+        {% elif detailName == "immigration" %}
+          {% include "./immigration.njk" %}
+          <hr class="light">
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+</details> #}
