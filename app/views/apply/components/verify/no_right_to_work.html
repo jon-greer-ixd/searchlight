@@ -1,15 +1,15 @@
 {# <div class="panel panel-border-wide">
-  <p>{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}</p>
+  <p>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</p>
 </div> #}
 
 
-{% if data.ninoApplication.status != 2 %}
+{% if data.currentNinoApplication.status >= 1 %}
 
-<p>The home office have verified <span class="strong">{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}'s</span> identity.</p>
+<p>The home office have verified <span class="strong">{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}'s</span> identity.</p>
 
 <p>They do not have the right to work.</p>
 
-<a class="button" href="verify-data-handler?allocate=false">Do not allocate a NINO</a>
+<a class="button" href="set-case-handler?allocate=false">Do not allocate a NINO</a>
 
 {% else %}
       

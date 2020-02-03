@@ -1,41 +1,42 @@
 <div class="personal-details">
   <div class="grid-row">
     <div class="column-one-half">
-
     {# scenario 1 - all match  #}
-      {% if data.applyScenario == 1 %}
+      {% if data.currentNinoApplication.statusDescription == 1 %}
         {% include "./all_match.html" %}
     {# scenario 2 - no right to work  #}
-      {% elif data.applyScenario == 2 %}
+      {% elif data.currentNinoApplication.statusDescription == 2 %}
       {% include "./no_right_to_work.html" %}
     {# scenario 3 - BRP mismatch  #}
-      {% elif data.applyScenario == 3 %}
+      {% elif data.currentNinoApplication.statusDescription == 3 %}
       {% include "./brp_mismatch.html" %}
     {# scenario 4 - BRP mismatch and name mismatch  #}
     {# scenario 5 - Passport mismatch #}
     {# scenario 6 - Passport mismatch and name mismatch  #}
     {# scenario 7 - Name mismatch  #}
-      {% elif data.applyScenario == 7 %}
+      {% elif data.currentNinoApplication.statusDescription == 7 %}
       {% include "./name_only_mismatch.html" %}
     {# scenario 8 - DOB, Nationality mismatch  #}
-      {% elif data.applyScenario == 8 %}
+      {% elif data.currentNinoApplication.statusDescription == 8 %}
         {% include "./passport_brp_mismatch.html" %}
+      {% elif data.currentNinoApplication.statusDescription == 0 %}
+        null
       {% endif %}
 
     </div>
   </div>
-</div>
+</div>      
 {# 
 
       <div class="panel panel-border-wide">
-        <p>{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}</p>
+        <p>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</p>
       </div>
     
       <table class="table verify-table">
         <tr>
           <td>Home office identification check</td>
           <td class="strong">
-          {% if data.ninoApplication.HomeOfficeMatch == true %}
+          {% if data.currentNinoApplication.HomeOfficeMatch == true %}
             Pass
           {% else %}
             Fail
@@ -52,15 +53,15 @@
     </div>
   </div>
 
-  {% if data.ninoApplication.status <= 1 %}
+  {% if data.currentNinoApplication.status <= 1 %}
     <br>
-    <a class="button" href="verify-data-handler?allocate=true">Allocate a NINO</a>
+    <a class="button" href="nino-master-router?allocate=true">Allocate a NINO</a>
     <br>
     <br>
-    <a class="under-link" href="verify-data-handler?allocate=false">Do not allocate</a>
+    <a class="under-link" href="nino-master-router?allocate=false">Do not allocate</a>
   {% else %}
     <br>
-    <a class="under-link" href="verify-data-handler?allocate=false">Back to all applications</a>
+    <a class="under-link" href="nino-master-router?allocate=false">Back to all applications</a>
   {% endif %}
     
 </div>

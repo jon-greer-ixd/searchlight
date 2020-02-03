@@ -158,32 +158,31 @@ module.exports = function (env) {
   }
 
     //remove whitespace
-    filters.convertApplicationScenario = function(status) {
-      if (status == 1) {
+    filters.convertstatusDescription = function(statusDescription) {
+      if (statusDescription == 1) {
         return "All data matched.";
-      } else if (status == 2) {
+      } else if (statusDescription == 2) {
         return "No right to work.";
-      } else if (status == 3) {
+      } else if (statusDescription == 3) {
         return "BRP mismatch.";
-      } else if (status == 4) {
+      } else if (statusDescription == 4) {
         return "BRP and name mismatched.";
-      } else if (status == 5) {
+      } else if (statusDescription == 5) {
         return "Passport mismatch.";
-      } else if (status == 6) {
+      } else if (statusDescription == 6) {
         return "Passport and name mismatched.";
-      } else if (status == 7) {
+      } else if (statusDescription == 7) {
         return "Name mismatched.";
-      } else if (status == 8) {
+      } else if (statusDescription == 8) {
         return "Passport and BRP mismatched.";
+      } else if (statusDescription == 9) {
+        return "Home office data matched but matched accounts in CIS.";
       } else {
-        return "";
+        return "NAN";
       }
     }
-  
-
   return filters
 }
-
 
       // {# scenario 1 - all match4  #}
       // {# scenario 2 - no right to work  #}
@@ -193,7 +192,7 @@ module.exports = function (env) {
       // {# scenario 6 - Passport mismatch and name mismatch  #}
       // {# scenario 7 - Name mismatch  #}
       // {# scenario 8 - DOB, Nationality mismatch  #}
-
+      // {# scenario 9 - Matched accounts in CIS  #}
 
 // if no contacts set to show - show no contacts
 // if any contact set to not show - hide the link

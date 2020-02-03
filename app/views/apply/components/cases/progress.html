@@ -29,7 +29,7 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 1 %}
-          <li>{{application.applicationScenario | convertApplicationScenario}}</li>
+          <li>{{application.statusDescription | convertstatusDescription}}</li>
         {% endif %}
       {% endfor %}
     </ul>
@@ -37,12 +37,12 @@
     <ul>
       <li>&nbsp;</li>
       {# {% for application in data. ninoApplications %}
-        <li> <a href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+        <li> <a href="get-case-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
       {% endfor %} #}
 
       {% for application in data.ninoApplications %}
         {% if application.status == 1 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </li>
+          <li> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </li>
         {% endif %}
       {% endfor %}
       

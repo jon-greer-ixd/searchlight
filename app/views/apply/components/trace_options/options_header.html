@@ -1,14 +1,14 @@
-{% if data.currentNinoApplication.status >= 1 %}
+{% if data.currentNinoApplication.status != 2 %}
   <h1 class="question-title">
-    {% if data.currentNinoApplication.statusDescription == 1 %}
+    {% if data.applyScenario == 1 %}
       Ready to allocate
-    {% elif data.currentNinoApplication.statusDescription == 2 %}
+    {% elif data.applyScenario == 2 %}
       No right to work
-    {% elif data.currentNinoApplication.statusDescription == 3 %}
+    {% elif data.applyScenario == 3 %}
       Their Biometric Residence Permit does not match
-    {% elif data.currentNinoApplication.statusDescription == 7 %}
+    {% elif data.applyScenario == 7 %}
       Their name does not match
-    {% elif data.currentNinoApplication.statusDescription == 8 %}
+    {% elif data.applyScenario == 8 %}
         Their Biometric Residence Permit and <br>their passport number do not match
     {% endif %}
   </h1>

@@ -29,9 +29,9 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 2 %}
-          <li>NINO allocated. {{application.applicationScenario | convertApplicationScenario}}</li>
+          <li>NINO allocated. {{application.statusDescription | convertstatusDescription}}</li>
         {% elif application.status == 3 %}
-          <li>Not allocated. {{application.applicationScenario | convertApplicationScenario}}</li>
+          <li>Not allocated. {{application.statusDescription | convertstatusDescription}}</li>
         {% endif %}
       {% endfor %}
     </ul>
@@ -39,18 +39,18 @@
     <ul>
       <li>&nbsp;</li>
       {# {% for application in data. ninoApplications %}
-        <li> <a href="get-cases-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+        <li> <a href="get-case-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
       {% endfor %} #}
 
       {% for application in data.ninoApplications %}
         {% if application.status >= 2 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View application</a></li>
+          <li> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">View application</a></li>
         {% endif %}
       {% endfor %}
 
       {# {% for application in data.ninoApplications %}
         {% if application.status >= 2 %}
-          <li> <a class="under-link" href="get-cases-handler?applicationNumber={{application.applicationNumber}}">View CIS account</a></li>
+          <li> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">View CIS account</a></li>
         {% endif %}
       {% endfor %} #}
 

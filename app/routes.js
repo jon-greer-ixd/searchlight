@@ -9,8 +9,6 @@ var addressFour = 'Gateshead, Tyne and Wear NE1 1HH';
 var getCitizen = require('../functions/search-functions.js').getCitizen;
 
 var ninoApplications = require('../public/javascripts/nino_applications.json')
-var getApplication = require('../functions/search-functions.js').getApplication;
-var application = getApplication(10001, ninoApplications);
 
 var content = require('./content.js').content;
 var Interest = require('./interest.js');

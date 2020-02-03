@@ -1,20 +1,19 @@
 {# <div class="panel panel-border-wide">
-  <p>{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}</p>
+  <p>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</p>
 </div> #}
+{% if data.currentNinoApplication.status >= 1 %}
 
-{% if data.ninoApplication.status != 2 %}
+  <p>The home office has verified <span class="strong">{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}'s:</span></p>
+  <ul class="list list-bullet">
+    <li>identity</li>
+    <li>name</li>
+    <li>right to work</li>
+  </ul>
 
-<p>The home office has verified <span class="strong">{{data.ninoApplication.nameOneFirst}} {{data.ninoApplication.nameOneLast}}'s:</span></p>
-<ul class="list list-bullet">
-  <li>identity</li>
-  <li>name</li>
-  <li>right to work</li>
-</ul>
-
-<a class="button" href="verify-data-handler?allocate=true">Allocate a NINO</a>
+  <a class="button" href="check-cis-handler?allocate=true">Allocate a NINO</a>
 
 {% else %}
 
-{% include "../application/application_details.html" %}
+  {% include "../application/application_details.html" %}
 
 {% endif %}
