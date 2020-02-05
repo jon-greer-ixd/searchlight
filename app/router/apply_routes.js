@@ -137,8 +137,33 @@ router.get(/set-case-handler/, function (req, res) {
   req.session.data.currentNinoApplication.status = status;
   req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
   req.session.data.currentNinoApplications = updateApplications(req.session.data. ninoApplications, req.session.data.currentNinoApplication)
-  res.redirect('./cases')
+  if (req.session.data.currentNinoApplication.statusDescription == 7 && req.query.allocate == 'true') {
+    res.redirect('./data')
+  } else {
+    res.redirect('./cases')
+  }
 })
+
+router.get(/nameentry-handler/, function (req, res) {
+  req.session.data.currentNinoApplication.nameOneFirst = req.session.data.ninoapplication_firstnames;
+  req.session.data.currentNinoApplication.nameOneLast = req.session.data.ninoapplication_lastname;
+  req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
+  req.session.data.currentNinoApplications = updateApplications(req.session.data. ninoApplications, req.session.data.currentNinoApplication)
+    res.redirect('./cases')
+})
+
+var updateName = function(currentApplicationNumber, ninoApplications, firstnames, lastname) {
+  for (var location in ninoApplications) {
+    if (ninoApplications[location].applicationNumber == currentApplicationNumber) {
+      ninoApplications[location].nameOneFirst = firstnames;
+      ninoApplications[location].nameOneLast = lastname;
+      console.log(`Name updated! ${ninoApplications[location].nameOneFirst} ${ninoApplications[location].nameOneLast}` )
+    }
+  }
+  return ninoApplications;
+}
+
+
 
 module.exports = router
 
@@ -381,16 +406,6 @@ module.exports = router
 // // })
 
 
-// // router.get(/nameentry-handler/, function (req, res) {
-// //     req.session.data.ninoApplications = updateName(req.session.data.currentApplicationNumber, 
-// //                                                     req.session.data.ninoApplications, 
-// //                                                     req.session.data.ninoapplication_firstnames, 
-// //                                                     req.session.data.ninoapplication_lastname);
-                                                    
-// //     req.session.data.ninoApplications = updateApplicationStatus(req.session.data.currentApplicationNumber, req.session.data.ninoApplications, 2);
-// //     req.session.data.ninoApplications = updateApplicationScenario(req.session.data.currentApplicationNumber, req.session.data.ninoApplications);
-// //     res.redirect('./cases')
-// // })
 
 
 // //getApplication
