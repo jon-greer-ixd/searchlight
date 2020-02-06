@@ -3035,3 +3035,17 @@ a.sl-secondary-button {
     }
   }
 }
+
+.application-panel {
+  background-color: #dee0e2;
+  padding: 15px;
+  h3 {
+    font-weight: bold;
+  }
+  ul li {
+    width: 50%;
+    float: left;
+    padding-bottom: 10px;
+  }
+  width: 30%;
+}
