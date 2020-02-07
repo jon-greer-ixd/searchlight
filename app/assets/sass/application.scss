@@ -3049,3 +3049,14 @@ a.sl-secondary-button {
   }
   width: 30%;
 }
+
+.nino-table > thead > tr > th,
+  .nino-table > tbody > tr > td {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.application-area {
+  margin-bottom: 30px;
+  @include clearfix;
+}
