@@ -1151,7 +1151,7 @@ hr.split {
 }
 
 .multi-dates {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .interest {
@@ -3059,4 +3059,32 @@ a.sl-secondary-button {
 .application-area {
   margin-bottom: 30px;
   @include clearfix;
+}
+
+.ho-data {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
+
+.inactive {
+  display: none;
+}
+
+.loading {
+  li {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(187,189,191,1) 0%, rgba(255,255,255,1) 100%);
+    height: 15px;
+    width :200px;
+    margin: 10px 0 5px 0;
+  }
+  display:none;
+  &.active {
+    display: block;
+  }
+  &.inactive {
+    display: none;
+  }  
 }

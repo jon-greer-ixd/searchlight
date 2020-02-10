@@ -7,19 +7,26 @@
   </div>
 
   <div class="column-one-third">
-    <ul style="float:left;width:50%;">
-      <li class="multi-dates">
-      <span class="strong">{{data.citizen.nationality}}<br></span>
-      <span class="sl-secondary-text-color">Source &nbsp;•&nbsp; DWP</span>
+
+    <ul>
+      <li>
+        <span class="strong">{{data.citizen.nationality}}<br></span>
+        <span class="sl-secondary-text-color">Source &nbsp;•&nbsp; DWP</span>
       </li>
     </ul>
 
-    <ul style="float:left;width:50%;">
+    <ul class="loading">
+      <li> </li>
+      <li> </li>
+    </ul>
+
+    <ul class="ho-data">
       <li class="multi-dates">
       <span class="strong">{{data.citizen.nationality}}<br></span>
       <span class="sl-secondary-text-color">Source &nbsp;•&nbsp; Home Office</span>
       </li>
     </ul>
+
   </div>
 
   <div class="column-one-third last-col">
@@ -40,20 +47,37 @@
 
   <div class="column-one-third">
 
-    <ul class="compare-list">
+    <ul>
       <li class="strong">{{data.citizen.immigration}}</li>
       <li class="sl-secondary-text-color">Source &nbsp;•&nbsp; DWP</li>
-      <li><a data-toggle="modal" data-target="#immigration_modal" class="under-link">View DWP maintenance</a></li>
+    </ul>
+
+    <ul class="loading">
+      <li> </li>
+      <li> </li>
     </ul>
     
-    <ul class="compare-list">
-      <li class="strong">{{data.citizen.immigration}}</li>
+    <ul class="ho-data">
+      <li class="multi-dates strong ">{{data.citizen.immigration}}</li>
       <li class="sl-secondary-text-color">Source &nbsp;•&nbsp; Home office</li>
     </ul>
     
+    
+  </div>
+
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+      <li><a data-toggle="modal" data-target="#immigration_modal" class="under-link">View maintenance</a></li>
+      </li>
+    </ul>
   </div>
 
 </div>
+
+<hr class="light">
+
+<a id="horeveal" class=" button secondary-button">Get Home Office data </a>
 
 
 
