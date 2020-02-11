@@ -62,7 +62,6 @@
       <li class="sl-secondary-text-color">Source &nbsp;•&nbsp; Home office</li>
     </ul>
     
-    
   </div>
 
   <div class="column-one-third last-col">
@@ -78,16 +77,33 @@
 <hr class="light">
 
 <a id="horeveal" class=" button secondary-button">Get Home Office data </a>
+    
+  <div class="grid-row wider-columns">
+    <div class="column-one-third">
+      <ul class="loading">
+        <li> </li>
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul class="loading">
+        <li> </li>
+      </ul>
+    </div>
+  </div>
 
 <div class="grid-row wider-columns">
-  <div class="column-two-thirds ho-data">
-      <ul class="loading">
-      <li> </li>
+  <div class="column-one-third ho-data">
+    Access to public funds
+  </div>
+  <div class="column-one-third ho-data">
+    <ul>
+    {% if data.citizen.publicFunds == true %}
+      <li class="strong">Yes</li>
+      <li class="sl-secondary-text-color sl-metadata">Since 1 Jan 2019</li>
+    {% endif %}
     </ul>
-    <span class="strong">This person does not have recourse to public funds</span>
   </div>
-
-  </div>
+</div>
 
 
 {# 
