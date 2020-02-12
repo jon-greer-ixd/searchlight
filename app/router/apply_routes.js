@@ -90,6 +90,7 @@ router.get(/next-case-handler/, function (req, res) {
   req.session.data.currentApplicationNumber = req.session.data.currentNinoApplication.applicationNumber;
   req.session.data.currentNinoApplication.status = 1;
   req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
+  req.session.data.ninoAllocated = null;
   res.redirect('./verify')
 })
 
@@ -140,6 +141,11 @@ router.get(/set-case-handler/, function (req, res) {
   if (req.session.data.currentNinoApplication.statusDescription == 7 && req.query.allocate == 'true') {
     res.redirect('./data')
   } else {
+    if(req.query.allocate = false) {
+      req.session.data.ninoAllocated = false;
+    } else {
+      req.session.data.ninoAllocated = true;
+    } 
     res.redirect('./cases')
   }
 })
@@ -163,6 +169,18 @@ var updateName = function(currentApplicationNumber, ninoApplications, firstnames
   return ninoApplications;
 }
 
+
+
+
+
+router.get(/data-match-handler/, function (req, res) {
+  if(req.query.datamatch == 'false') {
+    req.session.data.ninoAllocated = false;
+    res.redirect('set-case-handler?allocate=false')
+  } else {
+    res.redirect('./right_to_work')
+  }
+})
 
 
 module.exports = router

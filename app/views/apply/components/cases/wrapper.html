@@ -5,6 +5,17 @@
     <a class="link-back" onCLick="history.back()">Back</a>
       
     <div id="sl-address-primary-card" class="sl-primary-card">
+
+      {% if data.ninoAllocated == true %}
+        Application complete!
+        <div>
+        Allocated
+        <div>
+      {% elif data.ninoAllocated == false %}
+        <div>
+        Not allocated
+        <div>
+      {% endif %}
       
       <h1 class="question-title">National Insurance number applications</h1>
       
@@ -15,5 +26,9 @@
     </div>
 
   </div>
+
+</div>
+
+</div>
 
 </div>

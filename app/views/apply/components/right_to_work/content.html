@@ -5,38 +5,14 @@
     <div class="multiple-choice">
       <input id="true" type="radio" name="allocate" value=true>
       <label for="true">
-        Allocate a nino<br>
-        {% if data.matchInCis == true %}
-          These accounts do not belong to the applicant 
-        {% elif data.applyScenario == 3 %}
-          Their application matches the home office data
-        {% elif data.applyScenario == 8 %}
-          Their application matches the home office data
-        {% else %}
-          Their name matches the home office data
-        {% endif %}
-      </label>
-    </div>
-
-    <div class="multiple-choice">
-      <input id="null" type="radio" name="allocate" value=null>
-      <label for="null">
-        Hold application<br>
-        Need to contact the applicant
+        Yes, allocate a National Insurance number
       </label>
     </div>
     
     <div class="multiple-choice">
       <input id="false" type="radio" name="allocate" value=false>
       <label for="false">
-        Do not allocate<br>
-        {% if data.applyScenario == 3 %}
-          Their Biometric Residence Permit is completely different
-        {% elif data.applyScenario == 8 %}
-          Their documents are completely different
-        {% else %}
-          Their name is completely different
-        {% endif %}
+        No, do not allocate a National Insurance number
       </label>
     </div>
         
