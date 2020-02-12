@@ -72,27 +72,35 @@ router.get(/verify-details-handler/, function (req, res) {
 
 //data match question
 router.get(/data-match-handler/, function (req, res) {
+  var status;
+  var next;
   if(req.query.datamatch == 'true') {
-    res.redirect('./right_to_work')
+    next = './right_to_work';
+  } else if (req.query.datamatch == 'null') {
+    status = 1;
+    next = './cases';
   } else {
-    res.redirect('.cases')
+    status = 3;
+    next = './cases';
   }
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
+  res.redirect(next);
 })
-
 
 //right to work question
 router.get(/right-to-work-handler/, function (req, res) {
-  req.session.data.currentNinoApplication.status = 2;
-  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
-for (var x in req.session.data.ninoApplications ) {
-    console.log(req.session.data.ninoApplications[x].nameOneFirst);
-    console.log(req.session.data.ninoApplications[x].status);
+  var status;
+  if(req.query.allocate == 'true') {
+    status = 2;
+  } else {
+    status = 4;
   }
-  res.redirect('./cases')
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
+  res.redirect('./cases');
 })
 
-
-//check CIS
 
 module.exports = router
 

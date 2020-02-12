@@ -30,7 +30,7 @@
       {% for application in data.ninoApplications %}
         {% if application.status == 2 %}
           <li>NINO allocated.</li>
-        {% elif application.status == 3 %}
+        {% elif application.status >= 3 %}
           <li>Not allocated.</li>
         {% endif %}
       {% endfor %}

@@ -29,7 +29,7 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 1 %}
-          <li>{{application.statusDescription | convertstatusDescription}}</li>
+          <li>On hold</li>
         {% endif %}
       {% endfor %}
     </ul>
