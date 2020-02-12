@@ -1,76 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
-var getStatus = function (allocate) {
-  var status;
-  if (allocate == 'true') {
-    status = 2;
-  } else if (allocate == 'null') {
-    status = 1;
-  } else {
-    status = 3;
-  }
-  return status;
-}
 
-function getApplication(applicationNumber, applications) {
-  var result = null;
-  for (var application in applications) {
-    if(applications[application].applicationNumber == applicationNumber) {
-      console.log(`Found! application = ${applications[application].nameOneFirst}`);
-      result = applications[application];
-    }
-  }
-  return result;
-}
-
-var getStatusDescription = function(application) {
-  var statusDescription;
-    // {# scenario 2 - no right to work  #}
-    if (application.rightToWork == false) {
-    statusDescription = 2;
-    // {# scenario 8 - DOB, Nationality mismatch  #}
-  } else if (application.BRPMatch == false && application.passportMatch == false) {
-    statusDescription = 8;
-    // {# scenario 4 - BRP mismatch and name mismatch  #}
-  } else if (application.BRPMatch == false && application.nameMatch == false) {
-    statusDescription = 4;
-    // {# scenario 3 - BRP mismatch  #}
-  } else if (application.BRPMatch == false && application.nameMatch == true) {
-    statusDescription = 3;
-    // {# scenario 6 - Passport mismatch and name mismatch  #}
-  } else if (application.passportMatch == false && application.nameMatch == false) {
-    statusDescription = 6;
-    // {# scenario 5 - Passport mismatch #}
-  } else if (application.passportMatch == false && application.nameMatch == true) {
-    statusDescription = 5;
-    // {# scenario 7 - Name mismatch  #}
-  } else if (application.passportMatch == true && application.BRPMatch == true && application.nameMatch == false) {
-    statusDescription = 7;
-    // {# scenario 1 - all match  #}
-  } else {
-    statusDescription = 1;
-  }
-  console.log(`The status description = ${statusDescription}`)
-  return statusDescription;
-}
-
-// //STEPS
-// // 1 GET CASE - hold locally
-// // 2 CHECK HOME OFFICE
-// // 3 CHECK CIS
-// // 4 SET STATUS
-// // 5 update cases - put local case back
-
-var updateApplications = function(applications, application) {
-    for (var x in applications) {
-    if(applications[x].applicationNumber == application.applicationNumber) {
-      applications[x] = application;
-      console.log("here " + applications[x].status);
-    }
-  }
-  return applications;
-}
+// FUNCTIONS
 
 function getNextApplication(applications) {
   var result = null;
@@ -84,15 +16,18 @@ function getNextApplication(applications) {
   return result;
 }
 
-//get next case
-router.get(/next-case-handler/, function (req, res) {
-  req.session.data.currentNinoApplication = getNextApplication(req.session.data.ninoApplications);
-  req.session.data.currentApplicationNumber = req.session.data.currentNinoApplication.applicationNumber;
-  req.session.data.currentNinoApplication.status = 1;
-  req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
-  req.session.data.ninoAllocated = null;
-  res.redirect('./verify')
-})
+function getApplication(applicationNumber, applications) {
+  var result = null;
+  for (var application in applications) {
+    if(applications[application].applicationNumber == applicationNumber) {
+      console.log(`Found! application = ${applications[application].nameOneFirst}`);
+      result = applications[application];
+    }
+  }
+  return result;
+}
+
+// ROUTES
 
 //get specific case
 router.get(/get-case-handler/, function (req, res) {
@@ -109,85 +44,190 @@ router.get(/get-case-handler/, function (req, res) {
   }
 })
 
-router.get(/check-cis-handler/, function (req, res) {
-  if(req.query.allocate == 'true') {
-    if(req.session.data.currentNinoApplication.matchInCis == true) {
-      res.redirect('./trace')
-    } else {
-      res.redirect('set-case-handler?allocate=true')
-    }  
-  } else {
-    res.redirect('set-case-handler?allocate=false')
-  }
+//get next case
+router.get(/next-case-handler/, function (req, res) {
+  req.session.data.currentNinoApplication = getNextApplication(req.session.data.ninoApplications);
+  req.session.data.currentApplicationNumber = req.session.data.currentNinoApplication.applicationNumber;
+  req.session.data.ninoAllocated = null;
+  res.redirect('./verify')
 })
 
-router.get(/trace-options-handler/, function (req, res) {
-  var status = getStatus(req.query.allocate);
-  req.session.data.currentNinoApplication.statusDescription = 9;
-  if(req.query.allocate == 'true') {
-    req.session.data.currentNinoApplication.matchInCis = false; 
+
+
+
+//cases
+
+//verify personal details
+router.get(/verify-details-handler/, function (req, res) {
+  res.redirect('./data_match')
+})
+
+//data match question
+router.get(/data-match-handler/, function (req, res) {
+  res.redirect('./right_to_work')
+})
+
+//right to work question
+router.get(/right-to-work-handler/, function (req, res) {
+  req.session.data.currentNinoApplication.status = 2;
+  for (var x in req.session.data.ninoApplications) {
+    if (req.session.data.ninoApplications[x].applicationNumber == req.session.data.currentApplicationNumber) {
+      req.session.data.ninoApplications[x] = req.session.data.currentNinoApplication;
+    }
   }
-  req.session.data.currentNinoApplication.status = status;
-  req.session.data.currentNinoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
   res.redirect('./cases')
 })
 
-//set details
-router.get(/set-case-handler/, function (req, res) {
-  var status = getStatus(req.query.allocate);
-  req.session.data.currentNinoApplication.status = status;
-  req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
-  req.session.data.currentNinoApplications = updateApplications(req.session.data. ninoApplications, req.session.data.currentNinoApplication)
-  if (req.session.data.currentNinoApplication.statusDescription == 7 && req.query.allocate == 'true') {
-    res.redirect('./data')
-  } else {
-    if(req.query.allocate = false) {
-      req.session.data.ninoAllocated = false;
-    } else {
-      req.session.data.ninoAllocated = true;
-    } 
-    res.redirect('./cases')
-  }
-})
-
-router.get(/nameentry-handler/, function (req, res) {
-  req.session.data.currentNinoApplication.nameOneFirst = req.session.data.ninoapplication_firstnames;
-  req.session.data.currentNinoApplication.nameOneLast = req.session.data.ninoapplication_lastname;
-  req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
-  req.session.data.currentNinoApplications = updateApplications(req.session.data. ninoApplications, req.session.data.currentNinoApplication)
-    res.redirect('./cases')
-})
-
-var updateName = function(currentApplicationNumber, ninoApplications, firstnames, lastname) {
-  for (var location in ninoApplications) {
-    if (ninoApplications[location].applicationNumber == currentApplicationNumber) {
-      ninoApplications[location].nameOneFirst = firstnames;
-      ninoApplications[location].nameOneLast = lastname;
-      console.log(`Name updated! ${ninoApplications[location].nameOneFirst} ${ninoApplications[location].nameOneLast}` )
-    }
-  }
-  return ninoApplications;
-}
-
-
-
-
-
-router.get(/data-match-handler/, function (req, res) {
-  if(req.query.datamatch == 'false') {
-    req.session.data.ninoAllocated = false;
-    res.redirect('set-case-handler?allocate=false')
-  } else {
-    res.redirect('./right_to_work')
-  }
-})
-
+//check CIS
 
 module.exports = router
 
+// update the current case status
+// put this one back in the cases
+//     req.session.data.ninoApplications = setStatus(req.session.data.currentApplicationNumber, req.session.data.ninoApplications, status);
 
 
 
+// var getStatus = function (allocate) {
+//   var status;
+//   if (allocate == 'true') {
+//     status = 2;
+//   } else if (allocate == 'null') {
+//     status = 1;
+//   } else {
+//     status = 3;
+//   }
+//   return status;
+// }
+
+// function getApplication(applicationNumber, applications) {
+//   var result = null;
+//   for (var application in applications) {
+//     if(applications[application].applicationNumber == applicationNumber) {
+//       console.log(`Found! application = ${applications[application].nameOneFirst}`);
+//       result = applications[application];
+//     }
+//   }
+//   return result;
+// }
+
+// var getStatusDescription = function(application) {
+//   var statusDescription;
+//     // {# scenario 2 - no right to work  #}
+//     if (application.rightToWork == false) {
+//     statusDescription = 2;
+//     // {# scenario 8 - DOB, Nationality mismatch  #}
+//   } else if (application.BRPMatch == false && application.passportMatch == false) {
+//     statusDescription = 8;
+//     // {# scenario 4 - BRP mismatch and name mismatch  #}
+//   } else if (application.BRPMatch == false && application.nameMatch == false) {
+//     statusDescription = 4;
+//     // {# scenario 3 - BRP mismatch  #}
+//   } else if (application.BRPMatch == false && application.nameMatch == true) {
+//     statusDescription = 3;
+//     // {# scenario 6 - Passport mismatch and name mismatch  #}
+//   } else if (application.passportMatch == false && application.nameMatch == false) {
+//     statusDescription = 6;
+//     // {# scenario 5 - Passport mismatch #}
+//   } else if (application.passportMatch == false && application.nameMatch == true) {
+//     statusDescription = 5;
+//     // {# scenario 7 - Name mismatch  #}
+//   } else if (application.passportMatch == true && application.BRPMatch == true && application.nameMatch == false) {
+//     statusDescription = 7;
+//     // {# scenario 1 - all match  #}
+//   } else {
+//     statusDescription = 1;
+//   }
+//   console.log(`The status description = ${statusDescription}`)
+//   return statusDescription;
+// }
+
+
+// var updateApplications = function(applications, application) {
+//     for (var x in applications) {
+//     if(applications[x].applicationNumber == application.applicationNumber) {
+//       applications[x] = application;
+//       console.log("here " + applications[x].status);
+//     }
+//   }
+//   return applications;
+// }
+
+
+
+
+// router.get(/check-cis-handler/, function (req, res) {
+//   if(req.query.allocate == 'true') {
+//     if(req.session.data.currentNinoApplication.matchInCis == true) {
+//       res.redirect('./trace')
+//     } else {
+//       res.redirect('set-case-handler?allocate=true')
+//     }  
+//   } else {
+//     res.redirect('set-case-handler?allocate=false')
+//   }
+// })
+
+// router.get(/trace-options-handler/, function (req, res) {
+//   var status = getStatus(req.query.allocate);
+//   req.session.data.currentNinoApplication.statusDescription = 9;
+//   if(req.query.allocate == 'true') {
+//     req.session.data.currentNinoApplication.matchInCis = false; 
+//   }
+//   req.session.data.currentNinoApplication.status = status;
+//   req.session.data.currentNinoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
+//   res.redirect('./cases')
+// })
+
+// //set details
+// router.get(/set-case-handler/, function (req, res) {
+//   var status = getStatus(req.query.allocate);
+//   req.session.data.currentNinoApplication.status = status;
+//   req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
+//   req.session.data.currentNinoApplications = updateApplications(req.session.data. ninoApplications, req.session.data.currentNinoApplication)
+//   if (req.session.data.currentNinoApplication.statusDescription == 7 && req.query.allocate == 'true') {
+//     res.redirect('./data')
+//   } else {
+//     if(req.query.allocate = false) {
+//       req.session.data.ninoAllocated = false;
+//     } else {
+//       req.session.data.ninoAllocated = true;
+//     } 
+//     res.redirect('./cases')
+//   }
+// })
+
+// router.get(/nameentry-handler/, function (req, res) {
+//   req.session.data.currentNinoApplication.nameOneFirst = req.session.data.ninoapplication_firstnames;
+//   req.session.data.currentNinoApplication.nameOneLast = req.session.data.ninoapplication_lastname;
+//   req.session.data.currentNinoApplication.statusDescription = getStatusDescription(req.session.data.currentNinoApplication);
+//   req.session.data.currentNinoApplications = updateApplications(req.session.data. ninoApplications, req.session.data.currentNinoApplication)
+//     res.redirect('./cases')
+// })
+
+// var updateName = function(currentApplicationNumber, ninoApplications, firstnames, lastname) {
+//   for (var location in ninoApplications) {
+//     if (ninoApplications[location].applicationNumber == currentApplicationNumber) {
+//       ninoApplications[location].nameOneFirst = firstnames;
+//       ninoApplications[location].nameOneLast = lastname;
+//       console.log(`Name updated! ${ninoApplications[location].nameOneFirst} ${ninoApplications[location].nameOneLast}` )
+//     }
+//   }
+//   return ninoApplications;
+// }
+
+
+
+
+
+// router.get(/data-match-handler/, function (req, res) {
+//   if(req.query.datamatch == 'false') {
+//     req.session.data.ninoAllocated = false;
+//     res.redirect('set-case-handler?allocate=false')
+//   } else {
+//     res.redirect('./right_to_work')
+//   }
+// })
 
 
 
