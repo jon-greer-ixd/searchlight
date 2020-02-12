@@ -4,6 +4,15 @@ var router = express.Router()
 
 // FUNCTIONS
 
+var updateApplications = function(applications, application) {
+    for (var x in applications) {
+    if(applications[x].applicationNumber == application.applicationNumber) {
+      applications[x] = application;
+    }
+  }
+  return applications;
+}
+
 function getNextApplication(applications) {
   var result = null;
   for (var application in applications) {
@@ -26,6 +35,7 @@ function getApplication(applicationNumber, applications) {
   }
   return result;
 }
+
 
 // ROUTES
 
@@ -53,8 +63,6 @@ router.get(/next-case-handler/, function (req, res) {
 })
 
 
-
-
 //cases
 
 //verify personal details
@@ -64,19 +72,25 @@ router.get(/verify-details-handler/, function (req, res) {
 
 //data match question
 router.get(/data-match-handler/, function (req, res) {
-  res.redirect('./right_to_work')
+  if(req.query.datamatch == 'true') {
+    res.redirect('./right_to_work')
+  } else {
+    res.redirect('.cases')
+  }
 })
+
 
 //right to work question
 router.get(/right-to-work-handler/, function (req, res) {
   req.session.data.currentNinoApplication.status = 2;
-  for (var x in req.session.data.ninoApplications) {
-    if (req.session.data.ninoApplications[x].applicationNumber == req.session.data.currentApplicationNumber) {
-      req.session.data.ninoApplications[x] = req.session.data.currentNinoApplication;
-    }
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
+for (var x in req.session.data.ninoApplications ) {
+    console.log(req.session.data.ninoApplications[x].nameOneFirst);
+    console.log(req.session.data.ninoApplications[x].status);
   }
   res.redirect('./cases')
 })
+
 
 //check CIS
 
