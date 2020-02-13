@@ -1,26 +1,34 @@
 <div class="sl-account-canvas row updater super-slim-header">
-
+  
   <div class="sl-account-canvas-width">
       
     <a class="link-back" onCLick="history.back()">Back</a>
       
     <div id="sl-address-primary-card" class="sl-primary-card">
 
-      {% if data.ninoAllocated == true %}
-        Application complete!
-        <div>
-        Allocated
-        <div>
-      {% elif data.ninoAllocated == false %}
-        <div>
-        Not allocated
-        <div>
-      {% endif %}
+      <div class="grid-row">
+
+        <div class="column-two-thirds">
       
-      <h1 class="question-title">National Insurance number applications</h1>
+          {% if data.ninoAllocated == true %}
+            Application complete!
+            <div>
+            Allocated
+            <div>
+          {% elif data.ninoAllocated == false %}
+            <div>
+            Not allocated
+            <div>
+          {% endif %}
       
-      <div id="address-pane">
-        {% include "./content.html" %}
+          <h1 class="question-title">National Insurance number applications</h1>
+      
+          <div id="address-pane">
+            {% include "./content.html" %}
+          </div>
+
+        </div>
+        
       </div>
 
     </div>
@@ -29,6 +37,3 @@
 
 </div>
 
-</div>
-
-</div>

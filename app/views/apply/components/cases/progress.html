@@ -5,8 +5,15 @@
   {% endif %}
 {% endfor %}
 
-<div class="history dob-history">
+<div class="ul_data_table">
   {% if openApplications == true %}
+
+    <table class="table">
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+
     <ul class="">
       <li>Date received</li>
       {% for application in data. ninoApplications %}
@@ -48,6 +55,8 @@
       
     </ul>
   {% else %}
-    <p class="no-items">There are no applications in progress</p>
+    <div class="no-items">
+      <p>There are no applications in progress</p>
+    </div>
   {% endif %}
 </div>
