@@ -104,12 +104,32 @@ router.get(/right-to-work-handler/, function (req, res) {
   res.redirect('./done');
 })
 
+//data does not match question
+router.get(/non-match-handler/, function (req, res) {
+  console.log(`allocate = ${req.query.allocate}`);
+  var status;
+  var next;
+  if(req.query.allocate == 'true') {
+    next = './right_to_work';
+  } else if (req.query.allocate == 'null') {
+    status = 1;
+    next = './cases';
+  } else {
+    status = 3;
+    req.session.data.ninoAllocated = false;
+    next = './done';
+  }
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect(next);
+})
+
 
 module.exports = router
 
 // update the current case status
 // put this one back in the cases
-//     req.session.data.ninoApplications = setStatus(req.session.data.currentApplicationNumber, req.session.data.ninoApplications, status);
+// req.session.data.ninoApplications = setStatus(req.session.data.currentApplicationNumber, req.session.data.ninoApplications, status);
 
 
 
