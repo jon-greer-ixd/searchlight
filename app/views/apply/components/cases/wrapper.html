@@ -11,14 +11,14 @@
         <div class="column-two-thirds">
       
           {% if data.ninoAllocated == true %}
-            Application complete!
-            <div>
-            Allocated
-            <div>
+            <div id="nino-feedback">
+              Application complete!
+              Allocated
+            </div>
           {% elif data.ninoAllocated == false %}
-            <div>
-            Not allocated
-            <div>
+            <div id="nino-feedback">
+              Not allocated
+            </div>
           {% endif %}
       
           <h1 class="question-title">National Insurance number applications</h1>
@@ -36,4 +36,3 @@
   </div>
 
 </div>
-

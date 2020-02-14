@@ -3098,3 +3098,25 @@ a.sl-secondary-button {
   padding-bottom: 0;
   margin-bottom: 0;
 }
+
+#nino-feedback {
+  font-weight: bold;
+  display: block;
+  background-color: #FFF3DC;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
+  margin-bottom: 30px;
+  padding: 15px;
+}
+
+table th, table td {
+  padding-left: 0!important;
+}
+
+.nino-tables {
+  td, th {
+    width: 25%;
+  }
+  tr th {
+    border-top: 0!important;
+  }
+}

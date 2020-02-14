@@ -788,6 +788,7 @@ if(document.getElementById("id_doc") ) {
 
 if( document.getElementById("horeveal") ) {
   var hoData = document.querySelectorAll(".ho-data")    
+  var dwpData = document.querySelectorAll(".dwp-data")    
   var loading = document.querySelectorAll(".loading")    
   let homeOfficeReveal = document.getElementById("horeveal");
   let clickss = function() {
@@ -806,6 +807,9 @@ if( document.getElementById("horeveal") ) {
         item.classList.add('inactive');
       });
     }, 2000);
+    [...dwpData].forEach(item => {
+      item.classList.add('inactive');
+    });
     setTimeout(function(){
       [...hoData].forEach(item => {
         item.classList.add('active');

@@ -5,58 +5,31 @@
   {% endif %}
 {% endfor %}
 
-<div class="ul_data_table">
+<div>
   {% if openApplications == true %}
-
-    <table class="table">
+    <table class="table nino-tables">
       <tr>
-        <td></td>
+        <th>Date received</th>
+        <th>Name</th>
+        <th>Status</th>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        {% for application in data. ninoApplications %}
+          {% if application.status == 1 %}
+            <td>{{application.received}}</td>
+            <td class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</td>
+            <td>On hold</td>
+            <td> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </td>
+          {% endif %}
+        {% endfor %}
       </tr>
     </table>
 
-    <ul class="">
-      <li>Date received</li>
-      {% for application in data. ninoApplications %}
-        {% if application.status == 1 %}
-          <li>{{application.received}}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-
-    <ul class="">
-      <li>Name</li>
-      {% for application in data. ninoApplications %}
-        {% if application.status == 1 %}
-          <li class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-
-    <ul>
-      <li>Status</li>
-      {% for application in data.ninoApplications %}
-        {% if application.status == 1 %}
-          <li>On hold</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-
-    <ul>
-      <li>&nbsp;</li>
-      {# {% for application in data. ninoApplications %}
-        <li> <a href="get-case-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
-      {% endfor %} #}
-
-      {% for application in data.ninoApplications %}
-        {% if application.status == 1 %}
-          <li> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </li>
-        {% endif %}
-      {% endfor %}
-      
-    </ul>
   {% else %}
     <div class="no-items">
       <p>There are no applications in progress</p>
+      <hr>
     </div>
   {% endif %}
 </div>

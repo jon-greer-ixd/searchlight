@@ -81,6 +81,7 @@ router.get(/data-match-handler/, function (req, res) {
     next = './cases';
   } else {
     status = 3;
+    req.session.data.ninoAllocated = false;
     next = './cases';
   }
   req.session.data.currentNinoApplication.status = status;
@@ -93,8 +94,10 @@ router.get(/right-to-work-handler/, function (req, res) {
   var status;
   if(req.query.allocate == 'true') {
     status = 2;
+    req.session.data.ninoAllocated = true;
   } else {
     status = 4;
+    req.session.data.ninoAllocated = false;
   }
   req.session.data.currentNinoApplication.status = status;
   req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
