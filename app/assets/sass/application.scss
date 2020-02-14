@@ -3099,13 +3099,29 @@ a.sl-secondary-button {
   margin-bottom: 0;
 }
 
-#nino-feedback {
-  font-weight: bold;
+#confirmation {
+  padding :40px;
+  text-align: center;
   display: block;
-  background-color: #FFF3DC;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
-  margin-bottom: 30px;
-  padding: 15px;
+  background-color: #00703c;
+  // background-color: #FFF3DC;
+  // box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
+  margin-bottom: 60px;
+  &.no-nino {
+    background-color:#B10E1E;
+  }
+  h2, h1 {
+    margin :0;
+    padding :0;
+  }
+}
+#confirmation h1, #confirmation h2 {
+  color: white;
+  font-weight :normal;
+}
+
+#confirmation h1{
+  font-weight: bold;
 }
 
 table th, table td {
@@ -3118,5 +3134,16 @@ table th, table td {
   }
   tr th {
     border-top: 0!important;
+  }
+}
+
+.application-detail {
+  white-space: nowrap;
+  margin-bottom :60px;
+}
+
+.multi-line-check {
+  label {
+    margin-top: -10px;
   }
 }

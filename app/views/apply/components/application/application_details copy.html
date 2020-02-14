@@ -1,18 +1,6 @@
 
 
 <table class="table">
-  <tr {% if data.currentNinoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
-    <td>First name</td>
-    <td>{{data.currentNinoApplication.nameOneFirst}}</td>
-  </tr>
-  <tr {% if data.currentNinoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
-    <td>Last name</td>
-    <td>{{data.currentNinoApplication.nameOneLast}}</td>
-  </tr>
-  <tr {% if data.currentNinoApplication.statusDescription == 8 %}class="application-wrong" {% endif %}>
-    <td>Passport Number</td>
-    <td>{{data.currentNinoApplication.passportNumber}}</td>
-  </tr>
   <tr>
     <td>Nationality</td>
     <td>{{data.currentNinoApplication.nationality}}</td>
@@ -20,6 +8,18 @@
   <tr {% if data.currentNinoApplication.statusDescription == 3 or data.currentNinoApplication.statusDescription == 8 %}class="application-wrong" {% endif %} >
     <td>Biometric Residence Permit</td>
     <td>{{data.currentNinoApplication.BRP}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.statusDescription == 8 %}class="application-wrong" {% endif %}>
+    <td>Passport Number</td>
+    <td>{{data.currentNinoApplication.passportNumber}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
+    <td>First name</td>
+    <td>{{data.currentNinoApplication.nameOneFirst}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
+    <td>Last name</td>
+    <td>{{data.currentNinoApplication.nameOneLast}}</td>
   </tr>
   <tr>
     <td>Previous name</td>
@@ -31,8 +31,7 @@
   </tr>
   <tr>
     <td>Sex</td>
-    <td>{{data.currentNinoApplication.sex | capitalize}}</td>
-  </tr>
+    <td>{{data.currentNinoApplication.arriveDate}}</td>
   <tr>
     <td>Address</td>
     <td>

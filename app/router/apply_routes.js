@@ -82,10 +82,10 @@ router.get(/data-match-handler/, function (req, res) {
   } else {
     status = 3;
     req.session.data.ninoAllocated = false;
-    next = './cases';
+    next = './match';
   }
   req.session.data.currentNinoApplication.status = status;
-  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
   res.redirect(next);
 })
 
@@ -100,8 +100,8 @@ router.get(/right-to-work-handler/, function (req, res) {
     req.session.data.ninoAllocated = false;
   }
   req.session.data.currentNinoApplication.status = status;
-  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication)
-  res.redirect('./cases');
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect('./done');
 })
 
 
