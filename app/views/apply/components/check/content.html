@@ -4,16 +4,20 @@
 
       <table class="table">
         <tr>
-          <td>Name on application</td>
-          <td>Mateo Bangalter</td>
+          <td class="bold">First names on application</td>
+          <td>{{data.currentNinoApplication.nameOneFirst}}</td>
         </tr>
         <tr>
-          <td>Name from Home Office</td>
-          <td>mateoarlobangalter</td>
+          <td class="bold">Your entry for first names</td>
+          <td>{{data.ninoapplication_firstnames}}</td>
         </tr>
         <tr>
-          <td>Your entry</td>
-          <td>{{data.ninoapplication_firstnames}} {{data.ninoapplication_lastname}}</td>
+           <td class="bold">Last name on application</td>
+          <td>{{data.currentNinoApplication.nameOneLast}}</td>
+        </tr>
+        <tr>
+           <td class="bold">Your entry for last name</td>
+          <td>{{data.ninoapplication_lastname}}</td>
         </tr>
       </table>
 

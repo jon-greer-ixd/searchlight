@@ -2,18 +2,18 @@
   <div class="grid-row">
     <div class="column-two-thirds">
 
-    <div class="panel panel-border-wide">
+    {# <div class="panel panel-border-wide">
       <p>Name on application: <span class="bold">{{data.currentNinoApplication.nameOneFirst | capitalize}} {{data.currentNinoApplication.nameOneLast | capitalize }}</span</p>
-      <p>Name from Home Office: <span class="bold">{{data.currentNinoApplication.nameOneFirst | lower }}arlo{{data.currentNinoApplication.nameOneLast | lower}}</span</p>
     </div>
-      <br>
-      <form method="get" action="./check">
+      <br> #}
+    
+      <form method="get" action="check">
         <fieldset>
           <div class="form-group">
             <label class="form-label" for="ninoapplication_firstnames">
               First names
             </label>
-            <input class="form-control" id="ninoapplication_firstnames" name="ninoapplication_firstnames" type="text">
+            <input class="form-control" id="ninoapplication_firstnames" name="ninoapplication_firstnames" type="text" value="{{data.currentNinoApplication.nameOneFirst}}">
           </div>
         </fieldset>
         <fieldset>
@@ -21,7 +21,7 @@
             <label class="form-label" for="date">
               Last name
             </label>
-            <input class="form-control" id="ninoapplication_lastname" name="ninoapplication_lastname" type="text">
+            <input class="form-control" id="ninoapplication_lastname" name="ninoapplication_lastname" type="text" value="{{data.currentNinoApplication.nameOneLast}}">
           </div>
         </fieldset>
         <div class="form-group">

@@ -125,16 +125,19 @@ router.get(/data-match-handler/, function (req, res) {
 //right to work question
 router.get(/right-to-work-handler/, function (req, res) {
   var status;
+  var next = './done';
   if(req.query.allocate == 'true') {
     status = 2;
     req.session.data.ninoAllocated = true;
-  } else {
+    if (req.session.data.currentNinoApplication.ninofirstname == false) {
+      next = './data';
+    }  } else {
     status = 4;
     req.session.data.ninoAllocated = false;
   }
   req.session.data.currentNinoApplication.status = status;
   req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
-  res.redirect('./done');
+  res.redirect(next);
 })
 
 //data does not match question
@@ -143,7 +146,7 @@ router.get(/non-match-handler/, function (req, res) {
   var status;
   var next;
   if(req.query.allocate == 'true') {
-    next = './right_to_work';
+    next = './data';
   } else if (req.query.allocate == 'null') {
     status = 1;
     next = './cases';
@@ -162,6 +165,15 @@ router.get(/nino-match-handler/, function (req, res) {
   req.session.data.currentNinoApplication = setNonMatchItems(req.query, req.session.data.currentNinoApplication);
   req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
   res.redirect('./options');
+})
+
+router.get(/nameentry-handler/, function (req, res) {
+  req.session.data.currentNinoApplication.updatedNameOneFirst = req.session.data.ninoapplication_firstnames;
+  req.session.data.currentNinoApplication.updatedNameOneLast = req.session.data.ninoapplication_lastname;
+  req.session.data.currentNinoApplication.status = 2;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  req.session.data.ninoAllocated = true;
+  res.redirect('./done')
 })
 
 
