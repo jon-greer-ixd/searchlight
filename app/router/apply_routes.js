@@ -130,8 +130,9 @@ router.get(/right-to-work-handler/, function (req, res) {
     status = 2;
     req.session.data.ninoAllocated = true;
     if (req.session.data.currentNinoApplication.ninofirstname == false) {
-      next = './data';
-    }  } else {
+      next = './options';
+    }
+  } else {
     status = 4;
     req.session.data.ninoAllocated = false;
   }
@@ -164,7 +165,7 @@ router.get(/non-match-handler/, function (req, res) {
 router.get(/nino-match-handler/, function (req, res) {
   req.session.data.currentNinoApplication = setNonMatchItems(req.query, req.session.data.currentNinoApplication);
   req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
-  res.redirect('./options');
+  res.redirect('./right_to_work');
 })
 
 router.get(/nameentry-handler/, function (req, res) {
