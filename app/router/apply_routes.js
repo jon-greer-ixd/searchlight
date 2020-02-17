@@ -132,6 +132,10 @@ router.get(/right-to-work-handler/, function (req, res) {
     if (req.session.data.currentNinoApplication.ninofirstname == false) {
       next = './data';
     }
+    if(req.session.data.currentNinoApplication.matchInCis == true) {
+      status = 1;
+      next = './trace';
+    }
   } else {
     status = 4;
     req.session.data.ninoAllocated = false;
@@ -176,6 +180,28 @@ router.get(/nameentry-handler/, function (req, res) {
   req.session.data.ninoAllocated = true;
   res.redirect('./done')
 })
+
+router.get(/trace-options-handler/, function (req, res) {
+  console.log(`allocate = ${req.query.allocate}`);
+  var status;
+  var next;
+  if(req.query.allocate == 'true') {
+    status = 2;
+    req.session.data.ninoAllocated = true;
+    next = './done';
+  } else if (req.query.allocate == 'null') {
+    status = 1;
+    next = './cases';
+  } else {
+    status = 5;
+    req.session.data.ninoAllocated = false;
+    next = './done';
+  }
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect(next);
+})
+
 
 
 module.exports = router
