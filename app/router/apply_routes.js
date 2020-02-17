@@ -36,6 +36,35 @@ function getApplication(applicationNumber, applications) {
   return result;
 }
 
+var setNonMatchItems = function(list, application) {
+  application.ninofirstname = true;
+  application.ninolastname = true;
+  application.ninopassport = true;
+  application.ninonationality = true;
+  application.ninobrp = true;
+  application.ninoiarrival = true;
+  application.ninoaddress = true;
+  for (var c in list) {
+    if (list[c] == 'ninofirstname') {
+      application.ninofirstname = false;
+      console.log(`application.ninofirstname ${application.ninofirstname}`)
+    } else if (list[c] == 'ninolastname') {
+      application.ninolastname = false;
+    } else if (list[c] == 'ninopassport') {
+      application.ninopassport = false;
+    } else if (list[c] == 'ninonationality') {
+      application.ninonationality = false;
+    } else if (list[c] == 'ninobrp') {
+      application.ninobrp = false;
+    } else if (list[c] == 'ninoiarrival') {
+      application.ninoiarrival = false;
+    } else if (list[c] == 'ninoaddress') {
+      application.ninoaddress = false;
+    }
+  }
+  return application;
+}
+
 
 // ROUTES
 
@@ -56,14 +85,17 @@ router.get(/get-case-handler/, function (req, res) {
 
 //get next case
 router.get(/next-case-handler/, function (req, res) {
+  var next;
   req.session.data.currentNinoApplication = getNextApplication(req.session.data.ninoApplications);
-  req.session.data.currentApplicationNumber = req.session.data.currentNinoApplication.applicationNumber;
+  if(req.session.data.currentNinoApplication != null) {
+    req.session.data.currentApplicationNumber = req.session.data.currentNinoApplication.applicationNumber;
+    next = './verify';
+  } else {
+    next = './cases';
+  }
   req.session.data.ninoAllocated = null;
-  res.redirect('./verify')
+  res.redirect(next)
 })
-
-
-//cases
 
 //verify personal details
 router.get(/verify-details-handler/, function (req, res) {
@@ -125,52 +157,9 @@ router.get(/non-match-handler/, function (req, res) {
   res.redirect(next);
 })
 
-var setNonMatchItems = function(list, application) {
-  application.ninofirstname = true;
-  application.ninolastname = true;
-  application.ninopassport = true;
-  application.ninonationality = true;
-  application.ninobrp = true;
-  application.ninoiarrival = true;
-  application.ninoaddress = true;
-  for (var c in list) {
-    if (list[c] == 'ninofirstname') {
-      application.ninofirstname = false;
-      console.log(`application.ninofirstname ${application.ninofirstname}`)
-    } else if (list[c] == 'ninolastname') {
-      application.ninolastname = false;
-    } else if (list[c] == 'ninopassport') {
-      application.ninopassport = false;
-    } else if (list[c] == 'ninonationality') {
-      application.ninonationality = false;
-    } else if (list[c] == 'ninobrp') {
-      application.ninobrp = false;
-    } else if (list[c] == 'ninoiarrival') {
-      application.ninoiarrival = false;
-    } else if (list[c] == 'ninoaddress') {
-      application.ninoaddress = false;
-    }
-  }
-  return application;
-}
-
 //
 router.get(/nino-match-handler/, function (req, res) {
   req.session.data.currentNinoApplication = setNonMatchItems(req.query, req.session.data.currentNinoApplication);
-  // console.log(`allocate = ${req.query.allocate}`);
-  // var status;
-  // var next;
-  // if(req.query.allocate == 'true') {
-  //   next = './right_to_work';
-  // } else if (req.query.allocate == 'null') {
-  //   status = 1;
-  //   next = './cases';
-  // } else {
-  //   status = 3;
-  //   req.session.data.ninoAllocated = false;
-  //   next = ;
-  // }
-  // req.session.data.currentNinoApplication.status = status;
   req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
   res.redirect('./options');
 })
