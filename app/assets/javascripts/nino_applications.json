@@ -25,7 +25,14 @@
     "rightToWork" : true,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
     },
   {
     "applicationNumber" : "10002",
@@ -53,7 +60,14 @@
     "rightToWork" : false,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10003",
@@ -81,7 +95,14 @@
     "rightToWork" : true,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10004",
@@ -109,7 +130,14 @@
     "rightToWork" : true,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10005",
@@ -137,7 +165,14 @@
     "rightToWork" : null,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10006",
@@ -165,6 +200,13 @@
     "rightToWork" : true,
     "matchInCis" : true,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   }
 ] 

@@ -3147,3 +3147,9 @@ table th, table td {
     margin-top: -10px;
   }
 }
+
+.apply-table {
+  td:first-child {
+    font-weight: bold;
+  }
+}

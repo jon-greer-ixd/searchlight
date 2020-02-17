@@ -12,18 +12,17 @@
         <th>Date received</th>
         <th>Name</th>
         <th>Status</th>
-        <td>&nbsp;</td>
       </tr>
-      <tr>
-        {% for application in data. ninoApplications %}
-          {% if application.status == 1 %}
+      {% for application in data. ninoApplications %}
+        {% if application.status == 1 %}
+          <tr>
             <td>{{application.received}}</td>
             <td class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</td>
             <td>On hold</td>
             <td> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </td>
+          </tr>
           {% endif %}
         {% endfor %}
-      </tr>
     </table>
 
   {% else %}
