@@ -1,0 +1,58 @@
+<div id="sl-account" class="container-fluid ng-scope">  
+
+  <div class="sl-account-header row">
+        
+    {% if(data.toaster != null) %}
+      {% include "./new-toaster.njk" %}
+    {% endif %}
+    
+    {% include "./toast.html" %}
+            
+    <div class="sl-primary-name-container-placeholder ng-scope" 
+      {% if data.citizen.dodValue != null %} 
+        id="mort" 
+      {% elif data.citizen.pv == true or data.citizen.pvPartner == true or data.citizen.pvMember == true %} 
+        id="pv" 
+      {% endif %}>
+      {% include "./name-details.html" %}        
+    </div>
+
+    <div class="sl-local-nav-container col-xs-12">
+
+      <div class="sl-account-canvas-width">
+        
+          <div id="sl-account-local-nav">
+
+            <ul class="sl-local-nav-menu sl-metadata">
+              <li class="sl-local-nav-item active">
+                <a href="#" class="sl-local-nav-anchor sl-local-nav-anchor-first">Personal details</a>
+              </li>
+    
+              <li class="sl-local-nav-item ">
+                <a href="#address-anchor" class="sl-local-nav-anchor">Address</a>
+              </li>
+    
+              <li class="sl-local-nav-item">
+                <a href="#contact-anchor" class="sl-local-nav-anchor">Contact</a>
+              </li>
+    
+              <li class="sl-local-nav-item">
+                <a href="#interests-anchor"  class="sl-local-nav-anchor">Interests</a>
+              </li>
+    
+              <li class="sl-local-nav-item">
+                <a href="#benefits-anchor" class="sl-local-nav-anchor">Benefits</a>
+              </li>
+    
+              <li class="sl-local-nav-item">
+                <a href="#relationships-anchor" class="sl-local-nav-anchor">Relationships</a>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>

@@ -1,0 +1,164 @@
+<div name="relationships" id="relationships_data">
+  <h2>Relationships</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p class="strong">Payee relationships</p>
+        <p>No payee relationships</p>
+      </div>
+    </div>    
+
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-one-third">
+        <p class="strong">Award relationships</p>
+        <p>No award relationships</p>
+      </div>
+    </div>
+
+    <hr class="light">
+    
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <p class="strong">Person relationships</p>
+      </div>
+      <div class="column-one-third last-col">
+            {% if data.guardianRole == true %}
+        <ul class="edit-menu">
+          <li>
+            <a class="secondary-link" href="change_relationship/?updateType=1">Add a relationship</a>
+          </li>
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Blank -->
+    {% if data.citizen.relationship == null and data.citizen.appointee == null %}
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <p>No person based relationships</p>
+        </div>
+      </div>
+    {% endif %}
+
+
+    <!-- Added or recovered -->
+    {% if data.citizen.relationship == true %}
+      <br>
+      <div class="grid-row" id="">
+        <div class="column-one-third">
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">Start date</li>
+            </ul>
+          </div>
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">End date</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">Relationship</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="light">
+      <div class="grid-row">
+        {% include "./relationship_details.html" %}
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="../update/relationships/type">Change</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+
+
+    <!-- Ended -->
+    {% if data.citizen.relationship == false %}
+      <p>No person based relationships</p>
+      <hr>
+      <details>
+        <summary>View previous person relationships</summary>
+        <br>
+        <div class="grid-row">
+          <div class="column-one-third">
+            <div class="column-one-half">
+              <ul>
+                <li class="strong">Start date</li>
+              </ul>
+            </div>
+            <div class="column-one-half">
+              <ul>
+                <li class="strong">End date</li>
+              </ul>
+            </div>
+          </div>
+          <div class="column-one-third">
+            <ul>
+              <li class="strong">Relationship</li>
+            </ul>
+          </div>
+        </div>
+        
+        <hr class="light">
+        
+        <div class="grid-row">
+          {% include "./relationship_details.html" %}
+          <div class="column-one-third last-col">
+            <ul class="edit-menu">
+              <li>
+                <a class="secondary-link" href="change_relationship/?updateType=6">Delete this relationship</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </details>
+    {% endif %}
+
+
+    <!-- Appointee -->
+    {% if data.citizen.appointee != null %}
+      <br>
+      <div class="grid-row" id="">
+        <div class="column-one-third">
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">Start date</li>
+            </ul>
+          </div>
+          <div class="column-one-half">
+            <ul>
+              <li class="strong">End date</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column-one-third">
+          <ul>
+            <li class="strong">Relationship</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="light">
+      <div class="grid-row">
+        {% include "./relationship_details_2.html" %}
+        <div class="column-one-third last-col">
+          <ul class="edit-menu">
+            <li>
+              <a class="secondary-link" href="../update/relationships/type">Change</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+    
+  </div>
+</div>

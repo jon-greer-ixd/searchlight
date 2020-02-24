@@ -1,0 +1,19 @@
+{% extends "../content-template.html" %}
+
+{% block title %}
+	State Pension
+{% endblock %}
+
+{% block status %}
+	Status: Live.
+{% endblock %}
+
+{% block left_column %}
+	{% include "./current-award.html" %}
+	 <div id="payment-status-anchor"></div>
+  {% include "./payment-status.html" %}
+{% endblock %}
+
+{% block right_column %}
+	{% include "./dates.html" %}
+{% endblock %}

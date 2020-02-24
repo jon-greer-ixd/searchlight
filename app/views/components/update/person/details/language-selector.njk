@@ -4,7 +4,7 @@
   <select name="personalDetailValue" class="form-control" name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
     
     {% if data.updateType != 1 %}
-      <option value={{data.personalDetails.spokenLanguage.value}} selected="selected">{{data.personalDetails.spokenLanguage.value}}</option>
+      <option value={{data.citizen.spokenLanguage}} selected="selected">{{data.citizen.spokenLanguage}}</option>
     {% else %}
       <option value="" selected="selected">Select Country</option>
     {% endif %}

@@ -21,7 +21,7 @@
             {% set aRamp = false %}
             {% set wideDoorways = false %}
             
-            {% for item in data.personalDetails.specialNeeds.value %}
+            {% for item in data.personalDetails.additionalNeeds.value %}
               {% if item == "Audio forms" %}
                 {% set audioForms = true %}
               {% elif item == "Braille" %}

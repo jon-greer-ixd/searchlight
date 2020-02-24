@@ -1,0 +1,99 @@
+<form id="alert-search-form" action="page-three">
+  <div class="grid-row">
+    <div class="column-one-quarter">
+      <div class="form-group prepop">
+        <label class="form-label" for="full-name-f1">
+          Notification date
+          <span class="form-hint">
+            For example 21/10/2018
+          </span>
+        </label>
+        <input class="form-control box-one" id="not_date" type="text" name="not_date" value={{data.not_date}}>
+        <a class="populate-link-one">Use yesterday's date</a>
+      </div>
+    </div>
+
+    <div class="column-one-quarter" id="alert-code">
+      <fieldset class="form-group">
+        <label class="form-label" for="personalDetailValue">
+          Notification type
+          <span class="form-hint">
+            For example start of benefit
+          </span>
+        </label>
+
+        <select name="systemid" class="form-control notification" name="Country" id="country-selector" autofocus="autofocus" autocorrect="off" autocomplete="off">
+          <option value="">Select notification type</option>
+          <option value="3000 NIFU Interest - Record Updated" selected="selected">3000 NIFU Interest - Record Updated</option> 
+          <option value="3001 IND Interest - Record Updated">3001 IND Interest - Record Updated</option> 
+        </select>
+      </fieldset>
+    </div>
+
+<!--
+    <div class="column-one-quarter" id="alert-code">
+      <div class="form-group">
+        <label class="form-label" for="full-name-f1">
+          Office ID
+          <span class="form-hint">
+            For example 11223
+          </span>
+        </label>
+        <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+      </div>
+    </div>
+-->
+
+  </div>
+
+  <div class="grid-row">
+    <div class="column-full">
+      <div class="form-group">
+        <details>
+          <summary><span class="summary">View more search options</span></summary>
+          
+          <div class="panel panel-border-narrow" id="nino-search">
+            <!-- status -->  
+            <div class="quater-col">
+              <fieldset>
+                <label class="form-label" for="full-name-f1">Status</label>
+                <div class="multiple-choice">
+                  <input id="radio-1" type="radio" name="radio-group" value="Northern Ireland" checked=checked>
+                  <label for="radio-1">Unprocessed</label>
+                </div>
+                <div class="multiple-choice">
+                  <input id="radio-2" type="radio" name="radio-group" value="Isle of Man or the Channel Islands">
+                  <label for="radio-2">Processed</label>
+                </div>
+                <div class="multiple-choice">
+                  <input id="radio-3" type="radio" name="radio-group" value="I am a British citizen living abroad">
+                  <label for="radio-3">All</label>
+                </div>
+              </fieldset>
+            </div>
+            
+            <!-- NINO -->  
+            <div class="half-col">
+              <div class="half-col">
+                <label class="form-label" for="full-name-f1">National Insurance number</label>
+                <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+              </div>
+            </div>
+            
+          </div>
+        </details> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="grid-row">
+    <div class="column-full last-full-col">
+      <div class="form-group">
+        <button class="button" type="submit">Search</button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+

@@ -1,0 +1,73 @@
+<fieldset class="form-group">
+  <label class="form-label" for="personalDetailValue">
+    <br>Notification type
+  </label>
+  
+  <select name="systemid" class="form-control notification" name="Country" id="none" autofocus="autofocus" autocorrect="off" autocomplete="off">
+   
+    <option selected="selected"
+        {% if data.showDapResults %} 
+            value={{data.dap_type}} 
+        {% else %} 
+            value="Select notification type" 
+        {% endif %}>
+
+        {% if data.showDapResults %} 
+            {{data.dap_type}} 
+        {% else %} 
+        Select notification type
+        {% endif %}
+    </option>
+
+    <option value="2134 Change of Name Data">2134 Change of Name Data</option> 
+    <option value="2135 Change of Contact Details">2135 Change of Contact Details</option> 
+    <option value="2136 Nino Supersession Data">2136 Nino Supersession Data </option> 
+    <option value="2137 Change of Date of Death Data">2137 Change of Date of Death Data </option> 
+    <option value="2138 Change of JSAPS Award Data">2138 Change of JSAPS Award Data </option> 
+    <option value="2139 Change of ISCS Award Data">2139 Change of ISCS Award Data </option> 
+    <option value="2140 Change of Preferred Language">2140 Change of Preferred Language </option> 
+    <option value="2141 Change of Immigration Status">2141 Change of Immigration Status </option> 
+    <option value="2142 Change of Nationality">2142 Change of Nationality </option> 
+    <option value="2143 Change of Spoken Language">2143 Change of Spoken Language </option> 
+    <option value="2145 Notification of Date of Birth">2145 Notification of Date of Birth </option> 
+    <option value="2146 Change of Requested Form of Address">2146 Change of Requested Form of Address </option> 
+    <option value="2148 Change of PIP Benefit Data">2148 Change of PIP Benefit Data </option> 
+    <option value="2149 Change of PIP Benefit Data (Combination Relationship)"> 2149 Change of PIP Benefit Data (Combination Relationship)</option> 
+    <option value="2150 Change of Other Payee Details">2150 Change of Other Payee Details</option> 
+    <option value="2151 Start/End of Person-Person Relationship">2151 Start/End of Person-Person Relationship</option> 
+    <option value="2152 Start/End of Person-Organisation Relationship">2152 Start/End of Person-Organisation Relationship</option> 
+    <option value="2153 Change of Organisation Details">2153 Change of Organisation Details</option> 
+    <option value="2154 Change of Organisation Contact Details">2154 Change of Organisation Contact Details</option> 
+    <option value="2155 Change of Organisation Address Details">2155 Change of Organisation Address Details</option> 
+
+    <option value="Death - Bereavement Benefit">Death - Bereavement Benefit</option> 
+    <option value="Death - Bereavement Support Payment">Death - Bereavement Support Payment</option> 
+    <option value="Death - Carer’s Allowance">Death - Carer’s Allowance</option> 
+    <option value="Death - Disability Living Allowance Child">Death - Disability Living Allowance Child</option> 
+    <option value="Death - Disability living Allowance Working Age">Death - Disability living Allowance Working Age</option> 
+    <option value="Death - Employment Support Allowance">Death - Employment Support Allowance</option> 
+    <option value="Death - Incapacity Benefit">Death - Incapacity Benefit</option> 
+    <option value="Death - Income Support">Death - Income Support</option> 
+    <option value="Death - Industrial Injury Disablement Allowances">Death - Industrial Injury Disablement Allowances</option> 
+    <option value="Death - Jobseeker’s Allowance">Death - Jobseeker’s Allowance</option> 
+    <option value="Death - Maternity Allowance">Death - Maternity Allowance</option> 
+    <option value="Death - Personal Independence Payment">Death - Personal Independence Payment</option> 
+    <option value="Death - Severe Disability Allowance">Death - Severe Disability Allowance</option> 
+    <option value="Death - Universal Credit">Death - Universal Credit</option> 
+    <option value="Death - Widowed Parents Allowance">Death - Widowed Parents Allowance</option> 
+
+    <option value="2371 HMRC Trace">2371 HMRC Trace</option> 
+    <option value="2389 Retrieve CRL Information">2389 Retrieve CRL Information</option> 
+    <option value="2392 Retrieve CRL and Benefit Information">2392 Retrieve CRL and Benefit Information</option> 
+    <option value="2393 Centenarian Scan">2393 Centenarian Scan</option>  
+    <option value="2394 NIR Electoral Reforms Annual Scan">2394 NIR Electoral Reforms Annual Scan</option> 
+    <option value="2395 NIR Electoral Reforms Quarterly Scan">2395 NIR Electoral Reforms Quarterly Scan</option> 
+    <option value="2503 NINO Allocation">2503 NINO Allocation</option> 
+    <option value="2570 NINO Verification">2570 NINO Verification</option> 
+    <option value="2575 Strategy Trace">2575 Strategy Trace</option> 
+    <option value="3000 NIFU Interest - Record Updated">3000 NIFU Interest - Record Updated</option> 
+    <option value="3001 IND Interest - Record Updated">3001 IND Interest - Record Updated</option> 
+  </select>
+</fieldset>
+
+

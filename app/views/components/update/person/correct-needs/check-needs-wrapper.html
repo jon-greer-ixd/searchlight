@@ -12,7 +12,7 @@
             {% if data.updateType == 1 %}
             
               Add 
-              {% if data.personalDetail == "specialNeeds" %}
+              {% if data.personalDetail == "additionalNeeds" %}
                  
               {% elif data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
                 an
@@ -74,13 +74,13 @@
           {% elif data.disability.state == "removing" %}
             <h2  class="title">End disability status</h2>
           <!-- needs
-          {% elif data.specialNeeds.state == "adding" %}
+          {% elif data.additionalNeeds.state == "adding" %}
             <h2  class="title">Add special needs information</h2>
           {% elif data.needsState == "updating" %}
             <h2  class="title">Update special needs information</h2>
-          {% elif data.specialNeeds.state == "correcting" %}
+          {% elif data.additionalNeeds.state == "correcting" %}
             <h2  class="title">Correct special needs information</h2>
-          {% elif data.specialNeeds.state == "removing" %}
+          {% elif data.additionalNeeds.state == "removing" %}
             <h2  class="title">Remove special needs information</h2>
           <!-- NIFU
           {% elif data.nifu.state == "adding" %}

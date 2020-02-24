@@ -12,11 +12,11 @@
                 {{data.details.requestedName.value | upper}}
               {% elif data.details.nameTwo.show %}
               
-                {% if data.details.nameTwo.title != "None" %}
+                {% if data.details.nameOneTitle != "None" %}
                   {{data.details.name.title | upper}} 
                   <span class="namespace"> </span> 
                 {% endif %}
-                {{data.details.nameTwo.first | upper}} <span class="namespace"> </span> {{data.details.nameTwo.last | upper}}
+                {{data.details.nameOneFirst | upper}} <span class="namespace"> </span> {{data.details.nameTwo.last | upper}}
               {% else %}
               
                 {% if data.details.name.title != "None" %}

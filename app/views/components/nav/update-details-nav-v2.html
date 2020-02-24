@@ -2,7 +2,7 @@
   
   <div class="sl-account-header row">
 
-      <div ng-if="!data.person.person &amp;&amp; !data.person.person[0].personalDetails" 
+      <div 
          {% if data.personalDetails.dateOfDeath.show == true %} 
           id="mort" 
          {% elif data.personalDetails.pv.value == true or data.personalDetails.pv.partner == true or data.personalDetails.pv.member == true %} 
@@ -12,7 +12,7 @@
       
         <sl-placeholder sl-placeholder-type="'primary-name-placeholder'" class="ng-isolate-scope">
       
-          {% include "components/account2/name-details-v2.html" %}        
+          {% include "components/account2/name-details-v4.html" %}        
 
           <div id="sl-placeholder">
             

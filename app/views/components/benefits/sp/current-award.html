@@ -1,0 +1,92 @@
+{% extends "../current-award-template.html" %}
+
+{% block classes %}
+	class="sl-primary-card award"
+{% endblock %}
+
+{% block claim_details %}
+	<p>Started 6 May 2019&nbsp; · &nbsp;Benefit category ST</p>
+{% endblock %}
+			
+
+{% block award_details %}
+	<table class="award-table">
+		<tr>
+			<th>Award component</th>
+			<th>Amount</th>
+		</tr>
+		<tr>
+			<td>Personal entitlement</td>
+			<td>£156.70</td>
+		</tr>
+	</table>
+
+	<details class="award-details">
+		<summary class="awards-summary">View breakdown</summary>
+			<div class="panel panel-border-wide award-panel">
+			<table class="award-table component-table">
+				<tr>
+					<th>Sub award component</th>
+					<th>Amount</th>
+					<th>Post PRF</th>
+					<th>Inherited</th>
+					<th>Increment</th>
+				</tr>
+				<tr>
+					<td>Composite Grad</td>
+					<td>£2.89</td>
+					<td>£0.00</td>
+					<td>N</td>
+					<td>£0.00</td>
+				</tr>
+				<tr>
+					<td>CAT A basic component</td>
+					<td>£78.91</td>
+					<td>£0.00</td>
+					<td>N</td>
+					<td>£27.46</td>
+				</tr>
+				<tr>
+					<td>Graduated benefit</td>
+					<td>£2.10</td>
+					<td>£0.00</td>
+					<td>N</td>
+					<td>£0.79</td>
+				</tr>
+			</table>
+		</div>
+		<hr class="bold">
+	</details>
+
+	<table class="award-table">
+		<tr>
+			<td>AA amount</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>PIP/DLA care amount</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>PIP/DLA mobility amount</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>Positive adjustments</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td>Negative adjustments</td>
+			<td>- £0.00</td>
+		</tr>
+		<tr class="reckoner">
+			<td>Award amount</td>
+			<td>£156.70</td>
+		</tr>
+		<tr>
+			<td class="strong">Final payable rate</td>
+			<td class="strong">£156.70</td>
+		</tr>
+	</table>
+	<p class="disclaimer">This award has a basic (UK insurance) calculation with a component sub type of CAT ST.</p>
+{% endblock %}

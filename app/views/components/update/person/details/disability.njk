@@ -16,7 +16,7 @@
         {% endif %}
         
         {% if data.updateType == 2 %}
-          {% if data.personalDetails.disability.value == true %}
+          {% if data.citizen.disability == true %}
             <div class="multiple-choice">
               <input id="false" type="radio" name="personalDetailValue" value=false>
               <label for="false">Not disabled</label>
@@ -30,7 +30,7 @@
         {% endif %}
         
         {% if data.updateType == 3 %}
-          {% if data.personalDetails.disability.value == true %}
+          {% if data.citizen.disability == true %}
             <div class="multiple-choice">
               <input id="false" type="radio" name="personalDetailValue" value=false>
               <label for="false">Not disabled</label>

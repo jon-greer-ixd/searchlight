@@ -13,17 +13,17 @@
           </legend>
           
           <div class="multiple-choice">
-            <input id="person" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+            <input id="person" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.citizen.pv %} checked = "checked" {% endif  %}value="The person">
             <label for="person">The person</label>
           </div>
           
           <div class="multiple-choice">
-            <input id="partner" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+            <input id="partner" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.citizen.pvPartner %} checked = "checked" {% endif  %}value="The person's partner">
             <label for="partner">The person's partner</label>
           </div>
           
           <div class="multiple-choice">
-            <input id="member" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+            <input id="member" name="personalDetailValue" class="multi-boxes" type="checkbox" {% if data.citizen.pvMember %} checked = "checked" {% endif  %}value="Someone else in the household">
             <label for="member">Someone else in the household</label>
           </div>
           
@@ -71,23 +71,23 @@
               <p class="strong">Who in the household is potentially violent?</p>
               <p class="form-label">Select all that apply</p>
               <div class="multiple-choice">
-                <input id="person" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+                <input id="person" name="personalDetailValue" type="checkbox" {% if data.citizen.pv %} checked = "checked" {% endif  %}value="The person">
                 <label for="person">The person</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="partner" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+                <input id="partner" name="personalDetailValue" type="checkbox" {% if data.citizen.pvPartner %} checked = "checked" {% endif  %}value="The person's partner">
                 <label for="partner">The person's partner</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="member" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+                <input id="member" name="personalDetailValue" type="checkbox" {% if data.citizen.pvMember %} checked = "checked" {% endif  %}value="Someone else in the household">
                 <label for="member">Someone else in the household</label>
               </div>
             </div>
 
             <div class="multiple-choice" data-target="contact-by-phone">
-              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
+              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.citizen.nationality.value == "Stateless" %} checked="checked" {% endif %}>
               <label for="stateless">End the potentially violent status</label>
             </div>
 
@@ -134,23 +134,23 @@
               <p class="strong">Who in the household is potentially violent?</p>
               <p class="form-label">Select all that apply</p>
               <div class="multiple-choice">
-                <input id="person" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.value %} checked = "checked" {% endif  %}value="The person">
+                <input id="person" name="personalDetailValue" type="checkbox" {% if data.citizen.pv %} checked = "checked" {% endif  %}value="The person">
                 <label for="person">The person</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="partner" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.partner %} checked = "checked" {% endif  %}value="The person's partner">
+                <input id="partner" name="personalDetailValue" type="checkbox" {% if data.citizen.pvPartner %} checked = "checked" {% endif  %}value="The person's partner">
                 <label for="partner">The person's partner</label>
               </div>
 
               <div class="multiple-choice">
-                <input id="member" name="personalDetailValue" type="checkbox" {% if data.personalDetails.pv.member %} checked = "checked" {% endif  %}value="Someone else in the household">
+                <input id="member" name="personalDetailValue" type="checkbox" {% if data.citizen.pvMember %} checked = "checked" {% endif  %}value="Someone else in the household">
                 <label for="member">Someone else in the household</label>
               </div>
             </div>
 
             <div class="multiple-choice" data-target="contact-by-phone">
-              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.personalDetails.nationality.value == "Stateless" %} checked="checked" {% endif %}>
+              <input id="stateless" name="data" type="radio" value="stateless" {% if data.updateType == "updating" and data.citizen.nationality.value == "Stateless" %} checked="checked" {% endif %}>
               <label for="stateless">End the potentially violent status</label>
             </div>
 

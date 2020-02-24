@@ -18,6 +18,14 @@ if (
   window.sessionStorage.setItem('prototypeWarning', true)
 }
 
+//DAP
+var dapResults = false;
+var showDapResults = function() {
+   dapResults = true;
+   console.log(dapResults);
+}
+
+
 $(document).ready(function () {
   // Use GOV.UK shim-links-with-button-role.js to trigger a link styled to look like a button,
   // with role="button" when the space key is pressed.
@@ -28,19 +36,6 @@ $(document).ready(function () {
   // to toggle hidden content
   var showHideContent = new GOVUK.ShowHideContent()
   showHideContent.init()
-  
-  //prepopulate date
-  var btnOne = $('.populate-link-one');
-  var boxOne = $('.box-one');
-  $(btnOne).click(function() {
-    boxOne.val(dayOfTheMonth + "/" + (thisMonth + 1) + "/" + year);
-  });
-  
-  var btnTwo = $('.populate-link-two');
-  var boxTwo = $('.box-two');
-  $(btnTwo).click(function() {
-    boxTwo.val(dayOfTheMonth + "/" + (thisMonth + 1) + "/" + year);
-  });
   
 //bereavement support preview
 if (document.getElementById("maincontent") ) {
@@ -477,32 +472,7 @@ var bsCustomers = {
     var inputvalue;
   
   
-    bsInput.oninput = function(){
-      counter = bsInput.value.length;
-      console.log(counter);
-      if (counter == 8 || counter == 9) {
-        inputvalue = bsInput.value.toUpperCase();
-        console.log(inputvalue);
-        for (person in bsCustomers) {
-          if (inputvalue == person) {
-           console.log("TEST found");
-            document.getElementById("bsfirstname").innerHTML = bsCustomers[person].firstName.toUpperCase();
-            document.getElementById("bslastname").innerHTML = bsCustomers[person].lastName.toUpperCase();
-            document.getElementById("bspostcode").innerHTML = bsCustomers[person].postCode;
-            if(bsCustomers[person].title != "") {
-              document.getElementById("bstitle").innerHTML = bsCustomers[person].title.toUpperCase() + " ";
-            } else {
-              document.getElementById("bstitle").innerHTML = "";
-            }
-            document.getElementById("bsDob").innerHTML = bsCustomers[person].dob;
-          }
-        }
-        preview.classList.add("visible");
-        managementCheck.classList.add("visible");
-      } else {
-        preview.classList.remove("visible");
-      }
-    };
+    
   }
   
 })
@@ -745,7 +715,6 @@ if (document.getElementById("day-number")) {
 }
 
 if ( document.getElementById("alerts") || document.getElementById("notifications") ) {
-    console.log('here');
     var processButton = document.getElementById("processButton");
     var unprocessButton = document.getElementById("unprocessButton");
     var processBoxes = document.getElementsByClassName("process-boxes");
@@ -801,10 +770,53 @@ var navigationHighlight = function() {
    }
 }
 
-var navigationLinkContainers = document.getElementsByClassName("sl-local-nav-item");
-for (var x in navigationLinkContainers) {
-   navigationLinkContainers[x].addEventListener('click', navigationHighlight);
+if(document.getElementById("id_doc") ) {
+  var idDoc = document.getElementById("id_doc");
+  var idSearch = document.getElementById("id_search");
+  var label = document.getElementById("id_label");
+  function idSelection() {
+    if(idDoc.value != "") {
+      idSearch.classList.add("active", false);
+    } else {
+      idSearch.classList.remove("active", false);
+    }
+    label.innerHTML = idDoc.value;
+    console.log(idDoc.value);
+  }
+  idDoc.addEventListener('change', idSelection);
 }
+
+
+if ( document.getElementsByClassName("new-reveal") ) {
+  let toggle = function() {
+    if(otherPersonalDetails.classList.contains("active")) {
+      otherPersonalDetails.classList.toggle("active", false);
+      bar.classList.toggle("active", false);
+      revealText.innerHTML = "Show immigration and nationality details";
+    } else {
+      otherPersonalDetails.classList.toggle("active", true);
+      bar.classList.toggle("active", true);
+      revealText.innerHTML = "Hide immigration and nationality details";
+    }
+  }
+  let reveal = document.getElementsByClassName("new-reveal")[0];
+  let revealText = document.getElementById("reveal-text");
+  let otherPersonalDetails = document.getElementById("other-personal-details");
+  let bar = document.getElementById("bar");
+  reveal.addEventListener('click', toggle);
+}
+
+if( document.getElementsByClassName("sl-local-nav-item") ) {
+  var navigationLinkContainers = document.getElementsByClassName("sl-local-nav-item");
+  for (var x in navigationLinkContainers) {
+    navigationLinkContainers[x].addEventListener('click', navigationHighlight);
+  }
+}
+
+
+
+
+
 
 // when one is clicked
 // get all sl-local-nav-anchor items
@@ -818,7 +830,7 @@ for (var x in navigationLinkContainers) {
   checkLink
   unLink
   button
-  checkboxes
+  checkboxes 
 
   checkLink.onclick(function)
   unLink.onclick(function)
@@ -835,9 +847,6 @@ for (var x in navigationLinkContainers) {
     }
   }
   */
-
-
-
 
 
 

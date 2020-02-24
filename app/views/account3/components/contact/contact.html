@@ -1,0 +1,133 @@
+  <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+
+    <h2>Contact</h2>
+
+    <div id="sl-address-primary-card" class="sl-primary-card">
+
+      <div id="address-pane">
+
+      {% if data.citizen.mobile !=null %}
+        <div class="grid-row wider-columns">
+          <div class="column-one-third">
+            <ul>
+              <li>Mobile telephone number</li>
+            </ul>
+          </div>
+          <div class="column-one-third">
+            <ul>
+              <li class="strong">{{data.citizen.mobile}}</li>
+              {# {% if item.display == "Home telephone" and item.exD == true %}
+                <li class="sl-secondary-text-color sl-metadata">Ex-directory</li>
+              {% endif %} #}
+              {# {% if item.pref == true %}
+                <li class="sl-secondary-text-color sl-metadata">Preferred method of contact</li>
+              {% endif %} #}
+            </ul>
+          </div>
+          <div class="column-one-third">
+            <ul class="edit-menu">
+              <li>
+                <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
+              </li>
+              {# <li>
+                <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
+              </li> #}
+            </ul>
+          </div>
+        </div>
+      {% endif %}    
+
+      {% if data.citizen.mobile !=null and data.citizen.homeTelephone !=null%}
+      <hr>
+      {% endif %}    
+      
+      {% if data.citizen.homeTelephone !=null %}
+        <div class="grid-row wider-columns">
+          <div class="column-one-third">
+            <ul>
+              <li>Home telephone number</li>
+            </ul>
+          </div>
+          <div class="column-one-third">
+            <ul>
+              <li class="strong">{{data.citizen.homeTelephone}}</li>
+              {# {% if item.display == "Home telephone" and item.exD == true %}
+                <li class="sl-secondary-text-color sl-metadata">Ex-directory</li>
+              {% endif %} #}
+              {# {% if item.pref == true %}
+                <li class="sl-secondary-text-color sl-metadata">Preferred method of contact</li>
+              {% endif %} #}
+            </ul>
+          </div>
+          <div class="column-one-third">
+            <ul class="edit-menu">
+              <li>
+                <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
+              </li>
+              {# <li>
+                <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
+              </li> #}
+            </ul>
+          </div>
+        </div>
+      {% endif %}
+
+      {# find pref #}
+
+      
+      
+      {# show everything else #}
+        
+        {# {{counter}}
+        {% set counter = 0 %} #}
+        
+        {# <!-- find the pref -->
+        {% for list, item in data.contactTypes %}
+          {% if item.pref == true %}
+            {% if item.show == true %}
+            {% set counter = counter + 1 %}
+              {% include "./components/contact/contact-template.html" %}
+              <hr class="light">
+            {% endif %}
+          {% endif %}
+        {% endfor %} #}
+        
+        {# <!-- show everything else -->
+        {% for list, item in data.contactTypes %}
+          {% if item.show == true and item.pref == false %}
+            {% set counter = counter + 1 %}
+            {% include "./components/contact/contact-template.html" %}
+            <hr class="light">
+          {% endif %}
+        {% endfor %} #}
+        
+        {# <div class="grid-row wider-columns">
+          <div class="column-one-third">
+            {% if counter == 0 %}
+              No contact details held for this customer.
+            {% else %}
+              &nbsp;
+            {% endif %}
+          </div>
+          
+          <div class="column-one-third">
+            &nbsp;
+          </div>
+          
+          <div class="column-one-third last-col">
+            
+            <ul class="edit-menu">
+              {% if (data.contactTypes | allContactsAdded) == false %}
+              <li>
+                <a class="secondary-link" href="../update/contact/add-contact">Add a contact method</a>
+              </li>
+              {% endif %}
+            </ul>
+             #}
+          </div>
+          
+        </div>
+        
+      </div>
+
+    </div>

@@ -1,0 +1,59 @@
+{% if data.citizen.immigration.state == "removed" %}
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      <ul>
+        <p>Immigration status</p>
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul>
+        <li class="sl-secondary-text-color sl-metadata">Status removed  ·  {{data.prepopulatedString}}</li>
+      </ul>
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#spoken_language" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+          <a href="/history/immigration" class="under-link">View history</a>
+        </li>
+        <li>
+          <a href="adding-detail-handler?personalDetail=immigration" class="under-link">Add</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% else %}
+
+<div class="grid-row wider-columns">
+  <div class="column-one-third">
+    <p>Immigration status</p>
+    </div>
+
+  <div class="column-one-third">
+    <ul>
+      <li class="strong">{{data.citizen.immigration}}</li>
+      <li class="sl-secondary-text-color sl-metadata">Since 1 Jan 2019</li>
+      {# <li class="sl-secondary-text-color sl-metadata">Since 1 Jan 2019 &nbsp; · &nbsp; Expires 31 Dec 2019</li> #}
+      <li class="sl-secondary-text-color sl-metadata">Reference &nbsp; · &nbsp; 8787868766</li>
+    </ul>
+  </div>
+
+  <div class="column-one-third last-col">
+    {% if data.guardianRole %}
+      <ul class="edit-menu">
+        <li>
+          <a data-toggle="modal" data-target="#ho_immigration_modal" class="under-link">View maintenance</a> 
+          <span class="pipe"> | </span> 
+            <a href="/history/immigration" class="under-link">View history</a>
+        </li>
+        <li>
+          <a href="change_pd/?personalDetail=immigration" class="under-link">Change</a>
+        </li>
+      </ul>
+    {% endif %}
+  </div>
+</div>
+
+{% endif %}

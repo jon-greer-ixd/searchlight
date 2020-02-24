@@ -93,19 +93,19 @@
     {% endif %}
 
     <!-- needs -->
-    {% if data.specialNeeds.state === "added" %}
+    {% if data.additionalNeeds.state === "added" %}
       {% include "components/update/toasters/needs-added.html" %}
     {% endif %}
 
-    {% if data.specialNeeds.state === "removed" %}
+    {% if data.additionalNeeds.state === "removed" %}
       {% include "components/update/toasters/needs-removed.html" %}
     {% endif %}
 
-    {% if data.specialNeeds.state === "corrected" %}
+    {% if data.additionalNeeds.state === "corrected" %}
       {% include "components/update/toasters/needs-corrected.html" %}
     {% endif %}
 
-    {% if data.specialNeeds.state === "updated" %}
+    {% if data.additionalNeeds.state === "updated" %}
       {% include "components/update/toasters/needs-updated.html" %}
     {% endif %}
 

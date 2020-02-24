@@ -1,0 +1,117 @@
+<h2 class="heading-medium question">What do they need?</h2>
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+<!--      <p>Select all that apply</p>-->
+      
+      <form class="form" method="get" id="multi-box-form" action="personal-detail-handler">
+
+        <fieldset class="form-group">
+
+<!--
+    <legend>
+      <h3 class="heading-medium">Which types of waste do you transport regularly?</h3>
+      <span class="body-text">Select all that apply</span>
+    </legend>
+-->
+
+    <!-- go through the additional needs list -->
+     {% set hasThisNeed = false %}
+      {% for item in data.additionalNeeds %}
+        {% for need in data.citizen.additionalNeeds %}
+          {% if item == need %}
+          {% set hasThisNeed = true %}
+          {% endif %}
+        {% endfor %}
+        {% if hasThisNeed != true %}
+          <div class="multiple-choice">
+            <input id={{item | removeWhitespace}} name="personalDetailValue" class="multi-boxes" type="radio" value="{{item}}">
+            <label for={{item | removeWhitespace}}>{{item}}</label>
+          </div>
+        {% endif %}
+        {% set hasThisNeed = false %}
+      {% endfor %}
+
+    {# {% set found = false %}
+    {% for item in data.additionalNeeds %}
+      {% for need in data.citizen.additionalNeeds %}
+        {% if item == need %}
+        {% set found = true %}
+        {% endif %}
+      {% endfor %}
+      {% if found != true %}
+        <div class="multiple-choice">
+          <input id={{item | removeWhitespace}} name="personalDetailValue" class="multi-boxes" type="radio" value="{{item}}">
+          <label for={{item | removeWhitespace}}>{{item}}</label>
+        </div>
+      {% endif %}
+    {% endfor %} #}
+    <!-- if this person does not have that need, shoiw it as an option -->
+
+    {# <div class="multiple-choice">
+      <input id="type-1" name="personalDetailValue" class="multi-boxes"  type="radio" value="Audio forms" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Audio forms"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-1">Audio forms</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-2" name="personalDetailValue" class="multi-boxes"  type="radio" value="Braille" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Braille"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-2">Braille</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-3" name="personalDetailValue" class="multi-boxes"  type="radio" value="An induction loop" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "An induction loop"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-3">An induction loop</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-4" name="personalDetailValue" class="multi-boxes"  type="radio" value="Large print" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Large print"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-4">Large print</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-7" name="personalDetailValue" class="multi-boxes"  type="radio" value="Sign language" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Sign language"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-7">Sign language</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-8" name="personalDetailValue" class="multi-boxes"  type="radio" value="Sign language - hearing" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Sign language - hearing"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-8">Sign language - hearing</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-9" name="personalDetailValue" class="multi-boxes"  type="radio" value="Type-talk or minicom - hearing" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Type-talk or minicom - hearing"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-9">Type-talk or minicom - hearing</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-10" name="personalDetailValue" class="multi-boxes"  type="radio" value="Type-talk or textphone - speech" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Type-talk or textphone - speech"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-10">Type-talk or textphone - speech</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-5" name="personalDetailValue" class="multi-boxes"  type="radio" value="A lift" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "A lift"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-5">A lift</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-6" name="personalDetailValue" class="multi-boxes"  type="radio" value="A ramp" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "A ramp"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-6">A ramp</label>
+    </div> #}
+    {# <div class="multiple-choice">
+      <input id="type-11" name="personalDetailValue" class="multi-boxes"  type="radio" value="Wide doorways" {% if data.updateType != 1 %} {% for item in data.personalDetails.additionalNeeds.value %} {% if item == "Wide doorways"%} checked="checked" {% endif %} {% endfor %} {% endif %}>
+      <label for="type-11">Wide doorways</label>
+    </div> #}
+  </fieldset>
+        
+    {% if data.updateType != 1 %}
+      <p class="form-block" style="margin-top:-15px;">or</p>
+      <div class="form-group">
+        <div class="multiple-choice">
+          <input id="unknown" name="personalDetailValue" type="radio" value=null>
+            <label for="unknown">Remove their additional needs</label>
+        </div>
+      </div>
+    {% endif %}
+
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+
+    </form>
+    <p><a href="task-list">Cancel</a></p>
+  </div>
+
+  </div>

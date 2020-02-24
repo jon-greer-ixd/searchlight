@@ -1,0 +1,25 @@
+<div class="grid-row wider-columns">
+  <div class="column-one-third">
+    Disability status
+  </div>
+  <div class="column-one-third">
+    <ul>
+      <li class="strong">
+        {% if data.citizen.disability == true %}
+          Disabled
+        {% elif data.citizen.disability == false %}
+          Not disabled
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+  {% if data.guardianRole %}
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>                
+        <a href="change_pd/?personalDetail=disability" class="under-link">Change</a>
+      </li>
+    </ul>
+  </div>
+  {% endif %}
+</div>

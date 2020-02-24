@@ -1,0 +1,18 @@
+{# <div class="panel panel-border-wide">
+  <p>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</p>
+</div> #}
+
+
+{% if data.currentNinoApplication.status >= 1 %}
+
+<p>The home office have verified <span class="strong">{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}'s</span> identity.</p>
+
+<p>They do not have the right to work.</p>
+
+<a class="button" href="set-case-handler?allocate=false">Do not allocate a NINO</a>
+
+{% else %}
+      
+    {% include "../application/application_details.html" %}
+
+{% endif %}

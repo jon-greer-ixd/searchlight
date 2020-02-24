@@ -1,0 +1,42 @@
+{% macro decisionData(date, decision, start, end, overlap, rate, cdi) %}
+{% endmacro %}
+
+<!-- DECISION HISTORY -->
+<h3>Decision history</h3>
+
+<div class="sl-primary-card last-card" id="decision-history">
+
+	<div>
+	 	<table class="first-table">
+			<tr>
+				<th>Decision date</th>
+				<th>Decision</th>
+			</tr>
+			<tr>
+				<td>30 Jun 2018</td>
+				<td>No longer caring 40 hours per week</td>
+			</tr>	
+		</table>	  
+	</div>
+
+		<details>
+			<summary>Show decision details</summary>
+ 			<div class="panel panel-border-wide">
+				<table>
+					<tr>
+						<th>Effective start</th>
+						<th>Effective end</th>
+						<th>Withheld CDI</th>
+						<th>Overlapping benefit</th>
+					</tr>
+					<tr>
+						<td>30 Jun 2018</td>
+						<td><span class="bold">-</span></td>
+						<td>0</th>
+						<td>Bereavement Allowance</td>
+					</tr>
+				</table>
+			</div>
+			<hr class="bold">
+		</details>
+</div>

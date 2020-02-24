@@ -1,0 +1,86 @@
+<div class="column-full">
+
+  <div class="sl-primary-card" id="alerts">
+
+    <h3 class="strong">{{ data.notificationStatus | capitalize }} notifications for {{ data.requestedDateAsString }}</h3>
+    <p>Page 1 of 1</p>
+    <form id="alert-search-form" action="dap-process-handler">
+      <div class="form-group">
+        <table class="dap-options">
+          <tr>
+            <th>No</th>
+            <th>Date </th>
+            <th>Type</th>
+            <th>NINO</th>
+            <th>Surname</th>
+            <th>Date of birth</th>
+            <th>Processed date</th>
+            <th class="strong check">Select</th>
+          </tr>
+        </table>
+          
+        {% set dapCounter = 1%}
+        {% for item in data.dapNotificationstoShow %}
+            <table class="dap-options">
+              <tr id={dapCounter}}>
+                <td class="">{{dapCounter}}</td>
+                <td class="">{{data.requestedDateAsString}}</td>
+                <td class="">{{ data.dap_type }}</td>
+                <td class="">{{ item.nino }}</td>
+                <td class="">{{ item.surname }}</td>
+                <td class="">{{ item.dob }}</td>
+                <td class=""> {{ item.date }} </td>
+                <td class="check">
+                  <div class="multiple-choice">
+                    <input id={{item.nino}} name={{item.nino}} class="process-boxes" type="checkbox" value=true>
+                    <label for="one"></label>
+                  </div>
+                </td>
+              </tr>
+            </table>
+              
+            <details class="dap-disc">
+              <summary>View notification details</summary>
+              <div class="panel panel-border-wide">
+              {% if item.nino == "SX170201" %}
+                {% include "./data/sx170201.html" %}
+              {% elif item.nino == "SX170202" %}
+                {% include "./data/sx170202.html" %}
+              {% elif item.nino == "SX170203" %}
+                {% include "./data/sx170203.html" %}
+              {% elif item.nino == "SX170204" %}
+                {% include "./data/sx170204.html" %}
+              {% endif %}
+              </div>
+            </details>
+            {% set dapCounter = dapCounter + 1%}
+        {% endfor %}
+            
+      </div>
+        
+      <div class="options">
+        <ul>
+          <li><a id="select_link">Select all</a></li>
+          <li><a id="un_link">Deselect all</a></li>
+        </ul>
+
+      <div class="form-group">
+        <fieldset>
+        {% if data.notificationStatus == 'unprocessed' or data.notificationStatus == 'all' %}
+          <button class="button" type="submit" id="processButton"  disabled="disabled">Mark as processed</button></a>
+        {% endif %}
+        {% if data.notificationStatus == 'processed' or data.notificationStatus == 'all' %}
+          <button class="button" type="submit" id="unprocessButton" disabled="disabled">Mark as unprocessed</button></a>
+        {% endif %}
+        </fieldset>
+      </div>
+        
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+

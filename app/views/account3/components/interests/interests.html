@@ -1,0 +1,94 @@
+<div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+  <h2>Interests</h2>
+  <div id="sl-address-primary-card" class="sl-primary-card">
+    <div>      
+      <div id="interests">
+        <div class="grid-row nav">
+          <div class="column-one-third">
+            Start date
+          </div>
+          <div class="column-one-third expanded">
+            Interest
+          </div>
+          <div class="column-one-third last-col">
+            {% if data.guardianRole == true %}
+              <ul class="edit-menu">
+                <li>
+                    <a href="../update/interests/add-interest" class="under-link">Add an interest</a>
+                </li>
+              </ul>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+
+        {% if data.citizen.dla == true %}  
+          {% include "./details/dla.html" %}
+          <hr>
+        {% endif %}
+
+        {% if data.citizen.uc == true %}  
+          {% include "./details/uc.html" %}
+          <hr>
+        {% endif %}
+        
+        {% if data.citizen.pip == true %}  
+          {% include "./details/pip.html" %}
+          <hr>
+        {% endif %}
+        
+        {% if data.citizen.sp == true %}  
+          {% include "./details/sp.html" %}
+          <hr>
+        {% endif %}
+
+        <div class="column-one-third expanded">
+          &nbsp;
+        </div>
+        
+        {% if data.citizen.ca == true %}  
+        <details>
+          <summary><span class="summary">Show previous interests</span></summary>
+
+          <hr class="light">
+          <div class="grid-row nav">
+            <div class="column-one-third">
+              <div class="column-one-half">
+                Start date
+              </div>
+              <div class="column-one-half">
+                End date
+              </div>
+            </div>
+            <div class="column-one-third expanded">
+              Interest
+            </div>
+            <div class="column-one-third last-col">
+              <ul class="edit-menu">
+                <li>
+                  &nbsp;
+                </li>
+              </ul>
+            </div>
+          </div>
+          <hr class="light">
+
+          {% include "./details/ca.html" %}
+          <hr>
+        {% endif %}
+        <!--
+            {% for int in interests %}
+              {% if int.live == false %}
+                  {% include "components/update/interest.html" %}
+                <hr class="light">
+              {% endif %}  
+            {% endfor %}  
+        -->
+          </details>        
+        
+        
+      </div>
+
+    </div>
+  </div>
+</div>

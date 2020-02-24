@@ -1,0 +1,106 @@
+<form id="alert-search-form" action="get-daps-handler">
+  <div class="grid-row">
+    <div class="column-one-quarter">
+      <div class="form-group prepop">
+        <label class="form-label" for="full-name-f1">
+          Notification date
+          <span class="form-hint">
+            For example 21/10/2018
+          </span>
+        </label>
+        <input class="form-control box-three" id="not_date" type="text" name="not_date" value={{data.not_date}}>
+        <a class="populate-link-three">Use yesterday's date</a>
+      </div>
+    </div>
+
+<!--
+      <div class="column-one-quarter" id="benefits">
+        <div class="form-group">
+          {% include "components/notifications/system-selector.njk" %}
+        </div>
+      </div>
+  -->
+
+    <div class="column-one-quarter" id="alert-code">
+      {% include "./notification-selector.html" %}
+    </div>
+
+
+    <div class="column-one-quarter" id="alert-code">
+      <div class="form-group">
+        <label class="form-label" for="full-name-f1">
+          Office ID
+          <span class="form-hint">
+            For example 11223
+          </span>
+        </label>
+        <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+      </div>
+    </div>
+
+    <div class="column-one-quarter" id="alert-code">
+      <div class="form-group">
+        <label class="form-label" for="full-name-f1">
+          Benefit system ID
+          <span class="form-hint">
+            For example CIS
+          </span>
+        </label>
+        <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="grid-row">
+    <div class="column-full">
+      <div class="form-group">
+        <details>
+          <summary><span class="summary">View more search options</span></summary>
+          
+          <div class="panel panel-border-narrow" id="nino-search">
+            <!-- status -->  
+            <div class="quater-col">
+              <fieldset>
+                <label class="form-label" for="full-name-f1">Status</label>
+                <div class="multiple-choice">
+                  <input id="unprocessed" type="radio" name="notificationStatus" value="unprocessed" {% if data.notificationStatus == 'unprocessed'  %} checked=checked {% endif %}>
+                  <label for="unprocessed">Unprocessed</label>
+                </div>
+                <div class="multiple-choice">
+                  <input id="processed" type="radio" name="notificationStatus" value="processed" {% if data.notificationStatus == 'processed'  %} checked=checked {% endif %}>
+                  <label for="processed">Processed</label>
+                </div>
+                <div class="multiple-choice">
+                  <input id="all" type="radio" name="notificationStatus" value="all" {% if data.notificationStatus == 'all'  %} checked=checked {% endif %}>
+                  <label for="radio-3">All</label>
+                </div>
+              </fieldset>
+            </div>
+            
+            <!-- NINO 
+            <div class="half-col">
+              <div class="half-col">
+                <label class="form-label" for="full-name-f1">National Insurance number</label>
+                <input class="form-control" id="full-name-f1" type="text" name="full-name-f1">
+              </div>
+            </div> --> 
+            
+          </div>
+        </details> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="grid-row">
+    <div class="column-full last-full-col">
+      <div class="form-group">
+        <button class="button" type="submit">Search</button>
+      </div>
+    </div>
+  </div>
+
+</form>
+
+

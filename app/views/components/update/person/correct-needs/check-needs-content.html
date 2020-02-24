@@ -30,7 +30,7 @@
             <!-- VALUE -->
               {% if data.personalDetailValue != "null"  %}
                 <td>
-                  {% if data.personalDetail == "pv" or data.personalDetail == "specialNeeds" %}
+                  {% if data.personalDetail == "pv" or data.personalDetail == "additionalNeeds" %}
                     {{counter}}
                     {% set counter = data.personalDetailValue.length %}
                     {% for item in data.personalDetailValue %}

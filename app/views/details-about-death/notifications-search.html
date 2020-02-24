@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  GOV.UK prototype kit
+{% endblock %}
+
+{% block content %}
+  
+<div id="sl-account" class="container-fluid ng-scope">
+  <div class="sl-account-canvas row updater super-slim-header">
+    <div class="sl-account-canvas-width" id="alerts-container">
+      <a class="link-back" onCLick="history.back()">Back</a>
+      <h2 class="title">Search for notifications</h2>
+     
+      <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+        <div class="sl-primary-card">
+          {% include "./components/form.html" %}
+        </div>
+       <br>
+
+      <div id="search-results" class="grid-row">
+
+        {% if data.showDapResults == true %}
+          {% if data.dapNotificationstoShow == '' %}
+          <div class="sl-primary-card last-card no-results">
+            <p>No {{ data.notificationStatus }} notifications for {{ data.requestedDateAsString }}</p>
+            </div>
+          {% else %}
+            {% include "./components/results.html" %}
+          {% endif %}
+        {% endif %}
+
+        {% if data.showDapResults == false %}
+          <div class="column-full">
+            <div class="sl-primary-card last-card no-results">
+              <p>No {{ data.notificationStatus }} notifications for {{ data.requestedDateAsString }}</p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  
+<!--
+  <script src="../../../../../public/javascripts/jquery-1.11.1.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery-ui.min.js"></script>
+	<script src="../../../../../public/javascripts/jquery.select-to-autocomplete.js"></script>
+	<script>
+	  (function($){
+	    $(function(){
+	      $('select').selectToAutocomplete();
+	      $('form').submit(marital);
+	    });
+	  })(jQuery);
+	</script>
+-->
+
+{% endblock %}

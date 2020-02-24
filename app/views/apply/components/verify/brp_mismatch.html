@@ -1,0 +1,13 @@
+{% if data.currentNinoApplication.status != 2 %}
+
+<p>You should compare the application to the home office database.</p>
+
+{% include "../application/application_details.html" %}
+
+<a class="button" href="options">Next</a>
+
+{% else %}
+{% include "../application/application_details.html" %}
+
+{% endif %}
+

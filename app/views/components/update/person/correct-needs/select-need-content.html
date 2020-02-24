@@ -7,7 +7,7 @@
 
         <fieldset class="form-group">
 
-          {% for item in data.personalDetails.specialNeeds.value %}
+          {% for item in data.personalDetails.additionalNeeds.value %}
             {% if item != null or item != undefined %}
               <div class="multiple-choice">
                 <input id="{{item}}" name="personalDetailValue" type="radio" value="{{item}}">

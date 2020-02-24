@@ -1,0 +1,137 @@
+{% if data.citizen.genderGra == true and data.citizen.genderPreGra == true %}
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      <p>Gender recognition</p>
+    </div>
+      <div class="column-one-third">
+        <ul class="gender-meta">
+            <li class="strong">Gender recognition certificate</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;19 dec 2018</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+    <div class="column-two-thirds col_two">
+     </div>
+  </div>
+
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+      <div class="column-one-third">
+        <ul class="gender-meta">
+            <li class="strong">Pre Gender Recognition Act application</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;19 dec 2018</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+<!--
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+-->
+      </div>
+  </div>
+{% endif %}
+
+
+
+{% if data.citizen.genderGra == true and data.citizen.genderPreGra == null %}
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      <p>Gender recognition</p>
+    </div>
+      <div class="column-one-third">
+        <ul class="gender-meta">
+            <li class="strong">Gender recognition certificate</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;19 dec 2018</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+{% endif %}
+
+{% if data.citizen.genderGra == null and data.citizen.genderPreGra == true %}
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      <p>Gender recognition</p>
+    </div>
+      <div class="column-one-third">
+        <ul class="gender-meta">
+            <li class="strong">Pre Gender Recognition Act application</li>
+<!--            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>-->
+            <li class="sl-metadata sl-secondary-text-color">Effective date of gender change&nbsp; · &nbsp;19 dec 2018</li>
+            <li class="sl-metadata sl-secondary-text-color">Notified or decision date&nbsp; · &nbsp;19 dec 2018</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a data-toggle="modal" data-target="#name_modal" class="under-link">View maintenance</a> 
+            <span class="pipe"> | </span> 
+            <a href="../history/gender" class="under-link">View history</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+    <div class="column-two-thirds col_two">
+      <hr class="light">
+    </div>
+  </div>
+  <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      &nbsp;
+    </div>
+      <div class="column-one-third">
+        <ul>
+            <li class="sl-secondary-text-color sl-metadata">Add a gender recognition certificate</li>
+        </ul>    
+      </div>
+      <div class="column-one-third last-col">
+        <ul class="edit-menu">
+          <li>
+            <a href="add-gender-handler/?data=gra" class="under-link">Add</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+
+{% endif %}

@@ -1,0 +1,43 @@
+
+{% extends "../current-award-template.html" %}
+
+{% block classes %}
+	class="sl-primary-card award"
+{% endblock %}
+
+{% block claim_details %}
+	<p>Started 8 Apr 2019&nbsp; · &nbsp;Due to end 5 Sep 2020</p>
+{% endblock %}
+			
+
+{% block award_details %}
+	<table class="award-table">
+		<tr>
+			<th>Award component</th>
+			<th>Amount</th>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li>Care component</li>
+					<li class="sub">Award component: Not applicable</li>
+					<li class="sub">Standard rate</li>
+				</ul>
+			</td>
+			<td>£58.70</td>
+		</tr>
+		<tr>
+			<td>
+				<ul>
+					<li>Mobility component</li>
+					<li>Nil entitlement</li>
+				</ul>
+			</td>
+			<td>£0.00</td>
+		</tr>
+		<tr>
+			<td class="strong">Total award amount</td>
+			<td class="strong">£58.70</td>
+		</tr>
+	</table>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% macro previousAwardDetails(start, end, amount) %}
+	<table>
+		<tr>
+			<td class="">{{start}}</td>
+			<td>{{end}}</td>
+			<td class="">{{amount}}</td>
+		</tr>	
+	</table>	     				
+
+	<div class="previous-awards-data">
+		<details>
+<summary>
+<span class="summary">View award details
+</span>
+</summary> 			<div class="panel panel-border-wide">
+				<table>
+					<tr>
+						<th>Award component</th>
+						<th>Amount</th>
+					</tr>
+ 					<tr>
+						<td>
+							<span>Care component</span>
+							<span>Award component: Not applicable</span>
+							<span>Standard rate</span>
+						</td>
+						<td>{{amount}}</td>
+					</tr>
+ 					<tr>
+						<td>
+							<span>Mobility component</span>
+							<span>Nil entitlement</span>
+						</td>
+						<td>&nbsp;</td>
+					</tr>
+ 					<tr>
+						<td>
+							<span class="strong">Total award amount</span>
+						</td>
+						<td class="strong">{{amount}}</td>
+					</tr>
+				</table>
+			</div>
+			<hr class="bold">
+		</details>
+	</div>
+	<hr>
+{% endmacro %}
+
+<!--PREVIOUS AWARDS-->
+<h3>Previous awards</h3>
+<div class="sl-primary-card last-card" id="previous-awards">
+	<table>
+		<tr>
+			<th>Start date</th>
+			<th>End date</th>
+			<th>Amount</th>
+		</tr>
+	</table>	     				
+
+<!-- 	<p>There are 6 previous awards from this assessment.</p>
+ 	<hr>
+ -->
+	{{ previousAwardDetails("9 Apr 2018", "7 Apr 2019", "£57.30" ) }}	  
+	{{ previousAwardDetails("19 Dec 2017", "8 Apr 2018", "£55.65" ) }}	  
+	{{ previousAwardDetails("14 May 2015", "14 May 2015", "0.00" ) }}	  
+</div>

@@ -1,0 +1,21 @@
+<div class="grid-row wider-columns">
+  <div class="column-one-third">
+    Additional needs
+  </div>
+  <div class="column-one-third">
+    <ul>
+    {% for need in data.citizen.additionalNeeds %}
+      <li class="strong"> 
+        {{need}}
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>                
+        <a href="person-change-handler/?personalDetail=additionalNeeds" class="under-link">Change</a>
+      </li>
+    </ul>
+  </div>
+</div>

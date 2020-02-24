@@ -31,7 +31,7 @@
               {% include "components/update/person/check/disability.njk" %}
             {% endif %}
           <!--  Additional needs -->
-            {% if data.personalDetail == 'specialNeeds' %}
+            {% if data.personalDetail == 'additionalNeeds' %}
               {% include "components/update/person/check/needs.njk" %}
             {% endif %}
           <!--  Nationality -->
@@ -66,9 +66,9 @@
             {% if data.personalDetail == 'recordLevel' %}
               {% include "components/update/person/check/record.njk" %}
             {% endif %}
-          <!--  INDIndicator-->
-            {% if data.personalDetail == 'INDIndicator' %}
-              {% include "components/update/person/check/indindicator.njk" %}
+          <!--  indIndicator-->
+            {% if data.personalDetail == 'indIndicator' %}
+              {% include "components/update/person/check/indIndicator.njk" %}
             {% endif %}
           
           <!--  recordLevel-->
@@ -79,12 +79,19 @@
 
         </table>
       <br>
-      <form method="get" action="check-person-handler">
+        <form method="get" action="add-detail-handler">
         <div class="form-group">
           <input class="button" type="submit" value="Submit">
         </div>
       </form>
-      <a href="/account2/account">Cancel</a>
+      <a href="/account3/account">Cancel</a>
+
+        {# <form method="get" action="check-person-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="/account3/account">Cancel</a> #}
     </div>
   </div>
 

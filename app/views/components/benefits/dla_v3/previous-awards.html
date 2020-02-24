@@ -1,0 +1,66 @@
+{% extends "../previous-award-template.html" %}
+
+{% block classes %}
+	class="sl-primary-card last-card"
+{% endblock %}
+
+
+{% block awards %}
+
+	{{ previousAwardDetails("9 Apr 2018", "7 Apr 2019", "£145.35" ) }}	  
+	{{ previousAwardDetails("10 Apr 2017", "8 Apr 2018", "£141.10" ) }}	  
+	{{ previousAwardDetails("11 Apr 2016", "9 Apr 2017", "£139.75" ) }}	  
+
+{% endblock %}
+
+
+
+
+
+
+{% macro previousAwardDetails(start, end, amount) %}
+	<table class="award-table date-table">
+		<tr>
+			<td class="">{{start}}</td>
+			<td>{{end}}</td>
+			<td class="">{{amount}}</td>
+		</tr>	
+	</table>	     				
+
+		<details class="award-details">
+			<summary class="awards-summary">View award details</summary>
+ 			<div class="panel panel-border-wide award-panel">
+				<table class="award-table">
+					<tr>
+						<th>Award component</th>
+						<th>Amount</th>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Care component</li>
+								<li class="sub">Award component: High. Night and day attention</li>
+								<li class="sub">High</li>
+							</ul>
+						</td>
+						<td>£87.65</td>
+					</tr>
+					<tr>
+						<td>
+							<ul>
+								<li>Mobility component</li>
+								<li class="sub">Award component: High. Virtually unable to walk</li>
+								<li class="sub">High</li>
+							</ul>
+						</td>
+						<td>£61.20</td>
+					</tr>
+					<tr>
+						<td class="strong">Total award amount</td>
+						<td class="strong">{{amount}}</td>
+					</tr>
+				</table>
+			</div>
+			<hr class="bold">
+		</details>
+{% endmacro %}

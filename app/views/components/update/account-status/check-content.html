@@ -25,7 +25,15 @@
         {% if data.updateType == 3 %}
           <tr>
             <td><span class="strong">Verification type</span></td>
-            <td>{{data.verificationLevel}}</td>
+            <td>
+              {% if data.verificationLevel == 0 %}
+                Unverified
+              {% elif data.verificationLevel == 1 %}
+                Qualified
+              {% elif data.verificationLevel == 2 %}
+                Verified
+              {% endif %}
+            </td>
             <td><a>Change</a></td>
           </tr>
         {% endif %}

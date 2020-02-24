@@ -1,0 +1,103 @@
+<!-- v1 -->
+<!--
+<div class="grid-row wider-columns">
+  <div class="column-one-third">
+    <ul>
+      <li class="">Identity at risk</li>
+    </ul>
+  </div>
+  <div class="column-one-third">
+    <ul>
+      <li class="bold">
+        {% if data.citizen.idAtRisk.value == true %}
+          Yes
+        {% else %}
+          No
+        {% endif %}
+      </li>
+      <li class="sl-secondary-text-color sl-metadata">
+        Since today
+      </li>    
+    </ul>
+            
+  </div>
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a data-toggle="modal" data-target="#risk_modal" class="under-link">View maintenance</a> 
+        <span class="pipe"> | </span> 
+        <a href="/history/risk-history" class="under-link">View history</a>
+      </li>
+      <li>
+        <a href="change_pd/?personalDetail=idAtRisk" class="under-link">Change</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+-->
+
+<!--V2-->
+
+<div class="grid-row wider-columns">
+  <div class="column-one-third">
+    <ul>
+      <li class="">Identity at risk</li>
+    </ul>
+  </div>
+  <div class="column-one-third">
+    <ul>
+      <li class="bold">
+        {% if data.citizen.idAtRisk == true %}
+          Yes
+        {% else %}
+          No
+        {% endif %}
+      </li>
+      <li class="sl-secondary-text-color sl-metadata">
+        {% if data.citizen.idAtRisk.value == true %}
+          Since 3 Dec 2018
+        {% endif %}
+      </li>
+    </ul>
+  </div>
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+      <li>
+        <a href="change_pd/?personalDetail=idAtRisk" class="under-link">Change</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!--
+<div class="grid-row wider-columns">
+  <div class="column-one-third">
+    &nbsp;
+  </div>
+  <div class="column-two-thirds">
+    <hr class="light">
+  </div>  
+</div>  
+-->
+
+{% if data.citizen.idAtRisk == false %}
+  <div class="grid-row wider-columns">
+    <div class="column-one-third">
+      <ul>
+        <li>&nbsp;</li>
+      </ul>
+    </div>
+    <div class="column-one-third disclosure">
+      <details>
+        <summary><span class="summary">Show previous dates</span></summary>
+        <div>
+          <ul>
+            <li class="sl-secondary-text-color sl-metadata">3 Dec 2018&nbsp; &ndash; &nbsp;11 Jan 2019</li>
+            <li class="sl-secondary-text-color sl-metadata">1 May 2009&nbsp; &ndash; &nbsp;9 Jan 2010</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+{% endif %}

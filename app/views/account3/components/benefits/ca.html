@@ -1,0 +1,65 @@
+{% extends "./benefit-template.html" %}
+
+{% block start_date %}
+  1 Oct 2013
+{% endblock %}
+
+{% block end_date %}
+  15 Feb 2019
+{% endblock %}
+
+{% block title %}
+  Carers Allowance
+{% endblock %}
+
+{% set end_reason = true %}
+{% block end_reason %}
+  None
+{% endblock %}
+
+{% block href %}
+  href="../benefits/carers-allowance-v2"
+{% endblock %}
+
+{% block latest_payment %}
+  <ul>
+    <li>9 Apr 2018</li>
+    <li>29 Oct 2018</li>
+    <li>£64.60</li>
+  </ul>
+{% endblock %}
+
+{% block more_payments %}
+  <details class="more-payments">
+    <summary>
+      <span class="summary">
+        Show all awards
+      </span>
+    </summary>
+    <ul>
+      <li>10 Apr 2017</li>
+      <li>8 Apr 2018</li>
+      <li>£62.70</li>
+    </ul>
+    <ul>
+      <li>6 Sep 2016</li>
+      <li>9 Apr 2017</li>
+      <li>£62.10</li>
+    </ul>
+    <ul>
+      <li>11 Apr 2016</li>
+      <li>5 Sep 2016</li>
+      <li>£62.10</li>
+    </ul>
+    <ul>
+      <li>6 Apr 2015</li>
+      <li>10 Apr 2016</li>
+      <li>£62.10</li>
+    </ul>
+    <ul>
+      <li>21 Aug 2014</li>
+      <li>5 Apr 2015</li>
+      <li>£61.35</li>
+    </ul>
+  </details>
+{% endblock %}

@@ -1,0 +1,52 @@
+  <div class="grid-row wider-columns">
+    <div class="column-one-third">
+      <p>Date of death</p>
+    </div>
+
+    <div class="column-one-third">
+      <ul>
+      {% if data.citizen.dodValue == null %}
+        <li class="">No date of death held for this person</li>
+      {% else %}
+        <li class="strong">  {{data.citizen.dodValue}}  </li>
+          <li class="multi-dates">
+              {% if data.citizen.dodLevel == 3 %}
+                <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+                <span class="sl-metadata">Verified to level 3</span>
+              {% elif data.citizen.dodLevel == 2 %}
+                <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+                <span class="sl-metadata">Verified to level 2</span>
+              {% elif data.citizen.dodLevel == 1 %}
+                <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
+                <span class="sl-metadata">Verified to level 1</span>
+              {% elif data.citizen.dodLevel == 0 %}
+                <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
+                <span class="sl-metadata">Not verified</span>
+              {% endif %}
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+
+  <div class="column-one-third last-col">
+    <ul class="edit-menu">
+
+    {% if data.citizen.dodValue == null %}
+      <li>
+        <a href="change_pd/?personalDetail=dateOfDeath" class="under-link">Add</a>
+      </li>
+    {% else %}
+      <li>
+        <a data-toggle="modal" data-target="#death_modal" class="under-link">View maintenance</a> 
+        <span class="pipe"> | </span> 
+        <a href="/history/death-history" class="under-link">View history</a>
+      </li>
+      {% if data.guardianRole == true %}
+      <li>
+        <a href="change_pd/?personalDetail=dateOfDeath" class="under-link">Change</a>
+      </li>
+      {% endif %}
+    {% endif %}
+    </ul>
+  </div>
+</div>

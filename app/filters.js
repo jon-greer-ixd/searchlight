@@ -139,9 +139,60 @@ module.exports = function (env) {
     }
   }
 
+  
+  //remove whitespace
+  filters.convertStatus = function(status) {
+    if (status == 0) {
+      return "Open";
+    } else if (status == 1) {
+      return "In progress";
+    } else if (status == 2) {
+    return "Allocated";
+    }
+}
+
+  //remove whitespace
+  filters.removeWhitespace = function(term) {
+    term = term.replace(/\s/g, "");
+    return term;
+  }
+
+    //remove whitespace
+    filters.convertstatusDescription = function(statusDescription) {
+      if (statusDescription == 1) {
+        return "All data matched.";
+      } else if (statusDescription == 2) {
+        return "No right to work.";
+      } else if (statusDescription == 3) {
+        return "BRP mismatch.";
+      } else if (statusDescription == 4) {
+        return "BRP and name mismatched.";
+      } else if (statusDescription == 5) {
+        return "Passport mismatch.";
+      } else if (statusDescription == 6) {
+        return "Passport and name mismatched.";
+      } else if (statusDescription == 7) {
+        return "Name mismatched.";
+      } else if (statusDescription == 8) {
+        return "Passport and BRP mismatched.";
+      } else if (statusDescription == 9) {
+        return "Home office data matched but similar account exists in CIS.";
+      } else {
+        return "NAN";
+      }
+    }
   return filters
 }
 
+      // {# scenario 1 - all match4  #}
+      // {# scenario 2 - no right to work  #}
+      // {# scenario 3 - BRP mismatch  #}
+      // {# scenario 4 - BRP mismatch and name mismatch  #}
+      // {# scenario 5 - Passport mismatch #}
+      // {# scenario 6 - Passport mismatch and name mismatch  #}
+      // {# scenario 7 - Name mismatch  #}
+      // {# scenario 8 - DOB, Nationality mismatch  #}
+      // {# scenario 9 - Matched accounts in CIS  #}
 
 // if no contacts set to show - show no contacts
 // if any contact set to not show - hide the link

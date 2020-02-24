@@ -1,0 +1,23 @@
+<!-- NAME 1 -->
+  <div class="grid-row names">
+    <div class="column-one-third">
+      <ul>
+        <li>Current name</li>
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul>
+        <li class="strong">
+          {# {% if data.citizen.nameOneTitle != null %}
+            {{data.citizen.nameOneTitle | upper}} 
+            <span class="namespace"> </span> 
+          {% endif %} #}
+          {{data.citizen.nameOneFirst | upper}} <span class="namespace"> </span> {{data.citizen.nameOneLast | upper}}
+        </li>
+        <li class="sl-secondary-text-color sl-metadata">
+        </li>
+      </ul> 
+    </div>
+    <div class="column-one-third last-col">
+    </div>
+  </div>

@@ -6,17 +6,17 @@
       <div class="form-group">
 
         <div class="multiple-choice">
-          <input id="live" type="radio" name="tempAccountStatus" value="Open" {% if data.personalDetails.accountStatus.value == 'Open' %} checked='checked' {% endif %}>
+          <input id="live" type="radio" name="tempAccountStatus" value="Open" {% if data.citizen.accountStatus == 'Open' %} checked='checked' {% endif %}>
           <label for="live">Open</label>
         </div>
       
         <div class="multiple-choice">
-          <input id="superseded" type="radio" name="tempAccountStatus" value="Superseded" {% if data.personalDetails.accountStatus.value == 'Superseded' %} checked='checked' {% endif %}>
+          <input id="superseded" type="radio" name="tempAccountStatus" value="Superseded" {% if data.citizen.accountStatus == 'Superseded' %} checked='checked' {% endif %}>
           <label for="superseded">Superseded</label>
         </div>
         
         <div class="multiple-choice">
-          <input id="deleted" type="radio" name="tempAccountStatus" value="Deleted" {% if data.personalDetails.accountStatus.value == 'Deleted' %} checked='checked' {% endif %}>
+          <input id="deleted" type="radio" name="tempAccountStatus" value="Deleted" {% if data.citizen.accountStatus == 'Deleted' %} checked='checked' {% endif %}>
           <label for="deleted">Deleted</label>
         </div>
         

@@ -1,0 +1,140 @@
+    {% if updated === true or cherished === true or statusupdated === true or statuscorrected === true or addresscorrected === true or cherishedlinecorrected === true %}
+      {% include "components/update/toasters/address-updated.html" %}
+    {% endif %}
+
+    {% if dateisupdated === true %}
+      {% include "components/update/toasters/address-updated.html" %}
+    {% endif %}
+    
+    {% if interestRemoved === true %}
+      {% include "components/update/toasters/interest-removed.html" %}
+    {% endif %}
+
+    {% if interestAdded === true %}
+      {% include "components/update/toasters/interest-added.html" %}
+    {% endif %}
+
+    {% if interestTransfered === true %}
+      {% include "components/update/toasters/interest-transfered.html" %}
+    {% endif %}
+    
+    <!-- sex -->
+    {% if data.sex.state === "corrected" %}
+      {% include "components/update/toasters/sex-corrected.html" %}
+    {% endif %}
+    
+    <!-- gender -->
+    {% if data.citizen.gra.state == "added" %}
+      {% include "components/update/toasters/gender-added.html" %}
+    {% endif %}
+    
+    {% if data.citizen.preGra.state == "added" %}
+      {% include "components/update/toasters/gender-added.html" %}
+    {% endif %}
+    
+    {% if data.citizen.gra.state === "updated" %}
+      {% include "components/update/toasters/gender-updated.html" %}
+    {% endif %}
+    
+    {% if data.citizen.preGra.state === "updated" %}
+      {% include "components/update/toasters/gender-updated.html" %}
+    {% endif %}
+    
+    {% if data.citizen.gra.state === "corrected" %}
+      {% include "components/update/toasters/gender-corrected.html" %}
+    {% endif %}
+    
+    {% if data.citizen.preGra.state === "corrected" %}
+      {% include "components/update/toasters/gender-corrected.html" %}
+    {% endif %}
+
+    
+    <!-- marital -->
+    {% if data.maritalState === "added" %}
+      {% include "components/update/toasters/marital-added.html" %}
+    {% endif %}
+
+    {% if data.maritalState === "updated" %}
+      {% include "components/update/toasters/marital-updated.html" %}
+    {% endif %}
+
+    {% if data.maritalState === "corrected" %}
+      {% include "components/update/toasters/marital-corrected.html" %}
+    {% endif %}
+
+    <!-- nationality -->
+    {% if data.nationality.state === "added" %}
+      {% include "components/update/toasters/nationality-added.html" %}
+    {% endif %}
+
+    {% if data.nationality.state === "updated" %}
+      {% include "components/update/toasters/nationality-updated.html" %}
+    {% endif %}
+
+    {% if data.nationality.state === "corrected" %}
+      {% include "components/update/toasters/nationality-corrected.html" %}
+    {% endif %}
+    
+    <!-- disability -->
+    {% if data.disability.state === "added" %}
+      {% include "components/update/toasters/disability-added.html" %}
+    {% endif %}
+
+    {% if data.disability.state === "removed" %}
+      {% include "components/update/toasters/disability-removed.html" %}
+    {% endif %}
+
+    {% if data.disability.state === "corrected" %}
+      {% include "components/update/toasters/disability-corrected.html" %}
+    {% endif %}
+
+    {% if data.disability.state === "updated" %}
+      {% include "components/update/toasters/disability-updated.html" %}
+    {% endif %}
+
+    <!-- needs -->
+    {% if data.additionalNeeds.state === "added" %}
+      {% include "components/update/toasters/needs-added.html" %}
+    {% endif %}
+
+    {% if data.additionalNeeds.state === "removed" %}
+      {% include "components/update/toasters/needs-removed.html" %}
+    {% endif %}
+
+    {% if data.additionalNeeds.state === "corrected" %}
+      {% include "components/update/toasters/needs-corrected.html" %}
+    {% endif %}
+
+    {% if data.additionalNeeds.state === "updated" %}
+      {% include "components/update/toasters/needs-updated.html" %}
+    {% endif %}
+
+    <!-- nifu -->
+    {% if data.nifu.state === "added" %}
+      {% include "components/update/toasters/nifu-added.html" %}
+    {% endif %}
+
+    {% if data.nifu.state === "updated" %}
+      {% include "components/update/toasters/nifu-updated.html" %}
+    {% endif %}
+
+    {% if data.nifu.state === "corrected" %}
+      {% include "components/update/toasters/nifu-corrected.html" %}
+    {% endif %}
+
+    <!-- recordLevel -->
+    {% if data.recordLevel.state === "added" %}
+      {% include "components/update/toasters/recordLevel-added.html" %}
+    {% endif %}
+
+    {% if data.recordLevel.state === "updated" %}
+      {% include "components/update/toasters/recordLevel-updated.html" %}
+    {% endif %}
+
+    {% if data.recordLevel.state === "corrected" %}
+      {% include "components/update/toasters/recordLevel-corrected.html" %}
+    {% endif %}
+
+
+
+

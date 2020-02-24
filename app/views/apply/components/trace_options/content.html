@@ -1,0 +1,35 @@
+<form method="get" action="trace-options-handler">
+
+  <div class="form-group">
+
+    <div class="multiple-choice">
+      <input id="true" type="radio" name="allocate" value=true>
+      <label for="true">
+        Allocate a nino<br>
+        These accounts do not belong to the applicant 
+      </label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="null" type="radio" name="allocate" value=null>
+      <label for="null">
+        Hold application<br>
+        Need to contact the applicant
+      </label>
+    </div>
+    
+    <div class="multiple-choice">
+      <input id="false" type="radio" name="allocate" value=false>
+      <label for="false">
+        Do not allocate<br>
+        One of these accounts belong to the applicant
+      </label>
+    </div>
+        
+  </div> 
+  
+  <div class="form-group">
+    <input class="button" type="submit" value="Next">
+  </div>
+  
+</form>
