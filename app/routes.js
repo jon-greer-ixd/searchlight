@@ -321,6 +321,8 @@ router.use('/', main,
     
   req.session.data.mcheck = false;
 
+  req.session.data.ninoAllocated = null;
+
   //dap
   req.session.data.showDapResults = null;
   console.log( `${req.session.data.showDapResults}` );

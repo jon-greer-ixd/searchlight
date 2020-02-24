@@ -5,49 +5,30 @@
   {% endif %}
 {% endfor %}
 
-<div class="history dob-history">
+<div>
   {% if openApplications == true %}
-    <ul class="">
-      <li>Date received</li>
+    <table class="table nino-tables">
+      <tr>
+        <th>Date received</th>
+        <th>Name</th>
+        <th>Status</th>
+      </tr>
       {% for application in data. ninoApplications %}
         {% if application.status == 1 %}
-          <li>{{application.received}}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+          <tr>
+            <td>{{application.received}}</td>
+            <td class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</td>
+            <td>On hold</td>
+            <td> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+    </table>
 
-    <ul class="">
-      <li>Name</li>
-      {% for application in data. ninoApplications %}
-        {% if application.status == 1 %}
-          <li class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-
-    <ul>
-      <li>Status</li>
-      {% for application in data.ninoApplications %}
-        {% if application.status == 1 %}
-          <li>{{application.statusDescription | convertstatusDescription}}</li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-
-    <ul>
-      <li>&nbsp;</li>
-      {# {% for application in data. ninoApplications %}
-        <li> <a href="get-case-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
-      {% endfor %} #}
-
-      {% for application in data.ninoApplications %}
-        {% if application.status == 1 %}
-          <li> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </li>
-        {% endif %}
-      {% endfor %}
-      
-    </ul>
   {% else %}
-    <p class="no-items">There are no applications in progress</p>
+    <div class="no-items">
+      <p>There are no applications in progress</p>
+      <hr>
+    </div>
   {% endif %}
 </div>

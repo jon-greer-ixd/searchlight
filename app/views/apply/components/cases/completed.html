@@ -29,9 +29,9 @@
       <li>Status</li>
       {% for application in data.ninoApplications %}
         {% if application.status == 2 %}
-          <li>NINO allocated. {{application.statusDescription | convertstatusDescription}}</li>
-        {% elif application.status == 3 %}
-          <li>Not allocated. {{application.statusDescription | convertstatusDescription}}</li>
+          <li>NINO allocated.</li>
+        {% elif application.status >= 3 %}
+          <li>Not allocated.</li>
         {% endif %}
       {% endfor %}
     </ul>
@@ -56,6 +56,8 @@
 
     </ul>
     {% else %}
-    <p class="no-items">There are no closed applications</p>
+    <div class="no-items">
+      <p>There are no closed applications</p>
+    </div>
   {% endif %}
 </div>

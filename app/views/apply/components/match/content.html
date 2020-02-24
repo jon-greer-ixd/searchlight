@@ -1,0 +1,58 @@
+<form method="get" action="nino-match-handler">
+
+  <div class="form-group">
+
+    <div class="multiple-choice">
+      <input id="ninofirstname" type="checkbox" name="ninofirstname" value="ninofirstname">
+      <label for="ninofirstname">First name: <span class="strong">{{data.currentNinoApplication.nameOneFirst}}</span></label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="ninolastname" type="checkbox" name="ninolastname" value="ninolastname">
+      <label for="ninolastname">Last name: <span class="strong">{{data.currentNinoApplication.nameOneLast}}</span></label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="ninopassport" type="checkbox" name="ninopassport" value="ninopassport">
+      <label for="ninopassport">Passport Number: <span class="strong">{{data.currentNinoApplication.passportNumber}}</span></label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="ninonationality" type="checkbox" name="ninonationality" value="ninonationality">
+      <label for="ninonationality">Nationality: <span class="strong">{{data.currentNinoApplication.nationality}}</span></label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="ninobrp" type="checkbox" name="ninobrp" value="ninobrp">
+      <label for="ninobrp">Biometric Residence Permit: <span class="strong">{{data.currentNinoApplication.BRP}}</span></label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="ninoiarrival" type="checkbox" name="ninoiarrival" value="ninoiarrival">
+      <label for="ninoiarrival">Arrival date: <span class="strong">{{data.currentNinoApplication.arriveDate}}</span></label>
+    </div>
+
+
+    <div class="multiple-choice">
+      <input id="ninoaddress" type="checkbox" name="ninoaddress" value="ninoaddress">
+      <label for="ninoaddress">Address: <span class="strong">{{data.currentNinoApplication.addressLineOne}} {{data.currentNinoApplication.addressLineTwo}} {{data.currentNinoApplication.postCode}}</span></label>
+    </div>
+
+
+    {# <div class="multiple-choice">
+      <input id="null" type="checkbox" name="allocate" value=null>
+      <label for="null">Mobile number: <span class="strong">{{data.currentNinoApplication.mobile}}</span></label>
+    </div> #}
+
+    {# <div class="multiple-choice">
+      <input id="null" type="checkbox" name="allocate" value=null>
+      <label for="null">Email address: <span class="strong">{{data.currentNinoApplication.email}}</span></label>
+    </div> #}
+        
+  </div> 
+  
+  <div class="form-group">
+    <input class="button" type="submit" value="Next">
+  </div>
+  
+</form>

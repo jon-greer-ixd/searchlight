@@ -7,6 +7,8 @@
     "passportNumber" : "10001",
     "nameOneFirst" : "Abel", 
     "nameOneLast" : "Negasi",
+    "updatedNameOneFirst" : null,
+    "updatedNameOneLast" : null,
     "previousNameFirst" : null, 
     "previousNameLast" : null,
     "dobValue" : "1 Dec 1980",
@@ -25,7 +27,14 @@
     "rightToWork" : true,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
     },
   {
     "applicationNumber" : "10002",
@@ -35,6 +44,8 @@
     "passportNumber" : "10002",
     "nameOneFirst" : "Ambika", 
     "nameOneLast" : "Aishwarya",
+    "updatedNameOneFirst" : null, 
+    "updatedNameOneLast" : null,
     "previousNameFirst" : null, 
     "previousNameLast" : null,
     "dobValue" : "29 Mar 1981",
@@ -53,7 +64,14 @@
     "rightToWork" : false,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10003",
@@ -63,6 +81,8 @@
     "passportNumber" : "10003",
     "nameOneFirst" : "Chenguang", 
     "nameOneLast" : "Chen",
+    "updatedNameOneFirst" : null, 
+    "updatedNameOneLast" : null,
     "previousNameFirst" : " Zhao", 
     "previousNameLast" : "Chen",
     "dobValue" : "29 Mar 1981",
@@ -81,7 +101,14 @@
     "rightToWork" : true,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10004",
@@ -91,6 +118,8 @@
     "passportNumber" : "10004",
     "nameOneFirst" : "Mateo", 
     "nameOneLast" : "Bangalter",
+    "updatedNameOneFirst" : null, 
+    "updatedNameOneLast" : null,
     "previousNameFirst" : null, 
     "previousNameLast" : null,
     "dobValue" : "3 Jan 1975",
@@ -109,7 +138,14 @@
     "rightToWork" : true,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10005",
@@ -119,6 +155,8 @@
     "passportNumber" : "10004",
     "nameOneFirst" : "Edward", 
     "nameOneLast" : "Winchester",
+    "updatedNameOneFirst" : null, 
+    "updatedNameOneLast" : null,
     "previousNameFirst" : null, 
     "previousNameLast" : null,
     "dobValue" : "3 Jan 1975",
@@ -137,7 +175,14 @@
     "rightToWork" : null,
     "matchInCis" : null,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   },
   {
     "applicationNumber" : "10006",
@@ -147,6 +192,8 @@
     "passportNumber" : "10004",
     "nameOneFirst" : "Lucy", 
     "nameOneLast" : "Macdonald",
+    "updatedNameOneFirst" : null, 
+    "updatedNameOneLast" : null,
     "previousNameFirst" : "Lucy", 
     "previousNameLast" : "Jones",
     "dobValue" : "30 Jun 1979",
@@ -165,6 +212,13 @@
     "rightToWork" : true,
     "matchInCis" : true,
     "status" : 0,
-    "statusDescription" : 0
+    "statusDescription" : 0,
+    "ninofirstname" : null,
+    "ninolastname" : null,
+    "ninopassport" : null,
+    "ninonationality" : null,
+    "ninobrp" : null,
+    "ninoiarrival" : null,
+    "ninoaddress" : null
   }
 ] 

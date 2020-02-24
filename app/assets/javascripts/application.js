@@ -786,6 +786,39 @@ if(document.getElementById("id_doc") ) {
   idDoc.addEventListener('change', idSelection);
 }
 
+if( document.getElementById("horeveal") ) {
+  var hoData = document.querySelectorAll(".ho-data")    
+  var dwpData = document.querySelectorAll(".dwp-data")    
+  var loading = document.querySelectorAll(".loading")    
+  let homeOfficeReveal = document.getElementById("horeveal");
+  let clickss = function() {
+    homeOfficeReveal.classList.add('inactive')
+    firstFunc();
+    secondFunc();
+  }
+  let firstFunc = function () {
+    [...loading].forEach(item => {
+			item.classList.add('active');
+	  });
+  }
+  let secondFunc = function () {
+    setTimeout(function(){
+      [...loading].forEach(item => {
+        item.classList.add('inactive');
+      });
+    }, 2000);
+    [...dwpData].forEach(item => {
+      item.classList.add('inactive');
+    });
+    setTimeout(function(){
+      [...hoData].forEach(item => {
+        item.classList.add('active');
+      });
+    }, 2000);
+  }
+  homeOfficeReveal.addEventListener('click', clickss);
+}
+
 
 if ( document.getElementsByClassName("new-reveal") ) {
   let toggle = function() {
@@ -812,6 +845,9 @@ if( document.getElementsByClassName("sl-local-nav-item") ) {
     navigationLinkContainers[x].addEventListener('click', navigationHighlight);
   }
 }
+
+
+
 
 
 
