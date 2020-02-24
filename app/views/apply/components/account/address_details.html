@@ -1,0 +1,33 @@
+<table class="table nino-table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Value on application</th>
+      <th scope="col">Value in CIS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">Current address</td>
+      <td>
+        {{data.currentNinoApplication.addressLineOne}} <br>
+        {{data.currentNinoApplication.addressLineTwo}} <br>
+        {{data.currentNinoApplication.postCode}}
+      </td>
+      <td>
+      {{data.currentNinoApplication.addressLineOne}} <br>
+      {{data.currentNinoApplication.addressLineTwo}} <br>
+      {{data.currentNinoApplication.postCode}}
+    </td>
+    </tr>
+    <tr>
+      <td scope="row">Previous address</td>
+      <td>None</td>
+      <td>      
+        1 Compton Avenue <br>
+        Penzance<br>
+        TR18 3RG
+      </td>
+    </tr>
+  </tbody>
+</table>

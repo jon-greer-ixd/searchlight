@@ -1,31 +1,21 @@
 <table class="table nino-table">
   <thead>
     <tr>
-      <th scope="col">Data item</th>
+      <th scope="col">Field</th>
       <th scope="col">Value on application</th>
       <th scope="col">Value in CIS</th>
     </tr>
   </thead>
   <tbody>
    <tr>
-    <td scope="row">First name</td>
-     <td>Mateo	
-     <td>Mateo Alto</td>
-    </tr>
-    <tr>
-      <td scope="row">Last name</td>
-      <td>Bangalter</td>
-      <td>Bangalter</td>
+    <td scope="row">Current name</td>
+     <td>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</td>
+     <td>{{data.currentNinoApplication.nameOneFirst}} Smith</td>
     </tr>
     <tr>
       <td scope="row">Previous name</td>
-      <td>Mateo	Smith</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <td scope="row">Previous name</td>
-      <td>Mateo	Jones</td>
-      <td>-</td>
+      <td>{{data.currentNinoApplication.nameOneFirst}} Smith</td>
+      <td>None</td>
     </tr>
   </tbody>
 </table>

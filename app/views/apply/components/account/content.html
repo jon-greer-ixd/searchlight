@@ -1,73 +1,32 @@
 <div class="personal-details">
   <div class="grid-row">
     <div class="column-two-thirds">
-    {# {% if data.ninoaccountref == 1 %}
-    {% elif data.ninoaccountref == 2 %}
-    {% elif data.ninoaccountref == 3 %}
-    {% endif %} #}
 
-    <div class="application-area">
-      <h3 class="strong">Name details</h3>
-      {% include "./name_details.html"%}
+      <div class="application-area">
+        <h3 class="strong">Names</h3>
+        {% include "./name_details.html"%}
+      </div>
+
+      <div class="application-area">
+        <h3 class="strong">Personal details</h3>
+        {% include "./personal_details.html"%}
+      </div>
+
+      <div class="application-area">
+        <h3 class="strong">Addresses</h3>
+        {% include "./address_details.html"%}
+      </div>      
+      
+      <div class="application-area">
+        <h3 class="strong">Contact details</h3>
+        {% include "./contact_details.html"%}
+      </div>
+
     </div>
 
-    <div class="application-area">
-      <h3 class="strong">Personal details</h3>
-      {% include "./personal_details.html"%}
+    <div class="column-one-third" style="text-align:left;">
+      {% include "./options.html"%}
     </div>
 
-<table class="table">
-  <tr>
-    <td>Nationality</td>
-    <td>{{data.currentNinoApplication.nationality}}</td>
-  </tr>
-  <tr {% if data.currentNinoApplication.statusDescription == 3 or data.currentNinoApplication.statusDescription == 8 %}class="application-wrong" {% endif %} >
-    <td>Biometric Residence Permit</td>
-    <td>{{data.currentNinoApplication.BRP}}</td>
-  </tr>
-  <tr {% if data.currentNinoApplication.statusDescription == 8 %}class="application-wrong" {% endif %}>
-    <td>Passport Number</td>
-    <td>{{data.currentNinoApplication.passportNumber}}</td>
-  </tr>
-  <tr {% if data.currentNinoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
-    <td>First name</td>
-    <td>{{data.currentNinoApplication.nameOneFirst}}</td>
-  </tr>
-  <tr {% if data.currentNinoApplication.statusDescription == 7 %}class="application-wrong" {% endif %}>
-    <td>Last name</td>
-    <td>{{data.currentNinoApplication.nameOneLast}}</td>
-  </tr>
-  <tr>
-    <td>Previous name</td>
-    <td>None</td>
-  </tr>
-  <tr>
-    <td>Arrival date</td>
-    <td>{{data.currentNinoApplication.arriveDate}}</td>
-  </tr>
-  <tr>
-    <td>Sex</td>
-    <td>{{data.currentNinoApplication.arriveDate}}</td>
-  <tr>
-    <td>Address</td>
-    <td>
-      {{data.currentNinoApplication.addressLineOne}}<br>
-      {{data.currentNinoApplication.addressLineTwo}}
-    </td>
-  </tr>
-  <tr>
-    <td>Post code</td>
-    <td>{{data.currentNinoApplication.postCode}}</td>
-  </tr>
-  <tr>
-    <td>Mobile number</td>
-    <td>{{data.currentNinoApplication.mobile}}</td>
-  </tr>
-  <tr>
-    <td>Email address</td>
-    <td>{{data.currentNinoApplication.email}}</td>
-  </tr>
-</table>
-    </div>
   </div>
 </div>
