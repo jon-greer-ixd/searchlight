@@ -3153,3 +3153,20 @@ table th, table td {
     font-weight: bold;
   }
 }
+
+.option-box {
+  border-left: 4px solid black;
+  width: 95%;
+  padding-left: 20px;
+  float: right;
+}
+
+.title-box {
+  p, h1 {
+    margin: 0;
+  }
+  h1 {
+    margin-bottom: 5px;
+  }
+  margin-bottom :40px;
+}

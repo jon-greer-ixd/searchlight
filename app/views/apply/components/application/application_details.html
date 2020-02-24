@@ -20,10 +20,23 @@
     <td>Biometric Residence Permit</td>
     <td>{{data.currentNinoApplication.BRP}}</td>
   </tr>
+
+  {% if data.currentNinoApplication.previousNameFirst != null %}
   <tr>
-    <td>Previous name</td>
-    <td>None</td>
+    <td>Previous first name</td>
+    <td>{{data.currentNinoApplication.previousNameFirst}}</td>
   </tr>
+  <tr>
+    <td>Previous last name</td>
+    <td>{{data.currentNinoApplication.previousNameLast}}</td>
+  </tr>
+{% else %}
+    <tr>
+      <td>Previous name</td>
+      <td>None</td>
+    </tr>
+  {% endif %}
+
   <tr {% if data.currentNinoApplication.ninoiarrival == false %} class="application-wrong" {% endif %} >
     <td>Arrival date</td>
     <td>{{data.currentNinoApplication.arriveDate}}</td>
