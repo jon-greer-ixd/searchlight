@@ -1,0 +1,28 @@
+{% if data.currentNinoApplication.status >= 1 %}
+  <h1 class="question-title">
+    {% if data.currentNinoApplication.statusDescription == 1 %}
+      Ready to allocate
+    {% elif data.currentNinoApplication.statusDescription == 2 %}
+      No right to work
+    {% elif data.currentNinoApplication.statusDescription == 3 %}
+      Their Biometric Residence Permit does not match
+    {% elif data.currentNinoApplication.statusDescription == 7 %}
+      Their name does not match
+    {% elif data.currentNinoApplication.statusDescription == 8 %}
+        Their Biometric Residence Permit and <br>their passport number do not match
+    {% endif %}
+  </h1>
+
+{% else %}
+  <h1 class="question-title">
+    Application {{data.currentNinoApplication.passportNumber}}{{data.currentNinoApplication.BRP}}
+  </h1>    
+{% endif %}
+
+{# scenario 2 - no right to work  #}
+{# scenario 3 - BRP mismatch  #}
+{# scenario 4 - BRP mismatch and name mismatch  #}
+{# scenario 5 - Passport mismatch #}
+{# scenario 6 - Passport mismatch and name mismatch  #}
+{# scenario 7 - Name mismatch  #}
+{# scenario 8 - DOB, Nationality mismatch  #}

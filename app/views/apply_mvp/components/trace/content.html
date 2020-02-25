@@ -1,0 +1,23 @@
+<div>
+
+  {# <p>You should search for matching accounts to check they do not 
+  <br>belong to this applicant before creating a new account.</p> #}
+
+  {# <p>You should search CIS to make sure this applicant does not already have 
+  <br>a National Insureance number before allocating one.</p> #}
+
+  <p style="margin-bottom: 10px;">You should:</p>
+  <ul class="list list-bullet" style="margin-bottom: 30px;">
+    <li>Make a note of the application reference {{data.currentNinoApplication.applicationNumber}}</li>
+    <li>Search CIS to make sure they do not already have a National Insurance number</li>
+    <li>If there is no matching account, you should create a new one</li>
+  </ul>
+
+
+    <a href="../search-for-a-person-mvp" class="button">Search for accounts</a> 
+    <div style="margin-top :30px;">
+    <a href="overwrite-mvp" class="under-link">The accounts in CIS do not belong to this applicant</a> 
+    {# <a class="under-link" href="./cases">Process another application</a> #}
+
+</div>
+</div>

@@ -1,0 +1,53 @@
+{% extends "govuk_template_unbranded.html" %}
+
+{% block head %}
+  {% include "includes/head.html" %}
+    
+  {# <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ #}
+
+{% endblock %}
+
+{% block cookie_message %}
+{% endblock %}
+
+{% block proposition_header %}
+{% endblock %}
+
+{% block header_class %}
+  with-proposition
+{% endblock %}
+
+{% block footer_support_links %}
+  {% if useAutoStoreData %}
+    <ul>
+      <li>
+        <a href="/prototype-admin/clear-data">Clear data</a>
+      </li>
+    </ul>
+  {% endif %}
+{% endblock %}
+
+{% block body_start %}
+    {% include "./menu.njk" %}
+{% endblock %}
+
+{% block body_end %}
+  {% block scripts %}
+    {% include "includes/scripts.html" %}
+    {% block page_scripts %}{% endblock %}
+
+  {% endblock %}
+  {% include "components/footer.njk" %}
+    
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+
+{% endblock %}
+

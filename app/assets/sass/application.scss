@@ -3115,7 +3115,7 @@ a.sl-secondary-button {
     padding :0;
   }
 }
-#confirmation h1, #confirmation h2 {
+#confirmation h1, #confirmation h2 , #confirmation h3 {
   color: white;
   font-weight :normal;
 }
@@ -3169,4 +3169,25 @@ table th, table td {
     margin-bottom: 5px;
   }
   margin-bottom :40px;
+}
+
+
+// NINO MVP
+
+.applications-list-mvp {
+  @include clearfix;
+  margin-bottom :30px;
+  padding-bottom :30px;
+  border-bottom: 1px solid #cac9cf;
+}
+
+.header-group {
+  p, h1 {
+    margin :0;
+    padding :0;
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
+  margin-bottom :30px;
 }

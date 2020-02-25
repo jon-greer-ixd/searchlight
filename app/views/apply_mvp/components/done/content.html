@@ -1,0 +1,28 @@
+<div class="column-two-thirds">
+
+  {% if data.currentNinoApplication.status == 2 %}
+    <div id="confirmation">
+      <h1>Application complete</h1>
+      <h2>National Insurance number allocated. <br>The applicant has been notified.</h2>
+    </div>
+    <a href="next-case-handler" class="button">Get next application</a> 
+
+  {% elif data.currentNinoApplication.status == 3 %}
+    <div>
+      <h2>Application reference {{data.currentNinoApplication.applicationNumber}} was stopped</h2>
+      <p>A national Insurance number was not allocated. <br>You will need to notify the applicant of the final decision.</p>
+    </div>
+    <a href="./application" class="button">View their application</a> 
+    <div style="margin-top :30px;">
+      <a href="./cases" class="under-link">Process another application</a> 
+    </div>
+  {% elif data.currentNinoApplication.status == 4 %}
+    <div id="confirmation" class="no-nino">
+      <h1>Application complete</h1>
+      <h3>A National Insurance number was not allocated because the applicant does not have the right to work. The applicant has been notified.</h3>
+    </div>
+    <a href="next-case-handler" class="button">Get next application</a> 
+  {% endif %}
+  
+
+</div>

@@ -1,0 +1,5 @@
+{% include "../application/application_details.html" %}
+
+{% if data.currentNinoApplication.status < 2 %}
+  <a class="button" href="data_match">Next</a>
+{% endif %}

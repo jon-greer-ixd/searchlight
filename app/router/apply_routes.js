@@ -202,6 +202,31 @@ router.get(/trace-options-handler/, function (req, res) {
   res.redirect(next);
 })
 
+//MVP
+
+router.get(/data-match-mvp/, function (req, res) {
+  var status;
+  var next;
+  if(req.query.datamatch == 'true') {
+    next = './right_to_work';
+  } else {
+    status = 3;
+    req.session.data.ninoAllocated = false;
+    next = './done';
+  }
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.currentNinoApplication = setNonMatchItems([], req.session.data.currentNinoApplication)
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect(next);
+})
+
+router.get(/overwrite-mvp/, function (req, res) {
+  req.session.data.currentNinoApplication.status = 2;
+  req.session.data.currentNinoApplication = setNonMatchItems([], req.session.data.currentNinoApplication)
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect('./done');
+})
+
 
 
 module.exports = router

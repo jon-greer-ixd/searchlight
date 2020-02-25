@@ -1,0 +1,63 @@
+{% set closedApplications = false %}
+{% for application in data.ninoApplications %}
+  {% if application.status >= 2 %}
+    {% set closedApplications = true %}
+  {% endif %}
+{% endfor %}
+     
+<div class="history dob-history">
+  {% if closedApplications == true %}
+    <ul class="">
+      <li>Date received</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li class="receiveddate">{{application.received}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul class="">
+      <li>Name</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul>
+      <li>Status</li>
+      {% for application in data.ninoApplications %}
+        {% if application.status == 2 %}
+          <li>NINO allocated.</li>
+        {% elif application.status >= 3 %}
+          <li>Not allocated.</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <ul>
+      <li>&nbsp;</li>
+      {# {% for application in data. ninoApplications %}
+        <li> <a href="get-case-handler?applicationNumber={{application.applicationNumber}}">Start</a> </li>
+      {% endfor %} #}
+
+      {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">View application</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {# {% for application in data.ninoApplications %}
+        {% if application.status >= 2 %}
+          <li> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">View CIS account</a></li>
+        {% endif %}
+      {% endfor %} #}
+
+    </ul>
+    {% else %}
+    <div class="no-items">
+      <p>There are no closed applications</p>
+    </div>
+  {% endif %}
+</div>

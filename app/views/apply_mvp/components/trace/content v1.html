@@ -1,0 +1,68 @@
+{# <p>Check these accounts do not belong to this person before creating a new account</p> #}
+
+<div class="grid-row">
+  <div class="column-one-half" style="text-align:left;">
+
+    <div class="nino-trace-result">
+      <ul>
+        <li class="strong">CIS account 1</li> 
+        <li>NINO: SX170211</li> 
+        <li>Mei Zhao</li>
+        <li>1 Sunrise Court, Pilton, BA6 6TY</li> 
+        <li><a href="./account?ninoaccountref=1" class="under-link">Compare account</a></li>
+      </ul>
+    </div>
+
+    <div class="nino-trace-result">
+      <ul>
+        <li class="strong">CIS account 2</li> 
+        <li>NINO: XX986176</li>
+        <li>Lucy Zhaochan</li>
+        <li>12A The Crescent, Bristol, BS1 1AH</li> 
+        <li><a href="./account?ninoaccountref=2" class="under-link">Compare account</a></li>
+      </ul>
+    </div>
+
+    <div class="nino-trace-result">
+      <ul>
+        <li class="strong">CIS account 3</li> 
+        <li>NINO: XX123456</li>
+        <li>Meisau Zhaochan</li>
+        <li>1 Jessops Lane, Edinburgh, ED1 17G</li> 
+        <li><a href="./account?ninoaccountref=3" class="under-link">Compare account</a></li>
+      </ul>
+    </div>
+
+    {# <form method="get" action="nino-master-router"> #}
+    <form method="get" action="./trace_options">
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+
+  </div>
+  <!-- <div class="column-one-third " style="text-align:left;">
+    &nbsp;
+  </div> -->
+    <div class="column-one-half" style="text-align:left;">
+    <div class="option-box">
+      <h3 class="strong">Application details</h3>
+      <ul>
+        <li class="strong">Name</li>
+        <li>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</li>
+        <li>&nbsp;</li>
+        <li class="strong">Previous name</li>
+        <li>None</li>
+        <li>&nbsp;</li>
+        <li class="strong">Date of birth</li>
+        <li>{{data.currentNinoApplication.dobValue}}</li>
+        <li>&nbsp;</li>
+        <li class="strong">Address</li>
+        <li>
+          {{data.currentNinoApplication.addressLineOne}}, {{data.currentNinoApplication.addressLineTwo}}, {{data.currentNinoApplication.postCode}}<br>
+        </li>
+      </ul>
+      </div>
+    </div>
+
+</div>
