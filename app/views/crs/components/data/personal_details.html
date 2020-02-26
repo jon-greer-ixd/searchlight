@@ -1,0 +1,36 @@
+<table class="table nino-table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Value on application</th>
+      <th scope="col">Value in CIS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">Date of birth</td>
+      <td>{{data.currentNinoApplication.dobValue}}</td>
+      <td>{{data.currentNinoApplication.dobValue}}</td>
+    </tr>
+    <tr>
+      <td scope="row">Nationality</td>
+      <td>{{data.currentNinoApplication.nationality}}</td>
+      <td>{{data.currentNinoApplication.nationality}}</td>
+    </tr>
+      <tr>
+    <td scope="row">Sex</td>
+    <td>{{data.currentNinoApplication.sex | capitalize}}</td>
+    <td>{{data.currentNinoApplication.sex | capitalize}}</td>
+  </tr>
+  <!-- <tr>
+    <td scope="row">Mobile number</td>
+    <td>07654 777 888</td>
+    <td>07456 781 112</td>
+  </tr>
+  <tr>
+    <td scope="row">Email address</td>
+    <td>myemail@gmail.com</td>
+    <td>myemail@gmail.com</td>
+  </tr> -->
+  </tbody>
+</table>

@@ -1,0 +1,34 @@
+<div class="personal-details">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+      <div class="application-area">
+        <h3 class="strong">Names</h3>
+        {% include "./name_details.html"%}
+      </div>
+
+      <div class="application-area">
+        <h3 class="strong">Personal details</h3>
+        {% include "./personal_details.html"%}
+      </div>
+
+      <div class="application-area">
+        <h3 class="strong">Addresses</h3>
+        {% include "./address_details.html"%}
+      </div>      
+      
+      <div class="application-area">
+        <h3 class="strong">Contact details</h3>
+        {% include "./contact_details.html"%}
+      </div>
+
+    </div>
+
+    <div class="column-one-third " style="text-align:left;">
+      <div class="option-box">
+        {% include "./options.html"%}
+      </div>
+  </div>
+
+  </div>
+</div>

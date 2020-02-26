@@ -1,0 +1,17 @@
+<!-- <h3 class="strong">Application details</h3>
+<p>BRP</p>
+<p>Passport</p>
+<p>Arrival date</p> -->
+
+<h3 class="strong">Options</h3>
+<p><a href="trace-options-handler?allocate=true" class="under-link">This is the applicant's account</a></p>
+<p><a href="trace-options-handler?allocate=null" class="under-link">Hold the application</a></p>
+
+{% if data.ninoaccountref == 1 %}
+  <p><a href="./account?ninoaccountref=2" class="under-link">View next account</a></p>
+{% endif %}
+{% if data.ninoaccountref == 2 %}
+  <p><a href="./account?ninoaccountref=3" class="under-link">View next account</a></p>
+{% endif %}
+
+<p><a href="./trace" class="under-link">Back to all accounts</a></p>

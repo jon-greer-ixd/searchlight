@@ -1,0 +1,29 @@
+<div class="sl-account-canvas row updater super-slim-header">
+
+  <div class="sl-account-canvas-width">
+      
+    <a class="link-back" onCLick="history.back()">Back</a>
+      
+    <div id="sl-address-primary-card" class="sl-primary-card">
+      
+      <div class="title-box">
+        <h1 class="question-title">CIS account {{data.ninoaccountref}}</h1>
+        {% if data.ninoaccountref == 1 %}
+          <p>National Insurance number SX170211</p>
+        {% elif data.ninoaccountref == 2 %}
+          <p>National Insurance number XX986176</p>
+        {% elif data.ninoaccountref == 3 %}
+          <p>National Insurance number XX123456</p>
+        {% endif  %}
+      </div>
+      
+      <div id="address-pane">          
+
+        {% include "./content.html" %}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

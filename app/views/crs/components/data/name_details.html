@@ -1,0 +1,55 @@
+  <table class="table nino-table">
+    <thead>
+      <tr>
+        <th scope="col">Field</th>
+        <th scope="col">Value on application</th>
+        <th scope="col">Value in CIS</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% if data.ninoaccountref == 1 %}
+        <tr>
+        <td scope="row">Current name</td>
+        <td>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</td>
+        <td>{{data.currentNinoApplication.previousNameFirst}} {{data.currentNinoApplication.previousNameLast}}</td>
+        </tr>
+        <tr>
+          <td scope="row">Previous name</td>
+          <td>{{data.currentNinoApplication.previousNameFirst}} {{data.currentNinoApplication.previousNameLast}}</td>
+          <td>None</td>
+        </tr>
+    {% endif  %}
+
+
+    {% if data.ninoaccountref == 2 %}
+    <tr>
+    <td scope="row">Current name</td>
+    <td>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</td>
+    <td>Lucy Zhaochan</td>
+    </tr>
+    <tr>
+      <td scope="row">Previous name</td>
+      <td>{{data.currentNinoApplication.previousNameFirst}} {{data.currentNinoApplication.previousNameLast}}</td>
+      <td>None</td>
+    </tr>
+    {% endif  %}
+
+
+    {% if data.ninoaccountref == 3 %}
+    <tr>
+    <td scope="row">Current name</td>
+    <td>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</td>
+    <td>Meisau Zhaochan</td>
+    </tr>
+    <tr>
+      <td scope="row">Previous name</td>
+      <td>{{data.currentNinoApplication.previousNameFirst}} {{data.currentNinoApplication.previousNameLast}}</td>
+      <td>None</td>
+    </tr>
+    {% endif  %}
+
+  </tbody>
+</table>
+
+

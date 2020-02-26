@@ -1,0 +1,79 @@
+<table class="table nino-table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Value on application</th>
+      <th scope="col">Value in CIS</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if data.ninoaccountref == 1 %}
+    <tr>
+      <td scope="row">Current address</td>
+      <td>
+        {{data.currentNinoApplication.addressLineOne}} <br>
+        {{data.currentNinoApplication.addressLineTwo}} <br>
+        {{data.currentNinoApplication.postCode}}
+      </td>
+      <td>
+        1 Sunrise Court<br>
+        Pilton<br>
+        BA6 6TY
+    </td>
+    </tr>
+    <tr>
+      <td scope="row">Previous address</td>
+      <td>None</td>
+      <td>      
+        1 Compton Avenue <br>
+        Somerset<br>
+        BA10 0AD
+      </td>
+    </tr>
+    {% endif  %}
+
+
+    {% if data.ninoaccountref == 2 %}
+    <tr>
+      <td scope="row">Current address</td>
+      <td>
+        {{data.currentNinoApplication.addressLineOne}} <br>
+        {{data.currentNinoApplication.addressLineTwo}} <br>
+        {{data.currentNinoApplication.postCode}}
+      </td>
+      <td>
+        12A The Crescent<br>
+        Bristol<br>
+        BS1 1AH
+    </td>
+    </tr>
+    <tr>
+      <td scope="row">Previous address</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    {% endif  %}
+
+    {% if data.ninoaccountref == 3 %}
+    <tr>
+      <td scope="row">Current address</td>
+      <td>
+        {{data.currentNinoApplication.addressLineOne}} <br>
+        {{data.currentNinoApplication.addressLineTwo}} <br>
+        {{data.currentNinoApplication.postCode}}
+      </td>
+      <td>
+        1 Jessops Lane<br>
+        Edinburgh<br>
+        ED1 17G
+    </td>
+    </tr>
+    <tr>
+      <td scope="row">Previous address</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    {% endif %}
+
+  </tbody>
+</table>

@@ -1,0 +1,55 @@
+<table class="table nino-table">
+  <thead>
+    <tr>
+      <th scope="col">Field</th>
+      <th scope="col">Value on application</th>
+      <th scope="col">Value in CIS</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% if data.ninoaccountref == 1 %}
+    <tr>
+      <td scope="row">Mobile number</td>
+      <td>07654 777 888</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td scope="row">Email address</td>
+      <td>myemail@gmail.com</td>
+      <td>None</td>
+    </tr>
+  {% endif %}
+
+
+  {% if data.ninoaccountref == 2 %}
+  <tr>
+    <td scope="row">Mobile number</td>
+    <td>07654 777 888</td>
+    <td>07651 643 064</td>
+  </tr>
+  <tr>
+    <td scope="row">Email address</td>
+    <td>{{data.currentNinoApplication.nameOneFirst | lower}}@{{data.currentNinoApplication.nameOneLast | lower}}.com</td>
+    <td>None</td>
+  </tr>
+  {% endif %}
+
+
+  {% if data.ninoaccountref == 3 %}
+  <tr>
+    <td scope="row">Mobile number</td>
+    <td>07654 777 888</td>
+    <td>0187 6967 230</td>
+  </tr>
+  <tr>
+    <td scope="row">Email address</td>
+    <td>{{data.currentNinoApplication.nameOneFirst | lower}}@{{data.currentNinoApplication.nameOneLast | lower}}.com</td>
+    <td>None</td>
+  </tr>
+  {% endif %}
+
+
+
+  </tbody>
+</table>

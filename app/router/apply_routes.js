@@ -227,6 +227,31 @@ router.get(/overwrite-mvp/, function (req, res) {
   res.redirect('./done');
 })
 
+router.get(/get-aaplication-by-ref/, function (req, res) {
+  req.session.data.currentNinoApplication = getApplication(req.query.ninoapplication_applicationnumber, req.session.data.ninoApplications);
+  res.redirect('./verify');
+})
+
+
+//data does not match question
+router.get(/mvp-options-handler/, function (req, res) {
+  console.log(`allocate = ${req.query.allocate}`);
+  var status;
+  if(req.query.allocate == 'true') {
+    status = 2;
+  } else if (req.query.allocate == 'null') {
+    status = 0;
+  } else {
+    status = 5;
+    req.session.data.ninoAllocated = false;
+  }
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect('./done');
+})
+
+
+
 
 
 module.exports = router
