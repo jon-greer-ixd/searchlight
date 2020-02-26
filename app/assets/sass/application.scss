@@ -3201,3 +3201,13 @@ table th, table td {
 a.button:hover {
   text-decoration: none;
 }
+
+
+table.crs_table {
+  display: block;
+  margin-bottom: 10px;
+  td, th {
+  padding: 10px!important;
+  border: 1px solid lightgrey;
+  }
+}

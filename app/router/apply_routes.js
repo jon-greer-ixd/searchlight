@@ -227,11 +227,15 @@ router.get(/overwrite-mvp/, function (req, res) {
   res.redirect('./done');
 })
 
-router.get(/get-aaplication-by-ref/, function (req, res) {
+router.get(/get-aplication-by-ref/, function (req, res) {
   req.session.data.currentNinoApplication = getApplication(req.query.ninoapplication_applicationnumber, req.session.data.ninoApplications);
   res.redirect('./verify');
 })
 
+router.get(/get-crs-by-ref/, function (req, res) {
+  req.session.data.currentNinoApplication = getApplication(req.query.ninoapplication_applicationnumber, req.session.data.ninoApplications);
+  res.redirect('./apply_mvp/crs_data');
+})
 
 //data does not match question
 router.get(/mvp-options-handler/, function (req, res) {
