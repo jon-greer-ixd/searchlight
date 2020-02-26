@@ -8,6 +8,10 @@
     <td>Last name</td>
     <td>{{data.currentNinoApplication.nameOneLast}}</td>
   </tr>
+  <tr {% if data.currentNinoApplication.ninolastname == false %} class="application-wrong" {% endif %}>
+    <td>Date of birth</td>
+    <td>{{data.currentNinoApplication.dobValue}}</td>
+  </tr>
   <tr {% if data.currentNinoApplication.ninopassport == false %} class="application-wrong" {% endif %}>
     <td>Passport Number</td>
     <td>{{data.currentNinoApplication.passportNumber}}</td>

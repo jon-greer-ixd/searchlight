@@ -3202,11 +3202,23 @@ a.button:hover {
   text-decoration: none;
 }
 
+.crs_block {
+  width: 500px;
+  float: left;
+  &:first-child {
+    margin-right :50px;
+  }
+}
 
 table.crs_table {
+  width: 500px;
   display: block;
   margin-bottom: 10px;
+  tbody {
+    width: 500px;
+  }
   td, th {
+  width: 250px;
   padding: 10px!important;
   border: 1px solid lightgrey;
   }
