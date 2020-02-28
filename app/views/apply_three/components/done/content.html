@@ -1,0 +1,45 @@
+<div class="column-two-thirds">
+
+  {% if data.currentNinoApplication.status == 2 %}
+    <div id="confirmation">
+      <h1>Application number {{data.currentNinoApplication.applicationNumber}} <br> is complete</h1>
+      <h3>A National Insurance number was allocated and the applicant has <br>been notified.</h3>
+    </div>
+    <a href="next-case-handler" class="button">Get the next application</a> 
+
+  {% elif data.currentNinoApplication.status == 3 %}
+    <div id="confirmation" class="no-nino">
+      <h1>Application number {{data.currentNinoApplication.applicationNumber}} <br>was stopped</h1>
+      <h3>
+        A national Insurance number was not allocated.
+      </h3>
+    </div>
+    <a href="./application" class="button">View the application</a> 
+    <div style="margin-top :30px;">
+      <a href="./cases" class="under-link">Process another application</a> 
+    </div>
+  {% elif data.currentNinoApplication.status == 4 %}
+    <div id="confirmation">
+      <h1>Application number {{data.currentNinoApplication.applicationNumber}} <br>is complete</h1>
+      <h3>A National Insurance number was not allocated and the applicant has <br>been notified.</h3>
+    </div>
+    <a href="next-case-handler" class="button">Get the next application</a> 
+  {% elif data.currentNinoApplication.status == 5 %}
+    <div id="confirmation">
+      <h1>Application number {{data.currentNinoApplication.applicationNumber}} <br>is complete</h1>
+      <h3>A National Insurance number was not allocated and the applicant has <br>been notified.</h3>
+    </div>
+    <a href="next-case-handler" class="button">Get the next application</a> 
+  {% elif data.currentNinoApplication.status == 0 %}
+    <div id="confirmation" class="no-nino">
+      <h1>Application number {{data.currentNinoApplication.applicationNumber}} is <br>not complete</h1>
+      <h3>You can access the application using the application number.</h3>
+    </div>
+      <a href="./verify" class="under-link">View the application details</a> 
+      <br>
+      <br>
+      <a href="./cases" class="under-link">Process another application</a> 
+  {% endif %}
+  
+
+</div>

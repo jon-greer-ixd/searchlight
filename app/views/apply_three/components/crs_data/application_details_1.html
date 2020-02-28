@@ -1,0 +1,38 @@
+{# <table class="crs_table">
+  <tr>
+    <td>Post Name<td>
+    <td>&nbsp;<td>
+  </tr>
+</table> #}
+
+
+<table class="crs_table">
+  <tr {% if data.currentNinoApplication.ninobrp == false %} class="application-wrong" {% endif %} >
+    <td>ID Card number</td>
+    <td>{{data.currentNinoApplication.BRP}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninolastname == false %} class="application-wrong" {% endif %}>
+    <td>Family name</td>
+    <td>{{data.currentNinoApplication.nameOneLast}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninofirstname == false %} class="application-wrong" {% endif %}>
+    <td>Other names</td>
+    <td>{{data.currentNinoApplication.nameOneFirst}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninofirstname == false %} class="application-wrong" {% endif %}>
+    <td>Date of birth</td>
+    <td>{{data.currentNinoApplication.dobValue}}</td>
+  </tr>
+  <tr>
+    <td>Sex</td>
+    <td>{{data.currentNinoApplication.sex | capitalize}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninopassport == false %} class="application-wrong" {% endif %}>
+    <td>Passport number</td>
+    <td>{{data.currentNinoApplication.passportNumber}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninonationality == false %} class="application-wrong" {% endif %}>
+    <td>Nationality</td>
+    <td>{{data.currentNinoApplication.nationality}}</td>
+  </tr>
+</table>

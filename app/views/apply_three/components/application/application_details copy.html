@@ -1,0 +1,71 @@
+
+<table class="table apply-table">
+  <tr {% if data.currentNinoApplication.ninofirstname == false %} class="application-wrong" {% endif %}>
+    <td>First name</td>
+    <td>{{data.currentNinoApplication.nameOneFirst}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninolastname == false %} class="application-wrong" {% endif %}>
+    <td>Last name</td>
+    <td>{{data.currentNinoApplication.nameOneLast}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninolastname == false %} class="application-wrong" {% endif %}>
+    <td>Date of birth</td>
+    <td>{{data.currentNinoApplication.dobValue}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninopassport == false %} class="application-wrong" {% endif %}>
+    <td>Passport Number</td>
+    <td>{{data.currentNinoApplication.passportNumber}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninonationality == false %} class="application-wrong" {% endif %}>
+    <td>Nationality</td>
+    <td>{{data.currentNinoApplication.nationality}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninobrp == false %} class="application-wrong" {% endif %} >
+    <td>Biometric Residence Permit</td>
+    <td>{{data.currentNinoApplication.BRP}}</td>
+  </tr>
+
+  {% if data.currentNinoApplication.previousNameFirst != null %}
+  <tr>
+    <td>Previous first name</td>
+    <td>{{data.currentNinoApplication.previousNameFirst}}</td>
+  </tr>
+  <tr>
+    <td>Previous last name</td>
+    <td>{{data.currentNinoApplication.previousNameLast}}</td>
+  </tr>
+{% else %}
+    <tr>
+      <td>Previous name</td>
+      <td>None</td>
+    </tr>
+  {% endif %}
+
+  <tr {% if data.currentNinoApplication.ninoiarrival == false %} class="application-wrong" {% endif %} >
+    <td>Arrival date</td>
+    <td>{{data.currentNinoApplication.arriveDate}}</td>
+  </tr>
+  <tr>
+    <td>Sex</td>
+    <td>{{data.currentNinoApplication.sex | capitalize}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
+    <td>Address</td>
+    <td>
+      {{data.currentNinoApplication.addressLineOne}}<br>
+      {{data.currentNinoApplication.addressLineTwo}}
+    </td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
+    <td>Post code</td>
+    <td>{{data.currentNinoApplication.postCode}}</td>
+  </tr>
+  <tr>
+    <td>Mobile number</td>
+    <td>{{data.currentNinoApplication.mobile}}</td>
+  </tr>
+  <tr>
+    <td>Email address</td>
+    <td>{{data.currentNinoApplication.email}}</td>
+  </tr>
+</table>
