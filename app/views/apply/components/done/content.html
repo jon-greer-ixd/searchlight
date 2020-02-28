@@ -2,12 +2,12 @@
     {% if data.ninoAllocated == true %}
       <div id="confirmation">
         <h1>National Insurance number allocated</h1>
-        <h2>The applicant will be notified</h2>
+        <h3>The applicant will be notified.</h3>
       </div>
     {% elif data.ninoAllocated == false %}
-      <div id="confirmation" class="no-nino">
-        <h1>Application complete</h1>
-        <h2>National Insurance number was not allocated</h2>
+      <div id="confirmation">
+        <h1>National Insurance number <br>was not allocated</h1>
+        <h3>The applicant will be notified.</h3>
       </div>
     {% endif %}
 

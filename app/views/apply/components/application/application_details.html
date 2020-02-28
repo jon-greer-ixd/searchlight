@@ -1,4 +1,3 @@
-
 <table class="table apply-table">
   <tr {% if data.currentNinoApplication.ninofirstname == false %} class="application-wrong" {% endif %}>
     <td>First name</td>
@@ -7,6 +6,10 @@
   <tr {% if data.currentNinoApplication.ninolastname == false %} class="application-wrong" {% endif %}>
     <td>Last name</td>
     <td>{{data.currentNinoApplication.nameOneLast}}</td>
+  </tr>
+  <tr {% if data.currentNinoApplication.ninolastname == false %} class="application-wrong" {% endif %}>
+    <td>Date of birth</td>
+    <td>{{data.currentNinoApplication.dobValue}}</td>
   </tr>
   <tr {% if data.currentNinoApplication.ninopassport == false %} class="application-wrong" {% endif %}>
     <td>Passport Number</td>
@@ -45,23 +48,31 @@
     <td>Sex</td>
     <td>{{data.currentNinoApplication.sex | capitalize}}</td>
   </tr>
-  <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
-    <td>Address</td>
-    <td>
-      {{data.currentNinoApplication.addressLineOne}}<br>
-      {{data.currentNinoApplication.addressLineTwo}}
-    </td>
-  </tr>
-  <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
-    <td>Post code</td>
-    <td>{{data.currentNinoApplication.postCode}}</td>
-  </tr>
-  <tr>
-    <td>Mobile number</td>
-    <td>{{data.currentNinoApplication.mobile}}</td>
-  </tr>
-  <tr>
-    <td>Email address</td>
-    <td>{{data.currentNinoApplication.email}}</td>
-  </tr>
 </table>
+
+<details>
+  <summary><span class="summary">Show address and contact details</span></summary>
+  <table class="table apply-table">
+    <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
+      <td>Address</td>
+      <td>
+        {{data.currentNinoApplication.addressLineOne}}<br>
+        {{data.currentNinoApplication.addressLineTwo}}
+      </td>
+    </tr>
+    <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
+      <td>Post code</td>
+      <td>{{data.currentNinoApplication.postCode}}</td>
+    </tr>
+    <tr>
+      <td>Mobile number</td>
+      <td>{{data.currentNinoApplication.mobile}}</td>
+    </tr>
+    <tr>
+      <td>Email address</td>
+      <td>{{data.currentNinoApplication.email}}</td>
+    </tr>
+  </table>
+
+</details>
+<br>

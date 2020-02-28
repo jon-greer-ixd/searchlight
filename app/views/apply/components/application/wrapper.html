@@ -2,11 +2,14 @@
 
   <div class="sl-account-canvas-width">
       
-    <a class="link-back" onCLick="history.back()">Back</a>
+    {# <a class="link-back" onCLick="history.back()">Back</a> #}
       
     <div id="sl-address-primary-card" class="sl-primary-card">
       
-      <h1 class="question-title">National Insurance number application</h1>
+      <div class="header-group">
+        <h1 class="question-title">Application details</h1>
+        <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
+      </div>
       
       <div id="address-pane">
         {% include "./content.html" %}
