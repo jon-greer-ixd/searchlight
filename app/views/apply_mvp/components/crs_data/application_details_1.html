@@ -7,10 +7,10 @@
 
 
 <table class="crs_table">
-  <tr {% if data.currentNinoApplication.ninobrp == false %} class="application-wrong" {% endif %} >
+  {# <tr {% if data.currentNinoApplication.ninobrp == false %} class="application-wrong" {% endif %} >
     <td>ID Card number</td>
     <td>{{data.currentNinoApplication.BRP}}</td>
-  </tr>
+  </tr> #}
   <tr {% if data.currentNinoApplication.ninolastname == false %} class="application-wrong" {% endif %}>
     <td>Family name</td>
     <td>{{data.currentNinoApplication.nameOneLast}}</td>

@@ -1,32 +1,25 @@
-  <div>
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <div id="confirmation">
+      <h1>There are accounts in CIS with matching personal details</h1>
+      <h3>A National Insurance number has not been allocated.</h3>
+    </div>
+  </div>
+</div>
 
-  {# <p>You should search for matching accounts to check they do not 
-  <br>belong to this applicant before creating a new account.</p> #}
-
-  {# <p>You should search CIS to make sure this applicant does not already have 
-  <br>a National Insureance number before allocating one.</p> #}
-
-    <p style="margin-bottom: 10px;">You should:</p>
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h3 class="bold">Next steps</h3>
     <ul class="list list-bullet" style="margin-bottom: 30px;">
       <li>Make a note of the application number {{data.currentNinoApplication.applicationNumber}}</li>
-      <li>Search CIS to make sure they do not have a National Insurance number already</li>
-      <li>If there is not a matching account, you should create a new one</li>
+      <li>Search for matching accounts in CIS and make sure they do not belong to the applicant</li>
+      <li>If there is a matching account, update LMS with the National Insurance number</li>
+      <li>If there is not a matching account, manually create a new one</li>
     </ul>
-
-
-    {# <a href="../search-for-a-person-mvp" class="button" target="_blank">Search for accounts</a> 
-    <div style="margin-top :30px;">
-    <a href="overwrite-mvp" class="under-link">Use these application details to allocate a National Insurance number</a> 
-    <br>
-    <br> #}
     <ul class="">
-      <li style="margin-bottom:30px;"> <a class="button" href="./application">View the application</a> </li>
-      {# <li style="margin-bottom:30px;"> <a href="overwrite-mvp" class="under-link">Use the application details to allocate a National Insurance number</a> </li> #}
-      <li> <a class="under-link" href="./cases">Process another application</a> </li>
+      <li style="margin-bottom:20px;"><a target="_blank"href="./application" class="under-link">View the application details (in a new window)</a> </li>
+      <li style="margin-bottom:20px;"> <a class="under-link" href="../search-for-a-person-three">Search for matching accounts</a> </li>
+      {# <li> <a class="under-link" href="../next-case-handler">Get the next application</a> </li> #}
     </ul>
-
-    {# <div style="margin-top :30px;">
-    <a href="mvp_options" class="button">Next</a>  #}
-
   </div>
 </div>

@@ -33,7 +33,7 @@
     <td>Arrival date</td>
     <td>{{data.currentNinoApplication.arriveDate}}</td>
   </tr>
-  <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
+  {# <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
     <td>Address</td>
     <td>
       {{data.currentNinoApplication.addressLineOne}}<br>
@@ -43,13 +43,5 @@
   <tr {% if data.currentNinoApplication.ninoaddress == false %} class="application-wrong" {% endif %} >
     <td>Post code</td>
     <td>{{data.currentNinoApplication.postCode}}</td>
-  </tr>
-  <tr>
-    <td>Mobile number</td>
-    <td>{{data.currentNinoApplication.mobile}}</td>
-  </tr>
-  <tr>
-    <td>Email address</td>
-    <td>{{data.currentNinoApplication.email | lower}}</td>
-  </tr>
+  </tr> #}
 </table>
