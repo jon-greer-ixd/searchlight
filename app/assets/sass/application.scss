@@ -3223,3 +3223,14 @@ table.crs_table {
   border: 1px solid lightgrey;
   }
 }
+
+#confirmation {
+  padding: 50px 15px 40px;
+  h3:first-child {
+    padding-bottom :15px;
+  }
+  h1 {
+    line-height: 50px;
+    padding-bottom :10px;
+  }
+}
