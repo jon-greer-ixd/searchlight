@@ -1,0 +1,86 @@
+  <div id="mainsearchform" class="grid-row">
+    <div class="column-full">
+      <div class="header">
+        <h2 class="sl-font-bold sl-third-heading">Find someone who has a CIS account</h2>
+      </div>
+
+      <div class="form">
+        <form action="trace-handler" method="get" class="form">
+          <div class="form-col-large">
+            <div class="form-group left">
+              <label class="form-label" for="mainsearch_firstname">First and middle names</label>
+              <input class="form-control" id="mainsearch_firstname" name="mainsearch_firstname"></input>
+            </div>
+            <div class="form-group right">
+              <label class="form-label" for="mainsearch_lastname">Last name</label>
+              <input class="form-control" id="mainsearch_lastname" name="mainsearch_lastname"></input>
+            </div>  
+            <div class="form-group left">
+              <label class="form-label" for="mainsearch_dateofbirth">Date of birth</label>
+              <input class="form-control" id="mainsearch_dateofbirth" name="mainsearch_dateofbirth"></input>
+            </div>  
+            <div class="form-group right">
+              <label class="form-label" for="mainsearch_dateofdeath">Date of death</label>
+              <input class="form-control" id="mainsearch_dateofbdeath" name="mainsearch_dateofbdeath"></input>
+            </div>  
+            <div class="form-group short">
+              <label class="form-label" for="mainsearch_firstline">First line of address</label>
+              <input class="form-control" id="mainsearch_firstline" name="mainsearch_firstline"></input>
+            </div>  
+            <div class="form-group short">
+              <label class="form-label" for="mainsearch_town">Town</label>
+              <input class="form-control" id="mainsearch_town" name="mainsearch_town"></input>
+            </div>  
+            <div class="form-group short">
+              <label class="form-label" for="mainsearch_postcode">Postcode</label>
+              <input class="form-control" id="mainsearch_postcode" name="mainsearch_postcode"></input>
+            </div>  
+            <div class="form-group">
+              <fieldset>
+                <legend>
+                  <span class="form-label">Sex</span>
+                </legend>
+                <div class="multiple-choice inline">
+                  <input id="male" name="waste-types" type="checkbox" value="male">
+                  <label for="male">Male</label>
+                </div>
+                <div class="multiple-choice inline">
+                  <input id="female" name="waste-types" type="checkbox" value="female">
+                  <label for="female">Female</label>
+                </div>
+              </fieldset>
+            </div> 
+            <div class="form-group">
+              <label class="form-label" for="mainsearch_contact">Contact number or email</label>
+              <input class="form-control" id="mainsearch_contact"></input>
+            </div>  
+          </div>  
+          <div class="form-col-small">
+            <div class="form-group">
+                <fieldset>
+                  <legend class="visually-hidden">
+                    <p>Trace options</p>
+                  </legend>
+                  <div class="multiple-choice">
+                    <input id="relaxed" name="trace-options" type="checkbox" value="relaxed">
+                    <label for="relaxed"><span>Relaxed trace</span> <span>Include similar names</span></label>
+                  </div>
+                  <div class="multiple-choice">
+                    <input id="multipart" name="trace-options" type="checkbox" value="multipart">
+                    <label for="multipart"><span>Multipart surname</span> <span>Prefix, hyphen, part name</span></label>
+                  </div>
+                  <div class="multiple-choice">
+                    <input id="historic" name="trace-options" type="checkbox" value="historic">
+                    <label for="historic"><span>Historic trace</span> <span>Include historic entries</span></label>
+                  </div>
+                </fieldset>
+              </div>
+          </div>
+          <div class="form-group buttons">
+            <button class="button" type="submit">Search</button>
+            <a href="./settlement-status" class="button sl-secondary-button" type="submit">Clear form</a>
+          </div>  
+        </form>
+      </div>
+      </div>
+      </div>

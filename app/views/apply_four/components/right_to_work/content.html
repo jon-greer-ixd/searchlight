@@ -1,0 +1,27 @@
+<form method="get" action="right-to-work-handler">
+
+  <div class="form-group">
+
+    <div class="multiple-choice">
+      <input id="true" type="radio" name="allocate" value=true>
+      <label for="true">
+        Yes
+        {# , allocate a National Insurance number #}
+      </label>
+    </div>
+    
+    <div class="multiple-choice">
+      <input id="false" type="radio" name="allocate" value=false>
+      <label for="false">
+        No
+        {# , do not allocate a National Insurance number #}
+      </label>
+    </div>
+        
+  </div> 
+  
+  <div class="form-group">
+    <input class="button" type="submit" value="Next">
+  </div>
+  
+</form>

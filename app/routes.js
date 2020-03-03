@@ -339,6 +339,10 @@ router.use('/', main,
   req.session.data.ninoApplications = ninoApplications;
   req.session.data.citizen = getCitizen("SX170202", req.session.data.cis);
 
+  //apply
+  req.session.data.ninoapplication_firstnames = null;
+  req.session.data.ninoapplication_lastname = null;
+
   
   for (var key in defaults) {
     if (defaults.hasOwnProperty(key)) {

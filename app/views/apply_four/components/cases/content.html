@@ -1,0 +1,25 @@
+<div class="personal-details">
+
+  <div class="applications-list-mvp">
+    {# <h3 class="strong">Get the next application</h3> #}
+    {% include "./get_case.html" %}
+  </div>
+
+  <div class="get-cases-mpv">
+    <h3 class="strong">Find an application by reference number</h3>
+      <form method="get" action="get-aplication-by-ref">
+        <fieldset>
+          <div class="form-group">
+            <label class="form-label" for="ninoapplication_applicationnumber">
+              Reference number
+            </label>
+            <input class="form-control" id="ninoapplication_applicationnumber" name="ninoapplication_applicationnumber" type="text">
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <input class="button" type="submit" value="Find an application">
+        </div>
+      </form>
+  </div>
+
+</div>

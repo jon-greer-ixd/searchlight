@@ -1,0 +1,34 @@
+{% set openApplications = false %}
+{% for application in data. ninoApplications %}
+  {% if application.status == 1 %}
+    {% set openApplications = true %}
+  {% endif %}
+{% endfor %}
+
+<div>
+  {% if openApplications == true %}
+    <table class="table nino-tables">
+      <tr>
+        <th>Date received</th>
+        <th>Name</th>
+        <th>Status</th>
+      </tr>
+      {% for application in data. ninoApplications %}
+        {% if application.status == 1 %}
+          <tr>
+            <td>{{application.received}}</td>
+            <td class="name">{{application.nameOneFirst}} {{application.nameOneLast}}</td>
+            <td>On hold</td>
+            <td> <a class="under-link" href="get-case-handler?applicationNumber={{application.applicationNumber}}">Continue</a> </td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+    </table>
+
+  {% else %}
+    <div class="no-items">
+      <p>There are no applications in progress</p>
+      <hr>
+    </div>
+  {% endif %}
+</div>

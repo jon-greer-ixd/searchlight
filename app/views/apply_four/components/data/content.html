@@ -1,0 +1,34 @@
+<div class="personal-details">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    {# <div class="panel panel-border-wide">
+      <p>Name on application: <span class="bold">{{data.currentNinoApplication.nameOneFirst | capitalize}} {{data.currentNinoApplication.nameOneLast | capitalize }}</span</p>
+    </div>
+      <br> #}
+    
+      <form method="get" action="verify">
+        <fieldset>
+          <div class="form-group">
+            <label class="form-label" for="ninoapplication_firstnames">
+              First names
+            </label>
+            <input class="form-control" id="ninoapplication_firstnames" name="ninoapplication_firstnames" type="text" value="{{data.currentNinoApplication.nameOneFirst}}">
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-group">
+            <label class="form-label" for="date">
+              Last name
+            </label>
+            <input class="form-control" id="ninoapplication_lastname" name="ninoapplication_lastname" type="text" value="{{data.currentNinoApplication.nameOneLast}}">
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+      </form>
+      <a href="./verify">Cancel</a>
+    </div>
+  </div>
+</div>
