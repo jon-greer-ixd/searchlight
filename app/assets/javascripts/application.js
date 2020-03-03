@@ -819,6 +819,14 @@ if( document.getElementById("horeveal") ) {
   homeOfficeReveal.addEventListener('click', clickss);
 }
 
+if( document.getElementById("nino-menu") ) {
+  let ninoMenu = document.getElementById("nino-menu");
+  let ninoMenuLink = document.getElementById("nino-menu-link");
+    let toggleMenu = function () {
+      ninoMenu.classList.toggle('hide');
+    }
+  ninoMenuLink.addEventListener('click', toggleMenu);
+}
 
 if ( document.getElementsByClassName("new-reveal") ) {
   let toggle = function() {

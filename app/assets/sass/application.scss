@@ -3234,3 +3234,30 @@ table.crs_table {
     padding-bottom :10px;
   }
 }
+
+#nino-menu {
+  height :auto;
+  padding :15px 30px 5px 15px;
+  width: auto;
+  text-align: right;
+  display: block;
+  background-color: black;
+  position: absolute;
+  right: 0;
+  top: 54px;
+  ul.list {
+    @include clearfix;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    li {
+      float :left;
+      width :100%;
+      display: block;
+      padding-bottom: 10px;
+    }
+  }
+  .hide {
+    display: none;
+  }
+}
