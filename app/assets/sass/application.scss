@@ -115,12 +115,6 @@ $sl-background-gray: #f1f1f1;
 ///////////
 
 
-
-
-
-
-
-
 #prototype-nav {
   width: 95%;
   margin: 0 auto;
@@ -128,7 +122,18 @@ $sl-background-gray: #f1f1f1;
     margin: 0;
     padding: 0!important;
   }
+  .group {
+    margin: 20px 0 30px;
+    ul {
+      margin: 15px 0;
+    }
+    details {
+      margin: 15px 0;
+    }
+  }
 }
+
+
 
 label {
   font-weight: normal;

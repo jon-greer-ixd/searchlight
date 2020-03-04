@@ -1,0 +1,40 @@
+<form method="get" action="tracemvp-options-handler">
+
+  <div class="form-group">
+
+    <div class="multiple-choice">
+      <input id="true" type="radio" name="allocate" value=true>
+      <label for="true">
+        Allocate a nino<br>
+        These accounts do not belong to the applicant 
+      </label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="null" type="radio" name="allocate" value=null>
+      <label for="null">
+        Hold application<br>
+        Need to contact the applicant
+      </label>
+    </div>
+    
+    <div class="multiple-choice" data-target="contact-by-phone">
+      <input id="false" type="radio" name="allocate" value=false>
+      <label for="false">
+        Do not allocate<br>
+        One of these accounts belong to the applicant
+      </label>
+    </div>
+
+    <div class="panel panel-border-narrow js-hidden" id="contact-by-phone">
+      <label class="form-label" for="contact-phone">What is their National Insurance number?</label>
+      <input style="width:300px;"class="form-control" name="contact-phone" type="tel" id="contact-phone">
+    </div>
+
+  </div> 
+  
+  <div class="form-group">
+    <input class="button" type="submit" value="Next">
+  </div>
+  
+</form>

@@ -6,161 +6,172 @@
 
 {% block content %}
   
-<div id=prototype-nav>
+<div id="prototype-nav">
   <div class="grid-row">
     <div class="column-two-thirds">
 
       <h1 class="heading-large">Searchlight prototypes</h1>
       <p>To reset the data in the prototype, select the 'Feedback' link at the top of any page.</p>
      
-      <hr>
-      <h2 class="heading-medium">Get a NINO</h2>
-      <p>To view a case where there are matching accounts in CIS. <br>Select yes to 'right to work' and yes to 'personal details match' <br>in application 3, number 10006, Lucy Zhao.<p>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="search-for-a-person-four">MVP Version 4</a>&nbsp; (Show trace results and change data) March 2020)</li>
-        <li><a class="under-link" href="search-for-a-person-three">MVP Version 3</a>&nbsp; (February 2020)</li>
-        <li><a class="under-link" href="search-for-a-person-mvp">MVP Version 2 </a>&nbsp; (February 2020)</li>
-        <li><a class="under-link" href="search-for-a-person">Version 1</a>&nbsp; (January 2020)</li>
-      </ul>
+      <div class="group">
+        <h2 class="heading-medium">Process a NINO application</h2>
+        <ul>
+          <li><a href="search-for-a-person-four">Version 4</a> (Post MVP)</li>
+          <li>Mar 2020</li>
+          <li>Shows trace results and allows users to change name details.</li>
+        </ul>
 
-      <details>
-      <summary><span class="summary">Test accounts</span></summary>
+        <ul>
+          <li><a href="search-for-a-person-three">Version 3</a>(MVP)</li>
+          <li>Feb 2020</li>
+        </ul>
 
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10001" target="_blank">Abel Negasi</a></li>
-        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10002" target="_blank">Ambika Aishwarya</a></li>
-        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10006" target="_blank">Lucy Zhao</a></li>
-        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10007" target="_blank">Jo Chen</a></li>
-        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10008" target="_blank">Mateo Bangalter</a></li>
-        {# <li><a class="under-link" href="cis-handler?nino=SX170206&role=dg">Sample 2020</a> &nbsp;(Beth, D.G.)</li> #}
-        {# <li><a class="under-link" href="search-for-a-person">Apply</li> #}
-      </ul>
-      <ul class="list">
-        <li>Journeys included:</li>
-        <li>All details match and the person has the right to work.</li>
-        <li>All details match but the person does not have the right to work.</li>
-        <li>Some details do not match, do not allocate.</li>
-        <li>Names do not match. Update the name and allocate. </li>
-        <li>Names do not match. Hold the application to verify personal details, then continue.</li>
-        <li>All details match - CIS hold similar records (Work in progress).</li>
-      </ul>
-      </details>
+        <ul>
+          <li><a href="search-for-a-person-mvp">Version 2</a>(MVP)</li>
+          <li>Feb 2020</li>
+          <li></li>
+        </ul>
+
+        <ul>
+          <li><a href="search-for-a-person">Version 1</a>(MVP)</li>
+          <li>Jan 2020</li>
+          <li></li>
+        </ul>
+
+        <details>
+          <summary><span class="summary">Show mock up Home Office CRS database accountss</span></summary>
+
+          <ul class="list list-bullet">  
+            <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10001" target="_blank">Abel Negasi</a></li>
+            <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10002" target="_blank">Ambika Aishwarya</a></li>
+            <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10006" target="_blank">Lucy Zhao</a></li>
+            <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10007" target="_blank">Jo Chen</a></li>
+            <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10008" target="_blank">Mateo Bangalter</a></li>
+          </ul>
+        </details>
+
+        <details>
+          <summary><span class="summary">Prototype setup notes</span></summary>
+          <p>To view a case where there are matching accounts in CIS.<br>
+            Use application number 10006 (Lucy Zhao). Select yes to 'right to work'<br>
+            and yes to 'personal details match'.<p>
+        </details>
+      </div>
             
-      <hr>
-      <h2 class="heading-medium">Nationality, immigration status and right to public funds</h2>
-      
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="/settlement-status-v4">Version 4 - Feb 2020</a></li>
-        <li><a class="under-link" href="/settlement-status-v3">Version 3 - October 2019</a></li>
-        <li><a class="under-link" href="/settlement-status-v2">Version 2 - October 2019</a></li>
-        <li><a class="under-link" href="/settlement-status">Version 1 - September 2019</a></li>
-        <li><a class="under-link" href="cis-handler?nino=SX170204&role=ho">Account 1</a> &nbsp;(Jonas)</li>
-        <li><a class="under-link" href="cis-handler?nino=QQ123456&role=ho">Account 2</a> &nbsp;(Hans QQ123456)</li>
-        <li><a class="under-link" href="cis-handler?nino=PA807930&role=ho">Account 3</a> &nbsp;(Javier PA807930)</li>
-        <li><a class="under-link" href="cis-handler?nino=SX170205&role=dg">Account 4</a> &nbsp;(JP)</li>
-        <li><a class="under-link" href="cis-handler?nino=SX170206&role=dg">Account 5</a> &nbsp;(Beth)</li>
-      </ul>
-
-      <hr>
-      
-      <ul class="list list-bullet">  
-        <li>Trace - <a class="under-link" href="/trace">December 2019</a></li>
-        <li><a class="under-link" href="cis-handler?nino=SX170207&role=none">Account 6</a> &nbsp;(Thomas Brown)</li>
-        <li><a class="under-link" href="cis-handler?nino=SX170208&role=none">Account 7</a> &nbsp;(Mavis Brown)</li>
-      </ul>
-
-      <hr>
-      <h2 class="heading-medium">Details about a death</h2>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="/details-about-death">Version 1 - August 2019</a></li>
-      </ul>
-      <hr>    
-
-      <h2 class="heading-medium">New benefits layout</h2>
-      <p>August 2019 (v3)</p>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="cis-handler?nino=SX170203&role=none">Account 3</a> &nbsp;(Robin. Current - Pension)</li>
-        <li><a class="under-link" href="cis-handler?nino=SX170202&role=none">Account 2</a> &nbsp;(Sita. Current - DLA. Previous - CA)</li>
-        <li><a class="under-link" href="cis-handler?nino=SX170201&role=none">Account 1</a> &nbsp;(Alex. Current - UC and PIP. Previous - CA)</li>
-        <li><a class="under-link" href="account2/account">Orignal Account</a></li>
-        <li><a class="under-link" href="benefits/dla-v3">Disability Living Allowance</a> - current award</li>
-        <li><a class="under-link" href="benefits/sp-v3  ">State Pension</a> - current award</li>
-        <li><a class="under-link" href="benefits/pip-v3">Personal Independence Payment</a> - current award</li>
-        <li><a class="under-link" href="benefits/uc-v3">Universal Credit</a> - current award</li>
-        <li><a class="under-link" href="benefits/ca-v3">Carer's Allowance</a> - previous award</li>
-      </ul>
-      <hr>     
-
-      <h2 class="heading-medium">Bereavement support</h2>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="search-v8">March 2019</a></li>
-        <li><a class="under-link" href="search-v7">Feb 2019</a></li>
-      </ul>
-      <hr>
-
-      <h2 class="heading-medium">Management checks</h2>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="search-v9">Version C - Feb 2019</a></li>
-      </ul>
-      <hr>
-            
-      <h2 class="heading-medium">Get notifications</h2>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="/notifications/v2/page-one">Version 2 - November 2018</a></li>
-        <li><a class="under-link" href="/notifications/page-one">Version 1 - October 2018</a></li>
-      </ul>
-      <hr>
-            
-      <h2 class="heading-medium">Get alerts</h2>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="/alerts/v2/page-one">Version 2 November 2018</a></li>
-        <li><a class="under-link" href="/alerts/page-one">Version 1 September 2018</a></li>
-      </ul>
-      <hr>
-            
-      <h2 class="heading-medium">Get citizen income information</h2>
-      
-      <p style="font-size: 17px">Dec 2018 - version 2<span> &nbsp; </span></p>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="/search-v4/?gciiExample=6">Showing income vs employment</a></li>
-      </ul>
-      
-      <p style="font-size: 17px">July 2018 - version 1<span> &nbsp; </span></p>
-      <ul class="list list-bullet">  
-        <li><a class="under-link" href="/search-v4/?gciiExample=2">Example 2</a></li>
-        <li><a class="under-link" href="/search-v4/?gciiExample=2">Example 2</a></li>
-        <li><a class="under-link" href="/search-v4/?gciiExample=5">Example 5</a></li>
-        <li><a class="under-link" href="/search-v4/?gciiExample=4">Example 4 - third party</a></li>
-      </ul>
-      <hr>
-            
-      <h2 class="heading-medium">
-        Maintain relationships<br>
-        Maintain names<br>
-        Maintain personal details<br>
-        Maintain contact details
-      </h2>
-      <details>
-        <summary>Journeys included</summary>
+        <h2 class="heading-medium">Nationality, immigration status and right to public funds</h2>
+        
         <ul class="list list-bullet">  
-          <li>Maintain contact details</li> <!--done-->
-          <li>Maintain nationality</li> <!--done-->
-          <li>Maintain Sex</li> <!--done-->
-          <li>Correct date of birth</li> <!--done-->
-          <li>Add or correct date of death</li> <!--done-->
-          <li>Maintain potentially violent status</li>  <!-- done -->
-          <li>Marital or Civil Partnership status</li>  <!-- done -->
-          <li>Disability status</li> <!-- done -->
-          <li>Special needs</li><!-- done -->
-          <li>Prefered Language</li>
-          <li>Spoken Language</li> <!-- done -->
-          <li>Immigration data</li>
-<!--                <li>Gender recognition details</li>-->
-          <li>Identity fraud interest</li>
-          <li>Customer record level</li>
+          <li><a class="under-link" href="/settlement-status-v4">Version 4 - Feb 2020</a></li>
+          <li><a class="under-link" href="/settlement-status-v3">Version 3 - October 2019</a></li>
+          <li><a class="under-link" href="/settlement-status-v2">Version 2 - October 2019</a></li>
+          <li><a class="under-link" href="/settlement-status">Version 1 - September 2019</a></li>
+          <li><a class="under-link" href="cis-handler?nino=SX170204&role=ho">Account 1</a> &nbsp;(Jonas)</li>
+          <li><a class="under-link" href="cis-handler?nino=QQ123456&role=ho">Account 2</a> &nbsp;(Hans QQ123456)</li>
+          <li><a class="under-link" href="cis-handler?nino=PA807930&role=ho">Account 3</a> &nbsp;(Javier PA807930)</li>
+          <li><a class="under-link" href="cis-handler?nino=SX170205&role=dg">Account 4</a> &nbsp;(JP)</li>
+          <li><a class="under-link" href="cis-handler?nino=SX170206&role=dg">Account 5</a> &nbsp;(Beth)</li>
+        </ul>
 
-        </ul> 
-      </details>
+        <hr>
+      
+        <ul class="list list-bullet">  
+          <li>Trace - <a class="under-link" href="/trace">December 2019</a></li>
+          <li><a class="under-link" href="cis-handler?nino=SX170207&role=none">Account 6</a> &nbsp;(Thomas Brown)</li>
+          <li><a class="under-link" href="cis-handler?nino=SX170208&role=none">Account 7</a> &nbsp;(Mavis Brown)</li>
+        </ul>
+
+        <hr>
+        <h2 class="heading-medium">Details about a death</h2>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="/details-about-death">Version 1 - August 2019</a></li>
+        </ul>
+        <hr>    
+
+        <h2 class="heading-medium">New benefits layout</h2>
+        <p>August 2019 (v3)</p>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="cis-handler?nino=SX170203&role=none">Account 3</a> &nbsp;(Robin. Current - Pension)</li>
+          <li><a class="under-link" href="cis-handler?nino=SX170202&role=none">Account 2</a> &nbsp;(Sita. Current - DLA. Previous - CA)</li>
+          <li><a class="under-link" href="cis-handler?nino=SX170201&role=none">Account 1</a> &nbsp;(Alex. Current - UC and PIP. Previous - CA)</li>
+          <li><a class="under-link" href="account2/account">Orignal Account</a></li>
+          <li><a class="under-link" href="benefits/dla-v3">Disability Living Allowance</a> - current award</li>
+          <li><a class="under-link" href="benefits/sp-v3  ">State Pension</a> - current award</li>
+          <li><a class="under-link" href="benefits/pip-v3">Personal Independence Payment</a> - current award</li>
+          <li><a class="under-link" href="benefits/uc-v3">Universal Credit</a> - current award</li>
+          <li><a class="under-link" href="benefits/ca-v3">Carer's Allowance</a> - previous award</li>
+        </ul>
+        <hr>     
+
+        <h2 class="heading-medium">Bereavement support</h2>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="search-v8">March 2019</a></li>
+          <li><a class="under-link" href="search-v7">Feb 2019</a></li>
+        </ul>
+        <hr>
+
+        <h2 class="heading-medium">Management checks</h2>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="search-v9">Version C - Feb 2019</a></li>
+        </ul>
+        <hr>
+              
+        <h2 class="heading-medium">Get notifications</h2>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="/notifications/v2/page-one">Version 2 - November 2018</a></li>
+          <li><a class="under-link" href="/notifications/page-one">Version 1 - October 2018</a></li>
+        </ul>
+        <hr>
+            
+        <h2 class="heading-medium">Get alerts</h2>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="/alerts/v2/page-one">Version 2 November 2018</a></li>
+          <li><a class="under-link" href="/alerts/page-one">Version 1 September 2018</a></li>
+        </ul>
+        <hr>
+              
+        <h2 class="heading-medium">Get citizen income information</h2>
+        
+        <p style="font-size: 17px">Dec 2018 - version 2<span> &nbsp; </span></p>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="/search-v4/?gciiExample=6">Showing income vs employment</a></li>
+        </ul>
+      
+        <p style="font-size: 17px">July 2018 - version 1<span> &nbsp; </span></p>
+        <ul class="list list-bullet">  
+          <li><a class="under-link" href="/search-v4/?gciiExample=2">Example 2</a></li>
+          <li><a class="under-link" href="/search-v4/?gciiExample=2">Example 2</a></li>
+          <li><a class="under-link" href="/search-v4/?gciiExample=5">Example 5</a></li>
+          <li><a class="under-link" href="/search-v4/?gciiExample=4">Example 4 - third party</a></li>
+        </ul>
+        <hr>
+            
+        <h2 class="heading-medium">
+          Maintain relationships<br>
+          Maintain names<br>
+          Maintain personal details<br>
+          Maintain contact details
+        </h2>
+        <details>
+          <summary>Journeys included</summary>
+          <ul class="list list-bullet">  
+            <li>Maintain contact details</li> <!--done-->
+            <li>Maintain nationality</li> <!--done-->
+            <li>Maintain Sex</li> <!--done-->
+            <li>Correct date of birth</li> <!--done-->
+            <li>Add or correct date of death</li> <!--done-->
+            <li>Maintain potentially violent status</li>  <!-- done -->
+            <li>Marital or Civil Partnership status</li>  <!-- done -->
+            <li>Disability status</li> <!-- done -->
+            <li>Special needs</li><!-- done -->
+            <li>Prefered Language</li>
+            <li>Spoken Language</li> <!-- done -->
+            <li>Immigration data</li>
+  <!--                <li>Gender recognition details</li>-->
+            <li>Identity fraud interest</li>
+            <li>Customer record level</li>
+
+          </ul> 
+        </details>
 
       <p style="font-size: 17px">June 2018<span> &nbsp; </span></p>
       
