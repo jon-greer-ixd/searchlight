@@ -1,4 +1,4 @@
-<div class="grid-row">
+{# <div class="grid-row">
   <div class="column-two-thirds">
     <div id="negative-done">
       <h1>There are accounts in CIS <br>with matching personal details</h1>
@@ -11,7 +11,6 @@
   <div class="column-two-thirds">
     <h3 class="bold">Next steps</h3>
     <ul class="list list-bullet" style="margin-bottom: 30px;">
-      {# <li>Make a note of the application number {{data.currentNinoApplication.applicationNumber}}</li> #}
       <li>Search for matching accounts in CIS and make sure they do not belong to the applicant</li>
       <li>If there is a matching account, update LMS with the National Insurance number</li>
       <li>If there is not, manually create one and update LMS</li>
@@ -20,6 +19,33 @@
       <li style="margin-bottom:20px;"><a target="_blank"href="./application" class="under-link">View the application details (in a new window)</a> </li>
       <li style="margin-bottom:20px;"> <a class="under-link" href="../search-for-a-person-three">Search for matching accounts</a> </li>
       <li> <a class="under-link" href="./next-case-handler">Get the next application</a> </li>
+    </ul>
+  </div>
+</div> #}
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <div id="negative-done">
+      <h1>There are accounts in CIS <br>with matching personal details</h1>
+    </div>
+  </div>
+</div>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <h3 class="bold">Search for matching accounts</h3>
+    <p>Make sure any existing accounts in CIS do not belong to the applicant.</p>
+    <p><a target="_blank" href="./application" class="under-link">View the application details</a> (in a new window)</p>
+    <p><a target="_blank" class="under-link" href="../search-for-a-person-three">Search for matching accounts</a>  (in a new window)</p>
+    <br>
+    <p class="bold">If there is a matching account or you need to request more information</p3>
+    <p>You should update LMS and contact the applicant.</p>
+    <p> <a class="under-link" href="./next-case-handler">Get the next application</a> </p>
+
+    <br>
+    <p class="bold">If there is not a matching account</p3>
+    <p>Use the details the applicant submitted to <a class="under-link" href="mvp-traceoptions-handler?allocate=true">allocate a National Insurance number</a></p>
+
     </ul>
   </div>
 </div>

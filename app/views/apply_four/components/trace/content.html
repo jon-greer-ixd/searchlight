@@ -2,66 +2,106 @@
 
 <div class="grid-row">
   <div class="column-one-half" style="text-align:left;">
+    
+    <h3 class="strong">Accounts with matching details</h3>
 
     <div class="nino-trace-result">
       <ul>
-        <li class="strong">CIS account 1</li> 
-        <li>NINO: SX170211</li> 
+        <li>Name</li>
         <li>Mei Zhao</li>
+      </ul>
+      <ul>
+        <li>Date of birth</li>
+        <li>11 Jan 1979</li>
+      </ul>
+      <ul>
+        <li>Address</li>
         <li>1 Sunrise Court, Pilton, BA6 6TY</li> 
-        <li><a href="./account?ninoaccountref=1" class="under-link">Compare account</a></li>
+      </ul>
+      <ul>
+        <li>NINO</li>
+        <li>SX170211</li> 
+      </ul>
+      <ul>
+        <li><a href="" class="under-link">View account</a></li>
       </ul>
     </div>
 
     <div class="nino-trace-result">
       <ul>
-        <li class="strong">CIS account 2</li> 
-        <li>NINO: XX986176</li>
+        <li>Name</li>
         <li>Lucy Zhaochan</li>
+      </ul>
+      <ul>
+        <li>Date of birth</li>
+        <li>30 Jun 1979</li>
+      </ul>
+      <ul>
+        <li>Address</li>
         <li>12A The Crescent, Bristol, BS1 1AH</li> 
-        <li><a href="./account?ninoaccountref=2" class="under-link">Compare account</a></li>
+      </ul>
+      <ul>
+        <li>NINO</li>
+        <li>XX986176</li>
+      </ul>
+      <ul>
+        <li><a href"" class="under-link">View account</a></li>
       </ul>
     </div>
 
     <div class="nino-trace-result">
       <ul>
-        <li class="strong">CIS account 3</li> 
-        <li>NINO: XX123456</li>
+        <li>Name</li>
         <li>Meisau Zhaochan</li>
+      </ul>
+      <ul>
+        <li>Date of birth</li>
+        <li>21 Jun 1980</li>
+      </ul>
+      <ul>
+        <li>Address</li>
         <li>1 Jessops Lane, Edinburgh, ED1 17G</li> 
-        <li><a href="./account?ninoaccountref=3" class="under-link">Compare account</a></li>
+      </ul>
+      <ul>
+        <li>NINO</li>
+        <li>XX123456</li>
+      </ul>
+      <ul>
+        <li><a href="" class="under-link">View account</a></li>
       </ul>
     </div>
 
-    {# <form method="get" action="nino-master-router"> #}
     <form method="get" action="./trace_options">
-      <div class="form-group">
+      <div class="">
         <input class="button" type="submit" value="Next">
       </div>
     </form>
 
   </div>
-  <!-- <div class="column-one-third " style="text-align:left;">
-    &nbsp;
-  </div> -->
-    <div class="column-one-half" style="text-align:left;">
+
+    <div class="column-one-half">
     <div class="option-box">
       <h3 class="strong">Application details</h3>
+      <div class="nino-trace-result no-border">
+        <ul>
+          <li>Name</li>
+          <li>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</li>
+        </ul>
       <ul>
-        <li class="strong">Name</li>
-        <li>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</li>
-        <li>&nbsp;</li>
-        <li class="strong">Previous name</li>
+        <li>Previous name</li>
         <li>None</li>
-        <li>&nbsp;</li>
-        <li class="strong">Date of birth</li>
-        <li>{{data.currentNinoApplication.dobValue}}</li>
-        <li>&nbsp;</li>
-        <li class="strong">Address</li>
-        <li>
-          {{data.currentNinoApplication.addressLineOne}}, {{data.currentNinoApplication.addressLineTwo}}, {{data.currentNinoApplication.postCode}}<br>
-        </li>
       </ul>
+        <ul>
+          <li>Date of birth</li>
+          <li>{{data.currentNinoApplication.dobValue}}</li>
+        </ul>
+        <ul>
+          <li>Address</li>
+          <li>
+            {{data.currentNinoApplication.addressLineOne}}, {{data.currentNinoApplication.addressLineTwo}}, {{data.currentNinoApplication.postCode}}<br>
+          </li>
+        </ul>
+      </div>
       </div>
     </div>
 

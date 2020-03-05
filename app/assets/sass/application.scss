@@ -3007,9 +3007,28 @@ a.sl-secondary-button {
 }
 
 .nino-trace-result {
+  @include clearfix;
   padding-bottom :15px;
   margin-bottom :15px;
   border-bottom: 1px solid lightgrey;
+  ul {
+    li { 
+      width: 30%;
+      float :left;
+      padding-bottom :5px;
+      &:nth-child(2) {
+        width: 50%;
+      }
+    }
+  }
+  &.no-border {
+    border: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  &:last-child(){
+    margin-bottom :30px;
+  }
 }
 
 
@@ -3299,5 +3318,11 @@ table.crs_table {
     &.button {
       margin-bottom: 30px;
     }
+  }
+}
+
+tr.updated-name {
+  td:first-child {
+    border-top: 0;
   }
 }

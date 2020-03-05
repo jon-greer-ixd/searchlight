@@ -1,38 +1,82 @@
 <div class="column-two-thirds">
 
-  {% if data.currentNinoApplication.status == 2 %}
-    <div id="confirmation">
-      <h3>Application number {{data.currentNinoApplication.applicationNumber}}</h3>
-      <h1>National Insurance number allocated</h1>
-      <h3>The applicant has been notified</h3>
+  {# Held #}
+  {% if data.currentNinoApplication.status == 1 %}
+    <div id="negative-done">
+      <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
+      <h1>This application is on hold</h1>
+      <h3>The applicant has not been notified.</h3>
     </div>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h3 class="bold">Next steps</h3>
+        <ul class="list list-bullet" style="margin-bottom: 30px;">
+          <li>You can use LMS to manage any contact with the applicant. For example requesting further details or booking an interview.</li>
+          <li>You can access this application from the home screen using the application number, {{data.currentNinoApplication.applicationNumber}}</li>
+        </ul>
+        <ul class="">
+          <li style="margin-bottom:20px;"><a target="_blank"href="./application" class="under-link">View the application details (in a new window)</a> </li>
+          <li> <a class="under-link" href="./next-case-handler">Get the next application</a> </li>
+        </ul>
+      </div>
+    </div>
+
+  {# Match! #}
+  {% elif data.currentNinoApplication.status == 2 %}
+    <div id="negative-done">
+      <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
+      <h1>National Insurance number <br>allocated</h1>
+      <h3>The applicant has been notified.</h3>
+    </div>
+    <div class="nino-next">
+      <a href="next-case-handler" class="under-link">Get the next application</a> 
+    </div>
+
+  {# Data does not match #}
   {% elif data.currentNinoApplication.status == 3 %}
-    <div id="confirmation">
-      <h3>Application number {{data.currentNinoApplication.applicationNumber}}</h3>
+    <div id="negative-done">
+      <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
       <h1>National Insurance number <br>not allocated</h1>
-      {# <h3>The applicant has been notified.</h3> #}
+      <h3>The applicant has not been notified.</h3>
     </div>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <h3 class="bold">Next steps</h3>
+        <ul class="list list-bullet" style="margin-bottom: 30px;">
+          <li>You can use LMS to manage any contact with the applicant. For example requesting further details or booking an interview.</li>
+          <li>If you need to create a CIS account for this applicant you will need to manually create it.</li>
+        </ul>
+        <ul class="">
+          <li style="margin-bottom:20px;"><a target="_blank"href="./application" class="under-link">View the application details (in a new window)</a> </li>
+          <li> <a class="under-link" href="./next-case-handler">Get the next application</a> </li>
+        </ul>
+      </div>
+    </div>
+
+  {# No right to work #}
   {% elif data.currentNinoApplication.status == 4 %}
-    <div id="confirmation">
-      <h3>Application number {{data.currentNinoApplication.applicationNumber}}</h3>
+    <div id="negative-done">
+      <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
       <h1>National Insurance number <br>not allocated</h1>
-      <h3>The applicant has been notified</h3>
+      <h3>The applicant has been notified.</h3>
     </div>
+    <div class="nino-next">
+      <a href="next-case-handler" class="under-link">Get the next application</a> 
+    </div>
+
+  {# Has an account in CIS #}
   {% elif data.currentNinoApplication.status == 5 %}
-    <div id="confirmation">
-      <h3>Application number {{data.currentNinoApplication.applicationNumber}}</h3>
-      <h1>National Insurance number <br>not allocated</h1>
-      <h3>The applicant has been notified</h3>
+    <div id="negative-done">
+      <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
+      <h1>Application complete</h1>
+      <h3>The applicant has been notified about <br>their existing National Insurance number.</h3>
     </div>
-  {% elif data.currentNinoApplication.status == 0 %}
-    <div id="confirmation">
-      <h1>Application number {{data.currentNinoApplication.applicationNumber}} is <br>not complete</h1>
-      <h3>You can access the application using the application number</h3>
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <a class="under-link" href="./next-case-handler">Get the next application</a> 
+      </div>
     </div>
+
   {% endif %}
-    <a href="next-case-handler" class="button">Get the next application</a> 
-    <br>
-    <br>
-    <a href="./application" class="under-link">View the application details</a> 
 
 </div>

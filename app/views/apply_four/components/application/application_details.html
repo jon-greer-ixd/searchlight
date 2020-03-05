@@ -1,16 +1,13 @@
 <table class="table apply-table">
-
-{% 
-if data.ninoapplication_firstnames != null or
-   data.ninoapplication_lastname != null
-%}
-  <tr>
+{# data.ninoapplication_lastname #}
+{% if data.ninoapplication_firstnames != null %}
+  <tr class="updated-name">
     <td>First name</td>
     <td>{{data.currentNinoApplication.nameOneFirst}}</td>
     <td><a>&nbsp;</a></td>
   </tr>
   <tr>
-    <td>First names updated to</td>
+    <td>updated to</td>
     <td>{{data.ninoapplication_firstnames}}</td>
     <td><a class="under-link" href="./data">Change</a></td>
   </tr>

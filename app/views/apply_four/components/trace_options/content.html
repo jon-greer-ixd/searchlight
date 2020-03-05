@@ -1,28 +1,25 @@
-<form method="get" action="tracemvp-options-handler">
+<form method="get" action="mvp-traceoptions-handler">
 
   <div class="form-group">
 
     <div class="multiple-choice">
       <input id="true" type="radio" name="allocate" value=true>
       <label for="true">
-        Allocate a nino<br>
-        These accounts do not belong to the applicant 
+        Allocate a nino, they do not already have one
       </label>
     </div>
 
     <div class="multiple-choice">
       <input id="null" type="radio" name="allocate" value=null>
       <label for="null">
-        Hold application<br>
-        Need to contact the applicant
+        Hold the application
       </label>
     </div>
     
     <div class="multiple-choice" data-target="contact-by-phone">
       <input id="false" type="radio" name="allocate" value=false>
       <label for="false">
-        Do not allocate<br>
-        One of these accounts belong to the applicant
+        Do not allocate, they have a National Insurance number
       </label>
     </div>
 
