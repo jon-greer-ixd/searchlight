@@ -271,8 +271,42 @@ router.get(/mvp-traceoptions-handler/, function (req, res) {
   res.redirect('./done');
 })
 
+//v4
+router.get(/data-match-v4/, function (req, res) {
+  var status;
+  var next;
+  if(req.query.datamatch == 'true') {
+    next = './right_to_work';
+  } else {
+    status = 3;
+    req.session.data.ninoAllocated = false;
+    next = './options';
+  }
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.currentNinoApplication = setNonMatchItems([], req.session.data.currentNinoApplication)
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect(next);
+})
 
-
+//data does not match question
+router.get(/non-match-v4/, function (req, res) {
+  console.log(`allocate = ${req.query.allocate}`);
+  var status;
+  var next;
+  if(req.query.allocate == 'true') {
+    next = './right_to_work';
+  } else if (req.query.allocate == 'null') {
+    status = 1;
+    next = './done';
+  } else {
+    status = 3;
+    req.session.data.ninoAllocated = false;
+    next = './done';
+  }
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect(next);
+})
 
 
 module.exports = router
