@@ -3191,6 +3191,20 @@ table th, table td {
   }
 }
 
+.apply-table-v2 {
+  td:first-child {
+    font-weight: bold;
+    width: 50%;
+  }
+  td:nth-child() {
+    width: 25%;
+  }
+  td:last-child {
+    width: 30%;
+    text-align: right;
+  }
+}
+
 .option-box {
   border-left: 4px solid black;
   width: 95%;
