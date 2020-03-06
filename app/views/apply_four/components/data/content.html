@@ -6,6 +6,18 @@
       <p>Name on application: <span class="bold">{{data.currentNinoApplication.nameOneFirst | capitalize}} {{data.currentNinoApplication.nameOneLast | capitalize }}</span</p>
     </div>
       <br> #}
+
+      {% if data.ninoapplication_firstnames != null %}
+      {% set firstname = data.ninoapplication_firstnames %}
+      {% else %}
+      {% set firstname = data.currentNinoApplication.nameOneFirst %}
+      {% endif %}
+    
+      {% if data.ninoapplication_lastname != null %}
+      {% set lastname = data.ninoapplication_lastname %}
+      {% else %}
+      {% set lastname = data.currentNinoApplication.nameOneLast %}
+      {% endif %}
     
       <form method="get" action="verify">
         <fieldset>
@@ -13,7 +25,7 @@
             <label class="form-label" for="ninoapplication_firstnames">
               First names
             </label>
-            <input class="form-control" id="ninoapplication_firstnames" name="ninoapplication_firstnames" type="text" value="{{data.currentNinoApplication.nameOneFirst}}">
+            <input class="form-control" id="ninoapplication_firstnames" name="ninoapplication_firstnames" type="text" value="{{firstname}}">
           </div>
         </fieldset>
         <fieldset>
@@ -21,7 +33,7 @@
             <label class="form-label" for="date">
               Last name
             </label>
-            <input class="form-control" id="ninoapplication_lastname" name="ninoapplication_lastname" type="text" value="{{data.currentNinoApplication.nameOneLast}}">
+            <input class="form-control" id="ninoapplication_lastname" name="ninoapplication_lastname" type="text" value="{{lastname}}">
           </div>
         </fieldset>
         <div class="form-group">

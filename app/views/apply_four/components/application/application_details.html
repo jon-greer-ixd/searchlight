@@ -1,41 +1,43 @@
 <table class="table apply-table">
 {# data.ninoapplication_lastname #}
-{% if data.ninoapplication_firstnames != null %}
-  <tr class="updated-name">
+{% if data.ninoapplication_firstnames != null and data.ninoapplication_firstnames != data.currentNinoApplication.nameOneFirst %}
+  <tr class="firstname">
     <td>First name</td>
     <td>{{data.currentNinoApplication.nameOneFirst}}</td>
     <td><a>&nbsp;</a></td>
   </tr>
-  <tr>
+  <tr class="updated-firstname">
     <td>updated to</td>
     <td>{{data.ninoapplication_firstnames}}</td>
     <td><a class="under-link" href="./data">Change</a></td>
   </tr>
-    <tr>
-    <td>Last name</td>
-    <td>{{data.currentNinoApplication.nameOneLast}}</td>
-    <td><a>&nbsp;</a></td>
-    <tr>
-      <td>Last name updated to</td>
-      <td>{{data.ninoapplication_lastname}}</td>
-      <td><a class="under-link" href="./data">Change</a></td>
-    </tr>
-  </tr>
-
 {% else %} 
   <tr>
     <td>First name</td>
     <td>{{data.currentNinoApplication.nameOneFirst}}</td>
     <td><a class="under-link" href="./data">Change</a></td>
   </tr>
+{% endif %} 
+
+{% if data.ninoapplication_lastname != null and data.ninoapplication_lastname != data.currentNinoApplication.nameOneLast %}
+  <tr class="firstname">
+    <td>Last name</td>
+    <td>{{data.currentNinoApplication.nameOneLast}}</td>
+    <td><a>&nbsp;</a></td>
+  </tr>
+  <tr class="updated-firstname">
+    <td>updated to</td>
+    <td>{{data.ninoapplication_lastname}}</td>
+    <td><a class="under-link" href="./data">Change</a></td>
+  </tr>
+  {% else %} 
   <tr>
     <td>Last name</td>
     <td>{{data.currentNinoApplication.nameOneLast}}</td>
     <td><a class="under-link" href="./data">Change</a></td>
   </tr>
 {% endif %} 
-
-
+  
   <tr>
     <td>Date of birth</td>
     <td>{{data.currentNinoApplication.dobValue}}</td>

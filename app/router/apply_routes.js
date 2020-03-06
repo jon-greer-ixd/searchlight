@@ -85,6 +85,9 @@ router.get(/get-case-handler/, function (req, res) {
 
 //get next case
 router.get(/next-case-handler/, function (req, res) {
+  req.session.data.ninoapplication_firstnames = null;
+  req.session.data.ninoapplication_lastname = null;
+
   var next;
   req.session.data.currentNinoApplication = getNextApplication(req.session.data.ninoApplications);
   if(req.session.data.currentNinoApplication != null) {

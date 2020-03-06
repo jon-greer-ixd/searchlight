@@ -3321,8 +3321,19 @@ table.crs_table {
   }
 }
 
-tr.updated-name {
-  td:first-child {
-    border-top: 0;
+tr.firstname {
+  td {
+    border-bottom: none;
+  }
+}
+
+tr.updated-firstname {
+  border-top: none;
+  td {
+    padding-top: 0!important;
+    &:first-child {
+      font-weight: normal;
+    }
+    border-top: none!important;
   }
 }
