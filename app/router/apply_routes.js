@@ -135,7 +135,10 @@ router.get(/right-to-work-handler/, function (req, res) {
     if (req.session.data.currentNinoApplication.ninofirstname == false) {
       next = './data';
     }
-    if(req.session.data.currentNinoApplication.matchInCis == true) {
+    if(req.session.data.currentNinoApplication.ninoReturned == true) {
+      status = 6;
+      next = './done';
+    } else if(req.session.data.currentNinoApplication.matchInCis == true) {
       status = 1;
       next = './trace';
     }

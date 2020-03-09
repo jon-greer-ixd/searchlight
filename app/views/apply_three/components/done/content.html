@@ -42,7 +42,7 @@
     </div>
     
   {% elif data.currentNinoApplication.status == 5 %}
-    <div id="confirmation">
+    <div id="negative-done">
       <h3>Application number {{data.currentNinoApplication.applicationNumber}}</h3>
       <h1>National Insurance number <br>not allocated</h1>
       <h3>The applicant has been notified</h3>
@@ -51,8 +51,9 @@
     <br>
     <br>
     <a href="./application" class="under-link">View the application details</a> 
+
   {% elif data.currentNinoApplication.status == 0 %}
-    <div id="confirmation">
+    <div id="negative-done">
       <h1>Application number {{data.currentNinoApplication.applicationNumber}} is <br>not complete</h1>
       <h3>You can access the application using the application number</h3>
     </div>
@@ -60,5 +61,13 @@
     <br>
     <br>
     <a href="./application" class="under-link">View the application details</a> 
+
+  {% elif data.currentNinoApplication.status == 6 %}
+    <div id="negative-done">
+      <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
+      <h1>The applicant has a National Insurance number already</h1>
+      <h3>The applicant has been notified</h3>
+    </div>
+      <a href="next-case-handler" class="under-link">Get the next application</a> 
   {% endif %}
 </div>

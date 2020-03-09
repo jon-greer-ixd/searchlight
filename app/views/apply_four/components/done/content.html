@@ -56,18 +56,6 @@
       <a href="next-case-handler" class="under-link">Get the next application</a> 
     </div>
 
-  {# Has an account in CIS #}
-  {% elif data.currentNinoApplication.status == 5 %}
-    <div id="negative-done">
-      <p>Application number {{data.currentNinoApplication.applicationNumber}}</p>
-      <h1>Application complete</h1>
-      <h3>The applicant has been notified about <br>their existing National Insurance number.</h3>
-    </div>
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <a class="under-link" href="./next-case-handler">Get the next application</a> 
-      </div>
-    </div>
 
   {% endif %}
 
