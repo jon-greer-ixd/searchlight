@@ -1,0 +1,46 @@
+<div class="personal-details">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+
+    {# <div class="panel panel-border-wide">
+      <p>Name on application: <span class="bold">{{data.currentNinoApplication.nameOneFirst | capitalize}} {{data.currentNinoApplication.nameOneLast | capitalize }}</span</p>
+    </div>
+      <br> #}
+
+      {% if data.ninoapplication_firstnames != null %}
+      {% set firstname = data.ninoapplication_firstnames %}
+      {% else %}
+      {% set firstname = data.currentNinoApplication.nameOneFirst %}
+      {% endif %}
+    
+      {% if data.ninoapplication_lastname != null %}
+      {% set lastname = data.ninoapplication_lastname %}
+      {% else %}
+      {% set lastname = data.currentNinoApplication.nameOneLast %}
+      {% endif %}
+    
+      <form method="get" action="verify">
+        <fieldset>
+          <div class="form-group">
+            <label class="form-label" for="ninoapplication_firstnames">
+              First names
+            </label>
+            <input class="form-control" id="ninoapplication_firstnames" name="ninoapplication_firstnames" type="text" value="{{firstname}}">
+          </div>
+        </fieldset>
+        <fieldset>
+          <div class="form-group">
+            <label class="form-label" for="date">
+              Last name
+            </label>
+            <input class="form-control" id="ninoapplication_lastname" name="ninoapplication_lastname" type="text" value="{{lastname}}">
+          </div>
+        </fieldset>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+      </form>
+      <a href="./verify">Cancel</a>
+    </div>
+  </div>
+</div>

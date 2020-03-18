@@ -1,0 +1,51 @@
+<nav id="sl-header" class="navbar navbar-default navbar-fixed-top ng-scope">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 sl-header-container" ng-class="{'sl-header-expanded': state.current.name !== 'search'}">
+        <ul>
+          <div class="sl-header-col-left">
+            <a class="skip-main" ng-click="jumpToMainContent()" href="#maincontent">Skip to main content</a>
+            <div class="sl-header-title" ui-sref="search" href="./search-for-a-person-five">
+              <a class="sl-crown-logo-container">
+                <div class="sl-crown-logo sl-crown-logo-white"></div>
+                <img class="sl-crown-logo-black" alt="Searchlight black" src="/public/images/crown-logo-black.png">
+              </a>
+              <a class="sl-third-heading sl-main-heading sl-page-color sl-font-bold ng-binding" ui-sref="search" href="./search-for-a-person-five"> Searchlight</a>
+            </div>
+          </div>
+          <div class="sl-header-col-right pull-right">
+            <li>
+              <a href="/" tabindex="" ng-click="openFeedbackModal('lg'); feedbackJumpToTop()" class="sl-link sl-link-modal under-link">Feedback</a>
+            </li>
+
+            <li> 
+              <a href="/" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal under-link">What’s new</a>
+            </li>
+
+            <li> 
+              <a id="nino-menu-link" class="sl-link sl-link-modal under-link">More options</a>
+            </li>
+
+            <span tabindex="-1" class="sl-hamburger-icon-container pull-right sl-hamburger-icon-container-search" ng-class="{'sl-hamburger-icon-container-search': state.current.name === 'search'}" ng-click="navMenuOpen = !navMenuOpen" href="#" role="button">
+              <div class="sl-hamburger-closed sl-hamburger-image ng-scope" ng-if="!navMenuOpen"></div>
+            </span>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+          <div id="nino-menu" class="hide">
+          <ul class="list">
+            <li> 
+              <a href="/apply_five/cases" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal under-link">National Insurance number applications</a>
+            </li>            
+            <li> 
+              <a href="" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal under-link">Manually create an account</a>
+            </li>
+            {# <li> 
+              <a href="../search-for-a-person-five" tabindex="0" ng-click="openWhatsNewModal('lg')" class="sl-link sl-link-modal under-link">Search for a person</a>
+            </li> #}
+          </ul
+        </div>
+
+</nav>

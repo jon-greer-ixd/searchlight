@@ -1,0 +1,131 @@
+{# <p>Check these accounts do not belong to this person before creating a new account</p> #}
+
+<div class="grid-row">
+  <div class="column-one-half" style="text-align:left;">
+    
+    {# <h3 class="strong">Accounts with matching details</h3> #}
+
+    <div class="nino-trace-result">
+      <ul>
+        <li>Name</li>
+        <li>Lucy Zhaochan</li>
+      </ul>
+      <ul>
+        <li>Date of birth</li>
+        <li>11 Jan 1979</li>
+      </ul>
+      <ul>
+        <li>Address</li>
+        <li>12A The Crescent, Bristol, BS1 1AH</li> 
+      </ul>
+      <ul>
+        <li>NINO</li>
+        <li>NA170211</li> 
+      </ul>
+      <ul>
+        <li><a target="_blank" href="../cis-handler?nino=NA170211&role=ho" class="under-link">View account</a></li>
+      </ul>
+    </div>
+
+    <div class="nino-trace-result">
+      <ul>
+        <li>Name</li>
+        <li>Mei Zhao</li>
+      </ul>
+      <ul>
+        <li>Date of birth</li>
+        <li>30 Jun 1979</li>
+      </ul>
+      <ul>
+        <li>Address</li>
+        <li>12A The Crescent, Bristol, BS1 1AH</li> 
+      </ul>
+      <ul>
+        <li>NINO</li>
+        <li>SA170212</li>
+      </ul>
+      <ul>
+        <li><a target="_blank" href="../cis-handler?nino=SA170212&role=ho" class="under-link">View account</a></li>
+      </ul>
+    </div>
+
+    <div class="nino-trace-result">
+      <ul>
+        <li>Name</li>
+        <li>Meisau Zhaochan</li>
+      </ul>
+      <ul>
+        <li>Date of birth</li>
+        <li>21 Mar 1980</li>
+      </ul>
+      <ul>
+        <li>Address</li>
+        <li>1 Jessops Lane, Edinburgh, ED1 17G</li> 
+      </ul>
+      <ul>
+        <li>NINO</li>
+        <li>ZX170213</li>
+      </ul>
+      <ul>
+        <li><a target="_blank" href="../cis-handler?nino=ZX170213&role=ho" class="under-link">View account</a></li>
+      </ul>
+    </div>
+    <br>
+    <form method="get" action="./trace_options">
+      <div class="">
+        <input class="button" type="submit" value="Next">
+      </div>
+    </form>
+
+  </div>
+
+    <div class="column-one-half">
+    <div class="option-box">
+      <h3 class="strong">Application details</h3>
+      <div class="nino-trace-result no-border">
+        <ul>
+          <li>Name</li>
+          <li>{{data.currentNinoApplication.nameOneFirst}} {{data.currentNinoApplication.nameOneLast}}</li>
+        </ul>
+
+        <ul>
+          <li>Previous name</li>
+          {% if data.currentNinoApplication.previousNameFirst != null %}
+            <li>{{data.currentNinoApplication.previousNameFirst}} {{data.currentNinoApplication.previousNameLast}}</li>
+          {% else %}
+            <li>None</li>
+          {% endif %}
+        </ul>
+
+        <ul>
+          <li>Date of birth</li>
+          <li>{{data.currentNinoApplication.dobValue}}</li>
+        </ul>
+        <ul>
+          <li>Address</li>
+          <li>
+            {{data.currentNinoApplication.addressLineOne}}, {{data.currentNinoApplication.addressLineTwo}}, {{data.currentNinoApplication.postCode}}<br>
+          </li>
+        </ul>
+
+                <ul>
+          <li>Nationality</li>
+          <li>{{data.currentNinoApplication.dobValue}}</li>
+        </ul>
+        <ul>
+          <li>Address</li>
+          <li>
+            {{data.currentNinoApplication.addressLineOne}}, {{data.currentNinoApplication.addressLineTwo}}, {{data.currentNinoApplication.postCode}}<br>
+          </li>
+        </ul>
+
+
+      </div>
+      <br>
+      <details>
+        <summary>Show full application details</summary>
+      </details>
+      </div>
+    </div>
+
+</div>

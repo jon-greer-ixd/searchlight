@@ -267,7 +267,7 @@ router.get(/mvp-traceoptions-handler/, function (req, res) {
     status = 2;
     req.session.data.ninoAllocated = true;
   } else if (req.query.allocate == 'false') {
-    status = 5;
+    status = 6;
     req.session.data.ninoAllocated = false;
   } else {
     status = 1;
@@ -315,12 +315,39 @@ router.get(/non-match-v4/, function (req, res) {
 })
 
 
+//data does not match question
+router.get(/non-match-v5/, function (req, res) {
+  console.log(`match = ${req.query.match}`);
+  var status;
+  var next;
+  if(req.query.match == 'hold') {
+    status = 1;
+  } else if (req.query.match == 'book') {
+    status = 7;
+  } else if (req.query.match == 'manual') {
+    status = 8;
+  } else {
+    status = 3;
+    req.session.data.ninoAllocated = false;
+  }
+  next = './done';
+  req.session.data.currentNinoApplication.status = status;
+  req.session.data.ninoApplications = updateApplications(req.session.data.ninoApplications, req.session.data.currentNinoApplication);
+  res.redirect(next);
+})
+
+
+{/* <label for="hold">
+<label for="book">
+<label for="manual">
+<label for="false"> */}
+
+
 module.exports = router
 
 // update the current case status
 // put this one back in the cases
 // req.session.data.ninoApplications = setStatus(req.session.data.currentApplicationNumber, req.session.data.ninoApplications, status);
-
 
 
 // var getStatus = function (allocate) {

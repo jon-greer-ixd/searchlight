@@ -1,0 +1,38 @@
+<div class="column-two-thirds">
+
+  {% if data.currentNinoApplication.status == 1 %}
+    {# Held #}
+    {% include "./content/status_one.html" %}
+
+  {% elif data.currentNinoApplication.status == 2 %}
+    {# Match! #}
+    {% include "./content/status_two.html" %}
+
+  {% elif data.currentNinoApplication.status == 3 %}
+    {# Data does not match #}
+    {% include "./content/status_three.html" %}
+
+  {% elif data.currentNinoApplication.status == 4 %}
+    {# No right to work #}
+    {% include "./content/status_four.html" %}
+
+  {% elif data.currentNinoApplication.status == 5 %}
+    {# Has an account in CIS (multi) #}
+    {% include "./content/status_five.html" %}
+
+  {% elif data.currentNinoApplication.status == 6 %}
+    {# Has an account in CIS (single) #}
+    {% include "./content/status_six.html" %}
+
+  {% elif data.currentNinoApplication.status == 7 %}
+    {# Book interview #}
+    {% include "./content/status_seven.html" %}
+
+  {% elif data.currentNinoApplication.status == 8 %}
+    {# Manually create account #}
+    {% include "./content/status_eight.html" %}
+
+
+  {% endif %}
+
+</div>

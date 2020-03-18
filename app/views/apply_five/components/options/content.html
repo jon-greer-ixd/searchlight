@@ -1,0 +1,47 @@
+<form method="get" action="non-match-v5">
+
+  <div class="form-group">
+
+    {# <div class="multiple-choice">
+      <input id="true" type="radio" name="allocate" value=true>
+      <label for="true">
+        Allocate a National Insurance number
+        Their personal details have been verified
+      </label>
+    </div> #}  
+
+    <div class="multiple-choice">
+      <input id="hold" type="radio" name="match" value="hold">
+      <label for="hold">
+        Hold the application to investigate
+      </label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="book" type="radio" name="match" value="book">
+      <label for="book">
+        Book the applicant in for a face to face interview
+      </label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="manual" type="radio" name="match" value="manual">
+      <label for="manual">
+        Manually create a CIS account with their correct details
+      </label>
+    </div>
+
+    <div class="multiple-choice">
+      <input id="no" type="radio" name="match" value="no">
+      <label for="no">
+        Do not allocate a National Insurance number and notify the applicant
+      </label>
+    </div>
+
+  </div> 
+  
+  <div class="form-group">
+    <input class="button" type="submit" value="Next">
+  </div>
+  
+</form>
