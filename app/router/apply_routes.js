@@ -338,13 +338,17 @@ router.get(/non-match-v5/, function (req, res) {
 
 //version router
 router.get(/get-applyForNinoVersion/, function (req, res) {
-  console.log(req.query.applyForNinoVersion);
   var next;
-  req.session.data.applyForNinoVersion = req.query.applyForNinoVersion;
-  if (req.query.applyForNinoVersion == '4') {
-    next = './search-for-a-person-four';
+  if (req.session.data.applyForNinoVersion == '1') {
+    next = './apply/cases';
+  } else if (req.session.data.applyForNinoVersion == '2') {
+    next = './apply_mvp/cases';
+  } else if (req.session.data.applyForNinoVersion == '3') {
+    next = './apply_three/cases';
+  } else if (req.session.data.applyForNinoVersion == '4') {
+    next = './apply_four/cases';
   } else {
-    next = './search-for-a-person-five';
+    next = './apply_five/cases';
   }
   res.redirect(next);
 })
