@@ -336,6 +336,12 @@ router.get(/non-match-v5/, function (req, res) {
   res.redirect(next);
 })
 
+//version router
+router.get(/get-applyForNinoVersion/, function (req, res) {
+  req.session.data.applyForNinoVersion = req.query.applyForNinoVersion;
+  res.redirect('./search-for-a-person-five');
+})
+
 
 {/* <label for="hold">
 <label for="book">

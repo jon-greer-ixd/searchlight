@@ -339,10 +339,10 @@ router.use('/', main,
   req.session.data.ninoApplications = ninoApplications;
   req.session.data.citizen = getCitizen("SX170202", req.session.data.cis);
 
-  //apply
+  //apply for a NINO
   req.session.data.ninoapplication_firstnames = null;
   req.session.data.ninoapplication_lastname = null;
-
+  req.session.data.applyForNinoVersion = null;
   
   for (var key in defaults) {
     if (defaults.hasOwnProperty(key)) {
