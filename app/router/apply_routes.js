@@ -338,8 +338,15 @@ router.get(/non-match-v5/, function (req, res) {
 
 //version router
 router.get(/get-applyForNinoVersion/, function (req, res) {
+  console.log(req.query.applyForNinoVersion);
+  var next;
   req.session.data.applyForNinoVersion = req.query.applyForNinoVersion;
-  res.redirect('./search-for-a-person-five');
+  if (req.query.applyForNinoVersion == '4') {
+    next = './search-for-a-person-four';
+  } else {
+    next = './search-for-a-person-five';
+  }
+  res.redirect(next);
 })
 
 
