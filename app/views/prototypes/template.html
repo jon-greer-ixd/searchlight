@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Searchlight
+{% endblock %}
+
+{% block content %}
+  
+<div id="prototype-nav">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <div class="proto-header">
+        <h1 class="heading-large">
+          {% block pagetitle %}
+          {% endblock %}
+        </h1>
+        <p>To reset the data in the prototypes, select the 'Feedback' link at the top of any page.</p>
+      </div>
+
+      {% block protocontent %}
+      {% endblock %}
+                      
+    </div>
+  </div>
+</div>
+{% endblock %}

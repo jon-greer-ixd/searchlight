@@ -44,7 +44,10 @@ $searchlight-borders: #cac9cf;
 $sl-cream: #fff3db;
 $sl-background-gray: #f1f1f1;
 
-
+// Headers - not NTA!
+.heading-xlarge, .heading-large, .heading-medium, .heading-small {
+  font-family: "sl-font"!important;
+}
 
 /////////////
 // ACCOUNT //
@@ -113,35 +116,6 @@ $sl-background-gray: #f1f1f1;
 ///////////
 // TRACE //
 ///////////
-
-
-#prototype-nav {
-  width: 95%;
-  margin: 0 auto;
-  h2 {
-    margin: 0;
-    padding: 0!important;
-  }
-  a {
-    text-decoration: underline;
-  }
-  .group {
-    border-top: 1px solid #C6C6C6;
-    border-bottom: 1px solid #C6C6C6;
-    margin: 20px 0 30px;
-    padding :15px 0;
-    ul {
-      margin: 15px 0;
-      li:nth-child(2) {
-        color: $secondary-text-colour;
-      }
-    }
-    details {
-      margin: 15px 0;
-    }
-  }
-}
-
 
 
 label {
@@ -3350,4 +3324,45 @@ tr.updated-firstname {
     }
     border-top: none!important;
   }
+}
+
+
+
+//prototypes
+#prototype-nav {
+  width: 95%;
+  margin: 0 auto 30px;
+  h1, h2 {
+    margin: 0;
+    padding: 0!important;
+  }
+  h1 {
+    margin-top: 100px!important;
+  }
+  h2 {
+    margin-top: 20px;
+  }
+  a {
+    text-decoration: underline;
+  }
+  ul {
+    margin: 15px 0;
+    li:nth-child(2) {
+      color: $secondary-text-colour;
+    }
+  }
+  details {
+    margin: 15px 0;
+  }
+}
+
+.proto-header {
+  p {
+    margin-bottom: 0;
+    padding: 0;
+    color: $secondary-text-colour;
+  }
+  border-bottom: 1px solid $searchlight-borders;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
 }

@@ -9,7 +9,7 @@ var thisMonth = today.getMonth();
 var year = today.getFullYear();
 
 
-// Warn about using the kit in production
+// Warn about using the kit in production 
 if (
   window.sessionStorage && window.sessionStorage.getItem('prototypeWarning') !== 'false' &&
   window.console && window.console.info

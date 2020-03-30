@@ -1,0 +1,68 @@
+{% extends "./template.html" %}
+
+{% block pagetitle %}
+Process a NINO application
+{% endblock %}
+  
+{% block protocontent %}
+  <div class="group">
+    <ul>
+      <li><a href="../search-for-a-person-five?applyForNinoVersion=5">Version 5</a> (MVP)</li>
+      <li>Mar 2020</li>
+      {# <li>Shows automatic trace results. Allows users to change name details. 
+      <br>Allows users to pick a case up after investigation and continue.</li> #}
+    </ul>
+
+    <ul>
+      <li><a href="../search-for-a-person-five?applyForNinoVersion=4">Version 4</a></li>
+      <li>Mar 2020</li>
+      {# <li>Automatic trace results. Allows users to change name details.</li>
+      <li>Allows users to hold a case and pick up after investigation.</li> #}
+    </ul>
+
+    <ul>
+      <li><a href="../search-for-a-person-five?applyForNinoVersion=3">Version 3</a></li>
+      {# <li>Basic version</li> #}
+      <li>Feb 2020</li>
+    </ul>
+
+    <ul>
+      <li><a href="../search-for-a-person-five?applyForNinoVersion=2">Version 2</a></li>
+      <li>Feb 2020</li>
+      <li></li>
+    </ul>
+
+    <ul>
+      <li><a href="../search-for-a-person-five?applyForNinoVersion=1">Version 1</a></li>
+      <li>Jan 2020</li>
+      <li></li>
+    </ul>
+
+    <details>
+      <summary><span class="summary">Show mock up Home Office CRS database accounts</span></summary>
+
+      <ul class="list list-bullet">  
+        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10001" target="_blank">Abel Negasi</a></li>
+        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10002" target="_blank">Ambika Aishwarya</a></li>
+        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10006" target="_blank">Lucy Zhao</a></li>
+        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10005" target="_blank">Edward Winchester</a></li>
+        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10007" target="_blank">Jo Chen</a></li>
+        <li><a class="under-link" href="get-crs-by-ref?ninoapplication_applicationnumber=10008" target="_blank">Mateo Bangalter</a></li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="summary">Show prototype setup notes</span></summary>
+        <p>
+          To view a case where there are matching accounts in CIS 
+          <br>use the following application numbers:
+        <p>
+        <p>• &nbsp;Multiple accounts: 10006 (Lucy Zhao).</p>  
+        <p>• &nbsp;Single account: 10005 (Ed Winchester)</p> 
+        <p>
+          For these cases select yes to 'right to work' and yes to 'personal <br>details match'.
+        </p>
+    </details>
+
+  </div>              
+{% endblock %}
