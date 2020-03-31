@@ -6,6 +6,7 @@ var addressTwo = '2 New Street';
 var addressThree = '7 Post Street';
 var addressFour = 'Gateshead, Tyne and Wear NE1 1HH';
 
+
 var getCitizen = require('../functions/search-functions.js').getCitizen;
 
 var ninoApplications = require('../public/javascripts/nino_applications.json')
