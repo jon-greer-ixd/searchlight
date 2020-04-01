@@ -3,18 +3,17 @@
     <ul>
       <li>Residential address</li>
       <li class="sl-secondary-text-color sl-metadata">
-          {{data.addresses.residential.startDate}} – present
+          {{data.citizen.addressStartDate}} – present
       </li>
     </ul>
   </div>
 
   <div class="column-one-third">
     <p class="address">
-      {% if data.addresses.residential.cherish != false %}
+      {% if data.citizen.addressCherish != false %}
         Flat A<br>
       {% endif %}
       {% if data.citizen.addressesStatus == "live" or data.citizen.addressesStatus == "dlo" %}
-        {{data.addresses.residential.lineOne}}<br>
         Gateshead<br>
         Tyne and wear<br>
         NE1 1HH<br>

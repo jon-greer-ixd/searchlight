@@ -5,7 +5,7 @@
       <div class="column-one-third">
         <ul>
           <li>Correspondence address</li>
-          {% if data.addresses.correspondence.show == true %}
+          {% if data.citizen.correspondence == true %}
             <li class="sl-secondary-text-color sl-metadata">
               {{editDate}} - present
             </li>
@@ -13,7 +13,7 @@
         </ul>
       </div>
       
-      {% if data.addresses.correspondence.show == true %}
+      {% if data.citizen.correspondence == true %}
       <div class="column-one-third">
           <p class="address">
             7 Post Street<br>
@@ -31,16 +31,14 @@
       </div>
       
       <div class="column-one-third">
-        {% if data.addresses.correspondence.show != true %}
+        {% if data.citizen.correspondence != true %}
           <ul class="edit-menu">
             <li>
               <a class="secondary-link" href="update-address-handler?addressType=correspondence&updateType=1">Add</a>
             </li>
-            {% if data.addresses.correspondence.state != 0 or data.addresses.correspondence.state != 1 %}
               <li>
                 <a data-toggle="modal" data-target="#correspondence_modal" class="under-link">View maintenance</a> 
               </li>
-            {% endif %}
           </ul>
         {% else %}
           <ul class="edit-menu">
