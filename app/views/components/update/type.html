@@ -2,13 +2,7 @@
 <div class="grid-row">
   <div class="column-one-half">
     <form method="get" action="address-type-handler">
-      
-      <legend class="visually-hidden">
-        <p>
-          What kind of change do you need to make?
-        </p>
-      </legend>
-      
+            
       <div class="form-group">
 
         <div class="multiple-choice" data-target="contact-by-email">
@@ -30,8 +24,8 @@
             </div>
             
             <div class="multiple-choice">
-              {% if data.addresses.correspondence.show == false %}
-                {% if data.addresses[data.addressType].status != "dlo" %}
+              {% if data.citizen.correspondenceAddress == false %}
+                {% if data.citizen.AddressStatus != "dlo" %}
                   <input id="status" type="radio" name="tempValue" value="status">
                   <label for="status">Update the status to dead letter office</label>
                 {% else %}
@@ -47,21 +41,14 @@
             <div class="multiple-choice">
               <input id="cherish" type="radio" name="tempValue" value="cherish">
                 <label for="cherish">
-                  {% if data.addresses[data.addressType].cherish != true %}
+                  {% if data.citizen.addressCherish != true %}
                     Add a cherished line
                   {% else %}
                     Update the cherished line
                   {% endif %}
                 </label>
             </div>
-            
-            {% if data.addressType == 'correspondence' %}
-              <div class="multiple-choice">
-                <input id="endU" type="radio" name="tempValue" value=5>
-                <label for="endU">End the correspondence address</label>
-              </div>
-            {% endif %}
-          
+                      
           </fieldset>
         </div>
         
@@ -73,8 +60,8 @@
             </div>
             
             <div class="multiple-choice">
-              {% if data.addresses.correspondence.show == false %}
-                {% if data.addresses[data.addressType].status != "dlo" %}
+              {% if data.citizen.correspondenceAddress == false %}
+                {% if data.citizen.AddressStatus != "dlo" %}
                   <input id="status" type="radio" name="tempValue" value="status">
                   <label for="status">Correct the status to dead letter office</label>
                 {% else %}
@@ -95,21 +82,14 @@
             <div class="multiple-choice">
               <input id="cherish" type="radio" name="tempValue" value="cherish">
                 <label for="cherish">
-                  {% if data.addresses[data.addressType].cherish != true %}
+                  {% if data.citizen.addressCherish != true %}
                     Add a cherished line
                   {% else %}
                     Correct the cherished line
                   {% endif %}
                 </label>
             </div>
-            
-            {% if data.addressType == 'correspondence' %}
-              <div class="multiple-choice">
-                <input id="endC" type="radio" name="tempValue" value=5>
-                <label for="endC">End the correspondence address</label>
-              </div>
-            {% endif %}
-            
+                        
           </fieldset>
         </div>  
         
