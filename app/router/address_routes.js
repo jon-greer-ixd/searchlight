@@ -1,8 +1,26 @@
 var express = require('express')
 var router = express.Router()
 
-var addressFunctions = require('../../functions/address.js');
 var generalFunctions = require('../../functions/general.js');
+
+
+// 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
+
+var updateAddress = function (address, lineOne, status) {
+  address.lineOne = lineOne;
+  address.status = status;
+  return address;
+}
+
+var setCherish = function (address, bool) {
+  address.cherish = bool;
+  return address;
+}
+
+var flipStatus = function (residential) {
+  return (residential.status == 'dlo' ? 'live' : 'dlo');
+}
+
 
 
 router.get(/update-address-handler/, function (req, res) {
@@ -27,7 +45,7 @@ router.get(/address-type-handler/, function (req, res) {
     if (req.session.data.addresses.correspondence.show == true) {
       res.redirect('/update/status')
     } else {
-      req.session.data.tempStatus = addressFunctions.flipStatus(chosenAddress);
+      req.session.data.tempStatus = flipStatus(chosenAddress);
       res.redirect('/update/check')
     }
   } else if (req.session.data.tempValue == 'cherish') {
@@ -80,7 +98,9 @@ router.get(/check-address-handler/, function (req, res) {
   }
     
   // SET DISPLAY
-  req.session.data.addresses[req.session.data.addressType] = addressFunctions.setShow(chosenAddress, updateType, tempValue);
+  if (req.session.data.addressType == "correspondence") {
+    req.session.data.citizen.correspondenceAddress = true;
+  }
   
   // SET MESSAGE
   req.session.data.toaster = generalFunctions.setToasterMessage (chosenAddress.display, null, updateType);

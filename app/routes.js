@@ -19,7 +19,6 @@ var setState = require('./defaults.js').setState;
 var changeSex = require('./defaults.js').changeSex;
 var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
 var generalFunctions = require('../functions/general.js');
-var addressFunctions = require('../functions/address.js');
 
 var dates = require('./dates.js').dates;
 console.log(`yesterdayAsFigure ${dates.yesterdayAsFigure('/')}`);
