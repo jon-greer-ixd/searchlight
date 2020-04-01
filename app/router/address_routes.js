@@ -25,9 +25,9 @@ var flipStatus = function (residential) {
 
 router.get(/update-address-handler/, function (req, res) {
   if (req.session.data.updateType == 1) {
-    res.redirect('/update/address-search')
+    res.redirect('/update/address/address-search')
   } else { 
-    res.redirect('/update/type')
+    res.redirect('/update/address/type')
   }
 })
 
@@ -37,31 +37,31 @@ router.get(/address-type-handler/, function (req, res) {
   
   if (req.session.data.tempValue == 5) {
     if (req.session.data.updateType == 3) {
-      res.redirect('/update/check')
+      res.redirect('address/check')
     } else {
-      res.redirect('/update/dates')
+      res.redirect('/update/address/dates')
     }
   } else if (req.session.data.tempValue == 'status') {
     if (req.session.data.addresses.correspondence.show == true) {
-      res.redirect('/update/status')
+      res.redirect('/update/address/status')
     } else {
       req.session.data.tempStatus = flipStatus(chosenAddress);
-      res.redirect('/update/check')
+      res.redirect('/update/address/check')
     }
   } else if (req.session.data.tempValue == 'cherish') {
-    res.redirect('/update/cherish-line')
+    res.redirect('/update/address/cherish-line')
   } else if (req.session.data.tempValue == 'dates') {
-    res.redirect('/update/dates')
+    res.redirect('/update/address/dates')
   } else {
-    res.redirect('/update/address-search')
+    res.redirect('/update/address/address-search')
   }
 })
 
-router.get('/update/search-results-handler', function (req, res) {
+router.get('/update/address/search-results-handler', function (req, res) {
   if (req.session.data.updateType == 3) {
-    res.redirect('/update/check')
+    res.redirect('/update/address/check')
   } else {
-    res.redirect('/update/dates')
+    res.redirect('/update/address/dates')
   }
 })
 

@@ -809,6 +809,7 @@ router.get('/account2/account', function (req, res) {
   })
 })
 
+//this can go tied to old update functionality
 //account
 router.get('/update/account', function (req, res) {
   res.render('update/account.html', {
