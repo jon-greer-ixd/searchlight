@@ -3,7 +3,6 @@ var router = express.Router()
 
 var generalFunctions = require('../../functions/general.js');
 
-
 // 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
 
 var updateAddress = function (address, lineOne, status) {
@@ -20,7 +19,6 @@ var setCherish = function (address, bool) {
 var flipStatus = function (residential) {
   return (residential.status == 'dlo' ? 'live' : 'dlo');
 }
-
 
 router.get(/update-address-handler/, function (req, res) {
   if (req.session.data.updateType == 1) {
@@ -41,7 +39,7 @@ router.get(/address-type-handler/, function (req, res) {
       res.redirect('/update/address/dates')
     }
   } else if (req.session.data.tempValue == 'status') {
-    if (req.session.data.addresses.correspondence.show == true) {
+    if (req.session.data.citizen.correspondenceAddress == true) {
       res.redirect('/update/address/status')
     } else {
       req.session.data.tempStatus = flipStatus(chosenAddress);
@@ -81,18 +79,18 @@ router.get(/check-address-handler/, function (req, res) {
   var cherishStatus = req.session.data.cherishStatus;
 
   // SET STATE
-  req.session.data.addresses[req.session.data.addressType].state = updateType;
+  req.session.data.citizen.addressState = updateType;
   
   // SET VALUES
   if (tempValue == 'status') {
-    req.session.data.addresses[req.session.data.addressType].status = req.session.data.tempStatus;
+    req.session.data.citizen.addressStatus = req.session.data.tempStatus;
   }
     
   if (tempValue == 'cherish') {
     if (req.session.data.cherishStatus == 4 ) {
-      req.session.data.addresses[req.session.data.addressType].cherish = false;
+      req.session.data.citizen.addressCherish = false;
     } else {
-      req.session.data.addresses[req.session.data.addressType].cherish = true;
+      req.session.data.citizen.addressCherish = true;
     }
   }
     
@@ -112,4 +110,5 @@ router.get(/check-address-handler/, function (req, res) {
   // REDIRECT
   res.redirect('/account3/account')
 })
+
 module.exports = router
