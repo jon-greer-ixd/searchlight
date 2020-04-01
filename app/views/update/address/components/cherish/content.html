@@ -1,3 +1,7 @@
+{% extends "../wrapper_template.html" %}
+
+{% block content %}
+
 <!--//add a cherished line-->
 {% if data.citizen.addressCherish == false %}
   <h2 class="heading-medium question">What is the cherished line of this address?</h2>
@@ -75,3 +79,5 @@
   </div>
   
 </div>
+
+{% endblock %}
