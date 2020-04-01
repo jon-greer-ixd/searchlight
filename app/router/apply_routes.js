@@ -210,7 +210,7 @@ router.get(/get-aplication-by-ref/, function (req, res) {
 
 router.get(/get-crs-by-ref/, function (req, res) {
   req.session.data.currentNinoApplication = getApplication(req.query.ninoapplication_applicationnumber, req.session.data.ninoApplications);
-  res.redirect('./apply_mvp/crs_data');
+  res.redirect('../apply_mvp/crs_data');
 })
 
 //data does not match question

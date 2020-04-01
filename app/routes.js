@@ -1,3 +1,5 @@
+// 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
+
 var express = require('express');
 var router = express.Router();
 
@@ -181,24 +183,6 @@ var previousAddress = {
   }
 };
 previousAddress.reset();
-
-var updater = function (updatetype) {
-  if (updatetype === 'correctDate') {
-    residentialAddress.updated = true;
-    residentialAddress.startDate = '30 Nov 1990';
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = false;
-    // update the dates
-  } 
-  if (updatetype === 'correctDateNotified') {
-    residentialAddress.updated = true;
-    previousAddress.line = addressOne;
-    previousAddress.show = true;
-    previousAddress.correct = false;
-    // update the dates
-  } 
-}
   
 var dataState = {
   correctionType: 'toNew',
@@ -219,7 +203,6 @@ var dataState = {
   statusCorrected : false
 };
 
-
 //routes
 var main = require('./main/routes');
 var settlementStatusRoutes = require('./router/settlementStatus_routes');
@@ -235,8 +218,6 @@ var traceRoutes = require('./router/trace_routes');
 var updateRoutes = require('./router/update_routes');
 var applyRoutes = require('./router/apply_routes');
 var addressRoutes = require('./router/address_routes');
-
-
 
 // search page
 router.get('/search', function (req, res) {
@@ -303,6 +284,7 @@ router.get('/search-v11', function (req, res) {
 
 var tempInterest;
 
+// Import routes
 router.use('/', main, 
                 getDetailsAboutADeathRoutes, 
                 settlementStatusRoutes, 
@@ -810,6 +792,7 @@ router.get('/account2/account', function (req, res) {
 })
 
 //this can go tied to old update functionality
+
 //account
 router.get('/update/account', function (req, res) {
   res.render('update/account.html', {
