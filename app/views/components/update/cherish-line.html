@@ -1,19 +1,19 @@
 <!--//add a cherished line-->
-{% if data.addresses[data.addressType].cherish == false %}
+{% if data.citizen.addressCherish == false %}
   <h2 class="heading-medium question">What is the cherished line of this address?</h2>
 {% endif %}
 
 <!--//correct a cherished line-->
-{% if data.addresses[data.addressType].cherish == true and data.updateType == 2 %}
+{% if data.citizen.addressCherish == true and data.updateType == 2 %}
   <h2 class="heading-medium question">What kind of update do you need to make?</h2>
 {% endif %}
 
 <!--//update a cherished line-->
-{% if data.addresses[data.addressType].cherish == true and data.updateType == 3 %}
+{% if data.citizen.addressCherish == true and data.updateType == 3 %}
   <h2 class="heading-medium question">What kind of correction do you need to make?</h2>    
 {% endif %}
 
-{% if data.addresses[data.addressType].cherish == true and data.updateType == 2 %} 
+{% if data.citizen.addressCherish == true and data.updateType == 2 %} 
   <div class="panel panel-border-wide">
     <ul>
       <li>
@@ -29,7 +29,7 @@
     <form method="get" action="cherish-handler">
       
     <!--//add a cherished line-->
-    {% if data.addresses[data.addressType].cherish == false %}
+    {% if data.citizen.addressCherish == false %}
       <div class="form-group">
         <fieldset>
           <label class="form-label visually-hidden" for="full-name-f1">Cherished line</label>

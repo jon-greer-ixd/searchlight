@@ -147,7 +147,7 @@
     "postCode" : "AB10 7FE",
     "state" : null, 
     "addressStatus" : "live", 
-    "addressCherish" : false,   
+    "addressCherish" : true,   
     "addressStartDate" : "01 Jan 2000",
     "mobile" : "07761 111 111",
     "homeTelephone" : "0191 111 111",
