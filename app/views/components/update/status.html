@@ -10,28 +10,28 @@
             <p class="visually-hidden">What is the address status</p>
           </legend>
           
-          {% if data.addresses[data.addressType].status != "live"  %}
+          {% if data.citizen.addressStatus != "live"  %}
             <div class="multiple-choice">
               <input id="live" type="radio" name="tempStatus" value="live">
               <label for="live">Live</label>
             </div>
           {% endif %}
           
-          {% if data.addresses[data.addressType].status != "dlo" %}
+          {% if data.citizen.addressStatus != "dlo" %}
             <div class="multiple-choice">
               <input id="dlo" type="radio" name="tempStatus" value="dlo">
               <label for="dlo">Dead letter office</label>
             </div>
           {% endif %}
           
-          {% if data.addresses[data.addressType].status != "nfa" %}
+          {% if data.citizen.addressStatus != "nfa" %}
             <div class="multiple-choice">
               <input id="nfa" type="radio" name="tempStatus" value="nfa">
               <label for="nfa">No fixed abode</label>
             </div>
           {% endif %}
           
-          {% if data.addresses[data.addressType].status != "pwa" %}
+          {% if data.citizen.addressStatus != "pwa" %}
             <div class="multiple-choice">
               <input id="pwa" type="radio" name="tempStatus" value="pwa">
               <label for="pwa">Person without address</label>

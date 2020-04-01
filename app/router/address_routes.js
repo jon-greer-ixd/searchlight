@@ -5,6 +5,16 @@ var generalFunctions = require('../../functions/general.js');
 
 // 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
 
+var addresses = {
+  "residential" : {
+    'display' : 'Residential address'
+  }, 
+  "correspondence" : {
+    'display' : 'Correspondence address'
+  }
+}
+
+
 var updateAddress = function (address, lineOne, status) {
   address.lineOne = lineOne;
   address.status = status;
@@ -30,7 +40,7 @@ router.get(/update-address-handler/, function (req, res) {
 
 router.get(/address-type-handler/, function (req, res) {
   var addressType = req.session.data.addressType;
-  var chosenAddress = req.session.data.addresses[addressType];
+  var chosenAddress = addresses[addressType];
   
   if (req.session.data.tempValue == 5) {
     if (req.session.data.updateType == 3) {
@@ -73,7 +83,7 @@ router.get(/cherish-handler/, function (req, res) {
 
 router.get(/check-address-handler/, function (req, res) {
   var addressType = req.session.data.addressType;
-  var chosenAddress = req.session.data.addresses[addressType];
+  var chosenAddress = addresses[addressType];
   var updateType = req.session.data.updateType;
   var tempValue = req.session.data.tempValue;
   var cherishStatus = req.session.data.cherishStatus;

@@ -343,7 +343,6 @@ router.use('/', main,
   req.session.data.miscData = require('./data/miscData.js').miscData;
   req.session.data.personalDetails = require('./data/personalDetails.js').personalDetails;
   req.session.data.bsCustomers = require('./data/bsCustomers.js').bsCustomers;
-  req.session.data.addresses = require('./data/addresses.js').addresses;
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
 
