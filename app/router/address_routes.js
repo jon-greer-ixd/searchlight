@@ -22,7 +22,6 @@ var flipStatus = function (residential) {
 }
 
 
-
 router.get(/update-address-handler/, function (req, res) {
   if (req.session.data.updateType == 1) {
     res.redirect('/update/address/address-search')
