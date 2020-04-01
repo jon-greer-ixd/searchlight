@@ -13,7 +13,7 @@
       {% if data.addresses.residential.cherish != false %}
         Flat A<br>
       {% endif %}
-      {% if data.addresses.residential.status == "live" or data.addresses.residential.status == "dlo" %}
+      {% if data.citizen.addressesStatus == "live" or data.citizen.addressesStatus == "dlo" %}
         {{data.addresses.residential.lineOne}}<br>
         Gateshead<br>
         Tyne and wear<br>
@@ -23,16 +23,16 @@
     </p>
     <ul>
       <li class="status-item">
-      {% if data.addresses.residential.status === "live" %}
+      {% if data.citizen.addressesStatus === "live" %}
         <img src="../../../public/images/green-tick-icon.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">Live</span>
-      {% elif data.addresses.residential.status === "dlo" %}
+      {% elif data.citizen.addressesStatus === "dlo" %}
         <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">Dead letter office</span>
-      {% elif data.addresses.residential.status === "pwa" %}
+      {% elif data.citizen.addressesStatus === "pwa" %}
         <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">Person without address</span>
-      {% elif data.addresses.residential.status === "nfa" %}
+      {% elif data.citizen.addressesStatus === "nfa" %}
         <img src="../../../public/images/warning-icon-red-small.svg" title="Green tick" class="ng-scope"> 
         <span class="sl-secondary-text-color sl-metadata">No fixed abode</span>
       {% endif %}
