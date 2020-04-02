@@ -1,0 +1,171 @@
+<!--
+<h2 class="heading-medium question">What kind of change do you need to make?</h2>
+
+<div class="grid-row">
+  
+  <div class="column-one-half">
+    
+    <form method="get" action="change-person-type-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+      <div class="form-group">
+        <div class="multiple-choice">
+          <input id="update" type="radio" name="data" value="updating">
+          <label for="update">Update</label>
+        </div>
+        
+      {% if data.personalDetail == "nationality" or data.personalDetail == "pv" %}
+        <div class="multiple-choice" data-target="contact-by-text">
+          <input id="example-contact-by-text" type="radio" name="data" value="correcting">
+          <label for="example-contact-by-text">Correct a mistake</label>
+        </div>
+        <div class="panel panel-border-narrow js-hidden" id="contact-by-text">
+          <div class="multiple-choice">
+            <input id="correct" type="radio" name="correct" value="correcting">
+            <label for="correct">Correct to a different {{data.personalDetails[data.personalDetail].display | lower}}</label>
+          </div>
+          <div class="multiple-choice">
+            <input id="end" type="radio" name="correct" value="ending">
+            <label for="end">End the {{data.personalDetails[data.personalDetail].display | lower}}</label>
+          </div>
+        </div>
+       {% else %}
+        <div class="multiple-choice">
+          <input id="correct" type="radio" name="data" value="correcting">
+          <label for="correct">Correct a mistake</label>
+        </div>
+       {% endif %}
+      </div> 
+            
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>
+-->
+
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">
+    Change 
+    {% if data.personalDetail == "pv" %}
+      the
+    {% else %}
+      their
+    {% endif %}
+    
+    {% if data.personalDetail == "nino" %}
+      {{data.personalDetails[data.personalDetail].display}}
+    {% else %}
+      {{data.personalDetails[data.personalDetail].display | lower}}
+    {% endif %}
+  </h2>
+{% endblock  %}
+
+{% block content %}
+
+<h2 class="heading-medium question">What kind of change do you need to make?</h2>
+
+<div class="grid-row">
+  
+  <div class="column-one-half">
+    
+    <form method="get" action="change-person-type-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+      <div class="form-group">
+        {% if data.personalDetail == "additionalNeeds" %}
+          <div class="multiple-choice">
+            <input id="example-contact-by-text" type="radio" name="updateType" value=1>
+            <label for="example-contact-by-text">
+              Add an additional need
+            </label>
+          </div>
+        {% endif %}
+
+        <div class="multiple-choice">
+          <input id="update" type="radio" name="updateType" value=2>
+          <label for="update">
+              Update
+            {% if data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
+               the status
+            {% elif data.personalDetail == "nino" %}
+              {{data.personalDetails[data.personalDetail].display}}
+            {% else %}
+              their {{data.personalDetails[data.personalDetail].display | lower}}
+            {% endif %}
+          </label>
+        </div>
+
+        {% if data.personalDetail == "nino" %}
+          <div class="multiple-choice">
+            <input id="example-contact-by-text" type="radio" name="updateType" value=4>
+            <label for="example-contact-by-text">
+              Update the verification level
+            </label>
+          </div>
+       {% endif %}
+        
+      {% if data.personalDetail == "nationality" or data.personalDetail == "pv" or data.personalDetail == "maritalStatus" or data.personalDetail == "additionalNeeds" or data.personalDetail == "preferredLanguage" or data.personalDetail == "spokenLanguage" or data.personalDetail == "immigration" or data.personalDetail == "disability" %}
+        <div class="multiple-choice">
+          <input id="example-contact-by-text" type="radio" name="updateType" value=3>
+          <label for="example-contact-by-text">
+            Correct a mistake 
+<!--
+            Correct the 
+            {% if data.personalDetail == "maritalStatus" or data.personalDetail == "pv" %}
+              status
+            {% else %}
+              {{data.personalDetails[data.personalDetail].display | lower}}
+            {% endif %}
+-->
+          </label>
+        </div>
+<!--
+        <div class="multiple-choice">
+          <input id="correct" type="radio" name="data" value="correcting">
+          <label for="correct">Correct to a different {{data.personalDetails[data.personalDetail].display | lower}}</label>
+        </div>
+-->
+<!--
+        <div class="multiple-choice">
+          <input id="end" type="radio" name="data" value="removing">
+          <label for="end">
+            Remove the {{data.personalDetails[data.personalDetail].display | lower}}
+          </label>
+        </div>
+-->
+       {% else %}
+        <div class="multiple-choice">
+          <input id="correct" type="radio" name="updateType" value=3>
+          <label for="correct">
+            Correct a mistake
+          </label>
+        </div>
+       {% endif %}
+      </div> 
+            
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account2/account">Cancel</a></p>
+  </div>
+</div>
+
+{% endblock  %}
