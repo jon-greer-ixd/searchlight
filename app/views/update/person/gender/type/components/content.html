@@ -1,3 +1,16 @@
+{% extends "../../../wrapper_template.html" %}
+
+
+{% block h2title %}
+  {% if data.personalDetails.gra.state == "updating" %}
+    <h2 class="title">Change acquired gender - GRA information</h2>
+  {% elif data.personalDetails.preGra.state == "updating" %}
+    <h2 class="title">Change acquired gender - GRA pre information</h2>
+  {% endif %}
+{% endblock  %}
+
+{% block content %}
+
 <h2 class="heading-medium question">What kind of change do you need to make?</h2>
 <div class="grid-row">
   <div class="column-one-half">
@@ -31,3 +44,4 @@
     <p><a href="/account3/account">Cancel</a></p>
   </div>
 </div>
+{% endblock  %}
