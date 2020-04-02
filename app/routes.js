@@ -30,35 +30,23 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 var additionalNeeds = require('./data/additionalNeeds.json');
 
 
+var canUpdate = true;
+router.get('/can-update-handler/', function (req, res) {
+  if(req.session.data.canUpdate == true) {
+    req.session.data.canUpdate = false;
+  } else {
+    req.session.data.canUpdate = true;
+  }
+  res.redirect('/')
+})
+
+
 ///////////////
 // July 2019 //
 /////////////// 
 
-//ho, dg, none
-var guardianRole = false;
-let homeOfficeRole = true;
-
-// var getCitizen = function(nino, cis) {
-//   return cis[nino]
-// }
-
 router.get('/cis-handler/', function (req, res) {
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
-  if (req.query.role == 'dg' || req.session.data.citizen.role == 'dg') {
-    req.session.data.guardianRole = true;
-    req.session.data.homeOfficeRole = false;
-  } else if (req.query.role == 'ho' || req.session.data.citizen.role == 'ho') {
-    req.session.data.guardianRole = false;
-    req.session.data.homeOfficeRole = true;
-  } else if (req.query.role == 'none' || req.session.data.citizen.role == 'none') {
-    req.session.data.guardianRole = false;
-    req.session.data.homeOfficeRole = false;
-  } else {
-    req.session.data.guardianRole = guardianRole;
-    req.session.data.homeOfficeRole = homeOfficeRole;
-  }
-  console.log('guardianRole' == req.session.data.guardianRole);
-  console.log('homeOfficeRole' == req.session.data.homeOfficeRole);
   if (req.session.data.citizen.appointee != null) {
     req.session.data.appointee = getCitizen(req.session.data.citizen.appointee, req.session.data.cis);
     console.log(`Apointee = ${req.session.data.appointee.nameOneFirst} ${req.session.data.appointee.nameOneLast}`)

@@ -28,7 +28,6 @@
 </div>    
     
     
-    {% if data.homeOfficeRole == true %}  
 
       <div id="other-personal-details">
 
@@ -43,7 +42,7 @@
     
     </div>
  
-     {% if data.guardianRole == true %}
+     {% if data.canUpdate == true %}
       <div class="grid-row no-margin wider-columns">
     <div class="column-one-third">
       <ul>
@@ -62,5 +61,3 @@
     </div>
   </div>
 {% endif %}
-
-  {% endif %}      

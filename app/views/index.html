@@ -5,7 +5,7 @@
 {% endblock %}
   
 {% block protocontent %}
-
+  <div class="column-two-thirds">
   <ul class="list list-bullet">
     <li><a href="./prototypes/nino_applications.html">Process a NINO application</a></li>
     <li><a href="./prototypes/home_office.html">Get immigration and nationality from the Home Office</a></li>
@@ -18,5 +18,21 @@
     <li><a href="./prototypes/create.html">Create an account</a></li>
     <li><a href="./prototypes/other.html">Miscellaneous prototypes</a></li>
   </ul>
-
+  </div>
+  
+  <div class="column-one-third switch-box">
+    <p class="bold">Update functions<p>
+    {# <p>Update functions allow you to temporarily add or change information in an account, for example an address.<p> #}
+    <p>Update functions are currently:<p>
+    {% if data.canUpdate == true %}
+      <p class="bold">On<p>
+    {% else %}
+      <p class="bold">Off<p>
+    {% endif %}
+    <form method="get" action="can-update-handler">
+      <div class="form-group">
+        <input class="button" type="submit" {% if data.canUpdate == true %} value="Switch off" {% else %} value="Switch on" {% endif %}>
+      </div>
+    </form>
+  </div>
 {% endblock %}

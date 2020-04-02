@@ -22,7 +22,7 @@
       {% include "./dob.html" %}
       <hr class="light">
 
-      {% if data.citizen.dodValue != null or data.guardianRole == true %}
+      {% if data.citizen.dodValue != null or data.canUpdate == true %}
         {% include "./dod.html" %}
         <hr class="light">
       {% endif %}
@@ -40,7 +40,7 @@
       {% include "./nino.html" %}
       <hr class="light">
 
-      {% if data.guardianRole == true %}
+      {% if data.canUpdate == true %}
         {% include "./creation.html" %}
         <hr class="light">
         {% include "./record-level.html" %}
@@ -90,9 +90,7 @@
         <hr class="light">
       {% endif %}
 
-      {% if data.homeOfficeRole %}
-        {% include "./get_ho_data.html" %}
-      {% endif %}
+      {% include "./get_ho_data.html" %}
 
   </div>
     

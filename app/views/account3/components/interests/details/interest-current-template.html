@@ -20,7 +20,7 @@
       <li>
         <a data-toggle="modal" data-target="#interest_modal" class="under-link">View maintenance</a>
       </li>
-      {% if data.guardianRole == true %}
+      {% if data.canUpdate == true %}
       <li>
         <form class="dumbform" method="get" action="change-interest-handler">
           <div class="form-group">
