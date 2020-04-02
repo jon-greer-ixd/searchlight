@@ -1,0 +1,22 @@
+<div class="sl-account-canvas row updater slim-header">
+  <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+    <div class="sl-account-canvas-width">
+      
+      <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+        
+        <a class="link-back" onCLick="history.back()">Back</a>
+        
+        {% block h2title %}
+        {% endblock %}
+
+        <div id="sl-address-primary-card" class="sl-primary-card last-card">
+          <div id="address-pane">
+
+        {% block content %}
+        {% endblock %}
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

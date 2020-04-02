@@ -1,3 +1,11 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  {% include "./title.njk" %}
+{% endblock  %}
+
+{% block content %}
+
   <h2 class="heading-medium question">Check your answers</h2>
 
     <div class="grid-row">
@@ -8,72 +16,72 @@
           
           <!-- PV -->
             {% if data.personalDetail == 'pv' %}
-              {% include "components/update/person/check/pv.njk" %}
+              {% include "./pv.njk" %}
             {% endif %}
           <!-- Date of birth -->
             {% if data.personalDetail == 'dateOfBirth' %}
-              {% include "components/update/person/check/birth.njk" %}
+              {% include "./birth.njk" %}
             {% endif %}
           <!-- Date of death -->
             {% if data.personalDetail == 'dateOfDeath' %}
-              {% include "components/update/person/check/death.njk" %}
+              {% include "./death.njk" %}
             {% endif %}
           <!-- Sex -->
             {% if data.personalDetail == 'sex' %}
-              {% include "components/update/person/check/sex.njk" %}
+              {% include "./sex.njk" %}
             {% endif %}
           <!-- Identity fraud interest -->
             {% if data.personalDetail == 'nifu' %}
-              {% include "components/update/person/check/nifu.njk" %}
+              {% include "./nifu.njk" %}
             {% endif %}
           <!--  Disability status -->
             {% if data.personalDetail == 'disability' %}
-              {% include "components/update/person/check/disability.njk" %}
+              {% include "./disability.njk" %}
             {% endif %}
           <!--  Additional needs -->
             {% if data.personalDetail == 'additionalNeeds' %}
-              {% include "components/update/person/check/needs.njk" %}
+              {% include "./needs.njk" %}
             {% endif %}
           <!--  Nationality -->
             {% if data.personalDetail == 'nationality' %}
-              {% include "components/update/person/check/nationality.njk" %}
+              {% include "./nationality.njk" %}
             {% endif %}
           <!--  Spoken language -->
             {% if data.personalDetail == 'spokenLanguage' %}
-              {% include "components/update/person/check/spoken.njk" %}
+              {% include "./spoken.njk" %}
             {% endif %}
           <!--  Preferred language -->
             {% if data.personalDetail == 'preferredLanguage' %}
-              {% include "components/update/person/check/preferred.njk" %}
+              {% include "./preferred.njk" %}
             {% endif %}
           <!--  Immigration status -->
             {% if data.personalDetail == 'immigration' %}
-              {% include "components/update/person/check/immigration.njk" %}
+              {% include "./immigration.njk" %}
             {% endif %}
           <!--  Marital status -->
             {% if data.personalDetail == 'maritalStatus' %}
-              {% include "components/update/person/check/marital.njk" %}
+              {% include "./marital.njk" %}
             {% endif %}
           <!--  ID AT RISK STATUS -->
             {% if data.personalDetail == 'idAtRisk' %}
-              {% include "components/update/person/check/risk.njk" %}
+              {% include "./risk.njk" %}
             {% endif %}
           <!--  ASSET FREEZE STATUS-->
             {% if data.personalDetail == 'assetFreeze' %}
-              {% include "components/update/person/check/freeze.njk" %}
+              {% include "./freeze.njk" %}
             {% endif %}
           <!--  recordLevel-->
             {% if data.personalDetail == 'recordLevel' %}
-              {% include "components/update/person/check/record.njk" %}
+              {% include "./record.njk" %}
             {% endif %}
           <!--  indIndicator-->
             {% if data.personalDetail == 'indIndicator' %}
-              {% include "components/update/person/check/indIndicator.njk" %}
+              {% include "./indIndicator.njk" %}
             {% endif %}
           
           <!--  recordLevel-->
             {% if data.personalDetail == 'relationship' %}
-              {% include "components/update/person/check/relationship.njk" %}
+              {% include "./relationship.njk" %}
             {% endif %}
           
 
@@ -97,3 +105,4 @@
 
 
 
+{% endblock %}

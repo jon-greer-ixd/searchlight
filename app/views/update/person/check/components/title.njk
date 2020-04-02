@@ -1,0 +1,47 @@
+<h2 class="title">
+    {% if data.personalDetail == 'assetFreeze' or data.personalDetail == 'idAtRisk' %}
+        {% if data.updateType == 1 or data.updateType == 2 %}
+        Add an
+        {% elif data.updateType == 5 %}
+        End an
+        {% endif %}
+    {% else %}
+
+        {% if data.updateType == 1 %}
+        Add 
+        {% if data.personalDetail == "additionalNeeds" %}
+            an
+        {% elif data.personalDetail == "immigration" or data.personalDetail == "nifu" or data.personalDetail == "indIndicator" or data.personalDetail == "assetFreeze" %}
+            an
+        {% else %}
+            a
+        {% endif %}
+
+        {% elif data.updateType == 3 or data.updateType == 4 %}
+        Correct 
+        {% if data.personalDetail == "pv" %}
+            the
+        {% else %}
+            their
+        {% endif %}
+
+        {% elif data.updateType == 5 %}
+        End an
+
+        {% else %}
+        Update 
+        {% if data.personalDetail == "pv" %}
+            the
+        {% else %}
+            their
+        {% endif %}
+
+        {% endif %}
+    {% endif %}
+
+    {% if data.personalDetail == "additionalNeeds" %}
+        additional need
+    {% else %}
+        {{ data.personalDetails[data.personalDetail].display | lower }}
+    {% endif %}
+</h2>
