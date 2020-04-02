@@ -44,9 +44,11 @@
       <li>
         <a data-toggle="modal" data-target="#res-address" class="under-link">View maintenance</a> 
       </li>
-      <li>
-        <a class="secondary-link" href="update-address-handler?addressType=residential&updateType=0">Change</a>
-      </li>
+      {% if data.canUpdate %}
+        <li>
+          <a class="secondary-link" href="update-address-handler?addressType=residential&updateType=0">Change</a>
+        </li>
+      {% endif %}
     </ul>
   </div>
 

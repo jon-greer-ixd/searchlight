@@ -146,8 +146,6 @@ var residentialAddress = {
 };
 residentialAddress.reset();
 
-// dateTwo : '30 Dec 2000',
-
 var correspondenceAddress = {
   reset : function () {
     this.line = addressThree;
@@ -714,42 +712,6 @@ router.get(/check-sex-handler/, function (req, res) {
 })
 
 
-
-
-
-
-/*************/
-/** ADDRESS **/
-/*************/
-
-//master-account
-router.get('/master-account/account', function (req, res) {
-  res.render('master-account/account.html', {
-    dataState : dataState,
-    today : dates.todayAsString(),
-    residentialaddress : residentialAddress,
-    correspondenceaddress : correspondenceAddress,
-    previousaddress : previousAddress,
-    startdate : residentialAddress.startDate,
-    updated : dataState.updatedToNewAddress,
-    cherished : dataState.cherished,
-    editDate : content.editDate,
-    correspondence : dataState.correspondenceAdded,
-    statusupdated : dataState.statusUpdated,
-    addresscorrected : dataState.addressCorrected,
-    correspondenceremoved : dataState.correspondenceRemoved,
-    dateisupdated : dataState.dateIsUpdated,
-    interestAdded : dataState.interestAdded,
-    interestRemoved : dataState.interestRemoved,
-    interestTransfered : dataState.interestTransfered,
-    typeTwoAdded : dataState.typeTwoAdded,
-    cherishedlinecorrected : dataState.cherishedLineCorrected,
-    currentstatus : dataState.currentStatus,
-    statuscorrected : dataState.statusCorrected,
-    interests : interests
-  })
-})
-
 //account2
 router.get('/account2/account', function (req, res) {
   res.render('account2/account.html', {
@@ -778,39 +740,6 @@ router.get('/account2/account', function (req, res) {
   })
 })
 
-//this can go tied to old update functionality
-
-//account
-router.get('/update/account', function (req, res) {
-  res.render('update/account.html', {
-    residentialaddress : residentialAddress,
-    correspondenceaddress : correspondenceAddress,
-    previousaddress : previousAddress,
-    startdate : residentialAddress.startDate,
-    updated : dataState.updatedToNewAddress,
-    cherished : dataState.cherished,
-    editDate : content.editDate,
-    correspondence : dataState.correspondenceAdded,
-    statusupdated : dataState.statusUpdated,
-    addresscorrected : dataState.addressCorrected,
-    correspondenceremoved : dataState.correspondenceRemoved,
-    dateisupdated : dataState.dateIsUpdated,
-    interestAdded : dataState.interestAdded,
-    interestRemoved : dataState.interestRemoved,
-    typeTwoAdded : dataState.typeTwoAdded,
-    interestTransfered : dataState.interestTransfered,
-    cherishedlinecorrected : dataState.cherishedLineCorrected,
-    currentstatus : dataState.currentStatus,
-    statuscorrected : dataState.statusCorrected,
-    interests : interests
-  })
-})
-
-
-
-router.get('/choice-handler', function (req, res) {
-  res.render('address-search')
-})
 
 router.get('/update/update-v2', function (req, res) {
   res.render('update/update-v2', {
@@ -897,40 +826,40 @@ router.get(/cancel-handler/, function (req, res) {
 //Version 1
 //*********
 
-var previousAddresses = false;
+// var previousAddresses = false;
 
-router.get(/check-handler-v1/, function (req, res) {
-  if(req.session.data.updateType === 'add') {
-    correspondence = true;
-  }
-  if (req.session.data.updateType === 'address') {
-    previousAddresses = true;    
-    isUpdated = true;
-  }
-  res.redirect('account')
-})
+// router.get(/check-handler-v1/, function (req, res) {
+//   if(req.session.data.updateType === 'add') {
+//     correspondence = true;
+//   }
+//   if (req.session.data.updateType === 'address') {
+//     previousAddresses = true;    
+//     isUpdated = true;
+//   }
+//   res.redirect('account')
+// })
 
-router.get('/update/v1/account', function (req, res) {
-  res.render('update/v1/account', {
-    updated : dataState.updatedToNewAddress,
-    editDate : content.editDate,
-    previous_addresses : previousAddresses,
-    correspondence : dataState.correspondenceAdded
-  })
-})
+// router.get('/update/v1/account', function (req, res) {
+//   res.render('update/v1/account', {
+//     updated : dataState.updatedToNewAddress,
+//     editDate : content.editDate,
+//     previous_addresses : previousAddresses,
+//     correspondence : dataState.correspondenceAdded
+//   })
+// })
 
-router.get('/update/v1/update', function (req, res) {
-  res.render('update/v1/update', {
-    correspondence : dataState.correspondenceAdded,
-    pagetitle : content.pageTitle
-  })
-})
+// router.get('/update/v1/update', function (req, res) {
+//   res.render('update/v1/update', {
+//     correspondence : dataState.correspondenceAdded,
+//     pagetitle : content.pageTitle
+//   })
+// })
 
-router.get('/update/v1/check', function (req, res) {
-  res.render('update/v1/check', {
-    pagetitle : content.pageTitle
-  })
-})
+// router.get('/update/v1/check', function (req, res) {
+//   res.render('update/v1/check', {
+//     pagetitle : content.pageTitle
+//   })
+// })
 
 router.get(/update-handler-v1/, function (req, res) {
   if(req.query.data === 'status') {
