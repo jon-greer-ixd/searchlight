@@ -1,0 +1,126 @@
+<h2 class="heading-medium question">What do you need to add?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="add-person-handler">
+      
+      <legend class="visually-hidden">
+        <p>
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+<!--
+  // Death_Date Verification 
+  // Potentially violent
+  // NIFU 
+  // Special Needs
+  // Disability_ 
+  // gender
+  // Preferred Lang
+  // Spoken Lang
+  // IND_Interest
+  // Marital Status
+  // Nationality 
+  // Immigration_Status 
+-->
+
+      <div class="form-group">
+      <fieldset>
+        {% if data.citizen.additionalNeeds == null %}
+          <div class="multiple-choice">
+            <input id="additionalneeds" name="personalDetail" type="radio" value="additionalNeeds">
+            <label for="additionalneeds">Additional needs</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.assetFreeze == null %}
+          <div class="multiple-choice">
+            <input id="assetfreeze" name="personalDetail" type="radio" value="assetFreeze">
+            <label for="assetfreeze">Asset freeze indicator</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.disability == null %}
+          <div class="multiple-choice">
+            <input id="disability" name="personalDetail" type="radio" value="disability">
+            <label for="disability">Disability status</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.dodValue == null %}
+          <div class="multiple-choice">
+            <input id="dateofdeath" name="personalDetail" type="radio" value="dateOfDeath">
+            <label for="dateofdeath">Date of death</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.genderGra == null and data.citizen.genderPreGra == null %}
+          <div class="multiple-choice">
+            <input id="gender" name="personalDetail" type="radio" value="gender">
+            <label for="gender">Gender recognition details</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.nifu == null %}
+          <div class="multiple-choice">
+            <input id="nifu" name="personalDetail" type="radio" value="nifu">
+            <label for="nifu">Identity fraud interest</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.idAtRisk == null %}
+          <div class="multiple-choice">
+            <input id="idatrisk" name="personalDetail" type="radio" value="idAtRisk">
+            <label for="idatrisk">Identity at risk indicator</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.immigration == null %}
+          <div class="multiple-choice">
+            <input id="immigration" name="personalDetail" type="radio" value="immigration">
+            <label for="immigration">Immigration status</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.indIndicator == null %}
+          <div class="multiple-choice">
+            <input id="indindicator" name="personalDetail" type="radio" value="indIndicator">
+            <label for="indindicator">Immigration and nationality interest</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.maritalStatus == null %}
+          <div class="multiple-choice">
+            <input id="maritalstatus" name="personalDetail" type="radio" value="maritalStatus">
+            <label for="maritalstatus">Marital or Civil Partnership status</label>
+          </div>
+        {% endif %}
+        {% if data.citizen.nationality == null %}
+            <div class="multiple-choice">
+              <input id="nationality" name="personalDetail" type="radio" value="nationality">
+              <label for="nationality">Nationality</label>
+            </div>
+        {% endif %}
+        {% if data.citizen.pv == null and data.citizen.pvPartner  == null and data.citizen.pvMember  == null %}
+            <div class="multiple-choice">
+              <input id="pv" name="personalDetail" type="radio" value="pv">
+              <label for="pv">Potentially violent status</label>
+            </div>
+        {% endif %}
+        {% if data.citizen.pv == null and data.citizen.pvPartner  == null and data.citizen.pvMember  == null %}
+            <div class="multiple-choice">
+              <input id="spokenlanguage" name="personalDetail" type="radio" value="spokenLanguage">
+              <label for="spokenlanguage">Spoken language</label>
+            </div>
+        {% endif %}
+        </fieldset>        
+      </div>  
+        {# {% for items, item in data.personalDetails %}
+          {% if item.show == false and item.display != 'Account status' %}
+            <div class="multiple-choice">
+              <input id={{items | lower}} name="personalDetail" type="radio" value={{items}} >
+              <label for={{items | lower}}>{{item.display}}</label>
+            </div>
+          {% endif %}
+        {% endfor %}
+         #}
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account3/account">Cancel</a></p>
+  </div>
+</div>

@@ -391,33 +391,13 @@ router.use('/', main,
   //corrections
   dataState.cherishedLineCorrected = false;
   dataState.statusCorrected = false;
-
   pageTitle = 'Update residential address';
   res.render('index')
-})
-
-router.get('/kitchen-sink', function (req, res) {
-  res.render('kitchen-sink.njk')
 })
 
 router.get('/search-v1', function (req, res) {
   res.render('pages/search-v1.njk')
 })
-
-router.get('/managementcheck', function (req, res) {
-  req.session.data.mcheck = managementCheck(req.session.data.mcheck);
-  res.redirect(req.get('referer'));
-})
-
-function managementCheck(check) {
-  if(check == true) {
-    check = false;
-  } else {
-    check = true;
-  }
-  return check;
-}
-
 
 //PERSON
 router.get(/add-person-handler/, function (req, res) {
@@ -711,36 +691,6 @@ router.get(/check-sex-handler/, function (req, res) {
   res.redirect('/account2/account')
 })
 
-
-//account2
-router.get('/account2/account', function (req, res) {
-  res.render('account2/account.html', {
-    dataState : dataState,
-    today : dates.todayAsString(),
-    residentialaddress : residentialAddress,
-    correspondenceaddress : correspondenceAddress,
-    previousaddress : previousAddress,
-    startdate : residentialAddress.startDate,
-    updated : dataState.updatedToNewAddress,
-    cherished : dataState.cherished,
-    editDate : content.editDate,
-    correspondence : dataState.correspondenceAdded,
-    statusupdated : dataState.statusUpdated,
-    addresscorrected : dataState.addressCorrected,
-    correspondenceremoved : dataState.correspondenceRemoved,
-    dateisupdated : dataState.dateIsUpdated,
-    interestAdded : dataState.interestAdded,
-    interestRemoved : dataState.interestRemoved,
-    interestTransfered : dataState.interestTransfered,
-    typeTwoAdded : dataState.typeTwoAdded,
-    cherishedlinecorrected : dataState.cherishedLineCorrected,
-    currentstatus : dataState.currentStatus,
-    statuscorrected : dataState.statusCorrected,
-    interests : interests
-  })
-})
-
-
 router.get('/update/update-v2', function (req, res) {
   res.render('update/update-v2', {
     cherish : residentialAddress.cherish,
@@ -784,13 +734,13 @@ router.get(/change-link-handler/, function (req, res) {
   res.redirect('/update/benefits/check')
 })
 
-router.get(/check-benefit-handler/, function (req, res) {
-  req.session.data.personalDetails.bereavementBenefit.value = false;
-  req.session.data.personalDetails.bereavementBenefit.show = false;
-  req.session.data.personalDetails.bereavementBenefit.state = 5;
-  req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
-  res.redirect('/account2/account')
-})
+// router.get(/check-benefit-handler/, function (req, res) {
+//   req.session.data.personalDetails.bereavementBenefit.value = false;
+//   req.session.data.personalDetails.bereavementBenefit.show = false;
+//   req.session.data.personalDetails.bereavementBenefit.state = 5;
+//   req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
+//   res.redirect('/account2/account')
+// })
 
 
 //maintain account
@@ -815,10 +765,10 @@ router.get(/nino-level-handler/, function (req, res) {
   }
 })
 
-router.get(/cancel-handler/, function (req, res) {
-  req.session.data.toaster = null;
-  res.redirect('/account2/account')
-})
+// router.get(/cancel-handler/, function (req, res) {
+//   req.session.data.toaster = null;
+//   res.redirect('/account2/account')
+// })
 
 
 
