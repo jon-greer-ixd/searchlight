@@ -1,0 +1,66 @@
+<a id="horeveal" class=" button secondary-button">Get Home Office data </a>
+    
+  <div class="grid-row wider-columns">
+    <div class="column-one-third">
+      <ul class="loading">
+        <li> </li>
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul class="loading">
+        <li> </li>
+      </ul>
+    </div>
+  </div>
+
+<div class="grid-row wider-columns">
+  <div class="column-one-third ho-data">
+    Access to public funds
+  </div>
+  <div class="column-one-third ho-data">
+    <ul>
+    {% if data.citizen.publicFunds == true %}
+      <li class="strong">Yes</li>
+      <li class="sl-secondary-text-color sl-metadata">Since 1 Jan 2019</li>
+    {% endif %}
+    </ul>
+  </div>
+</div>    
+    
+    
+    {% if data.homeOfficeRole == true %}  
+
+      <div id="other-personal-details">
+
+        {{counter}}
+        {% set counter = 0 %}
+        
+        {% for detailName, item in data.personalDetails %}
+          {% if item.show == false %}
+            {% set counter = counter + 1 %}
+          {% endif %}
+        {% endfor %}
+    
+    </div>
+ 
+     {% if data.guardianRole == true %}
+      <div class="grid-row no-margin wider-columns">
+    <div class="column-one-third">
+      <ul>
+        &nbsp;
+      </ul>
+    </div>
+    <div class="column-one-third">
+      <ul>
+        <li>&nbsp;</li>
+      </ul>
+    </div>
+    <div class="column-one-third last-col">
+      <ul class="edit-menu">
+        <li><a href="../update/person/add" class="under-link">Add personal details</a></li>
+      </ul>
+    </div>
+  </div>
+{% endif %}
+
+  {% endif %}      

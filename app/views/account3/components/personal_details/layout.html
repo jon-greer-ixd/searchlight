@@ -55,71 +55,47 @@
         <hr class="light">
       {% endif %}
 
-{% for detailName, value in data.citizen %}
-
-      {% if value != null %}
-        {% if detailName == "preferredLanguage" %}
-        <!-- include "./preferred-language.html"           
-        <hr class="light">
-        -->
-        {% elif detailName == "spokenLanguage" %}
-          {% include "./spoken-language.html" %}
+      {# Other personal details #}
+      {% for detailName, value in data.citizen %}
+        {% if value != null %}
+          {% if detailName == "preferredLanguage" %}
+          <!-- include "./preferred-language.html"           
           <hr class="light">
-        {% elif detailName == "maritalStatus" %}
-          {% include "./marital.html" %}
-          <hr class="light">
-        {% elif detailName == "idAtRisk" %}
-          {% include "./risk.html" %}
-          <hr class="light">
-        {% elif detailName == "assetFreeze" %}
-          {% include "./asset-freeze.html" %}
-          <hr class="light">
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-
-
-    {% include "./immigration.html" %}
-
-
-    {% if data.homeOfficeRole == true %}  
-
-      <div id="other-personal-details">
-
-        {{counter}}
-        {% set counter = 0 %}
-        
-        {% for detailName, item in data.personalDetails %}
-          {% if item.show == false %}
-            {% set counter = counter + 1 %}
+          -->
+          {% elif detailName == "spokenLanguage" %}
+            {% include "./spoken-language.html" %}
+            <hr class="light">
+          {% elif detailName == "maritalStatus" %}
+            {% include "./marital.html" %}
+            <hr class="light">
+          {% elif detailName == "idAtRisk" %}
+            {% include "./risk.html" %}
+            <hr class="light">
+          {% elif detailName == "assetFreeze" %}
+            {% include "./asset-freeze.html" %}
+            <hr class="light">
           {% endif %}
-        {% endfor %}
-    
-    </div>
- 
-     {% if counter != 0 and data.guardianRole == true %}
-      <div class="grid-row no-margin wider-columns">
-    <div class="column-one-third">
-      <ul>
-        &nbsp;
-      </ul>
-    </div>
-    <div class="column-one-third">
-      <ul>
-        <li>&nbsp;</li>
-      </ul>
-    </div>
-    <div class="column-one-third last-col">
-      <ul class="edit-menu">
-        <li><a href="../update/person/add" class="under-link">Add personal details</a></li>
-      </ul>
-    </div>
-  </div>
-{% endif %}
+        {% endif %}
+      {% endfor %}
 
-  {% endif %}      
-      {% include "../modals/modals.html" %}
+      {# Immigration and nationality #}
+      {% if data.citizen.nationality != null %}
+        {% include "./nationality.html" %}
+        <hr class="light">
+      {% endif %}
+
+
+      {% if data.citizen.nationality != null %}
+        {% include "./immigration.html" %}
+        <hr class="light">
+      {% endif %}
+
+      {% if data.homeOfficeRole %}
+        {% include "./get_ho_data.html" %}
+      {% endif %}
 
   </div>
     
 </div>
+
+{% include "../modals/modals.html" %}
