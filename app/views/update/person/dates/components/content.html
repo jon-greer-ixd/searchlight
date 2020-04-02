@@ -1,3 +1,18 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title"> 
+    {% if data.updateType == 1 %}
+      Add an
+    {% elif data.updateType == 5 %}
+      End an
+    {% endif %}
+    {{data.personalDetails[data.personalDetail].display | lower}}
+  </h2>
+{% endblock  %}
+
+{% block content %}
+
 {{ startLabel }}
 {{ endLabel }}
 {% set startLabel = data.personalDetail + 'Start' %}
@@ -50,3 +65,4 @@
   </div>
   
 </div>
+{% endblock  %}

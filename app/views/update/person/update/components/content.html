@@ -44,29 +44,29 @@
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               {% if data.personalDetail == "nationality" %}
-                {% include "components/update/person/details/nationality.njk" %}
+                {% include "./nationality.njk" %}
               {% elif data.personalDetail == "additionalNeeds" %}
-                {% include "components/update/person/details/additionalNeeds.njk" %}
+                {% include "./additionalNeeds.njk" %}
               {% elif data.personalDetail == "maritalStatus" %}
-                {% include "components/update/person/details/maritalstatus.njk" %}
+                {% include "./maritalstatus.njk" %}
               {% elif data.personalDetail == "recordLevel" %}
-                {% include "components/update/person/details/recordlevel.njk" %}
+                {% include "./recordlevel.njk" %}
               {% elif data.personalDetail == "disability" %}
-                {% include "components/update/person/details/disability.njk" %}
+                {% include "./disability.njk" %}
               {% elif data.personalDetail == "pv" %}
-                {% include "components/update/person/details/pv.njk" %}
+                {% include "./pv.njk" %}
               {% elif data.personalDetail == "preferredLanguage" %}
-                {% include "components/update/person/details/preferredLanguage.njk" %}
+                {% include "./preferredLanguage.njk" %}
               {% elif data.personalDetail == "dateOfDeath" %}
-                {% include "components/update/person/details/dateOfDeath.njk" %}
+                {% include "./dateOfDeath.njk" %}
               {% elif data.personalDetail == "spokenLanguage" %}
-                {% include "components/update/person/details/spokenLanguage.njk" %}
+                {% include "./spokenLanguage.njk" %}
               {% elif data.personalDetail == "immigration" %}
-                {% include "components/update/person/details/immigration.njk" %}
+                {% include "./immigration.njk" %}
               {% elif data.personalDetail == "dateOfBirth" %}
-                {% include "components/update/person/details/dateOfBirth.njk" %}
+                {% include "./dateOfBirth.njk" %}
               {% elif data.personalDetail == "ninoVerificationLevel" %}
-                {% include "components/update/person/details/ninolevel.njk" %}
+                {% include "./ninolevel.njk" %}
               {% endif %}
           </div>
         </div>

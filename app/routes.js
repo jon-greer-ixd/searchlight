@@ -399,7 +399,7 @@ router.get('/search-v1', function (req, res) {
   res.render('pages/search-v1.njk')
 })
 
-//PERSON
+//PERSON - needed
 router.get(/add-person-handler/, function (req, res) {
   console.log(req.session.data.personalDetail);
   req.session.data.personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
