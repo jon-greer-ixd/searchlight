@@ -1,0 +1,42 @@
+<h2 class="title">
+
+{% if data.updateType == 1 %}
+
+    Add 
+    {% if data.personalDetail == "additionalNeeds" %}
+        
+    {% elif data.personalDetail == "immigration" or data.personalDetail == "nifu" %}
+    an
+    {% else %}
+    a
+    {% endif %}
+
+{% elif data.updateType == 3 or data.updateType == 4 %}
+    Correct 
+    {% if data.personalDetail == "pv" %}
+    the
+    {% else %}
+    their
+    {% endif %}
+
+{% elif data.editState == "ending" or data.editState == "removing" %}
+    Change 
+    {% if data.personalDetail == "pv" %}
+    the
+    {% else %}
+    their
+    {% endif %}
+
+{% else %}
+    Update 
+    {% if data.personalDetail == "pv" %}
+    the
+    {% else %}
+    their
+    {% endif %}
+
+{% endif %}
+
+{{ data.personalDetails[data.personalDetail].display | lower }}
+
+</h2>

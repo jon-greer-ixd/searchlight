@@ -1,3 +1,12 @@
+
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">Correct {{ data.personalDetails[data.personalDetail].display | lower }}</h2>
+{% endblock  %}
+
+{% block content %}
+
 <h2 class="heading-medium question">What do you need to correct?</h2>
 <div class="grid-row">
 
@@ -27,3 +36,5 @@
   </div>
 
   </div>
+
+  {% endblock  %}

@@ -1,9 +1,17 @@
+{% extends "../../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">Correct {{ data.personalDetails[data.personalDetail].display | lower }}</h2>
+{% endblock  %}
+
+{% block content %}
+
 <h2 class="heading-medium question">Which additional need do they have instead of {{data.personalDetailValue | lower}}?</h2>
   <div class="grid-row">
 
       <div class="column-two-thirds">
 
-        <p>Select all that apply</p>
+        {# <p>Select all that apply</p> #}
 
         <form class="form" method="get" id="multi-box-form" action="../check">
 
@@ -146,3 +154,5 @@
     </div>
 
   </div>
+
+  {% endblock  %}
