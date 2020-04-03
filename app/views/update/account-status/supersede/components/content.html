@@ -1,0 +1,28 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">Update the account status</h2>
+{% endblock  %}
+
+{% block content %}
+
+<h2 class="heading-medium question">What is the superseding National Insurance number?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">      
+      <fieldset class="form-group">
+        <label class="form-label" for="date">
+          National Insurance number
+        </label>
+        <input class="form-control" id="date" type="text" name="personalDetailValue">
+      </fieldset>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account3/account">Cancel</a></p>
+  </div>
+</div>
+{% endblock  %}

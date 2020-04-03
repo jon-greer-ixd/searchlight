@@ -1,0 +1,13 @@
+<h2 class="title">
+  Add {% if data.contactType === "telephone" %}
+    a telephone number
+  {% elif data.contactType === "email" %}
+    an email address 
+  {% elif data.contactType === "fax" %}
+    a fax number 
+  {% endif %}
+</h2>
+
+{% if data.contactTypes[data.contactType].state == "updating"  %}
+  Update a {{ data.contactType }}
+{% endif %}

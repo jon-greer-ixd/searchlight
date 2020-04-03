@@ -1,0 +1,85 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">
+  {% if data.updateType == 3 %} 
+    Update the verification type
+  {% elif data.updateType == 1 %}
+    Recover deleted awards or relationships
+  {% else %}
+    Update the account status
+  {% endif %}
+
+  {{ data.details[data.nameType].display | lower }}
+</h2>
+{% endblock  %}
+
+{% block content %}
+
+  <h2 class="heading-medium question">Check your answers</h2>
+    <div class="grid-row">
+      <div class="column-one-half">
+        
+        <table class="table"> 
+          
+        {% if data.updateType == 1 %}
+            <tr>
+              <td><span class="strong">What do you need to recover?</span></td>
+              <td>
+                {% if data.tempawards == 'true' %}
+                  Awards 
+                {% endif %}
+                {% if data.tempawards == 'true' and data.temprelationships == 'true' %}
+                  <br>
+                {% endif %}
+                {% if data.temprelationships == 'true' %}
+                  Relationships
+                {% endif %}
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+        {% endif %}
+          
+        {% if data.updateType == 3 %}
+          <tr>
+            <td><span class="strong">Verification type</span></td>
+            <td>
+              {% if data.verificationLevel == 0 %}
+                Unverified
+              {% elif data.verificationLevel == 1 %}
+                Qualified
+              {% elif data.verificationLevel == 2 %}
+                Verified
+              {% endif %}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+
+        {% if data.updateType == 2 or data.updateType == 0 %}
+          <tr>
+            <td><span class="strong">Account status</span></td>
+            <td>{{data.tempAccountStatus}}</td>
+            <td><a>Change</a></td>
+          </tr>
+          {% if data.tempAccountStatus == 'Superseded' %}
+            <tr>
+              <td><span class="strong">Superseding account</span></td>
+              <td>SX170201</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+        {% endif %}
+
+      </table>
+      <br>
+      <form method="get" action="check-nino-handler">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+      <a href="../../../account3/account">Cancel</a>
+    </div>
+  </div>
+
+  {% endblock %}

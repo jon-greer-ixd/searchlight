@@ -1,0 +1,139 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">{% include "./title.njk" %}</h2>
+{% endblock  %}
+
+{% block content %}
+
+<h2 class="heading-medium question">Check your answers</h2>
+
+  <div class="grid-row">
+
+    <div class="column-one-half">
+
+      <table class="table"> 
+                
+        {% if data.updateType == 1 or data.updateType == 2 %}
+          <tr>
+            <td>
+              <span class="strong">
+                {% if data.contactType == "otherContact" %}
+                  Contact details
+                {% else %}
+                  {{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}
+                {% endif %}
+
+              </span>
+            </td>
+            <td>{{ data.contactTypes[data.contactType].value }}</td>
+            <td><a>Change</a></td>
+          </tr>     
+          <tr>
+            <td><span class="strong">Start date</span></td>
+            <td>
+              {{ data.prepopulatedString }}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+            <tr>
+              <td><span class="strong">Preferred method of contact</span></td>
+              <td>
+               {% if data.pref == "true" %}
+                  Yes
+                {% else %}
+                  No
+                {% endif %}
+              </td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+        
+        {% if data.updateType == 3 %}
+          <tr>
+            <td>
+              <span class="strong">
+                {% if data.contactType == "otherContact" %}
+                  Contact details
+                {% else %}
+                  {{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}
+                {% endif %}
+              </span>
+            </td>
+            <td>{{ data.contactTypes[data.contactType].value }}</td>
+            <td><a>Change</a></td>
+          </tr>
+          <tr>
+            <td><span class="strong">Preferred method of contact</span></td>
+             <td>
+               {% if data.pref == "true" %}
+                Yes
+              {% else %}
+                No
+              {% endif %}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+        
+        {% if data.updateType == 5 %}
+          <tr>
+            <td><span class="strong">End date</span></td>
+            <td>
+              {{ data.prepopulatedString }}
+            </td>
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+        
+        
+        {% if data.updateType == 7 %}
+          <tr>
+            <td><span class="strong">Contact method</span></td>
+            {% if data.contactType == "otherContact" %}
+              <td>{{ data.contactTypes.otherContact.value }}</td>
+            {% else %}
+              <td>{{ data.contactTypes[data.contactType].display }} {{data.contactTypes[data.contactType].type | contactIs }}</td>
+            {% endif %}
+            
+            <td><a>Change</a></td>
+          </tr>
+        {% endif %}
+        
+        {% if data.contactType == "homeTelephone" %}
+          {% if data.exdirectory == "true" %}
+            <tr>
+              <td><span class="strong">Ex-directory number</span></td>
+              <td>Yes</td>
+              <td><a>Change</a></td>
+            </tr>
+          {% endif %}
+          {% if data.exdirectory != "true" and data.contactTypes.homeTelephone.exD == true %}
+<!--
+            {% if data.updateType == 7 %}
+              <tr>
+                <td><span class="strong">Ex-directory number</span></td>
+                <td>No</td>
+                <td><a>Change</a></td>
+              </tr>
+            {% endif %}
+-->
+          {% endif %}
+        {% endif %}
+
+      </table>
+      
+      <br>
+
+      <form method="get" action="check-contact-new">
+        <div class="form-group">
+          <input class="button" type="submit" value="Submit">
+        </div>
+      </form>
+
+      <a href="/account3/account">Cancel</a>
+
+  </div>
+
+</div>
+{% endblock  %}

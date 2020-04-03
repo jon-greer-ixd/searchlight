@@ -1,0 +1,119 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  {% include "./title.njk" %}
+{% endblock  %}
+
+{% block content %}
+
+<h2 class="heading-medium question">
+  What kind of 
+  {% if data.contactType === "telephone" %}
+    telephone number
+  {% elif data.contactType === "email" %}
+    email address 
+  {% elif data.contactType === "fax" %}
+    fax number 
+  {% endif %}
+  do you need to add?
+</h2>
+<div class="grid-row">
+
+    <div class="column-two-thirds">
+      
+      <form class="form" method="get" action="contact-details">
+          <div class="form-group">
+            <fieldset>
+        <!-- telephone -->
+        {% if data.contactType === "telephone" %}
+          <legend>
+            <p class="visually-hidden">
+              What kind of telephone number is it?
+            </p>
+          </legend>
+              
+          {% if data.contactTypes.personalMobile.show == false %}
+            <div class="multiple-choice">
+              <input id="personalMobile" type="radio" name="contactType" value="personalMobile">
+              <label for="personalMobile">Personal mobile</label>
+            </div>
+          {% endif %}
+              
+          {% if data.contactTypes.homeTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="homeTelephone" type="radio" name="contactType" value="homeTelephone">
+              <label for="homeTelephone">Home telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.contactTypes.daytimeTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="daytimeTelephone" type="radio" name="contactType" value="daytimeTelephone">
+              <label for="daytimeTelephone">Daytime telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.contactTypes.eveningTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="eveningTelephone" type="radio" name="contactType" value="eveningTelephone">
+              <label for="eveningTelephone">Evening telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.contactTypes.businessMobile.show == false %}
+            <div class="multiple-choice">
+              <input id="businessMobile" type="radio" name="contactType" value="businessMobile">
+              <label for="businessMobile">Business mobile</label>
+            </div>
+          {% endif %}
+              
+          {% if data.contactTypes.businessTelephone.show == false %}
+            <div class="multiple-choice">
+              <input id="businessTelephone" type="radio" name="contactType" value="businessTelephone">
+              <label for="businessTelephone">Business telephone</label>
+            </div>
+          {% endif %}
+              
+          {% if data.contactTypes.thirdParty.show == false %}
+            <div class="multiple-choice">
+              <input id="thirdParty" type="radio" name="contactType" value="thirdParty">
+              <label for="thirdParty">Third party telephone</label>
+            </div>
+          {% endif %}
+              
+        {% elif data.contactType === "email" %}
+          <div class="multiple-choice">
+            <input id="homeEmail" type="radio" name="contactType" value="homeEmail">
+            <label for="homeEmail">Home email</label>
+          </div>
+
+          <div class="multiple-choice">
+            <input id="businessEmail" type="radio" name="contactType" value="businessEmail">
+            <label for="businessEmail">Business email</label>
+          </div>
+              
+        {% elif data.contactType === "fax" %}
+          <div class="multiple-choice">
+            <input id="homeFax" type="radio" name="contactType" value="homeFax">
+            <label for="homeFax">Home fax</label>
+          </div>
+
+          <div class="multiple-choice">
+            <input id="businessFax" type="radio" name="contactType" value="businessFax">
+            <label for="businessFax">Business fax</label>
+          </div>
+              
+        {% endif %}
+              
+            </fieldset>
+          </div>
+        <div class="form-group">
+          <input class="button" type="submit" value="Next">
+        </div>
+
+     </form>
+    <p><a href="../../search">Cancel</a></p>
+  </div>
+
+</div>
+{% endblock  %}

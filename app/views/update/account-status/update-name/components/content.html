@@ -1,0 +1,197 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">
+  {% if data.updateType == "add" %} 
+    Add a
+  {% elif data.updateType == "update" %}
+    Update
+  {% elif data.updateType == "correct" %}
+    Correct
+  {% else %}
+    Update
+  {% endif %}
+
+  {{data.details[data.nameType].display | lower}}
+  </h2>
+{% endblock  %}
+
+{% block content %}
+
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">
+      
+      <legend class="visually-hidden">
+        <p class="">
+          What kind of change do you need to make?
+        </p>
+      </legend>
+      
+      {% if data.nameType == "requestedName" %}
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
+          <legend class="visuallyhidden">Requested name</legend>
+          <label class="form-label" for="requestedName">Requested name</label>
+          <input class="form-control" id="requestedName" type="text" name="requestedName" {% if data.updateType == "correct" or data.updateType == "update" %} value = {{data.details.requestedName.value}} {% endif %}>
+        </fieldset>
+      
+        {% if data.updateType == "add" or data.updateType == "update" %}
+          <fieldset>
+            <div class="form-group prepop">
+              <label class="form-label" for="startdate">
+                Start date
+                <span class="form-hint">
+                  For example 31/8/1979
+                </span>
+              </label>
+              <input class="form-control box-one" id="startdate" name="startdate" type="text" {% if data.updateType == "update" %} value = {{data.prepopulatedDate}} {% endif %}>
+              <a class="populate-link-one">Use today's date</a>
+            </div>
+          </fieldset>
+        {% endif %}
+      
+        {% else %}
+      
+        <div class="form-group">
+         <fieldset data-required data-error="Choose a title">
+           <legend class="radio-header">Title</legend>
+            <div class="multiple-choice">
+              <input id="None" type="radio" name="title" value="None" {% if data.updateType == "correct" or data.updateType == "update" and data.details[data.nameType].title == "None" %} checked="checked" {% endif %}>
+              <label for="None">None</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="mr" type="radio" name="title" value="mr" {% if data.updateType == "correct" or data.updateType == "update" and data.details[data.nameType].title == "mr" %} checked="checked" {% endif %}>
+              <label for="mr">Mr</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="mrs" type="radio" name="title" value="mrs" {% if data.updateType == "correct" or data.updateType == "update" and data.details[data.nameType].title == "mrs" %} checked="checked" {% endif %}>
+              <label for="mrs">Mrs</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="miss" type="radio" name="title" value="miss" {% if data.updateType == "correct" or data.updateType == "update" and data.details[data.nameType].title == "miss" %} checked="checked" {% endif %}>
+              <label for="miss">Miss</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="example-contact-by-phone" type="radio" name="title" value="ms" {% if data.updateType == "correct" or data.updateType == "update" and data.details[data.nameType].title == "ms" %} checked="checked" {% endif %}>
+              <label for="example-contact-by-phone">Ms</label>
+            </div>
+           
+            <div class="multiple-choice" data-target="other-options">
+              <input id="other" type="radio" name="title" value="other">
+              <label for="other">Other</label>
+            </div>
+            <div class="panel panel-border-narrow js-hidden" id="other-options">
+              <div class="multiple-choice" data-target="other-options">
+                <input id="dr" type="radio" name="title" value="dr" >
+                <label for="dr">Dr</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="rev" type="radio" name="title" value="rev" >
+                <label for="rev">Rev</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="sir" type="radio" name="title" value="sir" >
+                <label for="sir">Sir</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="lady" type="radio" name="title" value="lady" >
+                <label for="lady">Lady</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="lord" type="radio" name="title" value="lord" >
+                <label for="lord">Lord</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="Professor" type="radio" name="title" value="Professor" >
+                <label for="Professor">Professor</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="captain" type="radio" name="title" value="captain" >
+                <label for="captain">Captain</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="major" type="radio" name="title" value="major" >
+                <label for="major">Major</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="dame" type="radio" name="title" value="dame" >
+                <label for="dame">Dame</label>
+              </div>
+              
+              <div class="multiple-choice" data-target="other-options">
+                <input id="colonel" type="radio" name="title" value="colonel" >
+                <label for="colonel">Colonel</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      
+        <fieldset class="form-group" data-required data-error="Cannot be blank">
+          <legend class="visuallyhidden">First name</legend>
+            <label class="form-label" for="firstname">First name</label>
+            <input class="form-control" id="firstname" type="text" name="firstname" {% if data.updateType == "correct" or data.updateType == "update" %} value={{data.details[data.nameType].first}} {% endif %}>
+        </fieldset>
+      
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Last name</legend>
+            <label class="form-label" for="lastname">Last name</label>
+            <input class="form-control" id="lastname" type="text" name="lastname" {% if data.updateType == "correct" or data.updateType == "update" %} value={{data.details[data.nameType].last}} {% endif %}>
+        </fieldset>
+        
+        <fieldset class="form-group">
+          <legend class="visuallyhidden">Suffix</legend>
+          <label class="form-label short" for="code">Suffix</label>
+          <input class="form-control" id="postcode" type="text" name="suffix" {% if data.updateType == "correct" or data.updateType == "update" %} value={{data.details[data.nameType].suffix}} {% endif %}>
+        </fieldset>
+      
+          {% if data.updateType == "update" or data.updateType == "add" %}
+      
+            <fieldset>
+              <div class="form-group prepop">
+                <label class="form-label" for="startdate">
+                  Start date
+                  <span class="form-hint">
+                    For example 31/8/1979
+                  </span>
+                </label>
+                <input class="form-control box-one" id="startdate" name="startdate" type="text">
+                <a class="populate-link-one">Use today's date</a>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <div class="form-group prepop">
+                <label class="form-label" for="startdate">
+                  Notified date
+                </label>
+                <input class="form-control box-two" id="startdate" name="notifieddate" type="text">
+                <a class="populate-link-two">Use today's date</a>
+              </div>
+            </fieldset>
+
+          {% endif %}
+      
+        {% endif %}
+
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account3/account">Cancel</a></p>
+  </div>
+</div>
+{% endblock  %}

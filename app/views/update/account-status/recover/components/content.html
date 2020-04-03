@@ -1,0 +1,36 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">Recover deleted awards or relationships</h2>
+{% endblock  %}
+
+{% block content %}
+
+<h2 class="heading-medium question">What do you need to recover?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">
+              <p class="form-hint">Select all that apply</p>
+      <div class="form-group">
+
+        <div class="multiple-choice">
+          <input id="awards" type="checkbox" name="tempawards" value=true>
+          <label for="awards">Awards</label>
+        </div>
+        
+        <div class="multiple-choice">
+          <input id="relationships" type="checkbox" name="temprelationships" value=true>
+          <label for="relationships">Relationships</label>
+        </div>
+                
+      </div> 
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account3/account">Cancel</a></p>
+  </div>
+</div>
+{% endblock  %}

@@ -1,0 +1,60 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">{% include "./title.njk" %}</h2>
+{% endblock  %}
+
+{% block content %}
+
+<!--
+<h2 class="heading-medium question">
+  What is the end date?
+</h2>
+-->
+
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">
+      
+      <legend class="visually-hidden">
+        <p class="">
+          What kind of change do you need to make?
+        </p>
+      </legend>
+            
+<!--
+      <fieldset class="form-group">
+        <legend class="visuallyhidden">End date</legend>
+        <label class="form-label" for="postcode">
+          End date
+          <span class="form-hint">
+            For example 31/8/1979
+          </span>
+        </label>
+        <input value="{{data['prepopulatedDate']}}" class="form-control" id="postcode" type="text" name="postcode"><span class="today"></span>
+      </fieldset>
+-->
+      
+      <fieldset>
+        <div class="form-group prepop">
+          <label class="form-label" for="startdate">
+            End date
+            <span class="form-hint">
+              For example 31/8/1979
+            </span>
+          </label>
+          <input class="form-control box-one" id="startdate" name="startdate" type="text">
+          <a class="populate-link-one">Use today's date</a>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account3/account">Cancel</a></p>
+  </div>
+</div>
+
+{% endblock  %}

@@ -1,0 +1,41 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">Update the verification type</h2>
+{% endblock  %}
+
+{% block content %}
+
+<h2 class="heading-medium question">What is the verification type?</h2>
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">      
+      
+        <div class="form-group">
+         <fieldset data-required data-error="Choose a title">
+            <div class="multiple-choice">
+              <input id="None" type="radio" name="verificationLevel" value="2" {% if data.citizen.ninoLevel == 2 %} checked="checked" {% endif %}>
+              <label for="None">Verified</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="mr" type="radio" name="verificationLevel" value="1" {% if data.citizen.ninoLevel == 1 %} checked="checked" {% endif %}>
+              <label for="mr">Qualified</label>
+            </div>
+           
+            <div class="multiple-choice">
+              <input id="mrs" type="radio" name="verificationLevel" value="0" {% if data.citizen.ninoLevel == 0 %} checked="checked" {% endif %}>
+              <label for="mrs">Unverified</label>
+            </div>
+          </fieldset>
+        </div>
+      
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <p><a href="/account3/account">Cancel</a></p>
+  </div>
+</div>
+{% endblock  %}

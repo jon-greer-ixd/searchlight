@@ -1,0 +1,39 @@
+{% extends "../../wrapper_template.html" %}
+
+{% block h2title %}
+  <h2 class="title">Update their account status</h2>
+{% endblock  %}
+
+{% block content %}
+
+<h2 class="heading-medium question">
+  What is the end date?
+</h2>
+
+<div class="grid-row">
+  <div class="column-one-half">
+    <form method="get" action="check">
+      <fieldset>
+
+        <div class="form-group prepop">
+          <label class="form-label" for="date">
+            End date
+            <span class="form-hint">
+              For example 31/8/197
+            </span>
+          </label>
+          <input class="form-control box-one" id="date" name="date" type="text">
+          <a class="populate-link-one">Use today's date</a>
+        </div>
+
+      </fieldset>
+ 
+      <div class="form-group">
+        <input class="button" type="submit" value="Next">
+      </div>
+      
+    </form>
+    <a href="/account3/account">Cancel</a>
+  </div>
+</div>
+{% endblock  %}

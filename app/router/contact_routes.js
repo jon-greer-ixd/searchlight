@@ -28,7 +28,7 @@ router.get(/pref-handler/, function (req, res) {
 })
 
 //check-contact-handler
-router.get(/check-contact-new/, function (req, res) {  
+router.get(/./components/wrapper.html/, function (req, res) {  
   var chosenContact = req.session.data.contactType;
   var contactObject = req.session.data.contactTypes[chosenContact];
   var contactTypes = req.session.data.contactTypes;

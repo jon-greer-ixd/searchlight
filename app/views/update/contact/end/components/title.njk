@@ -1,0 +1,21 @@
+<h2 class="title">
+  
+  End
+  {% if data.contactType == "otherContact" %}
+    a
+  {% else %}
+    their
+  {% endif %}
+
+  {% if data.contactType == "typeTalk" %}
+    {{ data.contactTypes[data.contactType].display  }}
+  {% elif data.contactType == "otherContact" %}
+    contact method
+  {% else %}
+    {{ data.contactTypes[data.contactType].display | lower  }}
+  {% endif %}
+
+  {{ data.contactTypes[data.contactType].type | contactIs  }}
+  
+</h2>
+
