@@ -28,7 +28,7 @@ router.get(/pref-handler/, function (req, res) {
 })
 
 //check-contact-handler
-router.get(/./components/wrapper.html/, function (req, res) {  
+router.get(/check-contact-new/, function (req, res) {  
   var chosenContact = req.session.data.contactType;
   var contactObject = req.session.data.contactTypes[chosenContact];
   var contactTypes = req.session.data.contactTypes;
@@ -65,7 +65,7 @@ router.get(/./components/wrapper.html/, function (req, res) {
   chosenContact, contactObject, updateType, contactDisplay = null;
 
   //redirect
-  res.redirect('/account2/account')
+  res.redirect('/account3/account')
 })    
     
 module.exports = router

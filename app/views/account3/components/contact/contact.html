@@ -27,9 +27,11 @@
               <li>
                 <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
               </li>
-              {# <li>
-                <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
-              </li> #}
+              {% if data.canUpdate %}
+                <li>
+                  <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
+                </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -62,9 +64,11 @@
               <li>
                 <a data-toggle="modal" data-target="#update_two" class="under-link">View maintenance</a> 
               </li>
-              {# <li>
-                <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
-              </li> #}
+              {% if data.canUpdate %}
+                <li>
+                  <a class="secondary-link" href="contact-change-handler/?contactType={{list}}">Change</a>
+                </li>
+              {% endif %}
             </ul>
           </div>
         </div>
