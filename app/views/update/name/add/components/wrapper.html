@@ -5,21 +5,13 @@
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           
-          <a class="link-back" onCLick="history.back()">Back</a>          
+          <a class="link-back" onCLick="history.back()">Back</a>
           
-            <h2 class="title">
-            End their
-              {% if data.nameType == "nameTwo" %}
-                name type 2
-              {% elif data.nameType == "requestedName" %}
-                requested name
-              {% endif %}
-            </h2>
-          
+          <h2 class="title">Add a name</h2>
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               
-                {% include "components/update/name/remove-content.html" %}
+                {% include "./content.html" %}
               
           </div>
         </div>
