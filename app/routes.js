@@ -45,18 +45,7 @@ router.get('/can-update-handler/', function (req, res) {
 // July 2019 //
 /////////////// 
 
-router.get('/cis-handler/', function (req, res) {
-  req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);
-  if (req.session.data.citizen.appointee != null) {
-    req.session.data.appointee = getCitizen(req.session.data.citizen.appointee, req.session.data.cis);
-    console.log(`Apointee = ${req.session.data.appointee.nameOneFirst} ${req.session.data.appointee.nameOneLast}`)
-  }
-  res.redirect('account3/account')
-})
 
-router.get('/appointee-handler/', function (req, res) {
-  res.redirect('cis-handler?nino=' + req.session.data.appointee.nino)
-})
 
 
 
@@ -204,6 +193,7 @@ var traceRoutes = require('./router/trace_routes');
 var updateRoutes = require('./router/update_routes');
 var applyRoutes = require('./router/apply_routes');
 var addressRoutes = require('./router/address_routes');
+var cisRoutes = require('./router/cis_routes');
 
 // search page
 router.get('/search', function (req, res) {
@@ -284,7 +274,8 @@ router.use('/', main,
                 updateRoutes,
                 traceRoutes,
                 applyRoutes,
-                addressRoutes);
+                addressRoutes,
+                cisRoutes);
                 
   // Route index page
   router.get('/', function (req, res) { 
