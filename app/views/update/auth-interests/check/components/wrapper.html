@@ -5,7 +5,7 @@
         
         <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
           
-          <a class="link-back" onCLick="history.back()">Back</a>
+          <a class="link-back" onCLick="history.back()">Back</a>          
           
           <h2 class="title">
             {% if data.interestState == "adding" %}
@@ -22,21 +22,16 @@
               {% else %}
                Add a Housing Benefit interest
               {% endif %}
+            
             {% elif data.interestState == "ending" %}
-              {% if data.tempInterest == "both" %}
                 End interests
-              {% elif data.tempInterest == "councilTaxReduction" %}
-                End a Council Tax reduction interest
-              {% else %}
-                End a Housing Benefit interest
-              {% endif %}
             {% endif %}
           </h2>
-          
+
           <div id="sl-address-primary-card" class="sl-primary-card last-card">
             <div id="address-pane">
               
-              {% include "components/update/auth-interests/interest-detail-content.html" %}
+                {% include "./content.html" %}
               
           </div>
         </div>
