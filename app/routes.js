@@ -30,26 +30,6 @@ console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 var additionalNeeds = require('./data/additionalNeeds.json');
 
 
-var canUpdate = true;
-router.get('/can-update-handler/', function (req, res) {
-  if(req.session.data.canUpdate == true) {
-    req.session.data.canUpdate = false;
-  } else {
-    req.session.data.canUpdate = true;
-  }
-  res.redirect('/')
-})
-
-
-///////////////
-// July 2019 //
-/////////////// 
-
-
-
-
-
-
 //***********
 // INTERESTS 
 //***********
@@ -91,10 +71,6 @@ function resetTempInterest(interest) {
   interest = tempInterest;
 }
 
-function printInterests() {
-  for (var x in interests) {
-  }
-}
 
 var removeInterest = function (interest) {
   interest.live = false;

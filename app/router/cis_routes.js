@@ -14,6 +14,15 @@ router.get('/cis-handler/', function (req, res) {
 
 router.get('/appointee-handler/', function (req, res) {
   res.redirect('cis-handler?nino=' + req.session.data.appointee.nino)
-})    
+})   
+
+router.get('/can-update-handler/', function (req, res) {
+  if(req.session.data.canUpdate == true) {
+    req.session.data.canUpdate = false;
+  } else {
+    req.session.data.canUpdate = true;
+  }
+  res.redirect('/')
+})
     
 module.exports = router
