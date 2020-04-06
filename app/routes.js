@@ -170,6 +170,11 @@ var applyRoutes = require('./router/apply_routes');
 var addressRoutes = require('./router/address_routes');
 var cisRoutes = require('./router/cis_routes');
 
+
+router.get('/search-v1', function (req, res) {
+  res.render('pages/search-v1.njk')
+})
+
 // search page
 router.get('/search', function (req, res) {
   res.render('pages/search.njk', {
@@ -361,101 +366,6 @@ router.use('/', main,
   res.render('index')
 })
 
-router.get('/search-v1', function (req, res) {
-  res.render('pages/search-v1.njk')
-})
-
-router.get(/adding-detail-handler/, function (req, res) {
-  req.session.data.personalDetail = req.query.personalDetail;
-  req.session.data.toaster = null;
-  req.session.data.updateType = 1;
-  res.redirect('/update/person/update')
-})
-
-router.get(/person-change-handler/, function (req, res) {
-  req.session.data.toaster = null;
-  req.session.data.personalDetail = req.query.personalDetail;
-  if (req.session.data.personalDetail == 'sex') {
-    req.session.data.updateType = 3;
-    req.session.data.personalDetailValue = personalDetailsFunctions.flipValue(req.session.data.personalDetails.sex);
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == 'dateOfDeath') {
-    req.session.data.updateType = 3;
-    res.redirect('/update/person/dod-options')
-  } else if (req.session.data.personalDetail == 'dateOfBirth') {
-    req.session.data.updateType = 3;
-    res.redirect('/update/person/update')
-  } else if (req.session.data.personalDetail == 'recordLevel') {
-    req.session.data.updateType = 2;
-    res.redirect('/update/person/update')
-  } else if (req.session.data.personalDetail == 'indIndicator') {
-    req.session.data.updateType = 2;
-    req.session.data.personalDetailValue = 'null';
-    res.redirect('/update/person/check')
-  } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
-    if (req.session.data.personalDetails[req.session.data.personalDetail].state == 1) {
-      req.session.data.updateType = 5;
-    } else {
-      req.session.data.updateType = 1;
-    }
-    res.redirect('/update/person/dates')
-  } else if (req.session.data.personalDetail == 'nifu') {
-    req.session.data.updateType = 2;
-    req.session.data.personalDetailValue = 'null';
-    res.redirect('/update/person/check')
-  } else {
-    res.redirect('/update/person/type')
-  }
-})
-
-router.get(/change-person-type-handler/, function (req, res) {
-  if (req.session.data.personalDetail == 'nino' || req.session.data.updateType == 4) {
-    req.session.data.updateType == 2;
-    req.session.data.personalDetail = 'ninoVerificationLevel';
-    res.redirect('/update/person/update')
-  }
-  if (req.session.data.personalDetail == 'additionalNeeds' && req.session.data.updateType == 3) {
-    if (req.session.data.personalDetails.additionalNeeds.value.length > 1) {
-      res.redirect('/update/person/correct-needs/select-need')
-    } else {
-      req.session.data.personalDetailValue = req.session.data.personalDetails.additionalNeeds.value[0] ;
-      res.redirect('/update/person/correct-needs/all-needs')
-    }
-  } else if (req.session.data.personalDetail == 'preferredLanguage') {
-    if (req.session.data.updateType == 2) {
-      if (req.session.data.personalDetailValue == 'English') {
-        req.session.data.personalDetailValue = 'Welsh';
-      } else {
-        req.session.data.personalDetailValue = 'English';
-      }
-      res.redirect('/update/person/check')
-    } else {
-      res.redirect('/update/person/update')
-    }
-  } else {
-    res.redirect('/update/person/update')
-  }
-})
-
-router.get(/dod-handler/, function (req, res) {
-  if (req.session.data.updateType == 4) {
-    res.redirect('/update/person/check')
-  } else {
-    res.redirect('/update/person/update')
-  }
-})
-
-router.get(/personal-detail-handler/, function (req, res) {
-  if (req.query.data == 'stateless') {
-    req.session.data.personalDetailValue = 'stateless';
-  } else if (req.query.data == 'unknown') {
-    req.session.data.personalDetailValue = 'unknown';
-  } else if (req.query.data == 'null') {
-    req.session.data.personalDetailValue = 'null';
-  }
-  res.redirect('/update/person/check')
-})
-
 
 //keep
 // router.get(/updatecontact-handler/, function (req, res) {
@@ -464,7 +374,6 @@ router.get(/personal-detail-handler/, function (req, res) {
 //   req.session.data[feature].state = state;
 //   res.redirect('/update/person/contact/' + feature)
 // })
-
 
 
 module.exports = router
