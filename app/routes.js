@@ -457,69 +457,7 @@ router.get(/personal-detail-handler/, function (req, res) {
 })
 
 
-//DISABILITY
-router.get(/disability-type-handler/, function (req, res) {
-  req.session.data.disability.state = req.query.data;
-  if (req.session.data.disability.state === 'updating' || req.session.data.disability.state === 'correcting') {
-    req.session.data.personalDetails.disability.value = flip(req.session.data.personalDetails.disability.value);
-  }
-  res.redirect('/update/person/check')
-})
-
-//NATIONALITY
-router.get(/nationality-type-handler/, function (req, res) {
-  req.session.data.nationality.state = req.query.data;
-  res.redirect('/update/person/nationality/update')
-})
-
-//MARITAL
-router.get(/marital-type-handler/, function (req, res) {
-  req.session.data.maritalState = req.query.data;
-  res.redirect('/update/person/marital/update')
-})
-
-//Special customer record level
-router.get(/recordLevel-type-handler/, function (req, res) {
-  req.session.data.recordLevel.state = req.query.data;
-  if(req.session.data.recordLevel.state == 'removing') {
-    res.redirect('/update/person/check')
-  } else {
-    res.redirect('/update/person/recordLevel/update')
-  }
-})
-
-//nifu
-router.get(/nifu-type-handler/, function (req, res) {
-  req.session.data.personalDetails.nifu.state = req.query.data;
-  req.session.data.personalDetails.nifu.value = flip(req.session.data.personalDetails.nifu.value);
-  res.redirect('/update/person/check')
-})
-
-//NEEDS
-router.get(/sneeds-handler/, function (req, res) {
-  res.redirect('/update/person/needs/update')
-})
-
-//NEEDS
-router.get(/sneeds-type-handler/, function (req, res) {
-  if (req.query.data === 'update') {
-    req.session.data.additionalNeeds.state = 'updating'
-    res.redirect('/update/person/needs/update')
-  } else {
-    req.session.data.additionalNeeds.state = 'correcting'
-    res.redirect('/update/person/needs/update')
-  }
-})
-
-//GENDER
-function updateGender(show, hide) {
-  show = true;
-  hide = false;
-}
-
-
-
-
+//keep
 // router.get(/updatecontact-handler/, function (req, res) {
 //   var feature = req.query.feature;
 //   var state = req.query.state;
