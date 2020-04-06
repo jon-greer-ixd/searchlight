@@ -121,4 +121,12 @@ router.get(/check-address-handler/, function (req, res) {
   res.redirect('/account3/account')
 })
 
+router.get(/status-handler/, function (req, res) {
+  if (req.session.data.updateType == 2) {
+    res.redirect('dates')
+  } else {
+    res.redirect('check')
+  }
+})
+
 module.exports = router

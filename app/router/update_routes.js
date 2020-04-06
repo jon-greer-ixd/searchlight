@@ -344,5 +344,27 @@ router.get(/add-person-handler/, function (req, res) {
   }
 })
 
+//maintain account
+router.get(/maintain-account-handler/, function (req, res) {
+  if (req.session.data.updateType == 3) {
+    res.redirect('verification')
+  } else if (req.session.data.updateType == 1)  {
+    res.redirect('recover')
+  } else if (req.session.data.updateType == 0) {
+    req.session.data.tempAccountStatus = 'Open'
+    res.redirect('check')
+  } else {
+    res.redirect('status')
+  }
+})
+
+router.get(/nino-level-handler/, function (req, res) {
+  if (req.session.data.tempAccountStatus == 'Superseded' ) {
+    res.redirect('supersede')
+  } else {
+    res.redirect('check')
+  }
+})
+
 
 module.exports = router
