@@ -4,6 +4,8 @@ var router = express.Router()
 var personalDetailsFunctions = require('../../functions/personalDetailsFunctions.js');
 var generalFunctions = require('../../functions/general.js');
 var setState = require('../defaults.js').setState;
+var changeSex = require('../defaults.js').changeSex;
+
 
 function setVerificationLevel(verificationlevel) {
   if (verificationlevel == 'Level 3') {
@@ -363,6 +365,37 @@ router.get(/nino-level-handler/, function (req, res) {
     res.redirect('supersede')
   } else {
     res.redirect('check')
+  }
+})
+
+router.get(/gender-type-handler/, function (req, res) {
+  if (req.session.data.personalDetails.gra.state === 'updating') {
+    req.session.data.personalDetails.gra.state = req.query.data;
+  } else {
+    req.session.data.personalDetails.preGra.state = req.query.data;
+  }
+  res.redirect('/update/person/gender/update')
+})
+
+router.get(/add-gender-handler/, function (req, res) {
+  if (req.session.data.personalDetails.gender.gra == false && req.session.data.personalDetails.gender.preGra == false) {
+    req.session.data.personalDetails.sex.value = changeSex(req.session.data.personalDetails.sex.value);
+  }
+  req.session.data.editState = 'adding';
+  if (req.query.data == 'gra') {
+    req.session.data.personalDetail = 'gra';
+    if (req.session.data.personalDetails.gender.preGra == true) {
+      res.redirect('/update/person/gender/update')
+    } else {
+      res.redirect('/update/person/gender/sex')
+    }
+  } else {
+    req.session.data.personalDetail = 'preGra';
+    if (req.session.data.personalDetails.gender.gra == true) {
+      res.redirect('/update/person/gender/update')
+    } else {
+      res.redirect('/update/person/gender/sex')
+    }
   }
 })
 

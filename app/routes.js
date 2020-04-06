@@ -18,7 +18,6 @@ var Interest = require('./interest.js');
 var defaults = require('./defaults.js').defaults;
 var flip = require('./defaults.js').flip;
 var setState = require('./defaults.js').setState;
-var changeSex = require('./defaults.js').changeSex;
 var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
 var generalFunctions = require('../functions/general.js');
 
@@ -518,122 +517,16 @@ function updateGender(show, hide) {
   hide = false;
 }
 
-router.get(/add-gender-handler/, function (req, res) {
-  if (req.session.data.personalDetails.gender.gra == false && req.session.data.personalDetails.gender.preGra == false) {
-    req.session.data.personalDetails.sex.value = changeSex(req.session.data.personalDetails.sex.value);
-  }
-  req.session.data.editState = 'adding';
-  if (req.query.data == 'gra') {
-    req.session.data.personalDetail = 'gra';
-    if (req.session.data.personalDetails.gender.preGra == true) {
-      res.redirect('/update/person/gender/update')
-    } else {
-      res.redirect('/update/person/gender/sex')
-    }
-  } else {
-    req.session.data.personalDetail = 'preGra';
-    if (req.session.data.personalDetails.gender.gra == true) {
-      res.redirect('/update/person/gender/update')
-    } else {
-      res.redirect('/update/person/gender/sex')
-    }
-  }
-})
-
-router.get(/gender-type-handler/, function (req, res) {
-  if (req.session.data.personalDetails.gra.state === 'updating') {
-    req.session.data.personalDetails.gra.state = req.query.data;
-  } else {
-    req.session.data.personalDetails.preGra.state = req.query.data;
-  }
-  res.redirect('/update/person/gender/update')
-})
-
-router.get(/updating-handler/, function (req, res) {
-  var feature = req.query.feature;
-//  var featureState = feature+'State';
-  req.session.data[feature].state = req.query.state;
-  if(req.query.feature === 'preGra' || req.query.feature === 'gra') {
-    if (req.query.state == 'adding') {
-      res.redirect('/update/person/gender/update')
-    } else {
-      res.redirect('/update/person/gender/type')
-    }
-  } else if (req.query.feature == 'disability' || req.query.feature == 'needs' || req.query.feature == 'nifu') {
-    res.redirect('/update/person/' + feature + '/type')
-  } else {
-    // var toPage = '/update/person/' + req.query.feature + '/update';
-    res.redirect('/update/person/' + feature + '/update')
-  }
-})
-
-router.get(/newupdate-handler/, function (req, res) {
-  var feature = req.query.feature;
-  var featureState = feature+'State';
-  req.session.data[feature].state = req.query.state;
-  if(req.query.feature === 'preGra' || req.query.feature === 'gra') {
-    if (req.query.state == 'adding') {
-      res.redirect('/update/person/gender/update')
-    } else {
-      res.redirect('/update/person/gender/type')
-    }
-  } else if (req.query.feature == 'disability' || req.query.feature == 'needs' || req.query.feature == 'nifu' || req.query.feature == 'recordLevel') {
-    res.redirect('/update/person/' + feature + '/type')
-  } else if (req.query.feature == 'sex') {
-    req.session.data.personalDetails.sex = changeSex(req.session.data.personalDetails.sex.value);
-    res.redirect('/update/person/check')
-  } else {
-    // var toPage = '/update/person/' + req.query.feature + '/update';
-    res.redirect('/update/person/' + feature + '/update')
-  }
-})
-
-router.get(/updatecontact-handler/, function (req, res) {
-  var feature = req.query.feature;
-  var state = req.query.state;
-  req.session.data[feature].state = state;
-  res.redirect('/update/person/contact/' + feature)
-})
 
 
 
-/*********/
-/** SEX **/
-/*********/
+// router.get(/updatecontact-handler/, function (req, res) {
+//   var feature = req.query.feature;
+//   var state = req.query.state;
+//   req.session.data[feature].state = state;
+//   res.redirect('/update/person/contact/' + feature)
+// })
 
-router.get(/update-sex-handler/, function (req, res) {
-  if (req.query.data === 'gra') {
-    req.session.data.updateType = 'addGra';
-  } else {
-    req.session.data.updateType = 'addPreGra';
-  }
-  res.redirect('/update/gender/update-gender')
-})
-
-router.get(/sex-adv-handler/, function (req, res) {
-  req.session.data.updateType = 'updateGender';
-  res.redirect('/update/sex/update-sex')
-})
-
-router.get(/sex-simple-handler/, function (req, res) {
-  req.session.data.updateType = 'correctSex';
-  res.redirect('/update/sex/check')
-})
-
-router.get('/sex/update', function (req, res) {
-  req.session.data.updateType = 'updateGender';
-  res.render('update/sex/update')
-})
-
-router.get(/check-sex-handler/, function (req, res) {
-  if(req.session.data.updateType === 'correctSex') {
-    req.session.data.sexChanged = true;
-  } else {
-    req.session.data.personalDetails.genderUpdated = true;
-  }
-  req.session.data.sex = 'Female';
-  res.redirect('/account2/account')
-})
 
 
 module.exports = router
