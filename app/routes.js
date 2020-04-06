@@ -722,36 +722,6 @@ router.get(/update-handler-v1/, function (req, res) {
   }
 })
 
-router.get(/change-handler-v1/, function (req, res) {
-  if (req.query.tochange == 'add') {
-    req.session.data.updateType = 'new';
-    res.render('update/address-search')
-  } else if (req.query.tochange == 'correct'){
-    res.redirect('correct')
-  } else {
-    res.redirect('update')
-  }
-})
-
-router.get(/correction-type-handler/, function (req, res) {
-  var next = 'update/dates';
-  if(req.query.data === 'new') {
-  dataState.correctionType = 'toNew';
-    next = 'update/address-search'
-  } else if(req.query.data === 'status') {
-   dataState.correctionType = 'status';
-    next = 'update/status'
-  } else if(req.query.data === 'date') {
-   dataState.correctionType = 'date';
-  } else if(req.query.data === 'cherish') {
-    next = 'update/cherish'
-   dataState.correctionType = 'cherish';
-  } else if (req.query.data == 'correct'){
-    res.render('update/correct')
-    res.redirect('address-search')
-  } 
-  res.render(next);
-})
 
 
 
