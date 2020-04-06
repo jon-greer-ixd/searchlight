@@ -366,7 +366,6 @@ router.get('/search-v1', function (req, res) {
   res.render('pages/search-v1.njk')
 })
 
-
 router.get(/adding-detail-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
   req.session.data.toaster = null;
