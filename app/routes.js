@@ -366,28 +366,6 @@ router.get('/search-v1', function (req, res) {
   res.render('pages/search-v1.njk')
 })
 
-//PERSON - needed
-router.get(/add-person-handler/, function (req, res) {
-  console.log(req.session.data.personalDetail);
-  req.session.data.personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
-  req.session.data.personDetailObject.key = req.session.data.personalDetail;
-  req.session.data.updateType = 1;
-  if (req.session.data.personalDetail == 'nifu') {
-    req.session.data.personalDetailValue = true;
-    res.redirect('/update/person/check');
-  } else if (req.session.data.personalDetail == 'gender') {
-    res.redirect('/update/person/gender/add');
-  } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
-    req.session.data.personalDetailValue = true;
-    res.redirect('/update/person/dates');
-  } else if (req.session.data.personalDetail == 'indIndicator') {
-    req.session.data.personalDetailValue = 'indIndicator';
-    req.session.data.personalDetailValue = true;
-    res.redirect('/update/person/check');
-  } else {
-    res.redirect('/update/person/update');
-  }
-})
 
 router.get(/adding-detail-handler/, function (req, res) {
   req.session.data.personalDetail = req.query.personalDetail;
@@ -701,14 +679,6 @@ router.get(/change-link-handler/, function (req, res) {
   res.redirect('/update/benefits/check')
 })
 
-// router.get(/check-benefit-handler/, function (req, res) {
-//   req.session.data.personalDetails.bereavementBenefit.value = false;
-//   req.session.data.personalDetails.bereavementBenefit.show = false;
-//   req.session.data.personalDetails.bereavementBenefit.state = 5;
-//   req.session.data.toaster = generalFunctions.setToasterMessage(req.session.data.personalDetails.bereavementBenefit.display, null, req.session.data.personalDetails.bereavementBenefit.state);
-//   res.redirect('/account2/account')
-// })
-
 
 //maintain account
 router.get(/maintain-account-handler/, function (req, res) {
@@ -732,51 +702,6 @@ router.get(/nino-level-handler/, function (req, res) {
   }
 })
 
-// router.get(/cancel-handler/, function (req, res) {
-//   req.session.data.toaster = null;
-//   res.redirect('/account2/account')
-// })
-
-
-
-//*********
-//Version 1
-//*********
-
-// var previousAddresses = false;
-
-// router.get(/check-handler-v1/, function (req, res) {
-//   if(req.session.data.updateType === 'add') {
-//     correspondence = true;
-//   }
-//   if (req.session.data.updateType === 'address') {
-//     previousAddresses = true;    
-//     isUpdated = true;
-//   }
-//   res.redirect('account')
-// })
-
-// router.get('/update/v1/account', function (req, res) {
-//   res.render('update/v1/account', {
-//     updated : dataState.updatedToNewAddress,
-//     editDate : content.editDate,
-//     previous_addresses : previousAddresses,
-//     correspondence : dataState.correspondenceAdded
-//   })
-// })
-
-// router.get('/update/v1/update', function (req, res) {
-//   res.render('update/v1/update', {
-//     correspondence : dataState.correspondenceAdded,
-//     pagetitle : content.pageTitle
-//   })
-// })
-
-// router.get('/update/v1/check', function (req, res) {
-//   res.render('update/v1/check', {
-//     pagetitle : content.pageTitle
-//   })
-// })
 
 router.get(/update-handler-v1/, function (req, res) {
   if(req.query.data === 'status') {

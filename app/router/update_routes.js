@@ -321,6 +321,28 @@ router.get(/check-nino-handler/, function (req, res) {
   res.redirect('/account3/account')
 })
 
+//PERSON
+router.get(/add-person-handler/, function (req, res) {
+  console.log(req.session.data.personalDetail);
+  req.session.data.personDetailObject = req.session.data.personalDetails[req.session.data.personalDetail];
+  req.session.data.personDetailObject.key = req.session.data.personalDetail;
+  req.session.data.updateType = 1;
+  if (req.session.data.personalDetail == 'nifu') {
+    req.session.data.personalDetailValue = true;
+    res.redirect('/update/person/check');
+  } else if (req.session.data.personalDetail == 'gender') {
+    res.redirect('/update/person/gender/add');
+  } else if (req.session.data.personalDetail == 'assetFreeze' || req.session.data.personalDetail == 'idAtRisk') {
+    req.session.data.personalDetailValue = true;
+    res.redirect('/update/person/dates');
+  } else if (req.session.data.personalDetail == 'indIndicator') {
+    req.session.data.personalDetailValue = 'indIndicator';
+    req.session.data.personalDetailValue = true;
+    res.redirect('/update/person/check');
+  } else {
+    res.redirect('/update/person/update');
+  }
+})
 
 
 module.exports = router
