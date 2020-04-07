@@ -303,7 +303,6 @@ router.use('/', main,
   req.session.data.contactTypes = require('./data/contactTypes.js').contactTypes;
   req.session.data.authority = require('./defaults.js').authority;
 
-
 //  for (var item in contactTypes) {
 //    if (contactTypes.hasOwnProperty(item)) {
 //      req.session.data[item] = contactTypes[item];
