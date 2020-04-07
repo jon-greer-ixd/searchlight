@@ -1,13 +1,12 @@
-// 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
-
 var express = require('express');
 var router = express.Router();
+
+// 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
 
 var addressOne = '1 Current Crescent';
 var addressTwo = '2 New Street';
 var addressThree = '7 Post Street';
 var addressFour = 'Gateshead, Tyne and Wear NE1 1HH';
-
 
 var getCitizen = require('../functions/search-functions.js').getCitizen;
 
@@ -25,7 +24,7 @@ var dates = require('./dates.js').dates;
 console.log(`yesterdayAsFigure ${dates.yesterdayAsFigure('/')}`);
 console.log(`todayAsFigure ${dates.todayAsFigure('/')}`);
 
-//reference
+//Data
 var additionalNeeds = require('./data/additionalNeeds.json');
 
 
@@ -65,29 +64,27 @@ var resetInterests = function () {
   addInterest(esa);
 }
 
+var tempInterest;
 function resetTempInterest(interest) {
   tempInterest = Interest.createInterest();
   interest = tempInterest;
 }
-
 
 var removeInterest = function (interest) {
   interest.live = false;
 };
 
 
-//******•
+//*******
 // DATES 
-//******•
+//*******
 
 var Dates = require('./dates.js');
 var dates = Dates.dates;
 dates.logToday();
-
 // var example = dates.convertDayToString('21/6/1979')
 
 var createJourney = null;
-var ninoVersion = null;
 
 var resetAll = function () {
   residentialAddress.reset();
@@ -153,7 +150,7 @@ var dataState = {
   statusCorrected : false
 };
 
-//routes
+//Route locations
 var main = require('./main/routes');
 var settlementStatusRoutes = require('./router/settlementStatus_routes');
 var getDetailsAboutADeathRoutes = require('./router/getDetailsAboutADeath_routes');
@@ -169,79 +166,11 @@ var updateRoutes = require('./router/update_routes');
 var applyRoutes = require('./router/apply_routes');
 var addressRoutes = require('./router/address_routes');
 var cisRoutes = require('./router/cis_routes');
-
-
-router.get('/search-v1', function (req, res) {
-  res.render('pages/search-v1.njk')
-})
-
-// search page
-router.get('/search', function (req, res) {
-  res.render('pages/search.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-// simple search page for interests
-router.get('/search-v2', function (req, res) {
-  res.render('pages/search-v2.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-// simple search page for interests
-router.get('/search-v3', function (req, res) {
-  res.render('pages/search-v3.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-router.get('/search-v4', function (req, res) {
-  res.render('pages/search-v4.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-router.get('/search-v5', function (req, res) {
-  res.render('pages/search-v5.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-router.get('/search-v6', function (req, res) {
-  res.render('pages/search-v6.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-router.get('/search-v7', function (req, res) {
-  res.render('pages/search-v7.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-router.get('/search-v8', function (req, res) {
-  res.render('pages/search-v8.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-router.get('/search-v9', function (req, res) {
-  res.render('pages/search-v9.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-router.get('/search-v11', function (req, res) {
-  res.render('pages/search-v11.njk', {
-    ninoversion : ninoVersion
-  })
-})
-
-var tempInterest;
+var searchRoutes = require('./router/search_routes');
 
 // Import routes
 router.use('/', main, 
+                searchRoutes,
                 getDetailsAboutADeathRoutes, 
                 settlementStatusRoutes, 
                 bereavementRoutes,
@@ -259,9 +188,7 @@ router.use('/', main,
                 
   // Route index page
   router.get('/', function (req, res) { 
-    
-  req.session.data.mcheck = false;
-
+  
   req.session.data.ninoAllocated = null;
 
   //dap
@@ -273,14 +200,15 @@ router.use('/', main,
   req.session.data.notificationStatus = 'unprocessed';
   req.session.data.dapNotifications = require('./data/dapNotifications.js').dapNotifications;
 
-  //list of additional needs
+  //=session data
   req.session.data.additionalNeeds = additionalNeeds;
-
-  req.session.data.cis = require('../public/javascripts/cis.json');
   req.session.data.ninoApplications = ninoApplications;
+  req.session.data.cis = require('../public/javascripts/cis.json');
+  
+  //set citizen
   req.session.data.citizen = getCitizen("SX170202", req.session.data.cis);
 
-  //apply for a NINO
+  //reset apply for a NINO
   req.session.data.ninoapplication_firstnames = null;
   req.session.data.ninoapplication_lastname = null;
   req.session.data.applyForNinoVersion = null;
@@ -293,7 +221,7 @@ router.use('/', main,
   
   req.session.data.selectstatus = 'unprocessed';
     
-  //data
+  //more session data
   req.session.data.alertData = require('./data/alerts.js').alerts;
   req.session.data.notificationsData = require('./data/notifications.js').notifications;
   req.session.data.details = require('./data/details.js').details;
