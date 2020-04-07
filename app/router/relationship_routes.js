@@ -3,7 +3,7 @@
 var express = require('express')
 var router = express.Router()
 
-var generalFunctions = require('../../functions/general.js');
+var generalFunctions = require('../functions/general.js');
 
 router.get(/add-relationships-handler/, function (req, res) {
   req.session.data.updateType = 1;

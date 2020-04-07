@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-var generalFunctions = require('../../functions/general.js');
+var generalFunctions = require('../functions/general.js');
 
 // 1 ADD / 2 UPDATE / 3 CORRECT / 4 REMOVE / 5 END / 6 DELETE / 7 CHANGE PREFERENCE
 

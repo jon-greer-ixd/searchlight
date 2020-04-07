@@ -8,7 +8,7 @@ var addressTwo = '2 New Street';
 var addressThree = '7 Post Street';
 var addressFour = 'Gateshead, Tyne and Wear NE1 1HH';
 
-var getCitizen = require('../functions/search-functions.js').getCitizen;
+var getCitizen = require('./functions/search-functions.js').getCitizen;
 
 var ninoApplications = require('../public/javascripts/nino_applications.json')
 
@@ -17,8 +17,8 @@ var Interest = require('./interest.js');
 var defaults = require('./defaults.js').defaults;
 var flip = require('./defaults.js').flip;
 var setState = require('./defaults.js').setState;
-var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
-var generalFunctions = require('../functions/general.js');
+var personalDetailsFunctions = require('./functions/personalDetailsFunctions.js');
+var generalFunctions = require('./functions/general.js');
 
 var dates = require('./dates.js').dates;
 console.log(`yesterdayAsFigure ${dates.yesterdayAsFigure('/')}`);

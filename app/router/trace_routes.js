@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-var getCitizen = require('../../functions/search-functions.js').getCitizen;
+var getCitizen = require('../functions/search-functions.js').getCitizen;
 
 router.get(/trace-handler/, function (req, res) {
   // mainsearch_firstname: 'Jon',

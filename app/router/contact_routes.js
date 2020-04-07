@@ -2,8 +2,8 @@
 var express = require('express')
 var router = express.Router()
 
-var generalFunctions = require('../../functions/general.js');
-var contactFunctions = require('../../functions/contact.js');
+var generalFunctions = require('../functions/general.js');
+var contactFunctions = require('../functions/contact.js');
 
 router.get(/contact-change-handler/, function (req, res) {
   req.session.data.toaster = null;

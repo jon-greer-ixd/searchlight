@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-var getCitizen = require('../../functions/search-functions.js').getCitizen;
+var getCitizen = require('../functions/search-functions.js').getCitizen;
 
 router.get('/cis-handler/', function (req, res) {
   req.session.data.citizen = getCitizen(req.query.nino, req.session.data.cis);

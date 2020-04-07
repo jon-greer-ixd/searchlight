@@ -1,8 +1,8 @@
 var express = require('express')
 var router = express.Router()
 
-var personalDetailsFunctions = require('../../functions/personalDetailsFunctions.js');
-var generalFunctions = require('../../functions/general.js');
+var personalDetailsFunctions = require('../functions/personalDetailsFunctions.js');
+var generalFunctions = require('../functions/general.js');
 var setState = require('../defaults.js').setState;
 var changeSex = require('../defaults.js').changeSex;
 
