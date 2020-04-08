@@ -1,0 +1,45 @@
+<!--  account-canvas wraps whole page (hence name canvas)-->
+  <div class="sl-account-canvas row updater slim-header">
+    <div class="col-xs-12" ng-class="{'placeholder': !data.name}">
+      <div class="sl-account-canvas-width">
+        
+        <div name="Address" id="Address" scroll-spy-event="elementScrolledIntoView" sl-scroll-spy="">
+          
+          <a class="link-back" onCLick="history.back()">Back</a>
+          
+          <h2 class="title">
+            {% if data.interestState == "adding" %}
+              {% if data.tempInterest == "both" %}
+                Add interests
+              {% elif data.tempInterest == "councilTaxReduction" %}
+                Add Council Tax reduction interest
+              {% else %}
+                Add a Housing Benefit interest
+              {% endif %}
+            {% elif data.interestState == "updating" %}
+              {% if data.tempInterest == "councilTaxReduction" %}
+                Add a Council Tax reduction interest
+              {% else %}
+               Add a Housing Benefit interest
+              {% endif %}
+            {% elif data.interestState == "ending" %}
+              {% if data.tempInterest == "both" %}
+                End interests
+              {% elif data.tempInterest == "councilTaxReduction" %}
+                End a Council Tax reduction interest
+              {% else %}
+                End a Housing Benefit interest
+              {% endif %}
+            {% endif %}
+          </h2>
+          
+          <div id="sl-address-primary-card" class="sl-primary-card last-card">
+            <div id="address-pane">
+              
+              {% include "./content.html" %}
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
