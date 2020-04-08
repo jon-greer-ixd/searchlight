@@ -1,11 +1,3 @@
-{% extends "layout.html" %}
-
-{% block page_title %}
-  Search
-{% endblock %}
-
-{% block content %}
-  
 <div ui-view="content" class="ng-scope"><div class="container-fluid ng-scope">
     <div id="search" class="row">
         <div class="col-xs-12" ng-class="{'sl-search-full-height': !showTrace.personTrace}">
@@ -18,7 +10,7 @@
                             </h1>
                             <div class="spacing-top-single sl-home-search-input-container input-group" ng-class="{'sl-home-search-input-reduced-padding': nino.length>7, 'sl-search-input-align': !showTrace.personTrace}">
                                 <sl-search><div id="sl-search" ng-keydown="toggleHover($event.keyCode, $event)" ng-class="{'sl-account-search-container': state.current.name !=='search', 'spacing-top-sixth': state.current.name !== 'search'}">
-  <form action="/update/v1/account" ng-submit="slSearchFormSubmit(nino, errors)" autocomplete="off" class="ng-valid ng-dirty ng-valid-parse ng-valid-maxlength">
+  <form action="update/sa-interests/ac-one" ng-submit="slSearchFormSubmit(nino, errors)" autocomplete="off" class="ng-valid ng-dirty ng-valid-parse ng-valid-maxlength">
     <div popover-placement="top" uib-popover-template="'components/popovers/slValidationError/slValidationError.html'" popover-is-open="!ninoValid" popover-enable="!ninoValid" popover-trigger="outsideClick">
 
       <div>
@@ -35,14 +27,12 @@
 
           <div class="sl-header-btn">
 
-
-            <button class="sl-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
+            <a href="/income/account" class="sl-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
               <!-- ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) --><span ng-class="{'search' : state.current.name === 'search','account' : state.current.name !== 'search' }" ng-if="!nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid)" class="search-icon ng-scope search"></span><!-- end ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) -->
 
               <!-- ngIf: nino.length > 7 && !accountSummary && errors.length === 0 && ninoValid -->
 
-
-            </button>
+            </a>
 
           </div>
           <!-- ngIf: nino --><div ng-if="nino" class="ng-scope">
@@ -65,8 +55,5 @@
         </div>
     </div>
 </div>
-  {% include "components/search-advanced.njk" %}
+  {% include "./search-advanced.html" %}
 </div>
-{% endblock %}
-
-

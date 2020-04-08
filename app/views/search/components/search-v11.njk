@@ -1,4 +1,8 @@
 <div ui-view="content" class="ng-scope"><div class="container-fluid ng-scope">
+
+
+<h2>BIG TEST{{data.myBigTest}}</h2p>
+
     <div id="search" class="row">
         <div class="col-xs-12" ng-class="{'sl-search-full-height': !showTrace.personTrace}">
             <div id="sl-home">
@@ -10,7 +14,7 @@
                             </h1>
                             <div class="spacing-top-single sl-home-search-input-container input-group" ng-class="{'sl-home-search-input-reduced-padding': nino.length>7, 'sl-search-input-align': !showTrace.personTrace}">
                                 <sl-search><div id="sl-search" ng-keydown="toggleHover($event.keyCode, $event)" ng-class="{'sl-account-search-container': state.current.name !=='search', 'spacing-top-sixth': state.current.name !== 'search'}">
-  <form method="get" action="bereavement-handler" ng-submit="slSearchFormSubmit(nino, errors)" autocomplete="off" class="ng-valid ng-dirty ng-valid-parse ng-valid-maxlength">
+  <form method="get" action="my-big-handler" ng-submit="slSearchFormSubmit(nino, errors)" autocomplete="off" class="ng-valid ng-dirty ng-valid-parse ng-valid-maxlength">
     <div popover-placement="top" uib-popover-template="'components/popovers/slValidationError/slValidationError.html'" popover-is-open="!ninoValid" popover-enable="!ninoValid" popover-trigger="outsideClick">
 
       <div>
@@ -28,10 +32,9 @@
           <div class="sl-header-btn">
 
 
-            <button class="sl-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
-              <!-- ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) --><span ng-class="{'search' : state.current.name === 'search','account' : state.current.name !== 'search' }" ng-if="!nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid)" class="search-icon ng-scope search"></span><!-- end ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) -->
+            <button class="sl-search-btn"> Look up
+            <span ng-class="{'search' : state.current.name === 'search','account' : state.current.name !== 'search' }" ng-if="!nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid)" class="search-icon ng-scope search"></span><!-- end ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) -->
 
-              <!-- ngIf: nino.length > 7 && !accountSummary && errors.length === 0 && ninoValid -->
 
 
             </button>
@@ -61,5 +64,5 @@
         </div>
     </div>
 </div>
-  {% include "components/search-advanced.html" %}
+  {% include "./search-advanced.html" %}
 </div>

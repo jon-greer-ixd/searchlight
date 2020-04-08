@@ -1,7 +1,5 @@
-
 <div ui-view="content" class="ng-scope"><div class="container-fluid ng-scope">
     <div id="search" class="row">
-            
         <div class="col-xs-12" ng-class="{'sl-search-full-height': !showTrace.personTrace}">
             <div id="sl-home">
                 <div class="row">
@@ -30,7 +28,7 @@
           <div class="sl-header-btn">
 
 
-            <a href="/checks/account" class="sl-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
+            <a href="/bereavement/account" class="sl-search-btn" ng-class="{'sl-account-search-btn': state.current.name !=='search'}" analytics-on="click" analytics-event="Click" analytics-category="Searchbar" analytics-label="Search"> Look up
               <!-- ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) --><span ng-class="{'search' : state.current.name === 'search','account' : state.current.name !== 'search' }" ng-if="!nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid)" class="search-icon ng-scope search"></span><!-- end ngIf: !nino || nino.length <= 7  || (accountSummary || errors.length > 0 || !ninoValid) -->
 
               <!-- ngIf: nino.length > 7 && !accountSummary && errors.length === 0 && ninoValid -->
@@ -59,5 +57,5 @@
         </div>
     </div>
 </div>
-  {% include "components/search-advanced.html" %}
+  {% include "./search-advanced.html" %}
 </div>
